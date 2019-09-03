@@ -1,0 +1,83 @@
+\documentclass{article}
+
+%\usepackage[margin=2.5cm, bottom=3.0cm]{geometry}
+\usepackage[margin=1.5cm, bottom=2.0cm]{geometry}
+
+\usepackage{../_latex_includes/sharedpkg}
+
+\def\TITLE{Random Math Solutions}
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\begin{document}
+
+\thispagestyle{plain}
+\MakeCustomTitle
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{QuestionFrame}
+	Considering:
+	\begin{equation*}
+		\int{\sech{ax} \,\diff{x}}
+			= \frac{1}{a} \tan^{-1}{\parens*{\sinh{ax}}}
+			= \frac{2}{a} \tan^{-1}{\parens*{\tanh{\frac{ax}{2}}}}
+	\end{equation*}
+	
+	Prove that:
+	\begin{equation*}
+		\frac{1}{a} \tan^{-1}{\parens*{\sinh{ax}}}
+			= \frac{2}{a} \tan^{-1}{\parens*{\tanh{\frac{ax}{2}}}}
+	\end{equation*}
+\end{QuestionFrame}
+
+Let us use the following identities for this proof:
+\begin{gather*}
+	\tan^{-1}{x} = 2 \tan^{-1}{\parens*{\frac{x}{1 + \sqrt{1 + x^2}}}} \\
+	\sinh{x} = \frac{e^x - e^{-x}}{2} = \frac{e^{2x} - 1}{2 e^x} \\
+	\tanh{x} = \frac{e^x - e^{-x}}{e^x + e^{-x}} = \frac{e^{2x} - 1}{e^{2x} + 1}
+\end{gather*}
+
+We start by rewriting LHS:
+\begin{equation*}
+	\lhs
+		= \frac{1}{a} \tan^{-1}{\parens*{\sinh{ax}}}
+		= \frac{2}{a} \tan^{-1}{\parens*{\frac{\sinh{ax}}{1 + \sqrt{1 + \sinh^2{ax}}}}} 
+\end{equation*}
+
+Now, to finish the proof, we will now show the following to be true:
+\begin{equation*}
+	\tanh{\frac{ax}{2}} = \frac{\sinh{ax}}{1 + \sqrt{1 + \sinh^2{ax}}}
+\end{equation*}
+
+To simplify further working, we will change the variable:
+\begin{equation*}
+	\tanh{x} = \frac{\sinh{2x}}{1 + \sqrt{1 + \sinh^2{2x}}}
+\end{equation*}
+
+Starting with the RHS:
+\begin{align*}
+	\rhs
+	&= \frac{\frac{e^{4x} - 1}{2 e^{2x}}}{1 + \sqrt{1 + \parens*{\frac{e^{4x} - 1}{2 e^{2x}}}^2}}
+	= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{1 + \frac{e^{8x} - 2 e^{4x} + 1}{4 e^{4x}}}}}
+	= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{\frac{e^{8x} - 2 e^{4x} + 1 + 4 e^{4x}}{4 e^{4x}}}}}
+	= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{\frac{e^{8x} + 2 e^{4x} + 1}{4 e^{4x}}}}}
+	\\
+	&= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{\frac{\parens*{e^{4x} + 1}^2}{4 e^{4x}}}}}
+	= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \frac{e^{4x} + 1}{2 e^{2x}}}}
+	= \frac{e^{4x} - 1}{2 e^{2x} + e^{4x} + 1}
+	= \frac{\parens*{e^{2x} - 1} \parens*{e^{2x} + 1}}{\parens*{e^{2x} + 1}^2}
+	= \frac{e^{2x} - 1}{e^{2x} + 1}
+	= \tanh{x}
+	= \lhs
+\end{align*}
+
+as required.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
