@@ -12,11 +12,12 @@
 %\usepackage[T1]{fontenc}
 \usepackage{xparse}
 
+\usepackage{calc}
 \usepackage[backend=biber]{biblatex}
 \usepackage{epigraph}
 \usepackage{listings}
 \usepackage{lstautogobble}
-\usepackage{xcolor} % \usepackage{color}
+\usepackage[table]{xcolor} % table option loads colortbl for coloring tables
 \usepackage{nameref}
 \usepackage{multicol}
 \usepackage[raggedright]{titlesec}
@@ -34,6 +35,7 @@
 % \usepackage{rotating}
 \usepackage{ulem}
 % \usepackage{svg} % How to use this?
+\usepackage{soul} % Similar package to ulem
 
 \usepackage{lipsum}
 
@@ -43,14 +45,24 @@
 \usepackage{fancyhdr}
 \usepackage[font={small},labelfont={bf},justification=centering]{caption}
 
+% Language
+%\usepackage[english,greek]{babel}
+%\usepackage{teubner} % Classical greek. Mainly just used for capital Digamma.
+
+% Tables
+\usepackage{tabularx}
+
 % Core Mathematics
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
+%\usepackage{nccmath} % Too buggy, breaks minipages, please don't use.
 \usepackage{xfrac}
 \usepackage{siunitx}
 \usepackage{cancel}
+\usepackage{bm} % Bold math symbols
+\usepackage{steinmetz} % Steinmetz notation for phasors. Only provides one command: \phase{}
 
 % Core Algorithmics
 \usepackage{algorithm}
@@ -59,6 +71,8 @@
 
 % PGF/TikZ
 \usepackage{tikz}
+%\usepackage{tkz-euclide} % Not going to use, documentation is in French.
+%\usetkzobj{all} % Loads all tkz-euclide objects
 \usepackage{xstring} % CIRCUITIKZ DEPENDENCY
 \usepackage[american]{circuitikz}
 
@@ -72,7 +86,7 @@
 %\providecommand\COURSETITLE{UNSW 1XsX \COURSECODE{} (???)}
 
 \providecommand\TITLE{please overwrite this constant thx}
-\providecommand\AUTHOR{\url{https://github.com/simshadows} \\ \texttt{contact@simshadows.com}}
+\providecommand\AUTHOR{\url{http://simshadows.com/} \\ \texttt{contact@simshadows.com}}
 \providecommand\DATE{\today}
 
 \title{\TITLE{}}
@@ -97,10 +111,19 @@
 \definecolor{myyellow}{RGB}{251,188,4}
 \definecolor{myorange}{RGB}{255,109,1}
 \definecolor{myred}{RGB}{234,67,53}
+\definecolor{mypurple}{HTML}{9900FF}
 
-\definecolor{extranotecolour}{rgb}{0.65,0.65,0.65}
-\colorlet{suppnotecolour}{orange}
-\colorlet{questionassumptionscolour}{red}
+\colorlet{mylightblue}{myblue!50!white}
+\colorlet{mylightteal}{myteal!50!white}
+\colorlet{mylightgreen}{mygreen!50!white}
+\colorlet{mylightyellow}{myyellow!50!white}
+\colorlet{mylightorange}{myorange!50!white}
+\colorlet{mylightred}{myred!50!white}
+\colorlet{mylightpurple}{mypurple!50!white}
+
+\definecolor{extranotecolor}{rgb}{0.65,0.65,0.65}
+\colorlet{suppnotecolor}{orange}
+\colorlet{questionassumptionscolor}{red}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -110,9 +133,17 @@
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{2}
 
+% Adjusts the offset of the underline command \ul{} from the soul package to be a bit higher.
+% The argument "x" is an arbitrary character without descenders as often are in the letters "y", "g", and "j".
+% This macro sets the line to be very close, but avoiding the lowest letter. In this case, without descenders,
+% it will indeed be very close to the base of text.
+\setuldepth{x}
+
+\def\arraystretch{1.3} % Makes spaces between rows wider.
+
 \hypersetup{
-	colorlinks = true,
-	citecolor  = lightgray
+    colorlinks = true,
+    citecolor  = lightgray
 }
 
 \let\OldCite\cite
@@ -126,29 +157,29 @@
 % \setlength{\belowcaptionskip}{-3.0mm} % TODO: Find something more robust.
 
 \sisetup{
-	per-mode = reciprocal,
+    per-mode = reciprocal,
 }
 
 \renewcommand{\lstlistingname}{Snippet}
 
 \lstset{
-	frame             = tblr,
-	autogobble,
-	columns           = fullflexible,
-	keepspaces        = true,
-	aboveskip         = 3mm,
-	belowskip         = 3mm,
-	showstringspaces  = false,
-	columns           = flexible,
-	basicstyle        = {\small\ttfamily},
-	numberstyle       = \tiny\color{gray},
-	keywordstyle      = \color{blue},
-	commentstyle      = \color{darkgreen},
-	stringstyle       = \color{mauve},
-	% TODO: More fine-grained syntax highlighting?? This is extremely limited.
-	breaklines        = true,
-	breakatwhitespace = false,
-	tabsize           = 4
+    frame             = tblr,
+    autogobble,
+    columns           = fullflexible,
+    keepspaces        = true,
+    aboveskip         = 3mm,
+    belowskip         = 3mm,
+    showstringspaces  = false,
+    columns           = flexible,
+    basicstyle        = {\small\ttfamily},
+    numberstyle       = \tiny\color{gray},
+    keywordstyle      = \color{blue},
+    commentstyle      = \color{darkgreen},
+    stringstyle       = \color{mauve},
+    % TODO: More fine-grained syntax highlighting?? This is extremely limited.
+    breaklines        = true,
+    breakatwhitespace = false,
+    tabsize           = 4
 }
 
 % This Javascript syntax highlighting definition is a modified version taken from secondary source:
@@ -156,23 +187,25 @@
 % The original source, which doesn't appear to be available anymore, is:
 % http://lenaherrmann.net/2010/05/20/javascript-syntax-highlighting-in-the-latex-listings-package
 \lstdefinelanguage{JavaScript}{
-	keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
-	ndkeywords={class, export, boolean, throw, implements, import, this},
-	ndkeywordstyle=\color{darkgray}\bfseries,
-	identifierstyle=\color{black},
-	sensitive=false,
-	comment=[l]{//},
-	morecomment=[s]{/*}{*/},
-	morestring=[b]',
-	morestring=[b]"
+    keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+    ndkeywordstyle=\color{darkgray}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]',
+    morestring=[b]"
 }
 
 
-% Circuitikz Libraries
+% TikZ Libraries
 \usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
 
 % Custom Circuitikz options
 \ctikzset{tripoles/mos style/arrows} % Adds arrows to MOSFETs
+\ctikzset{label/align=straight} % Straightens diagonal labels
 
 % Circuitikz part proportions
 % Based on: https://github.com/circuitikz/circuitikz/blob/4feb150ba25cd7ad80c94a56f5d5d516200bfbf0/tex/circuitikz.sty#L258
@@ -243,6 +276,22 @@
 
 \ctikzset{bipoles/crossing/size=.5}
 
+
+% Custom TikZ Graphics
+
+\tikzset{
+	simshadows/MeshCW/.pic={
+		\draw[thick, stealth-]
+			(0,0) ++(-70:0.35) arc (-70:190:0.35)
+		;
+	},
+	simshadows/MeshCC/.pic={
+		\draw[thick, -stealth]
+			(0,0) ++(-10:0.35) arc (-10:250:0.35)
+		;
+	}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%
 % Headers and Footers %
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -252,8 +301,8 @@
 \lhead{}
 \rhead{}
 % Example overrides:
-%		\lhead{\COURSECODE{} - \TITLE{}}
-%		\rhead{\AUTHOR{}}
+%       \lhead{\COURSECODE{} - \TITLE{}}
+%       \rhead{\AUTHOR{}}
 
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
@@ -264,14 +313,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\InvisiblePart}[1]{%
-	\phantomsection
-	\addcontentsline{toc}{part}{#1}
+    \phantomsection
+    \addcontentsline{toc}{part}{#1}
 }
 
 \newcommand{\UnnumberedPart}[1]{%
-	\phantomsection
-	\addcontentsline{toc}{part}{#1}
-	\part*{#1}
+    \phantomsection
+    \addcontentsline{toc}{part}{#1}
+    \part*{#1}
 }
 
 
@@ -280,26 +329,35 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\MakeCustomTitle}{%
-	\begin{center}
-		%\begin{large}
-		%	\COURSETITLE{}
-		%\end{large}
-		%\\[2mm]
-		\begin{Huge}
-			\textbf{\TITLE{}}
-		\end{Huge}
-		\\[2mm]
-		\begin{large}
-			\AUTHOR{}\\[2mm]
-			Last Updated: \DATE
-		\end{large}
-	\end{center}
+    \begin{center}
+        %\begin{large}
+        %   \COURSETITLE{}
+        %\end{large}
+        %\\[2mm]
+        \begin{Huge}
+            \textbf{\TITLE{}}
+        \end{Huge}
+        \\[2mm]
+        \begin{large}
+            \AUTHOR{}\\[2mm]
+            Last Updated: \DATE
+        \end{large}
+    \end{center}
 }
 
 
 %%%%%%%%%%%%%%%
 % Math Macros %
 %%%%%%%%%%%%%%%
+
+% (HACK)
+% This implements a hack to left-align a single equation.
+% If a better solution is found, please replace all instances of this hack with the new solution.
+\newenvironment{HackEquationLeftAlign}{
+        \setbool{@fleqn}{true}
+    } {
+}
+%\newcommand\HackEquationLeftAlign{ \setbool{@fleqn}{true} } % Command variant, though this is clunky to use.
 
 \newcommand\Nth[2]{\ensuremath{{#1}^\textit{#2}}}
 \newcommand\diff[1]{\ensuremath{\mathrm{d}#1}}
@@ -322,6 +380,12 @@
 
 % \newcommand*\Let[2]{\State #1 $\gets$ #2}% THERE MUST BE A BETTER WAY!!!
 
+% Custom versions of the Re() and Im() functions in complex analysis
+\DeclareMathOperator{\MyRe}{Re}
+\DeclareMathOperator{\MyIm}{Im}
+%\DeclareMathOperator{\MyRe}{\Re} % If these are ever used, they don't space well.
+%\DeclareMathOperator{\MyIm}{\Im} % Should figure out how to fix this...
+
 % Other math functions that aren't in-built
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\csch}{csch}
@@ -330,122 +394,255 @@
 \DeclareSIUnit\voltampere{VA} % Apparent Power
 \DeclareSIUnit\var{VAR} % Reactive Power
 
+% Fraction in display mode
+\newcommand\DisplayFrac[2]{\displaystyle \frac{\displaystyle {#1}}{\displaystyle {#2}}}
+
+% My implementations of math mode Greek letters where no command is available due to similarity with Latin letters.
+% These commands are used where needed to intentionally keep typographically consistent.
+\DeclareMathSymbol{\myAlpha  }{\mathalpha}{operators}{"41}
+\DeclareMathSymbol{\myBeta   }{\mathalpha}{operators}{"42}
+\DeclareMathSymbol{\myEpsilon}{\mathalpha}{operators}{"45}
+\DeclareMathSymbol{\myZeta   }{\mathalpha}{operators}{"5A}
+\DeclareMathSymbol{\myEta    }{\mathalpha}{operators}{"48}
+\DeclareMathSymbol{\myIota   }{\mathalpha}{operators}{"49}
+\DeclareMathSymbol{\myKappa  }{\mathalpha}{operators}{"4B}
+\DeclareMathSymbol{\myMu     }{\mathalpha}{operators}{"4D}
+\DeclareMathSymbol{\myNu     }{\mathalpha}{operators}{"4E}
+\DeclareMathSymbol{\myOmicron}{\mathalpha}{operators}{"4F}
+\DeclareMathSymbol{\myRho    }{\mathalpha}{operators}{"50}
+\DeclareMathSymbol{\myTau    }{\mathalpha}{operators}{"54}
+\DeclareMathSymbol{\myChi    }{\mathalpha}{operators}{"58}
+\DeclareMathSymbol{\myomicron}{\mathord  }{letters}{"6F}
+\DeclareMathSymbol{\myDigamma}{\mathalpha}{operators}{"46} % TODO: Find a better version.
+%% My original commands
+%\newcommand{\myAlpha  }{\mathrm{A}}
+%\newcommand{\myBeta   }{\mathrm{B}}
+%\newcommand{\myEpsilon}{\mathrm{E}}
+%\newcommand{\myZeta   }{\mathrm{Z}}
+%\newcommand{\myEta    }{\mathrm{H}}
+%\newcommand{\myIota   }{\mathrm{I}}
+%\newcommand{\myKappa  }{\mathrm{K}}
+%\newcommand{\myMu     }{\mathrm{M}}
+%\newcommand{\myNu     }{\mathrm{N}}
+%\newcommand{\myOmicron}{\mathrm{O}}
+%\newcommand{\myomicron}{\mathnormal{o}} % I have no idea what this should be, but the other lower-case letters are italicized...
+%\newcommand{\myRho    }{\mathrm{P}}
+%\newcommand{\myTau    }{\mathrm{T}}
+%\newcommand{\myChi    }{\mathrm{X}}
+
+% Coloured emphasis in math environments.
+% I made these macros because I use it a lot...
+% NOTE: These commands can't be nested into each other for some reason, probably due to a bug.
+\newcommand{\memph}[2][myred]{{\color{#1}\bm{#2}}}
+\newcommand{\memphR}[1]{\memph[myred]{#1}}
+\newcommand{\memphG}[1]{\memph[mygreen]{#1}}
+\newcommand{\memphB}[1]{\memph[myblue]{#1}}
+% Alternatives if boldfacing is a problem
+\newcommand{\xmemph}[2][myred]{{\color{#1}{#2}}}
+\newcommand{\xmemphR}[1]{\xmemph[myred]{#1}}
+\newcommand{\xmemphG}[1]{\xmemph[mygreen]{#1}}
+\newcommand{\xmemphB}[1]{\xmemph[myblue]{#1}}
+
+%%%%%%%%%%%%%%%%
+% Redefinables %
+%%%%%%%%%%%%%%%%
+
+% General-purpose anonymous length variable that I use throughout my documents.
+\newlength{\anonlength} 
+
+% General-purpose reusable command name that I use throughout my documents.
+\newcommand{\MyReusableFormattingError}{\PackageError{[this document]}{Reusable formatting command must be redefined. This can be done with renewcommand.}{see error message.}}
+\newcommand{\MyReusableFormatting}[0]{\MyReusableFormattingError{}}
+\newcommand{\MyReusableFormattingB}[0]{\MyReusableFormattingError{}}
+\newcommand{\MyReusableFormattingC}[0]{\MyReusableFormattingError{}}
+
+% General-purpose small-identifiers
+\newcommand{\W}[0]{\MyReusableFormattingError{}}
+\newcommand{\X}[0]{\MyReusableFormattingError{}}
+\newcommand{\Y}[0]{\MyReusableFormattingError{}}
+\newcommand{\Z}[0]{\MyReusableFormattingError{}}
+
+% Table Macros
+\newcommand{\HLineThickness}[1]{\noalign{\hrule height #1}} % Example \HLineX definition with variable thickness (e.g. 1.7pt)
+\newcommand{\VLineThickness}[1]{\vrule width #1} % Example \VLineX definition with variable thickness (e.g. 1.7pt)
+\newcommand{\HLineA}[0]{\MyReusableFormattingError{}}
+\newcommand{\HLineB}[0]{\MyReusableFormattingError{}}
+\newcommand{\VRuleA}[0]{\MyReusableFormattingError{}}
+\newcommand{\VRuleB}[0]{\MyReusableFormattingError{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Other General Utility Macros %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\MonoBox}[1]{\framebox[1.05\width]{\texttt{#1}}}
-\newcommand{\textbu}[1]{\textbf{\underline{#1}}} % Bold + Underline
+\newcommand{\myul}[1]{\ul{#1}} % A proxy for the preferred underline command.
+\newcommand{\textbu}[1]{\textbf{\ul{#1}}} % Bold + Underline
 \newcommand{\ttd}[1]{\texttt{\detokenize{#1}}} % Teletype, Detokenized
 
 \newcommand{\espace}{\hspace{5mm}}
 
 \newcommand{\SectionBreak}{\newpage}
+\newcommand{\MulticolsBreak}{\vfill\null\columnbreak} % For use in the multicols environment.
+\newcommand{\MulticolsPhantomPlaceholder}{\phantom{x}} % An arbitrary box to occupy a multicols column.
+
+% Table Column Types
+\newcolumntype{C}{>{\centering\arraybackslash}X} % Centered version of tabularx's X column type
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X} % Right-aligned version of tabularx's X column type
 
 \newcommand{\CommonFigureFormat}[1]{%
-	\centering
-	#1
+    \centering
+    #1
 }
 
 \newcommand{\CommonFigureFormatBordered}[1]{%
-	\CommonFigureFormat
-	\fcolorbox{lightgray}{white}{#1}
+    \CommonFigureFormat
+    \fcolorbox{lightgray}{white}{#1}
 }
 
 \newcommand{\CustomListHole}[2]{%
-	\end{CustomList}
-	{#2}
-	\begin{CustomList}{#1}
+    \end{CustomList}
+    {#2}
+    \begin{CustomList}{#1}
 }
 
-% Deeper lists (Hack)
+% (HACK)
+% Deeper lists
 \newcommand{\DeeperCustomList}[2]{%
-	\CustomListHole{#1}{%
-		\begin{adjustwidth}{9\the\itemindent}{} % TODO: Use something robust.
-		\begin{minipage}{\linewidth}
-		\begin{CustomList}{itemize}
-		\ListProperties(Space*=1.25mm, Space=1.25mm) % TODO: Use something more robust.
-		#2
-		\end{CustomList}
-		\end{minipage}
-		\end{adjustwidth}
-	}
+    \CustomListHole{#1}{%
+        \begin{adjustwidth}{9\the\itemindent}{} % TODO: Use something robust.
+        \begin{minipage}{\linewidth}
+        \begin{CustomList}{itemize}
+        \ListProperties(Space*=1.25mm, Space=1.25mm) % TODO: Use something more robust.
+        #2
+        \end{CustomList}
+        \end{minipage}
+        \end{adjustwidth}
+    }
 }
 
 % Paragraph Indentation
 \newenvironment{pindent}{
-	\begin{adjustwidth}{1cm}{}
-	} {
-	\end{adjustwidth}
+    \begin{adjustwidth}{1cm}{}
+    } {
+    \end{adjustwidth}
+}
+\newenvironment{psmallindent}{
+    \begin{adjustwidth}{0.5cm}{}
+    } {
+    \end{adjustwidth}
 }
 
 % Common easylist environments
 \newenvironment{CustomList}[1]{
-	\begin{easylist}[#1] \ListProperties(Space*=-1.25mm, Space=-1.25mm)
-	} {
-	\end{easylist}
+    \begin{easylist}[#1] \ListProperties(Space*=-1.25mm, Space=-1.25mm)
+    } {
+    \end{easylist}
+}
+
+\newlength{\AnonSepLen}%
+\newlength{\AnonMinipageWidthA}%
+\newlength{\AnonMinipageWidthB}%
+\newcommand{\TwoColumnsTextSeparated}[4][0]{% \TwoColumnsTextSeparated[Skew factor between -1 and 1]{separator}{col1}{col2}
+    \setlength{\AnonSepLen}{\widthof{#2}}%
+    \setlength{\AnonMinipageWidthA}{0.5\columnwidth - 0.5\AnonSepLen}%
+    \setlength{\AnonMinipageWidthB}{\AnonMinipageWidthA - #1\AnonMinipageWidthA}%
+    \setlength{\AnonMinipageWidthA}{\AnonMinipageWidthA + #1\AnonMinipageWidthA}%
+    \begin{myminipage}[c]{\AnonMinipageWidthA}%
+        \centering%
+        #3
+    \end{myminipage}%
+    \begin{minipage}[c]{\AnonSepLen}%
+        \centering%
+        #2
+    \end{minipage}%
+    \begin{myminipage}[c]{\AnonMinipageWidthB}%
+        \centering%
+        #4
+    \end{myminipage}
+}
+
+\newenvironment{SimpleFrame}{
+    \begin{mdframed}[
+            innerbottommargin=2\mdflength{innertopmargin},
+            %roundcorner=4pt
+        ]
+        \raggedright
+    } {
+    \end{mdframed}
 }
 
 \newenvironment{SubsectionFrame}{
-	\begin{mdframed}[
-			innerbottommargin=2\mdflength{innertopmargin},
-			roundcorner=4pt
-		]
-		\raggedright
-	} {
-	\end{mdframed}
+    \begin{mdframed}[
+            innerbottommargin=2\mdflength{innertopmargin},
+            roundcorner=4pt
+        ]
+        \raggedright
+    } {
+    \end{mdframed}
 }
 
 \newenvironment{QuestionFrame}{
-	\begin{mdframed}[
-			innerbottommargin=\mdflength{innertopmargin},
-			roundcorner=4pt
-		]
-		\raggedright
-	} {
-	\end{mdframed}
+    \begin{mdframed}[
+            innerbottommargin=\mdflength{innertopmargin},
+            roundcorner=4pt
+        ]
+        \raggedright
+    } {
+    \end{mdframed}
 }
 
-\newcommand{\SupplementaryNotes}[1]{{\color{suppnotecolour}#1}}
-\newcommand{\ExtraNotes}[1]{{\color{extranotecolour}#1}}
+\newcommand{\SupplementaryNotes}[1]{{\color{suppnotecolor}#1}}
+\newcommand{\ExtraNotes}[1]{{\color{extranotecolor}#1}}
 \let\Exn\ExtraNotes % Alias
-\newcommand{\QuestionAssumptions}[1]{{\color{questionassumptionscolour}#1}}
+\newcommand{\QuestionAssumptions}[1]{{\color{questionassumptionscolor}#1}}
 
 \newcommand{\FilenameRef}[1]{\textit{\color{blue}\texttt{\detokenize{#1}}}}
 \newcommand{\Todo}[1]{\textbf{\textit{\color{red}TODO: #1}}}
 \newcommand{\MissingFig}[1]{\textbf{\textit{\color{purple}TODO, MISSING FIGURE: #1}}}
 
 \newcommand{\LargeEpigraph}[2]{%
-	\begin{center}
-	\begin{minipage}{0.85\linewidth}
-	\begin{flushright}
-		\textit{``#1"}\\[2mm]
-		\textsc{---#2}
-	\end{flushright}
-	\end{minipage}
-	\end{center}
+    \begin{center}
+    \begin{minipage}{0.85\linewidth}
+    \begin{flushright}
+        \textit{``#1"}\\[2mm]
+        \textsc{---#2}
+    \end{flushright}
+    \end{minipage}
+    \end{center}
 }
 
 \newcommand{\PageEpigraph}[1]{%
-	\newpage
-	\thispagestyle{empty}
-	\begin{center}
-		\vspace*{\stretch{1}}
-		\textit{#1}
-		\vspace{\stretch{3}}
-	\end{center}
-	\newpage
+    \newpage
+    \thispagestyle{empty}
+    \begin{center}
+        \vspace*{\stretch{1}}
+        \textit{#1}
+        \vspace{\stretch{3}}
+    \end{center}
+    \newpage
 }
 
-% This minipage wrapper
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Command/Environment Reimplementations %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% These commands/environments are for fixing issues with the original ones.
+%
+% All reimplementations will use the my- prefix rather than totally replacing the
+% command, to signify a difference in behaviour.
+
+
+% (HACK)
+% This minipage wrapper to implement a hack to restore the document's parskip in the minipage.
+% Minipage will normally always set parskip to zero, and restore it after the minipage.
 \newlength{\anonparskip} % Temporary variable
-\newenvironment{myminipage}[1]{
-		\setlength{\anonparskip}{\parskip}
-		\begin{minipage}{#1}
-		\setlength{\parskip}{\anonparskip}
-	}{
-		\end{minipage}
+\newenvironment{myminipage}[2][]{%
+        \setlength{\anonparskip}{\parskip}%
+        \begin{minipage}[#1]{#2}%
+        \setlength{\parskip}{\anonparskip}%
+    }{%
+        \end{minipage}%
 }
 
 
@@ -454,24 +651,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\BeginReport}[1]{%
-	\stopcontents[inner]
-	
-	\SectionBreak
-	
-	\setcounter{section}{0}
-	\UnnumberedPart{#1}
-	\vspace{1mm}
-	\startcontents[inner]
+    \stopcontents[inner]
+    
+    \SectionBreak
+    
+    \setcounter{section}{0}
+    \UnnumberedPart{#1}
+    \vspace{1mm}
+    \startcontents[inner]
 }
 
 \newcommand{\ReportTableOfContents}{%
 {
-	\hypersetup{linkcolor=black}
-	\begin{spacing}{0}
-	\setcounter{tocdepth}{2}
-	\printcontents[inner]{}{}{\section*{Contents}}
-	\end{spacing}
-	\SectionBreak
+    \hypersetup{linkcolor=black}
+    \begin{spacing}{0}
+    \setcounter{tocdepth}{2}
+    \printcontents[inner]{}{}{\section*{Contents}}
+    \end{spacing}
+    \SectionBreak
 }
 }
 
@@ -481,7 +678,7 @@
 %%%%%%%%%%%%%%%%%%%
 
 \AtBeginDocument{%
-	\raggedright
+    \raggedright
 }
 
 

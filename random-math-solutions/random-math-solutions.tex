@@ -20,64 +20,293 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{QuestionFrame}
-	Considering:
-	\begin{equation*}
-		\int{\sech{ax} \,\diff{x}}
-			= \frac{1}{a} \tan^{-1}{\parens*{\sinh{ax}}}
-			= \frac{2}{a} \tan^{-1}{\parens*{\tanh{\frac{ax}{2}}}}
-	\end{equation*}
-	
-	Prove that:
-	\begin{equation*}
-		\frac{1}{a} \tan^{-1}{\parens*{\sinh{ax}}}
-			= \frac{2}{a} \tan^{-1}{\parens*{\tanh{\frac{ax}{2}}}}
-	\end{equation*}
+    Considering:
+    \begin{equation*}
+        \int{\sech{ax} \,\diff{x}}
+            = \frac{1}{a} \tan^{-1}{\parens*{\sinh{ax}}}
+            = \frac{2}{a} \tan^{-1}{\parens*{\tanh{\frac{ax}{2}}}}
+    \end{equation*}
+    
+    Prove that:
+    \begin{equation*}
+        \frac{1}{a} \tan^{-1}{\parens*{\sinh{ax}}}
+            = \frac{2}{a} \tan^{-1}{\parens*{\tanh{\frac{ax}{2}}}}
+    \end{equation*}
 \end{QuestionFrame}
 
 Let us use the following identities for this proof:
 \begin{gather*}
-	\tan^{-1}{x} = 2 \tan^{-1}{\parens*{\frac{x}{1 + \sqrt{1 + x^2}}}} \\
-	\sinh{x} = \frac{e^x - e^{-x}}{2} = \frac{e^{2x} - 1}{2 e^x} \\
-	\tanh{x} = \frac{e^x - e^{-x}}{e^x + e^{-x}} = \frac{e^{2x} - 1}{e^{2x} + 1}
+    \tan^{-1}{x} = 2 \tan^{-1}{\parens*{\frac{x}{1 + \sqrt{1 + x^2}}}} \\
+    \sinh{x} = \frac{e^x - e^{-x}}{2} = \frac{e^{2x} - 1}{2 e^x} \\
+    \tanh{x} = \frac{e^x - e^{-x}}{e^x + e^{-x}} = \frac{e^{2x} - 1}{e^{2x} + 1}
 \end{gather*}
 
 We start by rewriting LHS:
 \begin{equation*}
-	\lhs
-		= \frac{1}{a} \tan^{-1}{\parens*{\sinh{ax}}}
-		= \frac{2}{a} \tan^{-1}{\parens*{\frac{\sinh{ax}}{1 + \sqrt{1 + \sinh^2{ax}}}}} 
+    \lhs
+        = \frac{1}{a} \tan^{-1}{\parens*{\sinh{ax}}}
+        = \frac{2}{a} \tan^{-1}{\parens*{\frac{\sinh{ax}}{1 + \sqrt{1 + \sinh^2{ax}}}}} 
 \end{equation*}
 
 Now, to finish the proof, we will now show the following to be true:
 \begin{equation*}
-	\tanh{\frac{ax}{2}} = \frac{\sinh{ax}}{1 + \sqrt{1 + \sinh^2{ax}}}
+    \tanh{\frac{ax}{2}} = \frac{\sinh{ax}}{1 + \sqrt{1 + \sinh^2{ax}}}
 \end{equation*}
 
 To simplify further working, we will change the variable:
 \begin{equation*}
-	\tanh{x} = \frac{\sinh{2x}}{1 + \sqrt{1 + \sinh^2{2x}}}
+    \tanh{x} = \frac{\sinh{2x}}{1 + \sqrt{1 + \sinh^2{2x}}}
 \end{equation*}
 
 Starting with the RHS:
 \begin{align*}
-	\rhs
-	&= \frac{\frac{e^{4x} - 1}{2 e^{2x}}}{1 + \sqrt{1 + \parens*{\frac{e^{4x} - 1}{2 e^{2x}}}^2}}
-	= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{1 + \frac{e^{8x} - 2 e^{4x} + 1}{4 e^{4x}}}}}
-	= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{\frac{e^{8x} - 2 e^{4x} + 1 + 4 e^{4x}}{4 e^{4x}}}}}
-	= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{\frac{e^{8x} + 2 e^{4x} + 1}{4 e^{4x}}}}}
-	\\
-	&= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{\frac{\parens*{e^{4x} + 1}^2}{4 e^{4x}}}}}
-	= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \frac{e^{4x} + 1}{2 e^{2x}}}}
-	= \frac{e^{4x} - 1}{2 e^{2x} + e^{4x} + 1}
-	= \frac{\parens*{e^{2x} - 1} \parens*{e^{2x} + 1}}{\parens*{e^{2x} + 1}^2}
-	= \frac{e^{2x} - 1}{e^{2x} + 1}
-	= \tanh{x}
-	= \lhs
+    \rhs
+    &= \frac{\frac{e^{4x} - 1}{2 e^{2x}}}{1 + \sqrt{1 + \parens*{\frac{e^{4x} - 1}{2 e^{2x}}}^2}}
+    = \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{1 + \frac{e^{8x} - 2 e^{4x} + 1}{4 e^{4x}}}}}
+    = \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{\frac{e^{8x} - 2 e^{4x} + 1 + 4 e^{4x}}{4 e^{4x}}}}}
+    = \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{\frac{e^{8x} + 2 e^{4x} + 1}{4 e^{4x}}}}}
+    \\
+    &= \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \sqrt{\frac{\parens*{e^{4x} + 1}^2}{4 e^{4x}}}}}
+    = \frac{e^{4x} - 1}{2 e^{2x} \parens*{1 + \frac{e^{4x} + 1}{2 e^{2x}}}}
+    = \frac{e^{4x} - 1}{2 e^{2x} + e^{4x} + 1}
+    = \frac{\parens*{e^{2x} - 1} \parens*{e^{2x} + 1}}{\parens*{e^{2x} + 1}^2}
+    = \frac{e^{2x} - 1}{e^{2x} + 1}
+    = \tanh{x}
+    = \lhs
 \end{align*}
 
 as required.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+\begin{QuestionFrame}
+    Consider an arbitrary load (potentially both resistive and reactive) where:
+    \begin{gather*}
+        v(t) = V_m \cos{(\omega t + \theta_v)} \\
+        i(t) = I_m \cos{(\omega t + \theta_i)}
+    \end{gather*}
+    
+    Instantaneous power is given by:
+    \begin{equation*}
+        p(t) = v(t)\ i(t) = V_m I_m \cos{(\omega t + \theta_v)} \cos{(\omega t + \theta_i)}
+    \end{equation*}
+
+    Find the average power delivered to this load.
+\end{QuestionFrame}
+
+We can apply the following product-to-sum identity:
+\begin{gather*}
+    \boxed{
+        2 \cos{A} \cos{B} = \cos{(A+B)} + \cos{(A-B)}
+    } \\
+    p(t) = \frac{V_m I_m}{2} \brackets*{\cos{(2 \omega t + \theta_v + \theta_i)} + \cos{(\theta_v - \theta_i)}}
+\end{gather*}
+
+To make things simpler, let's define the power angle $\theta$:
+\begin{equation*}
+    \theta := \theta_v - \theta_i
+    \qquad \Longrightarrow \qquad
+    \theta_i = \theta_v - \theta
+\end{equation*}
+
+Substituting into $p(t)$ then applying the following compound angle identity:
+\begin{gather*}
+    \boxed{
+        \cos{(\alpha - \beta)} = \cos{\alpha} \cos{\beta} + \sin{\alpha} \sin{\beta}
+    } \\
+    \begin{aligned}
+        p(t)
+            &= \frac{V_m I_m}{2} \brackets*{\cos{\parens*{[2 \omega t + 2 \theta_v] - \theta}} + \cos{(\theta)}} \\
+            &= \frac{V_m I_m}{2} \brackets*{\cos{(2 \omega t + 2 \theta_v)} \cos{(\theta)} + \sin{(2 \omega t + 2 \theta_v)} \sin{(\theta)} + \cos{(\theta)}} \\
+            &= \frac{V_m I_m}{2} \cos{(\theta)} \brackets*{\underbrace{\cos{(2 \omega t + 2 \theta_v)}}_{\text{average value} = 0} + 1} + \frac{V_m I_m}{2} \sin{(\theta)} \underbrace{\sin{(2 \omega t + 2 \theta_v)}}_{\text{average value} = 0}
+    \end{aligned}
+\end{gather*}
+
+To find average power, we notice that two time-dependent sinusoids have average values of zero, therefore our average power $P$ is:
+\begin{equation*}
+    P = \frac{V_m I_m}{2} \cos{(\theta)}
+\end{equation*}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+
+\begin{QuestionFrame}
+    For the circuit below, find average power and reactive power delivered to the entire load $\mathbf{Z} = R + jX$, $R$ alone, and $jX$ alone:
+    \begin{itemize}
+        \item in terms of voltage, $R$, and $X$, but NOT current, and
+        \item in terms of current, $R$, and $X$, but NOT voltage.
+    \end{itemize}
+    \begin{figure}[H]\centering
+    \begin{circuitikz}
+        \draw
+            (0,0)
+            -- ++(0,1)
+            to[V, invert, l=$\mathbf{V}$] ++(0,2)
+            -- ++(0,1)
+            to[short, i=$\mathbf{I}$] ++(3,0)
+            to[R, l=$R$, v=$\mathbf{V}_R$] ++(0,-2)
+            to[generic, l=$jX$, v=$\mathbf{V}_X$] ++(0,-2)
+            -- (0,0)
+        ;
+    \end{circuitikz}
+    %\caption{caption}
+    %\label{fig:labelname}
+    \end{figure}
+\end{QuestionFrame}
+
+Before we begin, we can define the following useful result:
+\begin{equation*}
+    \frac{1}{\cos{\theta} + j \sin{\theta}}
+        = \frac{1}{\cos{\theta} + j \sin{\theta}} \frac{\cos{\theta} - j \sin{\theta}}{\cos{\theta} - j \sin{\theta}}
+        = \frac{\cos{\theta} - j \sin{\theta}}{\cos^2{\theta} + \sin^2{\theta}}
+        = \cos{\theta} - j \sin{\theta}
+        = \cos{(-\theta)} + j \sin{(-\theta)}
+\end{equation*}
+
+Start by defining the voltage as the reference:
+\begin{equation*}
+    \mathbf{V} := V_m \phase{\ang{0}}
+\end{equation*}
+
+Thus, we can find the current:
+\begin{equation*}
+    \mathbf{I}
+        = \frac{\mathbf{V}}{\mathbf{Z}}
+        = \frac{V_m \phase{\ang{0}}}{\abs*{\mathbf{Z}} \phase{\theta}}
+        = \frac{V_m}{\abs*{\mathbf{Z}}} \frac{1}{\cos{\theta} + j \sin{\theta}}
+        %= \frac{V_m}{\abs*{\mathbf{Z}}} \frac{1}{\cos{\theta} + j \sin{\theta}} \frac{\cos{\theta} - j \sin{\theta}}{\cos{\theta} - j \sin{\theta}}
+        %= \frac{V_m}{\abs*{\mathbf{Z}}} \frac{\cos{\theta} - j \sin{\theta}}{\cos^2{\theta} + \sin^2{\theta}}
+        %= \frac{V_m}{\abs*{\mathbf{Z}}} \frac{\cos{\theta} - j \sin{\theta}}{1}
+        = \frac{V_m}{\abs*{\mathbf{Z}}} \parens*{\cos{(-\theta)} + j \sin{(-\theta)}}
+        := I_m \phase{-\theta}
+\end{equation*}
+
+From this, we get:
+\begin{gather*}
+    \mathbf{V}
+        = \mathbf{I} \mathbf{Z}
+        \\
+    V_m
+        = \parens*{R + jX} I_m \parens*{\cos{\theta} - j \sin{\theta}}
+        \\
+    V_m \frac{1}{\cos{\theta} - j \sin{\theta}}
+        = I_m \parens*{R + jX}
+        \\
+    V_m \parens*{\cos{\theta} + j \sin{\theta}}
+        = I_m \parens*{R + jX}
+\end{gather*}
+
+And similarly:
+\begin{gather*}
+    \mathbf{I}
+        = \frac{\mathbf{V}}{\mathbf{Z}}
+        \\
+    I_m \parens*{\cos{\theta} - j \sin{\theta}}
+        = \frac{V_m}{R + jX}
+        = \frac{V_m}{R + jX} \frac{R - jX}{R - jX}
+        = \frac{V_m \parens*{R - jX}}{R^2 + X^2}
+\end{gather*}
+
+Thus, we get:
+\begin{align*}
+    V_m \cos{\theta} &= I_m R \\
+    V_m \sin{\theta} &= I_m X \\
+    I_m \cos{\theta} &= V_m \frac{R}{R^2 + X^2} \\
+    I_m \sin{\theta} &= V_m \frac{X}{R^2 + X^2}
+\end{align*}
+
+Using the equations for average power and reactive power (noting that the angle $\theta$ works because it is the angle in which current lags behind the voltage), we get our expressions for average and reactive power delivered to the entire load $\mathbf{Z}$:
+\begin{equation*}
+    \boxed{
+        P = \frac{1}{2} V_m I_m \cos{\theta}
+    }
+    \qquad
+    \boxed{
+        Q = \frac{1}{2} V_m I_m \sin{\theta}
+    }
+\end{equation*}
+\begin{subequations}
+\begin{alignat}{3}
+    P_{\mathbf{Z}} &= \frac{1}{2} I_m \parens*{I_m R} &
+        \qquad & \Longrightarrow \qquad &
+        P_{\mathbf{Z}} &= \frac{1}{2} I_m^2 R = I_{\text{rms}}^2 R
+        \nonumber %\label{eq:z-avg-power-as-i-r-x}
+        \\
+    Q_{\mathbf{Z}} &= \frac{1}{2} I_m \parens*{I_m X} &
+        \qquad & \Longrightarrow \qquad &
+        Q_{\mathbf{Z}} &= \frac{1}{2} I_m^2 X = I_{\text{rms}}^2 X
+        \nonumber %\label{eq:z-rtv-power-as-i-r-x}
+        \\
+    P_{\mathbf{Z}} &= \frac{1}{2} V_m \parens*{V_m \frac{R}{R^2 + X^2}} &
+        \qquad & \Longrightarrow \qquad &
+        P_{\mathbf{Z}} &= \frac{1}{2} V_m^2 \frac{R}{R^2 + X^2} = V_{\text{rms}}^2 \frac{R}{R^2 + X^2}
+        \label{eq:z-avg-power-as-v-r-x}
+        \\
+    Q_{\mathbf{Z}} &= \frac{1}{2} V_m \parens*{V_m \frac{X}{R^2 + X^2}} &
+        \qquad & \Longrightarrow \qquad &
+        Q_{\mathbf{Z}} &= \frac{1}{2} V_m^2 \frac{X}{R^2 + X^2} = V_{\text{rms}}^2 \frac{X}{R^2 + X^2}
+        \label{eq:z-rtv-power-as-v-r-x}
+\end{alignat}
+\end{subequations}
+
+Now, to find the average and reactive power delivered to $R$ and $jX$, we first note that $R$ will only receive average power while $jX$ will only receive reactive power:
+\begin{subequations}
+\begin{align*}
+    P_X &= 0 \\
+    Q_R &= 0
+\end{align*}
+\end{subequations}
+
+Due to a common current $\mathbf{I}$ and conservation of AC power, we can also deduce:
+\begin{subequations}
+\begin{align*}
+    P_R &= P_{\mathbf{Z}} = \frac{1}{2} I_m^2 R = I_{\text{rms}}^2 R \\
+    Q_X &= Q_{\mathbf{Z}} = \frac{1}{2} I_m^2 X = I_{\text{rms}}^2 X
+\end{align*}
+\end{subequations}
+
+However, $R$ and $jX$ experience different voltages $\mathbf{V}_R := V_{Rm} \phase{\theta_R}$ and $\mathbf{V}_X := V_{Xm} \phase{\theta_X}$.
+
+By voltage division:
+\begin{align*}
+    \mathbf{V}_R
+        &= \frac{R}{R + jX} \mathbf{V}
+        = V_m \frac{R}{\mathbf{Z}}
+        = V_m \frac{R}{\abs*{\mathbf{Z}} \phase{\theta}}
+        = V_m \frac{R}{\sqrt{R^2 + X^2} \parens*{\cos{\theta} + j \sin{\theta}}}
+        = V_m \frac{R}{\sqrt{R^2 + X^2}} \parens*{\cos{(-\theta)} + j \sin{(-\theta)}}
+        \\
+    \mathbf{V}_X
+        &= \frac{jX}{R + jX} \mathbf{V}
+        = V_m \frac{jX}{\mathbf{Z}}
+        = V_m \frac{jX}{\abs*{\mathbf{Z}} \phase{\theta}}
+        = V_m \frac{jX}{\sqrt{R^2 + X^2} \parens*{\cos{\theta} + j \sin{\theta}}}
+        = V_m \frac{X}{\sqrt{R^2 + X^2}} j \parens*{\cos{(-\theta)} + j \sin{(-\theta)}}
+        \\
+\end{align*}
+
+We can find the magnitudes, rearrange, then substitute into equations \eqref{eq:z-avg-power-as-v-r-x} and \eqref{eq:z-rtv-power-as-v-r-x}:
+\begin{alignat*}{5}
+    V_{Rm} &= V_m \frac{R}{\sqrt{R^2 + X^2}} &
+        \qquad & \Longrightarrow \qquad &
+        \frac{V_{Rm}^2}{R} &= V_m^2 \frac{R}{R^2 + X^2}
+        \qquad & \Longrightarrow \qquad &
+        P_R &= P_{\mathbf{Z}} = \frac{1}{2} V_m^2 \frac{R}{R^2 + X^2} = \frac{1}{2} \frac{V_{Rm}^2}{R} = \frac{V_{Rrms}^2}{R}
+        \\
+    V_{Xm} &= V_m \frac{X}{\sqrt{R^2 + X^2}} &
+        \qquad & \Longrightarrow \qquad &
+        \frac{V_{Xm}^2}{X} &= V_m^2 \frac{X}{R^2 + X^2}
+        \qquad & \Longrightarrow \qquad &
+        Q_X &= Q_{\mathbf{Z}} = \frac{1}{2} V_m^2 \frac{X}{R^2 + X^2} = \frac{1}{2} \frac{V_{Xm}^2}{X} = \frac{V_{Xrms}^2}{X}
+\end{alignat*}
+
+Thus, we have found our solutions.
 
 \end{document}
