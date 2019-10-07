@@ -80,7 +80,7 @@ as required.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\bigskip
+\newpage
 
 \begin{QuestionFrame}
     Consider an arbitrary load (potentially both resistive and reactive) where:
@@ -135,7 +135,7 @@ To find average power, we notice that two time-dependent sinusoids have average 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\bigskip
+\newpage
 
 \begin{QuestionFrame}
     For the circuit below, find average power and reactive power delivered to the entire load $\mathbf{Z} = R + jX$, $R$ alone, and $jX$ alone:
@@ -308,5 +308,87 @@ We can find the magnitudes, rearrange, then substitute into equations \eqref{eq:
 \end{alignat*}
 
 Thus, we have found our solutions.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\begin{QuestionFrame}
+    Solve the ODE:
+    \begin{equation*}
+        -y \,\diff{y} + \parens*{x + \sqrt{xy}} \,\diff{y} = 0
+    \end{equation*}
+\end{QuestionFrame}
+
+Rearranging the ODE:
+\begin{equation*}
+    \frac{\diff{x}}{\diff{y}} = \frac{x + \sqrt{xy}}{y} = \frac{x}{y} + \frac{\sqrt{x}}{\sqrt{y}}
+\end{equation*}
+
+From this form, we can try the following substitution:
+\begin{equation*}
+    z := \frac{x}{y}
+    \qquad \Longrightarrow \qquad
+    x(y) = z(y) y
+    \qquad \Longrightarrow \qquad
+    \frac{\diff{x}}{\diff{y}} = z \xcancelto{1}{\frac{\diff{y}}{\diff{y}}} + y \frac{\diff{z}}{\diff{y}} = z + y \frac{\diff{z}}{\diff{y}}
+\end{equation*}
+
+Substituting into our ODE, rearranging, then integrating both sides:
+\begin{gather*}
+    z + y \frac{\diff{z}}{\diff{y}} = \frac{zy + \sqrt{z y^2}}{y} = \frac{z \cancel{y} + \cancel{y} \sqrt{z}}{\cancel{y}} = z + \sqrt{z} \\
+    y \frac{\diff{z}}{\diff{y}} = \sqrt{z} \\
+    z^{-\frac{1}{2}} \,\diff{z} = \frac{1}{y} \,\diff{y} \\
+    2 \sqrt{z} = \ln{\abs*{y}} + C
+\end{gather*}
+
+Reverting the substitution, we get our solution to the ODE:
+\begin{equation*}
+    2 \frac{\sqrt{x}}{\sqrt{y}} = \ln{\abs*{y}} + C, \qquad C \in \mathbb{R}
+\end{equation*}
+
+\bigskip
+
+\textit{OPTIONAL: We shall now verify our solution.}
+
+Rearranging our solution:
+\begin{gather*}
+    \sqrt{x} = \frac{1}{2} \sqrt{y} \parens*{\ln{\abs*{y}} + C}
+    \qquad \Longrightarrow \qquad
+    x = \frac{1}{4} y \parens*{\ln{\abs*{y}} + C}^2
+    \\
+    \begin{aligned}
+        4 \frac{\diff{x}}{\diff{y}}
+            &= y \frac{\diff{}}{\diff{y}}\parens*{\parens*{\ln{\abs*{y}} + C}^2} + \parens*{\ln{\abs*{y}} + C}^2 \xcancelto{1}{\frac{\diff{y}}{\diff{y}}} \\
+            &= 2 y \parens*{\ln{\abs*{y}} + C} \frac{1}{y} + \parens*{\ln{\abs*{y}} + C}^2
+    \end{aligned}
+\end{gather*}
+
+Thus, LHS of our ODE is:
+\begin{equation*}
+    \lhs = \frac{1}{2} \parens*{\ln{\abs*{y}} + C} + \frac{1}{4} \parens*{\ln{\abs*{y}} + C}^2
+\end{equation*}
+
+For the RHS, we substitute our solution:
+\begin{align*}
+    \rhs
+        &= \frac{\frac{1}{4} \cancel{y} \parens*{\ln{\abs*{y}} + C}^2}{\cancel{y}} + \sqrt{\frac{\frac{1}{4} \cancel{y} \parens*{\ln{\abs*{y}} + C}^2}{\cancel{y}}}
+        = \frac{1}{4} \parens*{\ln{\abs*{y}} + C}^2 + \sqrt{\frac{1}{4} \parens*{\ln{\abs*{y}} + C}^2} \\
+        &= \frac{1}{4} \parens*{\ln{\abs*{y}} + C}^2 + \frac{1}{2} \parens*{\ln{\abs*{y}} + C} = \lhs
+\end{align*}
+
+Thus, our solution has been verified.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\begin{QuestionFrame}
+    new question!
+\end{QuestionFrame}
 
 \end{document}
