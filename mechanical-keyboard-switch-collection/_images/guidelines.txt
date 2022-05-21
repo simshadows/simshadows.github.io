@@ -1,0 +1,1 @@
+Prefer: JPEG, progressive encoding, 70% quality level
