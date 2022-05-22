@@ -34,15 +34,14 @@ Full source code is available here:
         th {
             background-color: #bbb;
         }
-
-        table .hidden {
-            display: none;
-        }
         /*
         table .borderless {
             border: none;
         }
         */
+
+        .no-wrap {white-space: nowrap;}
+        .hidden  {display: none;}
 
         #switches-visual-guide {
             margin: auto;
@@ -66,6 +65,7 @@ Full source code is available here:
         #switches-visual-guide > * > tr > :nth-child(6),
         #switches-visual-guide > * > tr > :nth-child(7),
         #switches-visual-guide > * > tr > :nth-child(10),
+        #switches-visual-guide > * > tr > :nth-child(11),
         #switches-visual-guide > * > tr > :nth-child(12) {
             width: 1%;
         }
@@ -87,6 +87,10 @@ Full source code is available here:
         #switches-visual-guide td.smd-cutout           {background-color: #b6d7a8;}
         #switches-visual-guide td.smd-transparent      {background-color: #b6d7a8;}
         #switches-visual-guide td.smd-semi-transparent {background-color: #ffe599;}
+        
+        #origin-table > * > tr > :nth-child(3) {
+            border-left: 10px solid #000;
+        }
     </style>
 </head>
 
@@ -147,7 +151,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://candykeys.com/product/builtbynim-bbn-linear-switch",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "undersideMouldLabel": ["12"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["12"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -164,7 +168,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://splitkb.com/products/gazzew-boba-u4t-thocky-tactile-switch",
                 "origins": [
-                    {"origin": "2022-05-02 Custom KBD AU", "count": 1, "undersideMouldLabel": ["OUTEMU", "C"]}
+                    {"origin": "2022-05-02 Custom-KBD-AU", "count": 1, "undersideMouldLabel": ["OUTEMU", "C"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -181,7 +185,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://www.keycrox.co.uk/product/ca-phe-sua-da-switch",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "undersideMouldLabel": ["4"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["4"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -197,7 +201,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://www.keycrox.co.uk/product/popcorn-switch",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "undersideMouldLabel": ["14"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["14"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -214,7 +218,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["792", "A"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["792", "A"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -230,8 +234,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-black-hyperglide-pcb-mount-switches",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "undersideMouldLabel": ["769", "A"], "comment": "I'm keeping this in my extras bag."},
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["701", "A"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["769", "A"], "comment": "I'm keeping this in my extras bag."},
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["701", "A"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -247,8 +251,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "undersideMouldLabel": ["755", "A"], "comment": "I'm keeping this in my extras bag."},
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["637", "A"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["755", "A"], "comment": "I'm keeping this in my extras bag."},
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["637", "A"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -264,7 +268,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-clear-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["494", "A"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["494", "A"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -280,7 +284,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-blue-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["608", "A"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["608", "A"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -296,8 +300,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-green-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["660", "A"]},
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["463", "A"], "comment": "I'm keeping this in my extras bag."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["660", "A"]},
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["463", "A"], "comment": "I'm keeping this in my extras bag."}
                 ]
             }</td>
             <td>Clicky</td>
@@ -313,7 +317,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-milk-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["725", "A"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["725", "A"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -330,7 +334,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-mx-hyperglide-speed-silver-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["500", "A"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["500", "A"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -346,7 +350,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-grey-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["250", "A"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["250", "A"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -362,7 +366,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-mx-hyperglide-silent-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["413", "A"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["413", "A"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -378,7 +382,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-mx-hyperglide-silent-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["465", "A"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["465", "A"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -395,7 +399,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["535"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["535"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -411,7 +415,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["011"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["011"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -427,7 +431,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["117"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["117"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -443,7 +447,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-blue-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["112"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["112"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -460,7 +464,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-silver-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["521"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["521"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -477,7 +481,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pre-orderaliaz-silent-switch-tactile",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["G"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["G"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -493,7 +497,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pre-orderaliaz-silent-switch-tactile",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "I'm not 100% sure if I've mixed up my 70g and 80g Aliazes."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "I'm not 100% sure if I've mixed up my 70g and 80g Aliazes."}
                 ]
             }</td>
             <td>Tactile</td>
@@ -509,7 +513,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pre-orderaliaz-silent-switch-tactile",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["F"], "comment": "I'm not 100% sure if I've mixed up my 70g and 80g Aliazes."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["F"], "comment": "I'm not 100% sure if I've mixed up my 70g and 80g Aliazes."}
                 ]
             }</td>
             <td>Tactile</td>
@@ -525,7 +529,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pre-orderaliaz-silent-switch-tactile",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["I"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["I"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -542,7 +546,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-clear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["Q", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -558,7 +562,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-red-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["N", "E"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["N", "E"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -574,7 +578,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-yellow-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["D", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D", "F"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -590,7 +594,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-black-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["Q", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -606,7 +610,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-brown-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["S", "D"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -622,7 +626,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-blue-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["V", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["V", "F"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -638,7 +642,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-green-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["S", "D"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -655,7 +659,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-clear-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["M", "V"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -671,7 +675,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-red-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["J", "F"], "comment": "The \"J\" is upside-down compared to the other KS-9's."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "F"], "comment": "The \"J\" is upside-down compared to the other KS-9's."}
                 ]
             }</td>
             <td>Linear</td>
@@ -687,7 +691,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-yellow-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["J", "Z"], "comment": "The \"J\" is upside-down compared to the other KS-9's."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "Z"], "comment": "The \"J\" is upside-down compared to the other KS-9's."}
                 ]
             }</td>
             <td>Linear</td>
@@ -703,7 +707,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-black-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["M", "K"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "K"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -719,7 +723,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-brown-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["M", "V"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -735,7 +739,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-blue-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["M", "G"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "G"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -751,7 +755,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-green-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["C", "G"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["C", "G"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -768,7 +772,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-clear-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["M"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -784,7 +788,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["G"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["G"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -800,7 +804,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-yellow-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["X", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["X", "F"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -816,7 +820,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["K"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["K"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -832,7 +836,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["M"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -848,7 +852,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-blue-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["5", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -864,7 +868,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-green-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["D"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -881,7 +885,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kbdfans-gateron-silent-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["Q", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -897,7 +901,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kbdfans-gateron-silent-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["E", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["E", "F"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -913,7 +917,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kbdfans-gateron-silent-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["5", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -930,7 +934,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://allcaps.store/collections/linear-switches/products/gateron-cap-yellows-v2",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "undersideMouldLabel": ["GATERON", "L", "A"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["GATERON", "L", "A"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -946,7 +950,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://allcaps.store/collections/linear-switches/products/gateron-pro-milky-yellows",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "undersideMouldLabel": ["D", "F"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["D", "F"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -963,7 +967,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://allcaps.store/products/ifk-cow",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "comment": "I don't see an underside mold label."}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "comment": "I don't see an underside mold label."}
                 ]
             }</td>
             <td>Linear</td>
@@ -979,7 +983,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://allcaps.store/products/ifk-cow",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "comment": "I don't see an underside mold label."}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "comment": "I don't see an underside mold label."}
                 ]
             }</td>
             <td>Linear</td>
@@ -996,7 +1000,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://allcaps.store/collections/linear-switches/products/kailh-blacks",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "undersideMouldLabel": ["P", "+", "-", "15"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["P", "+", "-", "15"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -1013,7 +1017,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["2a", "A"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2a", "A"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -1029,7 +1033,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["J", "5"], "comment": "The \"J\" is very faint.<br>Might've misread."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "5"], "comment": "The \"J\" is very faint.<br>Might've misread."}
                 ]
             }</td>
             <td>Linear</td>
@@ -1045,7 +1049,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["2b", "6"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2b", "6"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1061,7 +1065,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-white-clicky-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["A", "5"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["A", "5"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1077,7 +1081,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-royal-switches-10-pcs",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["2F", "7"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2F", "7"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1093,7 +1097,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/hako-true-mechanical-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["C", "3"], "comment": "The \"C\" might be a \"G\".<br>I might've misread it."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["C", "3"], "comment": "The \"C\" might be a \"G\".<br>I might've misread it."}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1109,7 +1113,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/hako-violet-mechanical-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["2M", "7"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2M", "7"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1125,7 +1129,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pls-do-not-delete-it-switch-option",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["F", "5"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["F", "5"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1141,7 +1145,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pls-do-not-delete-it-switch-option",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["2S", "8"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2S", "8"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1158,7 +1162,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-pro-burgundy-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["A", "5"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["A", "5"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -1174,7 +1178,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pls-do-not-delete-it-switch-option",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["A", "5"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["A", "5"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1190,7 +1194,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-pro-light-green-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["F", "6"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["F", "6"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1207,7 +1211,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-silver-speed-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["I", "8"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["I", "8"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -1223,7 +1227,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-copper-speed-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["B", "33"], "comment": "The \"B\" and \"33\" were upside-down each other,<br>which is unusual compared to the other Kailh switches."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["B", "33"], "comment": "The \"B\" and \"33\" were upside-down each other,<br>which is unusual compared to the other Kailh switches."}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1239,7 +1243,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-gold-speed-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["J", "23"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "23"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1255,7 +1259,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-bronze-speed-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["P"], "comment": "I can't see any other underside mould labels."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["P"], "comment": "I can't see any other underside mould labels."}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1272,7 +1276,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/novelkey-x-kailh-linear-cream-switch",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["B", "11"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["B", "11"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -1289,7 +1293,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-heavy-yellow-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["Q", "5"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "5"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -1305,7 +1309,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-heavy-orange-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["2V", "7"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2V", "7"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1321,7 +1325,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-heavy-pale-blue-clicky-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["2X", "6"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2X", "6"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1337,7 +1341,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-thick-clicks-navy-jade",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["H", "5"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["H", "5"]}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1353,7 +1357,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-thick-clicks-navy-jade",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["2I", "7"], "comment": "Hard to tell if the \"I\" is not a \"1\" or \"J\"."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2I", "7"], "comment": "Hard to tell if the \"I\" is not a \"1\" or \"J\"."}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1370,7 +1374,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://shopee.com.my/Penyu-(Wildlife-Switches-by-Rebult-JWK)-Mechanical-Switch-For-Mechanical-Keyboards-i.261957418.11586949552",
                 "origins": [
-                    {"origin": "2022-05-02 ALL CAPS AU", "count": 1, "undersideMouldLabel": ["80"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["80"]}
                 ]
             }</td>
             <td>Linear</td>
@@ -1387,7 +1391,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pls-do-not-delete-it-switch-option",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "L"], "comment": "Is this really a Tealio V2? Not sure."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "L"], "comment": "Is this really a Tealio V2? Not sure."}
                 ]
             }</td>
             <td>Linear</td>
@@ -1403,7 +1407,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://deskthority.net/wiki/File:Zealio_Purple_R6_62_g.jpg",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "H"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "H"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1419,7 +1423,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://deskthority.net/wiki/File:Zealio_Purple_R6_65_g.jpg",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "B"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "B"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1435,7 +1439,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://deskthority.net/wiki/File:Zealio_Purple_R6_67_g.jpg",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "K"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "K"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1451,7 +1455,7 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://deskthority.net/wiki/File:Zealio_Purple_R6_78_g.jpg",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "I"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "I"]}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1478,45 +1482,45 @@ Full source code is available here:
 <p><table id="origin-table">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Purchase Date</th>
+            <th>ID Fragment</th>
             <th>Type</th>
             <th>Description</th>
+            <th>Number Of Switches</th>
             <th>Total Item Cost</th>
             <th>Total Shipping + Fees</th>
-            <th>Number Of Switches</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>2022-05-02 ALL CAPS AU</td>
             <td>2022-05-02</td>
+            <td>ALL-CAPS-AU</td>
             <td>Sample Pack</td>
             <td><a href="https://allcaps.store/products/allcaps-switch-sampler" target="_blank">ALL CAPS Sample Pack</a></td>
+            <td>11</td>
             <td>10.00 AUD</td>
             <td>1.79 AUD</td>
-            <td>11</td>
         </tr>
         <tr>
-            <td>2022-05-02 Custom KBD AU</td>
             <td>2022-05-02</td>
+            <td>Custom-KBD-AU</td>
             <td>Standalone</td>
             <td><a href="https://customkbd.com/products/gazzew-u4t-tactile-switches" target="_blank">Purchased from Custom KBD</a></td>
+            <td>1</td>
             <td>0.84 AUD</td>
             <td>0.20 AUD</td>
-            <td>1</td>
         </tr>
         <tr>
-            <td>2022-05-02 KBDfans CN</td>
             <td>2022-05-02</td>
+            <td>KBDfans-CN</td>
             <td>Sample Pack</td>
             <td>
                 <a href="https://www.aliexpress.com/item/1005002134753911.html" target="_blank">KBDfans 72-Switch Tester with XDA Profile Dye-Sub Keycaps</a><br>
                 <em>(Note: I'm assuming the base and keycaps are worth 50.00 AUD in total.)</em>
             </td>
+            <td>72</td>
             <td>46.60 AUD</td>
             <td>9.00 AUD</td>
-            <td>72</td>
         </tr>
     </tbody>
 </table></p>
@@ -1552,6 +1556,22 @@ Full source code is available here:
         } else {
             elem.classList.add(className);
         }
+    }
+
+    // Create a "text" fragment where non-space clusters are wrapped in "no-wrap" spans.
+    function textBreakOnlyOnSpaceFragment(s) {
+        const fragment = document.createDocumentFragment();
+        let shouldAppendSpace = false;
+        for (const s2 of s.split(" ")) {
+            const spanElem = element("span", {class: "no-wrap"});
+            spanElem.appendChild(txt(s2));
+
+            if (shouldAppendSpace) fragment.appendChild(txt(" "));
+            fragment.appendChild(spanElem);
+
+            shouldAppendSpace = true;
+        }
+        return fragment;
     }
 
     /*** ***/
@@ -1633,7 +1653,7 @@ Full source code is available here:
                 trElem.appendChild(element("td")).appendChild(txt(d["count"]));
 
                 // Origin
-                trElem.appendChild(element("td")).appendChild(txt(d["origin"]));
+                trElem.appendChild(element("td")).appendChild(textBreakOnlyOnSpaceFragment(d["origin"]));
 
                 // Underside Labels
                 let undersideLabels = d["undersideMouldLabel"] ? d["undersideMouldLabel"].join("<br>") : "";
@@ -1660,8 +1680,6 @@ Full source code is available here:
                 tbodyElem.insertBefore(trCloneElem, nextRowElem);
                 for (let i = 0; i < 9; ++i) trCloneElem.children[i].classList.add("hidden")
             }
-
-            console.log(d);
         }
     }
 
