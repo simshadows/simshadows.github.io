@@ -29,16 +29,15 @@ Full source code is available here:
         td,
         th {
             border: 1px solid;
-            padding: 0.6em;
+            padding: 0.3em 0.6em 0.3em 0.6em;
         }
         th {
             background-color: #bbb;
         }
-        /*
-        table .borderless {
-            border: none;
+        table ul {
+            list-style-position: inside;
+            padding-left: 0.4em;
         }
-        */
 
         .no-wrap {white-space: nowrap;}
         .hidden  {display: none;}
@@ -64,14 +63,15 @@ Full source code is available here:
         #switches-visual-guide > * > tr > :nth-child(3),
         #switches-visual-guide > * > tr > :nth-child(6),
         #switches-visual-guide > * > tr > :nth-child(7),
-        #switches-visual-guide > * > tr > :nth-child(10),
         #switches-visual-guide > * > tr > :nth-child(11),
-        #switches-visual-guide > * > tr > :nth-child(12) {
+        #switches-visual-guide > * > tr > :nth-child(12),
+        #switches-visual-guide > * > tr > :nth-child(13) {
             width: 1%;
         }
 
         #switches-visual-guide > * > tr > :nth-child(6),
-        #switches-visual-guide > * > tr > :nth-child(10) {
+        #switches-visual-guide > * > tr > :nth-child(10),
+        #switches-visual-guide > * > tr > :nth-child(11) {
             border-left: 10px solid #000;
         }
 
@@ -105,7 +105,8 @@ Full source code is available here:
 
 
 <p>This page is a visual guide on what switches I own in my collection. It's made for my own benefit to help me identify switches, but I made it a public webpage since there's no reason it can't be used by anyone else!</p>
-<p>If you think I've made any mistakes, please <a href="https://github.com/simshadows/simshadows-pages/issues" target="_blank">open an issue on GitHub</a>.</p>
+<p><strong>For now, I only collect stock MX-style switches. I'll update this if I get around to lubing, filming, or building frankenswitches.</strong></p>
+<p>If you think I've made any mistakes, please <a href="https://github.com/simshadows/simshadows-pages/issues">open an issue on GitHub</a>.</p>
 <p>These images are not my own. They were pulled from various places on the internet. I choose images according to what I think best-represents the switch appearance in-person. For original image sources, click on the images.</p>
 
 <p>Some columns are provided more to assist in telling apart different switches:</p>
@@ -120,9 +121,25 @@ Full source code is available here:
         </ul>
     </li>
     <li><strong>Pins</strong>: Either 3-pin or 5-pin.</li>
+    <li><strong>Additional Identification Notes</strong>: Any other interesting features.</li>
 </ul>
 
-<p><strong>I have also included notes that I've observed that are helpful for identifying visually identical samples in my collection. These observations are expected to not generalize (e.g. mould numbers).</strong></p>
+<p><strong>Disclaimers:</strong></p>
+<ul>
+    <li>The column <strong>Interesting Documented Characteristics</strong> is based entirely on found documentation. Some possible issues:
+        <ul>
+            <li><strong>Semantic consistency:</strong> Terms used can mean different things between different sources. If I feel a term is well-defined, <strong>it will be typeset as strong</strong>. If I feel a term is vaguely defined or imprecise, <em>it will be typeset as emphasis</em>. Unintuitive but well-defined terms I will use to the best of my ability:
+                <ul>
+                    <li><strong>Operating force</strong>: Peak force required to reach the operating position.</li>
+                    <li><strong>Pretravel</strong>: Distance between rest and the operating position.</li>
+                    <li><strong>Total travel</strong>: Distance between rest and bottom-out.</li>
+                    <li>(<strong>Operating position</strong>: Position in which the switch registers a change of signal.)</li>
+                </ul>
+            </li>
+            <li><strong>Documentation consistency:</strong> It is assumed that the design documentation is accurately reflected in reality. It is also assumed that the documentation is free of typos.</li>
+        </ul>
+    </li>
+</ul>
 
 <noscript>
     <p><strong>WARNING: Javascript is not enabled. This page has more limited functionality than intended.</strong></p>
@@ -143,6 +160,7 @@ Full source code is available here:
             <th>SMD</th>
             <th>Pins</th>
             <th>Additional Identification Notes</th>
+            <th>Interesting Documented Characteristics</th>
         </tr>
     </thead>
     <tbody>
@@ -162,6 +180,13 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td></td>
+            <td><ul>
+                <li><em>Spring</em>: "63.5g dual stage gold plated"</li>
+                <li><em>Stem</em>: POM</li>
+                <li><em>Top Housing</em>: "Custom nylon blend"</li>
+                <li><em>Bottom Housing</em>: PC</li>
+                <li>[<a href="https://www.builtbynim.com/products/p/bbn-linear">official?</a>]</li>
+            </ul></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
@@ -178,6 +203,7 @@ Full source code is available here:
             <td>GAZZEW</td>
             <td>Cutout</td>
             <td>5</td>
+            <td></td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -196,6 +222,13 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td></td>
+            <td><ul>
+                <li><em>Spring</em>: "63.5g Gold Plated Double Spring"</li>
+                <li><em>Stem</em>: "Nylon Stem (Clear) (Regular Length)"</li>
+                <li><em>Top Housing</em>: PC</li>
+                <li><em>Bottom Housing</em>: PC</li>
+                <li>[<a href="https://charue-design.com/products/ca-phe-sua-da-linear-switches">official?</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -212,6 +245,13 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td></td>
+            <td><ul>
+                <li><em>Spring</em>: "63.5g Gold Plated Double Spring"</li>
+                <li><em>Stem</em>: "UHMWPE Stem (Regular Length)"</li>
+                <li><em>Top Housing</em>: PME</li>
+                <li><em>Bottom Housing</em>: PME</li>
+                <li>[<a href="https://charue-design.com/products/popcorn-switches">official?</a>]</li>
+            </ul></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
@@ -229,6 +269,11 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 45 cN</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-original/mx-red.html">official</a>, <a href="https://www.cherrymx.de/_Resources/Persistent/b/7/a/b/b7ab2f72bd5686e1e1e759a9f3703536d7fb1e18/EN_CHERRY_MX_RED.pdf">datasheet</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -246,6 +291,11 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 60 cN</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-original/mx-black.html">official</a>, <a href="https://www.cherrymx.de/_Resources/Persistent/0/7/f/6/07f6a966a4b95053db5691e73faa401f67d2eb5e/EN_CHERRY_MX_BLACK.pdf">datasheet</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -263,6 +313,11 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 55 cN</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-original/mx-brown.html">official</a>, <a href="https://www.cherrymx.de/_Resources/Persistent/1/3/6/1/13618248706cd28e75ab9bdf9e55e9f8794611c1/EN_CHERRY_MX_BROWN.pdf">datasheet</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -279,6 +334,11 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 65 cN</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-special/mx-clear.html">official</a>, <a href="https://www.cherrymx.de/_Resources/Persistent/1/e/6/d/1e6d4479ea3c692473ae8dd3f0b825bd568ecadb/EN_CHERRY_MX_CLEAR.pdf">datasheet</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -295,6 +355,11 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 60 cN</li>
+                <li><strong>Pre/total travel</strong>: 2.2 mm / 4.0 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-original/mx-blue.html">official</a>, <a href="https://www.cherrymx.de/_Resources/Persistent/a/5/3/1/a531cb6598bc849cbcf131fd7a31814282b74545/EN_CHERRY_MX_BLUE.pdf">datasheet</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -312,6 +377,11 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 80 cN</li>
+                <li><strong>Pre/total travel</strong>: 2.2 mm / 4.0 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-special/mx-green.html">official</a>, <a href="https://www.cherrymx.de/_Resources/Persistent/a/a/3/1/aa31c11f193a199eea05c8897d9decc539ce9b7f/EN_CHERRY_MX_GREEN.pdf">datasheet</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -327,6 +397,7 @@ Full source code is available here:
             <td>CHERRY</td>
             <td>No</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -345,6 +416,11 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 45 cN</li>
+                <li><strong>Pre/total travel</strong>: 1.2 mm / 3.4 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-original/mx-speed-silver.html">official</a>, <a href="https://www.cherrymx.de/_Resources/Persistent/7/f/4/5/7f45a95bf2bd93bd9c94f1835bd0c89dd6863326/EN_CHERRY_MX_SPEED_Silver.pdf">datasheet</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -354,13 +430,18 @@ Full source code is available here:
                 ]
             }</td>
             <td>Tactile</td>
-            <td><img src="./_images/cherry-hyperglide-mx-tactile-gray.jpg"></td>
-            <td>Cherry Hyperglide MX (Tactile Gray)</td>
+            <td><img src="./_images/cherry-hyperglide-mx-gray.jpg"></td>
+            <td>Cherry Hyperglide MX (Gray)</td>
             <td></td>
             <td>CHERRY</td>
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 80 cN</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-special/mx-grey.html">official</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -377,6 +458,11 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 45 cN</li>
+                <li><strong>Pre/total travel</strong>: 1.9 mm / 3.7 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-original/mx-silent-red.html">official</a>, <a href="https://www.cherrymx.de/_Resources/Persistent/9/8/d/c/98dc07c393ba6be617c8547b77371709063605ad/EN_CHERRY_MX_SILENT_RED.pdf">datasheet</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
@@ -393,6 +479,11 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 60 cN</li>
+                <li><strong>Pre/total travel</strong>: 1.9 mm / 3.7 mm</li>
+                <li>[<a href="https://www.cherrymx.de/en/cherry-mx/mx-original/mx-silent-black.html">official</a>, <a href="https://www.cherrymx.de/_Resources/Persistent/8/9/4/5/8945e4291a811c540f5c3e1ae4b3fc47e4011a8a/EN_CHERRY_MX_SILENT_BLACK.pdf">datasheet</a>]</li>
+            </ul></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
@@ -410,6 +501,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>Clear top, milky bottom, similar to Gateron Silents.</td>
+            <td><em>(See non-RGB version.)</em></td>
         </tr>
         <tr>
             <td>{
@@ -426,6 +518,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>(see above)</td>
+            <td><em>(See non-RGB version.)</em></td>
         </tr>
         <tr>
             <td>{
@@ -442,6 +535,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>(see above)</td>
+            <td><em>(See non-RGB version.)</em></td>
         </tr>
         <tr>
             <td>{
@@ -458,6 +552,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>(see above)</td>
+            <td><em>(See non-RGB version.)</em></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
@@ -475,6 +570,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>Clear top, milky bottom, similar to Gateron Silents.</td>
+            <td><em>(See non-RGB version.)</em></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
@@ -492,6 +588,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td>Visually identical to the other Aliazes.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -508,6 +605,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td>Visually identical to the other Aliazes.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -524,6 +622,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td>Visually identical to the other Aliazes.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -540,13 +639,14 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td>Visually identical to the other Aliazes.</td>
+            <td></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-clear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"], "comment": "I'm assuming mine are KS-8's.<br>They seem to match the descriptions I find."}
                 ]
             }</td>
             <td>Linear</td>
@@ -557,12 +657,17 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td>Clear top, black bottom.</td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 35 gf</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://en.gateron.cn/product/222.html">official</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-red-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["N", "E"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["N", "E"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Linear</td>
@@ -573,12 +678,17 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td>(see above)</td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 45 gf</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://en.gateron.cn/product/220.html">official</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-yellow-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D", "F"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Linear</td>
@@ -589,12 +699,17 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td>(see above)</td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 50 gf</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://en.gateron.cn/product/219.html">official</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-black-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Linear</td>
@@ -605,12 +720,17 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td>(see above)</td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 60 gf</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://en.gateron.cn/product/221.html">official</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-brown-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -621,12 +741,17 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td>(see above)</td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 55 gf</li>
+                <li><strong>Pre/total travel</strong>: 2.0 mm / 4.0 mm</li>
+                <li>[<a href="https://en.gateron.cn/product/224.html">official</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-blue-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["V", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["V", "F"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -637,12 +762,17 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td>(see above)</td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 60 gf</li>
+                <li><strong>Pre/total travel</strong>: 2.3 mm / 4.0 mm</li>
+                <li>[<a href="https://en.gateron.cn/product/225.html">official</a>]</li>
+            </ul></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-green-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -653,13 +783,18 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td>(see above)</td>
+            <td><ul>
+                <li><strong>Operating force</strong>: 80 gf</li>
+                <li><strong>Pre/total travel</strong>: 2.3 mm / 4.0 mm</li>
+                <li>[<a href="https://en.gateron.cn/product/223.html">official</a>]</li>
+            </ul></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-clear-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
                 ]
             }</td>
             <td>Linear</td>
@@ -670,12 +805,13 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>Clear top, white bottom.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-red-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "F"], "comment": "The \"J\" is upside-down compared to the other KS-9's."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "F"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.<br>The \"J\" is upside-down compared to the other KS-9's."}
                 ]
             }</td>
             <td>Linear</td>
@@ -686,12 +822,13 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-yellow-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "Z"], "comment": "The \"J\" is upside-down compared to the other KS-9's."}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "Z"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.<br>The \"J\" is upside-down compared to the other KS-9's."}
                 ]
             }</td>
             <td>Linear</td>
@@ -702,12 +839,13 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-black-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "K"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "K"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
                 ]
             }</td>
             <td>Linear</td>
@@ -718,12 +856,13 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-brown-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
                 ]
             }</td>
             <td>Tactile</td>
@@ -734,12 +873,13 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-blue-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "G"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "G"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
                 ]
             }</td>
             <td>Clicky</td>
@@ -750,12 +890,13 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-green-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["C", "G"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["C", "G"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
                 ]
             }</td>
             <td>Clicky</td>
@@ -766,13 +907,14 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-clear-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "I'm assuming mine are KS-3's.<br>They seem to match the descriptions I find."}
                 ]
             }</td>
             <td>Linear</td>
@@ -783,12 +925,13 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>Milky top and bottom.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["G"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["G"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Linear</td>
@@ -799,12 +942,13 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-yellow-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["X", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["X", "F"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Linear</td>
@@ -815,12 +959,13 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["K"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["K"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Linear</td>
@@ -831,12 +976,13 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -847,12 +993,13 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-blue-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -863,12 +1010,13 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-green-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D"], "comment": "(see above)"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -879,13 +1027,14 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kbdfans-gateron-silent-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"], "comment": "Not sure how I can better-pinpoint the model of these."}
                 ]
             }</td>
             <td>Linear</td>
@@ -896,12 +1045,13 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>Clear top, milky bottom.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kbdfans-gateron-silent-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["E", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["E", "F"], "comment": "Not sure how I can better-pinpoint the model of these."}
                 ]
             }</td>
             <td>Linear</td>
@@ -912,12 +1062,13 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kbdfans-gateron-silent-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"]}
+                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"], "comment": "Not sure how I can better-pinpoint the model of these."}
                 ]
             }</td>
             <td>Tactile</td>
@@ -928,6 +1079,7 @@ Full source code is available here:
             <td>Semi-Transparent</td>
             <td>5</td>
             <td>(see above)</td>
+            <td></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
@@ -945,12 +1097,13 @@ Full source code is available here:
             <td>No</td>
             <td>5</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
                 "imgAck": "https://allcaps.store/collections/linear-switches/products/gateron-pro-milky-yellows",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["D", "F"]}
+                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["D", "F"], "comment": "Not sure how I can better-pinpoint the model of these."}
                 ]
             }</td>
             <td>Linear</td>
@@ -960,6 +1113,7 @@ Full source code is available here:
             <td>GATERON</td>
             <td>Semi-Transparent</td>
             <td>5</td>
+            <td></td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -978,6 +1132,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -993,6 +1148,7 @@ Full source code is available here:
             <td></td>
             <td>Cutout</td>
             <td>5</td>
+            <td></td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -1011,6 +1167,7 @@ Full source code is available here:
             <td>No</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
@@ -1028,6 +1185,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1043,6 +1201,7 @@ Full source code is available here:
             <td>Kailh</td>
             <td>Cutout</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
@@ -1060,6 +1219,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1075,6 +1235,7 @@ Full source code is available here:
             <td>Kailh</td>
             <td>Cutout</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
@@ -1092,6 +1253,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1107,6 +1269,7 @@ Full source code is available here:
             <td>Kailh</td>
             <td>Cutout</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
@@ -1124,6 +1287,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1140,6 +1304,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1155,6 +1320,7 @@ Full source code is available here:
             <td>Kailh</td>
             <td>Cutout</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -1173,6 +1339,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1189,6 +1356,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1204,6 +1372,7 @@ Full source code is available here:
             <td>Kailh</td>
             <td>Cutout</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -1222,6 +1391,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1237,6 +1407,7 @@ Full source code is available here:
             <td>Kailh</td>
             <td>Cutout</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
@@ -1254,6 +1425,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1269,6 +1441,7 @@ Full source code is available here:
             <td>Kailh</td>
             <td>Cutout</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -1287,6 +1460,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td></td>
+            <td></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
@@ -1304,6 +1478,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1319,6 +1494,7 @@ Full source code is available here:
             <td>Kailh</td>
             <td>Cutout</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
@@ -1336,6 +1512,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1352,6 +1529,7 @@ Full source code is available here:
             <td>Cutout</td>
             <td>3</td>
             <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1367,6 +1545,7 @@ Full source code is available here:
             <td>Kailh</td>
             <td>Cutout</td>
             <td>3</td>
+            <td></td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -1385,6 +1564,13 @@ Full source code is available here:
             <td>No</td>
             <td>5</td>
             <td></td>
+            <td><ul>
+                <li><em>Spring</em>: 62g</li>
+                <li><em>Stem</em>: "Long Pole POM"</li>
+                <li><em>Top Housing</em>: Nylon</li>
+                <li><em>Bottom Housing</em>: "Nylon Blend"</li>
+                <li>[<a href="https://www.rebultkeyboards.com/products/-in-stock-penyu-linear-switch">official?</a>]</li>
+            </ul></td>
         </tr>
         <!-- ==================================================================================== -->
         <tr class="start-group">
@@ -1402,6 +1588,7 @@ Full source code is available here:
             <td>Transparent</td>
             <td>5</td>
             <td>Clear top and bottom.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1418,6 +1605,7 @@ Full source code is available here:
             <td>Transparent</td>
             <td>5</td>
             <td>Clear top and bottom.<br>The darker the stem, the heavier the spring weight.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1434,6 +1622,7 @@ Full source code is available here:
             <td>Transparent</td>
             <td>5</td>
             <td>Clear top and bottom.<br>The darker the stem, the heavier the spring weight.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1450,6 +1639,7 @@ Full source code is available here:
             <td>Transparent</td>
             <td>5</td>
             <td>Clear top and bottom.<br>The darker the stem, the heavier the spring weight.</td>
+            <td></td>
         </tr>
         <tr>
             <td>{
@@ -1466,6 +1656,7 @@ Full source code is available here:
             <td>Transparent</td>
             <td>5</td>
             <td>Clear top and bottom.<br>The darker the stem, the heavier the spring weight.</td>
+            <td></td>
         </tr>
     </tbody>
 </table></p>
@@ -1473,8 +1664,12 @@ Full source code is available here:
 <p><table id="stat-table">
     <tbody>
         <tr>
-            <th>Number of unique switch types:</th>
+            <th>Total number of unique switch types:</th>
             <td id="stat-num-of-unique-switch-types">[???] <noscript>(This value cannot be calculated with Javascript disabled.)</noscript></td>
+        </tr>
+        <tr>
+            <th>Total number of samples:</th>
+            <td id="stat-num-of-samples">[???] <noscript>(This value cannot be calculated with Javascript disabled.)</noscript></td>
         </tr>
     </tbody>
 </table></p>
@@ -1496,7 +1691,7 @@ Full source code is available here:
             <td>2022-05-02</td>
             <td>ALL-CAPS-AU</td>
             <td>Sample Pack</td>
-            <td><a href="https://allcaps.store/products/allcaps-switch-sampler" target="_blank">ALL CAPS Sample Pack</a></td>
+            <td><a href="https://allcaps.store/products/allcaps-switch-sampler">ALL CAPS Sample Pack</a></td>
             <td>11</td>
             <td>10.00 AUD</td>
             <td>1.79 AUD</td>
@@ -1505,7 +1700,7 @@ Full source code is available here:
             <td>2022-05-02</td>
             <td>Custom-KBD-AU</td>
             <td>Standalone</td>
-            <td><a href="https://customkbd.com/products/gazzew-u4t-tactile-switches" target="_blank">Purchased from Custom KBD</a></td>
+            <td><a href="https://customkbd.com/products/gazzew-u4t-tactile-switches">Purchased from Custom KBD</a></td>
             <td>1</td>
             <td>0.84 AUD</td>
             <td>0.20 AUD</td>
@@ -1515,7 +1710,7 @@ Full source code is available here:
             <td>KBDfans-CN</td>
             <td>Sample Pack</td>
             <td>
-                <a href="https://www.aliexpress.com/item/1005002134753911.html" target="_blank">KBDfans 72-Switch Tester with XDA Profile Dye-Sub Keycaps</a><br>
+                <a href="https://www.aliexpress.com/item/1005002134753911.html">KBDfans 72-Switch Tester with XDA Profile Dye-Sub Keycaps</a><br>
                 <em>(Note: I'm assuming the base and keycaps are worth 50.00 AUD in total.)</em>
             </td>
             <td>72</td>
@@ -1543,7 +1738,7 @@ Full source code is available here:
     }
 
     function addLinkToTD(tdElem, link) {
-        const aElem = element("a", {href: link, target:"_blank"});
+        const aElem = element("a", {href: link});
         for (const innerElem of [...tdElem.children]) {
             aElem.appendChild(innerElem);
         }
@@ -1580,6 +1775,7 @@ Full source code is available here:
     const theadElem = document.querySelector("#switches-visual-guide > thead");
     const tbodyElem = document.querySelector("#switches-visual-guide > tbody");
     const statNumUniqueSwitchTypesElem = document.querySelector("#stat-num-of-unique-switch-types");
+    const statNumSamplesElem = document.querySelector("#stat-num-of-samples");
 
     //function renderControls() {
     //    const viewToggleButtonElem = element("button");
@@ -1608,6 +1804,7 @@ Full source code is available here:
     };
     function processTableData() {
         let numSwitchTypes = 0;
+        let numSamples = 0;
 
         const newRowElems = [];
 
@@ -1628,12 +1825,17 @@ Full source code is available here:
 
             addLinkToTD(tdElems[2], moreData.imgAck);
 
+            /*** Create new columns for main rows ***/
+            
+            // Not yet implemented
+            //trElem.appendChild(element("td")).appendChild(txt("PLACEHOLDER"));
+
             /*** Create clone rows ***/
 
             const trCloneElems = [];
             const numOfOrigins = Object.keys(moreData.origins).length;
             // We subtract 1 from numOfOrigins since element 0 will be the original
-            for (let j = 0; j < numOfOrigins - 1; ++j) {trCloneElems.push(trElem.cloneNode(true));}
+            for (let j = 0; j < numOfOrigins - 1; ++j) trCloneElems.push(trElem.cloneNode(true));
             if (trCloneElems.length > 0) {
                 newRowElems.push({
                     rowNum: i,
@@ -1642,30 +1844,34 @@ Full source code is available here:
             }
             trCloneElems.unshift(trElem);
 
-            /*** Create new columns ***/
+            /*** Create new columns for origin rows ***/
 
             for (const [j, d] of origins.entries()) {
-                console.log(j)
-                console.log(d)
-                const trElem = trCloneElems[j];
+                const trElem2 = trCloneElems[j];
 
                 // Sample Count
-                trElem.appendChild(element("td")).appendChild(txt(d["count"]));
+                const numSamplesSingleOrigin = d["count"];
+                console.assert(typeof numSamplesSingleOrigin === "number");
+                console.assert(numSamplesSingleOrigin > 0);
+
+                trElem2.appendChild(element("td")).appendChild(txt(numSamplesSingleOrigin));
+                numSamples += numSamplesSingleOrigin;
 
                 // Origin
-                trElem.appendChild(element("td")).appendChild(textBreakOnlyOnSpaceFragment(d["origin"]));
+                trElem2.appendChild(element("td")).appendChild(textBreakOnlyOnSpaceFragment(d["origin"]));
 
                 // Underside Labels
                 let undersideLabels = d["undersideMouldLabel"] ? d["undersideMouldLabel"].join("<br>") : "";
-                trElem.appendChild(element("td")).innerHTML = undersideLabels;
+                trElem2.appendChild(element("td")).innerHTML = undersideLabels;
 
                 // Comments
                 const comments = d["comment"] ? d["comment"] : "";
-                trElem.appendChild(element("td")).innerHTML = comments;
+                trElem2.appendChild(element("td")).innerHTML = comments;
             }
         }
 
         statNumUniqueSwitchTypesElem.innerHTML = numSwitchTypes;
+        statNumSamplesElem.innerHTML = numSamples;
 
         /*** Finally, we add the new "origin rows" ***/
 
@@ -1674,11 +1880,11 @@ Full source code is available here:
             const nextRowElem = trElems[d.rowNum + 1];
             console.assert(nextRowElem);
 
-            for (let i = 0; i < 9; ++i) originalRowElem.children[i].rowSpan = d.trCloneElems.length + 1;
+            for (let i = 0; i < 10; ++i) originalRowElem.children[i].rowSpan = d.trCloneElems.length + 1;
 
             for (const trCloneElem of d.trCloneElems) {
                 tbodyElem.insertBefore(trCloneElem, nextRowElem);
-                for (let i = 0; i < 9; ++i) trCloneElem.children[i].classList.add("hidden")
+                for (let i = 0; i < 10; ++i) trCloneElem.children[i].classList.add("hidden")
             }
         }
     }
@@ -1686,6 +1892,10 @@ Full source code is available here:
     //renderControls();
     renderAdditionalHeadCells();
     processTableData();
+
+    document.querySelectorAll("a").forEach((a) => {
+        a.setAttribute('target', '_blank');
+    })
 </script>
 
 
