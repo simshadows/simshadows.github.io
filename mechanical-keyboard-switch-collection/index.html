@@ -42,6 +42,9 @@ Full source code is available here:
         body {
             padding: 0.5em;
         }
+        footer {
+            margin-top: 3em;
+        }
         
         table {
             border-collapse: collapse;
@@ -52,6 +55,8 @@ Full source code is available here:
             padding: 0.3em 0.6em 0.3em 0.6em;
         }
         th {
+            position: sticky;
+            top: 0; /* required for stickiness */
             background-color: #bbb;
         }
         table ul {
@@ -62,6 +67,10 @@ Full source code is available here:
         .no-wrap {white-space: nowrap;}
         .hidden  {display: none;}
 
+        #controls-root {
+            padding: 0.2em 1em 0.2em 1em;
+        }
+
         #switches-visual-guide {
             margin: auto;
             font-size: 85%;
@@ -69,10 +78,6 @@ Full source code is available here:
 
         #switches-visual-guide img {
             width: 100px;
-        }
-
-        #switches-visual-guide > * > tr > :nth-child(1) {
-            display: none;
         }
         
         #switches-visual-guide > * > tr > :nth-child(3) {
@@ -115,8 +120,32 @@ Full source code is available here:
             font-weight: bold;
         }
         
+        #stat-table th {
+            text-align: left;
+        }
+        
         #origin-table > * > tr > :nth-child(3) {
             border-left: 10px solid #000;
+        }
+
+        /*** Column Filtering ***/
+
+        #switches-visual-guide                   > * > tr > :nth-child(1), /* ALWAYS HIDE */
+        /**/
+        #switches-visual-guide.ctrl-view-general > * > tr > :nth-child(9),
+        #switches-visual-guide.ctrl-view-general > * > tr > :nth-child(14),
+        #switches-visual-guide.ctrl-view-general > * > tr > :nth-child(15),
+        #switches-visual-guide.ctrl-view-general > * > tr > :nth-child(16),
+        /**/
+        #switches-visual-guide.ctrl-view-id      > * > tr > :nth-child(10),
+        /**/
+        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(11),
+        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(12),
+        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(13),
+        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(14),
+        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(15),
+        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(16) {
+            display: none;
         }
     </style>
 </head>
@@ -153,6 +182,11 @@ Full source code is available here:
 
 <p><strong>Disclaimers:</strong></p>
 <ul>
+    <li><strong>Names</strong> are the most-specific phrases I can find that best identifies a switch. Most of the time, I'll likely only be able to use generic names based on what others call them, but the goal is to narrow down "series names", model numbers, round numbers, etc. as much as possible.</li>
+        <ul>
+            <li>It should be assumed that all switches have some chance of being misidentified, or even be fakes.</li>
+            <li>Switches that I believe are especially uncertain in identification will be marked accordingly. Switches with such a marking should be assumed to have uncertain naming and <em>documented characteristics</em>.</li>
+        </ul>
     <li>The column <strong>Interesting Documented Characteristics</strong> is based entirely on found documentation. Some possible issues:
         <ul>
             <li><strong>Semantic consistency:</strong> Terms used can mean different things between different sources. If I feel a term is well-defined, <strong>it will be typeset as strong</strong>. If I feel a term is vaguely defined or imprecise, <em>it will be typeset as emphasis</em>. Unintuitive but well-defined terms I will use to the best of my ability:
@@ -173,9 +207,21 @@ Full source code is available here:
 </noscript>
 
 
-<!-- <p><div id="controls-root"></div></p> --> <!-- Not yet implemented -->
+<p><div id="controls-root">
+    <input type="radio" id="ctrl-view-general" name="ctrl-view" value="view-general" checked>
+        <label for="ctrl-view-general">General View</label>
+        <br>
+    <input type="radio" id="ctrl-view-id" name="ctrl-view" value="view-id">
+        <label for="ctrl-view-id">Identification View</label>
+        <br>
+    <input type="radio" id="ctrl-view-docs" name="ctrl-view" value="view-docs">
+        <label for="ctrl-view-docs">Documentation View</label>
+        <br>
+    <input type="radio" id="ctrl-view-all" name="ctrl-view" value="view-all">
+        <label for="ctrl-view-all">All</label>
+</div></p>
 
-<p><table id="switches-visual-guide">
+<p><table id="switches-visual-guide" class="ctrl-view-general">
     <thead>
         <tr>
             <th>More Data<br>(HIDDEN WITH CSS)</th>
@@ -196,7 +242,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://candykeys.com/product/builtbynim-bbn-linear-switch",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["12"]}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["12"],
+                        "itemCost": "1.16 AUD", "sfCost": "0.21 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -220,7 +267,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://splitkb.com/products/gazzew-boba-u4t-thocky-tactile-switch",
                 "origins": [
-                    {"origin": "2022-05-02 Custom-KBD-AU", "count": 1, "undersideMouldLabel": ["OUTEMU", "C"]}
+                    {"originID": "2022-05-02 Custom-KBD-AU", "count": 1, "undersideMouldLabel": ["OUTEMU", "C"],
+                        "itemCost": "0.84 AUD", "sfCost": "0.20 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -238,7 +286,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://www.keycrox.co.uk/product/ca-phe-sua-da-switch",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["4"]}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["4"],
+                        "itemCost": "1.04 AUD", "sfCost": "0.19 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -261,7 +310,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://www.keycrox.co.uk/product/popcorn-switch",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["14"]}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["14"],
+                        "itemCost": "1.04 AUD", "sfCost": "0.19 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -285,7 +335,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["792", "A"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["792", "A"],
+                        "itemCost": "0.54 AUD", "sfCost": "0.10 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -306,8 +357,10 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-black-hyperglide-pcb-mount-switches",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["769", "A"], "comment": "I'm keeping this in my extras bag."},
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["701", "A"]}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["769", "A"], "comment": "I'm keeping this in my extras bag.",
+                        "itemCost": "0.84 AUD", "sfCost": "0.14 AUD"},
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["701", "A"],
+                        "itemCost": "0.54 AUD", "sfCost": "0.10 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -328,8 +381,10 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["755", "A"], "comment": "I'm keeping this in my extras bag."},
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["637", "A"]}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["755", "A"], "comment": "I'm keeping this in my extras bag.",
+                        "itemCost": "0.84 AUD", "sfCost": "0.14 AUD"},
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["637", "A"],
+                        "itemCost": "0.54 AUD", "sfCost": "0.10 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -350,7 +405,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-clear-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["494", "A"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["494", "A"],
+                        "itemCost": "0.89 AUD", "sfCost": "0.18 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -371,7 +427,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-blue-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["608", "A"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["608", "A"],
+                        "itemCost": "0.54 AUD", "sfCost": "0.10 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -392,8 +449,10 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-green-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["660", "A"]},
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["463", "A"], "comment": "I'm keeping this in my extras bag."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["660", "A"],
+                        "itemCost": "0.54 AUD", "sfCost": "0.10 AUD"},
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["463", "A"], "comment": "I'm keeping this in my extras bag. May not actually be a hyperglide.",
+                        "itemCost": "0.54 AUD", "sfCost": "0.10 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -414,7 +473,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-milk-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["725", "A"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["725", "A"],
+                        "itemCost": "0.54 AUD", "sfCost": "0.10 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -432,7 +492,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-mx-hyperglide-speed-silver-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["500", "A"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["500", "A"],
+                        "itemCost": "0.57 AUD", "sfCost": "0.11 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -453,7 +514,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/cherry-switches/products/cherry-mx-hyperglide-grey-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["250", "A"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["250", "A"],
+                        "itemCost": "0.89 AUD", "sfCost": "0.17 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -474,7 +536,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-mx-hyperglide-silent-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["413", "A"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["413", "A"],
+                        "itemCost": "0.83 AUD", "sfCost": "0.16 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -495,7 +558,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-mx-hyperglide-silent-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["465", "A"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["465", "A"],
+                        "itemCost": "0.83 AUD", "sfCost": "0.16 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -517,7 +581,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["535"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["535"],
+                        "itemCost": "0.60 AUD", "sfCost": "0.12 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -534,7 +599,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["011"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["011"],
+                        "itemCost": "0.60 AUD", "sfCost": "0.12 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -551,7 +617,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["117"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["117"],
+                        "itemCost": "0.60 AUD", "sfCost": "0.12 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -568,7 +635,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-blue-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["112"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["112"],
+                        "itemCost": "0.60 AUD", "sfCost": "0.12 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -586,7 +654,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/cherry-rgb-silver-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["521"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["521"],
+                        "itemCost": "0.83 AUD", "sfCost": "0.16 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -604,7 +673,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pre-orderaliaz-silent-switch-tactile",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["G"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["G"],
+                        "itemCost": "1.29 AUD", "sfCost": "0.25 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -621,7 +691,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pre-orderaliaz-silent-switch-tactile",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "I'm not 100% sure if I've mixed up my 70g and 80g Aliazes."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "I'm not 100% sure if I've mixed up my 70g and 80g Aliazes.",
+                        "itemCost": "1.29 AUD", "sfCost": "0.25 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -638,7 +709,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pre-orderaliaz-silent-switch-tactile",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["F"], "comment": "I'm not 100% sure if I've mixed up my 70g and 80g Aliazes."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["F"], "comment": "I'm not 100% sure if I've mixed up my 70g and 80g Aliazes.",
+                        "itemCost": "1.29 AUD", "sfCost": "0.25 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -655,7 +727,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pre-orderaliaz-silent-switch-tactile",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["I"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["I"],
+                        "itemCost": "1.29 AUD", "sfCost": "0.25 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -674,7 +747,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-clear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"], "comment": "I'm assuming mine are KS-8's.<br>They seem to match the descriptions I find."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"], "comment": "I'm assuming mine are KS-8's.<br>They seem to match the descriptions I find.",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -696,7 +770,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-red-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["N", "E"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["N", "E"], "comment": "(see above)",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -718,7 +793,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-yellow-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D", "F"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D", "F"], "comment": "(see above)",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -740,7 +816,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-black-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"], "comment": "(see above)",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -762,7 +839,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-brown-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"], "comment": "(see above)",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -784,7 +862,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-blue-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["V", "F"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["V", "F"], "comment": "(see above)",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -806,7 +885,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-green-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["S", "D"], "comment": "(see above)",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -829,7 +909,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-clear-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -847,7 +928,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-red-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "F"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.<br>The \"J\" is upside-down compared to the other KS-9's."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "F"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.<br>The \"J\" is upside-down compared to the other KS-9's.",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -865,7 +947,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-yellow-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "Z"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.<br>The \"J\" is upside-down compared to the other KS-9's."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "Z"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.<br>The \"J\" is upside-down compared to the other KS-9's.",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -883,7 +966,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-black-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "K"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "K"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -901,7 +985,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-brown-liner-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "V"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -919,7 +1004,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-blue-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "G"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M", "G"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -937,7 +1023,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-smd-green-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["C", "G"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["C", "G"], "comment": "I'm assuming mine are KS-9's.<br>They seem to match the descriptions I find.",
+                        "itemCost": "0.30 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -956,7 +1043,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-clear-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "I'm assuming mine are KS-3's.<br>They seem to match the descriptions I find."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "I'm assuming mine are KS-3's.<br>They seem to match the descriptions I find.",
+                        "itemCost": "0.38 AUD", "sfCost": "0.07 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -974,7 +1062,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["G"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["G"], "comment": "(see above)",
+                        "itemCost": "0.38 AUD", "sfCost": "0.07 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -992,7 +1081,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-yellow-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["X", "F"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["X", "F"], "comment": "(see above)",
+                        "itemCost": "0.38 AUD", "sfCost": "0.07 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1010,7 +1100,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["K"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["K"], "comment": "(see above)",
+                        "itemCost": "0.38 AUD", "sfCost": "0.07 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1028,7 +1119,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["M"], "comment": "(see above)",
+                        "itemCost": "0.37 AUD", "sfCost": "0.07 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1046,7 +1138,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-blue-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"], "comment": "(see above)",
+                        "itemCost": "0.38 AUD", "sfCost": "0.07 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1064,7 +1157,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/gateron-milky-housing-green-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D"], "comment": "(see above)"}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["D"], "comment": "(see above)",
+                        "itemCost": "0.38 AUD", "sfCost": "0.07 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1083,7 +1177,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/kbdfans-gateron-silent-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"], "comment": "Not sure how I can better-pinpoint the model of these."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "F"], "comment": "Not sure how I can better-pinpoint the model of these.",
+                        "itemCost": "0.57 AUD", "sfCost": "0.11 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1101,7 +1196,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/kbdfans-gateron-silent-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["E", "F"], "comment": "Not sure how I can better-pinpoint the model of these."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["E", "F"], "comment": "Not sure how I can better-pinpoint the model of these.",
+                        "itemCost": "0.57 AUD", "sfCost": "0.11 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1119,7 +1215,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://kbdfans.com/collections/switches/products/kbdfans-gateron-silent-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"], "comment": "Not sure how I can better-pinpoint the model of these."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["5", "F"], "comment": "Not sure how I can better-pinpoint the model of these.",
+                        "itemCost": "0.57 AUD", "sfCost": "0.11 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1137,7 +1234,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://allcaps.store/collections/linear-switches/products/gateron-cap-yellows-v2",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["GATERON", "L", "A"]}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["GATERON", "L", "A"],
+                        "itemCost": "0.82 AUD", "sfCost": "0.15 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1155,7 +1253,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://allcaps.store/collections/linear-switches/products/gateron-pro-milky-yellows",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["D", "F"], "comment": "Not sure how I can better-pinpoint the model of these."}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["D", "F"], "comment": "Not sure how I can better-pinpoint the model of these.",
+                        "itemCost": "0.40 AUD", "sfCost": "0.07 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1173,7 +1272,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://allcaps.store/products/ifk-cow",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "comment": "I don't see an underside mold label."}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "comment": "I don't see an underside mold label.",
+                        "itemCost": "1.11 AUD", "sfCost": "0.20 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1190,7 +1290,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://allcaps.store/products/ifk-cow",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "comment": "I don't see an underside mold label."}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "comment": "I don't see an underside mold label.",
+                        "itemCost": "1.11 AUD", "sfCost": "0.20 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1208,7 +1309,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://allcaps.store/collections/linear-switches/products/kailh-blacks",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["P", "+", "-", "15"]}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["P", "+", "-", "15"],
+                        "itemCost": "0.48 AUD", "sfCost": "0.09 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1226,7 +1328,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-red-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2a", "A"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2a", "A"],
+                        "itemCost": "0.57 AUD", "sfCost": "0.11 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1243,7 +1346,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-black-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "5"], "comment": "The \"J\" is very faint.<br>Might've misread."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "5"], "comment": "The \"J\" is very faint.<br>Might've misread.",
+                        "itemCost": "0.57 AUD", "sfCost": "0.11 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1260,7 +1364,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-brown-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2b", "6"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2b", "6"],
+                        "itemCost": "0.57 AUD", "sfCost": "0.11 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1277,7 +1382,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-white-clicky-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["A", "5"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["A", "5"],
+                        "itemCost": "0.57 AUD", "sfCost": "0.11 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1294,7 +1400,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-box-royal-switches-10-pcs",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2F", "7"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2F", "7"],
+                        "itemCost": "0.76 AUD", "sfCost": "0.15 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1311,7 +1418,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/hako-true-mechanical-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["C", "3"], "comment": "The \"C\" might be a \"G\".<br>I might've misread it."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["C", "3"], "comment": "The \"C\" might be a \"G\".<br>I might've misread it.",
+                        "itemCost": "0.76 AUD", "sfCost": "0.15 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1328,7 +1436,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/hako-violet-mechanical-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2M", "7"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2M", "7"],
+                        "itemCost": "0.76 AUD", "sfCost": "0.15 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1345,7 +1454,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pls-do-not-delete-it-switch-option",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["F", "5"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["F", "5"],
+                        "itemCost": "0.83 AUD", "sfCost": "0.16 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1362,7 +1472,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pls-do-not-delete-it-switch-option",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2S", "8"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2S", "8"],
+                        "itemCost": "0.83 AUD", "sfCost": "0.16 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1380,7 +1491,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-pro-burgundy-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["A", "5"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["A", "5"],
+                        "itemCost": "0.45 AUD", "sfCost": "0.09 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1397,7 +1509,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/pls-do-not-delete-it-switch-option",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["A", "5"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["A", "5"],
+                        "itemCost": "0.45 AUD", "sfCost": "0.09 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1414,7 +1527,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-pro-light-green-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["F", "6"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["F", "6"],
+                        "itemCost": "0.45 AUD", "sfCost": "0.09 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1432,7 +1546,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-silver-speed-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["I", "8"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["I", "8"],
+                        "itemCost": "0.42 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1449,7 +1564,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-copper-speed-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["B", "33"], "comment": "The \"B\" and \"33\" were upside-down each other,<br>which is unusual compared to the other Kailh switches."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["B", "33"], "comment": "The \"B\" and \"33\" were upside-down each other,<br>which is unusual compared to the other Kailh switches.",
+                        "itemCost": "0.42 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1466,7 +1582,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-gold-speed-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "23"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["J", "23"],
+                        "itemCost": "0.42 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1483,7 +1600,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/kailh-bronze-speed-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["P"], "comment": "I can't see any other underside mould labels."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["P"], "comment": "I can't see any other underside mould labels.",
+                        "itemCost": "0.42 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1501,7 +1619,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/products/novelkey-x-kailh-linear-cream-switch",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["B", "11"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["B", "11"],
+                        "itemCost": "0.99 AUD", "sfCost": "0.19 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1519,7 +1638,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-heavy-yellow-linear-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "5"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["Q", "5"],
+                        "itemCost": "0.68 AUD", "sfCost": "0.13 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1536,7 +1656,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-heavy-orange-tactile-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2V", "7"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2V", "7"],
+                        "itemCost": "0.68 AUD", "sfCost": "0.13 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1553,7 +1674,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-heavy-pale-blue-clicky-switches",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2X", "6"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2X", "6"],
+                        "itemCost": "0.68 AUD", "sfCost": "0.13 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1570,7 +1692,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-thick-clicks-navy-jade",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["H", "5"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["H", "5"],
+                        "itemCost": "0.64 AUD", "sfCost": "0.12 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1587,7 +1710,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://kbdfans.com/collections/switches/products/novelkeys-x-kailh-box-thick-clicks-navy-jade",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2I", "7"], "comment": "Hard to tell if the \"I\" is not a \"1\" or \"J\"."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["2I", "7"], "comment": "Hard to tell if the \"I\" is not a \"1\" or \"J\".",
+                        "itemCost": "0.64 AUD", "sfCost": "0.12 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1606,7 +1730,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://ymdkey.com/products/outemu-smd-rgb-3-pin-mx-switch-brown-blue-red-silent-white-gray-otm-for-gk61-gk64-mx-mechanical-keyboard",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["23", "24"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["23", "24"],
+                        "itemCost": "0.62 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1627,7 +1752,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://ymdkey.com/products/outemu-smd-rgb-3-pin-mx-switch-brown-blue-red-silent-white-gray-otm-for-gk61-gk64-mx-mechanical-keyboard",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["19", "23"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["19", "23"],
+                        "itemCost": "0.62 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1648,7 +1774,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://ymdkey.com/products/outemu-smd-rgb-3-pin-mx-switch-brown-blue-red-silent-white-gray-otm-for-gk61-gk64-mx-mechanical-keyboard",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["08", "24"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["08", "24"],
+                        "itemCost": "0.62 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1669,7 +1796,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://ymdkey.com/products/outemu-smd-rgb-3-pin-mx-switch-brown-blue-red-silent-white-gray-otm-for-gk61-gk64-mx-mechanical-keyboard",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["07", "23"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["07", "23"],
+                        "itemCost": "0.62 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1690,7 +1818,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://www.amazon.com/OUTEMU-Switches-Tactile-switches-Replacement/dp/B092JKV3KD",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["22", "23"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["22", "23"],
+                        "itemCost": "0.62 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1716,7 +1845,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://ymdkey.com/products/outemu-smd-rgb-3-pin-mx-switch-brown-blue-red-silent-white-gray-otm-for-gk61-gk64-mx-mechanical-keyboard",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["13", "23"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["13", "23"],
+                        "itemCost": "0.62 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1737,7 +1867,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://www.carousell.com.my/p/outemu-orange-tactile-switch-1109032123/",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["15", "23"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["15", "23"],
+                        "itemCost": "0.62 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1758,7 +1889,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://ymdkey.com/products/outemu-smd-rgb-3-pin-mx-switch-brown-blue-red-silent-white-gray-otm-for-gk61-gk64-mx-mechanical-keyboard",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["37", "24"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["37", "24"],
+                        "itemCost": "0.62 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1779,7 +1911,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://ymdkey.com/products/outemu-smd-rgb-3-pin-mx-switch-brown-blue-red-silent-white-gray-otm-for-gk61-gk64-mx-mechanical-keyboard",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["17", "22"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["17", "22"],
+                        "itemCost": "0.62 AUD", "sfCost": "0.06 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1800,7 +1933,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://ymdkey.com/products/outemu-smd-rgb-3-pin-mx-switch-brown-blue-red-silent-white-gray-otm-for-gk61-gk64-mx-mechanical-keyboard",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["01", "24"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["01", "24"],
+                        "itemCost": "0.74 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1821,7 +1955,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://ymdkey.com/products/outemu-smd-rgb-3-pin-mx-switch-brown-blue-red-silent-white-gray-otm-for-gk61-gk64-mx-mechanical-keyboard",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["12", "22"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["12", "22"],
+                        "itemCost": "0.74 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1843,7 +1978,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://www.aliexpress.com/item/1005004056249249.html",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A 12"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A 12"],
+                        "itemCost": "0.76 AUD", "sfCost": "0.09 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1865,7 +2001,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://www.aliexpress.com/item/1005004056249249.html",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A09"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A09"],
+                        "itemCost": "0.76 AUD", "sfCost": "0.09 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1887,7 +2024,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://www.aliexpress.com/item/1005004056249249.html",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A 12"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A 12"],
+                        "itemCost": "0.76 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -1909,7 +2047,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://www.aliexpress.com/item/1005004056249249.html",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A06"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A06"],
+                        "itemCost": "0.75 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1931,7 +2070,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://www.aliexpress.com/item/1005004056249249.html",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A 16"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A 16"],
+                        "itemCost": "0.75 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -1953,7 +2093,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://www.aliexpress.com/item/1005004171485365.html",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["07"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["07"],
+                        "itemCost": "0.75 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Clicky</td>
@@ -1978,7 +2119,8 @@ Full source code is available here:
                 "unverified": true,
                 "imgAck": "https://www.aliexpress.com/item/1005004171485365.html",
                 "origins": [
-                    {"origin": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A03"]}
+                    {"originID": "2022-05-15 INEDA-CN", "count": 1, "undersideMouldLabel": ["A03"],
+                        "itemCost": "0.75 AUD", "sfCost": "0.08 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -2002,7 +2144,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://shopee.com.my/Penyu-(Wildlife-Switches-by-Rebult-JWK)-Mechanical-Switch-For-Mechanical-Keyboards-i.261957418.11586949552",
                 "origins": [
-                    {"origin": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["80"]}
+                    {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["80"],
+                        "itemCost": "1.16 AUD", "sfCost": "0.21 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -2024,9 +2167,11 @@ Full source code is available here:
         <!-- ==================================================================================== -->
         <tr class="start-group">
             <td>{
+                "unverified": true,
                 "imgAck": "https://kbdfans.com/products/pls-do-not-delete-it-switch-option",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "L"], "comment": "Is this really a Tealio V2? Not sure."}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "L"], "comment": "Is this really a Tealio V2? Not sure.",
+                        "itemCost": "1.66 AUD", "sfCost": "0.32 AUD"}
                 ]
             }</td>
             <td>Linear</td>
@@ -2043,7 +2188,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://deskthority.net/wiki/File:Zealio_Purple_R6_62_g.jpg",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "H"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "H"],
+                        "itemCost": "1.66 AUD", "sfCost": "0.32 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -2060,7 +2206,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://deskthority.net/wiki/File:Zealio_Purple_R6_65_g.jpg",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "B"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "B"],
+                        "itemCost": "1.66 AUD", "sfCost": "0.32 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -2077,7 +2224,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://deskthority.net/wiki/File:Zealio_Purple_R6_67_g.jpg",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "K"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "K"],
+                        "itemCost": "1.66 AUD", "sfCost": "0.32 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -2094,7 +2242,8 @@ Full source code is available here:
             <td>{
                 "imgAck": "https://deskthority.net/wiki/File:Zealio_Purple_R6_78_g.jpg",
                 "origins": [
-                    {"origin": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "I"]}
+                    {"originID": "2022-05-02 KBDfans-CN", "count": 1, "undersideMouldLabel": ["GATERON", "C", "I"],
+                        "itemCost": "1.66 AUD", "sfCost": "0.32 AUD"}
                 ]
             }</td>
             <td>Tactile</td>
@@ -2120,6 +2269,18 @@ Full source code is available here:
             <th>Total number of samples:</th>
             <td id="stat-num-of-samples">[???] <noscript>(This value cannot be calculated with Javascript disabled.)</noscript></td>
         </tr>
+        <tr>
+            <th>Total item cost:</th>
+            <td id="stat-total-cost-itemonly">[???] <noscript>(This value cannot be calculated with Javascript disabled.)</noscript></td>
+        </tr>
+        <tr>
+            <th>Total shipping/fees:</th>
+            <td id="stat-total-cost-shippingfeesonly">[???] <noscript>(This value cannot be calculated with Javascript disabled.)</noscript></td>
+        </tr>
+        <tr>
+            <th>Grand total cost:</th>
+            <td id="stat-total-cost-grandtotal">[???] <noscript>(This value cannot be calculated with Javascript disabled.)</noscript></td>
+        </tr>
     </tbody>
 </table></p>
 
@@ -2128,7 +2289,6 @@ Full source code is available here:
         <tr>
             <th>Purchase Date</th>
             <th>ID Fragment</th>
-            <th>Type</th>
             <th>Description</th>
             <th>Number Of Switches</th>
             <th>Total Item Cost</th>
@@ -2139,7 +2299,6 @@ Full source code is available here:
         <tr>
             <td>2022-05-02</td>
             <td>ALL-CAPS-AU</td>
-            <td>Sample Pack</td>
             <td><a href="https://allcaps.store/products/allcaps-switch-sampler">ALL CAPS Sample Pack</a></td>
             <td>11</td>
             <td>10.00 AUD</td>
@@ -2148,8 +2307,7 @@ Full source code is available here:
         <tr>
             <td>2022-05-02</td>
             <td>Custom-KBD-AU</td>
-            <td>Standalone</td>
-            <td><a href="https://customkbd.com/products/gazzew-u4t-tactile-switches">Purchased from Custom KBD</a></td>
+            <td><a href="https://customkbd.com/products/gazzew-u4t-tactile-switches">Individually purchased from Custom KBD</a></td>
             <td>1</td>
             <td>0.84 AUD</td>
             <td>0.20 AUD</td>
@@ -2157,7 +2315,6 @@ Full source code is available here:
         <tr>
             <td>2022-05-02</td>
             <td>KBDfans-CN</td>
-            <td>Sample Pack</td>
             <td>
                 <a href="https://www.aliexpress.com/item/1005002134753911.html">KBDfans 72-Switch Tester with XDA Profile Dye-Sub Keycaps</a><br>
                 <em>(Note: I'm assuming the base and keycaps are worth 50.00 AUD in total.)</em>
@@ -2169,7 +2326,6 @@ Full source code is available here:
         <tr>
             <td>2022-05-15</td>
             <td>INEDA-CN</td>
-            <td>Sample Pack</td>
             <td><a href="https://www.aliexpress.com/item/1005002427848379.html">INEDA Digital Store (on AliExpress) Outemu Sample Pack</a></td>
             <td>18</td>
             <td>12.34 AUD</td>
@@ -2194,6 +2350,129 @@ Full source code is available here:
             }
         }
         return elem;
+    }
+
+    class Currency {
+        constructor(s) {
+            console.assert(typeof s === "string");
+
+            function error(msg) {
+                console.error(`[Currency] ${msg}. String: "${s}"`);
+                this.unit = "???";
+                this.denominator = 100;
+                this.value = 0;
+            }
+
+            const arr = s.split(" ");
+            if (arr.length !== 2) {error("Invalid split"); return;}
+
+            const numArr = arr[0].split(".");
+            if (numArr.length !== 2) {error("Invalid number split"); return;}
+
+            if (numArr[1].length !== 2) {error("Digits right of radical must be 2 digits"); return;}
+            const numLeft = parseInt(numArr[0]);
+            const numRight = parseInt(numArr[1]);
+            if (typeof numLeft  !== "number") {error("Invalid digits left of radical"); return;}
+            if (typeof numRight !== "number") {error("Invalid digits right of radical"); return;}
+
+            this.unit = arr[1];
+            this.denominator = 100;
+            this.value = (numLeft * 100) + numRight;
+
+            console.assert(this.toString() === s);
+        }
+        add(other) {
+            console.assert(this.unit === other.unit);
+            console.assert(this.denominator === other.denominator);
+
+            const ret = new Currency("0.00 " + this.unit);
+            ret.denominator = this.denominator;
+            ret.value = this.value + other.value;
+            return ret;
+        }
+        isEqual(other) {
+            return (
+                (this.unit === other.unit)
+                && (this.denominator === other.denominator)
+                && (this.value === other.value)
+            );
+        }
+        toString() {
+            let numLeftStr = Math.floor(this.value / this.denominator).toString();
+            let numRightStr = String(this.value % this.denominator).toString();
+
+            if (numRightStr.length === 1) numRightStr = `0${numRightStr}`;
+            return `${numLeftStr}.${numRightStr} ${this.unit}`
+        }
+    }
+
+    function reprocessTableJSON(d) {
+        for (const dd of d["origins"]) {
+            if (dd["itemCost"] !== undefined) dd["itemCost"] = new Currency(dd["itemCost"]);
+            if (dd["sfCost"  ] !== undefined) dd["sfCost"  ] = new Currency(dd["sfCost"  ]);
+
+            dd["originIDstr"] = dd["originID"];
+            
+            const originSplit = dd["originID"].split(" ");
+            if (originSplit.length !== 2) throw "Expected origin ID to split into 2.";
+            dd["originID"] = {
+                purchaseDate: new Date(originSplit[0]),
+                idFragment: originSplit[1],
+            }
+        }
+    }
+
+    function parseOriginTable(tableElem) {
+        console.assert(tableElem !== undefined);
+        const rowElems = tableElem.querySelector("tbody").children;
+
+        const ret = [];
+        for (const rowElem of rowElems) {
+            const children = rowElem.children;
+            const totalItemCostStr = children[4].innerHTML.split(" ");
+            const totalSfCostStr = children[5].innerHTML.split(" ");
+            ret.push({
+                "purchaseDate": new Date(children[0].innerHTML),
+                "idFragment": children[1].innerHTML,
+
+                "description": children[2].innerHTML,
+                "numSwitches": parseInt(children[3].innerHTML),
+
+                "totalItemCost": new Currency(children[4].innerHTML),
+                "totalShippingAndFeesCost": new Currency(children[5].innerHTML),
+            });
+        }
+        return ret;
+    }
+
+    function validateOrigins(originsData, costsFromBigTable) {
+        // Reprocess origin table data
+        const originTableIDs = new Map();
+        for (const d of originsData) originTableIDs.set(d["purchaseDate"].toISOString(), new Set());
+        for (const d of originsData) originTableIDs.get(d["purchaseDate"].toISOString()).add(d["idFragment"]);
+        // Do all costs from the big table correspond to an origin?
+        for (const [purchaseDate, v] of costsFromBigTable.entries()) {
+            for (const [idFragment, _] of v.entries()) {
+                const exists = originTableIDs.get(purchaseDate)?.has(idFragment);
+                if (!exists) console.warn(`Origin ID "${purchaseDate} ${idFragment}" is present in the big table, but not in the origins table.`);
+            }
+        }
+        // Are all origin costs accounted for?
+        for (const d of originsData) {
+            const purchaseDate = d["purchaseDate"].toISOString();
+            const idFragment = d["idFragment"];
+            const costs = costsFromBigTable.get(purchaseDate)?.get(idFragment);
+            if (!costs) {
+                console.warn(`Origin ID "${purchaseDate} ${idFragment}" is present in the origins table, but not in the big table.`);
+                continue;
+            }
+            if (!costs.itemCost.isEqual(d["totalItemCost"])) {
+                console.warn(`Origin ID "${purchaseDate} ${idFragment}" has item cost total ${d["totalItemCost"].toString()}, but the big table indicates ${costs.itemCost}.`);
+            }
+            if (!costs.sfCost.isEqual(d["totalShippingAndFeesCost"])) {
+                console.warn(`Origin ID "${purchaseDate} ${idFragment}" has shipping and fees total ${d["totalShippingAndFeesCost"].toString()}, but the big table indicates ${costs.sfCost}.`);
+            }
+        }
     }
 
     function addLinkToTD(tdElem, link) {
@@ -2230,24 +2509,28 @@ Full source code is available here:
 
     /*** ***/
 
-    //const controlsRootElem = document.querySelector("#controls-root");
+    const controlsElem = document.querySelector("#controls-root");
+
+    const switchesVisualGuideElem = document.querySelector("#switches-visual-guide");
     const theadElem = document.querySelector("#switches-visual-guide > thead");
     const tbodyElem = document.querySelector("#switches-visual-guide > tbody");
+
     const statNumUniqueSwitchTypesElem = document.querySelector("#stat-num-of-unique-switch-types");
     const statNumSamplesElem = document.querySelector("#stat-num-of-samples");
+    const statTotalCostItemOnlyElem = document.querySelector("#stat-total-cost-itemonly");
+    const statTotalCostShippingAndFeesElem = document.querySelector("#stat-total-cost-shippingfeesonly");
+    const statGrandTotalCostElem = document.querySelector("#stat-total-cost-grandtotal");
 
-    //function renderControls() {
-    //    const viewToggleButtonElem = element("button");
-    //    viewToggleButtonElem.appendChild(txt("Toggle View"));
-    //    controlsRootElem.appendChild(viewToggleButtonElem);
-    //}
+    const originsElem = document.querySelector("#origin-table");
 
     function renderAdditionalHeadCells() {
         const trElem = theadElem.children[0];
-        trElem.appendChild(element("th")).appendChild(txt("Sample Count"));
-        trElem.appendChild(element("th")).appendChild(txt("Origin"));
-        trElem.appendChild(element("th")).appendChild(txt("Underside Labels"));
-        trElem.appendChild(element("th")).appendChild(txt("Comments"));
+        trElem.appendChild(element("th")).innerHTML = "Sample Count";
+        trElem.appendChild(element("th")).innerHTML = "Origin";
+        trElem.appendChild(element("th")).innerHTML = "Underside Labels";
+        trElem.appendChild(element("th")).innerHTML = "Item Cost<br>(Per Switch)";
+        trElem.appendChild(element("th")).innerHTML = "Shipping/Fees<br>(Per Switch)";
+        trElem.appendChild(element("th")).innerHTML = "Comments";
     }
     
     const typeClassMap = {
@@ -2262,8 +2545,33 @@ Full source code is available here:
         "Semi-Transparent": "smd-semi-transparent",
     };
     function processTableData() {
+        const originsData = parseOriginTable(originsElem);
+
         let numSwitchTypes = 0;
         let numSamples = 0;
+        let totalItemCost = new Currency("0.00 AUD");
+        let totalShippingAndFees = new Currency("0.00 AUD");
+
+        // originCosts will calculate origin costs based on data from the switch table.
+        // Format:
+        //      originCosts[purchaseDate from Date.prototype.toISOString()][ID fragment] = {itemCost, sfCost}
+        const originCosts = new Map();
+        function addToOriginCosts(d) {
+            const purchaseDate = d["originID"]["purchaseDate"].toISOString();
+            const idFragment = d["originID"]["idFragment"];
+            const itemCost = d["itemCost"];
+            const sfCost = d["sfCost"];
+
+            let inner = originCosts.get(purchaseDate);
+            if (!inner) originCosts.set(purchaseDate, inner = new Map());
+            let existingVals = inner.get(idFragment);
+            if (existingVals) {
+                existingVals.itemCost = existingVals.itemCost.add(itemCost)
+                existingVals.sfCost = existingVals.sfCost.add(sfCost)
+            } else {
+                inner.set(idFragment, {itemCost, sfCost});
+            }
+        }
 
         const newRowElems = [];
 
@@ -2274,17 +2582,18 @@ Full source code is available here:
 
             /*** Read and process the JSON data ***/
 
-            const moreData = JSON.parse(tdElems[0].innerHTML);
+            const data = JSON.parse(tdElems[0].innerHTML);
+            reprocessTableJSON(data);
 
-            const isUnverified = (moreData?.unverified === true);
-            const origins = [...moreData.origins];
+            const isUnverified = (data?.unverified === true);
+            const origins = [...data.origins];
 
             /*** Adjust existing cells ***/
 
             applyClass(tdElems[1], typeClassMap[tdElems[1].innerHTML], "Invalid value for \"Type\" column.");
             applyClass(tdElems[6], smdClassMap[tdElems[6].innerHTML], "Invalid value for \"SMD\" column.");
 
-            addLinkToTD(tdElems[2], moreData.imgAck);
+            addLinkToTD(tdElems[2], data.imgAck);
 
             if (isUnverified) applyClass(tdElems[3], "unverified", "Invalid.");
 
@@ -2296,7 +2605,7 @@ Full source code is available here:
             /*** Create clone rows ***/
 
             const trCloneElems = [];
-            const numOfOrigins = Object.keys(moreData.origins).length;
+            const numOfOrigins = Object.keys(data.origins).length;
             // We subtract 1 from numOfOrigins since element 0 will be the original
             for (let j = 0; j < numOfOrigins - 1; ++j) trCloneElems.push(trElem.cloneNode(true));
             if (trCloneElems.length > 0) {
@@ -2321,20 +2630,39 @@ Full source code is available here:
                 numSamples += numSamplesSingleOrigin;
 
                 // Origin
-                trElem2.appendChild(element("td")).appendChild(textBreakOnlyOnSpaceFragment(d["origin"]));
+                trElem2.appendChild(element("td")).appendChild(textBreakOnlyOnSpaceFragment(d["originIDstr"]));
 
                 // Underside Labels
-                let undersideLabels = d["undersideMouldLabel"] ? d["undersideMouldLabel"].join("<br>") : "";
-                trElem2.appendChild(element("td")).innerHTML = undersideLabels;
+                trElem2.appendChild(element("td")).innerHTML = d["undersideMouldLabel"]?.join("<br>") || "";
+
+                // Item Cost
+                trElem2.appendChild(element("td")).innerHTML = d["itemCost"]?.toString() || "";
+                if (d["itemCost"] !== undefined) {
+                    totalItemCost = totalItemCost.add(d["itemCost"]);
+                }
+
+                // Shipping/Fee Cost
+                trElem2.appendChild(element("td")).innerHTML = d["sfCost"]?.toString() || "";
+                if (d["sfCost"] !== undefined) {
+                    totalShippingAndFees = totalShippingAndFees.add(d["sfCost"]);
+                }
 
                 // Comments
-                const comments = d["comment"] ? d["comment"] : "";
-                trElem2.appendChild(element("td")).innerHTML = comments;
+                trElem2.appendChild(element("td")).innerHTML = d["comment"] || "";
+
+                // (Other processes)
+                if ((d["itemCost"] !== undefined) && (d["sfCost"] !== undefined)) {
+                    addToOriginCosts(d);
+                }
             }
         }
 
         statNumUniqueSwitchTypesElem.innerHTML = numSwitchTypes;
         statNumSamplesElem.innerHTML = numSamples;
+        statTotalCostItemOnlyElem.innerHTML = totalItemCost.toString();
+        statTotalCostShippingAndFeesElem.innerHTML = totalShippingAndFees.toString();
+        statGrandTotalCostElem.innerHTML = totalItemCost.add(totalShippingAndFees).toString();
+        
 
         /*** Finally, we add the new "origin rows" ***/
 
@@ -2350,7 +2678,35 @@ Full source code is available here:
                 for (let i = 0; i < 10; ++i) trCloneElem.children[i].classList.add("hidden")
             }
         }
+
+        /*** Issue warnings ***/
+
+        validateOrigins(originsData, originCosts);
     }
+
+    controlsElem.addEventListener("change", function(e) {
+        const elem = e.target;
+
+        if (elem.name !== "ctrl-view") throw "Must be ctrl-view";
+        
+        switchesVisualGuideElem.classList.remove(
+            "ctrl-view-general",
+            "ctrl-view-id",
+            "ctrl-view-docs",
+            "ctrl-view-all",
+        );
+        switch (elem.id) {
+            default:
+                throw "Unknown control input.";
+            case "ctrl-view-general":
+            case "ctrl-view-id":
+            case "ctrl-view-docs":
+            case "ctrl-view-all":
+                switchesVisualGuideElem.classList.add(elem.id);
+        }
+    });
+
+    /*** Run Everything ***/
 
     //renderControls();
     renderAdditionalHeadCells();
