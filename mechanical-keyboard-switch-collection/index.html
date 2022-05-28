@@ -67,6 +67,30 @@ Full source code is available here:
         .no-wrap {white-space: nowrap;}
         .hidden  {display: none;}
 
+
+        #terminology-explanation {
+            margin: 0.5em;
+            padding: 0.5em;
+            border: 1px solid;
+        }
+        #terminology-explanation > button::before {
+            content: "Show explanation of terminology";
+        }
+        #terminology-explanation > div {
+            display: none;
+        }
+        #terminology-explanation.active > button::before {
+            content: "Hide";
+        }
+        #terminology-explanation.active > div {
+            display: block;
+        }
+        #terminology-explanation.active .red-text {
+            color: red;
+            font-weight: bold;
+        }
+
+
         #controls-root {
             padding: 0.2em 1em 0.2em 1em;
         }
@@ -161,46 +185,91 @@ Full source code is available here:
 
 
 <p>This page is a visual guide on what switches I own in my collection. It's made for my own benefit to help me identify and compare, but I made it a public webpage since there's no reason to keep it to myself. I hope you will find this useful!</p>
-<p><strong>For now, I only collect stock MX-style switches. I'll update this if I get around to lubing, filming, or building frankenswitches.</strong></p>
+<p><strong>For now, I only collect stock MX-style mechanical switches. I'll update this if I get around to lubing, filming, or building frankenswitches.</strong></p>
 <p>If you think I've made any mistakes, please <a href="https://github.com/simshadows/simshadows-pages/issues">open an issue on GitHub</a>.</p>
-<p>These images are not my own. They were pulled from various places on the internet. I choose images according to what I think best-represents the switch appearance in-person. For original image sources, click on the images.</p>
 
-<p>Some columns are provided more to assist in telling apart different switches:</p>
-<ul>
-    <li><strong>Top Label</strong>: Moulded label at the top of the switch. These values are case-sensitive to best-represent the font used for the label.</li>
-    <li><strong>SMD</strong>: SMD LED compatibility.
+<div id="terminology-explanation" class="active">
+    <button type="button"></button>
+    <div>
+        <p>Primary identification columns:</p>
         <ul>
-            <li>If <strong>Cutout</strong>, then there is a cutout to allow light to shine through.</li>
-            <li>If <strong>Transparent</strong>, then there is no cutout but light should be able to shine through.</li>
-            <li>If <strong>Semi-Transparent</strong>, then there is no cutout and light <em>might</em> be able to shine through, but may be more heavily-attenuated than a truly transparent housing.</li>
-            <li>If <strong>No</strong>, then there is no cutout and the bottom housing is opaque, which isn't designed to let light through.</li>
-        </ul>
-    </li>
-    <li><strong>Pins</strong>: Either 3-pin or 5-pin.</li>
-    <li><strong>Additional Identification Notes</strong>: Any other interesting features.</li>
-</ul>
-
-<p><strong>Disclaimers:</strong></p>
-<ul>
-    <li><strong>Names</strong> are the most-specific phrases I can find that best identifies a switch. Most of the time, I'll likely only be able to use generic names based on what others call them, but the goal is to narrow down "series names", model numbers, round numbers, etc. as much as possible.</li>
-        <ul>
-            <li>It should be assumed that all switches have some chance of being misidentified, or even be fakes.</li>
-            <li>Switches that I believe are especially uncertain in identification will be marked accordingly. Switches with such a marking should be assumed to have uncertain naming and <em>documented characteristics</em>.</li>
-        </ul>
-    <li>The column <strong>Interesting Documented Characteristics</strong> is based entirely on found documentation. Some possible issues:
-        <ul>
-            <li><strong>Semantic consistency:</strong> Terms used can mean different things between different sources. If I feel a term is well-defined, <strong>it will be typeset as strong</strong>. If I feel a term is vaguely defined or imprecise, <em>it will be typeset as emphasis</em>. Unintuitive but well-defined terms I will use to the best of my ability:
+            <li><strong>Type</strong>: Either <em>Linear</em>, <em>Tactile</em>, or <em>Clicky</em>.</li>
+            <li><strong>Image</strong>: An image that I believe best-represents my sample switch's appearance in-person, and best at helping tell apart different switches.
                 <ul>
-                    <li><strong>Operating force</strong>: Peak force required to reach the operating position.</li>
-                    <li><strong>Pretravel</strong>: Distance between rest and the operating position.</li>
-                    <li><strong>Total travel</strong>: Distance between rest and bottom-out.</li>
-                    <li>(<strong>Operating position</strong>: Position in which the switch registers a change of signal.)</li>
+                    <li>I prefer sharp, well-lit photos that show the bottom-housing, top-housing, and stem. Colours should be as clear as possible.</li>
+                    <li><span class="red-text">These images are not my own.</span> They were pulled from various places on the internet. For original image sources, click on the images.</li>
                 </ul>
             </li>
-            <li><strong>Documentation consistency:</strong> It is assumed that the design documentation is accurately reflected in reality. It is also assumed that the documentation is free of typos.</li>
+            <li><strong>Names</strong>: The most-specific phrases I can find that best identifies a switch.
+                <ul>
+                    <li>Most of the time, I'll likely only be able to use generic names based on what others call them, but the goal is to narrow down "series names", model numbers, round numbers, etc. as much as possible.</li>
+                    <li><span class="red-text">It should be assumed that all switches have some chance of being misidentified, misnamed, or even be fakes.</span></li>
+                    <li>Switches that I believe are especially uncertain in identification will be marked accordingly. Switches with such a marking should be assumed to have uncertain naming and <em>documented characteristics</em>.</li>
+                </ul>
+            </li>
+            <li><strong>Cosmetic Variant</strong>: (self-explanatory)
+            <ul>
+                <li>(I'm considering removing this column. Sometimes, even if something is a cosmetic variant, I feel like they're better off having a separate "name".)</li>
+            </ul>
+            </li>
         </ul>
-    </li>
-</ul>
+
+        <p>Additional identification columns for useful visual characteristics that assist in telling apart different switches:</p>
+        <ul>
+            <li><strong>Top Label</strong>: Moulded label at the top of the switch. These values are case-sensitive to best-represent the font used for the label.</li>
+            <li><strong>SMD</strong>: SMD LED compatibility.
+                <ul>
+                    <li>If <strong>Cutout</strong>, then there is a cutout to allow light to shine through.</li>
+                    <li>If <strong>Transparent</strong>, then there is no cutout but light should be able to shine through.</li>
+                    <li>If <strong>Semi-Transparent</strong>, then there is no cutout and light <em>might</em> be able to shine through, but may be more heavily-attenuated than a truly transparent housing.</li>
+                    <li>If <strong>No</strong>, then there is no cutout and the bottom housing is opaque, which isn't designed to let light through.</li>
+                </ul>
+            </li>
+            <li><strong>Pins</strong>: Either 3-pin or 5-pin.</li>
+            <li><strong>Additional Identification Notes</strong>: Any other interesting features.</li>
+        </ul>
+
+        <p>Documented characteristics columns are for further features of the switch that have been documented in various places (such as official datasheets, store pages, blog posts, etc.):</p>
+        <ul>
+            <li><strong>Interested Documented Characteristics</strong>: The most useful summary I can find that describes what sets the switch apart from other switches (apart from just visual).
+                <ul>
+                    <li><span class="red-text">Terms used can mean different things between different sources.</span> If I feel a term is well-defined, <strong>it will be typeset as strong</strong>. If I feel a term is vaguely defined or imprecise, <em>it will be typeset as emphasis</em>. Unintuitive but well-defined terms I will use to the best of my ability:
+                        <ul>
+                            <li><strong>Operating force</strong>: Peak force required to reach the operating position.</li>
+                            <li><strong>Pretravel</strong>: Distance between rest and the operating position.</li>
+                            <li><strong>Total travel</strong>: Distance between rest and bottom-out.</li>
+                            <li>(<strong>Operating position</strong>: Position in which the switch registers a change of signal.)</li>
+                        </ul>
+                    </li>
+                    <li><span class="red-text">Documentation found may not be accurate or free of typos.</span> To help, I have included citations for all information found.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>Sample identification columns identify specific samples in my collection.</p>
+        <ul>
+            <li><strong>Sample Count</strong>: The number of samples I have.</li>
+            <li><strong>Origin</strong>: An ID for the origin, consisting of the purchase date, where I got it from, and the region it's from.</li>
+            <li><strong>Underside Labels</strong>: Labels found on the underside of the switch.
+                <ul>
+                    <li>I'm actually not entirely sure what these are, but I expect they're for identifying moulds, batches, etc.</li>
+                    <li>I record this information because it helps me tell apart different samples of the same switch type.</li>
+                </ul>
+            </li>
+            <li><strong>Item Cost (Per Switch)</strong>: The price I purchased the individual switch for, before shipping and fees.
+                <ul>
+                    <li>These prices are usually inferred, but all the individual costs will <em>always</em> add up to exactly how much I paid for them. For example, if I got a $10 sample pack consisting of two switches "Switch A" and "Switch B", if the store sells Switch A at $30 per pack of 10 and Switch B at $10 per pack of 10, I will infer that my Switch A costed $7.50 and my Switch B costed $2.50.</li>
+                </ul>
+            </li>
+            <li><strong>Shipping/Fees (Per Switch)</strong>: The price I paid for shipping and fees for the individual switch.
+                <ul>
+                    <li>Similar to Item Cost, this price is inferred but will <em>always</em> add up to exactly how much I paid for it. For example, if we use the Switch A and Switch B examples from earlier, if shipping costed $5 in total for the entire sample pack, then Switch A is inferred to have a shipping cost of $3.75 while Switch B will be inferred to have a shipping cost of $1.25.</li>
+                </ul>
+            </li>
+            <li><strong>Comments</strong>: Additional comments about the sample.</li>
+        </ul>
+    </div>
+</div>
 
 <noscript>
     <p><strong>WARNING: Javascript is not enabled. While this page is viewable with Javascript disabled, functionality will be limited.</strong></p>
@@ -2509,6 +2578,8 @@ Full source code is available here:
 
     /*** ***/
 
+    const termExplainElem = document.querySelector("#terminology-explanation")
+
     const controlsElem = document.querySelector("#controls-root");
 
     const switchesVisualGuideElem = document.querySelector("#switches-visual-guide");
@@ -2544,7 +2615,9 @@ Full source code is available here:
         "Transparent": "smd-transparent",
         "Semi-Transparent": "smd-semi-transparent",
     };
-    function processTableData() {
+    function run() {
+        renderAdditionalHeadCells();
+
         const originsData = parseOriginTable(originsElem);
 
         let numSwitchTypes = 0;
@@ -2679,42 +2752,47 @@ Full source code is available here:
             }
         }
 
-        /*** Issue warnings ***/
+        /*** Extra Stuff ***/
+
+        termExplainElem.classList.remove("active");
+        termExplainElem.querySelector(":scope > button").addEventListener("click", function(e) {
+            if (termExplainElem.classList.contains("active")) {
+                termExplainElem.classList.remove("active");
+            } else {
+                termExplainElem.classList.add("active");
+            }
+        });
+
+        controlsElem.addEventListener("change", function(e) {
+            const elem = e.target;
+
+            if (elem.name !== "ctrl-view") throw "Must be ctrl-view";
+            
+            switchesVisualGuideElem.classList.remove(
+                "ctrl-view-general",
+                "ctrl-view-id",
+                "ctrl-view-docs",
+                "ctrl-view-all",
+            );
+            switch (elem.id) {
+                default:
+                    throw "Unknown control input.";
+                case "ctrl-view-general":
+                case "ctrl-view-id":
+                case "ctrl-view-docs":
+                case "ctrl-view-all":
+                    switchesVisualGuideElem.classList.add(elem.id);
+            }
+        });
+
+        document.querySelectorAll("a").forEach((a) => {
+            a.setAttribute('target', '_blank');
+        })
 
         validateOrigins(originsData, originCosts);
     }
 
-    controlsElem.addEventListener("change", function(e) {
-        const elem = e.target;
-
-        if (elem.name !== "ctrl-view") throw "Must be ctrl-view";
-        
-        switchesVisualGuideElem.classList.remove(
-            "ctrl-view-general",
-            "ctrl-view-id",
-            "ctrl-view-docs",
-            "ctrl-view-all",
-        );
-        switch (elem.id) {
-            default:
-                throw "Unknown control input.";
-            case "ctrl-view-general":
-            case "ctrl-view-id":
-            case "ctrl-view-docs":
-            case "ctrl-view-all":
-                switchesVisualGuideElem.classList.add(elem.id);
-        }
-    });
-
-    /*** Run Everything ***/
-
-    //renderControls();
-    renderAdditionalHeadCells();
-    processTableData();
-
-    document.querySelectorAll("a").forEach((a) => {
-        a.setAttribute('target', '_blank');
-    })
+    run();
 </script>
 
 
