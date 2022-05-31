@@ -49,15 +49,13 @@ Full source code is available here:
         table {
             border-collapse: collapse;
         }
+        th {
+            background-color: #bbb;
+        }
         td,
         th {
             border: 1px solid;
             padding: 0.3em 0.6em 0.3em 0.6em;
-        }
-        th {
-            position: sticky;
-            top: 0; /* required for stickiness */
-            background-color: #bbb;
         }
         table ul {
             list-style-position: inside;
@@ -95,49 +93,88 @@ Full source code is available here:
             padding: 0.2em 1em 0.2em 1em;
         }
 
-        #switches-visual-guide {
+        
+        
+        /*
+         * Sticky Cells
+         */
+        #switches-visual-guide > table > thead > tr > th {
+            position: sticky;
+            top: 0; /* required for stickiness */
+            z-index: 3;
+        }
+        #switches-visual-guide > table > thead > tr > th:nth-child(4) {
+            z-index: 5;
+        }
+        #switches-visual-guide > table > * > tr > :nth-child(4)  {
+            position: sticky;
+            left: 0;
+        }
+        #switches-visual-guide > table > tbody > tr > :nth-child(4)  {
+            z-index: 4;
+            background-color: white;
+        }
+
+
+
+        #switches-visual-guide > table {
             margin: auto;
             font-size: 85%;
         }
 
-        #switches-visual-guide img {
+        #switches-visual-guide > table img {
             width: 10em;
         }
         
-        #switches-visual-guide > * > tr > :nth-child(3) {
+        #switches-visual-guide > table > * > tr > :nth-child(3) {
             padding: 0.2em;
         }
         
-        #switches-visual-guide > * > tr > :nth-child(2),
-        #switches-visual-guide > * > tr > :nth-child(3),
-        #switches-visual-guide > * > tr > :nth-child(6),
-        #switches-visual-guide > * > tr > :nth-child(7),
-        #switches-visual-guide > * > tr > :nth-child(11),
-        #switches-visual-guide > * > tr > :nth-child(12),
-        #switches-visual-guide > * > tr > :nth-child(13) {
+        /*
+         * Column Sizing
+         */
+        #switches-visual-guide > table > * > tr > :nth-child(2),
+        #switches-visual-guide > table > * > tr > :nth-child(3),
+        #switches-visual-guide > table > * > tr > :nth-child(4),
+        #switches-visual-guide > table > * > tr > :nth-child(6),
+        #switches-visual-guide > table > * > tr > :nth-child(7),
+        #switches-visual-guide > table > * > tr > :nth-child(10),
+        #switches-visual-guide > table > * > tr > :nth-child(12),
+        #switches-visual-guide > table > * > tr > :nth-child(13),
+        #switches-visual-guide > table > * > tr > :nth-child(14),
+        #switches-visual-guide > table > * > tr > :nth-child(15),
+        #switches-visual-guide > table > * > tr > :nth-child(16) {
+            white-space: nowrap;
             width: 1%;
         }
+        #switches-visual-guide > table > * > tr > :nth-child(5)  {min-width: 10em;}
+        #switches-visual-guide > table > * > tr > :nth-child(9)  {min-width: 18em;}
+        #switches-visual-guide > table > * > tr > :nth-child(17) {min-width: 18em;}
 
-        #switches-visual-guide > * > tr > :nth-child(6),
-        #switches-visual-guide > * > tr > :nth-child(10),
-        #switches-visual-guide > * > tr > :nth-child(11) {
+        /*
+         * Thick Lines
+         */
+        #switches-visual-guide > table > * > tr > :nth-child(6),
+        #switches-visual-guide > table > * > tr > :nth-child(10),
+        #switches-visual-guide > table > * > tr > :nth-child(12) {
             border-left: 10px solid #000;
         }
-
-        #switches-visual-guide tr.start-group td {
+        #switches-visual-guide > table tr.start-group td {
             border-top: 10px solid #000;
         }
 
-        #switches-visual-guide td.linear  {background-color: #ea9999;}
-        #switches-visual-guide td.tactile {background-color: #b6d7a8;}
-        #switches-visual-guide td.clicky  {background-color: #9fc5e8;}
+        /*
+         * Dynamic Colours
+         */
+        #switches-visual-guide > table td.linear  {background-color: #ea9999;}
+        #switches-visual-guide > table td.tactile {background-color: #b6d7a8;}
+        #switches-visual-guide > table td.clicky  {background-color: #9fc5e8;}
+        #switches-visual-guide > table td.smd-incompatible     {background-color: #ea9999;}
+        #switches-visual-guide > table td.smd-cutout           {background-color: #b6d7a8;}
+        #switches-visual-guide > table td.smd-transparent      {background-color: #b6d7a8;}
+        #switches-visual-guide > table td.smd-semi-transparent {background-color: #ffe599;}
 
-        #switches-visual-guide td.smd-incompatible     {background-color: #ea9999;}
-        #switches-visual-guide td.smd-cutout           {background-color: #b6d7a8;}
-        #switches-visual-guide td.smd-transparent      {background-color: #b6d7a8;}
-        #switches-visual-guide td.smd-semi-transparent {background-color: #ffe599;}
-
-        #switches-visual-guide .unverified::after {
+        #switches-visual-guide > table .unverified::after {
             content: "\A[UNVERIFIED]";
             white-space: pre;
             color: red;
@@ -154,23 +191,37 @@ Full source code is available here:
 
         /*** Column Filtering ***/
 
-        #switches-visual-guide                   > * > tr > :nth-child(1), /* ALWAYS HIDE */
+        #switches-visual-guide                   > table > * > tr > :nth-child(1), /* ALWAYS HIDE */
+        #switches-visual-guide                   > table > * > tr > :nth-child(11), /* TEMPORARY UNTIL IMPLEMENTED */
         /**/
-        #switches-visual-guide.ctrl-view-general > * > tr > :nth-child(9),
-        #switches-visual-guide.ctrl-view-general > * > tr > :nth-child(14),
-        #switches-visual-guide.ctrl-view-general > * > tr > :nth-child(15),
-        #switches-visual-guide.ctrl-view-general > * > tr > :nth-child(16),
+        #switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(9),
+        #switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(11),
+        #switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(14),
+        #switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(15),
+        #switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(16),
         /**/
-        #switches-visual-guide.ctrl-view-id      > * > tr > :nth-child(10),
+        #switches-visual-guide.ctrl-view-id      > table  > * > tr > :nth-child(10),
+        #switches-visual-guide.ctrl-view-id      > table  > * > tr > :nth-child(11),
         /**/
-        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(11),
-        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(12),
-        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(13),
-        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(14),
-        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(15),
-        #switches-visual-guide.ctrl-view-docs    > * > tr > :nth-child(16) {
+        #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(12),
+        #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(13),
+        #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(14),
+        #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(15),
+        #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(16),
+        #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(17) {
             display: none;
         }
+
+        /*
+        #switches-visual-guide.ctrl-view-all {
+            width: 100%;
+            height: 90vh;
+            overflow: auto;
+        }
+        #switches-visual-guide.ctrl-view-all > table {
+            width: 220em;
+        }
+        */
     </style>
 </head>
 
@@ -298,7 +349,7 @@ Full source code is available here:
 </noscript>
 
 
-<p><table id="switches-visual-guide" class="ctrl-view-general">
+<p><div id="switches-visual-guide" class="ctrl-view-general"><table>
     <thead>
         <tr>
             <th>More Data<br>(HIDDEN WITH CSS)</th>
@@ -2852,7 +2903,7 @@ Full source code is available here:
             <td></td>
         </tr>
     </tbody>
-</table></p>
+</table></div></p>
 
 <p><table id="stat-table">
     <tbody>
@@ -3109,31 +3160,16 @@ Full source code is available here:
         }
     }
 
-    // Create a "text" fragment where non-space clusters are wrapped in "no-wrap" spans.
-    function textBreakOnlyOnSpaceFragment(s) {
-        const fragment = document.createDocumentFragment();
-        let shouldAppendSpace = false;
-        for (const s2 of s.split(" ")) {
-            const spanElem = element("span", {class: "no-wrap"});
-            spanElem.appendChild(txt(s2));
-
-            if (shouldAppendSpace) fragment.appendChild(txt(" "));
-            fragment.appendChild(spanElem);
-
-            shouldAppendSpace = true;
-        }
-        return fragment;
-    }
-
     /*** ***/
 
     const termExplainElem = document.querySelector("#terminology-explanation")
 
     const controlsElem = document.querySelector("#controls-root");
 
-    const switchesVisualGuideElem = document.querySelector("#switches-visual-guide");
-    const theadElem = document.querySelector("#switches-visual-guide > thead");
-    const tbodyElem = document.querySelector("#switches-visual-guide > tbody");
+    const switchesContainerElem = document.querySelector("#switches-visual-guide");
+    const switchesTableElem = document.querySelector("#switches-visual-guide > table");
+    const theadElem = document.querySelector("#switches-visual-guide > table > thead");
+    const tbodyElem = document.querySelector("#switches-visual-guide > table > tbody");
 
     const statNumUniqueSwitchTypesElem = document.querySelector("#stat-num-of-unique-switch-types");
     const statNumSamplesElem = document.querySelector("#stat-num-of-samples");
@@ -3145,9 +3181,10 @@ Full source code is available here:
 
     function renderAdditionalHeadCells() {
         const trElem = theadElem.children[0];
-        trElem.appendChild(element("th")).innerHTML = "Sample Count";
+        trElem.appendChild(element("th")).innerHTML = "Useful References";
+        trElem.appendChild(element("th")).innerHTML = "Sample<br>Count";
         trElem.appendChild(element("th")).innerHTML = "Origin";
-        trElem.appendChild(element("th")).innerHTML = "Underside Labels";
+        trElem.appendChild(element("th")).innerHTML = "Underside<br>Labels";
         trElem.appendChild(element("th")).innerHTML = "Item Cost<br>(Per Switch)";
         trElem.appendChild(element("th")).innerHTML = "Shipping/Fees<br>(Per Switch)";
         trElem.appendChild(element("th")).innerHTML = "Comments";
@@ -3221,8 +3258,7 @@ Full source code is available here:
 
             /*** Create new columns for main rows ***/
             
-            // Not yet implemented
-            //trElem.appendChild(element("td")).appendChild(txt("PLACEHOLDER"));
+            trElem.appendChild(element("td")).innerHTML = "TODO";
 
             /*** Create clone rows ***/
 
@@ -3252,7 +3288,7 @@ Full source code is available here:
                 numSamples += numSamplesSingleOrigin;
 
                 // Origin
-                trElem2.appendChild(element("td")).appendChild(textBreakOnlyOnSpaceFragment(d["originIDstr"]));
+                trElem2.appendChild(element("td")).innerHTML = d["originIDstr"].replace(" ", "<br>");
 
                 // Underside Labels
                 trElem2.appendChild(element("td")).innerHTML = d["undersideMouldLabel"]?.join("<br>") || "";
@@ -3318,7 +3354,7 @@ Full source code is available here:
 
             if (elem.name !== "ctrl-view") throw "Must be ctrl-view";
             
-            switchesVisualGuideElem.classList.remove(
+            switchesContainerElem.classList.remove(
                 "ctrl-view-general",
                 "ctrl-view-id",
                 "ctrl-view-docs",
@@ -3331,7 +3367,7 @@ Full source code is available here:
                 case "ctrl-view-id":
                 case "ctrl-view-docs":
                 case "ctrl-view-all":
-                    switchesVisualGuideElem.classList.add(elem.id);
+                    switchesContainerElem.classList.add(elem.id);
             }
         });
 
