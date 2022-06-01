@@ -134,9 +134,7 @@ Full source code is available here:
          * Column Sizing
          */
         #switches-visual-guide > table > * > tr > :nth-child(2),
-        #switches-visual-guide > table > * > tr > :nth-child(3),
         #switches-visual-guide > table > * > tr > :nth-child(4),
-        #switches-visual-guide > table > * > tr > :nth-child(6),
         #switches-visual-guide > table > * > tr > :nth-child(7),
         #switches-visual-guide > table > * > tr > :nth-child(10),
         #switches-visual-guide > table > * > tr > :nth-child(12),
@@ -147,9 +145,22 @@ Full source code is available here:
             white-space: nowrap;
             width: 1%;
         }
+        #switches-visual-guide > table > * > tr > :nth-child(3),
+        #switches-visual-guide > table > * > tr > :nth-child(6) {
+            width: 1%;
+        }
         #switches-visual-guide > table > * > tr > :nth-child(5)  {min-width: 10em;}
         #switches-visual-guide > table > * > tr > :nth-child(9)  {min-width: 18em;}
         #switches-visual-guide > table > * > tr > :nth-child(17) {min-width: 18em;}
+        #origin-table > * > tr > :nth-child(1),
+        #origin-table > * > tr > :nth-child(2),
+        #origin-table > * > tr > :nth-child(3),
+        #origin-table > * > tr > :nth-child(4),
+        #origin-table > * > tr > :nth-child(5),
+        #origin-table > * > tr > :nth-child(6) {
+            white-space: nowrap;
+            width: 1%;
+        }
 
         /*
          * Thick Lines
@@ -192,7 +203,6 @@ Full source code is available here:
         /*** Column Filtering ***/
 
         #switches-visual-guide                   > table > * > tr > :nth-child(1), /* ALWAYS HIDE */
-        #switches-visual-guide                   > table > * > tr > :nth-child(11), /* TEMPORARY UNTIL IMPLEMENTED */
         /**/
         #switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(9),
         #switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(11),
@@ -368,6 +378,24 @@ Full source code is available here:
         <!-- ==================================================================================== -->
         <tr>
             <td>{
+                "imgAck": "/_placeholder-stubs/own-work.html",
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["", ""]}
+                ]
+            }</td>
+            <td>Tactile</td>
+            <td><img src="./_images/aflion-panda.jpg"></td>
+            <td>Aflion Panda</td>
+            <td></td>
+            <td>AFLION</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- ==================================================================================== -->
+        <tr class="start-group">
+            <td>{
                 "imgAck": "https://candykeys.com/product/builtbynim-bbn-linear-switch",
                 "origins": [
                     {"originID": "2022-05-02 ALL-CAPS-AU", "count": 1, "undersideMouldLabel": ["12"],
@@ -384,7 +412,7 @@ Full source code is available here:
             <td></td>
             <td><ul>
                 <li><em>Spring</em>: "63.5g dual stage gold plated"</li>
-                <li><em>Stem</em>: POM</li>
+                <li><em>Stem</em>: "POM lengthened stem"</li>
                 <li><em>Top Housing</em>: "Custom nylon blend"</li>
                 <li><em>Bottom Housing</em>: PC</li>
                 <li>[<a href="https://www.builtbynim.com/products/p/bbn-linear">official?</a>]</li>
@@ -1622,7 +1650,6 @@ Full source code is available here:
         <!-- ==================================================================================== -->
         <tr class="start-group">
             <td>{
-                "unverified": true,
                 "imgAck": "https://www.amazon.co.uk/Gazzew-Silent-Bobagum-Mechanical-Keyboard/dp/B09132K99D",
                 "origins": [
                     {"originID": "2022-05-11 HippoKeys-US", "count": 1, "undersideMouldLabel": ["OUTEMU", "C"], "comment": "Found in the second bag of the packaging.",
@@ -1632,7 +1659,129 @@ Full source code is available here:
             <td>Linear</td>
             <td><img src="./_images/gazzew-bobagum.jpg"></td>
             <td>Gazzew Bobagum (62g)</td>
+            <td>Opaque Top</td>
+            <td>GAZZEW</td>
+            <td>Cutout</td>
+            <td>5</td>
             <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
+                "imgAck": "https://www.lazada.com.ph/products/gazzew-boba-gum-pink-silent-linear-bobagum-rgb-for-mechanical-keyboard-custom-switch-5pin-52g-62g-68g-bottom-i2908245923.html",
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["OUTEMU", "A"], "comment": "Packaged in its own individual zip bag."}
+                ]
+            }</td>
+            <td>Linear</td>
+            <td rowspan="2"><img src="./_images/gazzew-bobagum-clear-top.jpg"></td>
+            <td>Gazzew Bobagum (52g)</td>
+            <td>Clear Top</td>
+            <td>GAZZEW</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td>(See notes for the 68g variant.)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
+                "imgAck": "https://www.lazada.com.ph/products/gazzew-boba-gum-pink-silent-linear-bobagum-rgb-for-mechanical-keyboard-custom-switch-5pin-52g-62g-68g-bottom-i2908245923.html",
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["OUTEMU", "A"],
+                        "comment": "Packaged in its own individual zip bag.<br>Identical underside labels to the 52g, but the 68g's top housing has a small hard-to-read label \"1-14\" around the SMD cutout. The 52g doesn't have a similarly-placed label."}
+                ]
+            }</td>
+            <td>Linear</td>
+            <td class="hidden"><img src="./_images/gazzew-bobagum-clear-top.jpg"></td>
+            <td>Gazzew Bobagum (68g)</td>
+            <td>Clear Top</td>
+            <td>GAZZEW</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td>Comparing the 68g and 52g, force is noticeably stronger with the 68g. Or, just push the stems together and the 68g should "win".</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
+                "imgAck": "https://loobedswitches.com/products/lubed-gazzew-boba-lt",
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["OUTEMU", "A"],
+                        "comment": "Packaged in its own individual zip bag."}
+                ]
+            }</td>
+            <td>Linear</td>
+            <td rowspan="2"><img src="./_images/gazzew-boba-lt.jpg"></td>
+            <td>Gazzew Boba LT (55g)</td>
+            <td></td>
+            <td>GAZZEW</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
+                "imgAck": "https://loobedswitches.com/products/lubed-gazzew-boba-lt",
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["OUTEMU", "B"],
+                        "comment": "Packaged in its own individual zip bag."}
+                ]
+            }</td>
+            <td>Linear</td>
+            <td class="hidden"><img src="./_images/gazzew-boba-lt.jpg"></td>
+            <td>Gazzew Boba LT (65g)</td>
+            <td></td>
+            <td>GAZZEW</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
+                "imgAck": "https://dailyclack.com/products/gazzew-boba-u4-silent-tactile-switches",
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["OUTEMU", "F"]}
+                ]
+            }</td>
+            <td>Tactile</td>
+            <td rowspan="2"><img src="./_images/gazzew-boba-u4-opaque-top.jpg"></td>
+            <td>Gazzew Boba U4 (62g)</td>
+            <td>Opaque Top</td>
+            <td>GAZZEW</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
+                "imgAck": "https://dailyclack.com/products/gazzew-boba-u4-silent-tactile-switches",
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["OUTEMU", "E"], "comment": "Packaged in its own individual zip bag."}
+                ]
+            }</td>
+            <td>Tactile</td>
+            <td class="hidden"><img src="./_images/gazzew-boba-u4-opaque-top.jpg"></td>
+            <td>Gazzew Boba U4 (68g)</td>
+            <td>Opaque Top</td>
+            <td>GAZZEW</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
+                "imgAck": "https://www.ubuy.co.in/product/4XGJE3MZ8-gazzew-boba-u4-switch-silent-tactile-5pin-62g-68g-keyswitch-with-white-rgb-version-for-customization-mechanical-gaming-keyboard-color-u4-62g",
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["OUTEMU", "C"]}
+                ]
+            }</td>
+            <td>Tactile</td>
+            <td><img src="./_images/gazzew-boba-u4-clear-top.jpg"></td>
+            <td>Gazzew Boba U4 (62g)</td>
+            <td>Clear Top</td>
             <td>GAZZEW</td>
             <td>Cutout</td>
             <td>5</td>
@@ -1659,7 +1808,6 @@ Full source code is available here:
         </tr>
         <tr>
             <td>{
-                "unverified": true,
                 "imgAck": "https://splitkb.com/products/gazzew-boba-u4t-thocky-tactile-switch",
                 "origins": [
                     {"originID": "2022-05-11 HippoKeys-US", "count": 1, "undersideMouldLabel": ["OUTEMU", "D"], "comment": "Found in the first bag of the packaging.",
@@ -1770,6 +1918,26 @@ Full source code is available here:
             <td>Cutout</td>
             <td>5</td>
             <td></td>
+            <td></td>
+        </tr>
+        <!-- ==================================================================================== -->
+        <tr class="start-group">
+            <td>{
+                "unverified": true,
+                "imgAck": "https://www.theremingoat.com/blog/holy-panda-x-switch-review",
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["7"],
+                        "comment": "Top housing has a label \"45\" near the SMD cutout.<br>The store page claims these were made with the original Invyr tooling, and doesn't mention Drop anywhere. I'm inclined to believe it for now, and I've marked it as \"unverified\" while I figure it out the history of Invyr Holy Pandas and where my samples fit into it.<br>Technically, I actually bought a total of 3 Invyr Holy Pandas from this store. One is kept in my sample collection, the other two are kept in my extras box. One sample has underside label \"17\" and near-SMD label \"5\" while the other has underside label \"27\" and near-SMD label \"45\"."}
+                ]
+            }</td>
+            <td>Tactile</td>
+            <td><img src="./_images/massdrop-invyr-holy-panda.jpg"></td>
+            <td>Invyr Holy Panda</td>
+            <td></td>
+            <td>INVYR</td>
+            <td>Cutout</td>
+            <td>3</td>
+            <td>Housing is an off-white colour (both bottom and top housing).</td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -2794,9 +2962,68 @@ Full source code is available here:
         </tr>
         <tr>
             <td>{
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["1"],
+                        "comment": "Packaged in its own individual zip bag.<br>The label \"16\" is found under the top housing, in the SMD cutout."}
+                ]
+            }</td>
+            <td>Linear</td>
+            <td>(Almost identical to the V2.)</td>
+            <td>Tecsee Ruby V1</td>
+            <td></td>
+            <td>TECSEE</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td>
+                V1 housing looks effectively identical to V2. (Hard to say 100% for sure because of the glitter effect.)<br>
+                V1 stem looks more opaque/solid-coloured, while V2 looks clearer.
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
+                "imgAck": "https://www.switchkeys.com.au/products/tecsee-ruby-switches-x10",
+                "origins": [
+                {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["5"],
+                    "comment": "Packaged in its own individual zip bag.<br>The label \"D\" is found under the top housing, in the SMD cutout."}
+                ]
+            }</td>
+            <td>Linear</td>
+            <td><img src="./_images/tecsee-ruby-v2.jpg"></td>
+            <td>Tecsee Ruby V2</td>
+            <td></td>
+            <td>TECSEE</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td>(See notes for the V1.)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
+                "origins": [
+                    {"originID": "2022-05-17 MKCOID-ID", "count": 1, "undersideMouldLabel": ["9"],
+                        "comment": "Underside label is read with switch upside down, and LED side facing north. (Otherwise, it can be mistaken for \"3\".)<br>The label \"4\" is found under the top housing, in the SMD cutout."}
+                ]
+            }</td>
+            <td>Tactile</td>
+            <td>(Almost identical to the V2.)</td>
+            <td>Tecsee Sapphire V1</td>
+            <td></td>
+            <td>TECSEE</td>
+            <td>Cutout</td>
+            <td>5</td>
+            <td>
+                V1 housing looks effectively identical to V2. (Hard to say 100% for sure because of the glitter effect.)<br>
+                V1 stem looks more opaque/solid-coloured, while V2 looks clearer.
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>{
                 "imgAck": "https://www.switchkeys.com.au/collections/switches/products/tecsee-sapphire-switches-x10",
                 "origins": [
-                    {"originID": "2022-05-11 HippoKeys-US", "count": 1, "undersideMouldLabel": ["3"], "comment": "Found in the first bag of the packaging.",
+                    {"originID": "2022-05-11 HippoKeys-US", "count": 1, "undersideMouldLabel": ["3"],
+                        "comment": "Found in the first bag of the packaging.<br>Underside label is read with switch upside down, and LED side facing north.<br>The label \"9\" is found under the top housing, in the SMD cutout.",
                         "itemCost": "1.25 AUD", "sfCost": "1.20 AUD"}
                 ]
             }</td>
@@ -2807,7 +3034,7 @@ Full source code is available here:
             <td>TECSEE</td>
             <td>Cutout</td>
             <td>5</td>
-            <td></td>
+            <td>(See notes for the V1.)</td>
             <td></td>
         </tr>
         <!-- ==================================================================================== -->
@@ -2933,12 +3160,12 @@ Full source code is available here:
 <p><table id="origin-table">
     <thead>
         <tr>
-            <th>Purchase Date</th>
+            <th>Purchase<br>Date</th>
             <th>ID Fragment</th>
             <th>Description</th>
-            <th>Number Of Switches</th>
-            <th>Total Item Cost</th>
-            <th>Total Shipping + Fees</th>
+            <th>Number of<br>Switches</th>
+            <th>Total<br>Item Cost</th>
+            <th>Total<br>Shipping + Fees</th>
             <th>Comments</th>
         </tr>
     </thead>
@@ -2997,6 +3224,15 @@ Full source code is available here:
             <td>12.34 AUD</td>
             <td>1.28 AUD</td>
             <td></td>
+        </tr>
+        <tr>
+            <td>2022-05-17</td>
+            <td>MKCOID-ID</td>
+            <td>Various individual purchases from <a href="https://www.mechanicalkeyboards.co.id/">MechanicalKeyboards.co.id</a></td>
+            <td>142</td>
+            <td>115.80 AUD</td>
+            <td>52.53 AUD</td>
+            <td>Switches are not yet fully accounted for. I'll be updating this page over time as I work on identifying everything.</td>
         </tr>
     </tbody>
 </table></p>
@@ -3241,6 +3477,7 @@ Full source code is available here:
 
             /*** Read and process the JSON data ***/
 
+            //console.log(tdElems[0].innerHTML);
             const data = JSON.parse(tdElems[0].innerHTML);
             reprocessTableJSON(data);
 
@@ -3252,7 +3489,7 @@ Full source code is available here:
             applyClass(tdElems[1], typeClassMap[tdElems[1].innerHTML], "Invalid value for \"Type\" column.");
             applyClass(tdElems[6], smdClassMap[tdElems[6].innerHTML], "Invalid value for \"SMD\" column.");
 
-            addLinkToTD(tdElems[2], data.imgAck);
+            if (data.imgAck) addLinkToTD(tdElems[2], data.imgAck);
 
             if (isUnverified) applyClass(tdElems[3], "unverified", "Invalid.");
 

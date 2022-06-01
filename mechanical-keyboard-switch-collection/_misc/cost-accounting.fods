@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <office:document xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" office:version="1.2" office:mimetype="application/vnd.oasis.opendocument.spreadsheet">
- <office:meta><meta:creation-date>2022-05-27T01:16:58.795000000</meta:creation-date><dc:date>2022-05-30T22:37:57.860000000</dc:date><meta:editing-duration>P1DT35M46S</meta:editing-duration><meta:editing-cycles>26</meta:editing-cycles><meta:generator>LibreOffice/6.4.5.2$Windows_X86_64 LibreOffice_project/a726b36747cf2001e06b58ad5db1aa3a9a1872d6</meta:generator><meta:document-statistic meta:table-count="1" meta:cell-count="1488" meta:object-count="0"/></office:meta>
+ <office:meta><meta:creation-date>2022-05-27T01:16:58.795000000</meta:creation-date><dc:date>2022-06-01T11:56:02.817000000</dc:date><meta:editing-duration>P1DT19H39M55S</meta:editing-duration><meta:editing-cycles>29</meta:editing-cycles><meta:generator>LibreOffice/6.4.5.2$Windows_X86_64 LibreOffice_project/a726b36747cf2001e06b58ad5db1aa3a9a1872d6</meta:generator><meta:document-statistic meta:table-count="1" meta:cell-count="1494" meta:object-count="0"/></office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
    <config:config-item config:name="VisibleAreaTop" config:type="int">0</config:config-item>
    <config:config-item config:name="VisibleAreaLeft" config:type="int">0</config:config-item>
    <config:config-item config:name="VisibleAreaWidth" config:type="int">63510</config:config-item>
-   <config:config-item config:name="VisibleAreaHeight" config:type="int">64510</config:config-item>
+   <config:config-item config:name="VisibleAreaHeight" config:type="int">65413</config:config-item>
    <config:config-item-map-indexed config:name="Views">
     <config:config-item-map-entry>
      <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>
      <config:config-item-map-named config:name="Tables">
       <config:config-item-map-entry config:name="Sheet1">
-       <config:config-item config:name="CursorPositionX" config:type="int">5</config:config-item>
-       <config:config-item config:name="CursorPositionY" config:type="int">143</config:config-item>
+       <config:config-item config:name="CursorPositionX" config:type="int">4</config:config-item>
+       <config:config-item config:name="CursorPositionY" config:type="int">148</config:config-item>
        <config:config-item config:name="HorizontalSplitMode" config:type="short">0</config:config-item>
        <config:config-item config:name="VerticalSplitMode" config:type="short">2</config:config-item>
        <config:config-item config:name="HorizontalSplitPosition" config:type="int">0</config:config-item>
        <config:config-item config:name="VerticalSplitPosition" config:type="int">1</config:config-item>
        <config:config-item config:name="ActiveSplitRange" config:type="short">2</config:config-item>
-       <config:config-item config:name="PositionLeft" config:type="int">2</config:config-item>
+       <config:config-item config:name="PositionLeft" config:type="int">0</config:config-item>
        <config:config-item config:name="PositionRight" config:type="int">1</config:config-item>
        <config:config-item config:name="PositionTop" config:type="int">0</config:config-item>
-       <config:config-item config:name="PositionBottom" config:type="int">103</config:config-item>
+       <config:config-item config:name="PositionBottom" config:type="int">115</config:config-item>
        <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
        <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
        <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>
@@ -103,12 +103,9 @@
   </office:script>
  </office:scripts>
  <office:font-face-decls>
-  <style:font-face style:name="Liberation Serif" svg:font-family="&apos;Liberation Serif&apos;" style:font-family-generic="roman" style:font-pitch="variable"/>
   <style:font-face style:name="Liberation Sans" svg:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="swiss" style:font-pitch="variable"/>
   <style:font-face style:name="Arial" svg:font-family="Arial" style:font-family-generic="system" style:font-pitch="variable"/>
   <style:font-face style:name="Microsoft YaHei" svg:font-family="&apos;Microsoft YaHei&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
-  <style:font-face style:name="Segoe UI" svg:font-family="&apos;Segoe UI&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
-  <style:font-face style:name="Tahoma" svg:font-family="Tahoma" style:font-family-generic="system" style:font-pitch="variable"/>
  </office:font-face-decls>
  <office:styles>
   <style:default-style style:family="table-cell">
@@ -315,7 +312,7 @@
      <text:p><text:sheet-name>???</text:sheet-name><text:s/>(<text:title>???</text:title>)</text:p>
     </style:region-left>
     <style:region-right>
-     <text:p><text:date style:data-style-name="N2" text:date-value="2022-05-30">00/00/0000</text:date>, <text:time style:data-style-name="N2" text:time-value="20:29:46.173000000">00:00:00</text:time></text:p>
+     <text:p><text:date style:data-style-name="N2" text:date-value="2022-06-01">00/00/0000</text:date>, <text:time style:data-style-name="N2" text:time-value="10:52:27.328000000">00:00:00</text:time></text:p>
     </style:region-right>
    </style:header>
    <style:header-left style:display="false"/>
@@ -347,7 +344,7 @@
     <table:table-column table:style-name="co7" table:default-cell-style-name="ce4"/>
     <table:table-column table:style-name="co12" table:default-cell-style-name="ce1"/>
     <table:table-column table:style-name="co13" table:default-cell-style-name="ce7"/>
-    <table:table-column table:style-name="co13" table:number-columns-repeated="49" table:default-cell-style-name="Default"/>
+    <table:table-column table:style-name="co13" table:number-columns-repeated="46" table:default-cell-style-name="Default"/>
     <table:table-row table:style-name="ro1">
      <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
       <text:p>Purchase Date</text:p>
@@ -386,7 +383,7 @@
      <table:table-cell table:style-name="ce12"/>
      <table:table-cell/>
      <table:table-cell table:style-name="ce6"/>
-     <table:table-cell table:style-name="ce1" table:number-columns-repeated="49"/>
+     <table:table-cell table:style-name="ce1" table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -428,7 +425,7 @@
      <table:table-cell office:value-type="float" office:value="10" calcext:value-type="float">
       <text:p>10</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -470,7 +467,7 @@
      <table:table-cell office:value-type="float" office:value="1.79" calcext:value-type="float">
       <text:p>1.79</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -505,7 +502,7 @@
      <table:table-cell table:formula="of:=MROUND([.J4];0.01)" office:value-type="float" office:value="0.19" calcext:value-type="float">
       <text:p>0.19</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -541,7 +538,7 @@
       <text:p>0.14</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="ce13" table:number-columns-repeated="2"/>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -577,7 +574,7 @@
       <text:p>0.14</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="ce13" table:number-columns-repeated="2"/>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -612,7 +609,7 @@
      <table:table-cell table:formula="of:=MROUND([.J7];0.01)" office:value-type="float" office:value="0.15" calcext:value-type="float">
       <text:p>0.15</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -647,7 +644,7 @@
      <table:table-cell table:formula="of:=MROUND([.J8];0.01)" office:value-type="float" office:value="0.07" calcext:value-type="float">
       <text:p>0.07</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -682,7 +679,7 @@
      <table:table-cell table:formula="of:=MROUND([.J9];0.01)" office:value-type="float" office:value="0.2" calcext:value-type="float">
       <text:p>0.2</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -717,7 +714,7 @@
      <table:table-cell table:formula="of:=MROUND([.J10];0.01)" office:value-type="float" office:value="0.2" calcext:value-type="float">
       <text:p>0.2</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -752,7 +749,7 @@
      <table:table-cell table:formula="of:=MROUND([.J11];0.01)" office:value-type="float" office:value="0.09" calcext:value-type="float">
       <text:p>0.09</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -787,7 +784,7 @@
      <table:table-cell table:formula="of:=MROUND([.J12];0.01)" office:value-type="float" office:value="0.21" calcext:value-type="float">
       <text:p>0.21</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce3" table:number-columns-repeated="2"/>
@@ -821,7 +818,7 @@
      <table:table-cell table:style-name="ce11" table:number-columns-repeated="2"/>
      <table:table-cell table:number-columns-repeated="2"/>
      <table:table-cell table:style-name="ce11"/>
-     <table:table-cell table:style-name="ce3" table:number-columns-repeated="49"/>
+     <table:table-cell table:style-name="ce3" table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce4" table:number-columns-repeated="4"/>
@@ -833,7 +830,7 @@
      <table:table-cell/>
      <table:table-cell table:style-name="ce12"/>
      <table:table-cell table:style-name="ce8"/>
-     <table:table-cell table:style-name="ce4" table:number-columns-repeated="49"/>
+     <table:table-cell table:style-name="ce4" table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -875,7 +872,7 @@
      <table:table-cell office:value-type="float" office:value="46.6" calcext:value-type="float">
       <text:p>46.6</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -917,7 +914,7 @@
      <table:table-cell office:value-type="float" office:value="9" calcext:value-type="float">
       <text:p>9</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -952,7 +949,7 @@
      <table:table-cell table:formula="of:=MROUND([.J17];0.01)" office:value-type="float" office:value="0.1" calcext:value-type="float">
       <text:p>0.1</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -989,7 +986,7 @@
       <text:p>0.18</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="ce13" table:number-columns-repeated="2"/>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1024,7 +1021,7 @@
      <table:table-cell table:formula="of:=MROUND([.J19];0.01)" office:value-type="float" office:value="0.1" calcext:value-type="float">
       <text:p>0.1</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1059,7 +1056,7 @@
      <table:table-cell table:formula="of:=MROUND([.J20];0.01)" office:value-type="float" office:value="0.1" calcext:value-type="float">
       <text:p>0.1</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1094,7 +1091,7 @@
      <table:table-cell table:formula="of:=MROUND([.J21];0.01)" office:value-type="float" office:value="0.1" calcext:value-type="float">
       <text:p>0.1</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1129,7 +1126,7 @@
      <table:table-cell table:formula="of:=MROUND([.J22];0.01)" office:value-type="float" office:value="0.1" calcext:value-type="float">
       <text:p>0.1</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1164,7 +1161,7 @@
      <table:table-cell table:formula="of:=MROUND([.J23];0.01)" office:value-type="float" office:value="0.11" calcext:value-type="float">
       <text:p>0.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1199,7 +1196,7 @@
      <table:table-cell table:formula="of:=MROUND([.J24];0.01)" office:value-type="float" office:value="0.17" calcext:value-type="float">
       <text:p>0.17</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1234,7 +1231,7 @@
      <table:table-cell table:formula="of:=MROUND([.J25];0.01)" office:value-type="float" office:value="0.16" calcext:value-type="float">
       <text:p>0.16</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1269,7 +1266,7 @@
      <table:table-cell table:formula="of:=MROUND([.J26];0.01)" office:value-type="float" office:value="0.16" calcext:value-type="float">
       <text:p>0.16</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1304,7 +1301,7 @@
      <table:table-cell table:formula="of:=MROUND([.J27];0.01)" office:value-type="float" office:value="0.12" calcext:value-type="float">
       <text:p>0.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1339,7 +1336,7 @@
      <table:table-cell table:formula="of:=MROUND([.J28];0.01)" office:value-type="float" office:value="0.12" calcext:value-type="float">
       <text:p>0.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1374,7 +1371,7 @@
      <table:table-cell table:formula="of:=MROUND([.J29];0.01)" office:value-type="float" office:value="0.12" calcext:value-type="float">
       <text:p>0.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1409,7 +1406,7 @@
      <table:table-cell table:formula="of:=MROUND([.J30];0.01)" office:value-type="float" office:value="0.12" calcext:value-type="float">
       <text:p>0.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1444,7 +1441,7 @@
      <table:table-cell table:formula="of:=MROUND([.J31];0.01)" office:value-type="float" office:value="0.16" calcext:value-type="float">
       <text:p>0.16</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1479,7 +1476,7 @@
      <table:table-cell table:formula="of:=MROUND([.J32];0.01)" office:value-type="float" office:value="0.25" calcext:value-type="float">
       <text:p>0.25</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1514,7 +1511,7 @@
      <table:table-cell table:formula="of:=MROUND([.J33];0.01)" office:value-type="float" office:value="0.25" calcext:value-type="float">
       <text:p>0.25</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1549,7 +1546,7 @@
      <table:table-cell table:formula="of:=MROUND([.J34];0.01)" office:value-type="float" office:value="0.25" calcext:value-type="float">
       <text:p>0.25</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1584,7 +1581,7 @@
      <table:table-cell table:formula="of:=MROUND([.J35];0.01)" office:value-type="float" office:value="0.25" calcext:value-type="float">
       <text:p>0.25</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1619,7 +1616,7 @@
      <table:table-cell table:formula="of:=MROUND([.J36];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1654,7 +1651,7 @@
      <table:table-cell table:formula="of:=MROUND([.J37];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1689,7 +1686,7 @@
      <table:table-cell table:formula="of:=MROUND([.J38];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1724,7 +1721,7 @@
      <table:table-cell table:formula="of:=MROUND([.J39];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1759,7 +1756,7 @@
      <table:table-cell table:formula="of:=MROUND([.J40];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1794,7 +1791,7 @@
      <table:table-cell table:formula="of:=MROUND([.J41];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1829,7 +1826,7 @@
      <table:table-cell table:formula="of:=MROUND([.J42];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1864,7 +1861,7 @@
      <table:table-cell table:formula="of:=MROUND([.J43];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1899,7 +1896,7 @@
      <table:table-cell table:formula="of:=MROUND([.J44];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1934,7 +1931,7 @@
      <table:table-cell table:formula="of:=MROUND([.J45];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -1969,7 +1966,7 @@
      <table:table-cell table:formula="of:=MROUND([.J46];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2004,7 +2001,7 @@
      <table:table-cell table:formula="of:=MROUND([.J47];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2039,7 +2036,7 @@
      <table:table-cell table:formula="of:=MROUND([.J48];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2074,7 +2071,7 @@
      <table:table-cell table:formula="of:=MROUND([.J49];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2109,7 +2106,7 @@
      <table:table-cell table:formula="of:=MROUND([.J50];0.01)" office:value-type="float" office:value="0.07" calcext:value-type="float">
       <text:p>0.07</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2144,7 +2141,7 @@
      <table:table-cell table:formula="of:=MROUND([.J51];0.01)" office:value-type="float" office:value="0.07" calcext:value-type="float">
       <text:p>0.07</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2179,7 +2176,7 @@
      <table:table-cell table:formula="of:=MROUND([.J52];0.01)" office:value-type="float" office:value="0.07" calcext:value-type="float">
       <text:p>0.07</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2214,7 +2211,7 @@
      <table:table-cell table:formula="of:=MROUND([.J53];0.01)" office:value-type="float" office:value="0.07" calcext:value-type="float">
       <text:p>0.07</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2249,7 +2246,7 @@
      <table:table-cell table:formula="of:=MROUND([.J54];0.01)" office:value-type="float" office:value="0.07" calcext:value-type="float">
       <text:p>0.07</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2284,7 +2281,7 @@
      <table:table-cell table:formula="of:=MROUND([.J55];0.01)" office:value-type="float" office:value="0.07" calcext:value-type="float">
       <text:p>0.07</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2319,7 +2316,7 @@
      <table:table-cell table:formula="of:=MROUND([.J56];0.01)" office:value-type="float" office:value="0.07" calcext:value-type="float">
       <text:p>0.07</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2354,7 +2351,7 @@
      <table:table-cell table:formula="of:=MROUND([.J57];0.01)" office:value-type="float" office:value="0.11" calcext:value-type="float">
       <text:p>0.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2389,7 +2386,7 @@
      <table:table-cell table:formula="of:=MROUND([.J58];0.01)" office:value-type="float" office:value="0.11" calcext:value-type="float">
       <text:p>0.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2424,7 +2421,7 @@
      <table:table-cell table:formula="of:=MROUND([.J59];0.01)" office:value-type="float" office:value="0.11" calcext:value-type="float">
       <text:p>0.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2459,7 +2456,7 @@
      <table:table-cell table:formula="of:=MROUND([.J60];0.01)" office:value-type="float" office:value="0.11" calcext:value-type="float">
       <text:p>0.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2494,7 +2491,7 @@
      <table:table-cell table:formula="of:=MROUND([.J61];0.01)" office:value-type="float" office:value="0.11" calcext:value-type="float">
       <text:p>0.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2529,7 +2526,7 @@
      <table:table-cell table:formula="of:=MROUND([.J62];0.01)" office:value-type="float" office:value="0.11" calcext:value-type="float">
       <text:p>0.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2564,7 +2561,7 @@
      <table:table-cell table:formula="of:=MROUND([.J63];0.01)" office:value-type="float" office:value="0.11" calcext:value-type="float">
       <text:p>0.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2599,7 +2596,7 @@
      <table:table-cell table:formula="of:=MROUND([.J64];0.01)" office:value-type="float" office:value="0.15" calcext:value-type="float">
       <text:p>0.15</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2634,7 +2631,7 @@
      <table:table-cell table:formula="of:=MROUND([.J65];0.01)" office:value-type="float" office:value="0.15" calcext:value-type="float">
       <text:p>0.15</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2669,7 +2666,7 @@
      <table:table-cell table:formula="of:=MROUND([.J66];0.01)" office:value-type="float" office:value="0.15" calcext:value-type="float">
       <text:p>0.15</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2704,7 +2701,7 @@
      <table:table-cell table:formula="of:=MROUND([.J67];0.01)" office:value-type="float" office:value="0.16" calcext:value-type="float">
       <text:p>0.16</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2739,7 +2736,7 @@
      <table:table-cell table:formula="of:=MROUND([.J68];0.01)" office:value-type="float" office:value="0.16" calcext:value-type="float">
       <text:p>0.16</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2774,7 +2771,7 @@
      <table:table-cell table:formula="of:=MROUND([.J69];0.01)" office:value-type="float" office:value="0.09" calcext:value-type="float">
       <text:p>0.09</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2809,7 +2806,7 @@
      <table:table-cell table:formula="of:=MROUND([.J70];0.01)" office:value-type="float" office:value="0.09" calcext:value-type="float">
       <text:p>0.09</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2844,7 +2841,7 @@
      <table:table-cell table:formula="of:=MROUND([.J71];0.01)" office:value-type="float" office:value="0.09" calcext:value-type="float">
       <text:p>0.09</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2879,7 +2876,7 @@
      <table:table-cell table:formula="of:=MROUND([.J72];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2914,7 +2911,7 @@
      <table:table-cell table:formula="of:=MROUND([.J73];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2949,7 +2946,7 @@
      <table:table-cell table:formula="of:=MROUND([.J74];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -2984,7 +2981,7 @@
      <table:table-cell table:formula="of:=MROUND([.J75];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3019,7 +3016,7 @@
      <table:table-cell table:formula="of:=MROUND([.J76];0.01)" office:value-type="float" office:value="0.19" calcext:value-type="float">
       <text:p>0.19</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3054,7 +3051,7 @@
      <table:table-cell table:formula="of:=MROUND([.J77];0.01)" office:value-type="float" office:value="0.13" calcext:value-type="float">
       <text:p>0.13</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3089,7 +3086,7 @@
      <table:table-cell table:formula="of:=MROUND([.J78];0.01)" office:value-type="float" office:value="0.13" calcext:value-type="float">
       <text:p>0.13</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3124,7 +3121,7 @@
      <table:table-cell table:formula="of:=MROUND([.J79];0.01)" office:value-type="float" office:value="0.13" calcext:value-type="float">
       <text:p>0.13</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3159,7 +3156,7 @@
      <table:table-cell table:formula="of:=MROUND([.J80];0.01)" office:value-type="float" office:value="0.12" calcext:value-type="float">
       <text:p>0.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3194,7 +3191,7 @@
      <table:table-cell table:formula="of:=MROUND([.J81];0.01)" office:value-type="float" office:value="0.12" calcext:value-type="float">
       <text:p>0.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3229,7 +3226,7 @@
      <table:table-cell table:formula="of:=MROUND([.J82];0.01)" office:value-type="float" office:value="0.32" calcext:value-type="float">
       <text:p>0.32</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3264,7 +3261,7 @@
      <table:table-cell table:formula="of:=MROUND([.J83];0.01)" office:value-type="float" office:value="0.32" calcext:value-type="float">
       <text:p>0.32</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3299,7 +3296,7 @@
      <table:table-cell table:formula="of:=MROUND([.J84];0.01)" office:value-type="float" office:value="0.32" calcext:value-type="float">
       <text:p>0.32</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3334,7 +3331,7 @@
      <table:table-cell table:formula="of:=MROUND([.J85];0.01)" office:value-type="float" office:value="0.32" calcext:value-type="float">
       <text:p>0.32</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-02" calcext:value-type="date">
@@ -3369,7 +3366,7 @@
      <table:table-cell table:formula="of:=MROUND([.J86];0.01)" office:value-type="float" office:value="0.32" calcext:value-type="float">
       <text:p>0.32</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce3" table:number-columns-repeated="2"/>
@@ -3403,7 +3400,7 @@
      <table:table-cell table:style-name="ce11" table:number-columns-repeated="2"/>
      <table:table-cell table:number-columns-repeated="2"/>
      <table:table-cell table:style-name="ce11"/>
-     <table:table-cell table:style-name="ce3" table:number-columns-repeated="49"/>
+     <table:table-cell table:style-name="ce3" table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce4" table:number-columns-repeated="4"/>
@@ -3415,7 +3412,7 @@
      <table:table-cell/>
      <table:table-cell table:style-name="ce12"/>
      <table:table-cell table:style-name="ce8"/>
-     <table:table-cell table:style-name="ce4" table:number-columns-repeated="49"/>
+     <table:table-cell table:style-name="ce4" table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3457,7 +3454,7 @@
      <table:table-cell office:value-type="float" office:value="12.34" calcext:value-type="float">
       <text:p>12.34</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3499,7 +3496,7 @@
      <table:table-cell office:value-type="float" office:value="1.28" calcext:value-type="float">
       <text:p>1.28</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3534,7 +3531,7 @@
      <table:table-cell table:formula="of:=MROUND([.J91];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3569,7 +3566,7 @@
      <table:table-cell table:formula="of:=MROUND([.J92];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3604,7 +3601,7 @@
      <table:table-cell table:formula="of:=MROUND([.J93];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3639,7 +3636,7 @@
      <table:table-cell table:formula="of:=MROUND([.J94];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3674,7 +3671,7 @@
      <table:table-cell table:formula="of:=MROUND([.J95];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3709,7 +3706,7 @@
      <table:table-cell table:formula="of:=MROUND([.J96];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3744,7 +3741,7 @@
      <table:table-cell table:formula="of:=MROUND([.J97];0.01)" office:value-type="float" office:value="0.06" calcext:value-type="float">
       <text:p>0.06</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3779,7 +3776,7 @@
      <table:table-cell table:formula="of:=MROUND([.J98];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3814,7 +3811,7 @@
      <table:table-cell table:formula="of:=MROUND([.J99];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3850,7 +3847,7 @@
       <text:p>0.09</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="ce13" table:number-columns-repeated="2"/>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3886,7 +3883,7 @@
       <text:p>0.09</text:p>
      </table:table-cell>
      <table:table-cell table:style-name="ce13" table:number-columns-repeated="2"/>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3921,7 +3918,7 @@
      <table:table-cell table:formula="of:=MROUND([.J102];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3956,7 +3953,7 @@
      <table:table-cell table:formula="of:=MROUND([.J103];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -3991,7 +3988,7 @@
      <table:table-cell table:formula="of:=MROUND([.J104];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -4026,7 +4023,7 @@
      <table:table-cell table:formula="of:=MROUND([.J105];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-15" calcext:value-type="date">
@@ -4061,7 +4058,7 @@
      <table:table-cell table:formula="of:=MROUND([.J106];0.01)" office:value-type="float" office:value="0.08" calcext:value-type="float">
       <text:p>0.08</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="54"/>
+     <table:table-cell table:number-columns-repeated="51"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce3" table:number-columns-repeated="2"/>
@@ -4095,7 +4092,7 @@
      <table:table-cell table:style-name="ce11" table:number-columns-repeated="2"/>
      <table:table-cell table:number-columns-repeated="2"/>
      <table:table-cell table:style-name="ce11"/>
-     <table:table-cell table:style-name="ce3" table:number-columns-repeated="49"/>
+     <table:table-cell table:style-name="ce3" table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce4" table:number-columns-repeated="4"/>
@@ -4107,7 +4104,7 @@
      <table:table-cell/>
      <table:table-cell table:style-name="ce12"/>
      <table:table-cell table:style-name="ce8"/>
-     <table:table-cell table:style-name="ce4" table:number-columns-repeated="49"/>
+     <table:table-cell table:style-name="ce4" table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4129,7 +4126,7 @@
       <text:p>Not sold. Guessed using other C3Equalz listings.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E109]/[.$E$141]" office:value-type="float" office:value="0.0316489869832119" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E109]/[.$E$141]" office:value-type="float" office:value="0.031648986983212" calcext:value-type="float">
       <text:p>0.031648986983212</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H109]*[.$R$109]" office:value-type="float" office:value="1.44287731656463" calcext:value-type="float">
@@ -4158,7 +4155,7 @@
      <table:table-cell office:value-type="float" office:value="45.59" calcext:value-type="float">
       <text:p>45.59</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4180,14 +4177,14 @@
       <text:p>Not sold. Guessed using Divinikey 110-piece price.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E110]/[.$E$141]" office:value-type="float" office:value="0.0343902378242775" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E110]/[.$E$141]" office:value-type="float" office:value="0.0343902378242776" calcext:value-type="float">
       <text:p>0.034390237824278</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H110]*[.$R$109]" office:value-type="float" office:value="1.56785094240881" calcext:value-type="float">
       <text:p>1.56785094240881</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H110]*[.$R$110]" office:value-type="float" office:value="1.50113388102971" calcext:value-type="float">
-      <text:p>1.50113388102971</text:p>
+     <table:table-cell table:formula="of:=[.H110]*[.$R$110]" office:value-type="float" office:value="1.50113388102972" calcext:value-type="float">
+      <text:p>1.50113388102972</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I110];0.01)" office:value-type="float" office:value="1.57" calcext:value-type="float">
@@ -4209,7 +4206,7 @@
      <table:table-cell office:value-type="float" office:value="43.65" calcext:value-type="float">
       <text:p>43.65</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4250,7 +4247,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J111]-[.M111])*10000 ;0.01)" office:value-type="float" office:value="-16.88" calcext:value-type="float">
       <text:p>-16.88</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4272,14 +4269,14 @@
       <text:p>[Drop also sells for about 0.79 per switch for 70 switches]</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E112]/[.$E$141]" office:value-type="float" office:value="0.0438600134570496" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E112]/[.$E$141]" office:value-type="float" office:value="0.0438600134570497" calcext:value-type="float">
       <text:p>0.04386001345705</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H112]*[.$R$109]" office:value-type="float" office:value="1.99957801350689" calcext:value-type="float">
       <text:p>1.99957801350689</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H112]*[.$R$110]" office:value-type="float" office:value="1.91448958740021" calcext:value-type="float">
-      <text:p>1.91448958740021</text:p>
+     <table:table-cell table:formula="of:=[.H112]*[.$R$110]" office:value-type="float" office:value="1.91448958740022" calcext:value-type="float">
+      <text:p>1.91448958740022</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I112];0.01)" office:value-type="float" office:value="2" calcext:value-type="float">
@@ -4301,7 +4298,7 @@
      <table:table-cell table:formula="of:=[.R109]/[.D141]" office:value-type="float" office:value="1.4246875" calcext:value-type="float">
       <text:p>1.4246875</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4323,14 +4320,14 @@
       <text:p>Not sold. Guessed using Aqua King.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E113]/[.$E$141]" office:value-type="float" office:value="0.0438600134570496" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E113]/[.$E$141]" office:value-type="float" office:value="0.0438600134570497" calcext:value-type="float">
       <text:p>0.04386001345705</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H113]*[.$R$109]" office:value-type="float" office:value="1.99957801350689" calcext:value-type="float">
       <text:p>1.99957801350689</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H113]*[.$R$110]" office:value-type="float" office:value="1.91448958740021" calcext:value-type="float">
-      <text:p>1.91448958740021</text:p>
+     <table:table-cell table:formula="of:=[.H113]*[.$R$110]" office:value-type="float" office:value="1.91448958740022" calcext:value-type="float">
+      <text:p>1.91448958740022</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I113];0.01)" office:value-type="float" office:value="2" calcext:value-type="float">
@@ -4352,7 +4349,7 @@
      <table:table-cell table:formula="of:=[.R110]/[.D141]" office:value-type="float" office:value="1.3640625" calcext:value-type="float">
       <text:p>1.3640625</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="49"/>
+     <table:table-cell table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4374,14 +4371,14 @@
       <text:p>Not sold. Guessed using Aqua King.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E114]/[.$E$141]" office:value-type="float" office:value="0.0438600134570496" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E114]/[.$E$141]" office:value-type="float" office:value="0.0438600134570497" calcext:value-type="float">
       <text:p>0.04386001345705</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H114]*[.$R$109]" office:value-type="float" office:value="1.99957801350689" calcext:value-type="float">
       <text:p>1.99957801350689</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H114]*[.$R$110]" office:value-type="float" office:value="1.91448958740021" calcext:value-type="float">
-      <text:p>1.91448958740021</text:p>
+     <table:table-cell table:formula="of:=[.H114]*[.$R$110]" office:value-type="float" office:value="1.91448958740022" calcext:value-type="float">
+      <text:p>1.91448958740022</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I114];0.01)" office:value-type="float" office:value="2" calcext:value-type="float">
@@ -4396,7 +4393,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J114]-[.M114])*10000 ;0.01)" office:value-type="float" office:value="-55.1" calcext:value-type="float">
       <text:p>-55.1</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4440,7 +4437,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J115]-[.M115])*10000 ;0.01)" office:value-type="float" office:value="-7.77" calcext:value-type="float">
       <text:p>-7.77</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4462,14 +4459,14 @@
       <text:p>Not sold. Guessed using Divinikey price.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E116]/[.$E$141]" office:value-type="float" office:value="0.0239236437038452" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E116]/[.$E$141]" office:value-type="float" office:value="0.0239236437038453" calcext:value-type="float">
       <text:p>0.023923643703845</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H116]*[.$R$109]" office:value-type="float" office:value="1.0906789164583" calcext:value-type="float">
-      <text:p>1.0906789164583</text:p>
+     <table:table-cell table:formula="of:=[.H116]*[.$R$109]" office:value-type="float" office:value="1.09067891645831" calcext:value-type="float">
+      <text:p>1.09067891645831</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H116]*[.$R$110]" office:value-type="float" office:value="1.04426704767284" calcext:value-type="float">
-      <text:p>1.04426704767284</text:p>
+     <table:table-cell table:formula="of:=[.H116]*[.$R$110]" office:value-type="float" office:value="1.04426704767285" calcext:value-type="float">
+      <text:p>1.04426704767285</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I116];0.01)" office:value-type="float" office:value="1.09" calcext:value-type="float">
@@ -4484,7 +4481,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J116]-[.M116])*10000 ;0.01)" office:value-type="float" office:value="42.67" calcext:value-type="float">
       <text:p>42.67</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4506,7 +4503,7 @@
       <text:p>[NovelKeys also sells for 0.6 each]</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E117]/[.$E$141]" office:value-type="float" office:value="0.0298547137054235" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E117]/[.$E$141]" office:value-type="float" office:value="0.0298547137054236" calcext:value-type="float">
       <text:p>0.029854713705424</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H117]*[.$R$109]" office:value-type="float" office:value="1.36107639783026" calcext:value-type="float">
@@ -4528,7 +4525,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J117]-[.M117])*10000 ;0.01)" office:value-type="float" office:value="31.58" calcext:value-type="float">
       <text:p>31.58</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4550,7 +4547,7 @@
       <text:p>Not sold. Guessed using the other inks.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E118]/[.$E$141]" office:value-type="float" office:value="0.0367576817324705" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E118]/[.$E$141]" office:value-type="float" office:value="0.0367576817324706" calcext:value-type="float">
       <text:p>0.036757681732471</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H118]*[.$R$109]" office:value-type="float" office:value="1.67578271018333" calcext:value-type="float">
@@ -4572,7 +4569,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J118]-[.M118])*10000 ;0.01)" office:value-type="float" office:value="44.73" calcext:value-type="float">
       <text:p>44.73</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4596,11 +4593,11 @@
      <table:table-cell office:value-type="string" calcext:value-type="string">
       <text:p>.</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.E119]/[.$E$141]" office:value-type="float" office:value="0.0371314886653431" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E119]/[.$E$141]" office:value-type="float" office:value="0.0371314886653432" calcext:value-type="float">
       <text:p>0.037131488665343</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H119]*[.$R$109]" office:value-type="float" office:value="1.69282456825299" calcext:value-type="float">
-      <text:p>1.69282456825299</text:p>
+     <table:table-cell table:formula="of:=[.H119]*[.$R$109]" office:value-type="float" office:value="1.692824568253" calcext:value-type="float">
+      <text:p>1.692824568253</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H119]*[.$R$110]" office:value-type="float" office:value="1.62078948024223" calcext:value-type="float">
       <text:p>1.62078948024223</text:p>
@@ -4618,7 +4615,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J119]-[.M119])*10000 ;0.01)" office:value-type="float" office:value="7.89" calcext:value-type="float">
       <text:p>7.89</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4640,7 +4637,7 @@
       <text:p>[Krepublic also sells for 7.30 each at 110 pieces]</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E120]/[.$E$141]" office:value-type="float" office:value="0.0363838747995979" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E120]/[.$E$141]" office:value-type="float" office:value="0.036383874799598" calcext:value-type="float">
       <text:p>0.036383874799598</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H120]*[.$R$109]" office:value-type="float" office:value="1.65874085211367" calcext:value-type="float">
@@ -4662,7 +4659,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J120]-[.M120])*10000 ;0.01)" office:value-type="float" office:value="-18.44" calcext:value-type="float">
       <text:p>-18.44</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4684,7 +4681,7 @@
       <text:p>Not sold. Guessed using Ashkeebs price.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E121]/[.$E$141]" office:value-type="float" office:value="0.0234252344600151" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E121]/[.$E$141]" office:value-type="float" office:value="0.0234252344600152" calcext:value-type="float">
       <text:p>0.023425234460015</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H121]*[.$R$109]" office:value-type="float" office:value="1.06795643903209" calcext:value-type="float">
@@ -4706,7 +4703,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J121]-[.M121])*10000 ;0.01)" office:value-type="float" office:value="25.11" calcext:value-type="float">
       <text:p>25.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4725,14 +4722,14 @@
       <text:p>0.645</text:p>
      </table:table-cell>
      <table:table-cell table:number-columns-repeated="2"/>
-     <table:table-cell table:formula="of:=[.E122]/[.$E$141]" office:value-type="float" office:value="0.032147396227042" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E122]/[.$E$141]" office:value-type="float" office:value="0.0321473962270421" calcext:value-type="float">
       <text:p>0.032147396227042</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H122]*[.$R$109]" office:value-type="float" office:value="1.46559979399085" calcext:value-type="float">
       <text:p>1.46559979399085</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H122]*[.$R$110]" office:value-type="float" office:value="1.40323384531038" calcext:value-type="float">
-      <text:p>1.40323384531038</text:p>
+     <table:table-cell table:formula="of:=[.H122]*[.$R$110]" office:value-type="float" office:value="1.40323384531039" calcext:value-type="float">
+      <text:p>1.40323384531039</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I122];0.01)" office:value-type="float" office:value="1.47" calcext:value-type="float">
@@ -4747,7 +4744,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J122]-[.M122])*10000 ;0.01)" office:value-type="float" office:value="32.34" calcext:value-type="float">
       <text:p>32.34</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4772,8 +4769,8 @@
      <table:table-cell table:formula="of:=[.E123]/[.$E$141]" office:value-type="float" office:value="0.0323966008489571" calcext:value-type="float">
       <text:p>0.032396600848957</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H123]*[.$R$109]" office:value-type="float" office:value="1.47696103270395" calcext:value-type="float">
-      <text:p>1.47696103270395</text:p>
+     <table:table-cell table:formula="of:=[.H123]*[.$R$109]" office:value-type="float" office:value="1.47696103270396" calcext:value-type="float">
+      <text:p>1.47696103270396</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H123]*[.$R$110]" office:value-type="float" office:value="1.41411162705698" calcext:value-type="float">
       <text:p>1.41411162705698</text:p>
@@ -4791,7 +4788,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J123]-[.M123])*10000 ;0.01)" office:value-type="float" office:value="41.12" calcext:value-type="float">
       <text:p>41.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4818,8 +4815,8 @@
      <table:table-cell table:formula="of:=[.E124]/[.$E$141]" office:value-type="float" office:value="0.0323966008489571" calcext:value-type="float">
       <text:p>0.032396600848957</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H124]*[.$R$109]" office:value-type="float" office:value="1.47696103270395" calcext:value-type="float">
-      <text:p>1.47696103270395</text:p>
+     <table:table-cell table:formula="of:=[.H124]*[.$R$109]" office:value-type="float" office:value="1.47696103270396" calcext:value-type="float">
+      <text:p>1.47696103270396</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H124]*[.$R$110]" office:value-type="float" office:value="1.41411162705698" calcext:value-type="float">
       <text:p>1.41411162705698</text:p>
@@ -4837,7 +4834,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J124]-[.M124])*10000 ;0.01)" office:value-type="float" office:value="41.12" calcext:value-type="float">
       <text:p>41.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4859,14 +4856,14 @@
       <text:p>Not sold. Guessed using Divinikey price.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E125]/[.$E$141]" office:value-type="float" office:value="0.03459790834254" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E125]/[.$E$141]" office:value-type="float" office:value="0.0345979083425401" calcext:value-type="float">
       <text:p>0.03459790834254</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H125]*[.$R$109]" office:value-type="float" office:value="1.5773186413364" calcext:value-type="float">
       <text:p>1.5773186413364</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H125]*[.$R$110]" office:value-type="float" office:value="1.51019869915187" calcext:value-type="float">
-      <text:p>1.51019869915187</text:p>
+     <table:table-cell table:formula="of:=[.H125]*[.$R$110]" office:value-type="float" office:value="1.51019869915188" calcext:value-type="float">
+      <text:p>1.51019869915188</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I125];0.01)" office:value-type="float" office:value="1.58" calcext:value-type="float">
@@ -4881,7 +4878,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J125]-[.M125])*10000 ;0.01)" office:value-type="float" office:value="1.99" calcext:value-type="float">
       <text:p>1.99</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4903,14 +4900,14 @@
       <text:p>Not sold. Guessed using Divinikey price.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E126]/[.$E$141]" office:value-type="float" office:value="0.03459790834254" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E126]/[.$E$141]" office:value-type="float" office:value="0.0345979083425401" calcext:value-type="float">
       <text:p>0.03459790834254</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H126]*[.$R$109]" office:value-type="float" office:value="1.5773186413364" calcext:value-type="float">
       <text:p>1.5773186413364</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H126]*[.$R$110]" office:value-type="float" office:value="1.51019869915187" calcext:value-type="float">
-      <text:p>1.51019869915187</text:p>
+     <table:table-cell table:formula="of:=[.H126]*[.$R$110]" office:value-type="float" office:value="1.51019869915188" calcext:value-type="float">
+      <text:p>1.51019869915188</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I126];0.01)" office:value-type="float" office:value="1.58" calcext:value-type="float">
@@ -4925,7 +4922,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J126]-[.M126])*10000 ;0.01)" office:value-type="float" office:value="1.99" calcext:value-type="float">
       <text:p>1.99</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4966,7 +4963,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J127]-[.M127])*10000 ;0.01)" office:value-type="float" office:value="19.36" calcext:value-type="float">
       <text:p>19.36</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -4988,14 +4985,14 @@
       <text:p>Not sold. Guessed using prevail key co. 110-piece price.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E128]/[.$E$141]" office:value-type="float" office:value="0.0299045546298065" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E128]/[.$E$141]" office:value-type="float" office:value="0.0299045546298066" calcext:value-type="float">
       <text:p>0.029904554629807</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H128]*[.$R$109]" office:value-type="float" office:value="1.36334864557288" calcext:value-type="float">
       <text:p>1.36334864557288</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H128]*[.$R$110]" office:value-type="float" office:value="1.30533380959105" calcext:value-type="float">
-      <text:p>1.30533380959105</text:p>
+     <table:table-cell table:formula="of:=[.H128]*[.$R$110]" office:value-type="float" office:value="1.30533380959106" calcext:value-type="float">
+      <text:p>1.30533380959106</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I128];0.01)" office:value-type="float" office:value="1.36" calcext:value-type="float">
@@ -5010,7 +5007,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J128]-[.M128])*10000 ;0.01)" office:value-type="float" office:value="-46.66" calcext:value-type="float">
       <text:p>-46.66</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5032,11 +5029,11 @@
       <text:p>Not sold. Guessed using Drop price, multiplied by 1.11.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E129]/[.$E$141]" office:value-type="float" office:value="0.027661713032571" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E129]/[.$E$141]" office:value-type="float" office:value="0.0276617130325711" calcext:value-type="float">
       <text:p>0.027661713032571</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H129]*[.$R$109]" office:value-type="float" office:value="1.26109749715491" calcext:value-type="float">
-      <text:p>1.26109749715491</text:p>
+     <table:table-cell table:formula="of:=[.H129]*[.$R$109]" office:value-type="float" office:value="1.26109749715492" calcext:value-type="float">
+      <text:p>1.26109749715492</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H129]*[.$R$110]" office:value-type="float" office:value="1.20743377387173" calcext:value-type="float">
       <text:p>1.20743377387173</text:p>
@@ -5054,7 +5051,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J129]-[.M129])*10000 ;0.01)" office:value-type="float" office:value="-25.66" calcext:value-type="float">
       <text:p>-25.66</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5079,11 +5076,11 @@
      <table:table-cell table:formula="of:=[.E130]/[.$E$141]" office:value-type="float" office:value="0.0149522773149033" calcext:value-type="float">
       <text:p>0.014952277314903</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H130]*[.$R$109]" office:value-type="float" office:value="0.68167432278644" calcext:value-type="float">
-      <text:p>0.68167432278644</text:p>
+     <table:table-cell table:formula="of:=[.H130]*[.$R$109]" office:value-type="float" office:value="0.681674322786441" calcext:value-type="float">
+      <text:p>0.681674322786441</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H130]*[.$R$110]" office:value-type="float" office:value="0.652666904795527" calcext:value-type="float">
-      <text:p>0.652666904795527</text:p>
+     <table:table-cell table:formula="of:=[.H130]*[.$R$110]" office:value-type="float" office:value="0.652666904795529" calcext:value-type="float">
+      <text:p>0.652666904795529</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I130];0.01)" office:value-type="float" office:value="0.68" calcext:value-type="float">
@@ -5098,7 +5095,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J130]-[.M130])*10000 ;0.01)" office:value-type="float" office:value="26.67" calcext:value-type="float">
       <text:p>26.67</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5120,11 +5117,11 @@
       <text:p>Not sold. Guessed using Divinikey price.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E131]/[.$E$141]" office:value-type="float" office:value="0.0249204621915054" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E131]/[.$E$141]" office:value-type="float" office:value="0.0249204621915055" calcext:value-type="float">
       <text:p>0.024920462191506</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H131]*[.$R$109]" office:value-type="float" office:value="1.13612387131073" calcext:value-type="float">
-      <text:p>1.13612387131073</text:p>
+     <table:table-cell table:formula="of:=[.H131]*[.$R$109]" office:value-type="float" office:value="1.13612387131074" calcext:value-type="float">
+      <text:p>1.13612387131074</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H131]*[.$R$110]" office:value-type="float" office:value="1.08777817465921" calcext:value-type="float">
       <text:p>1.08777817465921</text:p>
@@ -5142,7 +5139,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J131]-[.M131])*10000 ;0.01)" office:value-type="float" office:value="-22.22" calcext:value-type="float">
       <text:p>-22.22</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5166,11 +5163,11 @@
      <table:table-cell office:value-type="string" calcext:value-type="string">
       <text:p>.</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.E132]/[.$E$141]" office:value-type="float" office:value="0.0304029638736366" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E132]/[.$E$141]" office:value-type="float" office:value="0.0304029638736367" calcext:value-type="float">
       <text:p>0.030402963873637</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H132]*[.$R$109]" office:value-type="float" office:value="1.38607112299909" calcext:value-type="float">
-      <text:p>1.38607112299909</text:p>
+     <table:table-cell table:formula="of:=[.H132]*[.$R$109]" office:value-type="float" office:value="1.3860711229991" calcext:value-type="float">
+      <text:p>1.3860711229991</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H132]*[.$R$110]" office:value-type="float" office:value="1.32708937308424" calcext:value-type="float">
       <text:p>1.32708937308424</text:p>
@@ -5188,7 +5185,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J132]-[.M132])*10000 ;0.01)" office:value-type="float" office:value="-29.11" calcext:value-type="float">
       <text:p>-29.11</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5212,14 +5209,14 @@
      <table:table-cell office:value-type="string" calcext:value-type="string">
       <text:p>.</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.E133]/[.$E$141]" office:value-type="float" office:value="0.0239236437038452" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E133]/[.$E$141]" office:value-type="float" office:value="0.0239236437038453" calcext:value-type="float">
       <text:p>0.023923643703845</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H133]*[.$R$109]" office:value-type="float" office:value="1.0906789164583" calcext:value-type="float">
-      <text:p>1.0906789164583</text:p>
+     <table:table-cell table:formula="of:=[.H133]*[.$R$109]" office:value-type="float" office:value="1.09067891645831" calcext:value-type="float">
+      <text:p>1.09067891645831</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H133]*[.$R$110]" office:value-type="float" office:value="1.04426704767284" calcext:value-type="float">
-      <text:p>1.04426704767284</text:p>
+     <table:table-cell table:formula="of:=[.H133]*[.$R$110]" office:value-type="float" office:value="1.04426704767285" calcext:value-type="float">
+      <text:p>1.04426704767285</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I133];0.01)" office:value-type="float" office:value="1.09" calcext:value-type="float">
@@ -5234,7 +5231,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J133]-[.M133])*10000 ;0.01)" office:value-type="float" office:value="42.67" calcext:value-type="float">
       <text:p>42.67</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5256,8 +5253,8 @@
      <table:table-cell table:formula="of:=[.E134]/[.$E$141]" office:value-type="float" office:value="0.0323966008489571" calcext:value-type="float">
       <text:p>0.032396600848957</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H134]*[.$R$109]" office:value-type="float" office:value="1.47696103270395" calcext:value-type="float">
-      <text:p>1.47696103270395</text:p>
+     <table:table-cell table:formula="of:=[.H134]*[.$R$109]" office:value-type="float" office:value="1.47696103270396" calcext:value-type="float">
+      <text:p>1.47696103270396</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H134]*[.$R$110]" office:value-type="float" office:value="1.41411162705698" calcext:value-type="float">
       <text:p>1.41411162705698</text:p>
@@ -5275,7 +5272,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J134]-[.M134])*10000 ;0.01)" office:value-type="float" office:value="41.12" calcext:value-type="float">
       <text:p>41.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5297,8 +5294,8 @@
      <table:table-cell table:formula="of:=[.E135]/[.$E$141]" office:value-type="float" office:value="0.0323966008489571" calcext:value-type="float">
       <text:p>0.032396600848957</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H135]*[.$R$109]" office:value-type="float" office:value="1.47696103270395" calcext:value-type="float">
-      <text:p>1.47696103270395</text:p>
+     <table:table-cell table:formula="of:=[.H135]*[.$R$109]" office:value-type="float" office:value="1.47696103270396" calcext:value-type="float">
+      <text:p>1.47696103270396</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H135]*[.$R$110]" office:value-type="float" office:value="1.41411162705698" calcext:value-type="float">
       <text:p>1.41411162705698</text:p>
@@ -5316,7 +5313,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J135]-[.M135])*10000 ;0.01)" office:value-type="float" office:value="41.12" calcext:value-type="float">
       <text:p>41.12</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5344,8 +5341,8 @@
      <table:table-cell table:formula="of:=[.H136]*[.$R$109]" office:value-type="float" office:value="1.24973625844181" calcext:value-type="float">
       <text:p>1.24973625844181</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H136]*[.$R$110]" office:value-type="float" office:value="1.19655599212513" calcext:value-type="float">
-      <text:p>1.19655599212513</text:p>
+     <table:table-cell table:formula="of:=[.H136]*[.$R$110]" office:value-type="float" office:value="1.19655599212514" calcext:value-type="float">
+      <text:p>1.19655599212514</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I136];0.01)" office:value-type="float" office:value="1.25" calcext:value-type="float">
@@ -5360,7 +5357,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J136]-[.M136])*10000 ;0.01)" office:value-type="float" office:value="-34.44" calcext:value-type="float">
       <text:p>-34.44</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5385,11 +5382,11 @@
      <table:table-cell table:formula="of:=[.E137]/[.$E$141]" office:value-type="float" office:value="0.0174443235340538" calcext:value-type="float">
       <text:p>0.017444323534054</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H137]*[.$R$109]" office:value-type="float" office:value="0.795286709917513" calcext:value-type="float">
-      <text:p>0.795286709917513</text:p>
+     <table:table-cell table:formula="of:=[.H137]*[.$R$109]" office:value-type="float" office:value="0.795286709917515" calcext:value-type="float">
+      <text:p>0.795286709917515</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H137]*[.$R$110]" office:value-type="float" office:value="0.761444722261449" calcext:value-type="float">
-      <text:p>0.761444722261449</text:p>
+     <table:table-cell table:formula="of:=[.H137]*[.$R$110]" office:value-type="float" office:value="0.76144472226145" calcext:value-type="float">
+      <text:p>0.76144472226145</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:style-name="ce13" table:formula="of:=MROUND([.I137];0.01)-0.01" office:value-type="float" office:value="0.79" calcext:value-type="float">
@@ -5404,7 +5401,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J137]-[.M137])*10000 ;0.01)" office:value-type="float" office:value="14.45" calcext:value-type="float">
       <text:p>14.45</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5426,14 +5423,14 @@
       <text:p>Not sold. Guessed using Swagkeys price.</text:p>
      </table:table-cell>
      <table:table-cell/>
-     <table:table-cell table:formula="of:=[.E138]/[.$E$141]" office:value-type="float" office:value="0.0299045546298065" calcext:value-type="float">
+     <table:table-cell table:formula="of:=[.E138]/[.$E$141]" office:value-type="float" office:value="0.0299045546298066" calcext:value-type="float">
       <text:p>0.029904554629807</text:p>
      </table:table-cell>
      <table:table-cell table:formula="of:=[.H138]*[.$R$109]" office:value-type="float" office:value="1.36334864557288" calcext:value-type="float">
       <text:p>1.36334864557288</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H138]*[.$R$110]" office:value-type="float" office:value="1.30533380959105" calcext:value-type="float">
-      <text:p>1.30533380959105</text:p>
+     <table:table-cell table:formula="of:=[.H138]*[.$R$110]" office:value-type="float" office:value="1.30533380959106" calcext:value-type="float">
+      <text:p>1.30533380959106</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I138];0.01)" office:value-type="float" office:value="1.36" calcext:value-type="float">
@@ -5448,7 +5445,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J138]-[.M138])*10000 ;0.01)" office:value-type="float" office:value="-46.66" calcext:value-type="float">
       <text:p>-46.66</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5473,8 +5470,8 @@
      <table:table-cell table:formula="of:=[.H139]*[.$R$109]" office:value-type="float" office:value="1.24973625844181" calcext:value-type="float">
       <text:p>1.24973625844181</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H139]*[.$R$110]" office:value-type="float" office:value="1.19655599212513" calcext:value-type="float">
-      <text:p>1.19655599212513</text:p>
+     <table:table-cell table:formula="of:=[.H139]*[.$R$110]" office:value-type="float" office:value="1.19655599212514" calcext:value-type="float">
+      <text:p>1.19655599212514</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I139];0.01)" office:value-type="float" office:value="1.25" calcext:value-type="float">
@@ -5489,7 +5486,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J139]-[.M139])*10000 ;0.01)" office:value-type="float" office:value="-34.44" calcext:value-type="float">
       <text:p>-34.44</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-11" calcext:value-type="date">
@@ -5514,8 +5511,8 @@
      <table:table-cell table:formula="of:=[.H140]*[.$R$109]" office:value-type="float" office:value="1.24973625844181" calcext:value-type="float">
       <text:p>1.24973625844181</text:p>
      </table:table-cell>
-     <table:table-cell table:formula="of:=[.H140]*[.$R$110]" office:value-type="float" office:value="1.19655599212513" calcext:value-type="float">
-      <text:p>1.19655599212513</text:p>
+     <table:table-cell table:formula="of:=[.H140]*[.$R$110]" office:value-type="float" office:value="1.19655599212514" calcext:value-type="float">
+      <text:p>1.19655599212514</text:p>
      </table:table-cell>
      <table:table-cell/>
      <table:table-cell table:formula="of:=MROUND([.I140];0.01)" office:value-type="float" office:value="1.25" calcext:value-type="float">
@@ -5530,7 +5527,7 @@
      <table:table-cell table:formula="of:=MROUND( ([.J140]-[.M140])*10000 ;0.01)" office:value-type="float" office:value="-34.44" calcext:value-type="float">
       <text:p>-34.44</text:p>
      </table:table-cell>
-     <table:table-cell table:number-columns-repeated="52"/>
+     <table:table-cell table:number-columns-repeated="49"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce3" table:number-columns-repeated="2"/>
@@ -5564,7 +5561,7 @@
      <table:table-cell table:style-name="ce11" table:number-columns-repeated="2"/>
      <table:table-cell table:number-columns-repeated="2"/>
      <table:table-cell table:style-name="ce11"/>
-     <table:table-cell table:style-name="ce3" table:number-columns-repeated="49"/>
+     <table:table-cell table:style-name="ce3" table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
      <table:table-cell table:style-name="ce4" table:number-columns-repeated="4"/>
@@ -5576,13 +5573,39 @@
      <table:table-cell/>
      <table:table-cell table:style-name="ce12"/>
      <table:table-cell table:style-name="ce8"/>
-     <table:table-cell table:style-name="ce4" table:number-columns-repeated="49"/>
-    </table:table-row>
-    <table:table-row table:style-name="ro2" table:number-rows-repeated="1048433">
-     <table:table-cell table:number-columns-repeated="67"/>
+     <table:table-cell table:style-name="ce4" table:number-columns-repeated="46"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
-     <table:table-cell table:number-columns-repeated="67"/>
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-05-17" calcext:value-type="date">
+      <text:p>2022-05-17</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>MKCOID-ID</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="14"/>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Actual Total Item Cost (AUD)</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="115.8" calcext:value-type="float">
+      <text:p>115.8</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="46"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:number-columns-repeated="16"/>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Actual Shipping Cost (AUD)</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="52.53" calcext:value-type="float">
+      <text:p>52.53</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="46"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2" table:number-rows-repeated="1048431">
+     <table:table-cell table:number-columns-repeated="64"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:number-columns-repeated="64"/>
     </table:table-row>
    </table:table>
    <table:named-expressions/>
