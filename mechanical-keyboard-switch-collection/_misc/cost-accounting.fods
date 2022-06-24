@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <office:document xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" office:version="1.2" office:mimetype="application/vnd.oasis.opendocument.spreadsheet">
- <office:meta><meta:creation-date>2022-05-27T01:16:58.795000000</meta:creation-date><dc:date>2022-06-04T16:39:17.527000000</dc:date><meta:editing-duration>P1DT20H1M30S</meta:editing-duration><meta:editing-cycles>34</meta:editing-cycles><meta:generator>LibreOffice/6.4.5.2$Windows_X86_64 LibreOffice_project/a726b36747cf2001e06b58ad5db1aa3a9a1872d6</meta:generator><meta:document-statistic meta:table-count="1" meta:cell-count="3212" meta:object-count="0"/></office:meta>
+ <office:meta><meta:creation-date>2022-05-27T01:16:58.795000000</meta:creation-date><dc:date>2022-06-24T23:43:25.166000000</dc:date><meta:editing-duration>P1DT20H10M9S</meta:editing-duration><meta:editing-cycles>35</meta:editing-cycles><meta:generator>LibreOffice/6.4.5.2$Windows_X86_64 LibreOffice_project/a726b36747cf2001e06b58ad5db1aa3a9a1872d6</meta:generator><meta:document-statistic meta:table-count="1" meta:cell-count="3390" meta:object-count="0"/></office:meta>
  <office:settings>
   <config:config-item-set config:name="ooo:view-settings">
    <config:config-item config:name="VisibleAreaTop" config:type="int">0</config:config-item>
    <config:config-item config:name="VisibleAreaLeft" config:type="int">0</config:config-item>
    <config:config-item config:name="VisibleAreaWidth" config:type="int">63510</config:config-item>
-   <config:config-item config:name="VisibleAreaHeight" config:type="int">129534</config:config-item>
+   <config:config-item config:name="VisibleAreaHeight" config:type="int">136759</config:config-item>
    <config:config-item-map-indexed config:name="Views">
     <config:config-item-map-entry>
      <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>
      <config:config-item-map-named config:name="Tables">
       <config:config-item-map-entry config:name="Sheet1">
-       <config:config-item config:name="CursorPositionX" config:type="int">3</config:config-item>
-       <config:config-item config:name="CursorPositionY" config:type="int">1</config:config-item>
+       <config:config-item config:name="CursorPositionX" config:type="int">12</config:config-item>
+       <config:config-item config:name="CursorPositionY" config:type="int">304</config:config-item>
        <config:config-item config:name="HorizontalSplitMode" config:type="short">2</config:config-item>
        <config:config-item config:name="VerticalSplitMode" config:type="short">2</config:config-item>
        <config:config-item config:name="HorizontalSplitPosition" config:type="int">3</config:config-item>
        <config:config-item config:name="VerticalSplitPosition" config:type="int">1</config:config-item>
        <config:config-item config:name="ActiveSplitRange" config:type="short">3</config:config-item>
        <config:config-item config:name="PositionLeft" config:type="int">0</config:config-item>
-       <config:config-item config:name="PositionRight" config:type="int">3</config:config-item>
+       <config:config-item config:name="PositionRight" config:type="int">6</config:config-item>
        <config:config-item config:name="PositionTop" config:type="int">0</config:config-item>
-       <config:config-item config:name="PositionBottom" config:type="int">1</config:config-item>
+       <config:config-item config:name="PositionBottom" config:type="int">256</config:config-item>
        <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
-       <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
+       <config:config-item config:name="ZoomValue" config:type="int">90</config:config-item>
        <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>
        <config:config-item config:name="ShowGrid" config:type="boolean">true</config:config-item>
        <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
@@ -34,7 +34,7 @@
      <config:config-item config:name="ActiveTable" config:type="string">Sheet1</config:config-item>
      <config:config-item config:name="HorizontalScrollbarWidth" config:type="int">1856</config:config-item>
      <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
-     <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
+     <config:config-item config:name="ZoomValue" config:type="int">90</config:config-item>
      <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>
      <config:config-item config:name="ShowPageBreakPreview" config:type="boolean">false</config:config-item>
      <config:config-item config:name="ShowZeroValues" config:type="boolean">true</config:config-item>
@@ -103,9 +103,12 @@
   </office:script>
  </office:scripts>
  <office:font-face-decls>
+  <style:font-face style:name="Liberation Serif" svg:font-family="&apos;Liberation Serif&apos;" style:font-family-generic="roman" style:font-pitch="variable"/>
   <style:font-face style:name="Liberation Sans" svg:font-family="&apos;Liberation Sans&apos;" style:font-family-generic="swiss" style:font-pitch="variable"/>
   <style:font-face style:name="Arial" svg:font-family="Arial" style:font-family-generic="system" style:font-pitch="variable"/>
   <style:font-face style:name="Microsoft YaHei" svg:font-family="&apos;Microsoft YaHei&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Segoe UI" svg:font-family="&apos;Segoe UI&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Tahoma" svg:font-family="Tahoma" style:font-family-generic="system" style:font-pitch="variable"/>
  </office:font-face-decls>
  <office:styles>
   <style:default-style style:family="table-cell">
@@ -316,7 +319,7 @@
      <text:p><text:sheet-name>???</text:sheet-name><text:s/>(<text:title>???</text:title>)</text:p>
     </style:region-left>
     <style:region-right>
-     <text:p><text:date style:data-style-name="N2" text:date-value="2022-06-04">00/00/0000</text:date>, <text:time style:data-style-name="N2" text:time-value="10:52:27.328000000">00:00:00</text:time></text:p>
+     <text:p><text:date style:data-style-name="N2" text:date-value="2022-06-24">00/00/0000</text:date>, <text:time style:data-style-name="N2" text:time-value="23:34:45.726000000">00:00:00</text:time></text:p>
     </style:region-right>
    </style:header>
    <style:header-left style:display="false"/>
@@ -11488,7 +11491,634 @@
      <table:table-cell table:style-name="ce8"/>
      <table:table-cell table:style-name="ce4" table:number-columns-repeated="46"/>
     </table:table-row>
-    <table:table-row table:style-name="ro2" table:number-rows-repeated="1048289">
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Lavender Purple</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=9.99/45" office:value-type="float" office:value="0.222" calcext:value-type="float">
+      <text:p>0.222</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E287]/[.$E$301]" office:value-type="float" office:value="0.0500025026277591" calcext:value-type="float">
+      <text:p>0.050002502627759</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H287]*[.$R$287]" office:value-type="float" office:value="0.511025576855699" calcext:value-type="float">
+      <text:p>0.511025576855699</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I287];0.01)" office:value-type="float" office:value="0.51" calcext:value-type="float">
+      <text:p>0.51</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I287]-[.L287])*10000 ;0.01)" office:value-type="float" office:value="10.26" calcext:value-type="float">
+      <text:p>10.26</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="2"/>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Actual Total Item Cost (AUD)</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="10.22" calcext:value-type="float">
+      <text:p>10.22</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="46"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Matcha Green</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=9.99/45" office:value-type="float" office:value="0.222" calcext:value-type="float">
+      <text:p>0.222</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E288]/[.$E$301]" office:value-type="float" office:value="0.0500025026277591" calcext:value-type="float">
+      <text:p>0.050002502627759</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H288]*[.$R$287]" office:value-type="float" office:value="0.511025576855699" calcext:value-type="float">
+      <text:p>0.511025576855699</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I288];0.01)" office:value-type="float" office:value="0.51" calcext:value-type="float">
+      <text:p>0.51</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I288]-[.L288])*10000 ;0.01)" office:value-type="float" office:value="10.26" calcext:value-type="float">
+      <text:p>10.26</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Ocean Blue</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=9.99/45" office:value-type="float" office:value="0.222" calcext:value-type="float">
+      <text:p>0.222</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E289]/[.$E$301]" office:value-type="float" office:value="0.0500025026277591" calcext:value-type="float">
+      <text:p>0.050002502627759</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H289]*[.$R$287]" office:value-type="float" office:value="0.511025576855699" calcext:value-type="float">
+      <text:p>0.511025576855699</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I289];0.01)" office:value-type="float" office:value="0.51" calcext:value-type="float">
+      <text:p>0.51</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I289]-[.L289])*10000 ;0.01)" office:value-type="float" office:value="10.26" calcext:value-type="float">
+      <text:p>10.26</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Radiant Red</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=9.99/45" office:value-type="float" office:value="0.222" calcext:value-type="float">
+      <text:p>0.222</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E290]/[.$E$301]" office:value-type="float" office:value="0.0500025026277591" calcext:value-type="float">
+      <text:p>0.050002502627759</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H290]*[.$R$287]" office:value-type="float" office:value="0.511025576855699" calcext:value-type="float">
+      <text:p>0.511025576855699</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I290];0.01)" office:value-type="float" office:value="0.51" calcext:value-type="float">
+      <text:p>0.51</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I290]-[.L290])*10000 ;0.01)" office:value-type="float" office:value="10.26" calcext:value-type="float">
+      <text:p>10.26</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Rose Red</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=9.99/45" office:value-type="float" office:value="0.222" calcext:value-type="float">
+      <text:p>0.222</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E291]/[.$E$301]" office:value-type="float" office:value="0.0500025026277591" calcext:value-type="float">
+      <text:p>0.050002502627759</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H291]*[.$R$287]" office:value-type="float" office:value="0.511025576855699" calcext:value-type="float">
+      <text:p>0.511025576855699</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I291];0.01)" office:value-type="float" office:value="0.51" calcext:value-type="float">
+      <text:p>0.51</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I291]-[.L291])*10000 ;0.01)" office:value-type="float" office:value="10.26" calcext:value-type="float">
+      <text:p>10.26</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Vintage White</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=9.99/45" office:value-type="float" office:value="0.222" calcext:value-type="float">
+      <text:p>0.222</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E292]/[.$E$301]" office:value-type="float" office:value="0.0500025026277591" calcext:value-type="float">
+      <text:p>0.050002502627759</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H292]*[.$R$287]" office:value-type="float" office:value="0.511025576855699" calcext:value-type="float">
+      <text:p>0.511025576855699</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I292];0.01)" office:value-type="float" office:value="0.51" calcext:value-type="float">
+      <text:p>0.51</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I292]-[.L292])*10000 ;0.01)" office:value-type="float" office:value="10.26" calcext:value-type="float">
+      <text:p>10.26</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Jelly Black</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=16.99/45" office:value-type="float" office:value="0.377555555555555" calcext:value-type="float">
+      <text:p>0.377555555555555</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E293]/[.$E$301]" office:value-type="float" office:value="0.0850392912558186" calcext:value-type="float">
+      <text:p>0.085039291255819</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H293]*[.$R$287]" office:value-type="float" office:value="0.869101556634466" calcext:value-type="float">
+      <text:p>0.869101556634466</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I293];0.01)" office:value-type="float" office:value="0.87" calcext:value-type="float">
+      <text:p>0.87</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I293]-[.L293])*10000 ;0.01)" office:value-type="float" office:value="-8.98" calcext:value-type="float">
+      <text:p>-8.98</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Jelly Blue</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=11.99/45" office:value-type="float" office:value="0.266444444444444" calcext:value-type="float">
+      <text:p>0.266444444444444</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E294]/[.$E$301]" office:value-type="float" office:value="0.0600130136643476" calcext:value-type="float">
+      <text:p>0.060013013664348</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H294]*[.$R$287]" office:value-type="float" office:value="0.613332999649632" calcext:value-type="float">
+      <text:p>0.613332999649632</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I294];0.01)" office:value-type="float" office:value="0.61" calcext:value-type="float">
+      <text:p>0.61</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I294]-[.L294])*10000 ;0.01)" office:value-type="float" office:value="33.33" calcext:value-type="float">
+      <text:p>33.33</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Jelly Pink</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=11.99/45" office:value-type="float" office:value="0.266444444444444" calcext:value-type="float">
+      <text:p>0.266444444444444</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E295]/[.$E$301]" office:value-type="float" office:value="0.0600130136643476" calcext:value-type="float">
+      <text:p>0.060013013664348</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H295]*[.$R$287]" office:value-type="float" office:value="0.613332999649632" calcext:value-type="float">
+      <text:p>0.613332999649632</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I295];0.01)" office:value-type="float" office:value="0.61" calcext:value-type="float">
+      <text:p>0.61</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I295]-[.L295])*10000 ;0.01)" office:value-type="float" office:value="33.33" calcext:value-type="float">
+      <text:p>33.33</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Jelly White</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=11.99/45" office:value-type="float" office:value="0.266444444444444" calcext:value-type="float">
+      <text:p>0.266444444444444</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E296]/[.$E$301]" office:value-type="float" office:value="0.0600130136643476" calcext:value-type="float">
+      <text:p>0.060013013664348</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H296]*[.$R$287]" office:value-type="float" office:value="0.613332999649632" calcext:value-type="float">
+      <text:p>0.613332999649632</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I296];0.01)" office:value-type="float" office:value="0.61" calcext:value-type="float">
+      <text:p>0.61</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I296]-[.L296])*10000 ;0.01)" office:value-type="float" office:value="33.33" calcext:value-type="float">
+      <text:p>33.33</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Sponge</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=11.99/45" office:value-type="float" office:value="0.266444444444444" calcext:value-type="float">
+      <text:p>0.266444444444444</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E297]/[.$E$301]" office:value-type="float" office:value="0.0600130136643476" calcext:value-type="float">
+      <text:p>0.060013013664348</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H297]*[.$R$287]" office:value-type="float" office:value="0.613332999649632" calcext:value-type="float">
+      <text:p>0.613332999649632</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I297];0.01)" office:value-type="float" office:value="0.61" calcext:value-type="float">
+      <text:p>0.61</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I297]-[.L297])*10000 ;0.01)" office:value-type="float" office:value="33.33" calcext:value-type="float">
+      <text:p>33.33</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko Custom Series Starfish</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=11.99/45" office:value-type="float" office:value="0.266444444444444" calcext:value-type="float">
+      <text:p>0.266444444444444</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E298]/[.$E$301]" office:value-type="float" office:value="0.0600130136643476" calcext:value-type="float">
+      <text:p>0.060013013664348</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H298]*[.$R$287]" office:value-type="float" office:value="0.613332999649632" calcext:value-type="float">
+      <text:p>0.613332999649632</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I298];0.01)" office:value-type="float" office:value="0.61" calcext:value-type="float">
+      <text:p>0.61</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I298]-[.L298])*10000 ;0.01)" office:value-type="float" office:value="33.33" calcext:value-type="float">
+      <text:p>33.33</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko x TTC Demon</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=6.99/10" office:value-type="float" office:value="0.699" calcext:value-type="float">
+      <text:p>0.699</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E299]/[.$E$301]" office:value-type="float" office:value="0.157440312327944" calcext:value-type="float">
+      <text:p>0.157440312327944</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H299]*[.$R$287]" office:value-type="float" office:value="1.60903999199159" calcext:value-type="float">
+      <text:p>1.60903999199159</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I299];0.01)+0.01" office:value-type="float" office:value="1.62" calcext:value-type="float">
+      <text:p>1.62</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I299]-[.L299])*10000 ;0.01)" office:value-type="float" office:value="-109.6" calcext:value-type="float">
+      <text:p>-109.6</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce2" office:value-type="date" office:date-value="2022-06-08" calcext:value-type="date">
+      <text:p>2022-06-08</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>ANNE-CN</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Akko x TTC Princess</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=6.99/10" office:value-type="float" office:value="0.699" calcext:value-type="float">
+      <text:p>0.699</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="string" calcext:value-type="string">
+      <text:p>Taken from en.akkogear.com</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=[.E300]/[.$E$301]" office:value-type="float" office:value="0.157440312327944" calcext:value-type="float">
+      <text:p>0.157440312327944</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=[.H300]*[.$R$287]" office:value-type="float" office:value="1.60903999199159" calcext:value-type="float">
+      <text:p>1.60903999199159</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:formula="of:=MROUND([.I300];0.01)+0.01" office:value-type="float" office:value="1.62" calcext:value-type="float">
+      <text:p>1.62</text:p>
+     </table:table-cell>
+     <table:table-cell office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:formula="of:=MROUND( ([.I300]-[.L300])*10000 ;0.01)" office:value-type="float" office:value="-109.6" calcext:value-type="float">
+      <text:p>-109.6</text:p>
+     </table:table-cell>
+     <table:table-cell table:number-columns-repeated="50"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce3" table:number-columns-repeated="2"/>
+     <table:table-cell table:style-name="ce3" office:value-type="string" calcext:value-type="string">
+      <text:p>(TOTAL)</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce3" table:formula="of:=SUM([.D287:.D300])" office:value-type="float" office:value="14" calcext:value-type="float">
+      <text:p>14</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce3" table:formula="of:=SUM([.E287:.E300])" office:value-type="float" office:value="4.43977777777778" calcext:value-type="float">
+      <text:p>4.43977777777778</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce3"/>
+     <table:table-cell table:style-name="ce4"/>
+     <table:table-cell table:style-name="ce11" table:formula="of:=SUM([.H287:.H300])" office:value-type="float" office:value="1" calcext:value-type="float">
+      <text:p>1</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=SUM([.I287:.I300])" office:value-type="float" office:value="10.22" calcext:value-type="float">
+      <text:p>10.22</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=SUM([.J287:.J300])" office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell/>
+     <table:table-cell table:style-name="ce11" table:formula="of:=SUM([.L287:.L300])" office:value-type="float" office:value="10.22" calcext:value-type="float">
+      <text:p>10.22</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:formula="of:=SUM([.M287:.M300])" office:value-type="float" office:value="0" calcext:value-type="float">
+      <text:p>0</text:p>
+     </table:table-cell>
+     <table:table-cell table:style-name="ce11" table:number-columns-repeated="2"/>
+     <table:table-cell table:number-columns-repeated="2"/>
+     <table:table-cell table:style-name="ce11"/>
+     <table:table-cell table:style-name="ce3" table:number-columns-repeated="46"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2">
+     <table:table-cell table:style-name="ce4" table:number-columns-repeated="4"/>
+     <table:table-cell table:style-name="ce8" table:number-columns-repeated="2"/>
+     <table:table-cell/>
+     <table:table-cell table:style-name="ce8" table:number-columns-repeated="3"/>
+     <table:table-cell/>
+     <table:table-cell table:style-name="ce8" table:number-columns-repeated="4"/>
+     <table:table-cell/>
+     <table:table-cell table:style-name="ce12"/>
+     <table:table-cell table:style-name="ce8"/>
+     <table:table-cell table:style-name="ce4" table:number-columns-repeated="46"/>
+    </table:table-row>
+    <table:table-row table:style-name="ro2" table:number-rows-repeated="1048273">
      <table:table-cell table:number-columns-repeated="64"/>
     </table:table-row>
     <table:table-row table:style-name="ro2">
