@@ -1,0 +1,173 @@
+<!doctype html>
+
+<!--
+Filename: index.html
+Author:   simshadows <contact@simshadows.com>
+License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+
+Full source code is available here:
+<https://github.com/simshadows/simshadows-pages>
+-->
+
+<html>
+<head>
+    <title>Sim's FFXIV Savage Mechanics Cheatsheet</title>
+
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.jpg">
+
+    <link rel="stylesheet" type="text/css" href="/_dependencies/normalize-8-0-1.css">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="canonical" href="https://pages.simshadows.com/ffxiv-mechanics" />
+    <meta name="description" content="All my personal FFXIV mechanics notes.">
+    <meta name="keywords" content="simshadows, pages, ffxiv, final fantasy 14, savage, mechanics">
+    <meta name="author" content="simshadows">
+    <!-- TODO: Viewport meta tag? -->
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://pages.simshadows.com/ffxiv-mechanics">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sim's FFXIV Savage Mechanics Notes">
+    <meta property="og:description" content="All my personal FFXIV mechanics notes.">
+    <meta property="og:image" content="https://pages.simshadows.com/favicon.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Sim's FFXIV Savage Mechanics Notes">
+    <meta property="twitter:description" content="All my personal FFXIV mechanics notes.">
+    <meta property="twitter:image" content="https://pages.simshadows.com/favicon.jpg">
+
+    <style>
+        /*** General Styling ***/
+
+        body {
+            padding: 0.5em;
+        }
+        footer {
+            margin-top: 3em;
+            text-align: center;
+        }
+
+        li {
+            margin-bottom: 0.2em;
+        }
+
+        /*** Special Styling ***/
+
+        span.mech {
+            font-weight: bold;
+        }
+        .important {
+            color: red;
+        }
+        .unimportant {
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+
+[ <a href="../"><b>Up</b></a> ]
+[ <a href="https://github.com/simshadows/simshadows-pages"><b>Source</b></a> ]
+
+
+<h1>Sim's FFXIV Savage Mechanics Cheatsheet</h1>
+
+<p><em>This page is intended to be full of shorthand reminders on how savage raid mechanics work, for the experienced-but-forgetful among us. If you are new to a raid, watch a full guide first, then come back to this cheatsheet to remind yourself.</em></p>
+
+<p><em>Currently an early work in progress. I will be working on figuring out how to make it better!</em></p>
+
+
+<h2>Common Abbreviations/Shorthand</h2>
+
+<p>
+    <ul>
+        <li><b>"cardinal":</b> North/South/East/West<ul>
+            <li><b>"intercardinal":</b> Between the cardinal directions (NE/NW/SE/SW).</li>
+        </ul></li>
+        <li><b>LP:</b> Light party</li>
+        <li><b>"pizza slice":</b> Imagine the boss is in the middle of a pizza. A "pizza slice" AOE occurs in one slice.</li>
+        <li><b>"puddle":</b> A small AOE that drops at players' feet and is dangerous to keep standing inside of. Dodge it after you drop it.</li>
+    </ul>
+</p>
+
+
+<h2>[P6S] Abyssos: The Sixth Circle (Savage)</h2>
+
+My notes are only applicable for melee DPS.
+
+<p>Basic mechanics:<ul>
+    <li><b>[Exocleaver]:</b> <span class="important">Dodge BOTH hits</span>.</li>
+    <li><b>"Choros" [Choros Ixou]:</b> Watch for TELEGRAPH. <span class="important">Dodge BOTH hits</span>.</li>
+    <li><b>"Puddle" [Dark Dome]:</b> Drops an <span class="important">INVISIBLE PUDDLE</span> the moment the cast finishes.</li>
+    <li><b>"Cleaving Snake/Wing":</b> Snake cleaves your front. Wing cleaves behind you.</li>
+</ul></p>
+
+<p>Phases abstract:<ol>
+    <li><b>[Poly 1]</b> Stay in LP stack. Dodge <span class="mech">Exocleaver</span>.</li>
+    <li><b>[Pathogenic Cells]</b> One-at-a-time pizza slice cleave from 1 to 8.</li>
+    <li><b>[Exchange of Agonies]</b>
+        <ul>
+            <li>Donut/stack marker IN, fireball OUT.</li>
+            <li>Tether means do the opposite.</li>
+            <li class="unimportant">Dodge <span class="mech">"Choros"</span>.</li>
+        </ul>
+    </li>
+    <li class="unimportant"><b>[Transmission]</b>
+        <span class="mech">"Cleaving Snake/Wing"</span> and <span class="mech">"Choros"</span>.
+    </li>
+    <li><b>[Poly 2]</b> Memorize safe spot. Drop and dodge <span class="mech">"puddle"</span>. TODO</li>
+    <li><b>[Exchange of Agonies 2]</b>
+        <ul>
+            <li>Stack marker OUT, fireball IN.</li>
+            <li class="unimportant">Dodge <span class="mech">Exocleaver</span>.</li>
+        </ul>
+    </li>
+    <li><b>[Poly 3]</b> Memorize safe spot. Stay in LP stack. TODO</li>
+    <li><b>[Dark Ashes]</b> Spread and dodge <span class="mech">Choros Ixou</span>.</li>
+    <li><b>[Cachexia 1]</b>
+        <ul>
+            <li>Bait order: 20 &rarr; 8 &rarr; 12 &rarr; 16</li>
+            <li>Bait the snake/wing OPPOSITE of your debuff icon.</li>
+            <li>Stay spread throughout whole phase (except for necessary movement).</li>
+            <li><span class="mech">Ptera Ixou</span>: Go to the snake/wing side OPPOSITE of your new debuff icon.</li>
+        </ul>
+    </li>
+    <li><b>[Poly 4]</b> Memorize safe spot. TODO</li>
+    <li class="unimportant"><em>(repeat <b>Exchange of Agonies</b>)</em></li>
+    <li><b>[Poly 5]</b>
+        <ul>
+            <li>Memorize safe spot. TODO</li>
+            <li class="important">Drop and dodge <span class="mech">"puddle"</span>.</li>
+        </ul>
+    </li>
+    <li><b>[Cachexia 2]</b>
+        <ul>
+            <li>Go to the snake/wing side OPPOSITE of your new debuff icon.</li>
+            <li>Memorize safe spot. TODO</li>
+        </ul>
+    </li>
+    <li><b>[Poly 6]</b> "Something diagonal to a corner-plus.
+        <ul>
+            <li class="important">Drop and dodge <span class="mech">"puddle"</span>.</li>
+        </ul>
+    </li>
+    <li><b>[Poly 7]</b> Use only the "inner" safe squares.</li>
+</ol></p>
+
+<p>Acknowledgements/sources:<ul>
+    <li><a href="https://www.youtube.com/watch?v=d-eNZwVJI8k">Hector Lecture</a> <em>(full guide)</em></li>
+</ul></p>
+
+
+<footer>
+    <!-- License notice block provided by <https://creativecommons.org/choose/> -->
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    <!-- End license notice block -->
+</footer>
+
+</body>
+</html>
