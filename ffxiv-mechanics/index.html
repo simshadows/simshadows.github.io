@@ -88,8 +88,11 @@ Full source code is available here:
         <li><b>"cardinal":</b> North/South/East/West<ul>
             <li><b>"intercardinal":</b> Between the cardinal directions (NE/NW/SE/SW).</li>
         </ul></li>
-        <li><b>LP:</b> Light party</li>
         <li><b>"cone AOE"</b>/<b>"pizza slice":</b> Imagine the boss is in the middle of a pizza. A "pizza slice" AOE occurs in one slice.</li>
+        <li><b>LP:</b> Light party</li>
+        <li><b>KB:</b> Knockback<ul>
+            <li><b>"KB Resist":</b> Use <em>Arms Length</em> or <em>Surecast</em>.</li>
+        </ul></li>
         <li><b>"puddle":</b> A small AOE that drops at players' feet and is dangerous to keep standing inside of. Dodge it after you drop it.</li>
     </ul>
 </p>
@@ -172,43 +175,50 @@ My notes are only applicable for melee DPS.
     <li><b>"Bough" [Bough of Attis]:</b> Cleaves platforms.</li>
     <li><b>[Forbidden Fruit]</b>
         <ul>
-            <li><b>"Circle/Bull Fruit"</b> spawns:
+            <li><b>"Bull"</b> <em>("Circle Fruit")</em> &rarr; Cleaves its platform.
                 <ul>
-                    <li><b>"Bull"</b> &rarr; Cleaves its platform.</li>
-                    <li><b>"Tethered Bull"</b> &rarr; Line AOEs.</li>
+                    <li>Tether &rarr; Line AOEs.</li>
                 </ul>
             </li>
-            <li><b>"Lines/Bird Fruit"</b> spawns:
+            <li><b>"Bird"</b> <em>("Lines Fruit")</em> &rarr; Line AOE
                 <ul>
-                    <li><b>"Bird"</b> &rarr; Line AOE.</li>
-                    <li><b>"Tethered Bird"</b> &rarr; Line AOE <span class="important">WITH KNOCKBACK</span>.</li>
+                    <li>Tether &rarr; Line AOE, <span class="important">MUST BE KB RESISTED</span>.</li>
                 </ul>
             </li>
-            <li><b>"Mouth/Minotaur Fruit"</b> spawns:
+            <li><b>"Mino(taur)"</b> <em>("Mouth Fruit")</em> &rarr; Dodgeable cone AOE at two closest players.
                 <ul>
-                    <li><b>"Minotaur"</b> &rarr; Drops dodgeable cone AOEs. Targets two closest players.</li>
-                    <li><b>"Tethered Bird"</b> &rarr; You must stretch this. This does a cone AOE.</li>
+                    <li>Tether &rarr; Cone AOE, <span class="important">MUST BE STRETCHED</span>.</li>
                 </ul>
             </li>
+        </ul>
+    </li>
+    <li><b>"Debuffs"</b>
+        <ul>
+            <li>Numbering: 1 means do it first, 2 is second, etc.</li>
+            <li>"<span class="important">Red Spread</span>, Otherwise Stack"</li>
         </ul>
     </li>
 </ul></p>
 
 <p>Phases abstract:<ol>
     <li><b>[Blades of Attis]</b> Everyone go to safe side.</li>
-    <li><b>[Forbidden Fruit 1]</b> Front platform <span class="important">WITHOUT <span class="mech">"Bull Fruit"</span></span> is safe. LP stacks.</li>
+    <li><b>[Forbidden Fruit 1]</b> Front platform <span class="important">WITHOUT <span class="mech">"Bull"</span></span> is safe. LP stacks.</li>
     <li><b>[Debuffs]</b>
         <ul>
-            <li><span class="mech">"Bough"</span> &rarr; Back is safe. Arrows is unsafe.</li>
-            <li class="important">Debuff numbering: 1 means do it first, 2 is second, etc.</li>
-            <li class="important"><span class="mech">"Red Debuff"</span> &rarr; Spread</li>
-            <li class="important"><span class="mech">"Blue Debuff"</span> &rarr; Stack</li>
+            <li><span class="mech">"Bough"</span> &rarr; <span class="important">Back is safe</span>. Arrows is unsafe.</li>
+            <li class="important"><span class="mech">"Debuffs"</span> stacks/spreads</li>
         </ul>
     </li>
-    <li><b>[Forbidden Fruit 2]</b> <span class="important">Spread</span> and dodge <span class="mech">"Birds"</span>. <span class="important">KNOCKBACK RESIST</span> as soon as knockback indicator shows.</li>
+    <li><b>[Forbidden Fruit 2]</b> </li>
+    <li><b>[Forbidden Fruit 2]</b>
+        <ul>
+            <li><span class="important">Spread</span> and dodge <span class="mech">"Birds"</span>. <span class="important">KB RESIST</span> as soon as KB indicator shows.</li>
+            <li class="important">Split into LP's before bridges collapse.</li>
+        </ul>
+    </li>
     <li><b>[Forbidden Fruit 3]</b>
         <ul>
-            <li>Dodge the <span class="mech">"Bulls"</span> via. the bridge.</li>
+            <li>Dodge <span class="mech">"Bulls"</span> via. the bridge.</li>
             <li><span class="mech">"Bough"</span> &rarr; Back is safe. Arrows is unsafe.</li>
         </ul>
     </li>
@@ -216,44 +226,44 @@ My notes are only applicable for melee DPS.
         <ul>
             <li><span class="mech">"Bull Tether"</span> &rarr; Spread at bull platform.</li>
             <li><span class="mech">"Minotaur Tether"</span> &rarr; Stretch to opposite minotaur platform.</li>
-            <li><em>Untethered</em> &rarr; Bait untethered minotaur.</li>
+            <li><em>Untethered</em> &rarr; Bait untethered minotaur away from bull.</li>
         </ul>
     </li>
-    <li><b>[Blades of Attis]</b> Ride the knockback to SE/SW corners. <span class="important">Stay in LP stacks.</span></li>
+    <li><b>[Blades of Attis]</b> Ride KB to SE/SW corners. <span class="important">Stay in LP stacks.</span> Dodge AOEs around.</li>
     <li><b>[Forbidden Fruit 5]</b> ("Birds and Towers")
         <ul>
-            <li><span class="mech">"Bird Tether"</span> &rarr; Go opposite.</li>
+            <li><span class="mech">"Bird Tether"</span> &rarr; Go <span class="important">exactly opposite</span>.</li>
             <li><em>Untethered</em> &rarr; Towers. Sit <span class="important">towards the edge of the arena</span>.</li>
             <li><span class="mech">"Immortal's Obol"</span> &rarr; Everyone go to one platform.</li>
         </ul>
     </li>
-    <li><b>[Inviolate Purgation (FF6)]</b>
+    <li><b>[Inviolate Purgation (FF6)]</b> <em>("Sleepo Strat")</em>
         <ul>
             <li>TODO</li>
         </ul>
     </li>
     <li><b>[Forbidden Fruit 7]</b>
         <ul>
-            <li>Start at far edge of empty platform.</li>
-            <li>When chasing AOEs show, dodge via. bird that isn't facing you.</li>
+            <li class="important">Start at far edge of empty platform.</li>
+            <li>Dodge chasing AOEs via. bird that isn't facing you.</li>
         </ul>
     </li>
     <li><b>[Famine's Harvest]</b>
         <ul>
-            <li>Start at 2-fruit platform.</li>
+            <li><span class="mech">"Minotaur Tether"</span> &rarr; <span class="important">Tethers form an "X".</span></li>
+            <li><em>Untethered</em> &rarr; Go to <span class="important">2-egg platform</span>. Bait the minotaurs.</li>
+        </ul>
+    </li>
+    <li><b>[Death's Harvest]</b> <em>("Fixed Strat")</em>
+        <ul>
             <li>TODO</li>
         </ul>
     </li>
-    <li><b>[Death's Harvest]</b>
-        <ul>
-            <li><span class="mech">"Bull Tether"</span> Spread at your appropriate platform.</li>
-        </ul>
-    </li>
-    <li><b>[War's Harvest]</b>
+    <li><b>[War's Harvest]</b> <em>("Inumaru Strat")</em>
         <ul>
             <li><span class="mech">"Bull Tether"</span> &rarr; Spread at bull platform.</li>
-            <li><span class="mech">"Bird Tether"</span> &rarr; TODO.</li>
-            <li>Both <span class="mech">"Minotaur Tethers"</span> &rarr; TODO.</li>
+            <li><span class="mech">"Bird Tether"</span> &rarr; Point away at your bird's platform.</li>
+            <li><span class="mech">"Minotaur Tether"</span> &rarr; Stretch through the appropriate bird.</li>
         </ul>
     </li>
     <li><em>Easy Mechanics</em>
