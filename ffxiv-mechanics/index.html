@@ -55,6 +55,10 @@ Full source code is available here:
             margin-bottom: 0.2em;
         }
 
+        ul.no-bullets {
+            list-style-type: none;
+        }
+
         /*** Special Styling ***/
 
         span.mech {
@@ -66,6 +70,13 @@ Full source code is available here:
         .unimportant {
             color: #aaa;
         }
+
+        table.no-border td {
+            padding-left: 0.25em;
+            padding-right: 0.25em;
+        }
+        table.no-border td:first-of-type {padding-left:  0;}
+        table.no-border td:last-of-type  {padding-right: 0;}
     </style>
 </head>
 
@@ -367,7 +378,12 @@ My notes are only applicable for melee DPS.
 My notes are only applicable for melee DPS.
 
 <p>Recurring mechanics:<ul>
-    <li><b>"Safe Side" [Ashing Blaze]</b>: TODO</li>
+    <li><b>"Safe Side" [Ashing Blaze]</b>: Half the arena (east or west) is cleaved.</li>
+    <li><b>[High Concept 1/2]</b>:
+        <ul>
+            <li>{&alpha; &xharr; &#9650;} {&beta; &xharr; &#9660;} {&gamma; &xharr; L-shape}</li>
+        </ul>
+    </li>
 </ul></p>
 
 <p>Phases:<ol>
@@ -377,7 +393,7 @@ My notes are only applicable for melee DPS.
             <li>Fire = 3 furthest; Ice = 2 closest. <em class="important">Fire = "Far T-shape"</em></li>
         </ol>
     </li>
-    <li><b>[High Concept 1]</b> Remember: {&alpha; &xharr; blue above} {&beta; &xharr; green above} {&gamma; &xharr; L-shape}
+    <li><b>[High Concept 1]</b>
         <ol>
             <li>{Short &alpha;&beta;&gamma; &rarr; Out} {Else &rarr; Stacks}</li>
             <li>Match colours, soak puddles. <span class="important">"Safe side".</span></li>
@@ -390,15 +406,11 @@ My notes are only applicable for melee DPS.
             <li>Spread &rarr; When hit, prepos near your tower &rarr; Dodge puddle + Soak tower</li>
         </ul>
     </li>
-    <li><b>[Natural Alignment 2]</b>
-        <ol>
-            <li>TODO</li>
-        </ol>
-    </li>
+    <li><b>[Natural Alignment 2]</b> Read which mechs are inverted.</li>
     <li><b>[High Concept 2]</b>
         <ol>
-            <li>{Short &alpha;&beta;&gamma; &rarr; Out} <span class="important">{Nothing &rarr; Soak &alpha;}</span> {Else &rarr; Stacks}</li>
-            <li>{Had nothing &rarr; Combine} {Had &alpha;&beta;&gamma; &rarr; Match colours, soak puddles} <span class="important">"Safe side".</span></li>
+            <li>{Short &alpha;&beta;&gamma; &rarr; Out} <span class="important">{Nothing &rarr; Soak &alpha;, COMBINE}</span> {Else &rarr; Stacks}</li>
+            <li>Match colours, soak puddles, <span class="important">"Safe side".</span></li>
             <li>{Long &alpha;&beta;&gamma; &rarr; Out} <span class="important">{Else &rarr; Standby}</span></li>
             <li><span class="important">{Long &alpha;&beta; &rarr; Combine}</span> {Leftover elements &rarr; Combine} Soak puddles, bait clones.</li>
             <li>Red + Green &rarr; Combine</li>
@@ -407,37 +419,93 @@ My notes are only applicable for melee DPS.
     <li><b>[Dominion]</b> Spread. If you weren't hit, you take first towers. <em>Repeat.</em></li>
 </ol></p>
 
-Fire/Ice decision tree:
+Fire/Ice decision tree for <em>Scripe Strat</em>:
 <ul>
-    <li><b>D1</b> (defaulting to East)
+    <li><b>D1</b>
         <ul>
             <li><span class="important">DPS have purple?</span>
-                <ul>
-                    <li>Fire: Bait</li>
-                    <li>Ice: Soak</li>
-                </ul>
+                <ul class="no-bullets"><li>
+                    <table class="no-border">
+                        <tbody>
+                            <tr>
+                                <td>Fire</td>
+                                <td>&rarr;</td>
+                                <td>East</td>
+                                <td><span class="important"><b>BAIT</b></span></td>
+                            </tr>
+                            <tr>
+                                <td>Ice</td>
+                                <td>&rarr;</td>
+                                <td>East</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li></ul>
             </li>
             <li><span class="important">TH have purple?</span>
-                <ul>
-                    <li>Fire: Bait NORTH/SOUTH</li>
-                    <li>Ice: Bait WEST</li>
-                </ul>
+                <ul class="no-bullets"><li>
+                    <table class="no-border">
+                        <tbody>
+                            <tr>
+                                <td>Fire</td>
+                                <td>&rarr;</td>
+                                <td>North/South</td>
+                                <td><span class="important"><b>BAIT</b></span></td>
+                            </tr>
+                            <tr>
+                                <td>Ice</td>
+                                <td>&rarr;</td>
+                                <td>West</td>
+                                <td><span class="important"><b>BAIT</b></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li></ul>
             </li>
         </ul>
     </li>
-    <li><b>D2</b> (defaulting to East)
+    <li><b>D2</b>
         <ul>
             <li><span class="important">DPS have purple?</span>
-                <ul>
-                    <li>D1 is purple & Fire: Bait</li>
-                    <li>Otherwise: Soak</li>
-                </ul>
+                <ul class="no-bullets"><li>
+                    <table class="no-border">
+                        <tbody>
+                            <tr>
+                                <td>D1 is purple & Fire</td>
+                                <td>&rarr;</td>
+                                <td>East</td>
+                                <td><span class="important"><b>BAIT</b></span></td>
+                            </tr>
+                            <tr>
+                                <td>Otherwise</td>
+                                <td>&rarr;</td>
+                                <td>East</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li></ul>
             </li>
             <li><span class="important">TH have purple?</span>
-                <ul>
-                    <li>Fire: Soak NORTH/SOUTH</li>
-                    <li>Ice: Bait</li>
-                </ul>
+                <ul class="no-bullets"><li>
+                    <table class="no-border">
+                        <tbody>
+                            <tr>
+                                <td>Fire</td>
+                                <td>&rarr;</td>
+                                <td>North/South</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Ice</td>
+                                <td>&rarr;</td>
+                                <td>East</td>
+                                <td><span class="important"><b>BAIT</b></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li></ul>
             </li>
         </ul>
     </li>
