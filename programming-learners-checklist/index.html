@@ -97,9 +97,9 @@ Full source code is available here:
 
 <h1>Sim's Programming Learner's Checklist</h1>
 
-<p><em>Currently an early work in progress. Started because I realized I was talking a lot about this sort of thing, may as well see how I do with attempting to compile a proper list. <b>This list sucks right now, and honestly, it's a lot harder to write than I thought, but I'm gonna keep trying to figure it out!</b></em></p>
+<p><em>Currently an early work in progress. <b>This list sucks right now, and honestly, it's a lot harder to write than I thought, but I'm gonna keep trying to figure it out!</b></em></p>
 
-<p><em>In my opinion, everything here is mandatory to deeply learn except anything with an asterisk. Asterisks indicate topics I feel you can get away with avoiding, though you should still do some light reading to at least have some idea on these topics.</em></p>
+<p>If you want a comprehensive background as a computing professional, you should look into everything in this checklist (unless it's optional or otherwise stated). This list is primarily targeted at self-learners who are not going the traditional route through university computer science and would like to be able to easily check whether the learning resources they find is on the right track.</p>
 
 
 <h2>Programming Fundamentals</h2>
@@ -109,6 +109,8 @@ Full source code is available here:
     <ul>
         <li class="todo">Add more content.</li>
         <li class="todo">Also talk about statically typed languages here?</li>
+        <li class="todo">Cover the topic of threading and concurrency fundamentals. Also introduce higher-level concurrency abstractions from various languages/contexts, but don't go into too much depth.</li>
+        <li class="todo">Cover the topic of automated testing (particularly unit testing). Briefly introduce TDD.</li>
     </ul>
 </p>
 
@@ -116,33 +118,94 @@ Full source code is available here:
 <h2>C Language Fundamentals</h2>
 
 <p>
-    Chances are, the language you started with has made things very convenient for you. I think that every serious programmer should eventually try learning how to use C because C doesn't hold your hand (nearly as much). C will give you so much appreciation for all the bells and whistles other languages give you and give you a more critical understanding of algorithm and data structure performance.
+    Chances are, the language you started with has made things very convenient for you. I think that every serious programmer should eventually try learning how to use C because C doesn't hold your hand (nearly as much). C will give you so much appreciation for all the bells and whistles other languages give you and give you a more critical understanding of algorithm and data structure performance. Additionally, good C programming requires the programmer to be aware of a few more very useful lower-level concepts, so C is a great context in which to learn about them.
 </p>
 <p>
-    On top of that, C is a great stepping stone into learning C++, gives you great background for assembly language and digital circuit design (trust me, it will make sense when you get there), and practically necessary to learn about Operating Systems, other low-level/systems programming work, and deep security topics.
+    C is also a great stepping stone into learning C++ and is somewhat necessary to learn about operating systems, digital circuits, computer architecture, compilers, and many security topics.
 </p>
 <p>
-    I very much highly recommend learning C as your first language if you can, though <u>it's understandably not for everyone because it's a very tedious language to work with</u>. If you don't like it, there's no harm in holding it off for later when you're more motivated.
+    I very highly recommend learning C as your first language if you can, though <u>it's understandably not for everyone because it's a very tedious language to work with</u>. If you don't like it, there's no harm in holding it off for later when you're more motivated.
+</p>
+<p>
     <ul>
         <li>COREQUISITES: Programming Fundamentals</li>
         <li>Know the concept of <span class="concept">memory safety</span>.</li>
-        <li class="todo">Add more content.</li>
+        <li class="todo">Very briefly introduce assembly language and that C compilers compile down to it.</li>
+        <li class="todo">Cover the topic of text encoding. Subtopics: ASCII and Unicode, null-terminated strings vs. length-prefixed strings, line feed and carriage return issues.</li>
+        <li class="todo">Cover the topic of memory layout. Subtopics: segmentation, call stack, heap.</li>
     </ul>
 </p>
 
 
-<h2>Terminals, Git, Regex, and other incredibly useful miscellaneous topics</h2>
+<h2>System-Level Fundamentals</h2>
 
 <p>
-    Chances are, you've already had to learn a bit about how to use the terminal.
+    While you might be able to get away with ignoring the system-level stuff, it gives you a stronger intuition around abstraction in computing while greatly expanding your toolset for solving problems in computing (such as optimizing your code's memory access patterns to improve performance).
+</p>
+<p>
     <ul>
-        <li>PREREQUISITES: Programming Fundamentals</li>
-        <li class="todo">Add more content.</li>
+        <li>COREQUISITES: C Language Fundamentals</li>
+        <li class="todo">Cover the topic of assembly and machine language.</li>
+        <li class="todo">Cover the topic of processes. Subtopics: virtual memory, physical memory, caching, IPC, and executable binaries.</li>
+        <li class="todo">Cover the topic of linking.</li>
     </ul>
 </p>
 
 
-<h2>Bare-Minimum Mathematics</h2>
+<h2>Essential Miscellany</h2>
+
+<p>
+    This section is about all the random little things that you should know about that don't neatly fall under any of the other sections. Some of these topics are quite essential: everyone must know how to work with a terminal, use version control, and write regular expressions. Others, you might find you really like using in your day-to-day work, like <em>vim</em> and <em>Docker</em>.
+</p>
+<p>
+    But at the very least, you should be aware of everything in this section to keep at the back of your mind. It all gives you so much background behind everything to do with computers, and they expand your toolset for solving problems.
+</p>
+<p>
+    <ul>
+        <li>PREREQUISITES: Programming Fundamentals</li>
+        <li>Go through <a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> from MIT. Go through anything you're not yet familiar with.
+            <ul>
+                <li>The three most important topics you need to be very familiar with are:
+                    <ul>
+                        <li><span class="concept">The Linux/Mac/*nix command line</span> and <span class="concept">shell scripting</span>
+                            <ul>
+                                <li><i>NOTE: Even if you want to use Windows, I still think you should learn how to use the Linux/Mac command line. It's the nicest way to learn how to use a command line, and I almost guarantee you you will eventually be using a Linux or Mac box at some point.</i></li>
+                            </ul>
+                        </li>
+                        <li><span class="concept">git</span>
+                            <ul>
+                                <li><i>NOTE: Except in certain rare circumstances (such as maybe game development where file sizes are huge and rapidly changing), git is your best friend in everything. And even if it's not, learning about git will give you much-needed experience into how to use version control systems.</i></li>
+                            </ul>
+                        </li>
+                        <li><span class="concept">Regular expressions</span></li>
+                    </ul>
+                </li>
+                <li>While you might not want to use <span class="concept">vim</span>, I still think everyone should be aware of what it's capable of, why it exists, why it's so useful, and how to exit vim.
+                    <ul>
+                        <li>If you want to learn more about command-based text editors, also look into <span class="concept">emacs</span>.</li>
+                    </ul>
+                </li>
+                <li>You absolutely need to be aware of <span class="concept">profiling</span> and how to use it to your advantage for optimizing your code's performance.
+                    <ul>For example, what is a <span class="concept">hot spot</span>, and how important are they in directing your code optimization efforts?</ul>
+                </li>
+            </ul>
+        </li>
+        <li class="todo">Cover the topic of security and cryptography fundamentals.</li>
+        <li class="todo">Cover the topic of containerization (and Docker).</li>
+        <li class="todo">Maybe cover the topic of makefiles and similar build tools. Or at least have it be an extension topic.</li>
+        <li class="todo">Cover the topic of project management. Subtopics: agile/scrum/kanban, waterfall, RAD.</li>
+    </ul>
+</p>
+
+<p>References and further reading:</p>
+<p>
+    <ul>
+        <li><a href="https://www.youtube.com/playlist?list=PL0M0zPgJ3HSesuPIObeUVQNbKqlw5U2Vr">Computer Stuff They Didn't Teach You</a> by Scott Hanselman</li>
+    </ul>
+</p>
+
+
+<h2>Mathematics</h2>
 
 <p>
     No, you technically don't need all that advanced university calculus and algebra, but there is some very unavoidable mathematics that you do need to be a great programmer.
@@ -213,6 +276,7 @@ Full source code is available here:
                 <li>Know how to implement these ADTs using a linked list.</li>
                 <li>Compare and contrast array and linked list implementations. How might you compare their time and space characteristics?</li>
                 <li class="important-note"><i>NOTE: Comparing array and linked list implementations should give you great appreciation for the difference between ADT and underlying implementation, and it should be a very powerful lesson on the profound concept of abstraction.</i></li>
+                <li>Why might it useful to use stack/queue/deque ADTs rather than directly use the underlying array or list? For example, how does it improve our ability to guarantee that our code is working correctly?</li>
             </ul>
         </li>
         <li>Trees
@@ -347,17 +411,17 @@ Full source code is available here:
 <p>
     <ul>
         <li>PREREQUISITES: Programming Fundamentals; Networking</li>
-        <li>RECOMMENDED PREREQUISITES: Terminals, Git, Regex, and other incredibly useful miscellaneous topics</li>
+        <li>RECOMMENDED PREREQUISITES: Essential Miscellany</li>
         <li class="todo">Add more content.</li>
     </ul>
 </p>
 
 
-<h2>Assembly Language and Operating Systems</h2>
+<h2>Operating Systems</h2>
 
 <p>
     <ul>
-        <li>PREREQUISITES: C Language Fundamentals; Data Structures and Algorithms; Terminals, Git, Regex, and other incredibly useful miscellaneous topics</li>
+        <li>PREREQUISITES: System-Level Fundamentals; Data Structures and Algorithms; Essential Miscellany</li>
         <li class="todo">Add more content.</li>
     </ul>
 </p>
@@ -389,7 +453,7 @@ Full source code is available here:
     Highly recommended to look into this if you're interested in web development.
     <ul>
         <li>PREREQUISITES: Web Development, Databases, and Web Security</li>
-        <li>RECOMMENDED PREREQUISITES: Terminals, Git, Regex, and other incredibly useful miscellaneous topics</li>
+        <li>RECOMMENDED PREREQUISITES: Essential Miscellany</li>
         <li class="todo">Add more content.</li>
     </ul>
 </p>
@@ -404,7 +468,7 @@ Full source code is available here:
 </p>
 
 
-<h2>[OPTIONAL] Machine Learning</h2>
+<h2>[OPTIONAL] Artificial Intelligence and Machine Learning</h2>
 
 <p>
     <ul>
@@ -451,11 +515,12 @@ Full source code is available here:
     <em>I'm actually not entirely sure how to approach listing out for these topics. It probably may as well be its own big checklist, including topics on electrical circuit analysis and transistors. Feels too big to treat it as simply another section of this programmer's checklist.</em>
 </p>
 
+<hr />
 
 <h2>Acknowledgements</h2>
 
+<p>To help me compile this list, I borrowed from a bunch of sources:</p>
 <p>
-    To help me compile this list, I borrowed from a bunch of sources:
     <ul>
         <li>My own experience studying undergraduate Computer Engineering at UNSW</li>
         <li><a href="https://github.com/ossu/computer-science">OSSU Computer Science</a></li>
