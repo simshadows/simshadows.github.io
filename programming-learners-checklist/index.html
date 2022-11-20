@@ -220,7 +220,7 @@ Full source code is available here:
 <p>Core topics:</p>
 <p>
     <ul>
-        <li>PREREQUISITES: Programming Fundamentals; Bare-Minimum Mathematics</li>
+        <li>PREREQUISITES: Programming Fundamentals; Mathematics</li>
         <li class="important-note"><em>I highly highly highly recommend doing data structures and algorithms exercises in the C programming language rather than something like Python, Java, or Javascript, because C forces you to work with more-primitive programming abstractions, which forces you to think very carefully about more aspects of each algorithm. I also recommend using a memory debugging tool such as valgrind when evaluating your C solutions in order to check for memory leaks.</em></li>
         <li>Understand <span class="concept">big-O</span> as a mathematical concept and why it's useful for <span class="concept">run time/space analysis</span> of data structures and algorithms.
             <ul>
@@ -265,9 +265,9 @@ Full source code is available here:
                 <li>Compare and contrast linked lists with arrays. What are the advantages and disadvantages of each?</li>
             </ul>
         </li>
-        <li>Have a high-level understanding of <span class="concept">dynamic arrays</span>, and consider how <em>insertion</em> and <em>deletion</em> might have to be implemented.
+        <li>Have a high-level understanding of how <span class="concept">dynamic arrays</span> can be implemented <em>at a low-level</em>. How might you implement <em>insertion</em> and <em>deletion</em>?
             <ul>
-                <li><i>NOTE: Dynamic arrays can be very difficult to appreciate if you aren't programming in something like C because a lot of modern programming languages (such as Python and Javascript) have dynamic arrays built in.</i></li>
+                <li><i>NOTE: Dynamic arrays can be very difficult to appreciate if you aren't programming in something like C because a lot of modern programming languages (such as Python and Javascript) have dynamic arrays built into the language.</i></li>
             </ul>
         </li>
         <li>Know the abstract properties and operations of the following ADTs: <span class="concept">stack/LIFO</span>, <span class="concept">queue/FIFO</span>, and <span class="concept">deque</span>.
@@ -348,6 +348,7 @@ Full source code is available here:
 <p>Optional further topics that I recommend looking into to further expand your perspective on how these concepts can be applied:</p>
 <p>
     <ul>
+        <li><span class="concept">copy-on-write (COW)</span></li>
         <li><span class="concept">B-trees</span></li>
         <li><span class="concept">Skip lists</span></li>
         <li><span class="concept">Distributed Hash Tables (DHTs)</span></li>
@@ -358,6 +359,7 @@ Full source code is available here:
                 <li><span class="concept">Lossy</span> and <span class="concept">lossless compression</span>.</li>
             </ul>
         </li>
+        <li>Watch <a href="https://www.youtube.com/watch?v=iSNsgj1OCLA">this video</a> on the <span class="concept">100 Prisoners Riddle</span> by Veritasium.</li>
     </ul>
 </p>
 
@@ -378,10 +380,38 @@ Full source code is available here:
     </ul>
 </p>
 
-<p>Even more extension topics that will be useful for technical interviews:</p>
+<p>Want some programming practice? Here are my recommendations:</p>
 <p>
     <ul>
-        <li class="todo">Add more content. I'm actually not sure what I'd write here. Beyond the fundamentals, technical interview questions can vary quite a bit.</li>
+        <li class="important-note"><i>You may need to create accounts on these websites to see the exercises.</i></li>
+        <li><a href="https://leetcode.com/study-plan/data-structure/">LeetCode's Data Structure Study Plan</a>
+            <ul>
+                <li class="important-note"><i>These exercises should be your priority to complete first because they cover the most fundamental things.</i></li>
+                <li><i>As of November 2022, I see that the first two study plans are free to access, but the third study plan requires a paid subscription of $35 USD per month. I suggest just going through the free questions. You don't need the paid ones.</i></li>
+                <li>Go through as many of these questions as you can. If you're having trouble with a question, skip it and do it later.</li>
+            </ul>
+        </li>
+        <li><a href="https://www.hackerrank.com/domains/data-structures">HackerRank's Data Structures exercises</a>
+            <ul>
+                <li>Once you're done with all the free content from LeetCode's data structures study plan, you should have a look at HackerRank's data structures exercises. Feel free to skip over any exercises you've already done in LeetCode (or are too easy).</li>
+                <li>Same advice as as with LeetCode data structures: Just go through as many questions as you can, and if you're stuck with a question, skip it and do it later.</li>
+            </ul>
+        </li>
+        <li><a href="https://leetcode.com/problemset/algorithms/">LeetCode's Algorithms exercises</a>
+            <ul>
+                <li>If data structures exercises are too hard or you're getting bored of them, I suggest just going through LeetCode's algorithms exercises. Feel free to skip anything you've already done.</li>
+                <li>Same advice again: Just go through as many questions as you can, and if you're stuck with a question, skip it and do it later.</li>
+            </ul>
+        </li>
+        <li>
+            If you have money to blow, maybe check out <a href="https://www.algoexpert.io/questions">AlgoExpert</a>.
+            <ul>
+                <li>It's quite expensive (as of November 2022, $99 USD for 1 year of access), but the one person I know who uses it likes it.</li>
+                <li>In my opinion, the main value proposition of AlgoExpert is the fact that they include video lectures with the questions to help you along. The problem with LeetCode and HackerRank is that they don't really explain the questions and ideas in depth, so if you're stuck, you're left on your own to find relevant videos on YouTube or read the community forums/discussions.</li>
+                <li>I don't consider it necessary to pay this much money for it, but it's up to you.</li>
+            </ul>
+        </li>
+        <li class="todo">Include screenshots of these websites to give people a better idea of what I'm referring to.</li>
     </ul>
 </p>
 
@@ -413,6 +443,13 @@ Full source code is available here:
         <li>PREREQUISITES: Programming Fundamentals; Networking</li>
         <li>RECOMMENDED PREREQUISITES: Essential Miscellany</li>
         <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+<p>Optional further reading:</p>
+<p>
+    <ul>
+        <li>Watch <a href="https://www.youtube.com/watch?v=3QEoJRjxnxQ"><em>Why web tech is like this</em></a> by Steve Sanderson. It's a 1-hour summary of the history of web technology, and it's amazing.</li>
     </ul>
 </p>
 
