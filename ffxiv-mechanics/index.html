@@ -11,7 +11,7 @@ Full source code is available here:
 
 <html>
 <head>
-    <title>Sim's FFXIV Savage Mechanics Cheatsheet</title>
+    <title>Sim's FFXIV Savage Notes (Melee DPS, Materia DC PF)</title>
 
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="/favicon.jpg">
@@ -30,13 +30,13 @@ Full source code is available here:
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://pages.simshadows.com/ffxiv-mechanics">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Sim's FFXIV Savage Mechanics Notes">
+    <meta property="og:title" content="Sim's FFXIV Savage Notes">
     <meta property="og:description" content="All my personal FFXIV mechanics notes.">
     <meta property="og:image" content="https://pages.simshadows.com/favicon.jpg">
 
     <!-- Twitter Meta Tags -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Sim's FFXIV Savage Mechanics Notes">
+    <meta property="twitter:title" content="Sim's FFXIV Savage Notes">
     <meta property="twitter:description" content="All my personal FFXIV mechanics notes.">
     <meta property="twitter:image" content="https://pages.simshadows.com/favicon.jpg">
 
@@ -87,11 +87,17 @@ Full source code is available here:
 [ <a href="https://github.com/simshadows/simshadows-pages"><b>Source</b></a> ]
 
 
-<h1>Sim's FFXIV Savage Mechanics Cheatsheet</h1>
+<h1>Sim's FFXIV Savage Notes (Melee DPS, Materia DC PF)</h1>
 
-<p><em>This page is intended to be full of shorthand reminders on how savage raid mechanics work, for the experienced-but-forgetful among us. If you are new to a raid, watch a full guide first, then come back to this cheatsheet to remind yourself.</em></p>
+<p><em>These notes are designed for myself, as a melee DPS in Materia data center, playing in party finder, and using shorthand that make sense to me. It's intended to focus on shorthand reminders on how savage raid mechanics work to remind myself of mechanics for reclears (since I forget very easily).</em></p>
 
-<p><em>Currently an early work in progress. I will be working on figuring out how to make it better!</em></p>
+<p><em>I release these notes to the public just in case it's useful to anyone.</em></p>
+
+<p>Notes for older content:
+    <ul>
+        <li><a target="_self" href="./patch-6-2.html">Patch 6.2</a></li>
+    </ul>
+</p>
 
 
 <h2>Common Abbreviations/Shorthand</h2>
@@ -608,8 +614,8 @@ My notes are only applicable for melee DPS.
             <li>SET 1: Look for next set (always donut, to your left or right), look at your debuffs.</li>
             <li>SET 2: 4-person stacks to soak lasers. Debuffs:
                 <ul>
-                    <li>{Most Light &rarr; Left} {Most Dark &rarr; Right}</li>
-                    <li><span class="important">Laser debuff does OPPOSITE</span></li>
+                    <li>{Most Dark &rarr; Left} {Most <span class="important">Light &rarr; Right</span>}</li>
+                    <li>Laser debuff does OPPOSITE</li>
                 </ul>
             </li>
             <li>SET 3: Preposition. AFTER set 3, do according to debuff:
@@ -625,17 +631,19 @@ My notes are only applicable for melee DPS.
     <li><em>Apo-in/Peri-out</em></li>
     <li><b>[Engravement 2]</b>
         <ul>
-            <li>STEP 1:
+            <li>STEP 1 (DPS): DPS are always tethered.
                 <ul>
-                    <li>DPS always tethered &rarr; Go to safe middle platform OPPOSITE SIDE of your add. Tethers form "X-shape", avoid hitting the tower.</li>
-                    <li><em>(Supports &rarr; Soak towers. Plus go north, cross go south, tower debuff mid platforms MT>OT>H1>H2 W>E priority.)</em></li>
+                    <li>Go to safe middle platform OPPOSITE SIDE of your add.</li>
+                    <li>Tethers form "X-shape", avoid hitting the tower.</li>
+                    <li><span class="important">Go slightly away from the edge</span> (to avoid other tether AOEs).</li>
+                    <li><em>Use this time to check party debuffs.</em></li>
                 </ul>
             </li>
-            <li>During step 1, DPS should check party list for whether they're soaking towers or baiting adds.</li>
+            <li><em>(STEP 1 (Supports): Soak towers. Plus/cross go N/S, tower debuff mid platforms with priority system.)</em></li>
             <li>STEP 2:
                 <ul>
-                    <li>Was tethered, <span class="important">opposite</span> tether colour as towers &rarr; Soak towers. Closest to middle soaks mid tower.</li>
-                    <li>Was tethered, <span class="important">same</span> tether colour as towers &rarr; Bait nearest add. <span class="important">Must bait as close as possible.</span></li>
+                    <li>Was tethered, opposite tether colour as towers &rarr; Soak towers. Closest to middle soaks mid tower.</li>
+                    <li>Was tethered, <span class="important">same</span> tether colour as towers &rarr; <span class="important">Bait nearest add</span>. Must bait as close as possible.</li>
                     <li><em>(Supports &rarr; Either baiting add or stepping off tower avoiding baiting add.)</em></li>
                 </ul>
             </li>
@@ -648,22 +656,22 @@ My notes are only applicable for melee DPS.
                 <ul>
                     <li>1/2/3/4 bait boss and drop puddles first.</li>
                     <li>5/6/7/8 bait lasers first.</li>
-                    <li>Boss baits/puddles are taken as pairs, and rotate clockwise.</li>
-                    <li>Laser baits are done by moving closer to the middle and spreading.</li>
+                    <li>Boss baits/puddles are taken as pairs, and rotate CW.</li>
+                    <li>Laser baits are done by moving closer to the middle and spreading. Bias your spreads clockwise-ish.</li>
                 </ul>
             </li>
             <li>STEP 1: Relative to facing the boss:
                 <ul>
                     <li>1/3 &rarr; Stack opposite the boss.</li>
                     <li>2/4 &rarr; Prepos to step into where the boss was.</li>
-                    <li>5/7 &rarr; Left, bait first.</li>
+                    <li><span class="important">5/7 &rarr; Left, bait first.</span></li>
                     <li>6/8 &rarr; Right, bait second.</li>
                 </ul>
             </li>
             <li>STEP 2: Swap when possible.
                 <ul>
                     <li>Boss baiters &rarr; CW</li>
-                    <li>Laser baiters &rarr; CCW</li>
+                    <li><span class="important">Laser baiters &rarr; CCW</span></li>
                 </ul>
             </li>
             <li>STEP 1:
@@ -715,6 +723,43 @@ My notes are only applicable for melee DPS.
 </ul></p>
 
 <p>Phases abstract:<ol>
+    <li><b>[Palladian Grasp]</b> Party stands opposite side of aggro'd tank.</li>
+    <li><b>[Gaiochos]</b>
+        <ol>
+            <li>Stack mid until tethers appear.</li>
+            <li>Pull tethers while avoiding add line cleaves. {DPS &rarr; South-ish} <em>{Supports &rarr; North-ish}</em></li>
+            <li>Spread according to tentacles:
+                <ul>
+                    <li>Circling &rarr; Clock spread around middle AOE.</li>
+                    <li>All underneath &rarr; Vertical columns spread</li>
+                    <li>One over top &rarr; Horizontal rows spread</li>
+                </ul>
+            </li>
+        </ol>
+    </li>
+    <li><b>"Playstation 1" [Classical Concepts 1]</b>
+        <ol>
+            <li>Go to blue object in column with your symbol. Don't stretch tethers.</li>
+            <li>Stand between your blue object and an adjacent object according to debuff:
+                <ul>
+                    <li>&#x3B1; &rarr; Red object</li>
+                    <li>&#x3B2; &rarr; Blue object</li>
+                    <li><em>If you have multiple choices, go to the object that only you can take.</em></li>
+                </ul>
+            </li>
+            <li>As soon as tethers disappear, dodge point blank AOEs.
+                <ul>
+                    <li><em>AOEs appear under objects. You can stand in the middle of four objects.</em></li>
+                </ul>
+            </li>
+            <li>Proximity bait cone AOEs from the tower on your side. Aim it away from mid.</li>
+        </ol>
+    </li>
+    <li><b>[Caloric Theory 1]</b>
+        <ul>
+            <li>x</li>
+        </ul>
+    </li>
     <li><b>[x]</b>
         <ul>
             <li>x</li>
@@ -823,466 +868,6 @@ My notes are only applicable for melee DPS.
     <li><b>[Soft Enrage]</b> 2x <em>Binding Cold</em>, 1x <em>Azdaja's Shadow</em>.</li>
     <li><b>[Hard Enrage]</b> <em>Black Shadow</em>.</li>
 </ol></p>
-
-
-
-
-<hr>
-
-<h1>Patch 6.2 Savage Raids</h1>
-
-<h2>[P6S] Abyssos: The Sixth Circle (Savage)</h2>
-
-My notes are only applicable for melee DPS.
-
-<p>Recurring mechanics:<ul>
-    <li><b>[Exocleaver]:</b> <span class="important">Dodge BOTH hits</span>.</li>
-    <li><b>"Choros" [Choros Ixou]:</b> Watch for TELEGRAPH. <span class="important">Dodge BOTH hits</span>.</li>
-    <li><b>"Puddle" [Dark Dome]:</b> Drops an <span class="important">INVISIBLE PUDDLE</span> the moment the cast finishes.</li>
-    <li><b>"Cleaving Snake/Wing":</b> Snake cleaves your front. Wing cleaves behind you.</li>
-</ul></p>
-
-<p>Phases abstract:<ol>
-    <li><b>[Poly 1]</b> Stay in LP stack. Dodge <span class="mech">Exocleaver</span>.</li>
-    <li><b>[Pathogenic Cells]</b> One-at-a-time pizza slice cleave from 1 to 8.</li>
-    <li><b>[Exchange of Agonies 1]</b>
-        <ul>
-            <li>Donut/stack marker IN, fireball OUT.</li>
-            <li>Tether means do the opposite.</li>
-            <li class="important">Pay attention to <span class="mech">"Choros"</span>.</li>
-        </ul>
-    </li>
-    <li class="unimportant"><b>[Transmission]</b>
-        <span class="mech">"Cleaving Snake/Wing"</span> and <span class="mech">"Choros"</span>.
-    </li>
-    <li><b>[Poly 2]</b> Memorize safe spot. Drop and dodge <span class="mech">"puddle"</span>. TODO</li>
-    <li><b>[Exchange of Agonies 2]</b>
-        <ul>
-            <li>Stack marker OUT, fireball IN.</li>
-            <li class="unimportant">Dodge <span class="mech">Exocleaver</span>.</li>
-        </ul>
-    </li>
-    <li><b>[Poly 3]</b> Memorize safe spot. Stay in LP stack. TODO</li>
-    <li><b>[Dark Ashes]</b> Spread and dodge <span class="mech">Choros Ixou</span>.</li>
-    <li><b>[Cachexia 1]</b>
-        <ul>
-            <li>Bait order: 20 &rarr; 8 &rarr; 12 &rarr; 16</li>
-            <li>Bait the snake/wing OPPOSITE of your debuff icon.</li>
-            <li>Stay spread throughout whole phase (except for necessary movement).</li>
-            <li><span class="mech">Ptera Ixou</span>: Go to the snake/wing side OPPOSITE of your new debuff icon.</li>
-        </ul>
-    </li>
-    <li><b>[Poly 4]</b> Memorize safe spot. TODO</li>
-    <li class="unimportant"><em>(repeat <b>Exchange of Agonies</b>)</em></li>
-    <li><b>[Poly 5]</b>
-        <ul>
-            <li>Memorize safe spot. TODO</li>
-            <li class="important">Drop and dodge <span class="mech">"puddle"</span>.</li>
-        </ul>
-    </li>
-    <li><b>[Cachexia 2]</b>
-        <ul>
-            <li>Go to the snake/wing side OPPOSITE of your new debuff icon.</li>
-            <li>Memorize safe spot. TODO</li>
-        </ul>
-    </li>
-    <li><b>[Poly 6]</b> "Something diagonal to a corner-plus.
-        <ul>
-            <li class="important">Drop and dodge <span class="mech">"puddle"</span>.</li>
-        </ul>
-    </li>
-    <li><b>[Poly 7]</b> Use only the "inner" safe squares.</li>
-</ol></p>
-
-<p>Acknowledgements/sources:<ul>
-    <li><a href="https://www.youtube.com/watch?v=-g4AZpEkMN4">(Personal Experience)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=d-eNZwVJI8k">Hector Lecture</a> <em>(full guide)</em></li>
-</ul></p>
-
-
-<h2>[P7S] Abyssos: The Seventh Circle (Savage)</h2>
-
-My notes are only applicable for melee DPS.
-
-<p>Recurring mechanics:<ul>
-    <li><b>"Bough" [Bough of Attis]:</b> Cleaves platforms.</li>
-    <li><b>[Forbidden Fruit]</b>
-        <ul>
-            <li><b>"Bull"</b> <em>("Circle Fruit")</em> &rarr; Cleaves its platform.
-                <ul>
-                    <li>Tether &rarr; Line AOEs.</li>
-                </ul>
-            </li>
-            <li><b>"Bird"</b> <em>("Lines Fruit")</em> &rarr; Line AOE
-                <ul>
-                    <li>Tether &rarr; Line AOE, <span class="important">MUST BE KB RESISTED</span>.</li>
-                </ul>
-            </li>
-            <li><b>"Mino(taur)"</b> <em>("Mouth Fruit")</em> &rarr; Dodgeable cone AOE at two closest players.
-                <ul>
-                    <li>Tether &rarr; Cone AOE, <span class="important">MUST BE STRETCHED</span>.</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li><b>"Debuffs"</b>
-        <ul>
-            <li>Numbering: 1 means do it first, 2 is second, etc.</li>
-            <li>"<span class="important">Red Spread</span>, Otherwise Stack"</li>
-        </ul>
-    </li>
-</ul></p>
-
-<p>Phases abstract:<ol>
-    <li><b>[Blades of Attis]</b> Everyone go to safe front side.</li>
-    <li><b>[Forbidden Fruit 1]</b> Front platform <span class="important">WITHOUT <span class="mech">"Bull"</span></span> is safe. LP stacks.</li>
-    <li><b>[Debuffs]</b>
-        <ul>
-            <li><span class="mech">"Bough"</span> &rarr; <span class="important">Back is safe</span>. Arrows is unsafe.</li>
-            <li class="important"><span class="mech">"Debuffs"</span> stacks/spreads</li>
-        </ul>
-    </li>
-    <li><b>[Forbidden Fruit 2]</b>
-        <ul>
-            <li><span class="important">Spread</span> and dodge <span class="mech">"Birds"</span>. <span class="important">KB RESIST</span> as soon as KB indicator shows.</li>
-            <li class="important">Split into LP's before bridges collapse.</li>
-        </ul>
-    </li>
-    <li><b>[Forbidden Fruit 3]</b>
-        <ul>
-            <li>Dodge <span class="mech">"Bulls"</span> via. the bridge.</li>
-            <li><span class="mech">"Bough"</span> &rarr; Back is safe. Arrows is unsafe.</li>
-        </ul>
-    </li>
-    <li><b>[Forbidden Fruit 4]</b>
-        <ul>
-            <li><span class="mech">"Bull Tether"</span> &rarr; Spread at bull platform.</li>
-            <li><span class="mech">"Minotaur Tether"</span> &rarr; Stretch to opposite minotaur platform.</li>
-            <li><em>Untethered</em> &rarr; Bait untethered minotaur away from bull.</li>
-        </ul>
-    </li>
-    <li><b>[Blades of Attis]</b> Ride KB to SE/SW corners. <span class="important">Stay in LP stacks.</span> Dodge AOEs around.</li>
-    <li><b>[Forbidden Fruit 5]</b> ("Birds and Towers")
-        <ul>
-            <li><span class="mech">"Bird Tether"</span> &rarr; Go <span class="important">exactly opposite</span>.</li>
-            <li><em>Untethered</em> &rarr; Towers. Sit <span class="important">towards the edge of the arena</span>.</li>
-            <li><span class="mech">"Immortal's Obol"</span> &rarr; Everyone go to one platform.</li>
-        </ul>
-    </li>
-    <li><b>[Inviolate Purgation (FF6)]</b> <em>("Sleepo Strat")</em>
-        <ul>
-            <li>TODO</li>
-        </ul>
-    </li>
-    <li><b>[Forbidden Fruit 7]</b>
-        <ul>
-            <li class="important">Start at far edge of empty platform.</li>
-            <li>Dodge chasing AOEs via. bird that isn't facing you.</li>
-        </ul>
-    </li>
-    <li><b>[Famine's Harvest]</b>
-        <ul>
-            <li class="important">Preposition at 2-egg platform.</li>
-            <li><span class="mech">"Minotaur Tether"</span> &rarr; <span class="important">Tethers form an "X".</span></li>
-            <li><em>Untethered</em> &rarr; Go to <span class="important">2-egg platform</span>. Bait the minotaurs. <span class="important">Sprint to dodge.</span></li>
-        </ul>
-    </li>
-    <li><b>[Death's Harvest]</b> <em>("Fixed Strat")</em>
-        <ul>
-            <li>TODO</li>
-        </ul>
-    </li>
-    <li><b>[War's Harvest]</b> <em>("Inumaru Strat")</em>
-        <ul>
-            <li><span class="mech">"Bull Tether"</span> &rarr; Spread at bull platform.</li>
-            <li><span class="mech">"Bird Tether"</span> &rarr; Point away at your bird's platform.</li>
-            <li><span class="mech">"Minotaur Tether"</span> &rarr; Stretch through the appropriate bird.</li>
-        </ul>
-    </li>
-    <li><em>Easy Mechanics</em>
-        <ul>
-            <li>An LP stack will appear.</li>
-            <li><span class="mech">"Bough"</span> &rarr; Back is safe. Arrows is unsafe.</li>
-        </ul>
-    </li>
-</ol></p>
-
-<p>Phase reminder <em>(TODO: Merge this into the other dotlist somehow. I just find this to be a very convenient alternative)</em>:<ol>
-    <li><b>[Blades of Attis]</b> Go to safe front side.</li>
-    <li><b>[Forbidden Fruit 1]</b> Go to front without bull. LP stacks.</li>
-    <li><b>[Debuffs]</b> Stack/spread at back.</li>
-    <li><b>[Forbidden Fruit 2]</b> Birds + spread. <span class="important">KB-res</span>.</li>
-    <li><b>[Forbidden Fruit 3]</b> All platforms bulls.</li>
-    <li><b>[Forbidden Fruit 4]</b> Bull tether, 2-mino tether, mino.</li>
-    <li><b>[Blades of Attis]</b> Ride KB to SE/SW corners.</li>
-    <li><b>[Forbidden Fruit 5]</b> Birds and towers. <span class="important">KB-res</span>.</li>
-    <li><b>[Immortal's Obol]</b> Everyone go to one platform.</li>
-    <li><b>[Inviolate Purgation (FF6)]</b> <em>("Sleepo")</em> Stack/spread four times.</li>
-    <li><b>[Forbidden Fruit 7]</b> Start at empty platform, dodge chasing AOE.</li>
-    <li><b>[Famine's Harvest]</b> Prepos at 2-egg platform. <span class="important">Sprint when eggs hatch</span>. Tethers form "X", or bait minos.</li>
-    <li><b>[Death's Harvest]</b> <em>("Fixed")</em> Spread relative to bull.</li>
-    <li><b>[War's Harvest]</b> <em>("Inumaru")</em> Prepos at bull platform, mentally trace Mino tethers. Mino through a bird. Bird perpendicular to mino tether. <span class="important">KB-res</span></li>
-    <li><em>Easy Mechanics</em> LP stack at back.</li>
-</ol></p>
-
-<p>Acknowledgements/sources:<ul>
-    <li><a href="https://www.youtube.com/watch?v=ysVPMbwxF-E">(Personal Experience)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=ALsYpDwW8DU">Hector Lecture</a> <em>(full guide)</em></li>
-</ul></p>
-
-
-<h2>[P8S p1] Abyssos: The Eighth Circle (Savage), Phase 1</h2>
-
-My notes are only applicable for melee DPS.
-
-<p>Recurring mechanics:<ul>
-    <li><b>"Bird/Snake" [Sunforge]</b>: Bird = middle is safe. Snake = out-of-middle is safe.</li>
-    <li><b>"Octa/Tetra" [Octaflare/Tetraflare]</b>: Octa = everyone spread. Tetra = pair stacks.</li>
-    <li><b>"Octa/Tetra/Di Storage" [Conceptual Octaflare/Tetraflare/Diflare]</b>: Same thing, but the mechanic is stored for later. <em>(Diflare = LP stacks)</em></li>
-    <li><b>"Gaze/Kill"</b>: Face a snake to petrify it. Drop the "green AOE" on it to kill it.</li>
-    <li><em><span class="mech">Reforged Reflection</span> is always <span class="important">Centaur&rarr;Snake&rarr;Centaur&rarr;Snake</span> or <span class="important">Snake&rarr;Centaur&rarr;Snake&rarr;Centaur</span>.</em></li>
-</ul></p>
-
-<p>Phases:<ol>
-    <li><b>[Volcanic Torches 1]</b> Octa/Tetra storage; One safe square per quadrant; Bird/Snake.</li>
-    <li><b>[Reforged Reflection 1]</b> <span class="important">KB-res early in cast.</span> <em>Either of two phases happens:</em>
-        <ul>
-            <li><b>[Centaur 1]</b>: Spread. Count AOE order. Bait in order.</li>
-            <li><b>[Snake 1]</b>: Look-aways; Freeze the adds, kill with green AOEs.</li>
-        </ul>
-    </li>
-    <li><b>[Illusory Creation]</b>
-        <ol>
-            <li>Bird + Snake; Spread; If not hit, bait earthshakers.</li>
-            <li>Double-bird/snake. <span class="important"><span class="mech">Nest of Flamevipers</span> = spread for line AOEs</span>, else pair-stacks.</li>
-        </ol>
-    </li>
-    <li><b>[Volcanic Torches 2]</b> One safe square. Just pay attention to SW corner.</li>
-    <li><em>Repeat Reforged Reflection 1 with the phase you didn't get.</em></li>
-    <li><b>[Fourfold Fires]</b>
-        <ol>
-            <li><span class="important">Octa/Tetra storage.</span></li>
-            <li>Three huge corner explosions. Octa/Tetra on the second one.</li>
-            <li>Bird/snake with stored stack/spread resolving after the third.</li>
-        </ol>
-    </li>
-    <li><b>[Reforged Reflection 2]</b> <span class="important">KB-res IF CENTAUR ONLY.</span> <em>Either of two phases happens:</em>
-        <ul>
-            <li><b>[Centaur 2]</b>
-                <ol>
-                    <li>Impact = Go front, crush = back. <span class="important">Di/Tetra storage.</span></li>
-                    <!-- <li>Charge-through &rarr; edge KB/AOE &rarr; charge-through &rarr; edge KB/AOE &rarr; volcanic torches</li> -->
-                    <li>
-                        Charge with <span class="important">Di/Tetra resolving</span> &rarr; <span class="important">Edge</span> &rarr; Charge &rarr; <span class="important">Edge</span> &rarr; Volcanic Torches<br>
-                    </li>
-                    <li class="important">Remember to preposition to the correct north/south side during the first edge mechanic!</li>
-                </ol>
-            </li>
-            <li><b>[Snake 2]</b>:
-                <ul>
-                    <li>Don't kill "green AOE". LoS and stack+kill with "purple AOE".</li>
-                    <li class="important">Last clone spawns after the second set of stack/kill go off. FIND IT.</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li><em>Repeat Reforged Reflection 2 with the phase you didn't get.</em></li>
-</ol></p>
-
-<p>Tips and tricks:<ul>
-    <li><b>[Reforged Reflection 1/2]</b>: <span class="important">Always pop KB resist if it's off cooldown</span>, about one GCD after Reforged Reflection finishes casting. Aside from the first Reforged Reflection, you will always know whether it's Snake or Centaur based on whether or not KB resist is on cooldown.</li>
-    <li><b>[Fourfold Fires]</b>: During movements, move towards mid-east or mid-west (depending on your role) if you're still reading where the snakes are moving. As soon as you know where you're supposed to be, <span class="important">pop sprint</span>.</li>
-    <li><b>[Snake 2]</b>: <span class="important">The last clone spawns when the second gaze/kill resolves, and has a bright visual effect when it spawns.</span> Get ready to spot it very early, especially to take advantage of the visual effect! There's very little time otherwise, and the clone can be very difficult to spot because the fight is so visually busy.</li>
-</ul></p>
-
-<p>Acknowledgements/sources:<ul>
-    <li><a href="https://www.youtube.com/watch?v=7qAwUX_hLsM">(Personal Experience)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=3uVG6KOqDX4">Hector Lecture</a> <em>(full guide)</em></li>
-</ul></p>
-
-
-<h2>[P8S p2] Abyssos: The Eighth Circle (Savage), Phase 2</h2>
-
-My notes are only applicable for melee DPS.
-
-<p>Recurring mechanics:<ul>
-    <li><b>"Safe Side" [Ashing Blaze]</b>: Half the arena (east or west) is cleaved.</li>
-    <li><b>[High Concept 1/2]</b>
-        <ul>
-            <li>{&alpha; &xharr; &#9650;} {&beta; &xharr; &#9660;} {&gamma; &xharr; L-shape}</li>
-            <li><em>"Element"</em> = the coloured hexagons symbol.</li>
-            <li><em>"Nothing"</em> = you have no debuff.</li>
-            <li><em>"Unused"</em> = an element symbol that was unused for the first two puddles.</li>
-            <li><em>"Animal"</em> = the "animal" symbol above your head after your combine two elements.</li>
-        </ul>
-    </li>
-</ul></p>
-
-<p>Phases:<ol>
-    <li><b>[Natural Alignment 1]</b>
-        <ol>
-            <li>Drop puddles &rarr; Stack/Spread &rarr; "Safe Side" &rarr; &#128472;Stack/Spread</li>
-            <li>Fire = 3 furthest; Ice = 2 closest. <em class="important">Fire = "Far T-shape"</em></li>
-        </ol>
-    </li>
-    <li><b>[High Concept 1]</b>
-        <ol>
-            <li>{Short &alpha;&beta;&gamma; &rarr; Out} {Else &rarr; Stacks}</li>
-            <li>Match+soak puddles. <span class="important">"Safe side".</span></li>
-            <li>{Long &alpha;&beta;&gamma; &rarr; Out} {Nothing OR Unused &rarr; Soak &alpha;&beta;&gamma;} {Animal &rarr; Standby}</li>
-            <li>Match+soak puddles. <span class="important">{Had Long &alpha;&beta;&gamma; &rarr; COMBINE}</span> {Else &rarr; COMBINE}</li>
-        </ol>
-    </li>
-    <li><b>[Limitless Desolation]</b>
-        <ul>
-            <li>Spread &rarr; When hit, prepos near your tower &rarr; Dodge puddle + Soak tower</li>
-        </ul>
-    </li>
-    <li><b>[Natural Alignment 2]</b> Read which mechs are inverted.</li>
-    <li><b>[High Concept 2]</b>
-        <ol>
-            <li>{Short &alpha;&beta;&gamma; &rarr; Out} <span class="important">{Nothing &rarr; Soak &alpha;, COMBINE}</span> {Else &rarr; Stacks}</li>
-            <li>Match+soak puddles. <span class="important">"Safe side".</span></li>
-            <li>{Long &alpha;&beta;&gamma; &rarr; Out} <span class="important">{Else &rarr; Standby}</span></li>
-            <li>Match+soak puddles, bait clones. <span class="important">{Long &alpha;&beta; &rarr; COMBINE}</span> {Leftover elements &rarr; COMBINE}</li>
-            <li>Red + Green &rarr; COMBINE</li>
-        </ol>
-    </li>
-    <li><b>[Dominion]</b> Spread. If you weren't hit, you take first towers. <em>Repeat.</em></li>
-</ol></p>
-
-Fire/Ice decision tree for <em>Scripe Strat</em>:
-<ul>
-    <li><b>D1</b>
-        <ul>
-            <li><span class="important">DPS have purple?</span>
-                <ul class="no-bullets"><li>
-                    <table class="no-border">
-                        <tbody>
-                            <tr>
-                                <td>Fire</td>
-                                <td>&rarr;</td>
-                                <td>East</td>
-                                <td><span class="important"><b>BAIT</b></span></td>
-                                <!-- Extra stuff -->
-                                <td></td>
-                                <td></td>
-                                <td>(OUT)</td>
-                            </tr>
-                            <tr>
-                                <td>Ice</td>
-                                <td>&rarr;</td>
-                                <td>East</td>
-                                <td></td>
-                                <!-- Extra stuff -->
-                                <td></td>
-                                <td></td>
-                                <td>(OUT)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </li></ul>
-            </li>
-            <li><span class="important">TH have purple?</span>
-                <ul class="no-bullets"><li>
-                    <table class="no-border">
-                        <tbody>
-                            <tr>
-                                <td>Fire</td>
-                                <td>&rarr;</td>
-                                <td>North/South</td>
-                                <td><span class="important"><b>BAIT</b></span></td>
-                                <!-- Extra stuff -->
-                                <td></td>
-                                <td></td>
-                                <td>(OUT)</td>
-                            </tr>
-                            <tr>
-                                <td>Ice</td>
-                                <td>&rarr;</td>
-                                <td>West</td>
-                                <td><span class="important"><b>BAIT</b></span></td>
-                                <!-- Extra stuff -->
-                                <td></td>
-                                <td></td>
-                                <td>(IN)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </li></ul>
-            </li>
-        </ul>
-    </li>
-    <li><b>D2</b>
-        <ul>
-            <li><span class="important">DPS have purple?</span>
-                <ul class="no-bullets"><li>
-                    <table class="no-border">
-                        <tbody>
-                            <tr>
-                                <td>D1 is purple & Fire</td>
-                                <td>&rarr;</td>
-                                <td>East</td>
-                                <td><span class="important"><b>BAIT</b></span></td>
-                            </tr>
-                            <tr>
-                                <td>Otherwise</td>
-                                <td>&rarr;</td>
-                                <td>East</td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </li></ul>
-            </li>
-            <li><span class="important">TH have purple?</span>
-                <ul class="no-bullets"><li>
-                    <table class="no-border">
-                        <tbody>
-                            <tr>
-                                <td>Fire</td>
-                                <td>&rarr;</td>
-                                <td>North/South</td>
-                                <td></td>
-                                <!-- Extra stuff -->
-                                <td></td>
-                                <td></td>
-                                <td>(IN)</td>
-                            </tr>
-                            <tr>
-                                <td>Ice</td>
-                                <td>&rarr;</td>
-                                <td>East</td>
-                                <td><span class="important"><b>BAIT</b></span></td>
-                                <!-- Extra stuff -->
-                                <td></td>
-                                <td></td>
-                                <td>(IN)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </li></ul>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<p>Tips and tricks:<ul>
-    <li><b>[High Concept 1/2]</b>: Learn to linger around the middle in between mechanics to let healers heal you.</li>
-    <li><b>[High Concept 2]</b>: If you're baiting the clones, <span class="important">pop sprint</span>!</li>
-    <li><b>[Natural Alignment 2]</b>: Watch for who has the inverse debuff. If only one person has it, correlate player names then mentally convert it to "invert first" or "invert last".</li>
-    <li><b>[Dominion]</b>:
-        <ul>
-            <li><span class="important">If you're D2, you must also watch whether D1 gets the first AOE, so turn your camera to watch them.</span> If you get AOE and D1 also gets the AOE, you must adjust (and also if you don't get the AOE and D1 doesn't get the AOE either). <em>(This assumes you're using a common tower soak priority strategy.)</em></li>
-            <li><span class="important">If you weren't hit, START FOLLOWING YOUR CRACK IMMEDIATELY. DO NOT DELAY.</span></li>
-        </ul>
-    </li>
-</ul></p>
-
-<p>Acknowledgements/sources:<ul>
-    <li><a href="https://www.youtube.com/watch?v=7qAwUX_hLsM">(Personal Experience)</a></li>
-    <li><a href="https://www.youtube.com/watch?v=Pr4AbFgZTA8">Hector Lecture</a> <em>(full guide)</em></li>
-</ul></p>
 
 
 <footer>
