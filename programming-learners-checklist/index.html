@@ -515,27 +515,6 @@ Full source code is available here:
 </p>
 
 
-<h2>[OPTIONAL] C++</h2>
-
-<p>
-    C++ deserves its own section because it's its own beast that's very different to most popular imperative languages. While you can get away with neglecting a lot of things, ignoring the subtleties will eventually be very painful. It is very easy to shoot yourself in the foot here.
-</p>
-<p>
-    While I don't consider C to be a strict prerequisite, I very highly recommend learning C and doing a wide range of data structures and algorithms exercises in C before starting C++. Doing all sorts of <a href="https://www.hackerrank.com/dashboard">HackerRank</a> exercises and such is amazing for drilling in the most critical concepts in C++. But if you don't want to go the C route, you can still learn everything you need starting with C++ (and that knowledge should actually carry to C if you ever need to do C).
-    <ul>
-        <li>PREREQUISITES: Data Structures and Algorithms; Object Oriented Programming; C Language Fundamentals</li>
-        <li>Know <span class="concept">pointers</span> and <span class="concept">references</span>, and the differences between them.</li>
-        <li>Know <span class="concept">lvalue/rvalue</span>, <span class="concept">copy/move semantics</span>, specifically <span class="concept">copy/move constructors</span>. Know how all these concepts relate to each other and the differences between them.
-            <ul>
-                <li>Know the genenral <span class="concept">overload resolution</span> rules regarding lvalue/rvalue. For example, [<span class="todo">I need to brush up on my C++ to come up with the proper wording for this lol</span>]</li>
-            </ul>
-        </li>
-        <li>Understand <span class="concept code">std::unique_ptr</span> and <span class="concept code">std::shared_ptr</span>, how they improve memory safety, and how it relates to <em>lvalue/rvalue</em> and <em>copy/move semantics</em>.</li>
-        <li class="todo">Add more content.</li>
-    </ul>
-</p>
-
-
 <h2>[OPTIONAL] Computer Graphics, Physics, and Game Development</h2>
 
 <p>
@@ -551,6 +530,61 @@ Full source code is available here:
 <p>
     <em>I'm actually not entirely sure how to approach listing out for these topics. It probably may as well be its own big checklist, including topics on electrical circuit analysis and transistors. Feels too big to treat it as simply another section of this programmer's checklist.</em>
 </p>
+
+
+<hr />
+
+
+<h2>[OPTIONAL] Programming Languages</h2>
+
+
+<h3>Python</h3>
+
+<p>
+    <ul>
+        <li>PREREQUISITES: Programming Fundamentals</li>
+        <li>COREQUISITES: Data Structures and Algorithms; Object Oriented Programming</li>
+        <li>Core libraries you must know really well:
+            <ul>
+                <li><a href="https://docs.python.org/3/library/itertools.html"><span class="concept code">itertools</span></a>: General-purpose iterators.</li>
+            </ul>
+        </li>
+        <li>Have a skim through these core libraries:
+            <ul>
+                <li><a href="https://docs.python.org/3/library/bisect.html"><span class="concept code">bisect</span></a>: For inserting into a sorted list without needing to sort after every insertion.</li>
+                <li><i>You don't need to memorize every single one of these libraries that deeply. Just skim through the documentation and understand the basic capabilities so that when you do encounter a use for it, you'll know what to look up!</i></li>
+            </ul>
+        </li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h3>C++</h3>
+
+<p>
+    Be warned: C++ is a massive beast of a language that's very different to most popular imperative languages such as Javascript or Python. While you can probably still go quite far without knowing how manual memory management works, neglect it for too long and you'll eventually meet perplexing bugs, mysteriously terrible performance, and deeply flawed software design. It is very easy to shoot yourself in the foot here. That's not to say you shouldn't learn C++ or Rust though because they take a very different approach to most mainstream languages that will greatly expand your understanding of what a programming language can do and the performance tradeoffs under the hood of many languages.
+</p>
+<p>
+    But of course, C++ isn't just an educational language. It's a highly practical language for writing high-performance software or highly-constrained computing (such as embedded systems), and is also quite widely used in game development and competitive programming. And once you get comfortable with the language, it's honestly 99% as easy to use as Java (at least, if we ignore importing, linking, and dependency management...). It's a very rewarding and fun language to get used to.
+</p>
+<p>
+    While I don't consider C to be a strict prerequisite, I very highly recommend learning C and doing a wide range of data structures and algorithms exercises in C before starting C++. Doing all sorts of <a href="https://www.hackerrank.com/dashboard">HackerRank</a> exercises and such is amazing for drilling in the most critical concepts in C++. But if you don't want to go the C route, you can still learn everything you need starting with C++ (and that knowledge should actually carry to C if you ever need to do C).
+</p>
+<p>
+    <ul>
+        <li>PREREQUISITES: Data Structures and Algorithms; Object Oriented Programming; C Language Fundamentals</li>
+        <li>Know <span class="concept">pointers</span> and <span class="concept">references</span>, and the differences between them.</li>
+        <li>Know <span class="concept">lvalue/rvalue</span>, <span class="concept">copy/move semantics</span>, specifically <span class="concept">copy/move constructors</span>. Know how all these concepts relate to each other and the differences between them.
+            <ul>
+                <li>Know the genenral <span class="concept">overload resolution</span> rules regarding lvalue/rvalue. For example, [<span class="todo">I need to brush up on my C++ to come up with the proper wording for this lol</span>]</li>
+            </ul>
+        </li>
+        <li>Understand <span class="concept code">std::unique_ptr</span> and <span class="concept code">std::shared_ptr</span>, how they improve memory safety, and how it relates to <em>lvalue/rvalue</em> and <em>copy/move semantics</em>.</li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
 
 <hr />
 
