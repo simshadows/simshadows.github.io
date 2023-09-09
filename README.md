@@ -2,15 +2,7 @@
 
 ## How do I host this myself?
 
-Simply host the repository root on a web server. The codebase is static and totally toolchainless.
-
-For example, you can use the Python simple server:
-
-```
-git clone git@github.com:simshadows/simshadows-pages.git
-cd simshadows-pages
-python3 -m http.server
-```
+(TODO)
 
 ## License
 

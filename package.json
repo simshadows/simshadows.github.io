@@ -1,0 +1,19 @@
+{
+  "name": "simshadows-pages",
+  "author": "simshadows <contact@simshadows.com>",
+  "version": "0.0.1",
+  "license": "CC-BY-SA-4.0",
+
+  "packageManager": "yarn@3.6.3",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^3.0.12"
+  }
+}

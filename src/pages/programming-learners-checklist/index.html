@@ -1,0 +1,609 @@
+<!doctype html>
+
+<!--
+Filename: index.html
+Author:   simshadows <contact@simshadows.com>
+License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+
+Full source code is available here:
+<https://github.com/simshadows/simshadows-pages>
+-->
+
+<html>
+<head>
+    <title>Sim's Programming Learner's Checklist</title>
+
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.jpg">
+
+    <script src="/_common/common.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="/_dependencies/normalize-8-0-1.css">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="canonical" href="https://pages.simshadows.com/programming-learners-checklist" />
+    <meta name="description" content="Some things I think all programmers should look into to round out their knowledge!">
+    <meta name="keywords" content="simshadows, pages, programming">
+    <meta name="author" content="simshadows">
+    <!-- TODO: Viewport meta tag? -->
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://pages.simshadows.com/programming-learners-checklist">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sim's Programming Learner's Checklist">
+    <meta property="og:description" content="Some things I think all programmers should look into to round out their knowledge!">
+    <meta property="og:image" content="https://pages.simshadows.com/favicon.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Sim's Programming Learner's Checklist">
+    <meta property="twitter:description" content="Some things I think all programmers should look into to round out their knowledge!">
+    <meta property="twitter:image" content="https://pages.simshadows.com/favicon.jpg">
+
+    <style>
+        /*** General Styling ***/
+
+        body {
+            padding: 0.8em;
+        }
+        footer {
+            margin-top: 3em;
+            text-align: center;
+        }
+
+        li {
+            margin-bottom: 0.2em;
+        }
+
+        /*** Special Styling ***/
+
+        .concept {
+            color: #9900ff;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .concept.code {
+            font-family: monospace;
+            font-style: normal;
+        }
+
+        .important-note {
+            color: red;
+            font-weight: bold;
+        }
+
+        .todo {
+            color: red;
+        }
+        .todo::before {
+            content: "TODO: ";
+        }
+
+        span.suggested::before {
+            content: "[";
+        }
+        span.suggested::after {
+            content: "]";
+        }
+    </style>
+</head>
+
+<body>
+
+
+[ <a target="_self" href="../"><b>Up</b></a> ]
+[ <a href="https://github.com/simshadows/simshadows-pages"><b>Source</b></a> ]
+
+
+<h1>Sim's Programming Learner's Checklist</h1>
+
+<p><em>Currently an early work in progress. <b>This list sucks right now, and honestly, it's a lot harder to write than I thought, but I'm gonna keep trying to figure it out!</b></em></p>
+
+<p>If you want a comprehensive background as a computing professional, you should look into everything in this checklist (unless it's optional or otherwise stated). This list is primarily targeted at self-learners who are not going the traditional route through university computer science and would like to be able to easily check whether the learning resources they find is on the right track.</p>
+
+
+<h2>Programming Fundamentals</h2>
+
+<p><em>Side-note: This section assumes your first programming language is an imperative language. If you don't know what I mean by that, then you are almost certainly using an imperative language. You will likely be told by your instructor/book if your language is a functional language.</em></p>
+<p>
+    <ul>
+        <li class="todo">Add more content.</li>
+        <li class="todo">Also talk about statically typed languages here?</li>
+        <li class="todo">Cover the topic of threading and concurrency fundamentals. Also introduce higher-level concurrency abstractions from various languages/contexts, but don't go into too much depth.</li>
+        <li class="todo">Cover the topic of automated testing (particularly unit testing). Briefly introduce TDD.</li>
+    </ul>
+</p>
+
+
+<h2>C Language Fundamentals</h2>
+
+<p>
+    Chances are, the language you started with has made things very convenient for you. I think that every serious programmer should eventually try learning how to use C because C doesn't hold your hand (nearly as much). C will give you so much appreciation for all the bells and whistles other languages give you and give you a more critical understanding of algorithm and data structure performance. Additionally, good C programming requires the programmer to be aware of a few more very useful lower-level concepts, so C is a great context in which to learn about them.
+</p>
+<p>
+    C is also a great stepping stone into learning C++ and is somewhat necessary to learn about operating systems, digital circuits, computer architecture, compilers, and many security topics.
+</p>
+<p>
+    I very highly recommend learning C as your first language if you can, though <u>it's understandably not for everyone because it's a very tedious language to work with</u>. If you don't like it, there's no harm in holding it off for later when you're more motivated.
+</p>
+<p>
+    <ul>
+        <li>COREQUISITES: Programming Fundamentals</li>
+        <li>Know the concept of <span class="concept">memory safety</span>.</li>
+        <li class="todo">Very briefly introduce assembly language and that C compilers compile down to it.</li>
+        <li class="todo">Cover the topic of text encoding. Subtopics: ASCII and Unicode, null-terminated strings vs. length-prefixed strings, line feed and carriage return issues.</li>
+        <li class="todo">Cover the topic of memory layout. Subtopics: segmentation, call stack, heap.</li>
+    </ul>
+</p>
+
+
+<h2>System-Level Fundamentals</h2>
+
+<p>
+    While you might be able to get away with ignoring the system-level stuff, it gives you a stronger intuition around abstraction in computing while greatly expanding your toolset for solving problems in computing (such as optimizing your code's memory access patterns to improve performance).
+</p>
+<p>
+    <ul>
+        <li>COREQUISITES: C Language Fundamentals</li>
+        <li class="todo">Cover the topic of assembly and machine language.</li>
+        <li class="todo">Cover the topic of processes. Subtopics: virtual memory, physical memory, caching, IPC, and executable binaries.</li>
+        <li class="todo">Cover the topic of linking.</li>
+    </ul>
+</p>
+
+
+<h2>Essential Miscellany</h2>
+
+<p>
+    This section is about all the random little things that you should know about that don't neatly fall under any of the other sections. Some of these topics are quite essential: everyone must know how to work with a terminal, use version control, and write regular expressions. Others, you might find you really like using in your day-to-day work, like <em>vim</em> and <em>Docker</em>.
+</p>
+<p>
+    But at the very least, you should be aware of everything in this section to keep at the back of your mind. It all gives you so much background behind everything to do with computers, and they expand your toolset for solving problems.
+</p>
+<p>
+    <ul>
+        <li>PREREQUISITES: Programming Fundamentals</li>
+        <li>Go through <a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a> from MIT. Go through anything you're not yet familiar with.
+            <ul>
+                <li>The three most important topics you need to be very familiar with are:
+                    <ul>
+                        <li><span class="concept">The Linux/Mac/*nix command line</span> and <span class="concept">shell scripting</span>
+                            <ul>
+                                <li><i>NOTE: Even if you want to use Windows, I still think you should learn how to use the Linux/Mac command line. It's the nicest way to learn how to use a command line, and I almost guarantee you you will eventually be using a Linux or Mac box at some point.</i></li>
+                            </ul>
+                        </li>
+                        <li><span class="concept">git</span>
+                            <ul>
+                                <li><i>NOTE: Except in certain rare circumstances (such as maybe game development where file sizes are huge and rapidly changing), git is your best friend in everything. And even if it's not, learning about git will give you much-needed experience into how to use version control systems.</i></li>
+                            </ul>
+                        </li>
+                        <li><span class="concept">Regular expressions</span></li>
+                    </ul>
+                </li>
+                <li>While you might not want to use <span class="concept">vim</span>, I still think everyone should be aware of what it's capable of, why it exists, why it's so useful, and how to exit vim.
+                    <ul>
+                        <li>If you want to learn more about command-based text editors, also look into <span class="concept">emacs</span>.</li>
+                    </ul>
+                </li>
+                <li>You absolutely need to be aware of <span class="concept">profiling</span> and how to use it to your advantage for optimizing your code's performance.
+                    <ul>For example, what is a <span class="concept">hot spot</span>, and how important are they in directing your code optimization efforts?</ul>
+                </li>
+            </ul>
+        </li>
+        <li class="todo">Cover the topic of security and cryptography fundamentals.</li>
+        <li class="todo">Cover the topic of containerization (and Docker).</li>
+        <li class="todo">Maybe cover the topic of makefiles and similar build tools. Or at least have it be an extension topic.</li>
+        <li class="todo">Cover the topic of project management. Subtopics: agile/scrum/kanban, waterfall, RAD.</li>
+    </ul>
+</p>
+
+<p>References and further reading:</p>
+<p>
+    <ul>
+        <li><a href="https://www.youtube.com/playlist?list=PL0M0zPgJ3HSesuPIObeUVQNbKqlw5U2Vr">Computer Stuff They Didn't Teach You</a> by Scott Hanselman</li>
+    </ul>
+</p>
+
+
+<h2>Mathematics</h2>
+
+<p>
+    No, you technically don't need all that advanced university calculus and algebra, but there is some very unavoidable mathematics that you do need to be a great programmer.
+    <ul>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2 id="data-structures-and-algorithms">Data Structures and Algorithms</h2>
+
+<p>Core topics:</p>
+<p>
+    <ul>
+        <li>PREREQUISITES: Programming Fundamentals; Mathematics</li>
+        <li class="important-note"><em>I highly highly highly recommend doing data structures and algorithms exercises in the C programming language rather than something like Python, Java, or Javascript, because C forces you to work with more-primitive programming abstractions, which forces you to think very carefully about more aspects of each algorithm. I also recommend using a memory debugging tool such as valgrind when evaluating your C solutions in order to check for memory leaks.</em></li>
+        <li>Understand <span class="concept">big-O</span> as a mathematical concept and why it's useful for <span class="concept">run time/space analysis</span> of data structures and algorithms.
+            <ul>
+                <li class="important-note"><em>For every data structure and algorithm below, you must be able to apply big-O run time/space analysis to all important aspects of the algorithm, data structure, or data structure's operations.</em></li>
+            </ul>
+        </li>
+        <li>Compare and contrast <span class="concept">linear search</span> and <span class="concept">binary search</span>. Notably, what are the big-O time complexities of these algorithms? Which algorithm is faster?</li>
+        <li>Sorting Algorithms<ul>
+            <li>Know how <span class="concept">bubble sort</span>, <span class="concept">insertion sort</span>, and <span class="concept">selection sort</span> work.
+                <ul>
+                    <li>Justify why these algorithms have O(n&#178;) runtime complexity.</li>
+                </ul>
+            </li>
+            <li>Understand what it means for a sorting algorithm to be <span class="concept">stable</span>.
+                <ul>
+                    <li>For every sorting algorithm you study, you must be able to figure out whether or not it can be a stable sort, and if so, what design choices allow it to be stable.</li>
+                </ul>
+            </li>
+            <li>Understand and compare some common efficient comparison-sort algorithms: <span class="concept">merge sort</span>, <span class="concept">quicksort</span>, <span class="concept">heapsort</span>, and <span class="concept">shellsort</span>.
+                <ul>
+                    <li>What are their best-case and worst-case run time and space complexities? How do they compare to <em>bubble sort</em>, <em>insertion sort</em>, and <em>selection sort</em>?</li>
+                    <li><em>Quicksort</em> has a worst-case complexity of O(n&#178;), but has an average complexity of O(n log n). Under what conditions do different variants of quicksort produce its best and worst-case scenarios? What algorithm design choices allow us to avoid the O(n&#178;) case?</li>
+                    <li><i>NOTE: A lot of sources on the internet say that quicksort is the fastest sorting algorithm in practice. I can't say for sure if it's true, but I think it's still worth looking into the claims into why it's the best. This should give you some perspective into different factors affecting performance (e.g memory caching) that is more nuanced than simply considering worst-case complexity.</i></li>
+                </ul>
+            </li>
+            <li>Understand some non-comparison sorting algorithms: <span class="concept">radix sort</span> and <span class="concept">bucket sort</span>.
+                <ul>
+                    <li>What makes them different to the comparison-sort algorithms?</li>
+                </ul>
+            </li>
+            <li>Have a brief look at <span class="concept">bogosort</span> and compare it against the other sorting algorithms you've seen. Look up the runtime complexity. Should it perform better or worse than <em>bubble sort</em>?</li>
+            <li>Also have a look at <span class="concept">sleep sort</span> because it's kinda funny.</li>
+        </ul></li>
+        <li>Understand what an <span class="concept">abstract data type (ADT)</span> is and how it differs from a <span class="concept">data structure</span>.
+            <ul>
+                <li>Appreciate how ADTs hide complexity behind a simple set of operations.</li>
+                <li><i>NOTE: It's easiest to learn what an ADT is by examining a simple ADT like a stack and how it differs from the underlying data structure and the algorithms that implement its operations.</i></li>
+            </ul>
+        </li>
+        <li>Understand the structure and properties of <span class="concept">singly linked lists</span> and <span class="concept">doubly linked lists</span>, and how to implement efficient algorithms for many basic operations (such as <em>reading</em>, <em>insertion</em>, <em>deletion</em>, and <em>list reversal</em>).
+            <ul>
+                <li>Compare and contrast linked lists with arrays. What are the advantages and disadvantages of each?</li>
+            </ul>
+        </li>
+        <li>Have a high-level understanding of how <span class="concept">dynamic arrays</span> can be implemented <em>at a low-level</em>. How might you implement <em>insertion</em> and <em>deletion</em>?
+            <ul>
+                <li><i>NOTE: Dynamic arrays can be very difficult to appreciate if you aren't programming in something like C because a lot of modern programming languages (such as Python and Javascript) have dynamic arrays built into the language.</i></li>
+            </ul>
+        </li>
+        <li>Know the abstract properties and operations of the following ADTs: <span class="concept">stack/LIFO</span>, <span class="concept">queue/FIFO</span>, and <span class="concept">deque</span>.
+            <ul>
+                <li>Know how to implement these ADTs using an array. Namely, know how to implement a <span class="concept">circular buffer</span> and why it's great for queues and deques.</li>
+                <li>Know how to implement these ADTs using a linked list.</li>
+                <li>Compare and contrast array and linked list implementations. How might you compare their time and space characteristics?</li>
+                <li class="important-note"><i>NOTE: Comparing array and linked list implementations should give you great appreciation for the difference between ADT and underlying implementation, and it should be a very powerful lesson on the profound concept of abstraction.</i></li>
+                <li>Why might it useful to use stack/queue/deque ADTs rather than directly use the underlying array or list? For example, how does it improve our ability to guarantee that our code is working correctly?</li>
+            </ul>
+        </li>
+        <li>Trees
+            <ul>
+                <li>Binary Search Trees (BSTs)
+                    <ul>
+                        <li>Understand the structure and properties of a <span class="concept">binary search tree (BST)</span> and the algorithms for some basic operations (such as <em>search</em>, <em>insertion</em>, <em>deletion</em>, <em>counting elements</em>, and <em>tree-merging</em>).</li>
+                        <li>Compare and contrast BSTs with arrays and linked lists.</li>
+                        <li>Understand how various self-balancing BSTs work, namely: <span class="concept">splay trees</span>, <span class="concept">treaps</span>, <span class="concept">AVL trees</span>, <span class="concept">2-3-4 trees</span>, and <span class="concept">red-black trees</span>. Compare and contrast them against each other (and against simple unbalanced BSTs).</li>
+                        <li><i>NOTE: Feel free to skip learning about treaps until you've learnt about heaps.</i></li>
+                    </ul>
+                </li>
+                <li>Heaps
+                    <ul>
+                        <li>Understand the structure and properties of a <span class="concept">heap</span> and its significance in letting us implement an efficient <span class="concept">priority queue</span> ADT.</li>
+                        <li>Know how to implement the basic priority queue operations on a heap (<em>insertion</em>, <em>pop/pull</em>, and checking if the queue is empty).</li>
+                    </ul>
+                </li>
+                <li>Understand the structure and properties of a <span class="concept">trie</span>, and identify some applications and why tries are useful for them.</li>
+                <li>Appreciate the use of <span class="concept">abstract syntax trees (ASTs)</span> for representing the structure of code.</li>
+            </ul>
+        </li>
+        <li>Hash Tables
+            <ul>
+                <li>Understand the structure and properties of a <span class="concept">hash table</span> and its significance in letting us implement efficient <span class="concept">associative array</span> (a.k.a. <em>dictionaries</em>) and <span class="concept">set</span> ADTs.</li>
+                <li>Specifically, understand what a <span class="concept">hash function</span> is in the context of a hash table. What properties does this function have? <i>(E.g. How does the output of the function relate to the table size? Does the same input always produce the same output?)</i></li>
+                <li>What is a <span class="concept">hash collision</span> and <span class="concept">collision resolution</span>? How do hash collisions impact performance? How do we design the hash table and hash function in order to reduce the likelihood of this occurring?</li>
+                <li><i>You should also have a look at some possible implementations of hash functions (both good and bad hash functions), and have a high-level understanding of how they work and how effective they are for hash tables.</i></li>
+            </ul>
+        </li>
+        <li>Graphs
+            <ul>
+                <li>Know what <span class="concept">graphs</span> are, and familiarize yourself with the common terminology:
+                    <ul>
+                        <li><em>vertex/node</em>, <em>edge</em>, <em>self-loop</em></li>
+                        <li><em>directed graph</em>, <em>undirected graph</em>, <em>weighted graph</em>, <em>multi-graph</em></li>
+                        <li><em>sparse graphs</em>, <em>dense graphs</em></li>
+                        <li><em>subgraphs</em>, <em>adjacent vertices</em>, <em>path</em></li>
+                        <li><em>cycle</em>, <em>connected graphs</em>, <em>complete graphs</em></li>
+                    </ul>
+                </li>
+                <li>Compare and contrast common graph implementations: <span class="concept">array of edges</span>, <span class="concept">adjacency list</span>, <span class="concept">adjacency matrix</span>, and <span class="concept">incidence matrix</span>.</li>
+                <li>Understand <span class="concept">breadth-first search (BFS)</span> and <span class="concept">depth-first search (DFS)</span>. How do they differ?</li>
+                <li>Understand <span class="concept">Kruskal's algorithm</span> and <span class="concept">Prim's algorithm</span> for calculating the <em>minimum spanning tree</em>. How do they differ?</li>
+                <li>Understand <span class="concept">Dijkstra's algorithm</span> and <span class="concept">A*</span> for calculating the shortest path between two vertices/nodes.
+                    <ul>
+                        <li>Understand how A*'s <span class="concept">heuristic function</span> works, and have an intuition around why it improves the performance of Dijkstra's algorithm.</li>
+                        <li>Why do we need the heuristic to be <em>admissible</em>?</li>
+                        <li>Also look into <span class="concept">greedy best-first search</span>. How does it behave? Why is this an <em>incomplete solution</em> for calculating shortest path?</li>
+                    </ul>
+                </li>
+                <li>Have a look at some more famous graph problems. You don't necessarily need solve them. You just need to understand what the problem means and have a look at some implications and real-world applications for each problem.
+                    <ul>
+                        <li><em>Hamilton path problem</em></li>
+                        <li><em>Euler path problem</em> (and the Seven Bridges of Königsberg)</li>
+                        <li><em>Travelling salesman problem</em></li>
+                        <li><em>Vertex colouring problem</em></li>
+                        <li>How to find out if two graphs equivalent/<em>isomorphic</em>?</li>
+                        <li>How many connected subgraphs are there?</li>
+                        <li>Are two vertices in the same connected subgraph?</li>
+                        <li>Can a graph be drawn on a 2D plane without any edges crossing?</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</p>
+
+<p>Optional further topics that I recommend looking into to further expand your perspective on how these concepts can be applied:</p>
+<p>
+    <ul>
+        <li><span class="concept">copy-on-write (COW)</span></li>
+        <li><span class="concept">B-trees</span></li>
+        <li><span class="concept">Skip lists</span></li>
+        <li><span class="concept">Distributed Hash Tables (DHTs)</span></li>
+        <li>Compression
+            <ul>
+                <li><span class="concept">Huffman Coding</span></li>
+                <li><span class="concept">LZW</span></li>
+                <li><span class="concept">Lossy</span> and <span class="concept">lossless compression</span>.</li>
+            </ul>
+        </li>
+        <li>Watch <a href="https://www.youtube.com/watch?v=iSNsgj1OCLA">this video</a> on the <span class="concept">100 Prisoners Riddle</span> by Veritasium.</li>
+    </ul>
+</p>
+
+<p>Optional advanced topics:</p>
+<p>
+    <ul>
+        <li><span class="concept">Greedy Strategies</span></li>
+        <li>Divide-And-Conquer Strategies
+            <ul>
+                <li><span class="concept">Karatsuba Multiplication</span> (for large integer multiplication)</li>
+                <li><span class="concept">Fast Fourier Transform (FFT)</span></li>
+                <li><span class="concept">Dynamic Programming</span></li>
+            </ul>
+        </li>
+        <li><span class="concept">Maximum Flow</span></li>
+        <li><span class="concept">String Matching Algorithms</span></li>
+        <li><span class="concept">The P=NP Problem</span></li>
+    </ul>
+</p>
+
+<p>Want some programming practice? Here are my recommendations:</p>
+<p>
+    <ul>
+        <li class="important-note"><i>You may need to create accounts on these websites to see the exercises.</i></li>
+        <li><a href="https://leetcode.com/study-plan/data-structure/">LeetCode's Data Structure Study Plan</a>
+            <ul>
+                <li class="important-note"><i>These exercises should be your priority to complete first because they cover the most fundamental things.</i></li>
+                <li><i>As of November 2022, I see that the first two study plans are free to access, but the third study plan requires a paid subscription of $35 USD per month. I suggest just going through the free questions. You don't need the paid ones.</i></li>
+                <li>Go through as many of these questions as you can. If you're having trouble with a question, skip it and do it later.</li>
+            </ul>
+        </li>
+        <li><a href="https://www.hackerrank.com/domains/data-structures">HackerRank's Data Structures exercises</a>
+            <ul>
+                <li>Once you're done with all the free content from LeetCode's data structures study plan, you should have a look at HackerRank's data structures exercises. Feel free to skip over any exercises you've already done in LeetCode (or are too easy).</li>
+                <li>Same advice as as with LeetCode data structures: Just go through as many questions as you can, and if you're stuck with a question, skip it and do it later.</li>
+            </ul>
+        </li>
+        <li><a href="https://leetcode.com/problemset/algorithms/">LeetCode's Algorithms exercises</a>
+            <ul>
+                <li>If data structures exercises are too hard or you're getting bored of them, I suggest just going through LeetCode's algorithms exercises. Feel free to skip anything you've already done.</li>
+                <li>Same advice again: Just go through as many questions as you can, and if you're stuck with a question, skip it and do it later.</li>
+            </ul>
+        </li>
+        <li>
+            If you have money to blow, maybe check out <a href="https://www.algoexpert.io/questions">AlgoExpert</a>.
+            <ul>
+                <li>It's quite expensive (as of November 2022, $99 USD for 1 year of access), but the one person I know who uses it likes it.</li>
+                <li>In my opinion, the main value proposition of AlgoExpert is the fact that they include video lectures with the questions to help you along. The problem with LeetCode and HackerRank is that they don't really explain the questions and ideas in depth, so if you're stuck, you're left on your own to find relevant videos on YouTube or read the community forums/discussions.</li>
+                <li>I don't consider it necessary to pay this much money for it, but it's up to you.</li>
+            </ul>
+        </li>
+        <li class="todo">Include screenshots of these websites to give people a better idea of what I'm referring to.</li>
+    </ul>
+</p>
+
+
+<h2>Object Oriented Programming</h2>
+
+<p>
+    <ul>
+        <li>PREREQUISITES: Programming Fundamentals</li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2>Networking</h2>
+
+<p>
+    <ul>
+        <li>PREREQUISITES: Data Structures and Algorithms</li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2>Web Development, Databases, and Web Security</h2>
+
+<p>
+    <ul>
+        <li>PREREQUISITES: Programming Fundamentals; Networking</li>
+        <li>RECOMMENDED PREREQUISITES: Essential Miscellany</li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+<p>Optional further reading:</p>
+<p>
+    <ul>
+        <li>Watch <a href="https://www.youtube.com/watch?v=3QEoJRjxnxQ"><em>Why web tech is like this</em></a> by Steve Sanderson. It's a 1-hour summary of the history of web technology, and it's amazing.</li>
+    </ul>
+</p>
+
+
+<h2>Operating Systems</h2>
+
+<p>
+    <ul>
+        <li>PREREQUISITES: System-Level Fundamentals; Data Structures and Algorithms; Essential Miscellany</li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2>[OPTIONAL] Pure Functional Programming Fundamentals</h2>
+
+<p>
+    Not gonna lie, I haven't breached this topic myself, but I expect it to be great for expanding your understanding (and breaking down your assumptions) of what programming languages can look like and do. You can get away with never trying pure functional for your whole career, but it may be worth it anyway. <b>Considering that this is a topic I'm unfamiliar with, take my comments on this with a grain of salt.</b>
+    <ul>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2>[OPTIONAL] Further Mathematics</h2>
+
+<p>
+    Going above and beyond with math is a great asset for a programmer, giving you practice in thinking abstractly, and giving you a foundation in modelling all sorts of phenomena. On top of that, some things really do require the advanced stuff, namely calculus and linear algebra for computer graphics work and machine learning.
+    <ul>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2>[OPTIONAL] Cloud, Containers, and Container Orchestration</h2>
+
+<p>
+    Highly recommended to look into this if you're interested in web development.
+    <ul>
+        <li>PREREQUISITES: Web Development, Databases, and Web Security</li>
+        <li>RECOMMENDED PREREQUISITES: Essential Miscellany</li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2>[OPTIONAL] Compilers and Interpreters</h2>
+
+<p>
+    <ul>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2>[OPTIONAL] Artificial Intelligence and Machine Learning</h2>
+
+<p>
+    <ul>
+        <li>PREREQUISITES: Data Structures and Algorithms</li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2>[OPTIONAL] Computer Graphics, Physics, and Game Development</h2>
+
+<p>
+    <ul>
+        <li>PREREQUISITES: Further Mathematics; Data Structures and Algorithms</li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h2>[OPTIONAL] Digital Circuits, Computer Architecture, and Custom Hardware Acceleration</h2>
+
+<p>
+    <em>I'm actually not entirely sure how to approach listing out for these topics. It probably may as well be its own big checklist, including topics on electrical circuit analysis and transistors. Feels too big to treat it as simply another section of this programmer's checklist.</em>
+</p>
+
+
+<hr />
+
+
+<h2>[OPTIONAL] Programming Languages</h2>
+
+
+<h3>Python</h3>
+
+<p>
+    <ul>
+        <li>PREREQUISITES: Programming Fundamentals</li>
+        <li>COREQUISITES: Data Structures and Algorithms; Object Oriented Programming</li>
+        <li>Core libraries you must know really well:
+            <ul>
+                <li><a href="https://docs.python.org/3/library/itertools.html"><span class="concept code">itertools</span></a>: General-purpose iterators.</li>
+            </ul>
+        </li>
+        <li>Have a skim through these core libraries:
+            <ul>
+                <li><a href="https://docs.python.org/3/library/bisect.html"><span class="concept code">bisect</span></a>: For inserting into a sorted list without needing to sort after every insertion.</li>
+                <li><i>You don't need to memorize every single one of these libraries that deeply. Just skim through the documentation and understand the basic capabilities so that when you do encounter a use for it, you'll know what to look up!</i></li>
+            </ul>
+        </li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<h3>C++</h3>
+
+<p>
+    Be warned: C++ is a massive beast of a language that's very different to most popular imperative languages such as Javascript or Python. While you can probably still go quite far without knowing how manual memory management works, neglect it for too long and you'll eventually meet perplexing bugs, mysteriously terrible performance, and deeply flawed software design. It is very easy to shoot yourself in the foot here. That's not to say you shouldn't learn C++ or Rust though because they take a very different approach to most mainstream languages that will greatly expand your understanding of what a programming language can do and the performance tradeoffs under the hood of many languages.
+</p>
+<p>
+    But of course, C++ isn't just an educational language. It's a highly practical language for writing high-performance software or highly-constrained computing (such as embedded systems), and is also quite widely used in game development and competitive programming. And once you get comfortable with the language, it's honestly 99% as easy to use as Java (at least, if we ignore importing, linking, and dependency management...). It's a very rewarding and fun language to get used to.
+</p>
+<p>
+    While I don't consider C to be a strict prerequisite, I very highly recommend learning C and doing a wide range of data structures and algorithms exercises in C before starting C++. Doing all sorts of <a href="https://www.hackerrank.com/dashboard">HackerRank</a> exercises and such is amazing for drilling in the most critical concepts in C++. But if you don't want to go the C route, you can still learn everything you need starting with C++ (and that knowledge should actually carry to C if you ever need to do C).
+</p>
+<p>
+    <ul>
+        <li>PREREQUISITES: Data Structures and Algorithms; Object Oriented Programming; C Language Fundamentals</li>
+        <li>Know <span class="concept">pointers</span> and <span class="concept">references</span>, and the differences between them.</li>
+        <li>Know <span class="concept">lvalue/rvalue</span>, <span class="concept">copy/move semantics</span>, specifically <span class="concept">copy/move constructors</span>. Know how all these concepts relate to each other and the differences between them.
+            <ul>
+                <li>Know the genenral <span class="concept">overload resolution</span> rules regarding lvalue/rvalue. For example, [<span class="todo">I need to brush up on my C++ to come up with the proper wording for this lol</span>]</li>
+            </ul>
+        </li>
+        <li>Understand <span class="concept code">std::unique_ptr</span> and <span class="concept code">std::shared_ptr</span>, how they improve memory safety, and how it relates to <em>lvalue/rvalue</em> and <em>copy/move semantics</em>.</li>
+        <li class="todo">Add more content.</li>
+    </ul>
+</p>
+
+
+<hr />
+
+<h2>Acknowledgements</h2>
+
+<p>To help me compile this list, I borrowed from a bunch of sources:</p>
+<p>
+    <ul>
+        <li>My own experience studying undergraduate Computer Engineering at UNSW</li>
+        <li><a href="https://github.com/ossu/computer-science">OSSU Computer Science</a></li>
+    </ul>
+</p>
+
+
+<footer>
+    <!-- License notice block provided by <https://creativecommons.org/choose/> -->
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    <!-- End license notice block -->
+</footer>
+
+</body>
+</html>
