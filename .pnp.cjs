@@ -12,14 +12,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],\
     "dependencyTreeRoots": [\
       {\
-        "name": "root-workspace-0b6124",\
+        "name": "simshadows-pages",\
         "reference": "workspace:."\
       }\
     ],\
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["root-workspace-0b6124", ["workspace:."]]\
+      ["simshadows-pages", ["workspace:."]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -4540,16 +4540,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["root-workspace-0b6124", [\
-        ["workspace:.", {\
-          "packageLocation": "./",\
-          "packageDependencies": [\
-            ["root-workspace-0b6124", "workspace:."],\
-            ["astro", "npm:3.0.12"]\
-          ],\
-          "linkType": "SOFT"\
-        }]\
-      ]],\
       ["run-parallel", [\
         ["npm:1.2.0", {\
           "packageLocation": "./.yarn/cache/run-parallel-npm-1.2.0-3f47ff2034-cb4f97ad25.zip/node_modules/run-parallel/",\
@@ -4729,6 +4719,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-arrayish", "npm:0.3.2"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["simshadows-pages", [\
+        ["workspace:.", {\
+          "packageLocation": "./",\
+          "packageDependencies": [\
+            ["simshadows-pages", "workspace:."],\
+            ["astro", "npm:3.0.12"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["sisteransi", [\
