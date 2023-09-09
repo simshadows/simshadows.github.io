@@ -1,94 +1,70 @@
-<!doctype html>
+---
+/*
+ * Filename: index.astro
+ * Author:   simshadows <contact@simshadows.com>
+ * License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+ */
 
-<!--
-Filename: index.html
-Author:   simshadows <contact@simshadows.com>
-License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
 
-Full source code is available here:
-<https://github.com/simshadows/simshadows-pages>
--->
+<BaseLayout
+    title="Sim's Programming Learner's Checklist"
+    canonical="https://pages.simshadows.com/programming-learners-checklist"
+    author="simshadows"
+    description="Some things I think all programmers should look into to round out their knowledge!"
+    keywords="simshadows, pages, programming"
+>
 
-<html>
-<head>
-    <title>Sim's Programming Learner's Checklist</title>
 
-    <meta charset="utf-8">
-    <link rel="icon" type="image/x-icon" href="/favicon.jpg">
+<script src="/_common/common.js" defer></script>
 
-    <script src="/_common/common.js" defer></script>
+<style>
+    /*** General Styling ***/
 
-    <link rel="stylesheet" type="text/css" href="/_dependencies/normalize-8-0-1.css">
+    body {
+        padding: 0.8em;
+    }
+    footer {
+        margin-top: 3em;
+        text-align: center;
+    }
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="canonical" href="https://pages.simshadows.com/programming-learners-checklist" />
-    <meta name="description" content="Some things I think all programmers should look into to round out their knowledge!">
-    <meta name="keywords" content="simshadows, pages, programming">
-    <meta name="author" content="simshadows">
-    <!-- TODO: Viewport meta tag? -->
+    li {
+        margin-bottom: 0.2em;
+    }
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://pages.simshadows.com/programming-learners-checklist">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Sim's Programming Learner's Checklist">
-    <meta property="og:description" content="Some things I think all programmers should look into to round out their knowledge!">
-    <meta property="og:image" content="https://pages.simshadows.com/favicon.jpg">
+    /*** Special Styling ***/
 
-    <!-- Twitter Meta Tags -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Sim's Programming Learner's Checklist">
-    <meta property="twitter:description" content="Some things I think all programmers should look into to round out their knowledge!">
-    <meta property="twitter:image" content="https://pages.simshadows.com/favicon.jpg">
+    .concept {
+        color: #9900ff;
+        font-weight: bold;
+        font-style: italic;
+    }
+    .concept.code {
+        font-family: monospace;
+        font-style: normal;
+    }
 
-    <style>
-        /*** General Styling ***/
+    .important-note {
+        color: red;
+        font-weight: bold;
+    }
 
-        body {
-            padding: 0.8em;
-        }
-        footer {
-            margin-top: 3em;
-            text-align: center;
-        }
+    .todo {
+        color: red;
+    }
+    .todo::before {
+        content: "TODO: ";
+    }
 
-        li {
-            margin-bottom: 0.2em;
-        }
-
-        /*** Special Styling ***/
-
-        .concept {
-            color: #9900ff;
-            font-weight: bold;
-            font-style: italic;
-        }
-        .concept.code {
-            font-family: monospace;
-            font-style: normal;
-        }
-
-        .important-note {
-            color: red;
-            font-weight: bold;
-        }
-
-        .todo {
-            color: red;
-        }
-        .todo::before {
-            content: "TODO: ";
-        }
-
-        span.suggested::before {
-            content: "[";
-        }
-        span.suggested::after {
-            content: "]";
-        }
-    </style>
-</head>
-
-<body>
+    span.suggested::before {
+        content: "[";
+    }
+    span.suggested::after {
+        content: "]";
+    }
+</style>
 
 
 [ <a target="_self" href="../"><b>Up</b></a> ]
@@ -605,5 +581,6 @@ Full source code is available here:
     <!-- End license notice block -->
 </footer>
 
-</body>
-</html>
+
+</BaseLayout>
+

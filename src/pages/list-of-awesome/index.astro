@@ -1,72 +1,46 @@
-<!doctype html>
+---
+/*
+ * Filename: index.astro
+ * Author:   simshadows <contact@simshadows.com>
+ * License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+ */
 
-<!--
-Filename: index.html
-Author:   simshadows <contact@simshadows.com>
-License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
 
-Full source code is available here:
-<https://github.com/simshadows/simshadows-pages>
--->
+<BaseLayout
+    title="Sim's Curated List of Awesome"
+    canonical="https://pages.simshadows.com/list-of-awesome"
+    author="simshadows"
+    description="My list of favourite online creators!"
+    keywords="simshadows, pages, favourite, list, awesome"
+>
 
-<html>
-<head>
-    <title>Sim's Curated List of Awesome</title>
 
-    <meta charset="utf-8">
-    <link rel="icon" type="image/x-icon" href="/favicon.jpg">
-    
-    <script src="/_common/common.js" defer></script>
+<style>
+    /*** General Styling ***/
 
-    <link rel="stylesheet" type="text/css" href="/_dependencies/normalize-8-0-1.css">
+    body {
+        padding: 0.5em;
+    }
+    footer {
+        margin-top: 3em;
+        text-align: center;
+    }
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="canonical" href="https://pages.simshadows.com/list-of-awesome" />
-    <meta name="description" content="My list of favourite online creators!">
-    <meta name="keywords" content="simshadows, pages, favourite, list, awesome">
-    <meta name="author" content="simshadows">
-    <!-- TODO: Viewport meta tag? -->
+    li {
+        margin-bottom: 0.2em;
+    }
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://pages.simshadows.com/list-of-awesome">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Sim's Curated List of Awesome">
-    <meta property="og:description" content="My list of favourite online creators!">
-    <meta property="og:image" content="https://pages.simshadows.com/favicon.jpg">
+    /*** Special Styling ***/
 
-    <!-- Twitter Meta Tags -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Sim's Curated List of Awesome">
-    <meta property="twitter:description" content="My list of favourite online creators!">
-    <meta property="twitter:image" content="https://pages.simshadows.com/favicon.jpg">
-
-    <style>
-        /*** General Styling ***/
-
-        body {
-            padding: 0.5em;
-        }
-        footer {
-            margin-top: 3em;
-            text-align: center;
-        }
-
-        li {
-            margin-bottom: 0.2em;
-        }
-
-        /*** Special Styling ***/
-
-        span.e {
-            font-weight: bold;
-        }
-        li.inactive {
-            text-decoration: line-through;
-        }
-    </style>
-</head>
-
-<body>
+    span.e {
+        font-weight: bold;
+    }
+    li.inactive {
+        text-decoration: line-through;
+    }
+</style>
 
 
 [ <a target="_self" href="../"><b>Up</b></a> ]
@@ -289,6 +263,6 @@ Check out my stuff!
     <!-- End license notice block -->
 </footer>
 
-</body>
-</html>
+
+</BaseLayout>
 

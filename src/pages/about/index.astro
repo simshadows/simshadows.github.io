@@ -1,57 +1,20 @@
-<!doctype html>
+---
+/*
+ * Filename: index.astro
+ * Author:   simshadows <contact@simshadows.com>
+ * License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+ */
 
-<!--
-Filename: index.html
-Author:   simshadows <contact@simshadows.com>
-License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
 
-Full source code is available here:
-<https://github.com/simshadows/simshadows-pages>
--->
-
-<html>
-<head>
-    <title>About Me</title>
-
-    <meta charset="utf-8">
-    <link rel="icon" type="image/x-icon" href="/favicon.jpg">
-
-    <link rel="stylesheet" type="text/css" href="/_dependencies/normalize-8-0-1.css">
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="canonical" href="https://pages.simshadows.com/about" />
-    <meta name="description" content="About me.">
-    <meta name="keywords" content="simshadows, pages, about">
-    <meta name="author" content="simshadows">
-    <!-- TODO: Viewport meta tag? -->
-
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://pages.simshadows.com/about">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="About Me">
-    <meta property="og:description" content="About me.">
-    <meta property="og:image" content="https://pages.simshadows.com/favicon.jpg">
-
-    <!-- Twitter Meta Tags -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="About Me">
-    <meta property="twitter:description" content="About me.">
-    <meta property="twitter:image" content="https://pages.simshadows.com/favicon.jpg">
-
-    <style>
-        body {
-            padding: 0.5em;
-        }
-
-        span.inactive {
-            font-style: italic;
-            text-decoration: line-through;
-        }
-    </style>
-</head>
-
-<body>
-
+<BaseLayout
+    title="About Me"
+    canonical="https://pages.simshadows.com/about"
+    author="simshadows"
+    description="About me."
+    keywords="simshadows, pages, about"
+>
     [ <a target="_self" href="../"><b>Up</b></a> ]
     [ <a href="https://github.com/simshadows/simshadows-pages"><b>Source</b></a> ]
 
@@ -82,7 +45,5 @@ Full source code is available here:
         <a href="https://myanimelist.net/profile/simshadows"><b>MyAnimeList (simshadows)</b></a><br>
         <a href="https://au.pcpartpicker.com/user/simshadows/saved/"><b>PCPartPicker (simshadows)</b></a><br>
     </p>
-
-</body>
-</html>
+</BaseLayout>
 
