@@ -1,0 +1,37 @@
+/*** General Styling ***/
+
+body {
+    padding: 0.5em;
+}
+footer {
+    margin-top: 3em;
+    text-align: center;
+}
+
+li {
+    margin-bottom: 0.2em;
+}
+
+ul.no-bullets {
+    list-style-type: none;
+}
+
+/*** Special Styling ***/
+
+span.mech {
+    font-weight: bold;
+}
+.important {
+    color: red;
+}
+.unimportant {
+    color: #aaa;
+}
+
+table.no-border td {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+table.no-border td:first-of-type {padding-left:  0;}
+table.no-border td:last-of-type  {padding-right: 0;}
+

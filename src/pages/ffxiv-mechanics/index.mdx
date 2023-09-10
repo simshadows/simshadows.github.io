@@ -1,0 +1,572 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: Sim's FFXIV Savage Notes (Melee DPS, Materia DC PF)
+canonical: 'https://pages.simshadows.com/ffxiv-mechanics'
+description: 'All my personal FFXIV mechanics notes.'
+keywords: 'simshadows, pages, ffxiv, final fantasy 14, savage, mechanics'
+---
+
+import "./index.css"
+
+
+# Sim's FFXIV Savage Notes (Melee DPS, Materia DC PF)
+
+*These notes are designed for myself, as a melee DPS in Materia data center, playing in party finder, and using shorthand that make sense to me. It's intended to focus on shorthand reminders on how savage raid mechanics work to remind myself of mechanics for reclears (since I forget very easily).*
+
+*I release these notes to the public just in case it's useful to anyone.*
+
+Notes for older content:
+
+- <a target="_self" href="./patch-6-2">Patch 6.2</a>
+
+
+## Common Abbreviations/Shorthand
+
+- **"cardinal":** North/South/East/West
+    - **"intercardinal":** Between the cardinal directions (NE/NW/SE/SW).
+- **"clock positions":** Individual spread positions around a circle.
+- **"cone AOE"**/**"pizza slice":** Imagine the boss is in the middle of a pizza. A "pizza slice" AOE occurs in one slice.
+- **"flex"/"priority":** Some people need to adjust according to priority.
+- **LoS:** Line-of-sight (e.g. Behemoth meteor)
+- **LP:** Light party
+- **KB:** Knockback
+    - **"KB Resist":** Use *Arms Length* or *Surecast*.
+- **"pair":** Two players stacked on top of each other.
+    - The plural "pairs" often means the whole party pairs up, and no two pairs should be near each other. Whether we deviate from this exact meaning depends on context.
+- **PF:** Party finder.
+- **"puddle":** A small AOE that drops at players' feet and is dangerous to keep standing inside of. Dodge it after you drop it.
+- **"store":** Boss casts something that doesn't have an immediate effect, but you will need to pay attention to what the boss casted because this will come into play later. *Example: "The boss will store a stack or spread."*
+- **"tell":** Some sort of audio and/or visual indication of what's about to happen.
+- **"T/H":** Tanks and/or healers.
+
+---
+
+
+
+# Patch 6.4 Savage Raids
+
+
+
+## [P9S] Abyssos: The Ninth Circle (Savage)
+
+My notes are only applicable for melee DPS.
+
+Recurring mechanics:
+
+- Whenever pairs is mentioned, it is always <span class="important">pairs of one DPS and one T/H</span>.
+- **"Fire/Ice" or "Lightning/Ice" [Dual Spell/Two Minds]:**
+    - Tell 1: Boss will have have two elements on its hands.
+        - **Fire + Ice:** Spread in pairs (usually <span class="important">cardinals</span>).
+        - **Lightning + Ice:** Individually spread (<span class="important">clock positions</span>).
+    - Tell 2: One of the elements flashes.
+        - **Ice:** Spread around the <span class="important">INNER</span> circle.
+        - **Fire/Lightning:** Spread around the <span class="important">OUTER</span> circle. <em>(You'll just need to experience it to know which circle I'm referring to.)</em>
+
+
+Phases abstract:
+
+1. **[Dual Spell]** <span class="mech">"Fire/Ice"</span> &rarr; <span class="mech">"Lightning/Ice"</span> &rarr; <span class="mech">"Fire/Ice"</span>
+2. **[Cracks 1]**
+    - Knockback into the wall in pairs. <span class="important">Stay stacked in pairs until the stack AOEs resolve.</span>
+    - After knockback:
+        - Boss casts Front/Rear Combination, which determines the front/rear cleave.
+        - \{point blank/donut + cracks\} &rarr; front/rear cleave &rarr; \{opposite point blank/donut + cracks\} &rarr; <span class="important">LP Stacks</span>
+    - *Tips and tricks:*
+        - *You get plenty of time between each of the four steps. Take advantage of it! The slow timing makes it easy.*
+        - *Mentally solve the \{point blank/donut + cracks\} first.*
+        - *While getting into position, determine where the safe spot for front/rear cleave is. If you have to, preposition to sprint to the safe spot.*
+        - *Always remember the opposite point blank/donut! If you were out, just go in. If you were in, just go out.*
+3. **[Levinstrike Summoning]** *(PF calls it "LC1")*
+    - 4 people have number markers, 4 players have no marker.
+        - If you have number marker:
+            - Fire bait order: 2 &rarr; 4 &rarr; 6 &rarr; 8
+            - Tower soak order: 6 &rarr; 8 &rarr; 2 &rarr; 4
+        - If you have no marker:
+            - The four players will receive a "spike" marker in order. Take this far away from the group, in the order it appears.
+    - <span class="important">Boss immediately follows up with Fire/Ice or Lightning/Ice.</span>
+    - Popular strategies:
+        - Xeno Strat
+            - Two groups: Numbered players start at 5. Unmarked players start at 1.
+            - Take note of direction of rotation. Just look for the next highest ball to your starting ball.
+            - Both groups will rotate in that same direction, running around the inner circle.
+            - Fires are baited ahead of your group.
+            - Spike markers just bait at the correct wall in correct order.
+        - Sleepo Strat
+            - Everyone starts between 5 and 7.
+            - Bait fire at near edge. Bait spike marker at far edge.
+            - After two tower soaks, main group move across (to between 1 and 3).
+    - <em>Tips and tricks:</em>
+        - *To determine your tower soak, you can just mentally group your fire bait order as \{2 &rarr; 4\} &rarr; \{6 &rarr; 8\}, then mentally swap the two groups to become \{6 &rarr; 8\} &rarr; \{2 &rarr; 4\}.*
+        - *Another useful tower soak heuristic is, if you have a smaller number (2/4), you can think of your tower soak later. If you have a bigger number (6/8), you must think of your tower soak first.*
+4. **[Meteors]**
+    1. Step 1:
+        - DPS bait cone AOEs. Aim directly at tornados.
+        - T/H stack at first cracked meteor.
+        - Note: These are proximity baited. Cones target closest, bio targets furthest.
+    2. Step 2:
+        - Same as step 1, but DPS now bait bio, T/H now bait cones.
+        - Bait bio at the remaining cracked meteor.
+    3. Step 3: LoS the Ecliptic Meteor. Ecliptic meteor targets the black-marked rock.
+    4. <span class="important">Pot window.</span>
+5. **[Cracks 2]**
+    1. Dodge cracks first, roughly near your clock spread position.
+    2. <span class="important">Preposition as close to the boss as possible.</span>
+    3. <span class="important">Resolve Fire/Ice or Lightning/Ice. Move quick!</span>
+6. **[Chimeric Succession]** *(PF calls it "LC2")*
+    - MT pulls the boss a bit north.
+    - "Front/Rear Firestrikes" means boss will later cleave in front/behind (respectively).
+    - 4 players have number markers, 4 players have no marker.
+        - Numbered players bait massive AOE in order. 1/2 go to 1/2 markers, 3/4 replace them.
+        - Unnumbered players bait far south. As soon as the boss finishes its dive, <span class="important">make the boss cleave outside the arena</span>.
+    - <span class="important">Boss immediately follows up with Fire/Ice or Lightning/Ice.</span>
+7. Repeat "Fire/Ice" and "Lightning/Ice".
+8. Enrage: "Ravening" &rarr; "Disintegration"
+
+Acknowledgements/sources:
+- <a href="https://www.youtube.com/watch?v=zchp_5Q3yug">(Personal Experience)</a>
+- <a href="https://www.youtube.com/watch?v=rnKHQtYCuAk">Hector Lecture</a> *(full guide)*
+
+
+
+## [P10S] Abyssos: The Tenth Circle (Savage)
+
+My notes are only applicable for melee DPS.
+
+Recurring mechanics:
+
+- Many mechanics cause players to be frozen and "tangled" in webbing. Someone needs to <span class="important">run through and "untangle"</span> them to free them.
+- **"In/Out" [Circles of Pand&#xE6;monium/Pand&#xE6;monium's Holy]:** Donut and point blank AOEs from the front of the arena, respectively.
+- **"Demoniac Stack/Spreads"**: You get two random debuffs with different timers:
+    - Icon with 1 person &rarr; Everyone spread
+    - Icon with 2 people &rarr; DPS/Support Pairs (1 DPS with 1 T/H). <span class="important">Only 4 people receive this.</span>
+    - Icon with 4 people &rarr; 4-person role stacks (All DPS stack together, all T/H stack together). <span class="important">Only 2 people receive this.</span>
+    - <span class="important">You must read the party buffs to resolve this.</span> You cannot solve it with only your own debuff bar.
+- **"Head + Orbs" [Pand&#xE6;maniac Ray]** Stay behind the head. Avoid gold orb line AOEs.
+
+Phases abstract:
+
+1. **[Dividing Wings]**
+    - Tethers go to 1 DPS and 1 Support.
+    - Tethered players &rarr; Stay away from everyone. Bait the cone AOE away. &rarr; Untangle your LP.
+    - Everyone else &rarr; 3-person role stacks. <span class="important">Don't stand too close to anyone</span>
+2. Followed up with *In/Out*.
+3. **[Towers 1]**
+    - Web AOEs must overlap to create bridges across the poison.
+    - **Pand&#xE6;maniac Pillars**
+        - Everyone soaks the small towers.
+        - <span class="important">*In/Out.* SPRINT NOW.</span>
+        - <span class="important">Adds WITHOUT chain is safe.</span> Beware, two adjacent safe adds makes the exact safe spot a bit more challenging.
+4. **[Touchdown 1]**
+    - **[Silk Spit]** Must <span class="important">spread very far</span>.
+    - Fire markers bait line AOEs away from the group.
+    - **[Touchdown]** Everyone go to same side platform.
+    - <span class="important">*Demoniac Stack/Spreads*</span>.
+5. **[Turrets]**
+    - You get long-timer <em>Demoniac Stack/Spreads</em>. Take note.
+    - How turrets work:
+        - Turrets shoot in numbered order, targeting closest player.
+        - Turrets damage must either be shared by \{1 tank + 1 non-tank\}, or just \{1 tank\}.
+        - Closest player hit gets vulnerability and cannot take another turret shot.
+    - Strategy:
+        - First three turrets are soaked by \{1 tank + 1 non-tank\} each. Non-tank takes vuln.
+        - Final turret is soaked by \{1 tank\}.
+        - Aim at next number so tanks have more time to position.
+    - VERY QUICKLY AFTER: <span class="important">*Demoniac Stack/Spreads*</span>, then *Head + Orbs*.
+        - *Remember, there there is no Head + Orbs mechanic here. Just go straight to where you need to be.*
+6. **[Touchdown 2]**
+    - Same as earlier, but with *Dividing Wings* mechanics instead.
+    - Go to platform according to role, or if you're tethered.
+7. **[Towers 2]** Same as earlier, but after towers, resolve *Head + Orbs* and <span class="important">*Demoniac Stack/Spreads*</span> at the same time.
+8. <span class="important">Pot window.</span>
+9. **[Pand&#xE6;maniac Web]**
+    - Stay away from the front half of the arena.
+    - Step 1:
+        - Tethered players &rarr; Point cone AOE away.
+        - AOEs &rarr; Line up against rear wall.
+        - Stack marker &rarr; Mid, don't stack too close.
+    - Step 2: Free the webbed players.
+    - Step 3: AOEs again line up against rear wall.
+10. **[Harrowing Hell]**
+    - <span class="important">Very heavy raidwides. Must heavily mitigate!</span> Consider tank LB.
+    - *Take note of debuffs.*
+    - Knockback &rarr; <span class="important">*Demoniac Stack/Spreads*</span>
+11. **[Touchdown 3 / Parted Plumes]**
+    - Same as earlier, but with a rotating AOE thing instead.
+    - Preposition in front, and start before the first AOE.
+    - If you're unlucky, try to outrun the AOEs.
+    - *Head + Orbs*
+12. **[Towers 3]** Trivial repeat.
+13. Enrage: Repeats Harrowing Hell, but the knockback is guaranteed wipe.
+
+Acknowledgements/sources:
+
+- <a href="https://www.youtube.com/watch?v=NdzNkvU84xs">(Personal Experience)</a>
+- <a href="https://www.youtube.com/watch?v=JIgQmbtptvY">Guide by yukizuri</a>
+- <a href="https://www.youtube.com/watch?v=UDv3CVph3TM">Guide by Ahri Effect</a>
+- <a href="https://www.youtube.com/watch?v=qwQoAAl9qsM">Hector Lecture</a> *(full guide)*
+
+
+
+## [P11S] Abyssos: The Eleventh Circle (Savage)
+
+
+
+My notes are only applicable for melee DPS.
+
+Recurring mechanics:
+- "Dark" and "Light" tells recur.
+- Unless stated otherwise, all pair stacks are 1 DPS + 1 Support.
+- A bunch of light or dark "mirrors" appear outside the arena. I will just call them mirrors since it's a distinct name lol
+    - These mirrors will shoot line AOEs if they're the same element as the boss.
+- You MUST be familiar with the spell names of *Jury*, *Upheld*, and *Divisive*. Colloquially known as the *Trio*.
+
+Phases abstract:
+1. **"Jury/Protean" [Jury Overruling]**
+    - First, clock positions to bait line AOEs.
+    - Light &rarr; LP stacks in boss hitbox.
+    - Dark &rarr; Pair stacks at cardinals. Take care of donut AOEs.
+2. **"Upheld" [Upheld Overruling]**
+    - Light &rarr; Party stack in middle &rarr; LP stacks outside
+    - Dark &rarr; Out (preposition in pairs) &rarr; In &rarr; Pair stacks.
+3. **"Divisive/Dashes" [Divisive Overruling]**
+    - *(Note: The AOEs for this phase are based around a big line through the middle running north/south.)*
+    - Light &rarr; LP stacks outside at max melee range (because the AOE widens).
+    - Dark &rarr; Out &rarr; In, Pair stacks.
+4. **[Arcane Revelation]**
+    - **[<span class="important">Dismissal</span> Overruling]**: <span class="important">POP KB RESIST.</span>
+    - Dodge mirrors.
+    - Light &rarr; Out, LP stacks.
+    - Dark &rarr; In, pair stacks. <span class="important">Sprint is recommended.</span>
+5. **[Shadowed Messengers]**
+    - *(Note: MT must align boss with the light add's facing direction.)*
+    - Two adds spawn (one dark add, one light add).
+    - Step 1: Dodge the line AOEs by the adds.
+    - Step 2: Rotate to the dark add's line. (It's safe since the dark add cleaves only its sides.)
+    - Step 3: *Divisive/Dashes*
+    - Step 4: Whole party stack at middle *(except tethered tank)*, slightly away from the tethered tank.
+    - Step 5: Get under the dark add (where the tethered tank was).
+    - Step 6: *Jury/Protean*
+6. **[Lightstream]**
+    - Find the safe slice:
+        - Step 1: Look for two of the same colour. Face your camera between them.
+        - Step 2: \{Yellow &rarr; Go Right\} \{Blue &rarr; Go Left\} Mnemonic: <span class="important">"LIGHT IS RIGHT"</span>.
+        - (TODO: This 100% needs diagrams.)
+    - As the turrets shoot, LP's slowly move to correct side, for...
+    - *Divisive/Dashes*
+7. Repeat *Upheld*.
+8. **[Dark and Light]**
+    - Tethers:
+        - Same Elements &rarr; Long Tether
+        - Different Elements &rarr; Short Tether
+    - DPS: Light east, dark west. *(Supports: Dark east, light west.)* Mnemonic: <span class="important">"LIGHT IS RIGHT"</span>
+    - Rotate <span class="important">clockwise to opposite</span> orb element.
+    - _**Jury/Protean**_
+        - Step 1:
+            - Long Light &rarr; Stay
+            - Long Dark &rarr; Move clockwise (to next intercardinal). Mnemonic: <span class="important">DARK MOVES FIRST</span>
+            - Short DPS &rarr; Move <span class="important">FURTHER CLOCKWISE</span> to <span class="important">next intercardinal (ON THE DIAMOND ON THE FLOOR)</span>
+            - *(Short Supports instead go next cardinal.)*
+        - Step 2, Dark Boss:
+            - Long Light &rarr; Go clockwise to Long Dark.
+            - Long Dark &rarr; Stay
+            - Short &rarr; Dodge outwards to the edge of the arena.
+        - Step 2, Light Boss:
+            - LP stacks at two cardinals, <span class="important">far outward to dodge AOEs</span>.
+            - Long &rarr; Clockwise.
+            - Short &rarr; Counterclockwise.
+    - _**Divisive/Dashes**_
+        - Light:
+            - Rotate clockwise to next safe spot, or stay if already at a correct safe spot.
+        - Dark:
+            - Rotate clockwise to next safe spot, or stay if already at a correct safe spot.
+            - Long &rarr; Next safe intercardinal.
+            - Short &rarr; Next safe cardinal.
+    - Stay where you are until tethers disappear.
+9. <span class="important">Pot window.</span>
+10. **[Dark Current]**
+    - Preposition: \{LP 1 &rarr; NW\} \{LP 2 &rarr; SE\}
+    - AOEs will rotate in direction of the pink line.
+    - Spread within LP and follow it.
+11. Repeat *Jury/Protean* &rarr; *Upheld* &rarr; *Divisive/Dashes*
+12. **[Letter of the Law]**
+    1. Party prepositions SE. *(Tethered tank goes NW.)*
+    2. Safe at nearest orb and <span class="important">mirrors</span> of opposite element.
+    3. STAY WHERE YOU ARE until the adds dive.
+    4. Go to dark add &rarr; Pairs soak towers.
+    5. East/west LPs, dodging intercard adds.
+    6. <span class="important">KB resist WHILE stepping in</span> line with the dark add. LP stack.
+        - **[<span class="important">Dismissal</span> Overruling]**: <span class="important">POP KB RESIST.</span>
+    7. Pair stacks in boss's hitbox.
+13. Repeat mechanics:
+    1. *Lightstream* with *Divisive/Dashes*
+    2. *Jury/Protean*
+14. **[Ultimate Verdict]** Hard enrage.
+
+Acknowledgements/sources:
+- <a href="https://www.youtube.com/watch?v=w4z7GhyqgKI">(Personal Experience)</a>
+- <a href="https://www.youtube.com/watch?v=BQqjvUHycmM">Guide by yukizuri</a>
+- <a href="https://ff14.toolboxgaming.space/?id=738888331965861&preview=1#1"> Toolbox for Materia DC by Finia Deculsion</a>
+- <a href="https://www.youtube.com/watch?v=aEYow9pyEe8">Guide by Ahri Effect</a>
+
+
+
+## [P12S P1] Abyssos: The Twelfth Circle (Savage), Phase 1
+
+My notes are only applicable for melee DPS.
+
+Recurring mechanics:
+
+- **"Wing Cleaves" [Trinity of Souls]**
+    - Bot-to-top &rarr; Boss will invert the second cleave. \{Red &rarr; Pink &rarr; Green\}
+    - Top-to-bot &rarr; No inversions \{Green &rarr; Pink &rarr; Red\}
+- **Symbols for Superchain Theory:**
+    - You need to mentally associate symbol with action very well:
+        - "Ball" (Green Ball) &rarr; Point blank AOE
+        - "Donut" (Blue Donut) &rarr; Donut AOE
+        - "Spread" (Orange Spiky) &rarr; Spread/Protean
+        - "Pairs" (Pink Cross) &rarr; Pair Stacks
+- **"Apo-in/Peri-out" [Apodialogos/Peridialogos]**
+    - **[Apodialogos]** Party stack middle. *(Tanks bait outside, shared TB.)*
+    - **[Peridialogos]** Party stack max-melee rear. *(Tanks bait in middle, shared TB.)*
+
+Phases abstract:
+
+1. **[Paradeigma]**
+    - *Wing Cleaves* (always bot-to-top) happens simultaneously.
+    - \{Adds spawn north &rarr; North bait first.\} \{Vice versa for south.\}
+    - Swap baits during second cleave.
+2. **[Engravement 1]**
+    - Tethers &rarr; Pull straight to form a square and stretch. Soak nearest tower.
+    - Debuffs (DPS) &rarr; Drop next to opposite-colour tether. Check CCW from west for the add, then follow the tether. Stand next to them.
+    - *(Debuffs (Support) &rarr; Check CW from north.)*
+    - Watch for add line cleaves.
+3. **[Superchain Theory I]**
+    - SET 1: Look for next set (always donut, to your left or right), look at your debuffs.
+    - SET 2: 4-person stacks to soak lasers. Debuffs:
+        - \{Most Dark &rarr; Left\} \{Most <span class="important">Light &rarr; Right</span>\}
+        - Laser debuff does OPPOSITE
+    - SET 3: Preposition. AFTER set 3, do according to debuff:
+        - Tower &rarr; drop at cardinal, same side as you were in set 2.
+        - Laser &rarr; soak tower, same side as you were in set 2.
+        - Others &rarr; spread away from people. \{Melee &rarr; Far side.\} \{Ranged &rarr; Back in the corner.\}
+4. *Wing Cleaves*
+5. *Apo-in/Peri-out*
+6. **[Engravement 2]**
+    - STEP 1 (DPS): DPS are always tethered.
+        - Go to safe middle platform OPPOSITE SIDE of your add.
+        - Tethers form "X-shape", avoid hitting the tower.
+        - <span class="important">Go slightly away from the edge</span> (to avoid other tether AOEs).
+        - *Use this time to check party debuffs.*
+    - *(STEP 1 (Supports): Soak towers. Plus/cross go N/S, tower debuff mid platforms with priority system.)*
+    - STEP 2:
+        - Was tethered, opposite tether colour as towers &rarr; Soak towers. Closest to middle soaks mid tower.
+        - Was tethered, <span class="important">same</span> tether colour as towers &rarr; <span class="important">Bait nearest add</span>. Must bait as close as possible.
+        - *(Supports &rarr; Either baiting add or stepping off tower avoiding baiting add.)*
+7. **"Limit Cut"**
+    - *Unless stated otherwise, positions should go to the edge of the arena.*
+    - General pattern:
+        - 1/2/3/4 bait boss and drop puddles first.
+        - 5/6/7/8 bait lasers first.
+        - Boss baits/puddles &rarr; Take as pairs. Rotate CW after each drop.
+        - Laser baits &rarr; On your turn, move closer to middle and spread. Bias your spreads CW-ish.
+        - <span class="important">If you start as boss bait, you should also count the lasers</span> so you know when to step in.
+    - STEP 1: Relative to facing the boss:
+        - 1/3 &rarr; Stack opposite the boss.
+        - 2/4 &rarr; Prepos to step into where the boss was.
+        - <span class="important">5/7 &rarr; Left, bait laser first.</span>
+        - 6/8 &rarr; Right, bait laser second.
+    - STEP 2: Swap when possible.
+        - Boss baiters &rarr; CW
+        - <span class="important">Laser baiters &rarr; CCW</span>
+    - STEP 3:
+        - 1/3 &rarr; Bait laser first.
+        - 2/4 &rarr; Bait laser second.
+        - 5/6/7/8 &rarr; *(just bait boss as usual)*
+8. <span class="important">Don't burst/pot immediately.</span>
+9. **[Superchain Theory IIA]**
+    - TL;DR: Superchain with *Wing Cleaves*.
+    - Sequence:
+        1. N/S <span class="important">semicircle pairs</span> WITH wing cleave. <span class="important">*Look for third safe spot now.* POP SPRINT.</span>
+        2. Middle donut WITH wing cleave. <span class="important">Middle will be unsafe very quickly, so</span>
+        3. Wing cleave, prepos on safe N/S.
+        4. N/S with pairs or spread. Must get to position quickly!
+        5. <span class="important">Burst and potions.</span>
+        6. *Apo-in/Peri-out*
+    - *You'll know whether N/S is unsafe at any time since it will have a ball.*
+10. **[Superchain Theory IIB]**
+    1. N/S donut. <span class="important">*Determine the direction where adds spawn now.*</span>
+    2. E/W dodge middle-column cleave (prepos @ non-green) &rarr; spread/pairs <span class="important">*and look at adds*</span> &rarr; dodge adds.
+    3. N/S ball + spread/pairs. <span class="important">*Look for safe platform while spread.*</span>
+    4. Get to safe platform.
+11. TODO: How does enrage work?
+
+Acknowledgements/sources:
+
+- <a href="https://www.youtube.com/watch?v=TXN50IIOjqo">Guide by yukizuri</a>
+
+
+
+## [P12S P2] Abyssos: The Twelfth Circle (Savage), Phase 2
+
+
+
+My notes are only applicable for melee DPS.
+
+Recurring mechanics:
+
+- **"Tentacle TB" [Palladian Grasp]** Party stands opposite side of aggro'd tank.
+
+Phases abstract:
+
+1. *Tentacle TB*
+2. **[Gaiochos 1]**
+    1. Stack mid until tethers appear.
+    2. Pull tethers while avoiding add line cleaves. \{DPS &rarr; South-ish\} *\{Supports &rarr; North-ish\}*
+    3. Spread according to tentacles:
+        - One over top &rarr; Horizontal pattern
+        - Circling &rarr; Circle around middle AOE.
+        - All <span class="important">underneath &rarr; Vertical</span> pattern
+3. **"Playstation 1" [Classical Concepts 1]**
+    1. Go to blue object in column with your symbol. Don't stretch green tethers.
+        - W>E: \{ &#9587; &#9609;&#9711;&#9650;\}
+        - Mnemonic: <span class="important">\{ X 4 1 3 \}</span>
+    2. Stand between your blue object and an adjacent object according to debuff:
+        - <span class="important">&#x3B1; &rarr; Red Pyramid</span>
+        - &#x3B2; &rarr; Yellow Cube
+        - *If you have multiple choices, go to the object that only you can take.*
+    3. <span class="important">Green tethers disappear &rarr; Dodge point blank AOEs.</span>
+        - *AOEs appear under objects. You can stand in the middle of four objects.*
+    4. Proximity bait cone AOEs from the tower on your side. Aim it away from everyone.
+4. **[Caloric Theory 1]** *(OCE Box Strat)*
+    - *You each get two debuffs: \{numbered debuff\} and \{either fire or wind\}.*
+    - *Numbered debuff means your movement distance is limited. Movement must be precise.*
+    - Sequence:
+        1. \{Melee/Tank &rarr; Stack mid\} \{Ranged/Healers &rarr; Static Cardinals\}
+        2. First fire markers: <span class="important">\{DPS marker &rarr; West\}</span> \{Support marker &rarr; East\}. Swap as needed.
+        3. Next fires: Mid players form wind/fire pairs with cardinals:
+            - D1-D2-D3-D4 &rarr; West, CCW.
+            - *(MT-OT-H1-H2 &rarr; North, CW.)*
+        4. Then:
+            - Green debuffs move out to \{N/W &rarr; One unit\} \{E/W &rarr; Two units\}
+            - Everyone else form pairs E/W (prefer CW unless it won't work)
+5. **"Exaflare" [Ekpyrosis]**
+    - General pattern:
+        1. Two groups stack at opposite edges of arena.
+        2. Spread as soon as it is safe.
+        3. Move out of the way of AOEs.
+            - *No need to stack. Go through where the AOEs started on your side.*
+    - **"Diagonals" pattern**: \{Melee+Tank &rarr; Front\} \{Ranged+Healer &rarr; Back\}, spread horizontally.
+    - **"Straight" pattern**: \{LP 1 &rarr; Left\} \{LP 2 &rarr; Right\}, spread vertically.
+6. **[Pangenesis]**
+    - Start by looking for the numbered DNA debuff. *(It can also be absent. We call this "0" or "nothing".)*
+    - Conga line for 1/0 sides priority. 2 go to tower opposite of debuff colour.
+        - <span class="important">0 &rarr; Forward</span>
+        - 2 &rarr; Stay, and check if you're SHORT or LONG debuff.
+        - 1 &rarr; Back
+    - Towers 1 and 2:
+        - 0 and SHORT &rarr; First tower &rarr; NORTH tower
+        - 1 and LONG &rarr; Second tower, SOUTH
+    - Tower 3 is random. You must re-read your debuffs:
+        - Light/Dark &rarr; Soak opposite colour tower.
+        - <span class="important">Otherwise &rarr; Soak same side as before.</span>
+    - After all towers are done:
+        1. <span class="important">Initial 0 player take their tethers</span> away from group.
+            - Left tethers &rarr; To north cardinal.
+            - Right tethers &rarr; To east cardinal.
+            - Everyone else &rarr; South cardinal, max melee.
+            - <span class="important">Everyone must check if MT is taking right tethers.</span>
+        2. *Tentacle TB*. *Party adjusts to the left if MT took right tethers.*
+7. **"Playstation 2" [Classical Concepts 2]**
+    - Similar to before with some changes.
+    - Objects will flip both vertically and horizontally.
+        - Meet with your tether partner at the original object first.
+        - Jump to nonverbally communicate that you're ready to move.
+    - Green tethers disappear sooner, so you bait the cones before the point blank AOEs.
+8. <span class="important">Pot window (pop before or during Caloric 2).</span>
+9. **[Caloric Theory 2]** *("Hot Potato")*
+    1. Preposition early. *(TB does not cleave.)*
+    2. Red marker must be middle. Swap if needed. *(It cannot move as much as others.)*
+    3. "Hot potato"
+        - Pass along CW, except CCW if south cardinal started first. Must end in the middle.
+    4. *"Exaflare"* straight after.
+10. **[Gaiochos 2]**
+    - Know who your partner is.
+    - Sequence:
+        1. Stack mid until tethers appear.
+        2. Only one add. Pull tethers perpendicular until tethers are broken.
+        3. Same tentacle-spread mechanic as Gaiochos 1.
+        4. Pull tethers opposite the add. Non-tethered go close to partner "in front of them".
+        5. Tethers happen again. Previously-tethered people STAY this time.
+11. Hard enrage: **[Ignorabimus]**
+
+Acknowledgements/sources:
+
+- <a href="https://www.youtube.com/watch?v=LUIhgelW44M">Guide by yukizuri</a>
+
+
+---
+
+
+
+# Patch 6.4 Extreme Trial
+
+
+
+## The Voidcast Dais (Extreme)
+
+My notes are only applicable for melee DPS.
+
+Recurring mechanics:
+
+- **"Puddle" [Lingering Spark]:** Drops an <span class="important">INVISIBLE PUDDLE</span> the moment the cast finishes.
+- **"Go-back, go-front" [Phases of the Blade]:** Boss cleaves in front, then behind.
+- **"Ice Walls" [Arctic Assault]:** A wall with spikes appears. Don't be in front of spikes.
+
+Phases abstract:
+
+1. **[Terrastorm 1]** Dodge the rocks &rarr; dodge *puddles* &rarr; *go-back, go-front*
+2. **[Gale Sphere 1]**
+    - Watch the order of the adds. Always N/S first (any order), then E/W (any order).
+    - Orbs &rarr; orbs and ice walls &rarr; orbs &rarr; orbs &rarr; *go-back, go-front*
+3. **[Azdaja's Shadow]**
+    - <span class="important">A mechanic is STORED</span>, depending on purple circles.
+        - Circles only in hitbox &rarr; You must go OUT + in LP stacks.
+        - Circles around arena &rarr; You must go IN the hitbox &rarr; spread.
+    - <span class="important">*Go-back, go-front* &rarr; resolve the stored mechanic.</span>
+4. **[Double Meteor]**
+    - DPS go NORTH (T/H go SOUTH), then...
+    - Get knocked to empty northern corner if you have flare, otherwise get knocked into the towers.
+    - Avoid the AOE that targets the tethered person.
+5. **[Void Stardust 1]**
+    - Another <span class="important">*Azdaja's Shadow* mechanic storage</span>.
+    - Split into LPs. Hang around melee range, near your LP's first AOE.
+    - Move into the corner when the corner is safe.
+    - When it's safe, Tank/Melee move into melee range. Healer/Ranged stay in the corner.
+    - Boss casts one of two mechanics:
+        - **[Eventide Fall]** LP stacks on opposite sides.
+        - **[Eventide Triad]** All DPS stack in the rear.
+    - <span class="important">*Go-back, go-front* &rarr; resolve the stored mechanic.</span>
+6. **[Terrastorm 2]**
+    - Prepare to dodge the rocks. <span class="important">Don't commit yet.</span>
+    - When ice walls appear: Go to safe corner, then LP stacks.
+7. **[Gale Sphere 2]**
+    - Very similar to Gale Sphere 1, except you get LP or pair stacks.
+    - New order of resolution:
+        - Orbs and <span class="important">LP/PAIR STACK</span> &rarr; orbs and ice walls &rarr; orbs &rarr; orbs &rarr; <span class="important">LP/PAIR STACK</span> &rarr; *go-back, go-front*
+        - (If you start with LP stack, you get pairs later, and vice versa.)
+8. **[Void Stardust 2]**
+    - Another <span class="important">*Azdaja's Shadow* mechanic storage</span>.
+    - Split into LPs. First safe spot is right in appropriate corner.
+    - Move into the first AOE when it is safe.
+    - When it's safe, resolve pair stacks.
+    - Bait and dodge puddles.
+    - *Eventide Fall* or *Eventide Triad* (similar to earlier).
+    - <span class="important">*Go-back, go-front* &rarr; resolve the stored mechanic.</span>
+9. Repeat mechanics:
+    1. **[Double Meteor]**
+    2. **[Gale Sphere 2]**
+    3. Another <span class="important">*Azdaja's Shadow* mechanic storage</span>.
+    4. <span class="important">*Go-back, go-front* &rarr; resolve the stored mechanic.</span>
+10. **[Soft Enrage]** 2x *Binding Cold*, 1x *Azdaja's Shadow*.
+11. **[Hard Enrage]** *Black Shadow*.
+

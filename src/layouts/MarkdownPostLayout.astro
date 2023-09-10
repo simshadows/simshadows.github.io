@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const {
+    frontmatter,
+} = Astro.props;
+---
+
+<BaseLayout
+    title={frontmatter.title}
+    canonical={frontmatter.canonical}
+    author="simshadows"
+    description={frontmatter.description}
+    keywords={frontmatter.keywords}
+>
+
+    [ <a target="_self" href="../"><b>Up</b></a> ]
+    [ <a href="https://github.com/simshadows/simshadows-pages"><b>Source</b></a> ]
+
+    <slot />
+
+    <footer>
+        <!-- License notice block provided by <https://creativecommons.org/choose/> -->
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        <!-- End license notice block -->
+    </footer>
+
+</BaseLayout>
+
