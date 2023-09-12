@@ -1,0 +1,73 @@
+{
+
+
+"switches": [
+[
+    {
+        "name": "Aflion Carrot",
+        "cosmetic-variant": "Lorem ipsum",
+        "image": "aflion-carrot.jpg",
+        "image-acknowledgement": "/_placeholder-stubs/own-work.html",
+        "type": "tactile",
+        "cosmetic-features": {
+            "top-label": "AFLION",
+            "smd": "cutout",
+            "pins": 5,
+            "additional-id-notes": "Lorem ipsum dolor sit amet"
+        },
+        "documented-characteristics": {
+            "_official-website": "https://apps.simshadows.com/",
+            "_datasheet": "https://www.cherrymx.de/_Resources/Persistent/b/7/a/b/b7ab2f72bd5686e1e1e759a9f3703536d7fb1e18/EN_CHERRY_MX_RED.pdf",
+            "Placeholder1": "\"Placeholder with double-quotes\"",
+            "Placeholder2": "another one"
+        },
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["2"],
+                "excerpt": "These are AFLION switches, manufactured by Dongguan Golden Orange Electronics Technology Co., Ltd. AFLION Carrot switches are some of the thockiest tactile switches around, utilize a long pole stem for a more solid bottom out sound. Features a 43g two-stage stainless steel spring.",
+                "listedName": "AFLION Carrot Switch (Tactile - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "43g",
+                    "Actuation Force":  "- (No Data)",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "4mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Nylon",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "itemCost": "0.43 AUD",
+                "sfCost": "0.20 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": "Aflion Iceberg Blue",
+        "cosmetic-variant": "Lorem ipsummmm",
+        "image": "aflion-iceberg-blue.jpg",
+        "image-acknowledgement": "/_placeholder-stubs/own-work.html",
+        "type": "linear",
+        "cosmetic-features": {
+            "top-label": "AFLION",
+            "smd": "cutout",
+            "pins": 3
+        },
+        "documented-characteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["40"],
+                "excerpt": "Light Dustproof Linear from Aflion/Golden Orange Electronics",
+                "listedName": "Aflion Iceberg Blue"
+            }
+        ]
+    }
+]
+]
+
+
+}

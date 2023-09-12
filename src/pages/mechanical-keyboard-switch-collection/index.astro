@@ -1,0 +1,27 @@
+---
+/*
+ * Filename: index.astro
+ * Author:   simshadows <contact@simshadows.com>
+ * License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+ */
+
+ import GeneralLayout from "@layouts/GeneralLayout.astro";
+ import switchData from "./index.json";
+---
+
+<GeneralLayout
+    title="Sim's Mechanical Keyboard Switch Collection"
+    canonical="https://pages.simshadows.com/mechanical-keyboard-switch-collection"
+    description="A complete guide to Sim's mechanical keyboard switch collection, including visual identification, known documented specifications/characteristics, and origin."
+    keywords="simshadows, pages, mechanical keyboard, switch, keyswitch"
+>
+
+
+
+<h1>Sim's Mechanical Keyboard Switch Collection</h1>
+
+{JSON.stringify(switchData)}
+
+
+
+</BaseLayout>
