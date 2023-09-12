@@ -6,6 +6,8 @@
  */
 
  import GeneralLayout from "@layouts/GeneralLayout.astro";
+
+ import {SwitchesTable} from "./index.SwitchesTable";
  import switchData from "./index.json";
 ---
 
@@ -20,7 +22,9 @@
 
 <h1>Sim's Mechanical Keyboard Switch Collection</h1>
 
-{JSON.stringify(switchData)}
+{
+    <SwitchesTable jsonData={switchData} />
+}
 
 
 
