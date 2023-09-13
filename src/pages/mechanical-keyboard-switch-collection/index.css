@@ -63,14 +63,14 @@ span.red-text {
     top: 0; /* required for stickiness */
     z-index: 3;
 }
-#switches-visual-guide > table > thead > tr > th:nth-child(4) {
+#switches-visual-guide > table > thead > tr > th:nth-child(3) {
     z-index: 5;
 }
-#switches-visual-guide > table > * > tr > :nth-child(4)  {
+#switches-visual-guide > table > * > tr > :nth-child(3)  {
     position: sticky;
     left: 0;
 }
-#switches-visual-guide > table > tbody > tr > :nth-child(4)  {
+#switches-visual-guide > table > tbody > tr > :nth-child(3)  {
     z-index: 4;
     background-color: white;
 }
@@ -82,37 +82,37 @@ span.red-text {
     font-size: 85%;
 }
 
-#switches-visual-guide > table > * > tr > :nth-child(3) img {width: 10em;}
-#switches-visual-guide > table > * > tr > :nth-child(6) img {width: 6em;}
+#switches-visual-guide > table > * > tr > :nth-child(2) img {width: 10em;}
+#switches-visual-guide > table > * > tr > :nth-child(5) img {width: 6em;}
 
-#switches-visual-guide > table > * > tr > :nth-child(3) {
+#switches-visual-guide > table > * > tr > :nth-child(2) {
     padding: 0.2em;
 }
 
 /*
  * Column Sizing
  */
-#switches-visual-guide > table > * > tr > :nth-child(2),
-#switches-visual-guide > table > * > tr > :nth-child(4),
-#switches-visual-guide > table > * > tr > :nth-child(7),
-#switches-visual-guide > table > * > tr > :nth-child(10),
+#switches-visual-guide > table > * > tr > :nth-child(1),
+#switches-visual-guide > table > * > tr > :nth-child(3),
+#switches-visual-guide > table > * > tr > :nth-child(6),
+#switches-visual-guide > table > * > tr > :nth-child(9),
+#switches-visual-guide > table > * > tr > :nth-child(11),
 #switches-visual-guide > table > * > tr > :nth-child(12),
 #switches-visual-guide > table > * > tr > :nth-child(13),
 #switches-visual-guide > table > * > tr > :nth-child(14),
-#switches-visual-guide > table > * > tr > :nth-child(15),
-#switches-visual-guide > table > * > tr > :nth-child(16) {
+#switches-visual-guide > table > * > tr > :nth-child(15) {
     white-space: nowrap;
     width: 1%;
 }
-#switches-visual-guide > table > * > tr > :nth-child(3),
-#switches-visual-guide > table > * > tr > :nth-child(6) {
+#switches-visual-guide > table > * > tr > :nth-child(2),
+#switches-visual-guide > table > * > tr > :nth-child(5) {
     width: 1%;
 }
-#switches-visual-guide > table > *     > tr > :nth-child(5)  {min-width: 10em;}
-#switches-visual-guide > table > *     > tr > :nth-child(9)  {min-width: 18em;}
+#switches-visual-guide > table > *     > tr > :nth-child(4)  {min-width: 10em;}
+#switches-visual-guide > table > *     > tr > :nth-child(8)  {min-width: 18em;}
+#switches-visual-guide > table > *     > tr > :nth-child(16) {min-width: 18em;}
 #switches-visual-guide > table > *     > tr > :nth-child(17) {min-width: 18em;}
-#switches-visual-guide > table > *     > tr > :nth-child(18) {min-width: 18em;}
-#switches-visual-guide > table > tbody > tr > :nth-child(17) {font-size: 85%;}
+#switches-visual-guide > table > tbody > tr > :nth-child(16) {font-size: 85%;}
 #origin-table > * > tr > :nth-child(1),
 #origin-table > * > tr > :nth-child(2),
 #origin-table > * > tr > :nth-child(3),
@@ -157,32 +157,31 @@ span.red-text {
     text-align: left;
 }
 
-#origin-table > * > tr > :nth-child(3) {
+#origin-table > * > tr > :nth-child(2) {
     border-left: 10px solid #000;
 }
 
 /*** Column Filtering ***/
 
-/* #switches-visual-guide                   > table > * > tr > :nth-child(1), */ /* ALWAYS HIDE */
 /**/
-#switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(9),
-#switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(11),
+#switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(8),
+#switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(10),
+#switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(13),
 #switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(14),
 #switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(15),
-#switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(16),
-#switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(18),
+#switches-visual-guide.ctrl-view-general > table > * > tr > :nth-child(17),
 /**/
+#switches-visual-guide.ctrl-view-id      > table > * > tr > :nth-child(9),
 #switches-visual-guide.ctrl-view-id      > table > * > tr > :nth-child(10),
-#switches-visual-guide.ctrl-view-id      > table > * > tr > :nth-child(11),
-#switches-visual-guide.ctrl-view-id      > table > * > tr > :nth-child(17),
+#switches-visual-guide.ctrl-view-id      > table > * > tr > :nth-child(16),
 /**/
+#switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(11),
 #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(12),
 #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(13),
 #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(14),
 #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(15),
 #switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(16),
-#switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(17),
-#switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(18) {
+#switches-visual-guide.ctrl-view-docs    > table > * > tr > :nth-child(17) {
     display: none;
 }
 

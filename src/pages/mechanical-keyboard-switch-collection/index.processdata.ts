@@ -20,7 +20,8 @@ export interface CosmeticFeatures {
 }
 
 export interface SwitchCategory {
-    name: string;
+    unverified: boolean;
+    name: string[];
     cosmeticVariant: string;
     image: string;
     imageAcknowledgement: string;
@@ -58,14 +59,15 @@ function transformCosmeticFeatures(raw: unknown): CosmeticFeatures {
         throw new Error("raw.type is an invalid value");
     }
 
-    let additionalIDNotes: string = "";
-
-    if ("additional-id-notes" in raw) {
-        if (typeof raw["additional-id-notes"] !== "string") {
-            throw new Error("raw.additional-id-notes must be a string");
+    const additionalIDNotes = (()=>{
+        if ("additional-id-notes" in raw) {
+            if (typeof raw["additional-id-notes"] !== "string") {
+                throw new Error("raw.additional-id-notes must be a string");
+            }
+            return raw["additional-id-notes"];
         }
-        additionalIDNotes = raw["additional-id-notes"];
-    }
+        return "";
+    })();
 
     return {
         topLabel: raw["top-label"],
@@ -83,21 +85,47 @@ function transformSwitchCategory(raw: unknown): SwitchCategory {
     if (!raw) throw new Error("raw must be truthy");
     if (typeof raw !== "object") throw new Error("raw must be an object");
 
-    if (!("name" in raw)) throw new Error("raw.name must exist");
-    if (typeof raw.name !== "string") throw new Error("raw.name must be a string");
+    const unverified = (()=>{
+        if ("unverified" in raw) {
+            if (typeof raw.unverified !== "boolean") throw new Error("raw.unverified must be a string");
+            return raw.unverified;
+        }
+        return false;
+    })();
 
-    if (!("cosmetic-variant" in raw)) throw new Error("raw.cosmetic-variant must exist");
-    if (typeof raw["cosmetic-variant"] !== "string") {
-        throw new Error("raw.cosmetic-variant must be a string");
+    if (!("name" in raw)) throw new Error("raw.name must exist");
+    if (!Array.isArray(raw.name)) throw new Error("raw.name must be an array");
+    /* HACKY WORKAROUND FOR TYPESCRIPT BUG */
+    const name: string[] = raw.name; // this should fail when the typescript bug is fixed
+    for (const v of raw.name) {
+        if (typeof v !== "string") throw new Error("v must be a string");
+        if (v.length === 0) throw new Error("v must be non-empty");
     }
+    /* END OF HACKY WORKAROUND */
+
+    const cosmeticVariant = (()=>{
+        if ("cosmetic-variant" in raw) {
+            if (typeof raw["cosmetic-variant"] !== "string") {
+                throw new Error("raw.cosmetic-variant must be a string");
+            }
+            return raw["cosmetic-variant"];
+        }
+        return "";
+    })();
 
     if (!("image" in raw)) throw new Error("raw.image must exist");
     if (typeof raw.image !== "string") throw new Error("raw.image must be a string");
+    if (raw.image.length === 0) throw new Error("raw.image must be non-empty");
 
-    if (!("image-acknowledgement" in raw)) throw new Error("raw.image-acknowledgement must exist");
-    if (typeof raw["image-acknowledgement"] !== "string") {
-        throw new Error("raw.image-acknowledgement must be a string");
-    }
+    const imageAcknowledgement = (()=>{
+        if ("image-acknowledgement" in raw) {
+            if (typeof raw["image-acknowledgement"] !== "string") {
+                throw new Error("raw.image-acknowledgement must be a string");
+            }
+            return raw["image-acknowledgement"];
+        }
+        return "/_placeholder-stubs/own-work.html";
+    })();
 
     if (!("type" in raw)) throw new Error("raw.type must exist");
     if (!(raw.type === "linear" || raw.type === "tactile" || raw.type === "clicky")) {
@@ -105,14 +133,16 @@ function transformSwitchCategory(raw: unknown): SwitchCategory {
     }
 
     if (!("cosmetic-features" in raw)) throw new Error("raw.cosmetic-features must exist");
+    const cosmeticFeatures = transformCosmeticFeatures(raw["cosmetic-features"]);
 
     return {
-        name: raw.name,
-        cosmeticVariant: raw["cosmetic-variant"],
+        unverified,
+        name,
+        cosmeticVariant,
         image: raw.image,
-        imageAcknowledgement: raw["image-acknowledgement"],
+        imageAcknowledgement,
         type: raw.type,
-        cosmeticFeatures: transformCosmeticFeatures(raw["cosmetic-features"]),
+        cosmeticFeatures,
     };
 }
 

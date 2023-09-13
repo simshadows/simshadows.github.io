@@ -3,7 +3,7 @@
 "switches": [
 [
     {
-        "name": "Aflion Carrot",
+        "name": ["Aflion Carrot"],
         "cosmetic-variant": "Lorem ipsum",
         "image": "aflion-carrot.jpg",
         "image-acknowledgement": "/_placeholder-stubs/own-work.html",
@@ -44,10 +44,8 @@
     },
     {
         "unverified": true,
-        "name": "Aflion Iceberg Blue",
-        "cosmetic-variant": "Lorem ipsummmm",
+        "name": ["Aflion Iceberg Blue"],
         "image": "aflion-iceberg-blue.jpg",
-        "image-acknowledgement": "/_placeholder-stubs/own-work.html",
         "type": "linear",
         "cosmetic-features": {
             "top-label": "AFLION",
@@ -62,6 +60,108 @@
                 "undersideMouldLabel": ["40"],
                 "excerpt": "Light Dustproof Linear from Aflion/Golden Orange Electronics",
                 "listedName": "Aflion Iceberg Blue"
+            }
+        ]
+    },
+    {
+        "name": ["Aflion Panda"],
+        "image": "aflion-panda.jpg",
+        "type": "tactile",
+        "cosmetic-features": {
+            "top-label": "AFLION",
+            "smd": "cutout",
+            "pins": 5
+        },
+        "documented-characteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["7"],
+                "excerpt": "These are AFLION switches, manufactured by Dongguan Golden Orange Electronics Technology Co., Ltd. AFLION Panda switches are some of the thockiest tactile switches around, utilize a long pole stem for a more solid bottom out sound.",
+                "listedName": "AFLION Panda Switch (Tactile - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "60g",
+                    "Actuation Force":  "- (No Data)",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "4mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Nylon",
+                    "Lube":             "Unlubed (No Factory Lube, Light Lube Stem)"
+                },
+                "itemCost": "0.46 AUD",
+                "sfCost": "0.21 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["Aflion Shadow"],
+        "image": "aflion-shadow.jpg",
+        "type": "tactile",
+        "cosmetic-features": {
+            "top-label": "AFLION",
+            "smd": "cutout",
+            "pins": 5
+        },
+        "documented-characteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["7"],
+                "excerpt": "These are AFLION switches, manufactured by Dongguan Golden Orange Electronics Technology Co., Ltd. AFLION Shadow switches are some of the thockiest tactile switches around, utilize a long pole stem for a more solid bottom out sound. Features a 63g two-stage stainless steel spring.",
+                "listedName": "AFLION Shadow Switch (Tactile - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "63g",
+                    "Actuation Force":  "- (No Data)",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "4mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Nylon",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "itemCost": "0.43 AUD",
+                "sfCost": "0.20 AUD"
+            },
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["4"],
+                "excerpt": "A relatively heavy tactile switch from Aflion. Large round bump similar to holy panda, but a longer (~19mm) dual stage spring provides more initial force. Seems to be the sample that Fantasy DVA and Poison switches were based off as the only 5 pin winglatch housing I have seen from Aflion so far.",
+                "listedName": "Aflion Black and Orange Factory Sample (Shadow)",
+                "comment": "TODO: Switch Oddities lists these are \"factory samples\". Not sure what this means, but I'll look into this later to figure out if the Switch Oddities sample should be considered separate from the one I got from Mechanicalkeyboards.co.id."
+            }
+        ]
+    }
+],[
+    {
+        "name": ["Akko Custom Series Lavender Purple", "Akko CS Lavender Purple"],
+        "image": "akko-custom-series-lavender-purple.jpg",
+        "type": "tactile",
+        "cosmetic-features": {
+            "top-label": "AKKO",
+            "smd": "cutout",
+            "pins": 3
+        },
+        "documented-characteristics": {},
+        "origins": [
+            {
+                "originID": "2022-06-08 ANNE-CN",
+                "count": 1,
+                "undersideMouldLabel": ["07", "D"],
+                "listedSpecs": {
+                    "Spring": "18mm Long Spring",
+                    "Operating Force": "36gf \u00b1 5gf",
+                    "Tactile Force": "50gf \u00b1 5gf",
+                    "Total Travel": "4.0-0.5mm",
+                    "Pre Travel": "1.9 \u00b1 0.3mm",
+                    "Tactile Position": "0.5 \u00b1 0.3mm"
+                },
+                "itemCost": "0.51 AUD",
+                "sfCost": "0.00 AUD"
             }
         ]
     }

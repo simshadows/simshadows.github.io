@@ -1,16 +1,29 @@
 import {
+    type SMDType,
     type SwitchCategory,
     type SwitchCollection,
 } from "./index.processdata";
 
+function smdClassMap(s: SMDType) {
+    switch (s) {
+        case "no": return "smd-incompatible";
+        case "cutout": return "smd-cutout";
+        case "transparent": return "smd-transparent";
+        case "semitransparent": return "smd-semi-transparent";
+        default: throw new Error(`Unexpected value: ${s}`);
+    }
+}
+
 export function SwitchesTableRow({data}: {data: SwitchCategory}) {
     return <tr>
-        <td>{data.type}</td>
+        <td className={data.type}>{data.type}</td>
         <td><a href={data.imageAcknowledgement}>{data.image}</a></td>
-        <td>{data.name}</td>
+        <td>{data.name.map((s) =>
+            <p>{s}</p>
+        )}</td>
         <td>{data.cosmeticVariant}</td>
         <td>{data.cosmeticFeatures.topLabel}</td>
-        <td>{data.cosmeticFeatures.smd}</td>
+        <td className={smdClassMap(data.cosmeticFeatures.smd)}>{data.cosmeticFeatures.smd}</td>
         <td>{data.cosmeticFeatures.pins}</td>
         <td>{data.cosmeticFeatures.additionalIDNotes}</td>
         <td>TODO</td>
