@@ -5,10 +5,18 @@
  * License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
  */
 
- import GeneralLayout from "@layouts/GeneralLayout.astro";
+import GeneralLayout from "@layouts/GeneralLayout.astro";
 
- import {SwitchesTable} from "./index.SwitchesTable";
- import switchData from "./index.json";
+import {
+    type SwitchCollection,
+    processSwitchData,
+} from "./index.processdata";
+import {SwitchesTable} from "./index.SwitchesTable";
+
+import "./index.css";
+import rawData from "./index.json";
+
+const switchData: SwitchCollection = processSwitchData(rawData);
 ---
 
 <GeneralLayout
@@ -22,9 +30,7 @@
 
 <h1>Sim's Mechanical Keyboard Switch Collection</h1>
 
-{
-    <SwitchesTable jsonData={switchData} />
-}
+<SwitchesTable data={switchData} />
 
 
 
