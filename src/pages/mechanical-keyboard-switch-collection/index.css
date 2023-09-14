@@ -131,7 +131,7 @@ span.red-text {
 #switches-visual-guide > table > * > tr > :nth-child(10) {
     border-left: 10px solid #000;
 }
-#switches-visual-guide > table tr.start-group td {
+#switches-visual-guide > table tr:not(:first-child).start-group td {
     border-top: 10px solid #000;
 }
 
