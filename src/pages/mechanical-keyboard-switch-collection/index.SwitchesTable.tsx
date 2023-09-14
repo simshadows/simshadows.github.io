@@ -14,14 +14,14 @@ function smdClassMap(s: SMDType) {
     }
 }
 
-export function SwitchesTableRow({className, data}: {className: string, data: SwitchCategory}) {
+export function SwitchesTableSubrow({className, data}: {className: string, data: SwitchCategory}) {
     return <tr className={className}>
         <td className={data.type}>{data.type}</td>
         <td><a href={data.imageAcknowledgement}>
             {/* WE JUST REFERENCE THE LEGACY VERSION IMAGES FOR NOW. TODO: FIX! */}
             <img src={"/mechanical-keyboard-switch-collection-legacy/_images/" + data.image}/>
         </a></td>
-        <td>{data.name.map((s) =>
+        <td className={data.unverified ? "unverified" : ""}>{data.name.map((s) =>
             <p>{s}</p>
         )}</td>
         <td>{data.cosmeticVariant}</td>
@@ -38,6 +38,11 @@ export function SwitchesTableRow({className, data}: {className: string, data: Sw
         <td>TODO</td>
         <td>TODO</td>
     </tr>;
+}
+
+export function SwitchesTableRow({className, data}: {className: string, data: SwitchCategory}) {
+    // TODO: process origins
+    return <SwitchesTableSubrow className={className} data={data} />
 }
 
 export function SwitchesTableRowGroup({data}: {data: SwitchCategory[]}) {

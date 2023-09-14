@@ -44,20 +44,28 @@ function transformCosmeticFeatures(raw: unknown): CosmeticFeatures {
     if (!("top-label" in raw)) throw new Error("raw.top-label must exist");
     if (typeof raw["top-label"] !== "string") throw new Error("raw.top-label must be a string");
 
-    if (!("smd" in raw)) throw new Error("raw.smd must exist");
-    switch (raw.smd) {
-        default:
-            throw new Error("raw.smd must be a valid value.");
-        case "no":
-        case "cutout":
-        case "transparent":
-        case "semitransparent":
-    }
+    const smd = (()=>{
+        if ("smd" in raw) {
+            switch (raw.smd) {
+                default:
+                    throw new Error("raw.smd must be a valid value.");
+                case "no":
+                case "cutout":
+                case "transparent":
+                case "semitransparent":
+            }
+            return raw.smd;
+        }
+        return "cutout";
+    })();
 
-    if (!("pins" in raw)) throw new Error("raw.pins must exist");
-    if (!(raw.pins === 3 || raw.pins === 5)) {
-        throw new Error("raw.type is an invalid value");
-    }
+    const pins = (()=>{
+        if ("pins" in raw) {
+            if (!(raw.pins === 3 || raw.pins === 5)) throw new Error("raw.type is an invalid value");
+            return raw.pins;
+        }
+        return 3;
+    })();
 
     const additionalIDNotes = (()=>{
         if ("additional-id-notes" in raw) {
@@ -71,8 +79,8 @@ function transformCosmeticFeatures(raw: unknown): CosmeticFeatures {
 
     return {
         topLabel: raw["top-label"],
-        smd: raw.smd,
-        pins: raw.pins,
+        smd,
+        pins,
         additionalIDNotes,
     };
 }
@@ -127,10 +135,15 @@ function transformSwitchCategory(raw: unknown): SwitchCategory {
         return "/_placeholder-stubs/own-work.html";
     })();
 
-    if (!("type" in raw)) throw new Error("raw.type must exist");
-    if (!(raw.type === "linear" || raw.type === "tactile" || raw.type === "clicky")) {
-        throw new Error("raw.type is an invalid value");
-    }
+    const switchType = (()=>{
+        if ("type" in raw) {
+            if (!(raw.type === "linear" || raw.type === "tactile" || raw.type === "clicky")) {
+                throw new Error("raw.type is an invalid value");
+            }
+            return raw.type;
+        }
+        return "linear";
+    })();
 
     if (!("cosmetic-features" in raw)) throw new Error("raw.cosmetic-features must exist");
     const cosmeticFeatures = transformCosmeticFeatures(raw["cosmetic-features"]);
@@ -141,7 +154,7 @@ function transformSwitchCategory(raw: unknown): SwitchCategory {
         cosmeticVariant,
         image: raw.image,
         imageAcknowledgement,
-        type: raw.type,
+        type: switchType,
         cosmeticFeatures,
     };
 }

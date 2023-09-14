@@ -46,11 +46,8 @@
         "unverified": true,
         "name": ["Aflion Iceberg Blue"],
         "image": "aflion-iceberg-blue.jpg",
-        "type": "linear",
         "cosmetic-features": {
-            "top-label": "AFLION",
-            "smd": "cutout",
-            "pins": 3
+            "top-label": "AFLION"
         },
         "documented-characteristics": {},
         "origins": [
@@ -69,7 +66,6 @@
         "type": "tactile",
         "cosmetic-features": {
             "top-label": "AFLION",
-            "smd": "cutout",
             "pins": 5
         },
         "documented-characteristics": {},
@@ -102,7 +98,6 @@
         "type": "tactile",
         "cosmetic-features": {
             "top-label": "AFLION",
-            "smd": "cutout",
             "pins": 5
         },
         "documented-characteristics": {},
@@ -142,9 +137,7 @@
         "image": "akko-custom-series-lavender-purple.jpg",
         "type": "tactile",
         "cosmetic-features": {
-            "top-label": "AKKO",
-            "smd": "cutout",
-            "pins": 3
+            "top-label": "AKKO"
         },
         "documented-characteristics": {},
         "origins": [
@@ -159,6 +152,30 @@
                     "Total Travel": "4.0-0.5mm",
                     "Pre Travel": "1.9 \u00b1 0.3mm",
                     "Tactile Position": "0.5 \u00b1 0.3mm"
+                },
+                "itemCost": "0.51 AUD",
+                "sfCost": "0.00 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Akko Custom Series Matcha Green", "Akko CS Matcha Green"],
+        "image": "akko-custom-series-matcha-green.jpg",
+        "cosmetic-features": {
+            "top-label": "AKKO"
+        },
+        "documented-characteristics": {},
+        "origins": [
+            {
+                "originID": "2022-06-08 ANNE-CN",
+                "count": 1,
+                "undersideMouldLabel": ["07", "P"],
+                "listedSpecs": {
+                    "Spring": "Spiral Progressive Spring",
+                    "Operating Force": "50gf \u00b1 5gf",
+                    "Bottom Out Force": "63gf \u00b1 5gf",
+                    "Total Travel": "4.0-0.5mm",
+                    "Pre Travel": "1.9 \u00b1 0.3mm"
                 },
                 "itemCost": "0.51 AUD",
                 "sfCost": "0.00 AUD"
