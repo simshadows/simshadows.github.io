@@ -8,15 +8,18 @@
 import GeneralLayout from "@layouts/GeneralLayout.astro";
 
 import {
-    type SwitchCollection,
-    processSwitchData,
-} from "./index.processdata";
+    switches,
+} from "./index.data";
+//import {
+//    type SwitchCollection,
+//    processSwitchData,
+//} from "./index.processdata";
 import {SwitchesTable} from "./index.SwitchesTable";
 
 import "./index.css";
-import rawData from "./index.json";
+//import rawData from "./index.json";
 
-const switchData: SwitchCollection = processSwitchData(rawData);
+//const switchData: SwitchCollection = processSwitchData(rawData);
 ---
 
 <GeneralLayout
@@ -30,7 +33,7 @@ const switchData: SwitchCollection = processSwitchData(rawData);
 
 <h1>Sim's Mechanical Keyboard Switch Collection</h1>
 
-<SwitchesTable data={switchData} />
+<SwitchesTable data={switches} />
 
 <!-- some whitespace to help me while I migrate data -->
 <br>

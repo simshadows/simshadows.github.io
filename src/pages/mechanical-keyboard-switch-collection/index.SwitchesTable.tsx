@@ -1,8 +1,7 @@
 import {
     type SMDType,
     type SwitchCategory,
-    type SwitchCollection,
-} from "./index.processdata";
+} from "./index.data";
 
 function smdClassMap(s: SMDType) {
     switch (s) {
@@ -51,7 +50,7 @@ export function SwitchesTableRowGroup({data}: {data: SwitchCategory[]}) {
     )} </>;
 }
 
-export function SwitchesTable({data}: {data: SwitchCollection}) {
+export function SwitchesTable({data}: {data: SwitchCategory[][]}) {
     return <>
         <p><div id="switches-visual-guide" class="ctrl-view-all"><table>
             <thead><tr>
@@ -73,7 +72,7 @@ export function SwitchesTable({data}: {data: SwitchCollection}) {
                 <th>Comments</th>
             </tr></thead>
             <tbody>
-                {data.switches.map((x) => <SwitchesTableRowGroup data={x} />)}
+                {data.map((x) => <SwitchesTableRowGroup data={x} />)}
             </tbody>
         </table></div></p>
     </>;

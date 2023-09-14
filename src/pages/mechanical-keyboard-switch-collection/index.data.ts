@@ -1,20 +1,94 @@
-{
+/*
+ * Filename: index.data.ts
+ * Author:   simshadows <contact@simshadows.com>
+ * License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+ */
 
-"switches": [
+export type SwitchType = "linear" | "tactile" | "clicky";
+export type SMDType = "no" | "cutout" | "transparent" | "semitransparent";
+export type PinsCount = 3 | 5;
+
+interface _CosmeticFeatures {
+    topLabel: string;
+    smd?: SMDType;
+    pins?: PinsCount;
+    additionalIDNotes?: string;
+}
+export interface CosmeticFeatures {
+    readonly topLabel: string;
+    readonly smd: SMDType;
+    readonly pins: PinsCount;
+    readonly additionalIDNotes: string;
+}
+
+interface _SwitchCategory {
+    unverified?: boolean;
+    name: string[];
+    cosmeticVariant?: string;
+    image: string;
+    imageAcknowledgement?: string;
+    type?: SwitchType;
+    cosmeticFeatures: _CosmeticFeatures;
+    documentedCharacteristics: {};
+    origins: {};
+}
+export interface SwitchCategory {
+    readonly unverified: boolean;
+    readonly name: ReadonlyArray<string>;
+    readonly cosmeticVariant: string;
+    readonly image: string;
+    readonly imageAcknowledgement: string;
+    readonly type: SwitchType;
+    readonly cosmeticFeatures: CosmeticFeatures;
+    readonly documentedCharacteristics: {};
+    readonly origins: {};
+}
+
+
+function transformCosmeticFeatures(obj: _CosmeticFeatures): CosmeticFeatures {
+    return {
+        topLabel:          obj.topLabel,
+        smd:               obj.smd || "cutout",
+        pins:              obj.pins || 3,
+        additionalIDNotes: obj.additionalIDNotes || "",
+    }
+}
+
+function transformSwitchCategory(obj: _SwitchCategory): SwitchCategory {
+    return {
+        unverified:                obj.unverified || false,
+        name:                      obj.name,
+        cosmeticVariant:           obj.cosmeticVariant || "",
+        image:                     obj.image,
+        imageAcknowledgement:      obj.imageAcknowledgement || "/_placeholder-stubs/own-work.html",
+        type:                      obj.type || "linear",
+        cosmeticFeatures:          transformCosmeticFeatures(obj.cosmeticFeatures),
+        documentedCharacteristics: obj.documentedCharacteristics,
+        origins:                   obj.origins,
+    };
+}
+
+function addDefaults(): SwitchCategory[][] {
+    return hardcodedSwitchData.map((sublist) => sublist.map(transformSwitchCategory));
+}
+
+
+// This is intentionally written to be JSON-compatible to make future migration easier.
+const hardcodedSwitchData: _SwitchCategory[][] = [
 [
     {
         "name": ["Aflion Carrot"],
-        "cosmetic-variant": "Lorem ipsum",
+        "cosmeticVariant": "Lorem ipsum",
         "image": "aflion-carrot.jpg",
-        "image-acknowledgement": "/_placeholder-stubs/own-work.html",
+        "imageAcknowledgement": "/_placeholder-stubs/own-work.html",
         "type": "tactile",
-        "cosmetic-features": {
-            "top-label": "AFLION",
+        "cosmeticFeatures": {
+            "topLabel": "AFLION",
             "smd": "cutout",
             "pins": 5,
-            "additional-id-notes": "Lorem ipsum dolor sit amet"
+            "additionalIDNotes": "Lorem ipsum dolor sit amet"
         },
-        "documented-characteristics": {
+        "documentedCharacteristics": {
             "_official-website": "https://apps.simshadows.com/",
             "_datasheet": "https://www.cherrymx.de/_Resources/Persistent/b/7/a/b/b7ab2f72bd5686e1e1e759a9f3703536d7fb1e18/EN_CHERRY_MX_RED.pdf",
             "Placeholder1": "\"Placeholder with double-quotes\"",
@@ -46,10 +120,10 @@
         "unverified": true,
         "name": ["Aflion Iceberg Blue"],
         "image": "aflion-iceberg-blue.jpg",
-        "cosmetic-features": {
-            "top-label": "AFLION"
+        "cosmeticFeatures": {
+            "topLabel": "AFLION"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-05-27 SWOD-US",
@@ -64,11 +138,11 @@
         "name": ["Aflion Panda"],
         "image": "aflion-panda.jpg",
         "type": "tactile",
-        "cosmetic-features": {
-            "top-label": "AFLION",
+        "cosmeticFeatures": {
+            "topLabel": "AFLION",
             "pins": 5
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-05-17 MKCOID-ID",
@@ -96,11 +170,11 @@
         "name": ["Aflion Shadow"],
         "image": "aflion-shadow.jpg",
         "type": "tactile",
-        "cosmetic-features": {
-            "top-label": "AFLION",
+        "cosmeticFeatures": {
+            "topLabel": "AFLION",
             "pins": 5
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-05-17 MKCOID-ID",
@@ -136,10 +210,10 @@
         "name": ["Akko Custom Series Lavender Purple", "Akko CS Lavender Purple"],
         "image": "akko-custom-series-lavender-purple.jpg",
         "type": "tactile",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-06-08 ANNE-CN",
@@ -161,10 +235,10 @@
     {
         "name": ["Akko Custom Series Matcha Green", "Akko CS Matcha Green"],
         "image": "akko-custom-series-matcha-green.jpg",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-06-08 ANNE-CN",
@@ -186,10 +260,10 @@
         "name": ["Akko Custom Series Ocean Blue", "Akko CS Ocean Blue"],
         "image": "akko-custom-series-ocean-blue.jpg",
         "type": "tactile",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-06-08 ANNE-CN",
@@ -211,10 +285,10 @@
     {
         "name": ["Akko Custom Series Radiant Red", "Akko CS Radiant Red"],
         "image": "akko-custom-series-radiant-red.jpg",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-05-27 SWOD-US", "count": 1, "undersideMouldLabel": ["07", "T"],
@@ -245,10 +319,10 @@
     {
         "name": ["Akko Custom Series Rose Red", "Akko CS Rose Red"],
         "image": "akko-custom-series-rose-red.jpg",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-06-08 ANNE-CN",
@@ -269,10 +343,10 @@
     {
         "name": ["Akko Custom Series Vintage White", "Akko CS Vintage White"],
         "image": "akko-custom-series-vintage-white.jpg",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-05-27 SWOD-US",
@@ -308,10 +382,10 @@
     {
         "name": ["Akko Custom Series Jelly Black", "Akko CS Jelly Black"],
         "image": "akko-custom-series-jelly-black.jpg",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-06-08 ANNE-CN",
@@ -331,10 +405,10 @@
         "name": ["Akko Custom Series Jelly Blue", "Akko CS Jelly Blue"],
         "image": "akko-custom-series-jelly-blue.jpg",
         "type": "tactile",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-06-08 ANNE-CN",
@@ -355,10 +429,10 @@
     {
         "name": ["Akko Custom Series Jelly Pink", "Akko CS Jelly Pink"],
         "image": "akko-custom-series-jelly-pink.jpg",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-06-08 ANNE-CN",
@@ -377,10 +451,10 @@
     {
         "name": ["Akko Custom Series Jelly White", "Akko CS Jelly White"],
         "image": "akko-custom-series-jelly-white.jpg",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-06-08 ANNE-CN",
@@ -400,10 +474,10 @@
         "name": ["Akko Custom Series Sponge", "Akko CS Sponge"],
         "image": "akko-custom-series-sponge.jpg",
         "type": "tactile",
-        "cosmetic-features": {
-            "top-label": "AKKO"
+        "cosmeticFeatures": {
+            "topLabel": "AKKO"
         },
-        "documented-characteristics": {},
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-06-08 ANNE-CN",
@@ -422,7 +496,10 @@
         ]
     }
 ]
-]
+];
 
 
-}
+export const switches: SwitchCategory[][] = addDefaults();
+
+
+
