@@ -43,7 +43,7 @@ interface _SwitchCategory {
     imageAcknowledgement?: string;
     type?: SwitchType;
     cosmeticFeatures: _CosmeticFeatures;
-    documentedCharacteristics: {};
+    documentedCharacteristics: {} | string;
     origins: Origin[];
 }
 export interface SwitchCategory {
@@ -54,8 +54,39 @@ export interface SwitchCategory {
     readonly imageAcknowledgement: string;
     readonly type: SwitchType;
     readonly cosmeticFeatures: CosmeticFeatures;
-    readonly documentedCharacteristics: {};
-    readonly origins: {};
+    readonly documentedCharacteristics: {} | string; // Use a string to informally reference something else
+    readonly origins: Origin[];
+}
+
+
+// Not a perfect JSON compatibility check, but better than nothing.
+function validateJSONCompatibility(obj: unknown): void {
+    const x = JSON.stringify(obj);
+    if ((typeof x !== "string") || (x === "")) throw new Error();
+}
+
+
+function validateHardcodedData(obj: _SwitchCategory[][]): void {
+    for (const sublist of obj) {
+        for (const sc of sublist) {
+            if (sc.name.length === 0) throw new Error();
+            if (sc.name.some((s) => (s.length === 0))) throw new Error();
+
+            if (("cosmeticVariant" in sc) && (sc.cosmeticVariant.length === 0)) throw new Error();
+            if (("image" in sc) && (sc.image.length === 0)) throw new Error();
+            if (("imageAcknowledgement" in sc) && (sc.imageAcknowledgement.length === 0)) throw new Error();
+            
+            if (("additionalIDNotes" in sc.cosmeticFeatures) && (sc.cosmeticFeatures.additionalIDNotes.length === 0)) {
+                throw new Error();
+            }
+
+            for (const origin of sc.origins) {
+                if (origin.originID.length === 0) throw new Error();
+                if (origin.count !== 1) throw new Error("All counts should be 1. (We'll refactor this out later.)");
+                if (origin.undersideMouldLabel.some((s) => (s.length === 0))) throw new Error();
+            }
+        }
+    }
 }
 
 
@@ -1077,7 +1108,316 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
             }
         ]
     }
+],[
+    {
+        "name": ["Cherry Hyperglide MX RGB (Red)"],
+        "image": "cherry-hyperglide-mx-rgb-red.jpg",
+        "imageAcknowledgement": "https://kbdfans.com/collections/switches/products/cherry-rgb-red-linear-switches",
+        "cosmeticFeatures": {
+            "topLabel": "CHERRY",
+            "additionalIDNotes": "Clear top, milky bottom, similar to Gateron Silents."
+        },
+        "documentedCharacteristics": "(See non-RGB version.)",
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["535"],
+                "itemCost": "0.60 AUD",
+                "sfCost": "0.12 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Cherry Hyperglide MX RGB (Black)"],
+        "image": "cherry-hyperglide-mx-rgb-black.jpg",
+        "imageAcknowledgement": "https://kbdfans.com/collections/switches/products/cherry-rgb-black-linear-switches",
+        "cosmeticFeatures": {
+            "topLabel": "CHERRY",
+            "additionalIDNotes": "(see above)"
+        },
+        "documentedCharacteristics": "(See non-RGB version.)",
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["011"],
+                "itemCost": "0.60 AUD",
+                "sfCost": "0.12 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Cherry Hyperglide MX RGB (Brown)"],
+        "image": "cherry-hyperglide-mx-rgb-brown.jpg",
+        "imageAcknowledgement": "https://kbdfans.com/collections/switches/products/cherry-rgb-brown-tactile-switches",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "CHERRY",
+            "additionalIDNotes": "(see above)"
+        },
+        "documentedCharacteristics": "(See non-RGB version.)",
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["117"],
+                "itemCost": "0.60 AUD",
+                "sfCost": "0.12 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Cherry Hyperglide MX RGB (Blue)"],
+        "image": "cherry-hyperglide-mx-rgb-blue.jpg",
+        "imageAcknowledgement": "https://kbdfans.com/collections/switches/products/cherry-rgb-blue-tactile-switches",
+        "type": "clicky",
+        "cosmeticFeatures": {
+            "topLabel": "CHERRY",
+            "additionalIDNotes": "(see above)"
+        },
+        "documentedCharacteristics": "(See non-RGB version.)",
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["112"],
+                "itemCost": "0.60 AUD",
+                "sfCost": "0.12 AUD"
+            }
+        ]
+    }
+],[
+    {
+        "name": ["Cherry Hyperglide MX RGB (Speed Silver)"],
+        "image": "cherry-hyperglide-mx-rgb-speed-silver.jpg",
+        "imageAcknowledgement": "https://kbdfans.com/collections/switches/products/cherry-rgb-silver-linear-switches",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "CHERRY",
+            "additionalIDNotes": "Clear top, milky bottom, similar to Gateron Silents."
+        },
+        "documentedCharacteristics": "(See non-RGB version.)",
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["521"],
+                "itemCost": "0.83 AUD",
+                "sfCost": "0.16 AUD"
+            }
+        ]
+    }
+],[
+    {
+        "unverified": true,
+        "name": ["CIY Evolution Red"],
+        "image": "ciy-evolution-red.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "CiY"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["B", "H&J", "6"],
+                "excerpt": "CIY branded winglatch linear switch reportedly manufactured by Jixian",
+                "listedName": "CIY Evolution Red",
+                "listedSpecs": {
+                    "Actuation Force": "42g",
+                    "Bottom Out Force": "60g",
+                    "Actuation": "2mm",
+                    "Bottom Out": "4mm"
+                }
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["CIY Phantom"],
+        "image": "ciy-phantom.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "",
+            "pins": 5
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["14"],
+                "excerpt": "CIY fully clear Holy Panda like tactile switch seemingly manufactured by BSUN",
+                "listedName": "CIY Phantom",
+                "listedSpecs": {
+                    "Actuation Force": "45g",
+                    "Bottom Out Force": "60g",
+                    "Actuation": "2mm",
+                    "Bottom Out": "4mm"
+                }
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["CIY Sakura Pink"],
+        "image": "ciy-sakura-pink.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "CiY",
+            "pins": 5
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["HM", "3", "01"],
+                "excerpt": "A CIY branded linear switch manufactured by HaiMu",
+                "listedName": "CIY Sakura Pink",
+                "listedSpecs": {
+                    "Actuation Force": "30g",
+                    "Bottom Out Force": "45g",
+                    "Actuation": "2mm",
+                    "Bottom Out": "4mm"
+                }
+            }
+        ]
+    }
+],[
+    {
+        "unverified": true,
+        "name": ["DareU Purple Gold"],
+        "image": "dareu-purple-gold.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "DAREU",
+            "pins": 5
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["3", "19"]
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["DareU Sky Blue"],
+        "image": "dareu-sky-blue.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "DAREU",
+            "pins": 5
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["3", "01"]
+            }
+        ]
+    }
+],[
+    {
+        "unverified": true,
+        "name": ["Durock Burgundy"],
+        "image": "durock-burgundy.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "",
+            "smd": "semitransparent",
+            "pins": 5,
+            "additionalIDNotes": "Smokey top and bottom housing."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["L"],
+                "excerpt": "DUROCK Light Tactile Switches have a smooth round bump then smooth snap after the bump. The bump is very noticeable, and it gives you a lot of feedback upon actuation - responsive to the touch. The top housing is Polycarbonate, and the lower housing is Nylon PA.",
+                "listedName": "DUROCK Light Burgundy Smokey Switch (Tactile 67g - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "67g",
+                    "Actuation Force":  "- (No Data)",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "4mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Nylon",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "itemCost": "0.86 AUD",
+                "sfCost": "0.39 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["Durock Daybreak"],
+        "image": "durock-daybreak.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "",
+            "smd": "semitransparent",
+            "pins": 5,
+            "additionalIDNotes": "Smokey top and bottom housing."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["E"],
+                "excerpt": "DUROCK Silent Linear Switches are very nice and smooth. This DUROCK silent switch feature a very smooth keypress as well as silencing pads installed both on the top and bottom of the stems. This dampens the sound of the keypress going down as well as on the way up. OEM special design with Smokey housing. The top housing is Polycarbonate, and the lower housing is Nylon PA.",
+                "listedName": "DUROCK Daybreak Silent Smokey Switch (Linear 67g - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "67g",
+                    "Actuation Force":  "- (No Data)",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "4mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Nylon",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "itemCost": "1.24 AUD",
+                "sfCost": "0.56 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["Durock Dolphin"],
+        "image": "durock-dolphin.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "",
+            "smd": "transparent",
+            "pins": 5,
+            "additionalIDNotes": "Clear top and bottom housing."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["E"],
+                "excerpt": "DUROCK Silent Linear Switches are very nice and smooth. This DUROCK silent switch feature a very smooth keypress as well as silencing pads installed both on the top and bottom of the stems. This dampens the sound of the keypress going down as well as on the way up. OEM special design with Clear housing. The top housing is Polycarbonate, and the lower housing is Nylon PA.",
+                "listedName": "DUROCK Dolphin Silent Clear Switch (Linear 62g - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom-Out Force": "62g"
+                },
+                "itemCost": "1.24 AUD",
+                "sfCost": "0.56 AUD"
+            }
+        ]
+    }
 ]
 ];
 
+validateJSONCompatibility(hardcodedSwitchData);
+validateHardcodedData(hardcodedSwitchData);
 export const switches: SwitchCategory[][] = addDefaults();
+validateJSONCompatibility(switches);
