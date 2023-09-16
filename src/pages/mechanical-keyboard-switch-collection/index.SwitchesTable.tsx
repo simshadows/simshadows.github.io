@@ -3,6 +3,8 @@ import {
     type SwitchCategory,
 } from "./index.data";
 
+const IMAGES_BASE = "/mechanical-keyboard-switch-collection-legacy/_images/";
+
 function smdClassMap(s: SMDType) {
     switch (s) {
         case "no": return "smd-incompatible";
@@ -13,18 +15,25 @@ function smdClassMap(s: SMDType) {
     }
 }
 
-export function SwitchesTableSubrow({className, data}: {className: string, data: SwitchCategory}) {
+function TopLabelCell({topLabel, topLabelImage}: {topLabel: string, topLabelImage: string}) {
+    if ((topLabel.length !== 0) && (topLabelImage.length !== 0)) {
+        throw new Error("Failed sanity check.");
+    }
+    return (topLabelImage) ? <img src={IMAGES_BASE + topLabelImage} /> : <>{topLabel}</>;
+}
+
+function SwitchesTableSubrow({className, data}: {className: string, data: SwitchCategory}) {
     return <tr className={className}>
         <td className={data.type}>{data.type}</td>
         <td><a href={data.imageAcknowledgement}>
             {/* WE JUST REFERENCE THE LEGACY VERSION IMAGES FOR NOW. TODO: FIX! */}
-            <img src={"/mechanical-keyboard-switch-collection-legacy/_images/" + data.image}/>
+            <img src={IMAGES_BASE + data.image}/>
         </a></td>
         <td className={data.unverified ? "unverified" : ""}>{data.name.map((s) =>
             <p>{s}</p>
         )}</td>
         <td>{data.cosmeticVariant}</td>
-        <td>{data.cosmeticFeatures.topLabel}</td>
+        <td><TopLabelCell topLabel={data.cosmeticFeatures.topLabel} topLabelImage={data.cosmeticFeatures.topLabelImage} /></td>
         <td className={smdClassMap(data.cosmeticFeatures.smd)}>{data.cosmeticFeatures.smd}</td>
         <td>{data.cosmeticFeatures.pins}</td>
         <td>{data.cosmeticFeatures.additionalIDNotes}</td>
@@ -39,12 +48,12 @@ export function SwitchesTableSubrow({className, data}: {className: string, data:
     </tr>;
 }
 
-export function SwitchesTableRow({className, data}: {className: string, data: SwitchCategory}) {
+function SwitchesTableRow({className, data}: {className: string, data: SwitchCategory}) {
     // TODO: process origins
     return <SwitchesTableSubrow className={className} data={data} />
 }
 
-export function SwitchesTableRowGroup({data}: {data: SwitchCategory[]}) {
+function SwitchesTableRowGroup({data}: {data: SwitchCategory[]}) {
     return <> {data.map((x, i) =>
         <SwitchesTableRow className={(i) ? "" : "start-group"} data={x}/>
     )} </>;

@@ -23,14 +23,22 @@ interface Origin {
 const JUSTPASTEANDFLATTEN = {} as Origin; // TODO: This is a dumb hack to help with refactoring. Delete later.
 JUSTPASTEANDFLATTEN;
 
-interface _CosmeticFeatures {
-    topLabel: string;
+interface _CosmeticFeatures_Fixed {
     smd?: SMDType;
     pins?: PinsCount;
     additionalIDNotes?: string;
 }
+interface _CosmeticFeatures_TextTopLabel {
+    topLabel: string;
+}
+interface _CosmeticFeatures_ImgTopLabel {
+    topLabelImage: string;
+}
+type _CosmeticFeatures = (_CosmeticFeatures_Fixed & _CosmeticFeatures_TextTopLabel)
+    | (_CosmeticFeatures_Fixed & _CosmeticFeatures_ImgTopLabel);
 export interface CosmeticFeatures {
     readonly topLabel: string;
+    readonly topLabelImage: string;
     readonly smd: SMDType;
     readonly pins: PinsCount;
     readonly additionalIDNotes: string;
@@ -77,6 +85,9 @@ function validateHardcodedData(obj: _SwitchCategory[][]): void {
             if (("image" in sc) && (sc.image.length === 0)) throw new Error();
             if (("imageAcknowledgement" in sc) && (sc.imageAcknowledgement.length === 0)) throw new Error();
             
+            if (("topLabelImage" in sc.cosmeticFeatures) && (sc.cosmeticFeatures.topLabelImage.length === 0)) {
+                throw new Error();
+            }
             if (("additionalIDNotes" in sc.cosmeticFeatures) && (sc.cosmeticFeatures.additionalIDNotes.length === 0)) {
                 throw new Error();
             }
@@ -93,7 +104,8 @@ function validateHardcodedData(obj: _SwitchCategory[][]): void {
 
 function transformCosmeticFeatures(obj: _CosmeticFeatures): CosmeticFeatures {
     return {
-        topLabel:          obj.topLabel,
+        topLabel:          ("topLabel" in obj ? obj.topLabel : "") || "",
+        topLabelImage:     ("topLabelImage" in obj ? obj.topLabelImage : "") || "",
         smd:               obj.smd || "cutout",
         pins:              obj.pins || 3,
         additionalIDNotes: obj.additionalIDNotes || "",
@@ -4068,6 +4080,25 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
                 },
                 "itemCost": "1.07 AUD",
                 "sfCost": "0.48 AUD"
+            }
+        ]
+    }
+],[
+    {
+        "unverified": true,
+        "name": ["Huano Red"],
+        "image": "huano-red.jpg",
+        "cosmeticFeatures": {
+            "topLabelImage": "top-label-sketches/huano-swirl.png"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["7", "22"],
+                "excerpt": "There is nothing special about these Huano switches as far as their function or quality, they just all have different nameplates. It was interesting to me as a collector so maybe it's interesting to you too.\n\nRed has a swirl for the logo on the nameplate, from my understanding this is largely an older Huano logo\n\nHuano plays fast and loose with their switch nameplates, these are all sold as \"Huano\" as were the Firstblood Chocolate switches when I got them. If you ask they say it's all the same.",
+                "listedName": "Huano Nameplate Pack"
             }
         ]
     }
