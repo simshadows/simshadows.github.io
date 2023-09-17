@@ -226,22 +226,13 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
 [
     {
         "name": ["Aflion Carrot"],
-        "cosmeticVariant": "Lorem ipsum",
         "image": "aflion-carrot.jpg",
-        "imageAcknowledgement": "/_placeholder-stubs/own-work.html",
         "type": "tactile",
         "cosmeticFeatures": {
             "topLabel": "AFLION",
-            "smd": "cutout",
-            "pins": 5,
-            "additionalIDNotes": "Lorem ipsum dolor sit amet"
+            "pins": 5
         },
-        "documentedCharacteristics": {
-            "_official-website": "https://apps.simshadows.com/",
-            "_datasheet": "https://www.cherrymx.de/_Resources/Persistent/b/7/a/b/b7ab2f72bd5686e1e1e759a9f3703536d7fb1e18/EN_CHERRY_MX_RED.pdf",
-            "Placeholder1": "\"Placeholder with double-quotes\"",
-            "Placeholder2": "another one"
-        },
+        "documentedCharacteristics": {},
         "origins": [
             {
                 "originID": "2022-05-17 MKCOID-ID",
@@ -6653,7 +6644,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6675,7 +6666,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6698,7 +6689,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6721,7 +6712,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6744,7 +6735,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6767,7 +6758,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6790,7 +6781,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6813,7 +6804,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6835,7 +6826,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6858,7 +6849,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -6880,7 +6871,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -7100,7 +7091,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         "documentedCharacteristics": {
             "Operating force": "50 gf",
             "Pre/total travel": "1.8 mm / 3.3 mm",
-            "mkzealots": "https://www.aliexpress.com/item/1005004056249249.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005004056249249.html"
         },
         "origins": [
             {
@@ -7122,7 +7113,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         "documentedCharacteristics": {
             "Operating force": "40 gf",
             "Pre/total travel": "2.0 mm / 3.3 mm",
-            "mkzealots": "https://www.aliexpress.com/item/1005004056249249.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005004056249249.html"
         },
         "origins": [
             {
@@ -7145,7 +7136,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         "documentedCharacteristics": {
             "Operating force": "65 gf",
             "Pre/total travel": "1.8 mm / 3.3 mm",
-            "mkzealots": "https://www.aliexpress.com/item/1005004056249249.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005004056249249.html"
         },
         "origins": [
             {
@@ -7167,7 +7158,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         "documentedCharacteristics": {
             "Operating force": "45 gf",
             "Pre/total travel": "2.0 mm / 4.0 mm",
-            "mkzealots": "https://www.aliexpress.com/item/1005004056249249.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005004056249249.html"
         },
         "origins": [
             {
@@ -7189,7 +7180,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         "documentedCharacteristics": {
             "Operating force": "45 gf",
             "Pre/total travel": "1.3 mm / 4.0 mm",
-            "mkzealots": "https://www.aliexpress.com/item/1005004056249249.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005004056249249.html"
         },
         "origins": [
             {
@@ -7212,7 +7203,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {
@@ -7235,7 +7226,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         },
         "documentedCharacteristics": {
             "": "(see source)",
-            "ineda": "https://www.aliexpress.com/item/1005002427848379.html"
+            "_unofficialWebsite": "https://www.aliexpress.com/item/1005002427848379.html"
         },
         "origins": [
             {

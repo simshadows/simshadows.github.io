@@ -1,9 +1,19 @@
 import {
+    type SwitchType,
     type SMDType,
     type SwitchCategory,
 } from "./index.data";
 
 const IMAGES_BASE = "/mechanical-keyboard-switch-collection-legacy/_images/";
+
+function switchTypeStringMap(s: SwitchType) {
+    switch (s) {
+        case "linear": return "Linear";
+        case "tactile": return "Tactile";
+        case "clicky": return "Clicky";
+        default: throw new Error(`Unexpected value: ${s}`);
+    }
+}
 
 function smdClassMap(s: SMDType) {
     switch (s) {
@@ -11,6 +21,15 @@ function smdClassMap(s: SMDType) {
         case "cutout": return "smd-cutout";
         case "transparent": return "smd-transparent";
         case "semitransparent": return "smd-semi-transparent";
+        default: throw new Error(`Unexpected value: ${s}`);
+    }
+}
+function smdStringMap(s: SMDType) {
+    switch (s) {
+        case "no": return "No";
+        case "cutout": return "Cutout";
+        case "transparent": return "Transparent";
+        case "semitransparent": return "Semi-Transparent";
         default: throw new Error(`Unexpected value: ${s}`);
     }
 }
@@ -41,9 +60,31 @@ function TopLabelCell({topLabel, topLabelImage}: {topLabel: string, topLabelImag
     return (topLabelImage) ? <img src={IMAGES_BASE + topLabelImage} /> : <>{topLabel}</>;
 }
 
+function DocumentedCharacteristicsCell({data}: {data: SwitchCategory["documentedCharacteristics"]}) {
+    function makeEntry([k, v]: [string, unknown]) {
+        if (typeof v !== "string") throw new Error(`Unexpected value: ${k} ${v}`);
+        switch (k) {
+            case "_officialWebsite":
+                return <li><a href={v}>official</a></li>;
+            case "_unofficialWebsite":
+                return <li><a href={v}>unofficial</a></li>;
+            case "official?":
+                return <li><a href={v}>official?</a></li>;
+            case "_datasheet":
+                return <li><a href={v}>datasheet</a></li>;
+            case "":
+                return <li>{v}</li>;
+            default:
+                return <li><strong>{k}</strong>: {v}</li>;
+        }
+    }
+    if (typeof data === "string") return <>{data}</>;
+    return <ul>{Object.entries(data).map(makeEntry)}</ul>;
+}
+
 function SwitchesTableSubrow({className, data}: {className: string, data: SwitchCategory}) {
     return <tr className={className}>
-        <td className={data.type}>{data.type}</td>
+        <td className={data.type}>{switchTypeStringMap(data.type)}</td>
         <td><SwitchImageCell
             image={data.image}
             imageAcknowledgement={data.imageAcknowledgement}
@@ -54,10 +95,12 @@ function SwitchesTableSubrow({className, data}: {className: string, data: Switch
         )}</td>
         <td>{data.cosmeticVariant}</td>
         <td><TopLabelCell topLabel={data.cosmeticFeatures.topLabel} topLabelImage={data.cosmeticFeatures.topLabelImage} /></td>
-        <td className={smdClassMap(data.cosmeticFeatures.smd)}>{data.cosmeticFeatures.smd}</td>
+        <td className={smdClassMap(data.cosmeticFeatures.smd)}>
+            {smdStringMap(data.cosmeticFeatures.smd)}
+        </td>
         <td>{data.cosmeticFeatures.pins}</td>
         <td>{data.cosmeticFeatures.additionalIDNotes}</td>
-        <td>TODO</td>
+        <td><DocumentedCharacteristicsCell data={data.documentedCharacteristics} /></td>
         <td>TODO</td>
         <td>TODO</td>
         <td>TODO</td>
