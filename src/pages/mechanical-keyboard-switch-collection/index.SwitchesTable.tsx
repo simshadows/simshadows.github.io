@@ -15,6 +15,25 @@ function smdClassMap(s: SMDType) {
     }
 }
 
+interface SwitchImageCellProps {
+    image: string;
+    imageAcknowledgement: string;
+    textReplacingImage: string;
+}
+function SwitchImageCell({image, imageAcknowledgement, textReplacingImage}: SwitchImageCellProps) {
+    if ((image.length !== 0) && (textReplacingImage.length !== 0)) {
+        throw new Error("Failed sanity check.");
+    }
+    if (textReplacingImage.length) {
+        return <>{textReplacingImage}</>
+    } else {
+        return <a href={imageAcknowledgement}>
+            {/* WE JUST REFERENCE THE LEGACY VERSION IMAGES FOR NOW. TODO: FIX! */}
+            <img src={IMAGES_BASE + image}/>
+        </a>;
+    }
+}
+
 function TopLabelCell({topLabel, topLabelImage}: {topLabel: string, topLabelImage: string}) {
     if ((topLabel.length !== 0) && (topLabelImage.length !== 0)) {
         throw new Error("Failed sanity check.");
@@ -25,10 +44,11 @@ function TopLabelCell({topLabel, topLabelImage}: {topLabel: string, topLabelImag
 function SwitchesTableSubrow({className, data}: {className: string, data: SwitchCategory}) {
     return <tr className={className}>
         <td className={data.type}>{data.type}</td>
-        <td><a href={data.imageAcknowledgement}>
-            {/* WE JUST REFERENCE THE LEGACY VERSION IMAGES FOR NOW. TODO: FIX! */}
-            <img src={IMAGES_BASE + data.image}/>
-        </a></td>
+        <td><SwitchImageCell
+            image={data.image}
+            imageAcknowledgement={data.imageAcknowledgement}
+            textReplacingImage={data.textReplacingImage}
+        /></td>
         <td className={data.unverified ? "unverified" : ""}>{data.name.map((s) =>
             <p>{s}</p>
         )}</td>

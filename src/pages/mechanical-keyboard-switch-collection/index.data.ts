@@ -43,23 +43,31 @@ export interface CosmeticFeatures {
     readonly additionalIDNotes: string;
 }
 
-interface _SwitchCategory {
+interface _SwitchCategory_Fixed {
     unverified?: boolean;
     name: string[];
     cosmeticVariant?: string;
-    image: string;
-    imageAcknowledgement?: string;
     type?: SwitchType;
     cosmeticFeatures: _CosmeticFeatures;
     documentedCharacteristics: {} | string;
     origins: Origin[];
 }
+interface _SwitchCategory_WithImage {
+    image: string;
+    imageAcknowledgement?: string;
+}
+interface _SwitchCategory_TextInsteadOfImage {
+    textReplacingImage: string;
+}
+type _SwitchCategory = _SwitchCategory_Fixed
+    & (_SwitchCategory_WithImage | _SwitchCategory_TextInsteadOfImage);
 export interface SwitchCategory {
     readonly unverified: boolean;
     readonly name: ReadonlyArray<string>;
     readonly cosmeticVariant: string;
     readonly image: string;
     readonly imageAcknowledgement: string;
+    readonly textReplacingImage: string; // Used in place of image if needed
     readonly type: SwitchType;
     readonly cosmeticFeatures: CosmeticFeatures;
     readonly documentedCharacteristics: {} | string; // Use a string to informally reference something else
@@ -83,6 +91,7 @@ function validateHardcodedData(obj: _SwitchCategory[][]): void {
             if (("cosmeticVariant" in sc) && (sc.cosmeticVariant.length === 0)) throw new Error();
             if (("image" in sc) && (sc.image.length === 0)) throw new Error();
             if (("imageAcknowledgement" in sc) && (sc.imageAcknowledgement.length === 0)) throw new Error();
+            if (("textReplacingImage" in sc) && (sc.textReplacingImage.length === 0)) throw new Error();
             
             if (("topLabelImage" in sc.cosmeticFeatures) && (sc.cosmeticFeatures.topLabelImage.length === 0)) {
                 throw new Error();
@@ -116,8 +125,9 @@ function transformSwitchCategory(obj: _SwitchCategory): SwitchCategory {
         unverified:                obj.unverified || false,
         name:                      obj.name,
         cosmeticVariant:           obj.cosmeticVariant || "",
-        image:                     obj.image,
-        imageAcknowledgement:      obj.imageAcknowledgement || "/_placeholder-stubs/own-work.html",
+        image:                     ("image" in obj ? obj.image : "") || "",
+        imageAcknowledgement:      ("imageAcknowledgement" in obj ? obj.imageAcknowledgement : false) || "/_placeholder-stubs/own-work.html",
+        textReplacingImage:        ("textReplacingImage" in obj ? obj.textReplacingImage : "") || "",
         type:                      obj.type || "linear",
         cosmeticFeatures:          transformCosmeticFeatures(obj.cosmeticFeatures),
         documentedCharacteristics: obj.documentedCharacteristics,
@@ -8419,6 +8429,609 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
                 "listedName": "Tecsee Purple Panda",
                 "itemCost": "1.25 AUD",
                 "sfCost": "1.20 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Tecsee Ruby V1"],
+        "textReplacingImage": "(Almost identical to the V2.)",
+        "cosmeticFeatures": {
+            "topLabel": "TECSEE",
+            "pins": 5,
+            "additionalIDNotes": "V1 housing looks effectively identical to V2. (Hard to say 100% for sure because of the glitter effect.)\nV1 stem looks more opaque/solid-coloured, while V2 looks clearer."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["1"],
+                "excerpt": "This switches housing feature a mix polycarbonate plastic blend from TECSEE with some glitter accent. It is like a gem, \"Bling Bling\". The switches also utilize a long pole stem for a more solid bottom out sound with very lightly lubed and while they are ready to go on any mechanical keyboard, those inclined to tune their switches will find an excellent starting point. * These are the v1 version of the Ruby switches, the newer v2 variant has a different stem",
+                "listedName": "TECSEE Ruby v1 Switch (Linear 63.5g - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "63.5g",
+                    "Actuation Force":  "52g",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "3mm",
+                    "Top Housing":      "Mix Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Mix Polycarbonate (PC)",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "comment": "Found packaged in its own individual zip bag.\nThe label \"16\" is found under the top housing, in the SMD cutout.",
+                "itemCost": "0.71 AUD",
+                "sfCost": "0.32 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Tecsee Ruby V2"],
+        "image": "tecsee-ruby-v2.jpg",
+        "imageAcknowledgement": "https://www.switchkeys.com.au/products/tecsee-ruby-switches-x10",
+        "cosmeticFeatures": {
+            "topLabel": "TECSEE",
+            "pins": 5,
+            "additionalIDNotes": "(See notes for the V1.)"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["5"],
+                "excerpt": "This switches housing feature a mix polycarbonate plastic blend from TECSEE with some glitter accent. It is like a gem, \"Bling Bling\". Very smooth linear switches with 63.5g two stage, 22mm long springs. The switches also utilize a UHMWPE stem for a more solid bottom out sound with very lightly lubed and while they are ready to go on any mechanical keyboard, those inclined to tune their switches will find an excellent starting point. * These are the v2 version of the Ruby switches, the older v1 variant has a different stem",
+                "listedName": "TECSEE Ruby v2 Switch (Linear 63.5g - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "63.5g",
+                    "Actuation Force":  "55g",
+                    "Actuation Travel": "1.9mm",
+                    "Total Travel":     "3.8mm",
+                    "Top Housing":      "Mix Polycarbonate (PC)",
+                    "Stem":             "UHMWPE",
+                    "Bottom Housing":   "Mix Polycarbonate (PC)",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "comment": "Found packaged in its own individual zip bag.\nThe label \"D\" is found under the top housing, in the SMD cutout.",
+                "itemCost": "0.71 AUD",
+                "sfCost": "0.32 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Tecsee Sapphire V1"],
+        "textReplacingImage": "(Almost identical to the V2.)",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "TECSEE",
+            "pins": 5,
+            "additionalIDNotes": "V1 housing looks effectively identical to V2. (Hard to say 100% for sure because of the glitter effect.)\nV1 stem looks more opaque/solid-coloured, while V2 looks clearer."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["9"],
+                "excerpt": "This switches housing feature a mix polycarbonate plastic blend from TECSEE with some glitter accent. It is like a gem, \"Bling Bling\". The switches also utilize a long pole stem for a more solid bottom out sound with very lightly lubed and while they are ready to go on any mechanical keyboard, those inclined to tune their switches will find an excellent starting point. TECSEE Sapphires are an excellent middle ground between mid-strength and high tactility switches featuring a nearly start of downstroke, yet well dispersed tactile bump aided by a 63.5g progressive spring design. * These are the v1 version of the Sapphire switches, the newer v2 variant has a different stem",
+                "listedName": "TECSEE Sapphire v1 Switch (Tactile 63.5g - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "63.5g",
+                    "Actuation Force":  "52g",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "3mm",
+                    "Top Housing":      "Mix Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Mix Polycarbonate (PC)",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "comment": "Underside label is read with switch upside down, and LED side facing north. (Otherwise, it can be mistaken for \"3\".)\nThe label \"4\" is found under the top housing, in the SMD cutout.",
+                "itemCost": "0.71 AUD",
+                "sfCost": "0.32 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["Tecsee Sapphire V2"],
+        "image": "tecsee-sapphire-v2.jpg",
+        "imageAcknowledgement": "https://www.switchkeys.com.au/collections/switches/products/tecsee-sapphire-switches-x10",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "TECSEE",
+            "pins": 5,
+            "additionalIDNotes": "(See notes for the V1.)"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-11 HippoKeys-US",
+                "count": 1,
+                "undersideMouldLabel": ["3"],
+                "excerpt": "Tactile switch with uhmwpe stem, 3.8mm Travel, 63.5g bottom",
+                "listedName": "Tecsee Sapphire V2",
+                "comment": "Found in the first bag of the packaging.<br>Underside label is read with switch upside down, and LED side facing north.\nThe label \"9\" is found under the top housing, in the SMD cutout.",
+                "itemCost": "1.25 AUD",
+                "sfCost": "1.20 AUD"
+            }
+        ]
+    }
+],[
+    {
+        "unverified": true,
+        "name": ["TomSB Iceberg"],
+        "image": "tomsb-iceberg.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "TomSB"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["14"],
+                "excerpt": "Mengmoda linear Iceberg switch - 2 stage spring\n\nThis is a different stem and housing from Aflion Icebergs even though they look mostly the same, this is a cherry style housing vs Aflion's winglatch (although these should still be made by Aflion)",
+                "listedName": "Mengmoda (MMD) x TomSB Iceberg",
+                "listedSpecs": {
+                    "Actuation Force": "43g",
+                    "Bottom Out Force": "53g",
+                    "Actuation": "1.25mm",
+                    "Bottom Out": "3.7mm"
+                }
+            }
+        ]
+    }
+],[
+    {
+        "name": ["TTC Bluish White"],
+        "image": "ttc-bluish-white.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "TTC"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["A2", "23", "TTC"],
+                "excerpt": "TTC Bluish White switches feature a number of unique features such as a \"double coiled spring\", dust proof stem, and \"muted bottom\". The goal of this is a more linear weight curve, and a quieter and deeper bottom out sound. The double-coiled spring results in an extremely satisfying press and return combined with the light spring weight (42g actuation), the top-out being described as \"punchy\". Convex lens in top housing to help diffuse backlights. There's also a small silicone plug at the bottom of the center tube of the bottom housing which allows for the bottom-out to be muted as the stem pole makes impact, but the top-out is louder by comparison as a result.",
+                "listedName": "TTC Bluish White Switch (Tactile - Plate Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "- (No Data)",
+                    "Actuation Force":  "42g",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "3.5mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Nylon",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "itemCost": "0.81 AUD",
+                "sfCost": "0.37 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["TTC Brother", "TTC Gold Blue"],
+        "image": "ttc-brother.jpg",
+        "type": "clicky",
+        "cosmeticFeatures": {
+            "topLabel": "TTC"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["V", "15", "TTC"],
+                "excerpt": "Light clicky switch",
+                "listedName": "TTC Brother (Gold/Blue) (New LED Condenser)",
+                "listedSpecs": {
+                    "Actuation Force": "37g",
+                    "Tactile Force": "58g",
+                    "Tactile Position": "2.2mm",
+                    "Bottom Out": "3.5mm"
+                }
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["TTC Flame Red"],
+        "image": "ttc-flame-red.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "TTC"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["V", "35", "TTC"],
+                "excerpt": "Full travel linear",
+                "listedName": "TTC Flame Red",
+                "listedSpecs": {
+                    "Actuation Force": "45g",
+                    "Bottom Out Force": "~55g",
+                    "Actuation": "2.0mm",
+                    "Bottom Out": "4.0mm"
+                }
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["TTC Frozen"],
+        "image": "ttc-frozen.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "TTC"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["A2", "22", "TTC"],
+                "excerpt": "Speed actuation and early bottom out linear from TTC",
+                "listedName": "TTC Ice Silver (Frozen)",
+                "listedSpecs": {
+                    "Actuation Force": "45g",
+                    "Bottom Out Force": "~55g",
+                    "Actuation": "1.08mm",
+                    "Bottom Out": "3.4mm"
+                }
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["TTC Gold Pink V1"],
+        "image": "ttc-gold-pink-v1.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "TTC"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["A2", "13", "TTC"],
+                "excerpt": "TTC Gold Pink Linear Switches brings forth a unique typing experience with a light spring weight and a smooth press. It features a longer spring, creating a more unique and consistent feel when bottoming out.",
+                "listedName": "TTC Gold Pink Classic Version Switch (Linear - Plate Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "45g",
+                    "Actuation Force":  "37g",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "4mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Nylon",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "comment": "I'll need to look into the history of the Gold Pinks. The storepage says \"classic version\", so I'm assuming it's V1?",
+                "itemCost": "0.71 AUD",
+                "sfCost": "0.32 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["TTC Golden Red V3"],
+        "image": "ttc-golden-red-v3.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "TTC"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["V", "01", "TTC"],
+                "listedName": "TTC Golden Red V3",
+                "listedSpecs": {
+                    "Actuation Force": "43g",
+                    "Bottom Out Force": "~50g",
+                    "Actuation": "1.8mm",
+                    "Bottom Out": "3.8mm"
+                }
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["TTC Honey"],
+        "image": "ttc-honey.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "",
+            "smd": "transparent",
+            "additionalIDNotes": "No visible top-label for some reason.\nThere is a visible red heart when looking down at the stem.\nThis switch is often also called \"TTC Heart\" or \"TTC Honey Heart\"."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["A", "02", "9"],
+                "excerpt": "TTC Honey / Heart Linear Switches brings forth a unique typing experience with a light spring weight and a smooth press. It features a longer spring, creating a more unique and consistent feel when bottoming out. This switch is in lego structure that you can customize and assemble it easily.",
+                "listedName": "TTC Honey / Heart Switch (Linear - Plate Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "42g",
+                    "Actuation Force":  "36g",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "3.8mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "Polycarbonate (PC) + POM",
+                    "Bottom Housing":   "Polycarbonate (PC)",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "comment": "The \"9\" underside label is viewed from a similar orientation to the other labels.",
+                "itemCost": "1.41 AUD",
+                "sfCost": "0.64 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["TTC Quick Silver"],
+        "image": "ttc-quick-silver.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "TTC"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["A8", "26", "TTC"],
+                "excerpt": "TTC Quick Silver switch conduction stroke (conduction value) is designed to be 1.08+0.4/-0.2mm, which is 46% faster than the standard mechanical switch 2.0mm and 10% faster than the traditional silver switch 1.2mm. TTC Quick Silver also adopts the TTC double-sided dust-proof wall patented technology (CN201620103314.9) structure, not only in free state, but also the trigger state, it is always as stable as a rock. As a \"super power\" gaming weapon, the TTC Quick Silver switch is strictly in accordance with the main performance characteristics stipulated by the national military standard (GJB/Z 63-94) 5.9 keyboard switches, and is strictly controlled and controlled according to the manufacturing requirements of military products. Ensure that each Quick Silver switch is 100% stable and reliable.",
+                "listedName": "TTC Quick Silver / Speed Silver Switch (Linear - Plate Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "55g",
+                    "Actuation Force":  "45g",
+                    "Actuation Travel": "1.08mm",
+                    "Total Travel":     "3.4mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Nylon",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "itemCost": "0.81 AUD",
+                "sfCost": "0.37 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["TTC Silent Red V3"],
+        "image": "ttc-silent-red-v3.jpg",
+        "cosmeticFeatures": {
+            "topLabel": "TTC"
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["A2", "23", "TTC"],
+                "excerpt": "Silent linear switch",
+                "listedName": "TTC Silent Red V3",
+                "listedSpecs": {
+                    "Actuation Force": "45g",
+                    "Bottom Out Force": "55g",
+                    "Actuation": "1.9mm",
+                    "Bottom Out": "3.7mm"
+                }
+            }
+        ]
+    }
+],[
+    {
+        "unverified": true,
+        "name": ["Wuque Studio Onion", "WS Onion"],
+        "image": "wuque-studio-onion.jpg",
+        "imageAcknowledgement": "https://cannonkeys.com/products/wuque-studio-onion-switches",
+        "cosmeticFeatures": {
+            "topLabel": "W",
+            "pins": 5,
+            "additionalIDNotes": "The \"W\" top label is stylized."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["106"],
+                "excerpt": "After a year of development, the Wuque Studio Onion Switch makes its anticipated debut. This factory lubed linear offers a polycarbonate top, nylon bottom housing, and unique new stem design. Manufactured by JWK.",
+                "listedName": "WS Onion Switch (Linear - PCB Mount)",
+                "listedSpecs": {
+                    "Bottom Out Force": "63.5g",
+                    "Actuation Force":  "50g",
+                    "Actuation Travel": "2mm",
+                    "Total Travel":     "3.7mm",
+                    "Top Housing":      "Polycarbonate (PC)",
+                    "Stem":             "POM",
+                    "Bottom Housing":   "Nylon",
+                    "Lube":             "Lubed (Factory Lube)"
+                },
+                "itemCost": "1.07 AUD",
+                "sfCost": "0.48 AUD"
+            }
+        ]
+    }
+],[
+    {
+        "unverified": true,
+        "name": ["Zeal Tealio V2 (67g)"],
+        "image": "zeal-tealio-v2-67g.jpg",
+        "imageAcknowledgement": "https://kbdfans.com/products/pls-do-not-delete-it-switch-option",
+        "cosmeticFeatures": {
+            "topLabel": "GATERON",
+            "smd": "transparent",
+            "pins": 5,
+            "additionalIDNotes": "Clear top and bottom."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["GATERON", "C", "L"],
+                "comment": "Is this really a Tealio V2? Not sure.",
+                "itemCost": "1.66 AUD",
+                "sfCost": "0.32 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Zeal Zealio V2 (62g)"],
+        "image": "zeal-zealio-62g.jpg",
+        "imageAcknowledgement": "https://deskthority.net/wiki/File:Zealio_Purple_R6_62_g.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "GATERON",
+            "smd": "transparent",
+            "pins": 5,
+            "additionalIDNotes": "Clear top and bottom.\nThe darker the stem, the heavier the spring weight."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["GATERON", "C", "H"],
+                "itemCost": "1.66 AUD",
+                "sfCost": "0.32 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Zeal Zealio V2 (65g)"],
+        "image": "zeal-zealio-65g.jpg",
+        "imageAcknowledgement": "https://deskthority.net/wiki/File:Zealio_Purple_R6_65_g.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "GATERON",
+            "smd": "transparent",
+            "pins": 5,
+            "additionalIDNotes": "Clear top and bottom.\nThe darker the stem, the heavier the spring weight."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["GATERON", "C", "B"],
+                "itemCost": "1.66 AUD",
+                "sfCost": "0.32 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Zeal Zealio V2 (67g)"],
+        "image": "zeal-zealio-67g.jpg",
+        "imageAcknowledgement": "https://deskthority.net/wiki/File:Zealio_Purple_R6_67_g.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "GATERON",
+            "smd": "transparent",
+            "pins": 5,
+            "additionalIDNotes": "Clear top and bottom.\nThe darker the stem, the heavier the spring weight."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["GATERON", "C", "K"],
+                "itemCost": "1.66 AUD",
+                "sfCost": "0.32 AUD"
+            }
+        ]
+    },
+    {
+        "name": ["Zeal Zealio V2 (78g)"],
+        "image": "zeal-zealio-78g.jpg",
+        "imageAcknowledgement": "https://deskthority.net/wiki/File:Zealio_Purple_R6_78_g.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "GATERON",
+            "smd": "transparent",
+            "pins": 5,
+            "additionalIDNotes": "Clear top and bottom.\nThe darker the stem, the heavier the spring weight."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-02 KBDfans-CN",
+                "count": 1,
+                "undersideMouldLabel": ["GATERON", "C", "I"],
+                "itemCost": "1.66 AUD",
+                "sfCost": "0.32 AUD"
+            }
+        ]
+    }
+],[
+    {
+        "unverified": true,
+        "name": ["Durock T1 Shrimp housing + T1 stem"],
+        "image": "unverified-durock-t1-shrimp-housing-durock-t1-stem.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "",
+            "smd": "semitransparent",
+            "pins": 5,
+            "additionalIDNotes": "Looks really similar to the Everglide Oreo, but in this switch, the silencing pads are evident through the housing, and the housing \"feels darker-looking\" at places. Also, this switch is very obviously more silent than the Everglide Oreo."
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["E"],
+                "comment": "Given to me as a gift from the vendor, so I have marked the item cost as zero.\nCorrespondence with vendor indicates this is (at time of writing) not a released switch.\nI'm yet to determine if this is a frankenswitch or if this was produced by the manufacturer. (I'll update this if I learn anything interesting.)",
+                "itemCost": "0.00 AUD",
+                "sfCost": "0.00 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["Durock T1 housing + T1 Shrimp stem"],
+        "image": "unverified-durock-t1-housing-durock-t1-shrimp-stem.jpg",
+        "type": "tactile",
+        "cosmeticFeatures": {
+            "topLabel": "",
+            "smd": "semitransparent",
+            "pins": 5
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-17 MKCOID-ID",
+                "count": 1,
+                "undersideMouldLabel": ["10"],
+                "comment": "Given to me as a gift from the vendor, so I have marked the item cost as zero.\nCorrespondence with vendor indicates this is (at time of writing) not a released switch.\nI'm yet to determine if this is a frankenswitch or if this was produced by the manufacturer. (I'll update this if I learn anything interesting.)",
+                "itemCost": "0.00 AUD",
+                "sfCost": "0.00 AUD"
+            }
+        ]
+    },
+    {
+        "unverified": true,
+        "name": ["Blue and White"],
+        "image": "unknown-blue-and-white.jpg",
+        "cosmeticFeatures": {
+            "topLabel": ""
+        },
+        "documentedCharacteristics": {},
+        "origins": [
+            {
+                "originID": "2022-05-27 SWOD-US",
+                "count": 1,
+                "undersideMouldLabel": ["53"],
+                "excerpt": "Un-named, un-branded switch with absolutely no information provided from the wonderful world of Taobao. Upon receiving the switch it shares many BSUN mold markings including the number placement between the metal pins, the square marks around the metal pins, and matte finished rectangles on the corners of the LED slot while looking from the bottom.\n\nIt does not have a ridge that most BSUN switches have on the underside of the top housing, and it does have a diagonal line on the side of the top housing shrouding the leaf, these are consistent with older Feker switches like the Airy and Miami switches.",
+                "listedName": "Feker? Blue and White"
             }
         ]
     }
