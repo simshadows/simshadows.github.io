@@ -6,19 +6,85 @@
 
 // TODO: Merge "Prime Keyboards Alpaca" with the other Alpaca listing
 
+export class Currency {
+    private unit: string;
+    private denominator: number;
+    private value: number;
+
+    constructor(s: string) {
+        const arr = s.split(" ");
+        if (arr.length !== 2) throw new Error(`Invalid split: ${s}`);
+        const [vStr, unit] = arr;
+        if (!vStr) throw new Error("This should never happen.");
+        if (!unit) throw new Error("This should never happen.");
+
+        const numArr = vStr.split(".");
+        if (numArr.length !== 2) throw new Error(`Invalid number split: ${vStr}`);
+        const [left, right] = numArr;
+        if (!left) throw new Error("This should never happen.");
+        if (!right) throw new Error("This should never happen.");
+        if (right.length !== 2) throw new Error(`Digits right of radical must be 2 digits: ${right}`);
+
+        const numLeft = parseInt(left);
+        const numRight = parseInt(right);
+
+        this.unit = unit;
+        this.denominator = 100;
+        this.value = (numLeft * 100) + numRight;
+
+        const s2 = this.toString();
+        if (s2 !== s) throw new Error("Failed sanity check: ${s2} ${s}");
+    }
+
+    add(other: Currency): Currency {
+        const ret = new Currency("0.00 " + this.unit);
+        ret.denominator = this.denominator;
+        ret.value = this.value + other.value;
+        return ret;
+    }
+
+    isEqual(other: Currency): boolean {
+        return (
+            (this.unit === other.unit)
+            && (this.denominator === other.denominator)
+            && (this.value === other.value)
+        );
+    }
+
+    toString(): string {
+        let numLeftStr = Math.floor(this.value / this.denominator).toString();
+        let numRightStr = String(this.value % this.denominator).toString();
+
+        if (numRightStr.length === 1) numRightStr = `0${numRightStr}`;
+        return `${numLeftStr}.${numRightStr} ${this.unit}`
+    }
+}
+
+
 export type SwitchType = "linear" | "tactile" | "clicky";
 export type SMDType = "no" | "cutout" | "transparent" | "semitransparent";
 export type PinsCount = 3 | 5;
 
-interface Origin {
+interface _Origin {
     readonly originID: string;
     readonly count: number;
     readonly undersideMouldLabel?: string[];
     readonly excerpt?: string;
     readonly listedName?: string;
     readonly listedSpecs?: {};
-    readonly itemCost?: string;
+    readonly itemCost?: string; // Will be edited for conversion
     readonly sfCost?: string;
+    readonly comment?: string;
+}
+export interface Origin {
+    readonly originID: string;
+    readonly count: number;
+    readonly undersideMouldLabel?: string[];
+    readonly excerpt?: string;
+    readonly listedName?: string;
+    readonly listedSpecs?: {};
+    readonly itemCost?: Currency;
+    readonly sfCost?: Currency;
     readonly comment?: string;
 }
 
@@ -50,7 +116,7 @@ interface _SwitchCategory_Fixed {
     type?: SwitchType;
     cosmeticFeatures: _CosmeticFeatures;
     documentedCharacteristics: {} | string;
-    origins: Origin[];
+    origins: _Origin[];
 }
 interface _SwitchCategory_WithImage {
     image: string;
@@ -110,6 +176,24 @@ function validateHardcodedData(obj: _SwitchCategory[][]): void {
 }
 
 
+function transformOrigin(obj: _Origin): Origin {
+    type TmpOrigin = Omit<Origin, "itemCost" | "sfCost"> & {
+        itemCost?: Currency; // Make editable
+        sfCost?: Currency;
+    };
+
+    const newObj: TmpOrigin = {
+        ...obj,
+        itemCost: new Currency("0.00 AUD"), // Temporary
+        sfCost: new Currency("0.00 AUD") // Temporary
+    }
+    delete newObj.itemCost;
+    delete newObj.sfCost;
+    if ("itemCost" in obj) newObj.itemCost = new Currency(obj.itemCost);
+    if ("sfCost" in obj) newObj.sfCost = new Currency(obj.sfCost);
+    return newObj;
+}
+
 function transformCosmeticFeatures(obj: _CosmeticFeatures): CosmeticFeatures {
     return {
         topLabel:          ("topLabel" in obj ? obj.topLabel : "") || "",
@@ -131,7 +215,7 @@ function transformSwitchCategory(obj: _SwitchCategory): SwitchCategory {
         type:                      obj.type || "linear",
         cosmeticFeatures:          transformCosmeticFeatures(obj.cosmeticFeatures),
         documentedCharacteristics: obj.documentedCharacteristics,
-        origins:                   obj.origins,
+        origins:                   obj.origins.map(transformOrigin),
     };
 }
 

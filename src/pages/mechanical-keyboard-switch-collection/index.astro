@@ -8,18 +8,24 @@
 import GeneralLayout from "@layouts/GeneralLayout.astro";
 
 import {
+    Currency,
+    type Origin,
     switches,
 } from "./index.data";
-//import {
-//    type SwitchCollection,
-//    processSwitchData,
-//} from "./index.processdata";
 import {SwitchesTable} from "./index.SwitchesTable";
 
 import "./index.css";
-//import rawData from "./index.json";
 
-//const switchData: SwitchCollection = processSwitchData(rawData);
+const allOrigins: Origin[] = switches.flat().map((x) => x.origins).flat();
+
+const totalItemCost: Currency = allOrigins.reduce(
+    (acc, v) => acc.add(v.itemCost || new Currency("0.00 AUD")),
+    new Currency("0.00 AUD"),
+);
+const totalSFCost: Currency = allOrigins.reduce(
+    (acc, v) => acc.add(v.sfCost || new Currency("0.00 AUD")),
+    new Currency("0.00 AUD"),
+);
 ---
 
 <GeneralLayout
@@ -35,27 +41,30 @@ import "./index.css";
 
 <SwitchesTable data={switches} />
 
-<p>Num switch categories: {switches.flat().length}</p>
-
-<!-- some whitespace to help me while I migrate data -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<p><table id="stat-table">
+    <tbody>
+        <tr>
+            <th>Total number of unique switch types:</th>
+            <td>{switches.flat().length}</td>
+        </tr>
+        <tr>
+            <th>Total number of samples:</th>
+            <td>{allOrigins.length}</td>
+        </tr>
+        <tr>
+            <th>Total item cost:</th>
+            <td>{totalItemCost.toString()}</td>
+        </tr>
+        <tr>
+            <th>Total shipping/fees:</th>
+            <td>{totalSFCost.toString()}</td>
+        </tr>
+        <tr>
+            <th>Grand total cost:</th>
+            <td>{totalItemCost.add(totalSFCost).toString()}</td>
+        </tr>
+    </tbody>
+</table></p>
 
 
 </BaseLayout>
