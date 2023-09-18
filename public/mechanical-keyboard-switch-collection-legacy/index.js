@@ -153,8 +153,6 @@ function applyClass(elem, className, warnMsg) {
 
 /*** ***/
 
-const termExplainElem = document.querySelector("#terminology-explanation")
-
 const controlsElem = document.querySelector("#controls-root");
 
 const switchesContainerElem = document.querySelector("#switches-visual-guide");
@@ -352,15 +350,6 @@ function run() {
     }
 
     /*** Extra Stuff ***/
-
-    termExplainElem.classList.remove("active");
-    termExplainElem.querySelector(":scope > button").addEventListener("click", function(e) {
-        if (termExplainElem.classList.contains("active")) {
-            termExplainElem.classList.remove("active");
-        } else {
-            termExplainElem.classList.add("active");
-        }
-    });
 
     controlsElem.addEventListener("change", function(e) {
         const elem = e.target;
