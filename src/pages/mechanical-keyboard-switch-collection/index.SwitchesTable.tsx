@@ -1,10 +1,16 @@
 import {
     type SwitchType,
     type SMDType,
+    type Origin,
     type SwitchCategory,
 } from "./index.data";
 
 const IMAGES_BASE = "/mechanical-keyboard-switch-collection-legacy/_images/";
+
+// Workaround for the missing JSX element type for now.
+// TODO: Fix this.
+//type TmpJSXResult = JSX.Element;
+type TmpJSXResult = any;
 
 function switchTypeStringMap(s: SwitchType) {
     switch (s) {
@@ -82,33 +88,105 @@ function DocumentedCharacteristicsCell({data}: {data: SwitchCategory["documented
     return <ul>{Object.entries(data).map(makeEntry)}</ul>;
 }
 
-function SwitchesTableSubrow({className, data}: {className: string, data: SwitchCategory}) {
-    return <tr className={className}>
-        <td className={data.type}>{switchTypeStringMap(data.type)}</td>
-        <td><SwitchImageCell
+function ExcerptCell({origin}: {origin: Origin}) {
+    const elems: TmpJSXResult[] = [];
+    if (origin.listedName) {
+        elems.push(<strong>{origin.listedName}</strong>);
+    }
+    if (origin.excerpt) {
+        if (elems.length) elems.push(<>: </>)
+        elems.push(<>{origin.excerpt}</>);
+    }
+    if (origin.listedSpecs) {
+        if (elems.length) elems.push(<><br /><br /></>);
+        elems.push(<span>{
+            Object.entries(origin.listedSpecs).map(([k, v]: [string, unknown]) => {
+                if (typeof v !== "string") throw new Error(`Unexpected value: ${v}`);
+                return <span className="no-wrap">{`[ ${k}: ${v} ]`}</span>;
+            })
+        }</span>);
+    }
+    return <>{elems}</>;
+}
+
+interface SwitchesTableSubSubrowProps {
+    className: string;
+    rowspan: number;
+    data: SwitchCategory;
+    origin: Origin;
+}
+function SwitchesTableSubSubrow({className, rowspan, data, origin}: SwitchesTableSubSubrowProps) {
+    const classNameBase = (rowspan === -1) ? "hidden " : "";
+    const rowspanBase = Math.max(1, rowspan);
+
+    return <tr className={className} rowSpan={rowspanBase}>
+        <td className={classNameBase + data.type} rowSpan={rowspanBase}>{switchTypeStringMap(data.type)}</td>
+        <td className={classNameBase} rowSpan={rowspanBase}><SwitchImageCell
             image={data.image}
             imageAcknowledgement={data.imageAcknowledgement}
             textReplacingImage={data.textReplacingImage}
         /></td>
-        <td className={data.unverified ? "unverified" : ""}>{data.name.map((s) =>
-            <p>{s}</p>
-        )}</td>
-        <td>{data.cosmeticVariant}</td>
-        <td><TopLabelCell topLabel={data.cosmeticFeatures.topLabel} topLabelImage={data.cosmeticFeatures.topLabelImage} /></td>
-        <td className={smdClassMap(data.cosmeticFeatures.smd)}>
+        <td className={classNameBase + (data.unverified ? "unverified" : "")} rowSpan={rowspanBase}>
+            {data.name.map((s) => <p>{s}</p>)}
+        </td>
+        <td className={classNameBase} rowSpan={rowspanBase}>{data.cosmeticVariant}</td>
+        <td className={classNameBase} rowSpan={rowspanBase}>
+            <TopLabelCell
+                topLabel={data.cosmeticFeatures.topLabel}
+                topLabelImage={data.cosmeticFeatures.topLabelImage}
+            />
+        </td>
+        <td className={classNameBase + smdClassMap(data.cosmeticFeatures.smd)} rowSpan={rowspanBase}>
             {smdStringMap(data.cosmeticFeatures.smd)}
         </td>
-        <td>{data.cosmeticFeatures.pins}</td>
-        <td>{data.cosmeticFeatures.additionalIDNotes}</td>
-        <td><DocumentedCharacteristicsCell data={data.documentedCharacteristics} /></td>
-        <td>TODO</td>
-        <td>TODO</td>
-        <td>TODO</td>
-        <td>TODO</td>
-        <td>TODO</td>
-        <td>TODO</td>
-        <td>TODO</td>
+        <td className={classNameBase} rowSpan={rowspanBase}>{data.cosmeticFeatures.pins}</td>
+        <td className={classNameBase} rowSpan={rowspanBase}>{data.cosmeticFeatures.additionalIDNotes}</td>
+        <td className={classNameBase} rowSpan={rowspanBase}>
+            <DocumentedCharacteristicsCell data={data.documentedCharacteristics} />
+        </td>
+        <td>{origin.originID}</td>
+        <td>{(origin.undersideMouldLabel || []).map((s) => <p>{s}</p>)}</td>
+        <td>{("itemCost" in origin) ? origin.itemCost.toString() : ""}</td>
+        <td>{("sfCost" in origin) ? origin.sfCost.toString() : ""}</td>
+        <td><ExcerptCell origin={origin} /></td>
+        <td>{origin.comment || ""}</td>
     </tr>;
+}
+
+function SwitchesTableSubrow({className, data}: {className: string, data: SwitchCategory}) {
+    if (data.origins.length === 1) {
+        if (!data.origins[0]) throw new Error("Typescript narrowing failure.");
+        return <SwitchesTableSubSubrow
+            className={className}
+            rowspan={1}
+            data={data}
+            origin={data.origins[0]}
+        />;
+    } else if (data.origins.length === 0) {
+        throw new Error("Failed sanity check.");
+    }
+
+
+    if (!data.origins[0]) throw new Error("Typescript narrowing failure.");
+    const elems = [
+        <SwitchesTableSubSubrow
+            className={className}
+            rowspan={data.origins.length}
+            data={data}
+            origin={data.origins[0]}
+        />
+    ];
+    for (const origin of data.origins.slice(1)) {
+        elems.push(
+            <SwitchesTableSubSubrow
+                className={className}
+                rowspan={-1}
+                data={data}
+                origin={origin}
+            />
+        );
+    }
+    return <>{elems}</>;
 }
 
 function SwitchesTableRow({className, data}: {className: string, data: SwitchCategory}) {
@@ -135,11 +213,10 @@ export function SwitchesTable({data}: {data: SwitchCategory[][]}) {
                 <th>Pins</th>
                 <th>Additional Identification Notes</th>
                 <th>Interesting Documented Characteristics</th>       
-                <th>Sample Count</th>
                 <th>Origin</th>
-                <th>Underside Labels</th>
-                <th>Item Cost (Per Switch)</th>
-                <th>Shipping/Fees (Per Switch)</th>
+                <th>Underside<br />Labels</th>
+                <th>Item Cost<br />(Per Switch)</th>
+                <th>Shipping/Fees<br />(Per Switch)</th>
                 <th>Excerpt From The Seller</th>
                 <th>Comments</th>
             </tr></thead>

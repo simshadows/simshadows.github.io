@@ -1770,6 +1770,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
     {
         "unverified": true,
         "name": ["Durock T1"],
+        "cosmeticVariant": "Smokey Housing",
         "image": "durock-t1-smokey-housing.jpg",
         "imageAcknowledgement": "https://www.keycrox.co.uk/product/durock-t1-tactile-switches",
         "type": "tactile",
@@ -2265,8 +2266,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
         "image": "flcmmk-box-rosa-pink.jpg",
         "cosmeticFeatures": {
             "topLabel": "Kailh",
-            "pins": 5,
-            "additionalIDNotes": "PLACEHOLDER"
+            "pins": 5
         },
         "documentedCharacteristics": {},
         "origins": [
@@ -4143,6 +4143,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
 ],[
     {
         "name": ["Infinity Key Cow (POM Stem)", "IFK Cow (POM Stem)"],
+        "cosmeticVariant": "Strawberry Housing",
         "image": "ifk-cow-pom-stem.jpg",
         "imageAcknowledgement": "https://allcaps.store/products/ifk-cow",
         "cosmeticFeatures": {
@@ -4162,6 +4163,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
     },
     {
         "name": ["Infinity Key Cow (UHMWPE Stem)", "IFK Cow (UHMWPE Stem)"],
+        "cosmeticVariant": "Strawberry Housing",
         "image": "ifk-cow-uhmwpe-stem.jpg",
         "imageAcknowledgement": "https://allcaps.store/products/ifk-cow",
         "cosmeticFeatures": {
@@ -5719,6 +5721,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
     {
         "unverified": true,
         "name": ["KTT Cabbage Tofu"],
+        "cosmeticVariant": "Transparent Top",
         "image": "ktt-cabbage-tofu-transparent-top.jpg",
         "cosmeticFeatures": {
             "topLabelImage": "top-label-sketches/ktt.png",
@@ -7422,6 +7425,7 @@ const hardcodedSwitchData: _SwitchCategory[][] = [
     {
         "name": ["SP-Star Duck"],
         "image": "sp-star-duck.jpg",
+        "type": "tactile",
         "cosmeticFeatures": {
             "topLabel": "SP-Star",
             "smd": "no",

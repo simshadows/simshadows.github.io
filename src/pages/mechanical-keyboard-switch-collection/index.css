@@ -15,6 +15,7 @@ td,
 th {
     border: 1px solid;
     padding: 0.3em 0.6em 0.3em 0.6em;
+    white-space: pre-wrap; /* Makes "\n" act like <br> */
 }
 table ul {
     list-style-position: inside;
@@ -96,11 +97,10 @@ span.red-text {
 #switches-visual-guide > table > * > tr > :nth-child(3),
 #switches-visual-guide > table > * > tr > :nth-child(6),
 #switches-visual-guide > table > * > tr > :nth-child(9),
+#switches-visual-guide > table > * > tr > :nth-child(10),
 #switches-visual-guide > table > * > tr > :nth-child(11),
 #switches-visual-guide > table > * > tr > :nth-child(12),
-#switches-visual-guide > table > * > tr > :nth-child(13),
-#switches-visual-guide > table > * > tr > :nth-child(14),
-#switches-visual-guide > table > * > tr > :nth-child(15) {
+#switches-visual-guide > table > * > tr > :nth-child(13) {
     white-space: nowrap;
     width: 1%;
 }
@@ -110,9 +110,9 @@ span.red-text {
 }
 #switches-visual-guide > table > *     > tr > :nth-child(4)  {min-width: 10em;}
 #switches-visual-guide > table > *     > tr > :nth-child(8)  {min-width: 18em;}
-#switches-visual-guide > table > *     > tr > :nth-child(16) {min-width: 18em;}
-#switches-visual-guide > table > *     > tr > :nth-child(17) {min-width: 18em;}
-#switches-visual-guide > table > tbody > tr > :nth-child(16) {font-size: 85%;}
+#switches-visual-guide > table > *     > tr > :nth-child(14) {min-width: 32em;}
+#switches-visual-guide > table > *     > tr > :nth-child(15) {min-width: 18em;}
+#switches-visual-guide > table > tbody > tr > :nth-child(14) {font-size: 85%;}
 #origin-table > * > tr > :nth-child(1),
 #origin-table > * > tr > :nth-child(2),
 #origin-table > * > tr > :nth-child(3),
