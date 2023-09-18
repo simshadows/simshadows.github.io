@@ -1,0 +1,46 @@
+---
+import BaseHead from "@components/BaseHead.astro";
+import "./BaseLayout.css";
+
+const {
+    title,
+    canonical,
+    author,
+    description,
+    keywords,
+} = Astro.props;
+---
+
+<!doctype html>
+
+<!--
+Author:   simshadows <contact@simshadows.com>
+License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+
+Full source code is available here:
+<https://github.com/simshadows/simshadows-pages>
+-->
+
+<html lang="en">
+    <BaseHead
+        title={title}
+        canonical={canonical}
+        author={author}
+        description={description}
+        keywords={keywords}
+    />
+    <body>
+        <div id="masthead"><div class="content-column">
+            <a id="website-title" href="/">simshadows</a>
+            [ <a href="https://github.com/simshadows/simshadows-pages"><b>Source</b></a> ]
+        </div></div>
+        <div id="content" class="content-column">
+            <slot />
+        </div>
+        <footer id="footer" class="content-column">
+            <div id="footer-text">&copy; 2023 {author}. All content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</div>
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+        </footer>
+    </body>
+</html>
+

@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.content-column {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+#masthead {
+    /* background: red; */
+    padding-top: 1.4em;
+    padding-bottom: 1.4em;
+    border-bottom: 1px solid #b9b9b9;
+}
+
+#website-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#content {
+
+    /* background: green; */
+}
+
+#footer {
+    margin-top: 2.6em;
+    color: #b9b9b9;
+    text-align: center;
+}
+#footer-text {
+    margin-bottom: 0.5em;
+}
+#footer a {
+    color: #b9b9b9;
+}
+
+span.inactive {
+    font-style: italic;
+    text-decoration: line-through;
+}
+
