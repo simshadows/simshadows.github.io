@@ -3,7 +3,7 @@ import {
     type SMDType,
     type Origin,
     type SwitchCategory,
-} from "./index.data";
+} from "./_index.data";
 
 const IMAGES_BASE = "/mechanical-keyboard-switch-collection-legacy/_images/";
 
