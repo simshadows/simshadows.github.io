@@ -1,0 +1,20 @@
+---
+import "normalize.css";
+
+import ccbysaImg from "./_BaseFooter_Images/cc-by-sa-4.0-88x31.png";
+
+const {
+    author,
+} = Astro.props;
+---
+
+<footer id="footer" class="content-column">
+    <div id="footer-text">
+        &copy; 2023 {author}. All content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        <br />
+        This site's source code is available on <a href="https://github.com/simshadows/simshadows-pages">GitHub</a>.
+    </div>
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src={ccbysaImg.src} /></a>
+    <!-- ccbysaImg original source: src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" -->
+</footer>
+
