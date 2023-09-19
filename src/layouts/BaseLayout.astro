@@ -1,4 +1,7 @@
 ---
+import {
+    author,
+} from "@root/constants";
 import BaseHead from "@components/BaseHead.astro";
 import BaseFooter from "@components/BaseFooter.astro";
 import "./_BaseLayout.css";
@@ -6,7 +9,6 @@ import "./_BaseLayout.css";
 const {
     title,
     canonical,
-    author,
     description,
     keywords,
 } = Astro.props;

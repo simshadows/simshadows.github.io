@@ -22,6 +22,9 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@root/*": [
+        "src/*"
+      ],
       "@components/*": [
         "src/components/*"
       ],
