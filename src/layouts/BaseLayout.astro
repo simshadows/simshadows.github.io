@@ -30,15 +30,22 @@ Full source code is available here:
         keywords={keywords}
     />
     <body>
-        <div id="masthead"><div class="content-column">
+        <div id="masthead"><div id="masthead__content" class="content-column">
             <a id="website-title" href="/">simshadows</a>
-            [ <a href="https://github.com/simshadows/simshadows-pages"><b>Source</b></a> ]
+            <div id="masthead__menu">
+                <a href="https://apps.simshadows.com/">Web Apps</a>
+                <a href="https://www.simshadows.com/">Blog</a>
+            </div>
         </div></div>
         <div id="content" class="content-column">
             <slot />
         </div>
         <footer id="footer" class="content-column">
-            <div id="footer-text">&copy; 2023 {author}. All content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</div>
+            <div id="footer-text">
+                &copy; 2023 {author}. All content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                <br />
+                This site's source code is available on <a href="https://github.com/simshadows/simshadows-pages">GitHub</a>.
+            </div>
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
         </footer>
     </body>

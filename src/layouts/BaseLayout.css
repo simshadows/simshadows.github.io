@@ -12,10 +12,18 @@ body {
 }
 
 #masthead {
-    /* background: red; */
     padding-top: 1.4em;
     padding-bottom: 1.4em;
     border-bottom: 1px solid #b9b9b9;
+}
+#masthead__content {
+    display: flex;
+}
+#masthead__menu {
+    display: flex;
+    column-gap: 3em;
+
+    margin-left: auto;
 }
 
 #website-title {
@@ -24,12 +32,11 @@ body {
 }
 
 #content {
-
-    /* background: green; */
 }
 
 #footer {
-    margin-top: 2.6em;
+    margin-top: auto;
+    padding-top: 2.6em;
     color: #b9b9b9;
     text-align: center;
 }
