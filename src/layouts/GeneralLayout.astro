@@ -1,0 +1,22 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const {
+    title,
+    canonical,
+    description,
+    keywords,
+} = Astro.props;
+---
+
+<BaseLayout
+    title={title}
+    canonical={canonical}
+    author="simshadows"
+    description={description}
+    keywords={keywords}
+>
+    <h1>{title}</h1>
+    <slot />
+</BaseLayout>
+

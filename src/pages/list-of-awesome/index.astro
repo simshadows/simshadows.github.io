@@ -5,10 +5,10 @@
  * License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
  */
 
- import BaseLayout from "@layouts/legacy/BaseLayout.astro";
+import Layout from "@layouts/GeneralLayout.astro";
 ---
 
-<BaseLayout
+<Layout
     title="Sim's Curated List of Awesome"
     canonical="https://pages.simshadows.com/list-of-awesome"
     author="simshadows"
@@ -18,40 +18,23 @@
 
 
 <style>
-    /*** General Styling ***/
-
-    body {
-        padding: 0.5em;
-    }
-    footer {
-        margin-top: 3em;
-        text-align: center;
-    }
-
     li {
         margin-bottom: 0.2em;
     }
 
-    /*** Special Styling ***/
-
     span.e {
         font-weight: bold;
     }
+
     li.inactive {
         text-decoration: line-through;
     }
 </style>
 
 
-[ <a target="_self" href="../"><b>Up</b></a> ]
-[ <a href="https://github.com/simshadows/simshadows-pages"><b>Source</b></a> ]
-
 <noscript>
     <p><strong>WARNING: Javascript is not enabled. While this page is viewable with Javascript disabled, functionality will be limited.</strong></p>
 </noscript>
-
-<h1>Sim's Curated List of Awesome</h1>
-
 
 <h2>Edutainment</h2>
 
@@ -257,12 +240,6 @@ Check out my stuff!
     <li class="inactive">[<a href="https://simishadows.tumblr.com/">Tumblr</a>] <span class="e">Anime GIFs (mostly reposts, some originals.)</span> <em>(Currently inactive.)</em></li>
 </ul>
 
-<footer>
-    <!-- License notice block provided by <https://creativecommons.org/choose/> -->
-    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-    <!-- End license notice block -->
-</footer>
 
-
-</BaseLayout>
+</Layout>
 
