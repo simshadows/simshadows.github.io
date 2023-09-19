@@ -1,6 +1,8 @@
 ---
 import {
-    author,
+    SITE_TITLE,
+    WEB_APPS_URL,
+    BLOG_URL,
 } from "@root/constants";
 import BaseHead from "@components/BaseHead.astro";
 import BaseFooter from "@components/BaseFooter.astro";
@@ -28,22 +30,21 @@ Full source code is available here:
     <BaseHead
         title={title}
         canonical={canonical}
-        author={author}
         description={description}
         keywords={keywords}
     />
     <body>
         <div id="masthead"><div id="masthead__content" class="content-column">
-            <a id="website-title" href="/">simshadows</a>
+            <a id="website-title" href="/">{SITE_TITLE}</a>
             <div id="masthead__menu">
-                <a href="https://apps.simshadows.com/">Web Apps</a>
-                <a href="https://www.simshadows.com/">Blog</a>
+                <a href={WEB_APPS_URL}>Web Apps</a>
+                <a href={BLOG_URL}>Blog</a>
             </div>
         </div></div>
         <div id="content" class="content-column">
             <slot />
         </div>
-        <BaseFooter author={author} />
+        <BaseFooter />
     </body>
 </html>
 

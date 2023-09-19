@@ -1,12 +1,12 @@
 import {
-    site,
+    SITE,
 } from "@root/constants";
 
 const template = `\
 User-agent: *
 Allow: /
 
-Sitemap: ${site}sitemap-index.xml\
+Sitemap: ${new URL("/sitemap-index.xml", SITE)}\
 `;
 
 export async function GET() {

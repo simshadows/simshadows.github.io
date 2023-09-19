@@ -1,4 +1,8 @@
 ---
+import {
+    AUTHOR,
+    SOURCE_CODE_URL,
+} from "@root/constants";
 import BaseLayout from "@layouts/legacy/BaseLayout.astro";
 
 const {
@@ -12,13 +16,13 @@ const {
 <BaseLayout
     title={title}
     canonical={canonical}
-    author="simshadows"
+    author={AUTHOR}
     description={description}
     keywords={keywords}
 >
 
     [ <a target="_self" href="../"><b>Up</b></a> ]
-    [ <a href="https://github.com/simshadows/simshadows-pages"><b>Source</b></a> ]
+    [ <a href={SOURCE_CODE_URL}><b>Source</b></a> ]
 
     <slot />
 

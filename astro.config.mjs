@@ -4,11 +4,11 @@ import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 
 import {
-    site,
+    SITE,
 } from "./src/constants";
 
 // https://astro.build/config
 export default defineConfig({
-  site,
+  site: SITE,
   integrations: [mdx(), preact(), sitemap()]
 });
