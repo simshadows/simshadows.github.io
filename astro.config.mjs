@@ -9,6 +9,11 @@ import {
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE,
-  integrations: [mdx(), preact(), sitemap()]
+    site: SITE,
+    integrations: [mdx(), preact(), sitemap()],
+    markdown: {
+        shikiConfig: {
+            theme: "monokai",
+        }
+    }
 });
