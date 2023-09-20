@@ -22,14 +22,20 @@ body {
 }
 #masthead__menu {
     display: flex;
+    align-items: center;
     column-gap: 3em;
 
     margin-left: auto;
+}
+#masthead__menu a {
+    text-decoration: inherit;
 }
 
 #website-title {
     font-size: 20px;
     font-weight: bold;
+    text-decoration: inherit;
+    color: inherit;
 }
 
 #content {
