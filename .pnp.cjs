@@ -34,6 +34,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@astrojs/sitemap", "npm:3.0.0"],\
             ["@astrojs/ts-plugin", "npm:1.1.3"],\
             ["@babel/core", "npm:7.22.17"],\
+            ["@fontsource/roboto", "npm:5.0.8"],\
             ["astro", "npm:3.0.12"],\
             ["normalize.css", "npm:8.0.1"],\
             ["preact", "npm:10.17.1"],\
@@ -1065,6 +1066,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/@esbuild-win32-x64-npm-0.19.2-faf4190546/node_modules/@esbuild/win32-x64/",\
           "packageDependencies": [\
             ["@esbuild/win32-x64", "npm:0.19.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@fontsource/roboto", [\
+        ["npm:5.0.8", {\
+          "packageLocation": "./.yarn/cache/@fontsource-roboto-npm-5.0.8-35f6bafae2-8aa9c1557e.zip/node_modules/@fontsource/roboto/",\
+          "packageDependencies": [\
+            ["@fontsource/roboto", "npm:5.0.8"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5916,6 +5926,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@astrojs/sitemap", "npm:3.0.0"],\
             ["@astrojs/ts-plugin", "npm:1.1.3"],\
             ["@babel/core", "npm:7.22.17"],\
+            ["@fontsource/roboto", "npm:5.0.8"],\
             ["astro", "npm:3.0.12"],\
             ["normalize.css", "npm:8.0.1"],\
             ["preact", "npm:10.17.1"],\

@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: "Roboto";
 }
 
 .content-column {
@@ -37,14 +38,15 @@ body {
 #footer {
     margin-top: 3.2em;
     margin-bottom: 1.8em;
-    color: #b9b9b9;
+    color: #afafaf;
     text-align: center;
 }
 #footer-text {
     margin-bottom: 0.5em;
+    font-size: 0.85em;
 }
 #footer a {
-    color: #b9b9b9;
+    color: #afafaf;
 }
 
 /* Code Blocks */
