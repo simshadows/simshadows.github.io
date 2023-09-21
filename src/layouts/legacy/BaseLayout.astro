@@ -1,6 +1,12 @@
 ---
 import BaseHead from "@components/BaseHead.astro";
 
+interface Props {
+    title: string;
+    description: string;
+    keywords: string[];
+}
+
 const {
     title,
     description,

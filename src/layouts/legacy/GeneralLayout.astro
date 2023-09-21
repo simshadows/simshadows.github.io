@@ -4,6 +4,12 @@ import {
 } from "@root/constants";
 import BaseLayout from "@layouts/legacy/BaseLayout.astro";
 
+interface Props {
+    title: string;
+    description: string;
+    keywords: string[];
+}
+
 const {
     title,
     description,

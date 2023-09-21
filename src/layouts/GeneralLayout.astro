@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
+interface Props {
+    title: string;
+    description: string;
+    keywords: string[];
+}
+
 const {
     title,
     description,

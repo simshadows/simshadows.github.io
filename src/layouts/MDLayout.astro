@@ -1,15 +1,38 @@
 ---
+import {isStrArray} from "@root/danger";
 import GeneralLayout from "@layouts/GeneralLayout.astro";
 
+interface Props {
+    frontmatter: {[key: string]: unknown;};
+}
+
+const {frontmatter} = Astro.props;
 const {
-    frontmatter,
-} = Astro.props;
+    title,
+    description,
+    keywords,
+} = frontmatter;
+
+function errStr(expectedType: string, k: string, v: unknown) {
+    return `Expected ${k} to be a ${expectedType}. Actually received: ${v}`;
+}
+
+if (typeof title !== "string") {
+    throw new Error(errStr("a string", "title", title));
+}
+if (typeof description !== "string") {
+    throw new Error(errStr("a string", "description", description));
+}
+if (!isStrArray(keywords)) {
+    throw new Error(errStr("an array of strings", "keywords", keywords));
+}
+
 ---
 
 <GeneralLayout
-    title={frontmatter.title}
-    description={frontmatter.description}
-    keywords={frontmatter.keywords}
+    title={title}
+    description={description}
+    keywords={keywords}
 >
     <slot />
 </BaseLayout>

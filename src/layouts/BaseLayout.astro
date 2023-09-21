@@ -9,6 +9,12 @@ import BaseFooter from "@components/BaseFooter.astro";
 import "@fontsource/roboto";
 import "./_BaseLayout.css";
 
+interface Props {
+    title: string;
+    description: string;
+    keywords: string[];
+}
+
 const {
     title,
     description,
@@ -19,8 +25,8 @@ const {
 <!doctype html>
 
 <!--
-Author:   simshadows <contact@simshadows.com>
-License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+Author:  simshadows <contact@simshadows.com>
+License: Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
 
 Full source code is available here:
 <https://github.com/simshadows/simshadows.github.io>
