@@ -1,6 +1,7 @@
 ---
 import {
     AUTHOR,
+    GLOBAL_KEYWORDS,
 } from "@root/constants";
 
 import "normalize.css";
@@ -17,8 +18,10 @@ const {
     keywords,
 } = Astro.props;
 
+const newKeywords: string[] = [...keywords, ...GLOBAL_KEYWORDS];
+
 const canonical = new URL(Astro.url.pathname, Astro.site).href satisfies string;
-const keywordsStr = keywords.join(", ") satisfies string;
+const keywordsStr = newKeywords.join(", ") satisfies string;
 ---
 
 <head>
