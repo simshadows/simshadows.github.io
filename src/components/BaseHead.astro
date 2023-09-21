@@ -7,11 +7,11 @@ import "normalize.css";
 
 const {
     title,
-    canonical,
     description,
     keywords,
 } = Astro.props;
-canonical;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <head>
@@ -25,10 +25,10 @@ canonical;
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={Astro.site} />
+    <link rel="canonical" href={canonical} />
 
     <!-- Facebook Meta Tags -->
-    <meta property="og:url" content={Astro.site}>
+    <meta property="og:url" content={canonical}>
     <meta property="og:type" content="website">
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
