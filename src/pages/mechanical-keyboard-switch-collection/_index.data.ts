@@ -207,7 +207,7 @@ function transformSwitchCategory(obj: _SwitchCategory): SwitchCategory {
         name:                      obj.name,
         cosmeticVariant:           obj.cosmeticVariant || "",
         image:                     ("image" in obj ? obj.image : "") || "",
-        imageAcknowledgement:      ("imageAcknowledgement" in obj ? obj.imageAcknowledgement : false) || "/_placeholder-stubs/own-work.html",
+        imageAcknowledgement:      ("imageAcknowledgement" in obj ? obj.imageAcknowledgement : false) || "/stubs/own-work/",
         textReplacingImage:        ("textReplacingImage" in obj ? obj.textReplacingImage : "") || "",
         type:                      obj.type || "linear",
         cosmeticFeatures:          transformCosmeticFeatures(obj.cosmeticFeatures),
