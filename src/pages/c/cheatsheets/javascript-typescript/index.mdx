@@ -1,13 +1,132 @@
 ---
 layout: ../../../../layouts/MDLayout.astro
 title: Javascript/Typescript Cheatsheet
-description: Javascript/Typescript cheatsheet, for the experienced-but-forgetful.
+description: My Javascript/Typescript cheatsheet because I forget names and syntax a lot.
 keywords: ["programming", "javascript", "typescript", "cheatsheet"]
 ---
 
-## Competitive Programming Recipes (JS Only)
 
-### Max-Heap
+## Resources
+
+References:
+
+- [**MDN Web Docs - Javascript**](https://developer.mozilla.org/en-US/docs/Web/JavaScript) `(developer.mozilla.org)`
+- [**TypeScript Documentation**](https://www.typescriptlang.org/docs/handbook/intro.html) `(www.typescriptlang.org)`
+- [**Learn X in Y minutes - Javascript**](https://learnxinyminutes.com/docs/javascript/) `(learnxinyminutes.com)`
+- [**Learn X in Y minutes - Typescript**](https://learnxinyminutes.com/docs/typescript/) `(learnxinyminutes.com)`
+
+Others:
+
+- [**TS Playground**](https://www.typescriptlang.org/play) `(www.typescriptlang.org)`
+
+
+## Common Types
+
+### `Object`
+
+- [**MDN Web Docs - Object**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+- [**MDN Web Docs - Enumerability and ownership of properties**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)
+
+```ts
+for (const [k, v] of Object.entries(obj)) console.log(`${k}: ${v}`);
+for (const k of Object.keys(obj)) console.log(k);
+for (const v of Object.values(obj)) console.log(v);
+
+// .fromEntries() and .entries() are inverses of each other. Useful for object transforms:
+const obj2 = Object.fromEntries(
+    Object.entries(obj1).map(([k, v]) => [k, v * 2]),
+);
+
+Object.assign(dst, src) // Copies all enumerable own properties from src to dst. Returns dst.
+
+// TODO: Write notes about the spread operator.
+```
+
+### `Array`
+
+- [**MDN Web Docs - Array**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+```ts
+arr.length
+for (const x of arr) console.log(x);
+for (const [i, v] of arr.entries()) console.log(`${i}: ${v}`);
+arr.forEach((x, i, originalArray) => console.log(x))
+
+[v1, v2, ...arr1, ...arr2]
+[v1, v2, ...(condition ? [v3] : [])]
+
+// Push/pop/peek at the back
+arr.push(...values)
+arr.pop()
+arr.at(-1)
+
+// Push/pop/peek at the front
+arr.unshift(...values)
+arr.shift()
+arr[0]
+
+arr.slice(startInclusive, endExclusive) // Returns a new array
+arr.join(", ") // ["foo", "bar", "baz"] --> "foo, bar, baz"
+
+arr.map((x) => x * 2) // Returns a new array
+arr.reduce((acc, curr, index) => acc + curr, initialValue) // aka fold/accumulate. Use .reduceRight() for reverse iteration
+arr.filter((x) => x > 0) // Returns a new array of values for which the predicate is true
+
+arr.every((x) => x > 0) // true if all is true
+arr.some((x) => x > 0) // true if at least one is true
+
+Array.isArray(x) // Returns boolean. Unfortunately type-narrows to any[].
+// This is a known limitation with TS: <https://github.com/microsoft/TypeScript/issues/17002>
+```
+
+### `Map`
+
+The *associative array* ADT, also known as a *dictionary* in Python.
+
+- [**MDN Web Docs - Map**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+
+```ts
+// Constructor takes any iterable with key-value pairs
+const map = new Map([
+    [k1, v1],
+    [k2, v2],
+    [k3, v3],
+]);
+
+map.size
+for (const [k, v] of map) console.log(`${k}: ${v}`);
+map.forEach((v, k, originalMap) => console.log(`${k}: ${v}`)); // (v, k) is not a typo.
+
+map.set(key, value) // Returns the same map
+map.delete(key) // Returns true if key was in the map, false otherwise
+map.clear() // Returns undefined
+
+map.get(key)
+map.has(key) // true if key is a key in the map
+```
+
+### `Set`
+
+- [**MDN Web Docs - Set**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set)
+
+```ts
+const set = new Set([x1, x2, x3]);
+
+set.size
+for (const x of set) console.log(x);
+set.forEach((x, _, originalSet) => console.log(x)) // Second param is always the same as the first.
+
+set.add(value) // Returns the same set
+set.delete(value) // Returns true if value was in the set, false otherwise
+set.clear() // Returns undefined
+
+set.has(value) // true if value is in set
+```
+
+
+## Basic Recipes (JS Only)
+
+### Max Heap
 
 ```js
 function heapify(heap) {
@@ -72,6 +191,7 @@ function _downHeapify(heap, i) {
     [heap[next], heap[i]] = [heap[i], heap[next]];
     _downHeapify(heap, next);
 }
+
 function _upHeapify(heap, i) {
     if (i === 0) return; 
     const parent = (i - 1) >> 1;
@@ -80,4 +200,13 @@ function _upHeapify(heap, i) {
     _upHeapify(heap, parent);
 }
 ```
+
+
+## TODO
+
+Things I think I should add notes on some time:
+
+- Object spread operators
+- Prototype inheritance system
+- OOP
 

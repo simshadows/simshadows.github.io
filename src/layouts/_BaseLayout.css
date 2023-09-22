@@ -4,6 +4,22 @@ body {
     font-family: "Roboto";
 }
 
+body h1 {font-size: 2.60em; margin-top: 30px; margin-bottom: 30px;}
+body h2 {font-size: 2.00em; margin-top: 30px;}
+body h3 {font-size: 1.60em;}
+body h4 {font-size: 1.25em;}
+@media only screen and (max-width: 600px) {
+    body h1 {font-size: 2.00em;}
+    body h2 {font-size: 1.70em; margin-top: 30px;}
+    body h3 {font-size: 1.40em;}
+    body h4 {font-size: 1.15em;}
+}
+
+li, ul, ol {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
 .content-column {
     max-width: 1300px;
     margin-left: auto;
