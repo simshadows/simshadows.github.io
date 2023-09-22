@@ -1,5 +1,5 @@
 ---
-layout: ../../../../layouts/MDLayout.astro
+layout: ../../../layouts/MDLayout.astro
 title: Javascript/Typescript Cheatsheet
 description: My Javascript/Typescript cheatsheet because I forget names and syntax a lot.
 keywords: ["programming", "javascript", "typescript", "cheatsheet"]
@@ -72,8 +72,8 @@ arr.map((x) => x * 2) // Returns a new array
 arr.reduce((acc, curr, index) => acc + curr, initialValue) // aka fold/accumulate. Use .reduceRight() for reverse iteration
 arr.filter((x) => x > 0) // Returns a new array of values for which the predicate is true
 
-arr.every((x) => x > 0) // true if all is true
-arr.some((x) => x > 0) // true if at least one is true
+arr.every((x) => x > 0) // true if all values are true
+arr.some((x) => x > 0) // true if at least one value is true
 
 Array.isArray(x) // Returns boolean. Unfortunately type-narrows to any[].
 // This is a known limitation with TS: <https://github.com/microsoft/TypeScript/issues/17002>

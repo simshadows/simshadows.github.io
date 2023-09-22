@@ -1,0 +1,116 @@
+---
+layout: ../../../layouts/MDLayout.astro
+title: Python Cheatsheet
+description: My Python cheatsheet because I forget names and syntax a lot.
+keywords: ["programming", "python", "cheatsheet"]
+---
+
+## Resources
+
+References:
+
+- [**Python Documentation**](https://docs.python.org/3/) `(docs.python.org)`
+    - [**Data Model**](https://docs.python.org/3/reference/datamodel.html)
+    - Built-in: [**Functions**](https://docs.python.org/3/library/functions.html) / [**Types**](https://docs.python.org/3/library/stdtypes.html) / [**Exceptions**](https://docs.python.org/3/library/exceptions.html#concrete-exceptions)
+        - [**`list`/`tuple`**](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [**`set`**](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [**`dict`**](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
+        - [**`str`**](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [**`bytes`**](https://docs.python.org/3/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview)
+    - [**`collections`**](https://docs.python.org/3/library/collections.html)
+        - [**`namedtuple`**](https://docs.python.org/3/library/collections.html#collections.namedtuple), [**`deque`**](https://docs.python.org/3/library/collections.html#collections.deque), [**`Counter`**](https://docs.python.org/3/library/collections.html#collections.Counter), [**`OrderedDict`**](https://docs.python.org/3/library/collections.html#collections.OrderedDict), [**`defaultdict`**](https://docs.python.org/3/library/collections.html#collections.defaultdict)
+    - [**`itertools`**](https://docs.python.org/3/library/itertools.html), [**`functools`**](https://docs.python.org/3/library/functools.html)
+    - [**`math`**](https://docs.python.org/3/library/math.html), [**`datetime`**](https://docs.python.org/3/library/datetime.html)
+    - [**`bisect`**](https://docs.python.org/3/library/bisect.html), [**`heapq`**](https://docs.python.org/3/library/heapq.html)
+    - [**`logging`**](https://docs.python.org/3/library/logging.html), [**`sqlite3`**](https://docs.python.org/3/library/sqlite3.html)
+- [**Learn X in Y minutes - Python**](https://learnxinyminutes.com/docs/python/) `(learnxinyminutes.com)`
+
+Common third-party library references:
+
+- [**`pandas`**](https://pandas.pydata.org/docs/reference/index.html)
+
+
+## Common Functions
+
+- [**Python Documentation - Built-In Functions**](https://docs.python.org/3/library/functions.html)
+- [**Python Documentation - `functools`**](https://docs.python.org/3/library/functools.html)
+- [**Python Documentation - `itertools`**](https://docs.python.org/3/library/itertools.html)
+
+```py
+import functools
+
+map(lambda x: x * 2, myiterable) # Returns an iterator
+functools.reduce(lambda acc, cur: acc + cur, myiterable, initializer=0) # aka fold/accumulate
+filter(lambda x: x > 0, myiterable) # Returns an iterator
+```
+
+
+## Common Types
+
+### `list` and `tuple`
+
+Unless otherwise stated, all non-mutating `list` operations shown also work with `tuple`.
+
+- [**Python Documentation - `list`, `tuple`, `range`**](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range)
+
+```py
+# Push/pop/peek at the back
+mylist.append(x)
+mylist.pop()
+mylist[-1]
+
+# Push/pop/peek at the front
+mylist.insert(0, x)
+mylist.pop(0)
+mylist[0]
+
+mylist[startInclusive:endExclusive:step] # slice
+```
+
+### `dict`
+
+- [**Python Documentation - `dict`**](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
+
+```py
+for k, v in mydict.items(): print(k, v)
+for k in mydict: print(k)
+for v in mydict.values(): print(v)
+
+# All of these try to return the value associated with key k, but behave a bit differently
+mydict[k] # Raises KeyError if key is missing
+mydict.get(k, default) # Returns default if key is missing
+mydict.pop(k) # Also deletes key. Raises KeyError if key is missing.
+mydict.pop(k, default) # Instead returns default if key is missing
+mydict.setdefault(k, default) # Assigns `mydict[k] = default` if key is missing
+
+mydict.popitem() # Pop a (key, value) pair in LIFO order (as of Python 3.7)
+```
+
+### `set`
+
+- [**Python Documentation - `set`**](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset)
+
+```py
+myset.add(x)
+myset.remove(x) # Raises KeyError if value is missing
+myset.discard(x) # Fails silently
+myset.pop()
+
+# Implemented operator overloads:
+# ==  >=  <=  >  <  |  &  -  ^  |=  &=  -=  ^=
+
+set1.isdisjoint(set2) # True if both sets have nothing in common.
+```
+
+### `str`
+
+- [**Python Documentation - `str`**](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
+
+```py
+", ".join(myiterable) # ["foo", "bar", "baz"] --> "foo, bar, baz"
+```
+
+
+## Basic Recipes
+
+### Leetcode
+
+Python lacks sorted associative containers like C++'s `std::set` and `std::map`. As a workaround, Leetcode supplies the [`sortedcontainers`](https://grantjenks.com/docs/sortedcontainers/) library to use on the platform (as mentioned [here](https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages-)).
+
