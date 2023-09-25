@@ -24,8 +24,8 @@ Others:
 
 ### `Object`
 
-- [**MDN Web Docs - Object**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
-- [**MDN Web Docs - Enumerability and ownership of properties**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)
+[**MDN Web Docs - Object**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)<br />
+[**MDN Web Docs - Enumerability and ownership of properties**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties)
 
 ```ts
 for (const [k, v] of Object.entries(obj)) console.log(`${k}: ${v}`);
@@ -44,7 +44,7 @@ Object.assign(dst, src) // Copies all enumerable own properties from src to dst.
 
 ### `Array`
 
-- [**MDN Web Docs - Array**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+[**MDN Web Docs - Array**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
 ```ts
 arr.length
@@ -83,7 +83,7 @@ Array.isArray(x) // Returns boolean. Unfortunately type-narrows to any[].
 
 The *associative array* ADT, also known as a *dictionary* in Python.
 
-- [**MDN Web Docs - Map**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+[**MDN Web Docs - Map**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 
 ```ts
 // Constructor takes any iterable with key-value pairs
@@ -107,7 +107,7 @@ map.has(key) // true if key is a key in the map
 
 ### `Set`
 
-- [**MDN Web Docs - Set**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set)
+[**MDN Web Docs - Set**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set)
 
 ```ts
 const set = new Set([x1, x2, x3]);
@@ -121,6 +121,13 @@ set.delete(value) // Returns true if value was in the set, false otherwise
 set.clear() // Returns undefined
 
 set.has(value) // true if value is in set
+```
+
+
+## The Module System
+
+```ts
+import foobar from "mymodule";
 ```
 
 
@@ -209,4 +216,8 @@ Things I think I should add notes on some time:
 - Object spread operators
 - Prototype inheritance system
 - OOP
+
+Other TODOs:
+
+- I'm actually not sure what `hpopManyWithoutKey()` does at a glance, and I'm actually still confused even as I look at it.
 
