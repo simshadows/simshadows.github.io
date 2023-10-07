@@ -1,0 +1,29 @@
+#python__pythondocsindex {
+    column-width: 15em;
+    column-rule-style: solid;
+    column-rule-width: thin;
+    column-gap: 3em;
+}
+
+#python__pythondocsindex > h4 {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+#python__pythondocsindex > div {
+    break-inside: avoid;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+#python__pythondocsindex a {
+    text-decoration: none;
+}
+#python__pythondocsindex a.code {
+    font-family: monospace;
+    font-weight: bold;
+}
+#python__pythondocsindex a.normal {
+    font-weight: bold;
+}
+

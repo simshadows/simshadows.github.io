@@ -1,0 +1,21 @@
+---
+// TODO: Deduplicate this from AN
+
+import {join} from "path";
+
+interface Props {
+    href: string;
+}
+
+const {
+    href,
+} = Astro.props;
+
+//const actualHref = "https://docs.python.org/3/reference/datamodel.html";
+const BASE = "https://docs.python.org/";
+const BPATH = "/3/";
+const actualHref = new URL(join(BPATH, href), BASE);
+---
+
+<a class="code" target="_blank" href={actualHref}><slot /></a>
+
