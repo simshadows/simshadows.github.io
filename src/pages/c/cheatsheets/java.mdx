@@ -1,0 +1,456 @@
+---
+layout: ../../../layouts/MDLayout.astro
+title: Java Cheatsheet
+description: My Java cheatsheet because I forget names and syntax a lot.
+keywords: ["programming", "java", "cheatsheet"]
+---
+
+
+# THIS CHEATSHEET IS A VERY EARLY WORK-IN-PROGRESS.
+
+_**The reason this page exists is because I applied for a job whose interview loop only assesses you in Java.** This page serves as my way of studying the syntax and having some kind of artifact for me to return to and refine, should the need arise._
+
+_Otherwise, I have never used Java since 2015 in any context outside of job interviewing. I have no interest in Java outside of work contexts._
+
+**This cheatsheet will focus on Java 17.**
+
+
+## Resources
+
+References:
+
+- [**Java 17 Documentation**](https://docs.oracle.com/en/java/javase/17/docs/api/index.html) `(docs.oracle.com)`
+- [**Learn X in Y minutes - Java**](https://learnxinyminutes.com/docs/java/) `(learnxinyminutes.com)`
+
+
+## General Basics and Gotchas
+
+```java
+import java.security.*; // Imports everything from the `java.security` package
+
+assert foo > 0; // Must enable assertions to work, e.g. `$ java -ea MyFile.java`
+
+try {
+    throw new RuntimeException("lmao");
+} catch (Exception e) {
+    System.out.println(e);
+} finally {
+    System.out.println("finally");
+}
+
+// IMMUTABLE Record
+record Foo(int a, String b){};
+final var tmp = new Foo(123, "kekekek");
+tmp.a; // Both fields are readable
+tmp.hashCode(); // Hashable!
+```
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+A simple class example:
+
+```java
+class Foo {
+    public int a;
+    public String b;
+
+    public Foo(int a, String b) {
+        this.a = a;
+        this.b = b;
+    }
+}
+```
+
+Java has no operator overloading. The `==` operator will compare references, leading to weird bugs like:
+
+```java
+final var lst = new ArrayList<Integer>(Arrays.asList(1, 1, 10000, 10000));
+
+// WRONG. DON'T DO THIS.
+System.out.println(lst.get(0) == lst.get(1)); // Prints "true"
+System.out.println(lst.get(2) == lst.get(3)); // Prints "false"
+// (Due to underlying implementation details, `==` may *seem* to work under certain edge cases.)
+
+// Correct way
+System.out.println(lst.get(0).equals(lst.get(1))); // Prints "true"
+System.out.println(lst.get(2).equals(lst.get(3))); // Prints "true"
+System.out.println(lst.get(1).equals(lst.get(2))); // Prints "false"
+```
+
+Also, notice how we had to use `ArrayList<Integer>`. Java doesn't support using primitive types as generic arguments, so you can't do `ArrayList<int>`.
+
+
+## Common Types
+
+### Boxed Types
+
+In many cases, the compiler implicitly converts between primitive and boxed types.
+
+```java
+// TODO: Do you need to know anything specific?
+```
+
+### `StringBuilder`
+
+*(TODO: Talk a little bit about the motivation?)*
+
+[**Java 17 Documentation - Class `StringBuilder`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/StringBuilder.html)
+
+```java
+import java.lang.StringBuilder;
+
+final var buf = new StringBuilder("ayy lmao");
+
+buf.append('a');
+buf.append((char) 0x61); // Appends lower-case 'a'
+buf.append("foobar");
+
+buf.toString(); // Returns the contents as a String
+
+
+// TODO: Add more notes on other methods?
+//       (I'm kinda rushing rn, so I'm not going unnecessarily in-depth.)
+```
+
+### `Array` (Fixed-Size Array)
+
+[**Java 17 Documentation - Class `Array`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/reflect/Array.html)
+
+[**Java 17 Documentation - Class `Arrays`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Arrays.html)
+
+```java
+import java.util.Comparator;
+
+import java.util.Arrays;
+
+int[] arr = new int[10];
+int[][] arr = new int[10][5]; // Can be nested
+
+int[] arr = {123, 321, 456, 654};
+Integer[] arr4 = {22, 33, 44, 55};
+// TODO: how to do literal 2D arrays?
+
+System.out.println(arr[0]); // First element
+
+arr.length; // --> int (I think?)
+for (int v : arr) System.out.println(v);
+
+// There isn't anything like Python's enumerate(), so you may need to:
+for (int i = 0; i < arr.length; ++i) {
+    System.out.println(i);
+    System.out.println(arr[i]);
+}
+
+// Sort by natural ordering in ascending order
+Arrays.sort(arr);
+
+// Sort with comparator using lambda syntax
+String[] arr = {"ada", "bbc", "ccd", "aaa", "aea"};
+Arrays.sort(arr,
+    (var a, var b) -> ((Character) a.charAt(1)).compareTo(b.charAt(1))
+);
+// Becomes ["aaa", "bbc", "ccd", "ada", "aea"]
+// Usually, it's better to use compareTo() if it's available,
+// but you can also implement the comparison yourself:
+Arrays.sort(arr,
+    (var a, var b) -> a.charAt(1) - b.charAt(1)
+);
+// Another alternative version using an anonymous class:
+Arrays.sort(arr, new Comparator<String>() {
+    @Override
+    public int compare(String a, String b) {
+        if (a.charAt(1) > b.charAt(1)) return 1;
+        if (a.charAt(1) < b.charAt(1)) return -1;
+        return 0;
+    }
+});
+```
+
+Binary search:
+
+```java
+final int[] arr = {10, 20, 30, 40, 50, 60};
+
+Arrays.binarySearch(arr, 30); // Returns 2
+Arrays.binarySearch(arr, 31); // Returns -4. Insertion point is (-(-4) - 1) = 3
+Arrays.binarySearch(arr, 29); // Returns -3. Insertion point is (-(-3) - 1) = 2
+// Negative values indicate that the value doesn't exist.
+// Value represents the insertion point:
+//     insertion_point = -returned_value - 1
+
+arr.add(2, 29); // Array becomes [10, 20, 29, 30, 40, 50, 60]
+
+// You can also use a comparator: Arrays.binarySearch(arr, key, comparator)
+```
+
+### `List` / `ArrayList` (Dynamic Array)
+
+[**Java 17 Documentation - Class `ArrayList`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html)<br />
+[**Java 17 Documentation - Interface `List`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html)
+
+[**Java 17 Documentation - Class `Collectors`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Collectors.html)<br />
+[**Java 17 Documentation - Class `Collections`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collections.html)
+
+```java
+import java.util.List;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.Collections;
+
+// Constructor accepts any Collection
+final var lst = new ArrayList<Integer>(collection);
+// Hardcoding
+final var lst = new ArrayList<Integer>(Arrays.asList(123, 321, 456, 654));
+// Convert `int[]` to `List<Integer>`
+final List<Integer> lst = Arrays.stream(arr).boxed().toList(); // IMMUTABLE
+final ArrayList<Integer> lst = Arrays.stream(arr).boxed()
+    .collect(Collectors.toCollection(ArrayList::new)); // MUTABLE
+// Convert `Integer[]` to `List<Integer>`
+final var lst = new ArrayList<Integer>(Arrays.asList(arr));
+
+lst.size(); // --> int
+for (int v : lst) System.out.println(v);
+
+// There isn't anything like Python's enumerate(), so you may need to:
+for (int i = 0; i < lst.size(); ++i) {
+    System.out.println(i);
+    System.out.println(lst.get(i));
+}
+
+// Push/pop/peek at the back
+lst.add(x);
+lst.remove(lst.size() - 1); // --> popped element
+lst.get(lst.size() - 1); // --> peeked element
+
+// Push/pop/peek at the front
+lst.add(0, x);
+lst.remove(0); // --> popped element
+lst.get(0); // --> peeked element
+
+lst.sort(null); // Pass in null to sort by natural ordering.
+lst.sort((var a, var b) -> b.compareTo(a)); // Pass in a comparator. (This one reverses the order.)
+// See Array notes for more ways to pass a comparator.
+```
+
+Binary search:
+
+```java
+final var lst = new ArrayList<Integer>(Arrays.asList(10, 20, 30, 40, 50, 60));
+
+Collections.binarySearch(lst, 30); // Returns 2
+Collections.binarySearch(lst, 31); // Returns -4. Insertion point is (-(-4) - 1) = 3
+Collections.binarySearch(lst, 29); // Returns -3. Insertion point is (-(-3) - 1) = 2
+// Negative values indicate that the value doesn't exist.
+// Value represents the insertion point:
+//     insertion_point = -returned_value - 1
+
+lst.add(2, 29); // List becomes [10, 20, 29, 30, 40, 50, 60]
+
+// You can also use a comparator: Collections.binarySearch(lst, key, comparator)
+```
+
+### `Map` / `HashMap`
+
+[**Java 17 Documentation - Class `HashMap`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html)<br />
+[**Java 17 Documentation - Interface `Map`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html)
+
+```java
+import java.util.Map;
+
+import java.util.HashMap;
+
+// Hardcoded IMMUTABLE map
+final Map<Integer, String> map = Map.ofEntries(
+    Map.entry(234, "alice"),
+    Map.entry(432, "bob"),
+    Map.entry(567, "mallory"),
+);
+// Hardcoded IMMUTABLE map, less-verbose, but only works up to 10 entries.
+final Map<Integer, String> map = Map.of(
+    234, "alice",
+    432, "bob",
+    567, "mallory",
+);
+// MUTABLE map, usually better to call `.put()` repeatedly.
+final HashMap<Integer, String> map = new HashMap();
+map.put(234, "alice");
+map.put(432, "bob");
+map.put(567, "mallory");
+
+map.size(); // --> int
+for (var x : map.entrySet()) System.out.println(x.getKey() + " : " + x.getValue());
+for (var k : map.keySet()) System.out.println(k); // Keys only
+for (var v : map.values()) System.out.println(v); // Values only
+
+map.put(k, v); // Replaces old values if they exist
+map.remove(k); // Returns the associated value, or null if it doesn't exist
+map.clear();
+
+map.containsKey(k); // --> true if key exists
+map.containsValue(v); // --> true if v appears at least once as a value.
+map.get(k); // Returns null if key doesn't exist
+map.getOrDefault(k, defaultval); // Returns defaultval if key doesn't exist
+```
+
+Extracting keys:
+
+```java
+// To a fixed-size array
+K[] arr = new K[map.size()];
+arr = map.keySet().toArray(arr);
+
+// To List/Set (MUTABLE)
+// (Both constructors take Collection. keySet() returns Set, which extends Collection.)
+final List<K> lst = new ArrayList(map.keySet());
+final Set<K> set = new HashSet(map.keySet());
+```
+
+Extracting values:
+
+```java
+// To a fixed-size array
+V[] arr = new V[map.size()];
+arr = map.values().toArray(arr);
+
+// To List/Set (MUTABLE)
+// (Both constructors take Collection. values() returns Collection.)
+final List<V> lst = new ArrayList(map.values());
+final Set<V> set = new HashSet(map.values());
+```
+
+### `Set` / `HashSet`
+
+[**Java 17 Documentation - Class `HashSet`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashSet.html)<br />
+[**Java 17 Documentation - Interface `Set`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html)
+
+```java
+import java.util.Set;
+
+import java.util.HashSet;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+// Constructor accepts any Collection
+final var set = new HashSet<Integer>(collection);
+// Hardcoding
+final var set = new HashSet<Integer>(Arrays.asList(123, 321, 456, 654));
+// Convert `int[]` to `Set<Integer>`
+final HashSet<Integer> set = Arrays.stream(arr).boxed()
+    .collect(Collectors.toCollection(HashSet::new)); // MUTABLE
+// Convert `Integer[]` to `Set<Integer>`
+final var set = new HashSet<Integer>(Arrays.asList(arr));
+
+set.size(); // --> int
+for (int v : set) System.out.println(v);
+
+set.add(v); // Returns true if a new item was added.
+set.remove(v); // Returns true an item was removed. (Silently "fails".)
+set.clear();
+
+set.contains(v); // --> bool
+```
+
+### `Deque` / `ArrayDeque`
+
+[**Java 17 Documentation - Class `ArrayDeque`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayDeque.html)<br />
+[**Java 17 Documentation - Interface `Deque`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Deque.html)
+
+```java
+import java.util.Deque;
+
+import java.util.ArrayDeque;
+
+// Constructor accepts any Collection
+final var dq = new ArrayDeque<Integer>(collection);
+// Hardcoding
+final var dq = new ArrayDeque<Integer>(Arrays.asList(123, 321, 456, 654));
+// TODO: Do I need to also add conversions with fixed-size arrays?
+//       The other sections already have plenty of examples.
+//       The constructor already accepts a Collection.
+
+dq.size();    // Returns int
+dq.isEmpty(); // Returns boolean
+for (int v : dq) System.out.println(v);
+
+dq.addLast(v);    // Meant to throw an exception if capacity exceeded, but ArrayDeque grows automatically.
+dq.addFirst(v);   // ^
+dq.removeLast();  // Pop. Throws exception if deque is empty.
+dq.removeFirst(); // ^
+dq.getLast();     // Peek. Throws exception if deque is empty.
+dq.getFirst();    // ^
+
+dq.offerLast(v);  // Returns true if the element was added successfully.
+dq.offerFirst(v); // ^
+dq.pollLast();    // Pop. Returns null if deque is empty.
+dq.pollFirst();   // ^
+dq.peekLast();    // Peek. Returns null if deque is empty.
+dq.peekFirst();   // ^
+```
+
+### `Queue`
+
+[**Java 17 Documentation - Interface `Queue`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Queue.html)
+
+```java
+import java.util.Queue;
+
+import java.util.ArrayDeque;
+
+// See ArrayDeque notes for more on the constructor.
+final Queue<Integer> q = new ArrayDeque<Integer>();
+
+q.size();    // Returns int
+q.isEmpty(); // Returns boolean
+for (int v : q) System.out.println(v);
+
+q.add(v);    // Equivalent to Deque addLast()
+q.remove();  // Equivalent to Deque removeFirst()
+q.element(); // Equivalent to Deque getFirst()
+
+q.offer(v);  // Equivalent to Deque offerLast()
+q.poll();    // Equivalent to Deque pollFirst()
+q.peek();    // Equivalent to Deque peekFirst()
+```
+
+### `PriorityQueue`
+
+By default (when you don't supply a `Comparator`), `PriorityQueue` is a **min-priority-queue**, following natural ordering.
+
+[**Java 17 Documentation - Class `PriorityQueue`**](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/PriorityQueue.html)
+
+```java
+import java.util.PriorityQueue;
+
+// Constructor accepts any Collection
+final var q = new PriorityQueue<Integer>(collection);
+
+// Hardcoding
+final var q1 = new PriorityQueue<Integer>(Arrays.asList(7, 3, 6, 4, 1, 5));
+// (Reading out the result:)
+while (!q1.isEmpty()) System.out.println(q1.remove()); // Prints in order: 1, 3, 4, 5, 6, 7
+
+// Constructing with a custom Comparator.
+// Constructor can't take both a Comparator and Collection, so call add() repeatedly as needed.
+// See Array sort() notes for more ways to pass a comparator.
+final var q2 = new PriorityQueue<Integer>(
+    (var a, var b) -> b.compareTo(a)
+);
+q2.add(7);
+q2.add(2);
+q2.add(5);
+q2.add(6);
+// (Reading out the result:)
+while (!q2.isEmpty()) System.out.println(q2.remove()); // Prints in order: 7, 6, 5, 2
+
+// PriorityQueue implements the Queue interface.
+// Refer to the Queue notes for the API.
+```
+
