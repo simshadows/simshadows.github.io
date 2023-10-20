@@ -6,7 +6,7 @@ keywords: ["programming", "python", "cheatsheet"]
 ---
 
 import PythonDocsIndex from "./_python.PythonDocsIndex.astro";
-import "./_python.css";
+import "./_python.css"; //_
 
 ## Resources
 
@@ -196,7 +196,7 @@ x = p[0] # same as p.x
 ```
 
 
-## Interacting with the system
+## System API
 
 Python Documentation - [**`os`**](https://docs.python.org/3/library/os.html), [**`sys`**](https://docs.python.org/3/library/sys.html)
 
@@ -253,6 +253,38 @@ if __name__ == "__main__":
 ### Leetcode
 
 Python lacks sorted associative containers like C++'s `std::set` and `std::map`. As a workaround, Leetcode supplies the [`sortedcontainers`](https://grantjenks.com/docs/sortedcontainers/) library to use on the platform (as mentioned [here](https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages-)).
+
+### Trie
+
+```py
+from collections import defaultdict
+
+class Trie:
+    __slots__ = ["_root"]
+
+    def __init__(self):
+        op = lambda: defaultdict(op)
+        self._root = op()
+
+    def add(self, s):
+        reduce(lambda cur, c: cur[c], s, self._root)[""] = True
+
+    def has(self, s):
+        cur = self._root
+        for c in s:
+            if c not in cur:
+                return False
+            cur = cur[c]
+        return "" in cur
+
+    def starts_with(self, prefix):
+        cur = self._root
+        for c in prefix:
+            if c not in cur:
+                return False
+            cur = cur[c]
+        return True
+```
 
 
 ## TODO

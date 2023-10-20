@@ -51,18 +51,30 @@ public class HelloWorld {
         System.out.println("Hello, World!");
     }
 }
-```
 
-A simple class example:
-
-```java
-class Foo {
+public class Foo {
     public int a;
     public String b;
 
     public Foo(int a, String b) {
         this.a = a;
         this.b = b;
+    }
+}
+
+public class ClosureExample {
+    interface Closure {
+        public String run(String a);
+    }
+
+    public static void main(String[] args) {
+        final var s = "xd";
+        final var closure = new Closure() {
+            public String run(String a) {
+                return a + " lmao " + s;
+            }
+        };
+        System.out.println(closure.run("ayy")); // Prints "ayy lmao xd"
     }
 }
 ```
