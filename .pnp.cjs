@@ -39,6 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["astro", "npm:3.0.12"],\
             ["normalize.css", "npm:8.0.1"],\
             ["preact", "npm:10.17.1"],\
+            ["sharp", "npm:0.32.6"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
             ["vite", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.4.9"]\
           ],\
@@ -5843,6 +5844,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tunnel-agent", "npm:0.6.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:0.32.6", {\
+          "packageLocation": "./.yarn/unplugged/sharp-npm-0.32.6-6b3822c437/node_modules/sharp/",\
+          "packageDependencies": [\
+            ["sharp", "npm:0.32.6"],\
+            ["color", "npm:4.2.3"],\
+            ["detect-libc", "npm:2.0.2"],\
+            ["node-addon-api", "npm:6.1.0"],\
+            ["node-gyp", "npm:9.4.0"],\
+            ["prebuild-install", "npm:7.1.1"],\
+            ["semver", "npm:7.5.4"],\
+            ["simple-get", "npm:4.0.1"],\
+            ["tar-fs", "npm:3.0.4"],\
+            ["tunnel-agent", "npm:0.6.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["shebang-command", [\
@@ -5940,6 +5957,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["astro", "npm:3.0.12"],\
             ["normalize.css", "npm:8.0.1"],\
             ["preact", "npm:10.17.1"],\
+            ["sharp", "npm:0.32.6"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
             ["vite", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.4.9"]\
           ],\

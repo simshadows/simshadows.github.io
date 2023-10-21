@@ -26,6 +26,7 @@
     "astro": "^3.0.12",
     "normalize.css": "^8.0.1",
     "preact": "^10.6.5",
+    "sharp": "^0.32.6",
     "typescript": "^5.2.2",
     "vite": "^4.4.9"
   }
