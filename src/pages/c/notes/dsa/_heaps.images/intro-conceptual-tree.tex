@@ -1,0 +1,74 @@
+\documentclass[crop,tikz]{standalone}
+\begin{document}
+\definecolor{myblue}{RGB}{66,133,244}
+\definecolor{myteal}{RGB}{70,189,198}
+\definecolor{mygreen}{RGB}{52,168,83}
+\definecolor{myyellow}{RGB}{251,188,4}
+\definecolor{myorange}{RGB}{255,109,1}
+\definecolor{myred}{RGB}{234,67,53}
+\definecolor{mypurple}{HTML}{9900FF}
+\begin{tikzpicture}[
+    every node/.style={
+        circle, fill=myyellow!40, draw=myyellow, very thick,
+        inner sep=1pt, minimum size=8mm
+    },
+    level 1/.style = {
+        sibling distance=48mm,level distance=11mm, nodes={
+            fill=myblue!30, draw=myblue
+        }
+    },
+    level 2/.style = {
+        sibling distance=24mm, level distance=12mm, nodes={
+            fill=myred!30, draw=myred
+        }
+    },
+    level 3/.style = {
+        sibling distance=12mm, level distance=14mm, nodes={
+            fill=mygreen!30, draw=mygreen
+        }
+    },
+    line width=1.6pt,
+    -%{Stealth[length=2.4mm, width=2.8mm]}
+]
+    % Started with array:
+    %     18 35 74 36 29 81 5 57 87 68 41 94
+    % Then we ran a heapify function on it.
+    \node(NODE0){94}
+        child{node(NODE1){87}
+            child{node(NODE3){57}
+                child{node(NODE7){35}}
+                child{node(NODE8){36}}
+            }
+            child{node(NODE4){68}
+                child{node(NODE9){29}}
+                child{node(NODE10){41}}
+            }
+        }
+        child{node(NODE2){81}
+            child{node(NODE5){74}
+                child{node(NODE11){18}}
+                child[missing]{}
+            }
+            child{node(NODE6){5}
+                %child[missing]{}
+                %child[missing]{}
+            }
+        }
+    ;
+    \path
+        (NODE0.north)  node[fill=none, draw=none, yshift=2.2mm]{$ 0$}
+        (NODE1.north)  node[fill=none, draw=none, yshift=2.2mm]{$ 1$}
+        (NODE2.north)  node[fill=none, draw=none, yshift=2.2mm]{$ 2$}
+        (NODE3.north)  node[fill=none, draw=none, yshift=2.2mm]{$ 3$}
+        (NODE4.north)  node[fill=none, draw=none, yshift=2.2mm]{$ 4$}
+        (NODE5.north)  node[fill=none, draw=none, yshift=2.2mm]{$ 5$}
+        (NODE6.north)  node[fill=none, draw=none, yshift=2.2mm]{$ 6$}
+        (NODE7.north)  node[fill=none, draw=none, yshift=2.6mm]{$ 7$}
+        (NODE8.north)  node[fill=none, draw=none, yshift=2.6mm]{$ 8$}
+        (NODE9.north)  node[fill=none, draw=none, yshift=2.6mm]{$ 9$}
+        (NODE10.north) node[fill=none, draw=none, yshift=2.6mm]{$10$}
+        (NODE11.north) node[fill=none, draw=none, yshift=2.6mm]{$11$}
+    ;
+\end{tikzpicture}
+\end{document}
+
