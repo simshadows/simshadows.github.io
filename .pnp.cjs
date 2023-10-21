@@ -35,11 +35,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@astrojs/ts-plugin", "npm:1.1.3"],\
             ["@babel/core", "npm:7.22.17"],\
             ["@fontsource/roboto", "npm:5.0.8"],\
+            ["@types/node", "npm:20.8.7"],\
             ["astro", "npm:3.0.12"],\
             ["normalize.css", "npm:8.0.1"],\
             ["preact", "npm:10.17.1"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
-            ["vite", "virtual:1eb98feedeec6916c0fca19a1e0768ef656b062bd6a58c17ccab4ce08b6f028ad260c67e0fa12a4e6af12622078a16bf2d74c54bbcf164fef544a8270b55bfcb#npm:4.4.9"]\
+            ["vite", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.4.9"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -1539,6 +1540,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-20.6.2-bff5d8378f-96fe530387.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:20.6.2"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:20.8.7", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-20.8.7-a09c56cd33-2173c0c03d.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:20.8.7"],\
+            ["undici-types", "npm:5.25.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5927,11 +5936,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@astrojs/ts-plugin", "npm:1.1.3"],\
             ["@babel/core", "npm:7.22.17"],\
             ["@fontsource/roboto", "npm:5.0.8"],\
+            ["@types/node", "npm:20.8.7"],\
             ["astro", "npm:3.0.12"],\
             ["normalize.css", "npm:8.0.1"],\
             ["preact", "npm:10.17.1"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"],\
-            ["vite", "virtual:1eb98feedeec6916c0fca19a1e0768ef656b062bd6a58c17ccab4ce08b6f028ad260c67e0fa12a4e6af12622078a16bf2d74c54bbcf164fef544a8270b55bfcb#npm:4.4.9"]\
+            ["vite", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.4.9"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -6387,6 +6397,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["undici-types", [\
+        ["npm:5.25.3", {\
+          "packageLocation": "./.yarn/cache/undici-types-npm-5.25.3-2ac9eafc9e-ec9d2cc365.zip/node_modules/undici-types/",\
+          "packageDependencies": [\
+            ["undici-types", "npm:5.25.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["unherit", [\
         ["npm:3.0.1", {\
           "packageLocation": "./.yarn/cache/unherit-npm-3.0.1-a1c6b0c3cc-36e54f007b.zip/node_modules/unherit/",\
@@ -6632,6 +6651,45 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/less", null],\
             ["@types/lightningcss", null],\
             ["@types/node", null],\
+            ["@types/sass", null],\
+            ["@types/stylus", null],\
+            ["@types/sugarss", null],\
+            ["@types/terser", null],\
+            ["esbuild", "npm:0.18.20"],\
+            ["fsevents", "patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1"],\
+            ["less", null],\
+            ["lightningcss", null],\
+            ["postcss", "npm:8.4.29"],\
+            ["rollup", "npm:3.29.0"],\
+            ["sass", null],\
+            ["stylus", null],\
+            ["sugarss", null],\
+            ["terser", null]\
+          ],\
+          "packagePeers": [\
+            "@types/less",\
+            "@types/lightningcss",\
+            "@types/node",\
+            "@types/sass",\
+            "@types/stylus",\
+            "@types/sugarss",\
+            "@types/terser",\
+            "less",\
+            "lightningcss",\
+            "sass",\
+            "stylus",\
+            "sugarss",\
+            "terser"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.4.9", {\
+          "packageLocation": "./.yarn/__virtual__/vite-virtual-b905d08c46/0/cache/vite-npm-4.4.9-e845c1bbf8-c511024cea.zip/node_modules/vite/",\
+          "packageDependencies": [\
+            ["vite", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.4.9"],\
+            ["@types/less", null],\
+            ["@types/lightningcss", null],\
+            ["@types/node", "npm:20.8.7"],\
             ["@types/sass", null],\
             ["@types/stylus", null],\
             ["@types/sugarss", null],\
