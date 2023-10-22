@@ -1,0 +1,37 @@
+\documentclass[crop,tikz]{standalone}
+\input{./../../../../../latex-helpers/general.tex}
+\begin{document}
+\begin{tikzpicture}[
+    line width=1.6pt,
+    draw=black,
+    >=Stealth
+]
+    \node[GraphNodeSmall] (NODE0) at (0,0) {};
+    \node[GraphNodeSmall] (NODE1) at (1,1) {};
+    \node[GraphNodeSmall] (NODE11) at (0.4,2) {};
+    \node[GraphNodeSmall] (NODE12) at (2.2,1.4) {};
+    \node[GraphNodeSmall] (NODE111) at (-0.8,1.4) {};
+    \node[GraphNodeSmall] (NODE121) at (1.8,2.3) {};
+    \node[GraphNodeSmall] (NODE122) at (1.8,0.3) {};
+    \node[GraphNodeSmall] (NODE2) at (-2,0.8) {};
+    \node[GraphNodeSmall] (NODE21) at (-1.5,2.5) {};
+    \node[GraphNodeSmall] (NODE22) at (-3,1.8) {};
+    \node[GraphNodeSmall] (NODE23) at (-3.5,0.2) {};
+    \node[GraphNodeSmall] (NODE24) at (-2,-0.4) {};
+
+    \draw
+        (NODE0) edge[line width=2.6pt] (NODE1)
+        (NODE0) edge[line width=2.6pt] (NODE2)
+        (NODE1) edge[line width=2.6pt] (NODE11)
+            (NODE11) edge[line width=2.6pt] (NODE111)
+        (NODE1) edge[line width=2.6pt] (NODE12)
+            (NODE12) edge[line width=2.6pt] (NODE121)
+            (NODE12) edge[line width=2.6pt] (NODE122)
+        (NODE2) edge[line width=2.6pt] (NODE21)
+        (NODE2) edge[line width=2.6pt] (NODE22)
+        (NODE2) edge[line width=2.6pt] (NODE23)
+        (NODE2) edge[line width=2.6pt] (NODE24)
+    ;
+\end{tikzpicture}
+\end{document}
+

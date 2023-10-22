@@ -1,0 +1,107 @@
+\documentclass[crop,tikz]{standalone}
+\input{./../../../../../latex-helpers/general.tex}
+\begin{document}
+\begin{tikzpicture}[
+    line width=1.6pt,
+    draw=black,
+    -%{Stealth[length=2.4mm, width=2.8mm]}
+]
+    %\tikzstyle{every node}=[
+    %    font={\large\bfseries}
+    %]
+
+    \node[GraphNodeRed, draw=black]
+        (NODE0) at (0,0) {$v_2$};
+    \node[GraphNodeRed, draw=black]
+        (NODE1) at (-1,2.5) {$v_3$};
+    \node[GraphNodeBlue, draw=black]
+        (NODE2) at (-4,0.8) {$v_0$};
+    \node[GraphNodePurple, draw=black]
+        (NODE3) at (-2.2,-1) {$v_1$};
+    \node[GraphNodeYellow, draw=black]
+        (NODE4) at (-4.5, -1.3) {$v_4$};
+
+    \draw
+        (NODE0)
+        edge[
+            line width=2.2pt,
+            draw=myred
+        ]
+        node[midway, right, xshift=1mm, yshift=1mm] {$e_4$}
+        (NODE1)
+    ;
+    \draw
+        (NODE2)
+        edge[
+            loop left,
+            min distance=14mm,
+            line width=2.2pt,
+            draw=myblue
+        ]
+        node[midway, above, xshift=4mm, yshift=2mm] {$e_5$}
+        (NODE2)
+    ;
+    \draw
+        (NODE1)
+        edge[
+            bend right,
+            line width=2.2pt,
+            draw=mygreen
+        ]
+        node[midway, left, yshift=2mm] {$e_0$}
+        (NODE2)
+    ;
+    \draw
+        (NODE1)
+        edge[
+            bend left,
+            line width=2.2pt,
+            draw=mygreen
+        ]
+        node[midway, left, yshift=2mm] {$e_1$}
+        (NODE2)
+    ;
+
+    \draw
+        (NODE2)
+        edge[
+            line width=2.2pt,
+            draw=mypurple
+        ]
+        node[midway, right, xshift=1mm, yshift=1mm] {$e_2$}
+        (NODE3)
+    ;
+    \draw
+        (NODE3)
+        edge[
+            line width=2.2pt,
+            draw=mypurple
+        ]
+        node[midway, above, xshift=-0.5mm, yshift=0.5mm] {$e_3$}
+        (NODE0)
+    ;
+
+    \node[right] at (1.5,0.7) {\parbox{10cm}{
+        $\braces*{v_0, v_1, v_2, v_3, v_4}$ are \myul{\emph{vertices}}.
+        \\[1mm]
+        $\braces*{e_0, e_1, e_2, e_3, e_4, e_5}$ are \myul{\emph{edges}}.
+        \\[1mm]
+        \textbf{\color{myred} Edge $\boldsymbol{e_4}$ is \myul{\emph{incident}} on each \myul{\emph{endpoint}} $\boldsymbol{v_2}$ and $\boldsymbol{v_3}$.}
+        \\[1mm]
+        \textbf{\color{myred} Vertices $\boldsymbol{v_2}$ and $\boldsymbol{v_3}$ are \myul{\emph{adjacent}} (connected by an edge).}
+        \\[1mm]
+        Edges \myul{\emph{connect}} their endpoints.
+        \\[1mm]
+        \textbf{\color{mypurple} Edges $\boldsymbol{e_2}$ and $\boldsymbol{e_3}$ are \myul{\emph{adjacent}} (shared endpoint).}
+        \\[1mm]
+        \textbf{\color{mygreen!85!black} Edges $\boldsymbol{e_0}$ and $\boldsymbol{e_1}$ are \myul{\emph{parallel}} (same pair of endpoints).}
+        \\[1mm]
+        \textbf{\color{myblue!85!black} Edge $\boldsymbol{e_5}$ is a \myul{\emph{loop}} (only one endpoint).}
+        \\[1mm]
+        \textbf{\color{myblue!85!black} Vertex $\boldsymbol{v_0}$ is a \myul{\emph{adjacent} \emph{to} \emph{itself}} (endpoint of a loop).}
+        \\[1mm]
+        \textbf{\color{myyellow!75!black} Vertex $\boldsymbol{v_4}$ is \myul{\emph{isolated}} (no incident edges).}
+    }};
+\end{tikzpicture}
+\end{document}
+

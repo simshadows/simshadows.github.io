@@ -7,6 +7,7 @@ export const katexConfig = {
         "\\parens": "{\\left({#1}\\right)}",
         "\\brackets": "{\\left[{#1}\\right]}",
         "\\floor": "{\\left\\lfloor{#1}\\right\\rfloor}",
+        "\\Nth": "{{#1}^\\textit{#2}}",
     },
 }
 

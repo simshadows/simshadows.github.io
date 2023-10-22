@@ -1,0 +1,50 @@
+\documentclass[crop,tikz]{standalone}
+\input{./../../../../../latex-helpers/general.tex}
+\begin{document}
+\begin{tikzpicture}[
+    line width=1.6pt,
+    draw=black,
+    >=Stealth
+]
+    \node[GraphNodeSmall]
+        (NODE0) at (0,0) {};
+    \node[GraphNodeSmall]
+        (NODE1) at (-0.4,1.8) {};
+    \node[GraphNodeSmall]
+        (NODE2) at (-3.5,1.5) {};
+    \node[GraphNodeSmall]
+        (NODE3) at (-2.5,-1) {};
+
+    \draw
+        (NODE0)
+        edge[line width=2.2pt]
+        node[midway, right, xshift=1mm, yshift=1mm] {$4$}
+        (NODE1)
+    ;
+    \draw
+        (NODE0)
+        edge[line width=2.2pt]
+        node[midway, right, xshift=-1.5mm, yshift=3mm] {$12$}
+        (NODE2)
+    ;
+    \draw
+        (NODE0)
+        edge[line width=2.2pt]
+        node[midway, right, xshift=-4mm, yshift=2.5mm] {$8$}
+        (NODE3)
+    ;
+    \draw
+        (NODE2)
+        edge[line width=2.2pt]
+        node[midway, left, xshift=-0.5mm, yshift=-1.5mm] {$-4$}
+        (NODE3)
+    ;
+    \draw
+        (NODE2)
+        edge[line width=2.2pt, loop left, min distance=14mm]
+        node[very near end, above, xshift=-1.5mm, yshift=0mm] {$25$}
+        (NODE2)
+    ;
+\end{tikzpicture}
+\end{document}
+
