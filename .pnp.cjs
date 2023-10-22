@@ -35,8 +35,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@astrojs/ts-plugin", "npm:1.1.3"],\
             ["@babel/core", "npm:7.22.17"],\
             ["@fontsource/roboto", "npm:5.0.8"],\
+            ["@types/katex", "npm:0.16.5"],\
             ["@types/node", "npm:20.8.7"],\
             ["astro", "npm:3.0.12"],\
+            ["katex", "npm:0.16.9"],\
             ["normalize.css", "npm:8.0.1"],\
             ["preact", "npm:10.17.1"],\
             ["sharp", "npm:0.32.6"],\
@@ -1491,6 +1493,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/katex", [\
+        ["npm:0.16.5", {\
+          "packageLocation": "./.yarn/cache/@types-katex-npm-0.16.5-ff9336f176-a1ce22cd87.zip/node_modules/@types/katex/",\
+          "packageDependencies": [\
+            ["@types/katex", "npm:0.16.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/mdast", [\
         ["npm:3.0.12", {\
           "packageLocation": "./.yarn/cache/@types-mdast-npm-3.0.12-e8f7ab24f4-83adb8679b.zip/node_modules/@types/mdast/",\
@@ -2431,6 +2442,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/comma-separated-tokens-npm-2.0.3-a4a34086b3-e3bf9e0332.zip/node_modules/comma-separated-tokens/",\
           "packageDependencies": [\
             ["comma-separated-tokens", "npm:2.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["commander", [\
+        ["npm:8.3.0", {\
+          "packageLocation": "./.yarn/cache/commander-npm-8.3.0-c0d18c66d5-0f82321821.zip/node_modules/commander/",\
+          "packageDependencies": [\
+            ["commander", "npm:8.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3788,6 +3808,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/jsonc-parser-npm-3.2.0-1896ece3b7-946dd9a5f3.zip/node_modules/jsonc-parser/",\
           "packageDependencies": [\
             ["jsonc-parser", "npm:3.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["katex", [\
+        ["npm:0.16.9", {\
+          "packageLocation": "./.yarn/cache/katex-npm-0.16.9-721692b7ff-861194dfd4.zip/node_modules/katex/",\
+          "packageDependencies": [\
+            ["katex", "npm:0.16.9"],\
+            ["commander", "npm:8.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5953,8 +5983,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@astrojs/ts-plugin", "npm:1.1.3"],\
             ["@babel/core", "npm:7.22.17"],\
             ["@fontsource/roboto", "npm:5.0.8"],\
+            ["@types/katex", "npm:0.16.5"],\
             ["@types/node", "npm:20.8.7"],\
             ["astro", "npm:3.0.12"],\
+            ["katex", "npm:0.16.9"],\
             ["normalize.css", "npm:8.0.1"],\
             ["preact", "npm:10.17.1"],\
             ["sharp", "npm:0.32.6"],\

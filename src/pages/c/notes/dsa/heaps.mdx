@@ -5,6 +5,9 @@ description: WIP
 keywords: ["programming", "heaps", "binary heaps", "priority queue"]
 ---
 
+import Latex from "@components/Latex";
+import Todo from "@components/Todo";
+
 # THIS PAGE IS A VERY EARLY WORK-IN-PROGRESS.
 
 ## Introduction
@@ -28,4 +31,63 @@ Example of a *binary max-heap* data structure (colours are used only to help sho
 ![The conceptual tree structure of the heap.](./_heaps.images/generated-do-not-edit/intro-conceptual-tree.svg)
 
 ![Implementation using an array representation.](./_heaps.images/generated-do-not-edit/intro-array-rep.svg)
+
+Some common operations:
+
+<table class="general">
+    <thead>
+        <tr>
+            <th>Operation</th>
+            <th>Runtime</th>
+            <th>Basic Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><Latex code="\text{Push}(\textit{item})" /></td>
+            <td><Latex code="O(\log n)" /></td>
+            <td>Add a single item.</td>
+        </tr>
+        <tr>
+            <td><Latex code="\text{Pop}() \to \textit{item}" /></td>
+            <td><Latex code="O(\log n)" /></td>
+            <td>Extract and remove the root of the heap (i.e. the <u>biggest item</u> of a max-heap, or the <u>smallest item</u> of a min-heap).</td>
+        </tr>
+        <tr>
+            <td><Latex code="\text{Push-Pop}(\textit{item}) \to \textit{item}" /></td>
+            <td><Latex code="O(\log n)" /></td>
+            <td>Equivalent to a push and then a pop, in that order. <em>Typically more efficient than using the individual operations.</em></td>
+        </tr>
+        <tr>
+            <td><Latex code="\text{Pop-Push}(\textit{item}) \to \textit{item}" /></td>
+            <td><Latex code="O(\log n)" /></td>
+            <td>Equivalent to a pop and then a push, in that order. <em>Typically more efficient than using the individual operations.</em></td>
+        </tr>
+        <tr>
+            <td><Latex code="\text{Heapify}()" /></td>
+            <td><Latex code="O(n)" /></td>
+            <td>Convert an arbitrary <em>complete binary tree</em> into a valid heap.</td>
+        </tr>
+        <tr>
+            <td><Latex code="\text{Get-Size}() \to \textit{size}" /></td>
+            <td><Latex code="O(1)" /></td>
+            <td>Get the number of items in the heap.</td>
+        </tr>
+        <tr>
+            <td>(internal) <Latex code="\text{Sift-Up}(\textit{node})" /></td>
+            <td><Latex code="O(\log n)" /></td>
+            <td>Moves a node up the tree until it is in a valid position.</td>
+        </tr>
+        <tr>
+            <td>(internal) <Latex code="\text{Sift-Down}(\textit{node})" /></td>
+            <td><Latex code="O(\log n)" /></td>
+            <td>Moves a node down the tree until it is in a valid position.</td>
+        </tr>
+    </tbody>
+</table>
+
+
+## Array Indexing
+
+<Todo>this</Todo>
 
