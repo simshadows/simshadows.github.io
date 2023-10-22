@@ -39,17 +39,17 @@ const {
             <li><a href="/c/cheatsheets/python/"><b>Python</b></a></li>
         </ul>
     </li>
-    {showWIP && <li><b>Notes</b>
+    <li><b>Notes</b>
         <ul>
             <li><b>Data Structures and Algorithms</b>
                 <ul>
-                    <li><a href="/c/notes/dsa/heaps/"><b>Heaps</b></a> <Wip /></li>
+                    <li><a href="/c/notes/dsa/heaps/"><b>Heaps</b></a></li>
                 </ul>
             </li>
-            <li><a href="/c/notes/kubernetes/"><b>Kubernetes</b></a> <Wip /></li>
-            <li><a href="/c/programming-learners-checklist/"><b>Programming Learner's Checklist</b></a> <Wip /></li>
+            {showWIP && <li><a href="/c/notes/kubernetes/"><b>Kubernetes</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/c/programming-learners-checklist/"><b>Programming Learner's Checklist</b></a> <Wip /></li>}
         </ul>
-    </li>}
+    </li>
 </ul>
 
 <h4>Gaming</h4>

@@ -1,0 +1,54 @@
+\documentclass[crop,tikz]{standalone}
+\input{./../../../../../latex-helpers/general.tex}
+\usetikzlibrary{matrix}
+\begin{document}
+\begin{tikzpicture}[
+    array/.style={
+        matrix of nodes,
+        nodes={draw, minimum size=7mm, fill=mygreen!30},
+        column sep=-\pgflinewidth,
+        row sep=0.5mm,
+        nodes in empty cells,
+        row 1/.style={
+            nodes={draw=none, fill=none, minimum size=5mm, color=myred}
+        },
+        row 2 column 1/.style={nodes={fill=myyellow!40}},
+        row 2 column 2/.style={nodes={fill=myblue!30}},
+        row 2 column 3/.style={nodes={fill=myblue!30}},
+        row 2 column 4/.style={nodes={fill=myred!30}},
+        row 2 column 5/.style={nodes={fill=myred!30}},
+        row 2 column 6/.style={nodes={fill=myred!30}},
+        row 2 column 7/.style={nodes={fill=myred!30}}
+    }
+]
+    % Ugh, I keep getting errors if I use '&', so I'm forced to use
+    % '\pgfmatrixnextcell' instead.
+    \matrix[array] (array) {
+        $1$
+            \pgfmatrixnextcell $2$
+            \pgfmatrixnextcell $3$
+            \pgfmatrixnextcell $4$
+            \pgfmatrixnextcell $5$
+            \pgfmatrixnextcell $6$
+            \pgfmatrixnextcell $7$
+            \pgfmatrixnextcell $8$
+            \pgfmatrixnextcell $9$
+            \pgfmatrixnextcell $10$
+            \pgfmatrixnextcell $11$
+            \pgfmatrixnextcell $12$ \\
+        $94$
+            \pgfmatrixnextcell $87$
+            \pgfmatrixnextcell $81$
+            \pgfmatrixnextcell $57$
+            \pgfmatrixnextcell $68$
+            \pgfmatrixnextcell $74$
+            \pgfmatrixnextcell $5$
+            \pgfmatrixnextcell $35$
+            \pgfmatrixnextcell $36$
+            \pgfmatrixnextcell $29$
+            \pgfmatrixnextcell $41$
+            \pgfmatrixnextcell $18$ \\
+    };
+\end{tikzpicture}
+\end{document}
+
