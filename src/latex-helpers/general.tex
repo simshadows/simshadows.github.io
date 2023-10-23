@@ -1,15 +1,30 @@
 \usepackage{mathtools}
 \usepackage{soul} % Similar package to ulem
 
+% Core Mathematics
+\usepackage{siunitx}
+
 \usetikzlibrary{
     arrows,
     arrows.meta,
     matrix
 }
 
+\newcommand\rhs{\textit{RHS}}
+\newcommand\lhs{\textit{LHS}}
+
+\newcommand{\Nth}[2]{\ensuremath{{#1}^\textit{#2}}}
+\newcommand{\diff}{\ensuremath{\mathrm{d}}}
+\newcommand{\parallelsum}{\mathbin{\|}}
+
 \newcommand{\myul}[1]{\ul{#1}} % A proxy for the preferred underline command.
 
+\DeclarePairedDelimiter\parens{(}{)}
+\DeclarePairedDelimiter\brackets{[}{]}
 \DeclarePairedDelimiter\braces{\{}{\}}
+
+\DeclarePairedDelimiter\abs{\lvert{}}{\rvert{}}
+\DeclarePairedDelimiter\inte{[}{]}
 
 \definecolor{myblue}{RGB}{66,133,244}
 \definecolor{myteal}{RGB}{70,189,198}
