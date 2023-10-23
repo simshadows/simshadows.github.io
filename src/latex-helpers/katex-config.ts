@@ -1,6 +1,7 @@
 // <https://katex.org/docs/options>
 
-export const katexConfig = {
+const katexConfig = {
+    displayMode: true, // To be overwritten
     throwOnError: true,
     strict: "error",
     macros: {
@@ -16,8 +17,22 @@ export const katexConfig = {
         "\\kilo": "{\\text{k}}",
         "\\gram": "{\\text{g}}",
 
-        // Some technical debt to figure out a better solution to
+        ////////////////////////////////////////////////////////////
+        // Some technical debt to figure out a better solution to //
+        ////////////////////////////////////////////////////////////
+
         "\\dollars": "{\\${#1}}",
+
+        // These colours must mirror those found in global.css
+        "\\mylightred": "#ffb3b3",
+        "\\mylightgreen": "#b3ffb3",
+        "\\mylightblue": "#b3b3ff",
     },
+}
+
+export function getConfig(displayMode: boolean) {
+    const deepcopy = {...katexConfig, macros: {...katexConfig.macros}};
+    deepcopy.displayMode = displayMode;
+    return deepcopy;
 }
 

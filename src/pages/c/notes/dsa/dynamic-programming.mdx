@@ -5,9 +5,13 @@ description: Notes on dynamic programming.
 keywords: ["programming", "dynamic programming", "dp"]
 ---
 
-import Centered from "@components/Centered";
+import AlignVarLatex from "@components/AlignVarLatex";
 import DisplayLatex from "@components/DisplayLatex";
+import Eqref from "@components/Eqref";
+import GatherVarLatex from "@components/GatherVarLatex";
 import Latex from "@components/Latex";
+
+import Centered from "@components/Centered";
 import Todo from "@components/Todo";
 
 ## Introduction
@@ -287,18 +291,922 @@ Each cell of <Latex code="m\brackets{i, w}" /> is the highest total dollar value
 
 To fill the remaining cells, we must apply an optimal substructure. This can be expressed simply as:
 
-<DisplayLatex code="
-    \begin{gathered}
-        m \brackets{0, w} = 0
-            %\tag{eq:0-1-knapsack-problem--opt-substructure-1}
-            \\
-        m \brackets{i, w} = \max\parens{
-            m \brackets{i - 1, w - w_i} + v_i, \,
-            m \brackets{i - 1, w}
-        }
-            %\tag{eq:0-1-knapsack-problem--opt-substructure-2}
-    \end{gathered}
+<GatherVarLatex code="
+    m \brackets{0, w} = 0
+        \tag{1} \\
+    m \brackets{i, w} = \max\parens{
+        m \brackets{i - 1, w - w_i} + v_i, \,
+        m \brackets{i - 1, w}
+    }
+        \tag{2}
 " />
 
-<Todo>Finish the rest of the notes on the knapsack problem, and implement equation tagging.</Todo>
+<Eqref>1</Eqref> states the trivial case where choosing from zero items will always optimally total zero value. This lets us prefill zeroes in the first row as shown in the initial table above.
+
+<Todo>Make the table reference above clear? Original Latex version has an actual `\cref{}`.</Todo>
+
+<Eqref>2</Eqref> is a recursive equation based around a yes/no decision on whether or not to include an item in the bag. Importantly, this equation only references the previous row <Latex code="i - 1" />, meaning that we must calculate each row in order starting from <Latex code="i = 1" />. Without concerning ourselves with the details of the calculation, let's fill out this first row <Latex code="i = 1" />:
+
+<Centered>
+<table class="general">
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="16"><Latex code="w" /></th>
+        </tr>
+        <tr>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th rowspan="6"><Latex code="i" /></th>
+            <th>0</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td />
+        </tr>
+        <tr>
+            <th>3</th>
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td />
+        </tr>
+        <tr>
+            <th>4</th>
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td />
+        </tr>
+        <tr>
+            <th>5</th>
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td />
+        </tr>
+    </tbody>
+</table>
+</Centered>
+
+Using the results of row <Latex code="i = 1" />, we can now calculate row <Latex code="i = 2" />:
+
+<Centered>
+<table class="general">
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="16"><Latex code="w" /></th>
+        </tr>
+        <tr>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th rowspan="6"><Latex code="i" /></th>
+            <th>0</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td />
+        </tr>
+        <tr>
+            <th>4</th>
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td />
+        </tr>
+        <tr>
+            <th>5</th>
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td />
+        </tr>
+    </tbody>
+</table>
+</Centered>
+
+...and so on.
+
+To understand how equation <Eqref>2</Eqref> works and how we've been calculating these rows, let's use the <Latex code="i = 3" /> row as an example since this is where things get more interesting:
+
+<Centered>
+<table class="general">
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="16"><Latex code="w" /></th>
+        </tr>
+        <tr>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th rowspan="6"><Latex code="i" /></th>
+            <th>0</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td style="background: var(--color--mylightred)">0</td>
+            <td>10</td>
+            <td style="background: var(--color--mylightred)">10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>0</td>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+            <td>10</td>
+            <td style="background: var(--color--mylightblue)">10</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td />
+        </tr>
+        <tr>
+            <th>5</th>
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td /><td /><td /><td /><td />
+            <td />
+        </tr>
+    </tbody>
+</table>
+</Centered>
+
+Let's take a closer look at how <Latex code="\colorbox{\mylightblue}{$m \brackets{3, 5}$}" /> is calculated. <Latex code="m \brackets{3, 5}" /> is the highest dollar value of a bag with a carrying capacity of <Latex code="\qty{5}{\kilo\gram}" />, selecting only from the set of items <Latex code="\braces{S_1, S_2, S_3}" />. If we apply equation <Eqref>2</Eqref>, we get:
+
+<DisplayLatex code="
+    w_3 = \qty{2}{\kilo\gram}
+    \qquad\qquad
+    v_3 = \dollars{2}
+" />
+
+<AlignVarLatex code="
+    \colorbox{\mylightblue}{$m \brackets{3, 5}$} &= \max\parens{
+        m \brackets{i - 1, w - w_3} + v_3, \,
+        m \brackets{i - 1, w}
+    }
+        \\
+    &= \max\parens{
+        m \brackets{3 - 1, 5 - w_3} + v_3, \,
+        m \brackets{3 - 1, 5}
+    }
+        \\
+    &= \max\parens{
+        m \brackets{2, 5 - w_3} + v_3, \,
+        m \brackets{2, 5}
+    }
+        \\
+    &= \max\parens{
+        m \brackets{2, 5 - 2} + 2, \,
+        m \brackets{2, 5}
+    }
+        \\
+    &= \max{(
+        \phantom{.}
+        \underbrace{
+            \colorbox{\mylightred}{$m \brackets{2, 3}$} + 2
+        }_{\mathclap{\text{Option 1}}}
+        \,
+        ,
+        \phantom{.}
+        \underbrace{
+            \colorbox{\mylightred}{$m \brackets{2, 5}$}
+        }_{\mathclap{\text{Option 2}}}
+        \phantom{.}
+    )}
+        \tag{3}
+" />
+
+The last line <Eqref>3</Eqref> reads that we choose the best dollar value of two options:
+
+<ul class="description">
+    <li><span class="item-title">Option 1:</span> *We put item <Latex code="S_3" /> in the bag.* To calculate this option, we are essentially taking the empty <Latex code="\qty{5}{\kilo\gram}" /> bag, putting item <Latex code="S_3" /> into it, and then asking for the best dollar value that we can put <u>in the space that remains in the bag</u> using only the previous items <Latex code="\braces{S_1, S_2}" />. The weight of item <Latex code="S_3" /> is <Latex code="w_3 = \qty{2}{\kilo\gram}" />, so the remaining space is <Latex code="w - w_3 = 5 - 2 = \qty{3}{\kilo\gram}" />.</li>
+    <li><span class="item-title">Option 2:</span> *We don't put item <Latex code="S_3" /> in the bag.* To calculate this option, we ask what the highest dollar value of a bag with a carrying capacity of the same <Latex code="\qty{5}{\kilo\gram}" />, except we select only from items <Latex code="\braces{S_1, S_2}" />.</li>
+</ul>
+
+Continuing on from <Eqref>3</Eqref>:
+
+<AlignVarLatex code="
+    \colorbox{\mylightblue}{$m \brackets{3, 5}$} &= \max\parens{0 + 2, \, 10}
+    \\
+    &= \dollars{10}
+" />
+
+This matches what is written in the cell.
+
+Continuing until the whole table is complete, we get:
+
+<Centered>
+<table class="general">
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="16"><Latex code="w" /></th>
+        </tr>
+        <tr>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th rowspan="6"><Latex code="i" /></th>
+            <th>0</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>0</td>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+            <td>10</td>
+            <td>10</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+            <td>4</td>
+            <td>10</td>
+            <td>12</td>
+            <td>12</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <th>5</th>
+            <td>0</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>10</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td style="background: var(--color--mylightgreen)">15</td>
+        </tr>
+    </tbody>
+</table>
+</Centered>
+
+Thus, the best dollar value that we can put in a <Latex code="\qty{15}{\kilo\gram}" /> bag using items <Latex code="\braces{S_1, S_2, S_3, S_4, S_5}" /> is <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} = \dollars{15}" />.
+
+To read back an optimal set of items, we must *backtrack* starting from <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />. The idea is to first look directly backwards to see if the weight is the same, otherwise we subtract the value and the weight and check the appropriate cell. If done correctly, we touch the following cells:
+
+<Centered>
+<table class="general">
+    <thead>
+        <tr>
+            <th colspan="3" rowspan="2"></th>
+            <th colspan="16"><Latex code="w" /></th>
+        </tr>
+        <tr>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th></th>
+            <th rowspan="6"><Latex code="i" /></th>
+            <th>0</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td style="background: var(--color--mylightred)">0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_1 \to\qty{12}{\kilo\gram} \quad \dollars{4}" /></th>
+            <th>1</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td style="background: var(--color--mylightred)">0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_2 \to\qty{4}{\kilo\gram} \quad \dollars{10}" /></th>
+            <th>2</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td style="background: var(--color--mylightred)">10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_3 \to\qty{2}{\kilo\gram} \quad \dollars{2}" /></th>
+            <th>3</th>
+            <td>0</td>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+            <td>10</td>
+            <td>10</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td style="background: var(--color--mylightred)">12</td>
+            <td>12</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_4 \to\qty{1}{\kilo\gram} \quad \dollars{2}" /></th>
+            <th>4</th>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+            <td>4</td>
+            <td>10</td>
+            <td>12</td>
+            <td>12</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td style="background: var(--color--mylightred)">14</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_5 \to\qty{1}{\kilo\gram} \quad \dollars{1}" /></th>
+            <th>5</th>
+            <td>0</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>10</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td style="background: var(--color--mylightred)">15</td>
+        </tr>
+    </tbody>
+</table>
+</Centered>
+
+To understand how it works, let's start from the beginning at <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />:
+
+<Centered>
+<table class="general">
+    <thead>
+        <tr>
+            <th colspan="3" rowspan="2"></th>
+            <th colspan="16"><Latex code="w" /></th>
+        </tr>
+        <tr>
+            <th>0</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th></th>
+            <th rowspan="6"><Latex code="i" /></th>
+            <th>0</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_1 \to\qty{12}{\kilo\gram} \quad \dollars{4}" /></th>
+            <th>1</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_2 \to\qty{4}{\kilo\gram} \quad \dollars{10}" /></th>
+            <th>2</th>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_3 \to\qty{2}{\kilo\gram} \quad \dollars{2}" /></th>
+            <th>3</th>
+            <td>0</td>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+            <td>10</td>
+            <td>10</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_4 \to\qty{1}{\kilo\gram} \quad \dollars{2}" /></th>
+            <th>4</th>
+            <td>0</td>
+            <td>2</td>
+            <td>2</td>
+            <td>4</td>
+            <td>10</td>
+            <td>12</td>
+            <td>12</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td>14</td>
+            <td style="background: var(--color--mylightred)">14</td>
+            <td style="background: var(--color--mylightblue)">14</td>
+        </tr>
+        <tr>
+            <th><Latex code="S_5 \to\qty{1}{\kilo\gram} \quad \dollars{1}" /></th>
+            <th>5</th>
+            <td>0</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>10</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td>15</td>
+            <td style="background: var(--color--mylightgreen)">15</td>
+        </tr>
+    </tbody>
+</table>
+</Centered>
+
+Directly behind <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" /> is <Latex code="\colorbox{\mylightblue}{$m \brackets{4, 15}$}" />. Here, we check for one of two possible branches:
+
+<ul class="description">
+    <li><span class="item-title">Branch 1:</span> If <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} \ne \colorbox{\mylightblue}{$m \brackets{4, 15}$}" />, then we know that *our optimal set does contain item <Latex code="S_5" />*. This is because the optimal set's composition <u>must have changed</u> when we introduced the new item <Latex code="S_5" />.</li>
+    <li><span class="item-title">Branch 2:</span> If <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} = \colorbox{\mylightblue}{$m \brackets{4, 15}$}" />, then we say that *our optimal set does not necessarily contain item <Latex code="S_5" />*. This is because the optimal set's composition <u>doesn't need to have changed</u> when we introduced the new item <Latex code="S_5" />.</li>
+</ul>
+
+*(Side note: Branch 2 is carefully worded to say that it's possible but uncertain that item <Latex code="S_5" /> can be included in the optimal set, but that we know for certain that it can be left out, hence we "say" that the optimal set does not necessarily contain <Latex code="S_5" />. It simplifies our discussion to skip over checking if we can include <Latex code="S_5" />.)*
+
+In this example, we see that <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} \ne \colorbox{\mylightblue}{$m \brackets{4, 15}$}" />, so we take item <Latex code="S_5" /> as part of the optimal set.
+
+Now, depending on the branch, we will visit a new cell. This is simply the corresponding cell as described by equation <Eqref>2</Eqref>:
+
+<ul class="description">
+    <li><span class="item-title">If we took Branch 1:</span> We visit <Latex code="m \brackets{i - 1, w - w_i}" />. In this case, we visit <Latex code="\colorbox{\mylightred}{$m \brackets{4, 14}$}" />.</li>
+    <li><span class="item-title">If we took Branch 2:</span> We visit <Latex code="m \brackets{i - 1, w}" />. In this case, we visit <Latex code="\colorbox{\mylightblue}{$m \brackets{4, 15}$}" />.</li>
+</ul>
+
+This process can repeat until we arrive at the <Latex code="i = 0" /> row.
+
+Thus, we backtrack through the table:
+
+- took Branch 1 at <Latex code="m \brackets{5, 15}" />,
+- took Branch 1 at <Latex code="m \brackets{4, 14}" />,
+- took Branch 1 at <Latex code="m \brackets{3, 13}" />,
+- took Branch 1 at <Latex code="m \brackets{2, 11}" />, and
+- took Branch 2 at <Latex code="m \brackets{1, 7}" />.
+
+<p><Todo>The original Latex version has a direct reference back to the backtracking table rather than just saying "the table". Maybe we should figure out how to make this clearer here?</Todo></p>
+
+Therefore, our optimal set is <Latex code="\braces{S_5, S_4, S_3, S_2}" />, which has a total value of <Latex code="\dollars{15}" />.
+
+This tabulation algorithm runs in <Latex code="O\parens{NW}" /> time and space. Further minor improvements to the algorithm are possible and is left as an exercise for the reader.
+
+### Naive Top-Down Recursion Algorithm
+
+<Todo>Write this section!</Todo>
+
+### Top-Down Memoization Algorithm
+
+<Todo>Write this section!</Todo>
+
+### References
+
+- [**<u>Wikipedia</u>**](https://en.wikipedia.org/wiki/Knapsack_problem): The example and the mathematical notation was taken from here.
+- [**<u>GeeksforGeeks</u>**](https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1): Online practice problem.
 
