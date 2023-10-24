@@ -6,6 +6,7 @@ keywords: ["programming", "graphs"]
 ---
 
 import Centered from "@components/Centered";
+import HorizontalScrollingBox from "@components/HorizontalScrollingBox";
 import Latex from "@components/Latex";
 import Todo from "@components/Todo";
 
@@ -15,9 +16,11 @@ import Todo from "@components/Todo";
 
 A graph <Latex code="G" /> consists of two finite sets: a nonempty set <Latex code="V \parens{G}" /> of *vertices*, and a set <Latex code="E \parens{G}" /> of *edges*, where each edge is associated with a set consisting of either one or two vertices called its *endpoints*.
 
+<HorizontalScrollingBox>
 <Centered>
     ![Basic parts of a *graph*.](./_graphs.images/generated-do-not-edit/basic-definitions-basic-parts.svg)
 </Centered>
+</HorizontalScrollingBox>
 
 Instead of <Latex code="E \parens{G}" />, a *directed graph* (or *digraph*) has a set <Latex code="D \parens{G}" /> of *directed edges*. A *mixed graph* can contain both directed and undirected edges.
 

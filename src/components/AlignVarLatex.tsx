@@ -10,6 +10,11 @@ interface Props {
 export default function GatherVarLatex({code}: Props) {
     const newCode = `\\begin{align*} ${code} \\end{align*}`;
     const rawHTML = katex.renderToString(newCode, getConfig(true));
-    return <p dangerouslySetInnerHTML={{__html: rawHTML}} />;
+    return <p>
+        <div
+            class="horizontally-scrolling-box"
+            dangerouslySetInnerHTML={{__html: rawHTML}}
+        />
+    </p>;
 }
 

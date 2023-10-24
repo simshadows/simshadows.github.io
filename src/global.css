@@ -36,6 +36,12 @@ span.highlight {
     white-space: nowrap;
 }
 
+/* Horizontally scrolling elements */
+.horizontally-scrolling-box {
+    overflow: auto;
+    white-space: nowrap;
+}
+
 /* Emulating the `description` environment from LaTeX */
 ul.description {
     text-indent: -2.1em;

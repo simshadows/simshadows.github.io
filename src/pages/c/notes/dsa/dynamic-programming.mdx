@@ -12,6 +12,7 @@ import GatherVarLatex from "@components/GatherVarLatex";
 import Latex from "@components/Latex";
 
 import Centered from "@components/Centered";
+import HorizontalScrollingBox from "@components/HorizontalScrollingBox";
 import Todo from "@components/Todo";
 
 import "./_dynamic-programming.css"; //_
@@ -167,10 +168,12 @@ If we took Item 1, we will only have <Latex code="\qty{3}{\kilo\gram}" /> remain
 
 We can try enumerating every possible subset of items:
 
+<HorizontalScrollingBox>
 <Centered>
     ![Enumerating all possible subsets (table 1).](./_dynamic-programming.images/generated-do-not-edit/knapsack01-naive-enumeration.svg)
     ![Enumerating all possible subsets (table 2).](./_dynamic-programming.images/generated-do-not-edit/knapsack01-naive-enumeration2.svg)
 </Centered>
+</HorizontalScrollingBox>
 
 By rejecting all subsets above the weight limit (<Latex code="\qty{15}{\kilo\gram}" />) and getting the highest-value subset, we can clearly see that this will lead to an optimal solution. However, the runtime complexity is <Latex code="O \parens{2^n}" />.
 
@@ -188,6 +191,7 @@ For this solution, we will assume integer weight values, <Latex code="W \ge 0" /
 
 Our main data structure will be a table <Latex code="m \brackets{i, w}" /> with size <Latex code="\parens{N + 1} \times \parens{W + 1}" />. For example:
 
+<HorizontalScrollingBox>
 <Centered>
 <table class="general example-table-1">
     <thead>
@@ -273,6 +277,7 @@ Our main data structure will be a table <Latex code="m \brackets{i, w}" /> with 
     </tbody>
 </table>
 </Centered>
+</HorizontalScrollingBox>
 
 <Latex code="i" /> corresponds to the subset of items we have currently selected from. For our example:
 
@@ -309,6 +314,7 @@ To fill the remaining cells, we must apply an optimal substructure. This can be 
 
 <Eqref>2</Eqref> is a recursive equation based around a yes/no decision on whether or not to include an item in the bag. Importantly, this equation only references the previous row <Latex code="i - 1" />, meaning that we must calculate each row in order starting from <Latex code="i = 1" />. Without concerning ourselves with the details of the calculation, let's fill out this first row <Latex code="i = 1" />:
 
+<HorizontalScrollingBox>
 <Centered>
 <table class="general example-table-1">
     <thead>
@@ -406,9 +412,11 @@ To fill the remaining cells, we must apply an optimal substructure. This can be 
     </tbody>
 </table>
 </Centered>
+</HorizontalScrollingBox>
 
 Using the results of row <Latex code="i = 1" />, we can now calculate row <Latex code="i = 2" />:
 
+<HorizontalScrollingBox>
 <Centered>
 <table class="general example-table-1">
     <thead>
@@ -518,11 +526,13 @@ Using the results of row <Latex code="i = 1" />, we can now calculate row <Latex
     </tbody>
 </table>
 </Centered>
+</HorizontalScrollingBox>
 
 ...and so on.
 
 To understand how equation <Eqref>2</Eqref> works and how we've been calculating these rows, let's use the <Latex code="i = 3" /> row as an example since this is where things get more interesting:
 
+<HorizontalScrollingBox>
 <Centered>
 <table class="general example-table-1">
     <thead>
@@ -644,6 +654,7 @@ To understand how equation <Eqref>2</Eqref> works and how we've been calculating
     </tbody>
 </table>
 </Centered>
+</HorizontalScrollingBox>
 
 Let's take a closer look at how <Latex code="\colorbox{\mylightblue}{$m \brackets{3, 5}$}" /> is calculated. <Latex code="m \brackets{3, 5}" /> is the highest dollar value of a bag with a carrying capacity of <Latex code="\qty{5}{\kilo\gram}" />, selecting only from the set of items <Latex code="\braces{S_1, S_2, S_3}" />. If we apply equation <Eqref>2</Eqref>, we get:
 
@@ -709,6 +720,7 @@ This matches what is written in the cell.
 
 Continuing until the whole table is complete, we get:
 
+<HorizontalScrollingBox>
 <Centered>
 <table class="general example-table-1">
     <thead>
@@ -854,11 +866,13 @@ Continuing until the whole table is complete, we get:
     </tbody>
 </table>
 </Centered>
+</HorizontalScrollingBox>
 
 Thus, the best dollar value that we can put in a <Latex code="\qty{15}{\kilo\gram}" /> bag using items <Latex code="\braces{S_1, S_2, S_3, S_4, S_5}" /> is <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} = \dollars{15}" />.
 
 To read back an optimal set of items, we must *backtrack* starting from <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />. The idea is to first look directly backwards to see if the weight is the same, otherwise we subtract the value and the weight and check the appropriate cell. If done correctly, we touch the following cells:
 
+<HorizontalScrollingBox>
 <Centered>
 <table class="general example-table-1">
     <thead>
@@ -1010,9 +1024,11 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
     </tbody>
 </table>
 </Centered>
+</HorizontalScrollingBox>
 
 To understand how it works, let's start from the beginning at <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />:
 
+<HorizontalScrollingBox>
 <Centered>
 <table class="general example-table-1">
     <thead>
@@ -1164,6 +1180,7 @@ To understand how it works, let's start from the beginning at <Latex code="\colo
     </tbody>
 </table>
 </Centered>
+</HorizontalScrollingBox>
 
 Directly behind <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" /> is <Latex code="\colorbox{\mylightblue}{$m \brackets{4, 15}$}" />. Here, we check for one of two possible branches:
 
