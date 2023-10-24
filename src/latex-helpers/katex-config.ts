@@ -5,10 +5,6 @@ const katexConfig = {
     throwOnError: true,
     strict: "error",
     macros: {
-        "\\parens": "{\\left({#1}\\right)}",
-        "\\brackets": "{\\left[{#1}\\right]}",
-        "\\braces": "{\\left\\{{#1}\\right\\}}",
-        "\\floor": "{\\left\\lfloor{#1}\\right\\rfloor}",
         "\\Nth": "{{#1}^\\textit{#2}}",
 
         // Hacky compatibility implementation of siunitx just so I can keep the same syntax.
@@ -17,6 +13,14 @@ const katexConfig = {
         "\\kilo": "{\\text{k}}",
         "\\gram": "{\\text{g}}",
 
+        // Hacky compatibility implementation of \DeclarePairedDelimiter from mathtools
+        // I still haven't figured out how to make \parens*{} and such work (with the asterisk),
+        // so equations will have to be manually modified to remove the asterisk.
+        "\\parens": "{\\left({#1}\\right)}",
+        "\\brackets": "{\\left[{#1}\\right]}",
+        "\\braces": "{\\left\\{{#1}\\right\\}}",
+        "\\floor": "{\\left\\lfloor{#1}\\right\\rfloor}",
+
         ////////////////////////////////////////////////////////////
         // Some technical debt to figure out a better solution to //
         ////////////////////////////////////////////////////////////
@@ -24,6 +28,7 @@ const katexConfig = {
         "\\dollars": "{\\${#1}}",
 
         // These colours must mirror those found in global.css
+        // Ideally, these should be defined using \definecolor
         "\\mylightred": "#ffb3b3",
         "\\mylightgreen": "#b3ffb3",
         "\\mylightblue": "#b3b3ff",

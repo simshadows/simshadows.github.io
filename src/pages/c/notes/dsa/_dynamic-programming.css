@@ -1,0 +1,17 @@
+table.example-table-1 td {
+    min-width: 1.2em;
+    text-align: right;
+}
+
+table.example-table-1 th {
+    text-align: right;
+}
+
+table.example-table-1 tbody tr th:first-child {
+    text-align: left;
+}
+
+table.example-table-1 thead tr:first-child th:nth-child(2) {
+    text-align: center;
+}
+

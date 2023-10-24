@@ -8,6 +8,7 @@ keywords: ["programming", "heaps", "binary heaps", "priority queue"]
 import Centered from "@components/Centered";
 import DisplayLatex from "@components/DisplayLatex";
 import Latex from "@components/Latex";
+import Nb from "@components/Nb";
 import Todo from "@components/Todo";
 
 ## Introduction
@@ -37,7 +38,7 @@ Example of a *binary max-heap* data structure (colours are used only to help sho
 Some common operations:
 
 <Centered>
-<table class="general">
+<table class="general" style="min-width: 40em;">
     <thead>
         <tr>
             <th>Operation</th>
@@ -47,43 +48,43 @@ Some common operations:
     </thead>
     <tbody>
         <tr>
-            <td><Latex code="\text{Push}\parens{\textit{item}}" /></td>
-            <td><Latex code="O\parens{\log n}" /></td>
+            <td><Nb><Latex code="\text{Push}\parens{\textit{item}}" /></Nb></td>
+            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
             <td>Add a single item.</td>
         </tr>
         <tr>
-            <td><Latex code="\text{Pop}\parens{} \to \textit{item}" /></td>
-            <td><Latex code="O\parens{\log n}" /></td>
+            <td><Nb><Latex code="\text{Pop}\parens{} \to \textit{item}" /></Nb></td>
+            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
             <td>Extract and remove the root of the heap (i.e. the <u>biggest item</u> of a max-heap, or the <u>smallest item</u> of a min-heap).</td>
         </tr>
         <tr>
-            <td><Latex code="\text{Push-Pop}\parens{\textit{item}} \to \textit{item}" /></td>
-            <td><Latex code="O\parens{\log n}" /></td>
+            <td><Nb><Latex code="\text{Push-Pop}\parens{\textit{item}} \to \textit{item}" /></Nb></td>
+            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
             <td>Equivalent to a push and then a pop, in that order. <em>Typically more efficient than using the individual operations.</em></td>
         </tr>
         <tr>
-            <td><Latex code="\text{Pop-Push}\parens{\textit{item}} \to \textit{item}" /></td>
-            <td><Latex code="O\parens{\log n}" /></td>
+            <td><Nb><Latex code="\text{Pop-Push}\parens{\textit{item}} \to \textit{item}" /></Nb></td>
+            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
             <td>Equivalent to a pop and then a push, in that order. <em>Typically more efficient than using the individual operations.</em></td>
         </tr>
         <tr>
-            <td><Latex code="\text{Heapify}\parens{}" /></td>
-            <td><Latex code="O\parens{n}" /></td>
+            <td><Nb><Latex code="\text{Heapify}\parens{}" /></Nb></td>
+            <td><Nb><Latex code="O\parens{n}" /></Nb></td>
             <td>Convert an arbitrary <em>complete binary tree</em> into a valid heap.</td>
         </tr>
         <tr>
-            <td><Latex code="\text{Get-Size}\parens{} \to \textit{size}" /></td>
-            <td><Latex code="O\parens{1}" /></td>
+            <td><Nb><Latex code="\text{Get-Size}\parens{} \to \textit{size}" /></Nb></td>
+            <td><Nb><Latex code="O\parens{1}" /></Nb></td>
             <td>Get the number of items in the heap.</td>
         </tr>
         <tr>
-            <td>(internal) <Latex code="\text{Sift-Up}\parens{\textit{node}}" /></td>
-            <td><Latex code="O\parens{\log n}" /></td>
+            <td><Nb>(internal) <Latex code="\text{Sift-Up}\parens{\textit{node}}" /></Nb></td>
+            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
             <td>Moves a node up the tree until it is in a valid position.</td>
         </tr>
         <tr>
-            <td>(internal) <Latex code="\text{Sift-Down}\parens{\textit{node}}" /></td>
-            <td><Latex code="O\parens{\log n}" /></td>
+            <td><Nb>(internal) <Latex code="\text{Sift-Down}\parens{\textit{node}}" /></Nb></td>
+            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
             <td>Moves a node down the tree until it is in a valid position.</td>
         </tr>
     </tbody>

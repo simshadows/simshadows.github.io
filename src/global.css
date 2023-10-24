@@ -30,6 +30,12 @@ span.highlight {
     background: #ffff00; /* Overwrite with your intended colour. */
 }
 
+/* Non-breaking elements */
+/* (often a span) */
+.nb {
+    white-space: nowrap;
+}
+
 /* Emulating the `description` environment from LaTeX */
 ul.description {
     text-indent: -2.1em;

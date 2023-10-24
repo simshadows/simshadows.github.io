@@ -14,6 +14,8 @@ import Latex from "@components/Latex";
 import Centered from "@components/Centered";
 import Todo from "@components/Todo";
 
+import "./_dynamic-programming.css"; //_
+
 ## Introduction
 
 <p><Todo>What is dynamic programming?</Todo></p>
@@ -187,7 +189,7 @@ For this solution, we will assume integer weight values, <Latex code="W \ge 0" /
 Our main data structure will be a table <Latex code="m \brackets{i, w}" /> with size <Latex code="\parens{N + 1} \times \parens{W + 1}" />. For example:
 
 <Centered>
-<table class="general">
+<table class="general example-table-1">
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
@@ -308,7 +310,7 @@ To fill the remaining cells, we must apply an optimal substructure. This can be 
 <Eqref>2</Eqref> is a recursive equation based around a yes/no decision on whether or not to include an item in the bag. Importantly, this equation only references the previous row <Latex code="i - 1" />, meaning that we must calculate each row in order starting from <Latex code="i = 1" />. Without concerning ourselves with the details of the calculation, let's fill out this first row <Latex code="i = 1" />:
 
 <Centered>
-<table class="general">
+<table class="general example-table-1">
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
@@ -408,7 +410,7 @@ To fill the remaining cells, we must apply an optimal substructure. This can be 
 Using the results of row <Latex code="i = 1" />, we can now calculate row <Latex code="i = 2" />:
 
 <Centered>
-<table class="general">
+<table class="general example-table-1">
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
@@ -522,7 +524,7 @@ Using the results of row <Latex code="i = 1" />, we can now calculate row <Latex
 To understand how equation <Eqref>2</Eqref> works and how we've been calculating these rows, let's use the <Latex code="i = 3" /> row as an example since this is where things get more interesting:
 
 <Centered>
-<table class="general">
+<table class="general example-table-1">
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
@@ -708,7 +710,7 @@ This matches what is written in the cell.
 Continuing until the whole table is complete, we get:
 
 <Centered>
-<table class="general">
+<table class="general example-table-1">
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
@@ -858,7 +860,7 @@ Thus, the best dollar value that we can put in a <Latex code="\qty{15}{\kilo\gra
 To read back an optimal set of items, we must *backtrack* starting from <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />. The idea is to first look directly backwards to see if the weight is the same, otherwise we subtract the value and the weight and check the appropriate cell. If done correctly, we touch the following cells:
 
 <Centered>
-<table class="general">
+<table class="general example-table-1">
     <thead>
         <tr>
             <th colspan="3" rowspan="2"></th>
@@ -1012,7 +1014,7 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
 To understand how it works, let's start from the beginning at <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />:
 
 <Centered>
-<table class="general">
+<table class="general example-table-1">
     <thead>
         <tr>
             <th colspan="3" rowspan="2"></th>
