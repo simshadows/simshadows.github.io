@@ -16,12 +16,14 @@ interface Props {
     title: string;
     description: string;
     keywords: string[];
+    noRightSidebar?: boolean;
 }
 
 const {
     title,
     description,
     keywords,
+    noRightSidebar,
 } = Astro.props;
 ---
 
@@ -61,7 +63,7 @@ Full source code is available here:
             <div id="content">
                 <slot />
             </div>
-            {Astro.slots.has("right-sidebar") &&
+            {(!noRightSidebar) && Astro.slots.has("right-sidebar") &&
                 <div id="right-sidebar-wrap">
                     <div id="right-sidebar">
                         <slot name="right-sidebar" />

@@ -17,6 +17,7 @@ const {
     description,
     keywords,
 } = frontmatter;
+const hidetoc: boolean = !!frontmatter["hidetoc"];
 
 function errStr(expectedType: string, k: string, v: unknown) {
     return `Expected ${k} to be a ${expectedType}. Actually received: ${v}`;
@@ -38,6 +39,7 @@ if (!isStrArray(keywords)) {
     title={title}
     description={description}
     keywords={keywords}
+    hidetoc={hidetoc}
 >
     <slot />
     <RightSidebar slot="right-sidebar" headings={headings} />

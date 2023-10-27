@@ -5,12 +5,14 @@ interface Props {
     title: string;
     description: string;
     keywords: string[];
+    hidetoc?: boolean;
 }
 
 const {
     title,
     description,
     keywords,
+    hidetoc = true,
 } = Astro.props;
 ---
 
@@ -18,9 +20,10 @@ const {
     title={title}
     description={description}
     keywords={keywords}
+    noRightSidebar={hidetoc}
 >
     <h1>{title}</h1>
     <slot />
-    <slot name="right-sidebar" slot="right-sidebar" />
+    <slot name="right-sidebar" slot="right-sidebar" />;
 </BaseLayout>
 
