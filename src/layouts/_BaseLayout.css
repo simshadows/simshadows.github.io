@@ -83,13 +83,13 @@ table {
 /* TODO: Uncomment and fix up as I implement the sidebar. */
 #content-wrap {
     display: flex;
-    column-gap: 2em;
+    column-gap: 2.5em;
 }
 #content {
     min-width: 0;
     flex-grow: 1;
 }
-#right-sidebar {
+#right-sidebar-wrap {
     flex-basis: 20em;
     flex-grow: 0;
     flex-shrink: 0;
@@ -99,22 +99,27 @@ table {
     position: sticky;
     padding-top: var(--h1-margin-top);
     padding-bottom: var(--h1-margin-top);
-    height: 100vh;
-    overflow-y: auto;
+    max-height: calc(100vh);
 }
 @media only screen and (max-width: 1000px) {
-    #right-sidebar {flex-basis: 15em; font-size: 0.90em;}
+    #right-sidebar-wrap {flex-basis: 15em; font-size: 0.90em;}
 }
 @media only screen and (max-width: 900px) {
-    #right-sidebar {flex-basis: 14em;}
+    #right-sidebar-wrap {flex-basis: 14em;}
 }
 @media only screen and (max-width: 800px) {
-    #right-sidebar {flex-basis: 13em; font-size: 0.85em;}
+    #right-sidebar-wrap {flex-basis: 13em; font-size: 0.85em;}
 }
 @media only screen and (max-width: 700px) {
-    #right-sidebar {
-        display: none;
-    }
+    #right-sidebar-wrap {display: none;}
+}
+#right-sidebar {
+    padding: 1em;
+    background: rgb(39 40 34 / 16%);
+    border-radius: 0.4em;
+    overflow-y: auto;
+    min-height: 10em;
+    max-height: calc(100vh - (6 * var(--h1-margin-top)));
 }
 
 #footer {

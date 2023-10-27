@@ -62,8 +62,10 @@ Full source code is available here:
                 <slot />
             </div>
             {Astro.slots.has("right-sidebar") &&
-                <div id="right-sidebar">
-                    <slot name="right-sidebar" />
+                <div id="right-sidebar-wrap">
+                    <div id="right-sidebar">
+                        <slot name="right-sidebar" />
+                    </div>
                 </div>
             }
         </div>
