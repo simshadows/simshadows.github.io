@@ -62,6 +62,12 @@ table {
 #masthead__content {
     display: flex;
 }
+#website-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: inherit;
+    color: inherit;
+}
 #masthead__menu {
     display: flex;
     align-items: center;
@@ -72,12 +78,24 @@ table {
 #masthead__menu a {
     text-decoration: inherit;
 }
-
-#website-title {
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: inherit;
-    color: inherit;
+@media only screen and (max-width: 600px) {
+    #masthead {
+        padding-top: 1.2em;
+        padding-bottom: 1.2em;
+        border-bottom: 1px solid #b9b9b9;
+    }
+    #masthead__content {
+        flex-direction: column;
+        row-gap: 1em;
+    }
+    #website-title {
+        width: 100%;
+        text-align: center;
+    }
+    #masthead__menu {
+        margin-right: auto;
+        font-size: 0.96em;
+    }
 }
 
 /* TODO: Uncomment and fix up as I implement the sidebar. */
