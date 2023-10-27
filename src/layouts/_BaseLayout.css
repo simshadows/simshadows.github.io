@@ -1,5 +1,9 @@
 :root {
     --h1-margin-top: 30px;
+    --scrollbar-thickness: 8px;
+
+    --color--monokai-comment: #88846f;
+    --color--monokai-comment-but-darker: #5f5c4e;
 }
 
 body {
@@ -26,6 +30,20 @@ li, ul, ol {
 
 table {
     border-collapse: collapse;
+}
+
+::-webkit-scrollbar {
+    width: var(--scrollbar-thickness);
+    height: var(--scrollbar-thickness);
+}
+::-webkit-scrollbar-track {
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color--monokai-comment);
+    border-radius: var(--scrollbar-thickness);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color--monokai-comment-but-darker);
 }
 
 .content-column {
@@ -83,7 +101,6 @@ table {
     padding-bottom: var(--h1-margin-top);
     height: 100vh;
     overflow-y: auto;
-    box-sizing: border-box;
 }
 @media only screen and (max-width: 1000px) {
     #right-sidebar {flex-basis: 15em; font-size: 0.90em;}

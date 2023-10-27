@@ -13,6 +13,13 @@
     --color--mylightblue:  #b3b3ff; /* Similar to LaTeX `blue!30` */
 }
 
+html {
+    box-sizing: border-box;
+}
+* {
+    box-sizing: inherit;
+}
+
 /* General-purpose table */
 table.general th {
     background-color: #bbb;
