@@ -1,4 +1,6 @@
 ---
+import "normalize.css";
+
 import {
     SITE_TITLE,
     WEB_APPS_URL,
@@ -48,8 +50,22 @@ Full source code is available here:
                 <a href={BLOG_URL}>Blog</a>
             </div>
         </div></div>
-        <div id="content" class="content-column">
-            <slot />
+        {/*
+        <div id="content-wrap" class="content-column">
+            <div id="content">
+                <slot />
+            </div>
+        </div>
+        */}
+        <div id="content-wrap" class="content-column">
+            <div id="content">
+                <slot />
+            </div>
+            {Astro.slots.has("right-sidebar") &&
+                <div id="right-sidebar">
+                    <slot name="right-sidebar" />
+                </div>
+            }
         </div>
         <BaseFooter />
     </body>

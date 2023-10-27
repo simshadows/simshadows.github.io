@@ -1,12 +1,17 @@
 ---
 import {isStrArray} from "@root/danger";
 import GeneralLayout from "@layouts/GeneralLayout.astro";
+import RightSidebar from "@components/layout-helpers/RightSidebar.astro";
 
 interface Props {
     frontmatter: {[key: string]: unknown;};
+    headings: {depth: number; slug: string; text: string}[];
 }
 
-const {frontmatter} = Astro.props;
+const {
+    frontmatter,
+    headings,
+} = Astro.props;
 const {
     title,
     description,
@@ -35,5 +40,6 @@ if (!isStrArray(keywords)) {
     keywords={keywords}
 >
     <slot />
+    <RightSidebar slot="right-sidebar" headings={headings} />
 </BaseLayout>
 

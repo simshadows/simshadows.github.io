@@ -1,10 +1,14 @@
+:root {
+    --h1-margin-top: 30px;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: "Roboto";
 }
 
-body h1 {font-size: 2.60em; margin-top: 30px; margin-bottom: 30px;}
+body h1 {font-size: 2.60em; margin-top: var(--h1-margin-top); margin-bottom: 30px;}
 body h2 {font-size: 2.00em; margin-top: 30px;}
 body h3 {font-size: 1.60em;}
 body h4 {font-size: 1.25em;}
@@ -25,7 +29,7 @@ table {
 }
 
 .content-column {
-    max-width: 1300px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 18px;
@@ -58,7 +62,34 @@ table {
     color: inherit;
 }
 
+/* TODO: Uncomment and fix up as I implement the sidebar. */
+#content-wrap {
+    display: flex;
+    column-gap: 2em;
+}
 #content {
+    min-width: 0;
+    flex-grow: 1;
+}
+#right-sidebar {
+    flex-basis: 20em;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-top: var(--h1-margin-top);
+}
+@media only screen and (max-width: 1000px) {
+    #right-sidebar {flex-basis: 15em;}
+}
+@media only screen and (max-width: 900px) {
+    #right-sidebar {flex-basis: 14em;}
+}
+@media only screen and (max-width: 800px) {
+    #right-sidebar {flex-basis: 13em;}
+}
+@media only screen and (max-width: 700px) {
+    #right-sidebar {
+        display: none;
+    }
 }
 
 #footer {
