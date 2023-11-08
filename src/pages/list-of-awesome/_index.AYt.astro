@@ -1,0 +1,17 @@
+---
+interface Props {
+    p: string; // "p" means "Path"
+}
+
+const {
+    p,
+} = Astro.props;
+
+if (!p) throw new Error("Blank path.");
+
+const BASE = "https://www.youtube.com/";
+const href = new URL(p, BASE);
+---
+
+<a target="_blank" href={href}>YouTube</a>
+

@@ -1,0 +1,14 @@
+---
+interface Props {
+    href: string;
+}
+
+const {
+    href,
+} = Astro.props;
+
+if (!href) throw new Error("Blank href.");
+---
+
+<a target="_blank" href={href}>Web</a>
+

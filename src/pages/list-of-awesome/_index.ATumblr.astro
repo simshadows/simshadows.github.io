@@ -1,0 +1,16 @@
+---
+interface Props {
+    handle: string;
+}
+
+const {
+    handle,
+} = Astro.props;
+
+if (!handle) throw new Error("Blank handle.");
+
+const href = `https://${handle}.tumblr.com/`;
+---
+
+<a target="_blank" href={href}>Tumblr</a>
+
