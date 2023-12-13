@@ -11,14 +11,138 @@ keywords: ["advent of code", "2023", "day", "part", "solutions", "thoughts", "py
 
 ## Day 1
 
-*TODO*
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+def run(f):
+    n = 0
+    for s in f.readlines():
+        s = list(filter(lambda x : x in "1234567890", s.strip()))
+        n += int(s[0] + s[-1])
+    print(n)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from math import isinf, inf
+
+nums = {str(s) for s in range(10)}
+tab = {
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8",
+    "nine": "9",
+    #"zero": "0",
+}
+
+def run(f):
+    n = 0
+    for i, s in enumerate(x.strip() for x in f.readlines()):
+        # replace first
+        s1 = s
+        best_idx = inf
+        best_str = ""
+        for (query, digit) in tab.items():
+            idx = s1.find(query)
+            if idx >= 0 and idx < best_idx:
+                best_idx = idx
+                best_str = query
+        if not isinf(best_idx):
+            s1 = s1.replace(best_str, tab[best_str], 1)
+        s1 = list(filter(lambda x : x in nums, s1))
+
+        # replace last
+        s2 = s
+        best_idx = -1
+        best_str = ""
+        for (query, digit) in tab.items():
+            idx = s2.rfind(query)
+            if idx >= 0 and idx > best_idx:
+                best_idx = idx
+                best_str = query
+        if best_idx >= 1:
+            s2 = s2.replace(best_str, tab[best_str])
+        s2 = list(filter(lambda x : x in nums, s2))
+
+        n += int(s1[0] + s2[-1])
+    print(n)
+
+run(stdin)
+```
 
 
 <hr />
 
 ## Day 2
 
-*TODO*
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+R_LIMIT = 12
+G_LIMIT = 13
+B_LIMIT = 14
+
+def run(f):
+    solution = 0
+    for i, s in enumerate(f.readlines()):
+        (title, tail) = s.strip().split(":")
+        (_, game_num) = title.split()
+        sets = [dict(reversed(y.split()) for y in x.split(",")) for x in tail.split(";")]
+
+        if all((int(d.get("red", 0)) <= R_LIMIT and int(d.get("green", 0)) <= G_LIMIT and int(d.get("blue", 0)) <= B_LIMIT) for d in sets):
+            solution += int(game_num)
+    print(solution)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+R_LIMIT = 12
+G_LIMIT = 13
+B_LIMIT = 14
+
+def run(f):
+    solution = 0
+    for i, s in enumerate(f.readlines()):
+        (title, tail) = s.strip().split(":")
+        (_, game_num) = title.split()
+        sets = [dict(reversed(y.split()) for y in x.split(",")) for x in tail.split(";")]
+
+        (r, g, b) = (0, 0, 0)
+        for d in sets:
+            r = max(r, int(d.get("red", 0)))
+            g = max(g, int(d.get("green", 0)))
+            b = max(b, int(d.get("blue", 0)))
+        solution += r * g * b
+    print(solution)
+
+run(stdin)
+```
 
 
 <hr />
@@ -664,9 +788,9 @@ run(stdin)
 
 ## Day 11
 
-### Part 1 First Solution
+### Part 1 BFS Solution
 
-My first solution was a very bad and overly complex approach involving repeated BFS, and takes ages to run. To be fair, I misread the problem initially and thought it was asking to pair the closest galaxies together, then pivoted when I realized it was wrong.
+My first solution was a very bad and overly complex approach involving repeated BFS, and takes ages to run.
 
 ```py
 #!/usr/bin/env python3
@@ -720,7 +844,7 @@ def run(f):
 run(stdin)
 ```
 
-### Part 1 Improved Solution
+### Part 1 "Point List" Mathematical Solution
 
 When I read Part 2, I realized the original approach will scale horribly due to the suddenly massively expanded search space. I decided to start by improving Part 1 to validate a new approach.
 
@@ -829,14 +953,290 @@ run(stdin)
 
 ## Day 12
 
-*TODO*
+### Part 1 Brute Force Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product
+
+OK = "."
+BAD = "#"
+UNKNOWN = "?"
+
+def run(f):
+    solution = 0
+    for s in f.readlines():
+        (springs, groups) = s.split()
+        springs = list(springs)
+        groups = tuple(int(x) for x in groups.split(","))
+
+        num_wildcards = springs.count(UNKNOWN)
+        for wildcards in product(OK + BAD, repeat=num_wildcards):
+            wildcards = list(wildcards)
+            springs2 = springs.copy()
+            for i in range(len(springs2)):
+                if springs2[i] == UNKNOWN:
+                    springs2[i] = wildcards.pop()
+            if groups == tuple(len(x) for x in "".join(springs2).replace(".", " ").split()):
+                solution += 1
+    print(solution)
+
+run(stdin)
+```
+
+### Part 1 Backtracking Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product
+
+OK = "."
+BAD = "#"
+UNKNOWN = "?"
+
+def run(f):
+    solution = 0
+    for s in f.readlines():
+        (springs, groups) = s.split()
+        #springs = list("?".join([springs]*5))
+        #groups = tuple(int(x) for x in groups.split(","))*5
+        springs = list(springs) + ["."]
+        groups = [0] + [int(x) for x in reversed(groups.split(","))]
+
+        subsolution = 0
+        def backtrack(i, is_contiguous_bads):
+            nonlocal subsolution
+            if i == len(springs):
+                if (len(groups) == 1) and (groups[0] == 0):
+                    subsolution += 1
+                return
+            elif springs[i] == UNKNOWN:
+                springs[i] = OK
+                backtrack(i, is_contiguous_bads)
+                springs[i] = BAD
+                backtrack(i, is_contiguous_bads)
+                springs[i] = UNKNOWN
+            elif springs[i] == OK:
+                if is_contiguous_bads:
+                    if groups[-1] != 0:
+                        return
+                    groups.pop()
+                    if len(groups):
+                        backtrack(i + 1, False)
+                    groups.append(0)
+                else:
+                    backtrack(i + 1, False)
+            else: # springs[1] == BAD
+                if is_contiguous_bads and (groups[-1] == 0):
+                    return
+                groups[-1] -= 1
+                backtrack(i + 1, True)
+                groups[-1] += 1
+        backtrack(0, False)
+        solution += subsolution
+    print(solution)
+
+run(stdin)
+```
+
+### Part 1 Dynamic Programming Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from functools import cache
+from itertools import product
+
+OK = "."
+BAD = "#"
+UNKNOWN = "?"
+
+def run(f):
+    solution = 0
+    for s in f.readlines():
+        (springs, groups) = s.split()
+        springs = "." + springs
+        groups = tuple(int(x) for x in groups.split(","))
+
+        # Returns number of combinations
+        # `i` is the beginning of a subarray in `springs`
+        # `j` is the beginning of a subarray in `groups`
+        #@cache # runs fast enough without it
+        def subproblem(i, j):
+            if j == len(groups):
+                return all((c != BAD) for c in springs[i:])
+            elif len(springs) - i < groups[j] + 1:
+                return 0 # not enough room
+            elif springs[i] == BAD:
+                return 0 # must not connect with previous group
+            i += 1
+            subsolution = 0
+            for i in range(i, len(springs) - groups[j] + 1):
+                s = springs[i : i + groups[j]]
+                if all(c != OK for c in s):
+                    subsolution += subproblem(i + groups[j], j + 1)
+                if springs[i] == BAD:
+                    break
+            return subsolution
+        solution += subproblem(0, 0)
+
+    print(solution)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+My Part 2 solution is a modified version of my Part 1 dynamic programming solution.
+
+Instead of:
+
+```py
+springs = "." + springs
+groups = tuple(int(x) for x in groups.split(","))
+```
+
+we instead have:
+
+```py
+springs = ["."] + list("?".join([springs]*5))
+groups = [int(x) for x in groups.split(",")]*5
+```
+
+and I uncomment the `@cache` line since `subproblem()` runs too slow without memoization.
+
+The full solution is thus:
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from functools import cache
+from itertools import product
+
+OK = "."
+BAD = "#"
+UNKNOWN = "?"
+
+def run(f):
+    solution = 0
+    for s in f.readlines():
+        (springs, groups) = s.split()
+        springs = ["."] + list("?".join([springs]*5))
+        groups = [int(x) for x in groups.split(",")]*5
+
+        # Returns number of combinations
+        # `i` is the beginning of a subarray in `springs`
+        # `j` is the beginning of a subarray in `groups`
+        @cache
+        def subproblem(i, j):
+            if j == len(groups):
+                return all((c != BAD) for c in springs[i:])
+            elif len(springs) - i < groups[j] + 1:
+                return 0 # not enough room
+            elif springs[i] == BAD:
+                return 0 # must not connect with previous group
+            i += 1
+            subsolution = 0
+            for i in range(i, len(springs) - groups[j] + 1):
+                s = springs[i : i + groups[j]]
+                if all(c != OK for c in s):
+                    subsolution += subproblem(i + groups[j], j + 1)
+                if springs[i] == BAD:
+                    break
+            return subsolution
+        solution += subproblem(0, 0)
+
+    print(solution)
+
+run(stdin)
+```
 
 
 <hr />
 
 ## Day 13
 
-*TODO*
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product
+
+def run(f):
+    patterns = [s.split() for s in "".join(f.readlines()).split("\n\n")]
+
+    solution = 0
+    for pattern in patterns:
+        is_horz_refl = [True]*(len(pattern[0]) - 1)
+        is_vert_refl = [True]*(len(pattern) - 1)
+        for i, j in product(range(len(pattern)), range(len(pattern[0]))):
+            c = pattern[i][j]
+            # check horizontal reflections
+            for j_midline in range(j, len(pattern[0])):
+                j_refl = j_midline + (j_midline - j) + 1
+                if j_refl >= len(pattern[0]):
+                    break
+                elif c != pattern[i][j_refl]:
+                    is_horz_refl[j_midline] = False
+            # check vertical reflections
+            for i_midline in range(i, len(pattern)):
+                i_refl = i_midline + (i_midline - i) + 1
+                if i_refl >= len(pattern):
+                    break
+                elif c != pattern[i_refl][j]:
+                    is_vert_refl[i_midline] = False
+        solution += sum(i + 1 for i, v in enumerate(is_horz_refl) if v)
+        solution += sum(i + 1 for i, v in enumerate(is_vert_refl) if v) * 100
+    print(solution)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product
+
+def run(f):
+    patterns = [s.split() for s in "".join(f.readlines()).split("\n\n")]
+
+    solution = 0
+    for pattern in patterns:
+        horz_refl_breakages = [0]*(len(pattern[0]) - 1)
+        vert_refl_breakages = [0]*(len(pattern) - 1)
+        for i, j in product(range(len(pattern)), range(len(pattern[0]))):
+            c = pattern[i][j]
+            # check horizontal reflections
+            for j_midline in range(j, len(pattern[0])):
+                j_refl = j_midline + (j_midline - j) + 1
+                if j_refl >= len(pattern[0]):
+                    break
+                elif c != pattern[i][j_refl]:
+                    horz_refl_breakages[j_midline] += 1
+            # check vertical reflections
+            for i_midline in range(i, len(pattern)):
+                i_refl = i_midline + (i_midline - i) + 1
+                if i_refl >= len(pattern):
+                    break
+                elif c != pattern[i_refl][j]:
+                    vert_refl_breakages[i_midline] += 1
+        solution += sum(i + 1 for i, v in enumerate(horz_refl_breakages) if v == 1)
+        solution += sum(i + 1 for i, v in enumerate(vert_refl_breakages) if v == 1) * 100
+    print(solution)
+
+run(stdin)
+```
 
 
 <hr />
