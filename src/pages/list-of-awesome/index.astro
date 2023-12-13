@@ -7,6 +7,8 @@
 
 import Layout from "@layouts/GeneralLayout.astro";
 
+import "./_index.css";
+
 import ANebula from "./_index.ANebula.astro";
 import ATumblr from "./_index.ATumblr.astro";
 import ATwitch from "./_index.ATwitch.astro";
@@ -15,25 +17,10 @@ import AWeb from "./_index.AWeb.astro";
 ---
 
 <Layout
-    title="Sim's Curated List of Awesome"
+    title="List of Awesome"
     description="My list of favourite online creators!"
     keywords={["favourite", "list", "awesome"]}
 >
-
-
-<style>
-    li {
-        margin-bottom: 0.2em;
-    }
-
-    span.e {
-        font-weight: bold;
-    }
-
-    li.inactive {
-        text-decoration: line-through;
-    }
-</style>
 
 
 <h2>Edutainment</h2>

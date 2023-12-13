@@ -1,0 +1,924 @@
+---
+layout: ../../../../layouts/MDLayout.astro
+title: Advent of Code 2023 Solutions
+description: My solutions and thoughts for Advent of Code 2023!
+keywords: ["advent of code", "2023", "day", "part", "solutions", "thoughts", "python"]
+---
+
+*All solutions on this page were written without reading any hints or solutions.*
+
+*These solutions aren't necessarily good, but they did the job and got me the answers.*
+
+## Day 1
+
+*TODO*
+
+
+<hr />
+
+## Day 2
+
+*TODO*
+
+
+<hr />
+
+## Day 3
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product
+
+def run(f):
+    solution = 0
+    grid = [list(x.strip()) + ["."] for x in f]
+    (len1, len2) = (len(grid), len(grid[0]))
+    grid.append(["."] * len2)
+    for i, row in enumerate(grid):
+        (num, is_part_num) = (0, False)
+        for j, v in enumerate(row):
+            if v.isdigit():
+                num = (num * 10) + int(v)
+                for i2, j2 in product((i - 1, i, i + 1), (j - 1, j, j + 1)):
+                    (i2, j2) = (i2 % len1, j2 % len2)
+                    if (not grid[i2][j2].isdigit()) and (grid[i2][j2] != "."):
+                        is_part_num = True
+            else:
+                if is_part_num:
+                    solution += num
+                (num, is_part_num) = (0, False)
+    print(solution)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product
+from collections import defaultdict
+
+def run(f):
+    grid = [x.strip() + "." for x in f]
+    (len1, len2) = (len(grid), len(grid[0]))
+    grid.append("." * len2)
+    gear_adjs = defaultdict(list) # "gear adjacencies", {(i, j): [part nums]}
+    for i, row in enumerate(grid):
+        (num, gears) = (0, set())
+        for j, v in enumerate(row):
+            if v.isdigit():
+                num = (num * 10) + int(v)
+                for i2, j2 in product((i - 1, i, i + 1), (j - 1, j, j + 1)):
+                    (i2, j2) = (i2 % len1, j2 % len2)
+                    if grid[i2][j2] == "*":
+                        gears.add((i2, j2))
+            else:
+                for i2, j2 in gears:
+                    gear_adjs[(i2, j2)].append(num)
+                (num, gears) = (0, set())
+    print(sum(x[0] * x[1] for x in gear_adjs.values() if len(x) == 2))
+
+run(stdin)
+```
+
+
+<hr />
+
+## Day 4
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+def run(f):
+    solution = 0
+    for line in f:
+        (_, all_numbers) = line.split(":")
+        (card, winning_numbers) = [x.strip().split() for x in all_numbers.strip().split("|")]
+        matches = len(set(card) & set(winning_numbers))
+        if matches > 0:
+            solution += 2 ** (matches - 1)
+    print(solution)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+def run(f):
+    cards = []
+    for line in f:
+        (_, all_numbers) = line.split(":")
+        (card, winning_numbers) = [x.strip().split() for x in all_numbers.strip().split("|")]
+        cards.append(len(set(card) & set(winning_numbers)))
+
+    solution = 0
+    for i, v in reversed(list(enumerate(cards))):
+        cards[i] = sum(cards[i+1:i+1+cards[i]]) + 1
+        solution += cards[i]
+    print(solution)
+
+run(stdin)
+```
+
+
+<hr />
+
+## Day 5
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+maps_order = (
+    "seed-to-soil map",
+    "soil-to-fertilizer map",
+    "fertilizer-to-water map",
+    "water-to-light map",
+    "light-to-temperature map",
+    "temperature-to-humidity map",
+    "humidity-to-location map",
+)
+
+def run(f):
+    sections = [x.split(":") for x in "".join(f.readlines()).split("\n\n")]
+    sections = {k.strip(): v.strip() for k, v in sections}
+
+    seeds = [int(x) for x in sections["seeds"].split()]
+    del sections["seeds"]
+
+    maps = {k: [[int(y) for y in x.split()] for x in v.split("\n")] for k, v in sections.items()}
+
+    ids = seeds
+    for map_name in maps_order:
+        ranges = maps[map_name]
+        new_ids = []
+        for i in ids:
+            new_i = i
+            for dst, src, rangelen in ranges:
+                if (i >= src) and (i < src + rangelen):
+                    new_i = dst + (i - src)
+                    break
+            new_ids.append(new_i)
+        ids = new_ids
+    print(min(ids))
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import chain, pairwise, zip_longest
+
+maps_order = (
+    "seed-to-soil map",
+    "soil-to-fertilizer map",
+    "fertilizer-to-water map",
+    "water-to-light map",
+    "light-to-temperature map",
+    "temperature-to-humidity map",
+    "humidity-to-location map",
+)
+
+def grouper(iterable, n, *, incomplete='fill', fillvalue=None):
+    "Collect data into non-overlapping fixed-length chunks or blocks"
+    # grouper('ABCDEFG', 3, fillvalue='x') --> ABC DEF Gxx
+    # grouper('ABCDEFG', 3, incomplete='strict') --> ABC DEF ValueError
+    # grouper('ABCDEFG', 3, incomplete='ignore') --> ABC DEF
+    args = [iter(iterable)] * n
+    if incomplete == 'fill':
+        return zip_longest(*args, fillvalue=fillvalue)
+    if incomplete == 'strict':
+        return zip(*args, strict=True)
+    if incomplete == 'ignore':
+        return zip(*args)
+    else:
+        raise ValueError('Expected fill, strict, or ignore')
+
+def run(f):
+    sections = [x.split(":") for x in "".join(f.readlines()).split("\n\n")]
+    sections = {k.strip(): v.strip() for k, v in sections}
+
+    seeds = list(grouper((int(x) for x in sections["seeds"].split()), 2))
+    del sections["seeds"]
+
+    maps = {k: [[int(y) for y in x.split()] for x in v.split("\n")] for k, v in sections.items()}
+
+    ids = seeds
+    for map_name in maps_order:
+        ranges = maps[map_name]
+        new_ids = []
+        while len(ids):
+            id_start, id_len = ids.pop()
+            if id_len == 0:
+                continue
+            for dst, src, rangelen in ranges:
+                intersect_start = max(id_start, src)
+                intersect_end = min(id_start + id_len, src + rangelen)
+                if intersect_end > intersect_start:
+                    ids.append((id_start, intersect_start - id_start))
+                    ids.append((intersect_end, id_start + id_len - intersect_end))
+                    new_ids.append((intersect_start + dst - src, intersect_end - intersect_start))
+                    break
+            else:
+                new_ids.append((id_start, id_len))
+        ids = new_ids
+    print(min((x for (x, _) in ids), default="NONE"))
+
+run(stdin)
+```
+
+
+<hr />
+
+## Day 6
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+def run(f):
+    sections = [s.split(":") for s in f.readlines()]
+    sections = {k.strip(): [int(x) for x in v.strip().split()] for k, v in sections}
+
+    solution = 1
+    for time_limit, dist_record in zip(sections["Time"], sections["Distance"]):
+        combos = 0
+        for hold_time in range(1, time_limit):
+            dist_travelled = (time_limit - hold_time) * hold_time
+            if dist_travelled > dist_record:
+                combos += 1
+        solution *= combos
+
+    print(solution)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+def run(f):
+    sections = [s.split(":") for s in f.readlines()]
+    sections = {k.strip(): int("".join(v.strip().split())) for k, v in sections}
+
+    (time_limit, dist_record) = (sections["Time"], sections["Distance"])
+
+    combos = 0
+    for hold_time in range(1, time_limit):
+        dist_travelled = (time_limit - hold_time) * hold_time
+        if dist_travelled > dist_record:
+            combos += 1
+
+    print(combos)
+
+run(stdin)
+```
+
+
+<hr />
+
+## Day 7
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from collections import Counter
+from itertools import chain, count
+
+label_order = {c: i for c, i in zip(reversed("AKQJT98765432"), count())}
+
+def run(f):
+    hands = [s.split() for s in f.readlines()]
+
+    sorted_hands = [[], [], [], [], [], [], []]
+    for labels, bid in hands:
+        bid = int(bid)
+        cnt = Counter(labels)
+        freqs = Counter(cnt.values())
+
+        tup = (tuple(label_order[c] for c in labels), bid)
+        if 5 in freqs:
+            sorted_hands[6].append(tup)
+        elif 4 in freqs:
+            sorted_hands[5].append(tup)
+        elif 3 in freqs:
+            if 2 in freqs:
+                sorted_hands[4].append(tup)
+            else:
+                sorted_hands[3].append(tup)
+        elif freqs[2] == 2:
+            sorted_hands[2].append(tup)
+        elif freqs[2] == 1:
+            sorted_hands[1].append(tup)
+        else:
+            sorted_hands[0].append(tup)
+
+    all_sorted = chain(*(tuple(sorted(lst)) for lst in sorted_hands))
+    print(sum(bid * rank for ((_, bid), rank) in zip(all_sorted, count(1))))
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from collections import Counter
+from itertools import chain, count
+
+label_order = {c: i for c, i in zip(reversed("AKQT98765432J"), count())}
+
+def run(f):
+    hands = [s.split() for s in f.readlines()]
+
+    sorted_hands = [[], [], [], [], [], [], []]
+    for labels, bid in hands:
+        bid = int(bid)
+
+        tup = (tuple(label_order[c] for c in labels), bid)
+        strength = -1
+        for joker_mimic in "AKQT98765432J":
+            mimicked = labels.replace("J", joker_mimic)
+            print(mimicked)
+            cnt = Counter(mimicked)
+            freqs = Counter(cnt.values())
+
+            if 5 in freqs:
+                strength = max(strength, 6)
+            elif 4 in freqs:
+                strength = max(strength, 5)
+            elif 3 in freqs:
+                if 2 in freqs:
+                    strength = max(strength, 4)
+                else:
+                    strength = max(strength, 3)
+            elif freqs[2] == 2:
+                strength = max(strength, 2)
+            elif freqs[2] == 1:
+                strength = max(strength, 1)
+            else:
+                strength = max(strength, 0)
+        sorted_hands[strength].append(tup)
+
+    all_sorted = chain(*(tuple(sorted(lst)) for lst in sorted_hands))
+    print(sum(bid * rank for ((_, bid), rank) in zip(all_sorted, count(1))))
+
+run(stdin)
+```
+
+
+<hr />
+
+## Day 8
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+def run(f):
+    (instructions, graph) = f.read().strip().split("\n\n")
+    graph = {x[0]: (x[2][1:-1], x[3][:-1]) for x in (s.split() for s in graph.split("\n"))}
+
+    steps = 0
+    cur = "AAA"
+    while cur != "ZZZ":
+        cur = graph[cur][0] if (instructions[steps % len(instructions)] == "L") else graph[cur][1]
+        steps += 1
+    print(steps)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import cycle
+from math import lcm
+
+def run(f):
+    (instructions, graph) = f.read().strip().split("\n\n")
+    instructions = [(0 if x == "L" else 1) for x in instructions]
+    graph = {x[0]: (x[2][1:-1], x[3][:-1]) for x in (s.split() for s in graph.split("\n"))}
+
+    starts = list({x for x in graph.keys() if x[-1] == "A"})
+    cycle_exits = []
+    cycle_bounds = []
+    for i, start in enumerate(starts):
+        seen = {} # {(node, instruction order): step, ...}
+        cycle_exits.append([])
+        cur = start
+        for step, (j, instr) in enumerate(cycle(enumerate(instructions))):
+            tup = (cur, j)
+            if tup in seen:
+                cycle_bounds.append((seen[tup], step))
+                break
+            if cur[-1] == "Z":
+                cycle_exits[-1].append(step)
+            seen[tup] = step
+            cur = graph[cur][instr]
+    print("exits:", cycle_exits)
+    print()
+    print("bounds:", cycle_bounds)
+    print()
+
+    # the rest of this code works only because we know there is only exactly one exit for
+    # each cycle
+    if any(len(x) != 1 for x in cycle_exits):
+        raise RuntimeError()
+
+    # also, we ignore any steps before they all enter a cycle
+    offset = max(start for (start, _) in cycle_bounds)
+    cycle_lens = [end - start for (start, end) in cycle_bounds]
+    first_exit = [x[0] - offset for x in cycle_exits]
+    diffs = [cl - fe for cl, fe in zip(cycle_lens, first_exit)]
+
+    print("cycle lengths - first exit:", diffs)
+    print()
+
+    # the rest of the code below assumes the same difference!
+    if any(x != diffs[0] for x in diffs):
+        raise RuntimeError()
+    
+    print(lcm(*cycle_lens))
+
+run(stdin)
+```
+
+
+<hr />
+
+## Day 9
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import pairwise
+
+def run(f):
+    seqs = [[int(x) for x in s.split()] for s in f.readlines()]
+
+    solution = 0
+    for seq in seqs:
+        diffs = [seq.copy()]
+        while any(x != 0 for x in diffs[-1]):
+            diffs.append([b - a for a, b in pairwise(diffs[-1])])
+        next_diff = 0
+        for i in reversed(range(len(diffs) - 1)):
+            next_diff = diffs[i][-1] + next_diff
+            diffs[i].append(next_diff)
+        solution += diffs[0][-1]
+    print(solution)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import pairwise
+
+def run(f):
+    seqs = [[int(x) for x in s.split()] for s in f.readlines()]
+
+    solution = 0
+    for seq in seqs:
+        diffs = [list(reversed(seq))] # this is literally the only change
+        while any(x != 0 for x in diffs[-1]):
+            diffs.append([b - a for a, b in pairwise(diffs[-1])])
+        next_diff = 0
+        for i in reversed(range(len(diffs) - 1)):
+            next_diff = diffs[i][-1] + next_diff
+            diffs[i].append(next_diff)
+        solution += diffs[0][-1]
+    print(solution)
+
+run(stdin)
+```
+
+
+<hr />
+
+## Day 10
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin, setrecursionlimit
+from itertools import chain
+
+CONNECTIONS = {
+    (-1,  0): {"S", "|", "L", "J"},
+    ( 1,  0): {"S", "|", "7", "F"},
+    ( 0, -1): {"S", "-", "J", "7"},
+    ( 0,  1): {"S", "-", "L", "F"},
+}
+
+def run(f):
+    pipemap = [s.strip() + "." for s in f.readlines()]
+    pipemap.append("."*len(pipemap[0]))
+
+    start = None
+    for row, col in enumerate(s.find("S") for s in pipemap):
+        if col >= 0:
+            start = (row, col)
+            break
+
+    dummy = len(pipemap) * len(pipemap[0])
+    distances = [[dummy]*len(pipemap[0]) for _ in range(len(pipemap))]
+
+    setrecursionlimit(dummy)
+    def dfs(i, j, dist):
+        if distances[i][j] <= dist:
+            return
+        distances[i][j] = dist
+        for (ii, jj), symbols in CONNECTIONS.items():
+            if (pipemap[i][j] in symbols) and (pipemap[i + ii][j + jj] in CONNECTIONS[(-ii, -jj)]):
+                dfs(i + ii, j + jj, dist + 1)
+    dfs(*start, 0)
+    print(max(x for x in chain(*distances) if (x < dummy)))
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin#, setrecursionlimit
+from itertools import chain, product
+
+TILE_CONVERTER = {
+    (-1,  0): {"S", "|", "L", "J"},
+    ( 1,  0): {"S", "|", "7", "F"},
+    ( 0, -1): {"S", "-", "J", "7"},
+    ( 0,  1): {"S", "-", "L", "F"},
+    ( 0,  0): {"S", "|", "-", "L", "J", "F", "7"},
+}
+
+def run(f):
+    pipemap = [s.strip() for s in f.readlines()]
+
+    start = None
+    for i, j in enumerate(s.find("S") for s in pipemap):
+        if j >= 0:
+            start = (i, j)
+            break
+
+    expanded_map = [["."]*(3*len(pipemap[0])) for _ in range(3 * len(pipemap))]
+    for i, row in enumerate(pipemap):
+        for j, c in enumerate(row):
+            if c != ".":
+                (i2, j2) = ((i*3) + 1, (j*3) + 1)
+                for (i3, j3), symbols in TILE_CONVERTER.items():
+                    if c in symbols:
+                        expanded_map[i2 + i3][j2 + j3] = "X"
+    start = ((start[0]*3) + 1, (start[1]*3) + 1)
+
+    #setrecursionlimit(len(expanded_map) * len(expanded_map[0]))
+
+    print()
+    print("\n".join("".join(x) for x in expanded_map))
+
+    # The code below only works because we know for sure that 'S' passes through
+    # just one loop and has no ambiguity. This is confirmed by just inspecting
+    # the input file visually.
+
+    # Can't do recursion because we'll literally crash CPython lmao
+    def floodfill(i, j, to_replace, new_char):
+        stack = [(i, j)]
+        while len(stack):
+            (i, j) = stack.pop()
+            if (i < 0) or (j < 0) \
+                    or (i >= len(expanded_map)) or (j >= len(expanded_map[0])) \
+                    or expanded_map[i][j] not in to_replace:
+                continue
+            expanded_map[i][j] = new_char
+            for ii, jj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                stack.append((i + ii, j + jj))
+    floodfill(*start, {"X"}, "Y")
+    floodfill(0, 0, {".", "X"}, "Y")
+
+    print("\n".join("".join(x) for x in expanded_map))
+
+    solution = 0
+    for i, j in product(range(len(pipemap)), range(len(pipemap[0]))):
+        solution += expanded_map[(i*3) + 1][(j*3) + 1] != "Y"
+    print()
+    print(solution)
+
+run(stdin)
+```
+
+
+<hr />
+
+## Day 11
+
+### Part 1 First Solution
+
+My first solution was a very bad and overly complex approach involving repeated BFS, and takes ages to run. To be fair, I misread the problem initially and thought it was asking to pair the closest galaxies together, then pivoted when I realized it was wrong.
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from heapq import heappush, heappop
+from itertools import product
+
+def expand_space(galaxymap):
+    (rows, cols) = (len(galaxymap), len(galaxymap[0]))
+    for row in reversed(range(rows)):
+        if all(c == "." for c in galaxymap[row]):
+            galaxymap.insert(row, ["."]*len(galaxymap[0]))
+    rows = len(galaxymap)
+    for col in reversed(range(cols)):
+        if all(galaxymap[row][col] == "." for row in range(rows)):
+            for lst in galaxymap:
+                lst.insert(col, ".")
+
+def sum_paths(galaxymap, pairs_seen, init):
+    pq = [(0, *init)]
+    seen = set()
+    solution = 0
+    while len(pq):
+        (dist, i, j) = heappop(pq)
+        if ((i, j) in seen) or (i < 0) or (j < 0) \
+                or (i >= len(galaxymap)) or (j >= len(galaxymap[0])):
+            continue
+        seen.add((i, j))
+        if (galaxymap[i][j] == "#") and ((init, (i, j)) not in pairs_seen):
+            solution += dist
+            pairs_seen.add((init, (i, j)))
+            pairs_seen.add(((i, j), init))
+        for ii, jj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            heappush(pq, (dist + 1, i + ii, j + jj))
+    return solution
+
+def run(f):
+    galaxymap = [list(s.strip()) for s in f.readlines()]
+    expand_space(galaxymap)
+
+    solution = 0
+    pairs_seen = set()
+    for i, j in product(range(len(galaxymap)), range(len(galaxymap[0]))):
+        if galaxymap[i][j] == "#":
+            galaxymap[i][j] = "."
+            solution += sum_paths(galaxymap, pairs_seen, (i, j))
+            galaxymap[i][j] = "#"
+    print(solution)
+
+run(stdin)
+```
+
+### Part 1 Improved Solution
+
+When I read Part 2, I realized the original approach will scale horribly due to the suddenly massively expanded search space. I decided to start by improving Part 1 to validate a new approach.
+
+The new approach simply involves storing a list of galaxy coordinates (`galaxies`) then doing math on each coordinate and each pair of coordinates. Much more elegant, and runs so much faster!
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product, combinations
+
+def run(f):
+    galaxymap = [s.strip() for s in f.readlines()]
+    galaxies = []
+    for i, j in product(range(len(galaxymap)), range(len(galaxymap[0]))):
+        if galaxymap[i][j] == "#":
+            galaxies.append((i, j))
+
+    empty_rows = [
+        i for i in range(len(galaxymap))
+        if all(c == "." for c in galaxymap[i])
+    ]
+    empty_cols = [
+        j for j in range(len(galaxymap[0]))
+        if all(galaxymap[i][j] == "." for i in range(len(galaxymap)))
+    ]
+
+    # Apply expansion
+    galaxies = [
+        (i + sum(i > ii for ii in empty_rows), j + sum(j > jj for jj in empty_cols))
+        for i, j in galaxies
+    ]
+
+    print(sum(
+        abs(i2 - i1) + abs(j2 - j1)
+        for (i1, j1), (i2, j2) in combinations(galaxies, 2)
+    ))
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+The only modifications necessary were changing the expansion-application to:
+```py
+# Apply expansion
+galaxies = [
+    (
+        i + (EXPANSION * sum(i > ii for ii in empty_rows)),
+        j + (EXPANSION * sum(j > jj for jj in empty_cols)),
+    )
+    for i, j in galaxies
+]
+```
+
+and introducing the constant:
+```py
+EXPANSION = 1000000 - 1
+```
+
+The full solution:
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product, combinations
+
+EXPANSION = 1000000 - 1
+
+def run(f):
+    galaxymap = [s.strip() for s in f.readlines()]
+    galaxies = []
+    for i, j in product(range(len(galaxymap)), range(len(galaxymap[0]))):
+        if galaxymap[i][j] == "#":
+            galaxies.append((i, j))
+
+    empty_rows = [
+        i for i in range(len(galaxymap))
+        if all(c == "." for c in galaxymap[i])
+    ]
+    empty_cols = [
+        j for j in range(len(galaxymap[0]))
+        if all(galaxymap[i][j] == "." for i in range(len(galaxymap)))
+    ]
+
+    # Apply expansion
+    galaxies = [
+        (
+            i + (EXPANSION * sum(i > ii for ii in empty_rows)),
+            j + (EXPANSION * sum(j > jj for jj in empty_cols)),
+        )
+        for i, j in galaxies
+    ]
+
+    print(sum(
+        abs(i2 - i1) + abs(j2 - j1)
+        for (i1, j1), (i2, j2) in combinations(galaxies, 2)
+    ))
+
+run(stdin)
+```
+
+
+<hr />
+
+## Day 12
+
+*TODO*
+
+
+<hr />
+
+## Day 13
+
+*TODO*
+
+
+<hr />
+
+## Day 14
+
+*TODO*
+
+
+<hr />
+
+## Day 15
+
+*TODO*
+
+
+<hr />
+
+## Day 16
+
+*TODO*
+
+
+<hr />
+
+## Day 17
+
+*TODO*
+
+
+<hr />
+
+## Day 18
+
+*TODO*
+
+
+<hr />
+
+## Day 19
+
+*TODO*
+
+
+<hr />
+
+## Day 20
+
+*TODO*
+
+
+<hr />
+
+## Day 21
+
+*TODO*
+
+
+<hr />
+
+## Day 22
+
+*TODO*
+
+
+<hr />
+
+## Day 23
+
+*TODO*
+
+
+<hr />
+
+## Day 24
+
+*TODO*
+
+
+<hr />
+
+## Day 25
+
+*TODO*
+

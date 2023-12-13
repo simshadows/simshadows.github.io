@@ -1,0 +1,12 @@
+li {
+    margin-bottom: 0.2em;
+}
+
+span.e {
+    font-weight: bold;
+}
+
+li.inactive {
+    text-decoration: line-through;
+}
+
