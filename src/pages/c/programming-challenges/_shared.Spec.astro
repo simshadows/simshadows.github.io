@@ -1,0 +1,16 @@
+---
+// TODO: Prefer to not use "initial". Make a proper css variable?
+
+interface Props {
+    href: string;
+}
+
+const {
+    href,
+} = Astro.props;
+
+if (!href) throw new Error("Blank href.");
+---
+
+<a style="font-size: initial;" target="_blank" href={href}>[Spec]</a>
+

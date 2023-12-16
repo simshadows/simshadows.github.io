@@ -5,11 +5,22 @@ description: My solutions and thoughts for Advent of Code 2023!
 keywords: ["advent of code", "2023", "day", "part", "solutions", "thoughts", "python"]
 ---
 
-*All solutions on this page were written without reading any hints or solutions.*
+import Divider from "../_shared.Divider.astro"; //_
+import Spec from "../_shared.Spec.astro"; //_
 
-*These solutions aren't necessarily good, but they did the job and got me the answers.*
+All solutions on this page were written by me without reading any hints or solutions.
 
-## Day 1
+My solutions aren't necessarily great, but they did the job and got me the answers.
+
+My suggestion to run these solutions:
+```
+$ cat input.txt | ./solution.py
+```
+
+
+<Divider />
+
+## Day 1 <Spec href="https://adventofcode.com/2023/day/1" />
 
 ### Part 1 Solution
 
@@ -21,14 +32,71 @@ from sys import stdin
 def run(f):
     n = 0
     for s in f.readlines():
-        s = list(filter(lambda x : x in "1234567890", s.strip()))
+        s = [c for c in s if (c in "1234567890")]
         n += int(s[0] + s[-1])
     print(n)
 
 run(stdin)
 ```
 
+### Part 2 Failure
+
+I found Part 2 to be a pain in the ass because the exact conditions for a word to count as a number weren't clear.
+
+My first attempt would replace all valid substrings into digits, giving priority to what appears earlier:
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from math import isinf, inf
+
+nums = {str(s) for s in range(10)}
+tab = {
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8",
+    "nine": "9",
+    #"zero": "0",
+}
+
+def run():
+    n = 0
+    for i, s in enumerate(x.strip() for x in f.readlines()):
+        while True:
+            best_idx = inf
+            best_str = ""
+            for (query, digit) in tab.items():
+                idx = s.find(query)
+                if idx >= 0 and idx < best_idx:
+                    best_idx = idx
+                    best_str = query
+            if isinf(best_idx):
+                break
+            s = s.replace(best_str, tab[best_str], 1)
+        s = list(filter(lambda x : x in nums, s))
+        n += int(s[0] + s[-1])
+    print(n)
+
+run(f)
+```
+
 ### Part 2 Solution
+
+After a bit more thought, I realized the important thing is probably the first and last actual valid word.
+
+In the interest of getting something done quick, I produced a terribly inelegant solution. Both the `#replace first` and `#replace last` blocks of code are near identical and do the same thing, just at different ends of the string. In the case of `#replace first`, it:
+
+1. finds the left-most valid substring,
+2. replaces it with a digit (if there is such a substring), then
+3. removes all non-numerical character.
+
+The full solution:
 
 ```py
 #!/usr/bin/env python3
@@ -64,7 +132,7 @@ def run(f):
                 best_str = query
         if not isinf(best_idx):
             s1 = s1.replace(best_str, tab[best_str], 1)
-        s1 = list(filter(lambda x : x in nums, s1))
+        s1 = [c for c in s1 if (c in nums)]
 
         # replace last
         s2 = s
@@ -77,7 +145,7 @@ def run(f):
                 best_str = query
         if best_idx >= 1:
             s2 = s2.replace(best_str, tab[best_str])
-        s2 = list(filter(lambda x : x in nums, s2))
+        s2 = [c for c in s2 if (c in nums)]
 
         n += int(s1[0] + s2[-1])
     print(n)
@@ -86,11 +154,13 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 2
+## Day 2 <Spec href="https://adventofcode.com/2023/day/2" />
 
 ### Part 1 Solution
+
+My solution just checks if every number of cubes falls within the limits (`R_LIMIT`, `G_LIMIT`, and `B_LIMIT`).
 
 ```py
 #!/usr/bin/env python3
@@ -108,7 +178,15 @@ def run(f):
         (_, game_num) = title.split()
         sets = [dict(reversed(y.split()) for y in x.split(",")) for x in tail.split(";")]
 
-        if all((int(d.get("red", 0)) <= R_LIMIT and int(d.get("green", 0)) <= G_LIMIT and int(d.get("blue", 0)) <= B_LIMIT) for d in sets):
+        game_is_possible = all(
+            (
+                int(d.get("red", 0)) <= R_LIMIT
+                and int(d.get("green", 0)) <= G_LIMIT
+                and int(d.get("blue", 0)) <= B_LIMIT
+            )
+            for d in sets
+        )
+        if game_is_possible:
             solution += int(game_num)
     print(solution)
 
@@ -117,14 +195,12 @@ run(stdin)
 
 ### Part 2 Solution
 
+Straightforward modification that instead just grabs the maximum numbers of red, green, and blue seen within each game.
+
 ```py
 #!/usr/bin/env python3
 
 from sys import stdin
-
-R_LIMIT = 12
-G_LIMIT = 13
-B_LIMIT = 14
 
 def run(f):
     solution = 0
@@ -145,11 +221,23 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 3
+## Day 3 <Spec href="https://adventofcode.com/2023/day/3" />
 
 ### Part 1 Solution
+
+This one's a real mess to look at due to the loop nesting (2D data structures can be a pain like this) and lots of things happening simultaneously.
+
+My approach starts by padding the grid with an extra end column and end row of `"."`, i.e. the symbol denoting empty space. This simplifies the code since we need to check adjacent cells, and `"."` will simply be read as nothing.
+
+This padding also takes advantage of Python's negative indexing, where `row[-1]` will simply grab the final element of the row (i.e. the final column). For example, if our current location is `(1, 0)` (row 1, column 0), our adjacent cells will include the negative column: `(0, -1)`, `(1, -1)`, and `(2, -1)`. These negative column numbers will just map to the final column, which will all be `"."`. In my opinion, this is a nice simplification that means we no longer have to explicitly deal with the edge case within the loop.
+
+The loop itself scans each row for consecutive digits. Every time a digit is found, it updates an accumulator (called `num`). E.g. if the accumulator is `452` and we read in a new digit `7`, the accumulator now becomes `4527`. Every time we read in a non-digit, the accumulator is *flushed*, resetting it to zero.
+
+At the same time, we also scan all adjacent cells for part symbols (`*`, `#`, etc.). If it is, then we record the current accumulator as being a part number (`is_part_num`). That way, by the time the accumulator flushes, we know whether the full number is indeed a part number.
+
+Once again, the `"."` padding helps us simplify our code to avoid explicitly dealing with an edge case. Since the final column is `"."`, we will know that any part number still stored in the accumulator will be forced to flush, and thus be included in the solution.
 
 ```py
 #!/usr/bin/env python3
@@ -182,6 +270,10 @@ run(stdin)
 
 ### Part 2 Solution
 
+We keep a lot of the same tricks as Part 1, but this time, instead of `is_part_num`, we store a set of adjacent gears (`gears`) to the current accumulator value. Every time we *flush* the accumulator, we record every gear we found as being adjacent to the part number (`gear_adjs`).
+
+Then, we just loop through `gear_adjs`, summing up gear ratios (`x[0] * x[1]`) after filtering for gears with exactly two adjacencies (`len(x) == 2`).
+
 ```py
 #!/usr/bin/env python3
 
@@ -213,11 +305,13 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 4
+## Day 4 <Spec href="https://adventofcode.com/2023/day/4" />
 
 ### Part 1 Solution
+
+We just take a set intersection between what's present on the card and the winning numbers to get the number of winning numbers. Easy!
 
 ```py
 #!/usr/bin/env python3
@@ -261,9 +355,9 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 5
+## Day 5 <Spec href="https://adventofcode.com/2023/day/5" />
 
 ### Part 1 Solution
 
@@ -375,9 +469,9 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 6
+## Day 6 <Spec href="https://adventofcode.com/2023/day/6" />
 
 ### Part 1 Solution
 
@@ -429,9 +523,9 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 7
+## Day 7 <Spec href="https://adventofcode.com/2023/day/7" />
 
 ### Part 1 Solution
 
@@ -526,9 +620,9 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 8
+## Day 8 <Spec href="https://adventofcode.com/2023/day/8" />
 
 ### Part 1 Solution
 
@@ -610,9 +704,9 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 9
+## Day 9 <Spec href="https://adventofcode.com/2023/day/9" />
 
 ### Part 1 Solution
 
@@ -667,9 +761,9 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 10
+## Day 10 <Spec href="https://adventofcode.com/2023/day/10" />
 
 ### Part 1 Solution
 
@@ -784,9 +878,9 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 11
+## Day 11 <Spec href="https://adventofcode.com/2023/day/11" />
 
 ### Part 1 BFS Solution
 
@@ -888,7 +982,9 @@ run(stdin)
 
 ### Part 2 Solution
 
-The only modifications necessary were changing the expansion-application to:
+With my faster mathematical solution for Part 1, I made a few modifications to adapt it for Part 2.
+
+I changed the expansion-application to:
 ```py
 # Apply expansion
 galaxies = [
@@ -949,9 +1045,9 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 12
+## Day 12 <Spec href="https://adventofcode.com/2023/day/12" />
 
 ### Part 1 Brute Force Solution
 
@@ -1158,9 +1254,9 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 13
+## Day 13 <Spec href="https://adventofcode.com/2023/day/13" />
 
 ### Part 1 Solution
 
@@ -1239,86 +1335,391 @@ run(stdin)
 ```
 
 
-<hr />
+<Divider />
 
-## Day 14
+## Day 14 <Spec href="https://adventofcode.com/2023/day/14" />
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+def run(f):
+    rockmap = [s.strip() for s in f.readlines()]
+
+    solution = 0
+    for j in range(len(rockmap[0])):
+        empty_i = 0
+        for i in range(len(rockmap)):
+            c = rockmap[i][j]
+            if c == "#":
+                empty_i = i + 1
+            elif c == "O":
+                solution += len(rockmap) - empty_i
+                empty_i += 1
+    print(solution)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import chain, product
+
+TARGET_ITERATIONS = 1000000000
+
+def rotate_grid(rockmap):
+    new_map = []
+    for j in range(len(rockmap[0])):
+        new_row = []
+        new_map.append(new_row)
+        for i in reversed(range(len(rockmap))):
+            new_row.append(rockmap[i][j])
+    return new_map
+
+def push_north(rockmap):
+    for j in range(len(rockmap[0])):
+        empty_i = 0
+        for i in range(len(rockmap)):
+            c = rockmap[i][j]
+            if c == "#":
+                empty_i = i + 1
+            elif c == "O":
+                rockmap[i][j] = "."
+                rockmap[empty_i][j] = "O"
+                empty_i += 1
+
+def calculate_load(rockmap):
+    return sum(
+        len(rockmap) - i
+        for i, j in product(range(len(rockmap)), range(len(rockmap[0])))
+        if rockmap[i][j] == "O"
+    )
+
+def run(f):
+    rockmap = [list(s.strip()) for s in f.readlines()]
+    latest_i = {} # {stringified map: latest iteration}
+    history = [] # loads
+
+    (dist, dist_repeats) = (-1, 0)
+    end_iteration = None
+    for i in range(TARGET_ITERATIONS):
+        for _ in range(4):
+            push_north(rockmap)
+            rockmap = rotate_grid(rockmap)
+        s = "".join(chain(*rockmap))
+        if (s in latest_i) and (i - latest_i[s] == dist):
+            dist_repeats += 1
+        else:
+            dist_repeats = 0
+        history.append(calculate_load(rockmap))
+        if (dist_repeats != 0) and (dist_repeats == dist):
+            end_iteration = i
+            break
+        if s in latest_i:
+            dist = i - latest_i[s]
+        latest_i[s] = i
+
+    # we assume we actually do find a repeat
+    # (not going to bother dealing with the edge case of no periodicity)
+    if end_iteration is None:
+        raise RuntimeError()
+
+    history = history[-dist:] # just get the repeated section
+    base = end_iteration + 1
+    #print(history)
+    print(history[(TARGET_ITERATIONS - base - 1) % len(history)])
+
+run(stdin)
+```
+
+
+<Divider />
+
+## Day 15 <Spec href="https://adventofcode.com/2023/day/15" />
+
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product
+
+def run(f):
+    strs = f.readlines()[0].strip().split(",")
+
+    solution = 0
+    for s in strs:
+        cur_hash = 0
+        for c in s:
+            cur_hash = ((cur_hash + ord(c)) * 17) % 256
+        solution += cur_hash
+    print(solution)
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+Such a pain in the ass verbose problem specification in terms of trying to parse out how the algorithm is supposed to work. At least Part 1 was super-simple and easy to skim. Part 2 has relatively many moving parts with the different parts spread out across the problem specification text. The question was obviously designed more as a reading comprehension problem than anything else really.
+
+Along the way, I made two notable misunderstandings of the problem specification:
+
+- I originally thought each box held at most one lens. This led to misunderstanding the functionality of the `-` operation character, particularly the phrase *"move any remaining lenses as far forward in the box as they can go without changing their order"*. I assumed I was meant to shift the lenses to different boxes.
+- I originally obtained the box numbers by running the "HASH algorithm" over the entire command string (e.g. running the HASH algorithm over all four characters of `rn=1`) when it should only be run over the "label" portion of the command string (e.g. for `rn=1`, the label is `rn`).
+
+My final solution after resolving all misunderstandings:
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+def get_box_num(s):
+    boxnum = 0
+    for c in s:
+        boxnum = ((boxnum + ord(c)) * 17) % 256
+    return boxnum
+
+def run(f):
+    strs = f.readlines()[0].strip().split(",")
+
+    boxes = [[] for _ in range(256)] # [[[label, focal length], ...], ...]
+    for s in strs:
+        if "-" in s:
+            label = s[:-1]
+            box = boxes[get_box_num(label)]
+            box[:] = [x for x in box if (x[0] != label)]
+        else:
+            (label, focal_len) = s.split("=")
+            box = boxes[get_box_num(label)]
+            for tup in box:
+                if tup[0] == label:
+                    tup[1] = focal_len
+                    break
+            else:
+                box.append([label, focal_len])
+
+    print(sum(
+        ((1 + boxnum) * sum(
+            (i + 1) * int(focal_len) for i, (label, focal_len) in enumerate(box)
+        ))
+        for boxnum, box in enumerate(boxes)
+    ))
+
+run(stdin)
+```
+
+
+<Divider />
+
+## Day 16 <Spec href="https://adventofcode.com/2023/day/16" />
+
+### Part 1 Solution
+
+I went for a DFS solution, tracking both position (`i` and `j`) and facing direction unit vectors (`i_dir` and `j_dir`) at each step of the DFS.
+
+We prevent infinite loops by *conceptually* keeping a set of `(i, j, i_dir, j_dir)` tuples. The actual implementation is a 2D grid of sets called `seen`, where the grid indices are `i` and `j` while each set stores the unit direction vectors that have passed through the grid location.
+
+The DFS starts with `travel(0, 0, 0, 1)`, meaning we start at the `i=0` and `j=0` (i.e. the top-left corner) and travelling in the direction of `i_dir=0` and `j_dir=1` (i.e. we are travelling in the positive-j direction).
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin, setrecursionlimit
+from itertools import chain
+
+def run(f):
+    grid = [s.strip() for s in f.readlines()]
+    setrecursionlimit(len(grid) * len(grid[0]))
+
+    # grid of sets of unit directional vectors (i, j)
+    seen = [[set() for _ in range(len(grid[0]))] for _ in range(len(grid))]
+
+    def travel(i, j, i_dir, j_dir):
+        if (i < 0) or (i >= len(grid)) \
+                or (j < 0) or (j >= len(grid[0])) \
+                or (i_dir, j_dir) in seen[i][j]:
+            return
+        seen[i][j].add((i_dir, j_dir))
+        c = grid[i][j]
+        if c == ".":
+            travel(i + i_dir, j + j_dir, i_dir, j_dir)
+        elif c == "|":
+            if j_dir:
+                travel(i + 1, j,  1, 0)
+                travel(i - 1, j, -1, 0)
+            else:
+                travel(i + i_dir, j + j_dir, i_dir, j_dir)
+        elif c == "-":
+            if i_dir:
+                travel(i, j + 1, 0,  1)
+                travel(i, j - 1, 0, -1)
+            else:
+                travel(i + i_dir, j + j_dir, i_dir, j_dir)
+        elif c == "/":
+            travel(i - j_dir, j - i_dir, -j_dir, -i_dir)
+        else: # "\"
+            travel(i + j_dir, j + i_dir, j_dir, i_dir)
+    travel(0, 0, 0, 1)
+
+    print(sum(len(x) > 0 for x in chain(*seen)))
+
+run(stdin)
+```
+
+I didn't actually write out those `elif c = "/":` and `else:` branches like that the first time around. I originally wrote it out explicitly:
+
+```py
+        elif c == "/":
+            if j_dir == 1:
+                travel(i - 1, j, -1, 0)
+            elif j_dir == -1:
+                travel(i + 1, j, 1, 0)
+            elif i_dir == 1:
+                travel(i, j - 1, 0, -1)
+            else:
+                travel(i, j + 1, 0, 1)
+        else: # "\"
+            if j_dir == 1:
+                travel(i + 1, j, +1, 0)
+            elif j_dir == -1:
+                travel(i - 1, j, -1, 0)
+            elif i_dir == 1:
+                travel(i, j + 1, 0, 1)
+            else:
+                travel(i, j - 1, 0, -1)
+```
+
+Only after verifying I got the right answer did I refactor to the final version before moving on to Part 2.
+
+### Part 2 Solution
+
+I refactored the Part 1 functionality into a new function `calculate_coverage()` before running `calculate_coverage()` on every possible entrypoint into the grid to get the final answer.
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin, setrecursionlimit
+from itertools import chain
+
+def calculate_coverage(grid, _i, _j, _i_dir, _j_dir):
+    # grid of sets of unit directional vectors (i, j)
+    seen = [[set() for _ in range(len(grid[0]))] for _ in range(len(grid))]
+
+    def travel(i, j, i_dir, j_dir):
+        if (i < 0) or (i >= len(grid)) \
+                or (j < 0) or (j >= len(grid[0])) \
+                or (i_dir, j_dir) in seen[i][j]:
+            return
+        seen[i][j].add((i_dir, j_dir))
+        c = grid[i][j]
+        if c == ".":
+            travel(i + i_dir, j + j_dir, i_dir, j_dir)
+        elif c == "|":
+            if j_dir:
+                travel(i + 1, j,  1, 0)
+                travel(i - 1, j, -1, 0)
+            else:
+                travel(i + i_dir, j + j_dir, i_dir, j_dir)
+        elif c == "-":
+            if i_dir:
+                travel(i, j + 1, 0,  1)
+                travel(i, j - 1, 0, -1)
+            else:
+                travel(i + i_dir, j + j_dir, i_dir, j_dir)
+        elif c == "/":
+            travel(i - j_dir, j - i_dir, -j_dir, -i_dir)
+        else: # "\"
+            travel(i + j_dir, j + i_dir, j_dir, i_dir)
+    travel(_i, _j, _i_dir, _j_dir)
+    return sum(len(x) > 0 for x in chain(*seen))
+
+def run(f):
+    grid = [s.strip() for s in f.readlines()]
+    setrecursionlimit(len(grid) * len(grid[0]))
+
+    solution = 0
+    for i in range(len(grid)): # left edge
+        solution = max(solution, calculate_coverage(grid, i, 0, 0, 1))
+    for i in range(len(grid)): # right edge
+        solution = max(solution, calculate_coverage(grid, i, len(grid[0]) - 1, 0, -1))
+    for j in range(len(grid[0])): # top edge
+        solution = max(solution, calculate_coverage(grid, 0, j, 1, 0))
+    for j in range(len(grid[0])): # bottom edge
+        solution = max(solution, calculate_coverage(grid, len(grid) - 1, j, -1, 0))
+    print(solution)
+
+run(stdin)
+```
+
+
+<Divider />
+
+## Day 17 <Spec href="https://adventofcode.com/2023/day/17" />
 
 *TODO*
 
 
-<hr />
+<Divider />
 
-## Day 15
-
-*TODO*
-
-
-<hr />
-
-## Day 16
+## Day 18 <Spec href="https://adventofcode.com/2023/day/18" />
 
 *TODO*
 
 
-<hr />
+<Divider />
 
-## Day 17
-
-*TODO*
-
-
-<hr />
-
-## Day 18
+## Day 19 <Spec href="https://adventofcode.com/2023/day/19" />
 
 *TODO*
 
 
-<hr />
+<Divider />
 
-## Day 19
-
-*TODO*
-
-
-<hr />
-
-## Day 20
+## Day 20 <Spec href="https://adventofcode.com/2023/day/20" />
 
 *TODO*
 
 
-<hr />
+<Divider />
 
-## Day 21
-
-*TODO*
-
-
-<hr />
-
-## Day 22
+## Day 21 <Spec href="https://adventofcode.com/2023/day/21" />
 
 *TODO*
 
 
-<hr />
+<Divider />
 
-## Day 23
-
-*TODO*
-
-
-<hr />
-
-## Day 24
+## Day 22 <Spec href="https://adventofcode.com/2023/day/22" />
 
 *TODO*
 
 
-<hr />
+<Divider />
 
-## Day 25
+## Day 23 <Spec href="https://adventofcode.com/2023/day/23" />
+
+*TODO*
+
+
+<Divider />
+
+## Day 24 <Spec href="https://adventofcode.com/2023/day/24" />
+
+*TODO*
+
+
+<Divider />
+
+## Day 25 <Spec href="https://adventofcode.com/2023/day/25" />
 
 *TODO*
 
