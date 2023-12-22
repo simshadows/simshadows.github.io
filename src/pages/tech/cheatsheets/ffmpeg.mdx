@@ -1,0 +1,41 @@
+---
+layout: ../../../layouts/MDLayout.astro
+title: FFmpeg Cheatsheet
+description: Common FFmpeg commands I regularly come back to using.
+keywords: ["ffmpeg", "cheatsheet"]
+---
+
+This page is my personal cheatsheet of common FFmpeg commands I regularly use.
+
+*THIS PAGE IS A VERY EARLY WORK-IN-PROGRESS.*
+
+*I still need to migrate all my notes onto here, but I also want to test the commands before moving them over.*
+
+## Basic Operations Without Re-encoding
+
+```bash
+# Cut (crude, by keyframe):
+ffmpeg -ss 01:51:50 -i in.mkv -t 128 -c copy out.mkv
+
+# Extract audio
+ffmpeg -i in.mkv -vn -acodec copy out-audio.mp4
+
+# Remove audio
+ffmpeg -i in.mkv -c copy -an out.mkv
+```
+
+## Concatenation Without Re-encoding
+
+```bash
+# Concatenation, no re-encoding
+ffmpeg -f concat -safe 0 -i mylist.txt -c copy out.mkv
+```
+
+Example `mylist.txt` file contents to concatenate three files in order:
+```
+# comments begin with a hash symbol
+file 'FILENAME1.mkv'
+file 'FILENAME2.mkv'
+file 'FILENAME3.mkv'
+```
+

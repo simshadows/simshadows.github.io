@@ -21,11 +21,6 @@ const {
 <ul>
     <li><a href="/about/"><b>About Me</b></a></li>
     <li><a href="/list-of-awesome/"><b>List of Awesome</b></a></li>
-    <li><a href="/mechanical-keyboard-switch-collection/"><b>Mechanical Keyboard Switch Collection</b></a>
-        {showWIP && <ul>
-            <li>There's also this <a href="/mechanical-keyboard-switch-collection-legacy/index.html"><b>old version of the page</b></a>. I'm still migrating data from it.</li>
-        </ul>}
-    </li>
     {showWIP && <li><a href="/stuff-i-wish-i-knew-when-i-was-younger/"><b>Stuff I Wish I Knew When I Was Younger</b></a> <Wip /></li>}
     {showWIP && <li><a href="/uses/"><b>Uses</b></a> <Wip /></li>}
 </ul>
@@ -56,6 +51,17 @@ const {
         </ul>
     </li>
     <li><a href="/c/programming-challenges/"><b>Programming Challenge Solutions</b></a></li>
+</ul>
+
+<h4>General Computer/Tech Stuff</h4>
+
+<ul>
+    {showWIP && <li><a href="/tech/cheatsheets/ffmpeg/"><b>FFmpeg Cheatsheet</b></a> <Wip /></li>}
+    <li><a href="/mechanical-keyboard-switch-collection/"><b>Mechanical Keyboard Switch Collection</b></a>
+        {showWIP && <ul>
+            <li>There's also this <a href="/mechanical-keyboard-switch-collection-legacy/index.html"><b>old version of the page</b></a>. I'm still migrating data from it.</li>
+        </ul>}
+    </li>
 </ul>
 
 <h4>Gaming</h4>

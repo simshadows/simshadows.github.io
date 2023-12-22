@@ -5,6 +5,10 @@ description: My solutions and thoughts for Advent of Code 2023!
 keywords: ["advent of code", "2023", "day", "part", "solutions", "thoughts", "python"]
 ---
 
+import DisplayLatex from "@components/DisplayLatex";
+import GatherVarLatex from "@components/GatherVarLatex";
+import Latex from "@components/Latex";
+
 import Divider from "../_shared.Divider.astro"; //_
 import Spec from "../_shared.Spec.astro"; //_
 
@@ -333,6 +337,8 @@ run(stdin)
 
 ### Part 2 Solution
 
+I went for a 1D dynamic programming solution. Each card's final value is only dependent on cards of higher indices, so we iterate through the list of cards in reverse.
+
 ```py
 #!/usr/bin/env python3
 
@@ -360,6 +366,8 @@ run(stdin)
 ## Day 5 <Spec href="https://adventofcode.com/2023/day/5" />
 
 ### Part 1 Solution
+
+Each `X-to-Y map:` section is doing basically the same thing, mapping some set of input IDs to some set of output IDs. To avoid code duplication, I wrote ID mapping functionality that is simply reused for each "X-to-Y map:" in the order dictated by `maps_order`.
 
 ```py
 #!/usr/bin/env python3
@@ -404,6 +412,18 @@ run(stdin)
 
 ### Part 2 Solution
 
+To deal with the ranges of seeds, rather than map individual seeds/IDs at a time (as with Part 1), we instead map ranges represented by tuples of starting ID and range length.
+
+Since ID ranges have to occasionally be split, each mapping operation starts with a stack of ID ranges. We pop a range and attempt to map it. If we find a "partial match", then we map the part that can be mapped, then we push back the unmapped parts back to the stack to be reprocessed.
+
+For example, suppose we have the ID range tuple `(7, 4)` representing the IDs `[7, 8, 9, 10]`. This might match with a mapping `31 4 5`, which maps the IDs `[4, 5, 6, 7, 8]` to the IDs `[31, 32, 33, 34, 35]`. Our ID range tuple only matches on the IDs `[7, 8]`, so we map those two IDs to `[34, 35]`, and the unmatched portion `[9, 10]` is pushed back to the stack as a new ID range tuple `(9, 2)`.
+
+Now, that was actually an oversimplification. My solution actually cheats a little by always pushing the upper unmatched portion and lower unmatched portion back to the stack, even if the unmatched portions might be zero-length. We just filter for zero-length ID ranges with the `if id_len == 0:` branch. This means that even if we find a "full match", we end up pushing two zero-length ranges back to the stack anyway.
+
+For the case where an ID range tuple doesn't match with any mapping, it just maps like you'd expect.
+
+The `grouper()` function is taken directly from [Itertools Recipes](https://docs.python.org/3/library/itertools.html#itertools-recipes) from the official documentation.
+
 ```py
 #!/usr/bin/env python3
 
@@ -420,6 +440,7 @@ maps_order = (
     "humidity-to-location map",
 )
 
+# <https://docs.python.org/3/library/itertools.html#itertools-recipes>
 def grouper(iterable, n, *, incomplete='fill', fillvalue=None):
     "Collect data into non-overlapping fixed-length chunks or blocks"
     # grouper('ABCDEFG', 3, fillvalue='x') --> ABC DEF Gxx
@@ -475,6 +496,8 @@ run(stdin)
 
 ### Part 1 Solution
 
+I just tried every possible button-hold-time and counted the record-breakers.
+
 ```py
 #!/usr/bin/env python3
 
@@ -499,6 +522,14 @@ run(stdin)
 ```
 
 ### Part 2 Solution
+
+Instead of making lists of integers, I joined the integers together with this line:
+
+```py
+    sections = {k.strip(): int("".join(v.strip().split())) for k, v in sections}
+```
+
+The full solution:
 
 ```py
 #!/usr/bin/env python3
@@ -528,6 +559,19 @@ run(stdin)
 ## Day 7 <Spec href="https://adventofcode.com/2023/day/7" />
 
 ### Part 1 Solution
+
+I used a list of lists of hands. When filling the inner lists, I map the card symbols to a relative strength integer using `label_order`. That way, when I sort the inner list, I can just take advantage of the natural sort order where Python can sort tuples by the tuple contents.
+
+```py
+>>> from itertools import count
+>>> label_order = {c: i for c, i in zip(reversed("AKQJT98765432"), count())}
+>>> label_order
+{'2': 0, '3': 1, '4': 2, '5': 3, '6': 4, '7': 5, '8': 6, '9': 7, 'T': 8, 'J': 9, 'Q': 10, 'K': 11, 'A': 12}
+```
+
+The inner lists are sorted by natural order before then chained together into a single list `all_sorted`.
+
+The full solution:
 
 ```py
 #!/usr/bin/env python3
@@ -571,6 +615,8 @@ run(stdin)
 ```
 
 ### Part 2 Solution
+
+For Part 2, I modified Part 1 to try every possible card that a joker can "mimic", and taking the best strength.
 
 ```py
 #!/usr/bin/env python3
@@ -626,6 +672,8 @@ run(stdin)
 
 ### Part 1 Solution
 
+My solution builds a `graph` and just follows the instructions until we reach `ZZZ`.
+
 ```py
 #!/usr/bin/env python3
 
@@ -645,7 +693,35 @@ def run(f):
 run(stdin)
 ```
 
+### Part 2 Failed Brute Force
+
+At each iteration of the loop, I transform a vector of current nodes to a new vector of current nodes. However, I ran it for a few hours (I had to leave my computer anyway lol) and when I got back, it was still running, so it was clear that something smarter was needed.
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+
+def run(f):
+    (instructions, graph) = f.read().strip().split("\n\n")
+    graph = {x[0]: (x[2][1:-1], x[3][:-1]) for x in (s.split() for s in graph.split("\n"))}
+
+    steps = 0
+    cur = [x for x in graph.keys() if x[-1] == "A"]
+    while any((x[-1] != "Z") for x in cur):
+        i = 0 if (instructions[steps % len(instructions)] == "L") else 1
+        cur[:] = [graph[x][i] for x in cur]
+        steps += 1
+        if steps % 1000000 == 0:
+            print(steps)
+    print(steps)
+
+run(stdin)
+```
+
 ### Part 2 Solution
+
+Here's my original full solution:
 
 ```py
 #!/usr/bin/env python3
@@ -702,6 +778,32 @@ def run(f):
 
 run(stdin)
 ```
+
+Getting an efficient Part 2 solution was a big pain in the ass. At the moment, I'm not sure of a better approach, but here's what I did at the time to get that final solution.
+
+To make progress, I started by exploring the graph, first wondering where each individual `"**A"` starting point went (i.e. the path taken when starting from the individual node) rather than dealing with all the paths at the same time.
+
+My assumption was that we eventually enter a cycle, and within the cycle, there is one or more `"**Z"` exit points. I wanted to know at what point does each individual path enter a cycle, and where the exit points sit in the cycle. Maybe we can do some fancy math with it?
+
+Here are the results of that exploration work:
+
+```
+exits: [[20803], [23147], [19631], [13771], [17287], [12599]]
+
+bounds: [(3, 20806), (2, 23149), (2, 19633), (2, 13773), (6, 17293), (2, 12601)]
+```
+
+The `exits:` and `bounds:` printouts above correspond to these lines in my solution:
+
+```py
+    print("exits:", cycle_exits)
+    print()
+    print("bounds:", cycle_bounds)
+    print()
+```
+
+(TODO: Continue this explanation.)
+
 
 
 <Divider />
@@ -1260,6 +1362,12 @@ run(stdin)
 
 ### Part 1 Solution
 
+My solution starts by assuming all possible lines of reflection are valid. For example, `is_horz_reflection` is a list of booleans, each element representing a different vertical line of reflection and whether said line is valid.
+
+My solution then visit each cell one-by-one. For each cell, it tries every possible vertical and horizontal line of reflection by checking if the current cell matches the mirror image cell. If the mirror image cell does not match the current cell, then we mark the corresponding line of reflection as impossible.
+
+After checking every cell and every line of reflection, `is_horz_refl` and `is_vert_refl` should only contain one `True` element between them. This corresponds to the one valid line of reflection for the pattern.
+
 ```py
 #!/usr/bin/env python3
 
@@ -1297,6 +1405,15 @@ run(stdin)
 ```
 
 ### Part 2 Solution
+
+I mainly modified my Part 1 solution so that we count line-of-reflection breakages for each line of reflection. Thus, we now have:
+
+```py
+        horz_refl_breakages = [0]*(len(pattern[0]) - 1)
+        vert_refl_breakages = [0]*(len(pattern) - 1)
+```
+
+The full solution:
 
 ```py
 #!/usr/bin/env python3
@@ -1339,7 +1456,9 @@ run(stdin)
 
 ## Day 14 <Spec href="https://adventofcode.com/2023/day/14" />
 
-### Part 1 Solution
+### Part 1 Non-Modifying Two-Pointer Solution
+
+My Part 1 solution is basically a two-pointer solution where I pretend to move the `O` rocks, but I don't actually modify the underlying data structure.
 
 ```py
 #!/usr/bin/env python3
@@ -1364,7 +1483,73 @@ def run(f):
 run(stdin)
 ```
 
-### Part 2 Solution
+### Part 1 Modifying Two-Pointer Solution
+
+To help me out for Part 2, I modified my original Part 1 solution so that instead of pretending to move the `O` rocks without modifying the `rockmap` data structure, we actually do modify it, moving the `O` rocks to new places, then running a `sum()` to get the final answer.
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product
+
+def push_north(rockmap):
+    for j in range(len(rockmap[0])):
+        empty_i = 0
+        for i in range(len(rockmap)):
+            c = rockmap[i][j]
+            if c == "#":
+                empty_i = i + 1
+            elif c == "O":
+                rockmap[i][j] = "."
+                rockmap[empty_i][j] = "O"
+                empty_i += 1
+
+def run(f):
+    rockmap = [list(s.strip()) for s in f.readlines()]
+    push_north(rockmap)
+    print(sum(
+        len(rockmap) - i
+        for i, j in product(range(len(rockmap)), range(len(rockmap[0])))
+        if rockmap[i][j] == "O"
+    ))
+
+run(stdin)
+```
+
+### Part 2 Lazy Solution
+
+Part 2 asks for 1,000,000,000 iterations. Obviously, a brute-force solution shouldn't scale well for simulating all 1,000,000,000 iterations, with my attempt at brute-force taking 5 seconds to run 100,000 iterations. Extrapolating to 1,000,000,000, it would take 14 hours.
+
+*(When I say "iteration", I mean a single set of four pushes: north, then west, then south, then east.)*
+
+The next idea that I tried was the assumption that after enough iterations, we reach a *constant state* of `rockmap` (and therefore also the same "load value"). For example, I was thinking maybe we might see load values <Latex code="\brackets{12, 16, 14, 17, 15, 15, 15, 15, 15, \dots}" />, and the pattern of constant <Latex code="15" /> repeats all the way to infinity. However, when you run the brute-force algorithm on the actual puzzle input and print out the load values, we don't observe a constant value.
+
+What we instead observe is a *cycle* of values. For example, maybe we might see load values <Latex code="\brackets{12, 16, 14, 17, 15, 19, 18, 15, 19, 18, 15, 19, 18, \dots}" />. In this example, we notice the repeating cycle of <Latex code="\brackets{15, 19, 18}" />.
+
+Based on this observation, I decided to cheat. Using the printouts, I manually identified the following repeating pattern:
+
+```
+[102851, 102834, 102831, 102829, 102827, 102828, 102837]
+```
+
+With only 7 possibilities, I submitted each of them until one of them was right. And it worked!
+
+For completeness, I decided to make an automated solution.
+
+### Part 2 Automated Solution
+
+The idea is that we directly calculate intermediate rockmaps and load values while running a cycle detection algorithm on top of it.
+
+To directly calculate intermediate rockmaps, I chose to implement a function that rotates the the entire rockmap 90 degrees clockwise. Though, I could've instead just implemented a version of `push_north()` that just changes direction, or duplicated the `push_north()` function for each cardinal direction, but rotating the whole map just seemed simpler to me at the time.
+
+Unfortunately, I went into this problem with not a lot of experience with cycle-detection algorithms, so there might be something better. Otherwise, my quick-and-dirty cycle detection algorithm works on the assumption that at the end of an iteration (i.e. after pushing north, then west, then south, then east), if the same rockmap appears a second time, then the sequence between and including the two appearances is a repeating cycle of maps. This is because the map itself contains all information on the state of the system at the particular time step. If state <Latex code="A" /> was previously seen to transition to state <Latex code="B" />, then when we see state <Latex code="A" /> again, we know it will transition to state <Latex code="B" /> again.
+
+But on the other hand, if we relied on just reading the load values, this cycle detection algorithm would be insufficient. For example, for the sequence of load values <Latex code="\brackets{1, 2, 1, 3, 1, 2, 1, 3, \dots}" />, the algorithm may mistakenly think that the subsequence <Latex code="\brackets{1, 2}" /> is the repeated subsequence when the actual repeated subsequence is <Latex code="\brackets{1, 2, 1, 3}" />. In this case, <Latex code="1" /> is not guaranteed to transition to the same load value each time. `rockmap` states don't necessarily map one-to-one to load values (i.e. the mapping is not *bijective*), meaning that two different `rockmap` states may produce the same load value.
+
+Once the cycle detection algorithm identifies the repeated subsequence, we use a bit of modular arithmetic to index into this repeated subsequence to get the final answer.
+
+My full automated solution:
 
 ```py
 #!/usr/bin/env python3
@@ -1407,23 +1592,18 @@ def run(f):
     latest_i = {} # {stringified map: latest iteration}
     history = [] # loads
 
-    (dist, dist_repeats) = (-1, 0)
+    dist = 0
     end_iteration = None
     for i in range(TARGET_ITERATIONS):
         for _ in range(4):
             push_north(rockmap)
             rockmap = rotate_grid(rockmap)
         s = "".join(chain(*rockmap))
-        if (s in latest_i) and (i - latest_i[s] == dist):
-            dist_repeats += 1
-        else:
-            dist_repeats = 0
         history.append(calculate_load(rockmap))
-        if (dist_repeats != 0) and (dist_repeats == dist):
-            end_iteration = i
-            break
         if s in latest_i:
             dist = i - latest_i[s]
+            end_iteration = i
+            break
         latest_i[s] = i
 
     # we assume we actually do find a repeat
@@ -1431,13 +1611,88 @@ def run(f):
     if end_iteration is None:
         raise RuntimeError()
 
-    history = history[-dist:] # just get the repeated section
-    base = end_iteration + 1
-    #print(history)
-    print(history[(TARGET_ITERATIONS - base - 1) % len(history)])
+    repeated = history[-dist:] # just get the repeated section
+    #print(repeated)
+    print(repeated[(TARGET_ITERATIONS - end_iteration - 2) % len(repeated)])
 
 run(stdin)
 ```
+
+For completeness, let's derive the section where I select the correct element of the repeated subsequence:
+
+```py
+    repeated = history[-dist:] # just get the repeated section
+    #print(repeated)
+    print(repeated[(TARGET_ITERATIONS - end_iteration - 2) % len(repeated)])
+```
+
+The important pieces of information we have about the state of the main loop after `break` statement are:
+
+- the length of the repeated subsequence (`dist`),
+- the last iteration processed by the main loop (`end_iteration`), and
+- the history of load values from each completed iteration of the main loop (`history`).
+
+Additionally, we also have:
+
+- the total number of iterations requested by the problem specification (`TARGET_ITERATIONS`).
+
+For a concrete example, let's assume:
+
+<GatherVarLatex code="
+    \texttt{TARGET\_ITERATIONS} = 10 \\
+    \texttt{dist} = 3 \\
+    \texttt{end\_iteration} = 4
+" />
+
+Visually, this looks like this:
+
+```
+All possible iterations:  0 1 2 3 4 5 6 7 8 9
+`history`:                a b c d e
+`repeated`:                   c d e
+`end_iteration`:                  ^
+```
+
+Intuitively, we can overlay the repeated section over the remaining iterations:
+
+```
+0 1 2 3 4 5 6 7 8 9
+a b c d e
+          c d e
+                c d
+```
+
+In this situation, it's obvious that the final answer is `repeated_section[1]` since the final iteration (the 9th iteration) will produce load value `d`, which is the second element of `repeated_section`, which is index `1`.
+
+To derive a general solution, we start by cutting the conceptual array of all possible iterations at `end_iteration`:
+
+```
+All possible iterations:  0 1 2 3 4 5 6 7 8 9
+Remaining iterations:               0 1 2 3 4
+
+`repeated`:                   c d e
+`end_iteration`:                  ^
+```
+
+The number of remaining iterations is:
+
+<DisplayLatex code="
+    \text{num remaining iterations} = \texttt{TARGET\_ITERATIONS} - \texttt{end\_iteration} - 1
+" />
+
+For our concrete example, <Latex code="\text{num remaining iterations} = 10 - 4 - 1 = 5" />.
+
+Due to zero-indexing, to get solution for <Latex code="n" /> iterations, we must get the <Latex code="n - 1" />, modulo the size of the `repeated` sequence.
+
+In code, we might write this out as:
+
+```py
+    repeated = history[-dist:] # just get the repeated section
+    num_remaining_iterations = TARGET_ITERATIONS - end_iteration - 1
+    print(repeated[(num_remaining_iterations - 1) % len(repeated)])
+```
+
+which can then be simplified to remove the `num_remaining_iterations` variable.
 
 
 <Divider />
@@ -1665,12 +1920,115 @@ run(stdin)
 
 ## Day 17 <Spec href="https://adventofcode.com/2023/day/17" />
 
-*TODO*
+### Part 1 Solution
+
+I went for a Dijkstra's algorithm solution. The cost of a path is the "heat loss", and we further distinguish states not just by position (`i` and `j`), but also travelling-direction unit vectors (`travel_i` and `travel_j`) and the number of steps made in a straight line (`moves`).
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from math import inf
+from heapq import heappush, heappop
+
+def run(f):
+    citymap = [s.strip() for s in f.readlines()]
+    goal = (len(citymap) - 1, len(citymap[0]) - 1)
+
+    seen = set()
+    pq = [(0, 0, 0, 0, 1, 0)]
+    def pqpush(cost, i, j, travel_i, travel_j, moves):
+        if (0 <= i <= goal[0]) and (0 <= j <= goal[1]):
+            heappush(pq, (cost + int(citymap[i][j]), i, j, travel_i, travel_j, moves))
+
+    solution = inf
+    while len(pq):
+        (cost, i, j, travel_i, travel_j, moves) = heappop(pq)
+        if (i, j, travel_i, travel_j, moves) in seen:
+            continue
+        if (i, j) == goal:
+            print(cost)
+            return
+        seen.add((i, j, travel_i, travel_j, moves))
+        if moves < 3:
+            pqpush(cost, i + travel_i, j + travel_j, travel_i, travel_j, moves + 1)
+        if travel_i:
+            pqpush(cost, i, j + 1, 0, 1, 1)
+            pqpush(cost, i, j - 1, 0, -1, 1)
+        elif travel_j:
+            pqpush(cost, i + 1, j, 1, 0, 1)
+            pqpush(cost, i - 1, j, -1, 0, 1)
+    raise RuntimeError()
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+The only modification from my Part 1 solution was the change to this new chunk of code:
+
+```py
+        if moves < 10:
+            pqpush(cost, i + travel_i, j + travel_j, travel_i, travel_j, moves + 1)
+        if 4 <= moves <= 10:
+            if travel_i:
+                pqpush(cost, i, j + 1, 0, 1, 1)
+                pqpush(cost, i, j - 1, 0, -1, 1)
+            elif travel_j:
+                pqpush(cost, i + 1, j, 1, 0, 1)
+                pqpush(cost, i - 1, j, -1, 0, 1)
+```
+
+The full solution:
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from math import inf
+from heapq import heappush, heappop
+
+print("lmao")
+
+def run(f):
+    citymap = [s.strip() for s in f.readlines()]
+    goal = (len(citymap) - 1, len(citymap[0]) - 1)
+
+    seen = set()
+    pq = [(0, 0, 0, 0, 1, 0)]
+    def pqpush(cost, i, j, travel_i, travel_j, moves):
+        if (0 <= i <= goal[0]) and (0 <= j <= goal[1]):
+            heappush(pq, (cost + int(citymap[i][j]), i, j, travel_i, travel_j, moves))
+
+    solution = inf
+    while len(pq):
+        (cost, i, j, travel_i, travel_j, moves) = heappop(pq)
+        if (i, j, travel_i, travel_j, moves) in seen:
+            continue
+        if (i, j) == goal:
+            print(cost)
+            return
+        seen.add((i, j, travel_i, travel_j, moves))
+        if moves < 10:
+            pqpush(cost, i + travel_i, j + travel_j, travel_i, travel_j, moves + 1)
+        if 4 <= moves <= 10:
+            if travel_i:
+                pqpush(cost, i, j + 1, 0, 1, 1)
+                pqpush(cost, i, j - 1, 0, -1, 1)
+            elif travel_j:
+                pqpush(cost, i + 1, j, 1, 0, 1)
+                pqpush(cost, i - 1, j, -1, 0, 1)
+    raise RuntimeError()
+
+run(stdin)
+```
 
 
 <Divider />
 
 ## Day 18 <Spec href="https://adventofcode.com/2023/day/18" />
+
+### TODO
 
 *TODO*
 
@@ -1679,7 +2037,146 @@ run(stdin)
 
 ## Day 19 <Spec href="https://adventofcode.com/2023/day/19" />
 
-*TODO*
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from collections import defaultdict
+
+def evaluate_destination(raw_rules, part_data):
+    for raw_rule in raw_rules:
+        if ":" in raw_rule:
+            (condition, send_to) = raw_rule.split(":")
+            condition = condition.replace("x", str(part_data["x"]))
+            condition = condition.replace("m", str(part_data["m"]))
+            condition = condition.replace("a", str(part_data["a"]))
+            condition = condition.replace("s", str(part_data["s"]))
+            if eval(condition):
+                return send_to
+        else:
+            return raw_rule
+    raise RuntimeError()
+
+def run(f):
+    (workflows, parts) = "".join(f.readlines()).strip().split("\n\n")
+
+    workflows = [s.split("{") for s in workflows.split()]
+    workflows = {k: v[:-1].split(",") for k, v in workflows}
+
+    parts = [[x.split("=") for x in s[1:-1].split(",")] for s in parts.split()]
+    parts = [{k: int(v) for k, v in x} for x in parts]
+
+    progress = defaultdict(set)
+    progress["in"] = set(range(len(parts)))
+    
+    accepted = []
+
+    while any(len(x) for x in progress.values()):
+        progress2 = defaultdict(set)
+        for workflow_id, cur_parts in progress.items():
+            raw_rules = workflows[workflow_id]
+            for part_id in cur_parts:
+                send_to = evaluate_destination(raw_rules, parts[part_id])
+                if send_to == "A":
+                    accepted.append(parts[part_id])
+                elif send_to != "R":
+                    progress2[send_to].add(part_id)
+        progress = progress2
+
+    print(sum(sum(part.values()) for part in accepted))
+
+run(stdin)
+```
+
+### Part 2 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+#from functools import reduce
+
+LOW_BOUND = 1
+HIGH_BOUND = 4001
+
+def new_range():
+    return {s: [LOW_BOUND, HIGH_BOUND] for s in "xmas"}
+def copy_range(x):
+    return {k: v.copy() for k, v in x.items()}
+def range_union(a, b): # can return None if empty union
+    ret = {k: [max(a[k][0], b[k][0]), min(a[k][1], b[k][1])] for k in a.keys()}
+    if any(hi <= lo for lo, hi in ret.values()):
+        return None
+    return ret
+
+def parse_rules(raw_rules):
+    out = []
+    cur1 = new_range()
+    raw_rules = raw_rules.split(",")
+    for raw_rule in raw_rules:
+        if ":" in raw_rule:
+            (condition, label) = raw_rule.split(":")
+            cur2 = copy_range(cur1)
+            if "<" in condition:
+                (var, boundary) = condition.split("<")
+                boundary = int(boundary)
+                cur2[var] = [cur1[var][0], boundary]
+                cur1[var] = [boundary, cur1[var][1]]
+                out.append((label, cur2))
+            elif ">" in condition:
+                (var, boundary) = condition.split(">")
+                boundary = int(boundary)
+                cur2[var] = [boundary + 1, cur1[var][1]]
+                cur1[var] = [cur1[var][0], boundary + 1]
+                out.append((label, cur2))
+            else:
+                raise RuntimeError("Unexpected operator")
+
+            if (cur1[var][1] <= cur1[var][0]) or (cur2[var][1] <= cur2[var][0]):
+                raise RuntimeError("Bad range")
+        else:
+            out.append((raw_rule, cur1))
+    return out
+
+def run(f):
+    (workflows, _) = "".join(f.readlines()).strip().split("\n\n")
+
+    workflows = [s.split("{") for s in workflows.split()]
+    workflows = {k: parse_rules(v[:-1]) for k, v in workflows}
+
+    accepted_ranges = []
+
+    total_combos = 0
+    def dfs(label, cur_range):
+        nonlocal total_combos
+        for nxt_label, condition_range in workflows[label]:
+            union = range_union(cur_range, condition_range)
+            if (not union) or (nxt_label == "R"):
+                continue
+            elif nxt_label == "A":
+                accepted_ranges.append(union)
+                # reduce is unnecessarily complicated for this, but it works lol
+                #total_combos += reduce(
+                #    lambda ac, cur: ac * (cur[1] - cur[0]),
+                #    union.values(),
+                #    1
+                #)
+                total_combos += (
+                    (union["x"][1] - union["x"][0])
+                    * (union["m"][1] - union["m"][0])
+                    * (union["a"][1] - union["a"][0])
+                    * (union["s"][1] - union["s"][0])
+                )
+            else:
+                dfs(nxt_label, union)
+    dfs("in", new_range())
+
+    print(total_combos)
+
+run(stdin)
+```
 
 
 <Divider />
