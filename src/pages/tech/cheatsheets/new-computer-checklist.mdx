@@ -1,0 +1,137 @@
+---
+layout: ../../../layouts/MDLayout.astro
+title: New Computer Checklist
+description: A list of stuff to do when you build or receive a new computer!
+keywords: ["checklist"]
+
+hidetoc: true
+---
+
+Here's a list of stuff I personally recommend you do when you build or receive a new computer!
+
+This list is particularly aimed at desktop computers made of custom components, so some (or many) of these points may not apply to laptops or branded pre-built desktops.
+
+Some of this information is specific to certain brands/products and may be dated (advice on how to install Voodoo Graphics drivers in the 1990's is probably irrelevant in the 2020's!). If I say something like *"for Nvidia GPUs in the year 2023"*, this information could still be applicable beyond 2023 or for different products, but it's on you to do your own research.
+
+*(I know that I should include photos and screenshots with some of these instructions since it can be hard for everyone else to know what I'm talking about, especially beginners. However, I'm not going to include photos/screenshots yet since it isn't very high on my priority list.)*
+
+### Prerequisites
+
+I assume that:
+
+- your new computer has been built completely,
+- the BIOS is updated, and
+- you've already installed your **Windows**.
+
+Usually, if you bought a *pre-built* or paid someone to build a custom PC, all of these prerequisites should already be taken care of. Additionally, chances are, many of the steps in this checklist may have already been done. Though, I recommend double-checking it yourself anyways. I imagine even the best PC builders make mistakes from time to time.
+
+Also, **I won't be covering Linux or MacOS**. The current consumer landscape is unfortunately quite hostile to Linux since manufacturers often don't even bother supporting it officially. Macs on the other hand are already well-configured out of the box and don't need the user to mess with anything.
+
+### Step 1: If you have a discrete graphics card, double-check that the power connector is seated correctly.
+
+The Nvidia RTX 4090 graphics card in particular has been known to have issues with power connectors melting, with *some speculation* on the cause being incorrectly-installed GPU power cables. Having browsed what different media outlets have to say about the issue, it seems hard to say how significant partially-inserted connectors are to the issue, but in my opinion, it's still worth taking some extra precautions, even if your GPU isn't an RTX 4090.
+
+Sources: [[Gamers Nexus]](https://www.youtube.com/watch?v=ig2px7ofKhQ)
+
+In my opinion, if your PC is a pre-built or someone else built it for you, don't disconnect the power connector. Just inspect it visually with a flashlight, checking around the power connector. Also, I think it's worth pushing the power connector into the GPU *just in case*. Again, don't disconnect the power cable, and be careful not to accidentally tug on it. Only push it in.
+
+### Step 2: If you have a discrete graphics card, plug the monitors into the card, NOT the motherboard.
+
+*I'm actually not 100% sure if some of the issues with plugging into the motherboard are real since I've never really tried it for my main monitor (but I have plugged secondary monitors into the motherboard and they have worked). I also haven't found any good sources on what actually happens when you plug the monitor into the motherboard.*
+
+*However, the common advice seems to be that plugging the monitor into the motherboard will connect the monitor to the integrated GPU rather than the discrete GPU. If your CPU doesn't have an integrated GPU, then a monitor plugged into the motherboard won't work at all. But if your CPU does have an integrated GPU, then your graphics performance may suffer unless you plug the monitor into the discrete graphics card.*
+
+*If I can find a reliable source or if I've tested it myself, I'll put it here for reference.*
+
+### Step 3: If you're using Wi-Fi, you may need to connect an antenna.
+
+While helping my friend set up her new PC, we noticed her download speeds over Wi-Fi were dreadful, and Steam estimated it would take 6 days to download Cyberpunk 2077. Turns out, the motherboard comes with an antenna that you can connect through the motherboard rear ports. That solved the issue!
+
+### Step 4: If you need to update your SSD firmware, you must do it IMMEDIATELY.
+
+In 2023, Samsung 990 Pro SSDs were discovered to have a **critical issue leading to significantly reduced SSD lifespan**. A firmware update reportedly fixes this rapid degradation, but won't undo any damage caused by running the SSD with the original factory firmware.
+
+For the Samsung 990 Pro SSD in the year 2023, the common solution is to install and use Samsung Magician. Instructions for this can be found in this [JayzTwoCents video](https://www.youtube.com/watch?v=DoAFzdz0h5M&t=373s).
+
+*Sources: [[Tom's Hardware]](https://www.tomshardware.com/news/samsung-990-pro-firmware-update-released-ssd-health), [[Puget Systems]](https://www.pugetsystems.com/blog/2023/03/14/samsung-990-pro-critical-firmware-update/) [[JayzTwoCents on the Samsung 980 Pro]](https://www.youtube.com/watch?v=DoAFzdz0h5M)*
+
+I recommend looking into your particular SSDs to check if there are any similar issues, and I otherwise recommend looking into updating the firmware anyway.
+
+If your SSD is a very new just-released product and you found no similar issues leading to shortened lifespan, I recommend looking into it again in about a month or so, just in case.
+
+After installing SSD firmware, I recommend a reboot before doing anything else.
+
+### Step 5: If you didn't install Windows yourself, you should consider re-installing it yourself.
+
+**Reinstalling Windows is OPTIONAL, aimed at advanced users.** The process of reinstalling is long and fairly involved, and in my opinion, the difficulty of Windows reinstallation outweighs the benefits for the average user. Chances are, if you bought a pre-built or paid someone else to build it for you, then you *wanted* Windows to already be set up and ready to go.
+
+In my opinion, the benefits of reinstalling Windows are:
+
+- You have more control over what gets installed from the beginning, avoiding the *bloatware* that may be present (though bloatware is usually a problem of branded prebuilts rather than custom builds where you paid someone to build it). Sure, you might be able to uninstall any unwanted software, but there may still be traces of the uninstalled software that may hurt your PC's performance or affect functionality.
+- You have more confidence that your system doesn't come with malware, though it's not 100% guaranteed that the malware can be easily removed just by wiping the computer and reinstalling Windows.
+- A fresh reinstallation can give you more control over the user accounts that are set up. Otherwise, you might be stuck with a generic user account (probably named "user"), possibly even tied to some Microsoft account that you don't own. My guess is, this can be a risk to your personal data if the people who do control the Microsoft account decide to do anything like read your OneDrive files or even remotely lock your PC.
+
+If you do reinstall Windows, I suggest doing it after the SSD firmware update.
+
+For installing Windows 11 in the year 2023, if you want instructions, I highly recommend watching this [JayzTwoCents video](https://www.youtube.com/watch?v=xhHtHMQygzE&t=637s) from [10:37](https://www.youtube.com/watch?v=xhHtHMQygzE&t=637s) onwards. It includes instructions on how to bypass Windows 11's Microsoft Account requirement, which I recommend following.
+
+### Step 6: Install GPU Drivers. This is ESSENTIAL.
+
+Games may simply not work correctly, or may perform terribly without installing the correct drivers.
+
+For Nvidia GPUs in 2023, I recommend installing [*GeForce Experience*](https://www.nvidia.com/en-us/geforce/geforce-experience/) and using it to automatically install the appropriate drivers. You should also continue to check it for driver updates from time to time.
+
+For other GPUs (like AMD and Intel), I don't have any experience installing the drivers. Good luck.
+
+After installing GPU drivers, I recommend a reboot before doing anything further.
+
+#### For advanced users:
+
+If you have an Nvidia GPU in 2023 and don't want the *GeForce Experience* software, you can still install drivers without it. I *personally* like that GeForce Experience does everything for me, and it comes with an FPS counter overlay that I use. However, it's also largely bloatware that you probably don't need. It's up to you whether you want it or not. Instructions for this can be found in this [JayzTwoCents video](https://www.youtube.com/watch?v=xhHtHMQygzE&t=1102s) from [18:22](https://www.youtube.com/watch?v=xhHtHMQygzE&t=1102s) onwards.
+
+### Step 7: Run a quick comprehensive benchmark.
+
+Before setting up XMP, I recommend running a benchmark software that also shows how your system compares against expectations. In my opinion, this is a good sanity check to see that things were set up correctly.
+
+I personally use [UserBenchmark](https://www.userbenchmark.com/) in the year 2023. Install and run it, and it should produce a report of the results.
+
+If you run UserBenchmark before setting up XMP, you should expect to see the RAM performance is *significantly* worse than expected. This is normal!
+
+### Step 8: Set up your RAM's XMP profile. This is ESSENTIAL.
+
+XMP profiles are important for getting your RAM to run at its full advertised speed.
+
+**If you do not configure your RAM, your RAM will run at a VERY SIGNIFICANTLY LOWER SPEED. THE IMPACT ON YOUR COMPUTER'S PERFORMANCE IS VERY SIGNIFICANT.**
+
+*XMP profiles is a bit of a deeper topic, and different motherboards have different ways of configuring your RAM. I may try to write more detailed instructions when I can be bothered, but for now, just watch this excellent [Maraksot78 video](https://www.youtube.com/watch?v=WDzrq5IxBX4), applicable for the year 2023.*
+
+After setting up the RAM XMP profile, I recommend doing another benchmark as a sanity check. You should see that your RAM now performs inline with what is expected for your particular memory modules! If not, then something might've went wrong.
+
+### Step 9: Install monitor colour profiles and/or drivers.
+
+This depends a lot on your particular monitor. You'll need to look into it yourself.
+
+For the Gigabyte M27Q Rev 2.0 monitor, you can visit the official product page. Navigate to the *"Support"* page ([here](https://www.gigabyte.com/Monitor/M27Q-rev-20/support#support-dl-driver)) and download *"GIGABYTE M27Q WHQL Drivers for HDR certified information"*. This is actually just a `.zip` file containing a colour profile file and a `.pdf` containing instructions on how to install the colour profile.
+
+#### For advanced users:
+
+You can also try to calibrate your monitor, though this is beyond the scope of this checklist and may require the purchase of calibration hardware. I recommend [this Hardware Unboxed video](https://www.youtube.com/watch?v=f2nVNxx1IHo) for calibrating monitors in the year 2023. That video is a comprehensive beginner's guide on the topic.
+
+### Step 10: Set your display settings. The most important settings are: display resolution and monitor refresh rate.
+
+Make sure your display is set to the full *native resolution* and full *native refresh rate* for the monitor. Though, some monitors have an *"overclock refresh rate"* as well. I don't know too much about that, so it's up to you on whether you should use the overclock refresh rate since it could impact image quality. You may also need to change settings in the monitor menu to set the refresh rate.
+
+For Nvidia GPUs in the year 2023, I recommend this [JayzTwoCents video](https://www.youtube.com/watch?v=xhHtHMQygzE&t=1184s) from [19:44](https://www.youtube.com/watch?v=xhHtHMQygzE&t=1184s) onwards.
+
+### Step 11: Enable adaptive sync for your displays.
+
+This prevents visual artifacting such as tearing.
+
+Different products may use different marketing terms for adaptive sync.
+
+For Nvidia GPUs in the year 2023, this setting is in the Nvidia Control Panel, under *"Display"* > *"Set up G-SYNC"*. Tick *"Enable G-SYNC, G-SYNC Compatible"*, and select *"Enable for windowed and full screen mode"*.
+
+### Have I missed anything else?
+
+I intend on updating this page over time based on new information and technologies. If you think I need to add anything, open an issue on GitHub ([here](https://github.com/simshadows/simshadows.github.io/issues)), or send me an email at [`contact@simshadows.com`](mailto:contact@simshadows.com). (I don't check that email often though, so if possible, just use GitHub.)
+
