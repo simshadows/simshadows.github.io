@@ -21,6 +21,8 @@ My suggestion to run these solutions:
 $ cat input.txt | ./solution.py
 ```
 
+Links to the full challenge specifications are included throughout this document. The original specifications aren't allowed to be reproduced, so I can't repost them here.
+
 
 <Divider />
 
@@ -2028,9 +2030,61 @@ run(stdin)
 
 ## Day 18 <Spec href="https://adventofcode.com/2023/day/18" />
 
-### TODO
+### Part 1 Solution
 
-*TODO*
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import product
+
+def run(f):
+    digplan = [s.strip().split() for s in f.readlines()]
+    digplan = [(_dir, int(_len)) for _dir, _len, _ in digplan]
+
+    dugouts = {(0, 0)} # set of coordinates
+    (i, j) = (0, 0)
+    for _dir, _len in digplan:
+        for _ in range(_len):
+            if _dir == "U":
+                i -= 1
+            elif _dir == "D":
+                i += 1
+            elif _dir == "L":
+                j -= 1
+            elif _dir == "R":
+                j += 1
+            dugouts.add((i, j))
+
+    i_lo_bound = min(i for i, _ in dugouts) - 1
+    i_hi_bound = max(i for i, _ in dugouts) + 1
+    j_lo_bound = min(j for _, j in dugouts) - 1
+    j_hi_bound = max(j for _, j in dugouts) + 1
+
+    nondugout = set()
+    to_visit = [(i_lo_bound, j_lo_bound)] # initial coords guaranteed to be outside
+    def floodfill_nondugout(i, j):
+        if (i < i_lo_bound) or (i > i_hi_bound) \
+                or (j < j_lo_bound) or (j > j_hi_bound) \
+                or ((i, j) in dugouts) or ((i, j) in nondugout):
+            return
+        nondugout.add((i, j))
+        for ii, jj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            to_visit.append((i + ii, j + jj))
+    while len(to_visit):
+        floodfill_nondugout(*to_visit.pop())
+
+    print(sum(
+        (i, j) not in nondugout
+        for i, j in product(range(i_lo_bound, i_hi_bound + 1), range(j_lo_bound, j_hi_bound + 1))
+    ))
+
+run(stdin)
+```
+
+### Part 2 TODO
+
+*I'm still trying to figure Part 2 out!*
 
 
 <Divider />
@@ -2096,7 +2150,6 @@ run(stdin)
 #!/usr/bin/env python3
 
 from sys import stdin
-#from functools import reduce
 
 LOW_BOUND = 1
 HIGH_BOUND = 4001
@@ -2183,40 +2236,185 @@ run(stdin)
 
 ## Day 20 <Spec href="https://adventofcode.com/2023/day/20" />
 
-*TODO*
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from collections import defaultdict, deque
+
+HI = True
+LO = False
+
+UNCATEGORIZED = "."
+FLIPFLOP = "%"
+CONJ = "&"
+
+def run(f):
+    raw_rules = [s.strip().split("->") for s in f.readlines()]
+    raw_rules = [(k.strip(), [x.strip() for x in v.strip().split(",")]) for k, v in raw_rules]
+    rules = {"output": (UNCATEGORIZED, [])}
+    for k, v in raw_rules:
+        if k[0] in FLIPFLOP + CONJ:
+            module_type = k[0]
+            k = k[1:]
+        else:
+            module_type = UNCATEGORIZED
+        rules[k] = (module_type, v)
+
+    # turns out there are modules that don't go anywhere
+    dependencies = defaultdict(list)
+    for src, (_, dsts) in rules.items():
+        for dst in dsts:
+            dependencies[dst].append(src)
+
+    cur_states = {k: LO for k in rules.keys()}
+    inputs_history = defaultdict(dict)
+    conj_input_memory = {
+        k: {dep: LO for dep in dependencies[k]}
+        for k, v in rules.items() if v[0] == CONJ
+    }
+
+    dq = deque()
+    (num_lo, num_hi) = (0, 0)
+    for i in range(1000):
+        dq.append(("button", LO, "broadcaster"))
+        while len(dq):
+            (src, pulse, dst) = dq.popleft()
+            if pulse == HI:
+                num_hi += 1
+            else:
+                num_lo += 1
+
+            if dst not in rules:
+                continue
+            elif dst in {"broadcaster", "output"}:
+                pass
+            elif rules[dst][0] == FLIPFLOP:
+                if pulse == LO:
+                    cur_states[dst] = (cur_states[dst] != True)
+                else:
+                    continue # "nothing happens"
+            elif rules[dst][0] == CONJ:
+                conj_input_memory[dst][src] = pulse
+                if all((v == HI) for v in conj_input_memory[dst].values()):
+                    cur_states[dst] = LO
+                else:
+                    cur_states[dst] = HI
+            else:
+                raise RuntimeError()
+            dq.extend((dst, cur_states[dst], x) for x in rules[dst][1])
+    print(num_lo * num_hi)
+
+run(stdin)
+```
+
+### Part 2 TODO
+
+*I'm still trying to figure Part 2 out!*
 
 
 <Divider />
 
 ## Day 21 <Spec href="https://adventofcode.com/2023/day/21" />
 
-*TODO*
+### Part 1 Solution
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin, setrecursionlimit
+from itertools import product
+
+setrecursionlimit(10000)
+
+NUM_STEPS = 64
+
+def run(f):
+    garden_map = ["#" + s.strip() + "#" for s in f.readlines()]
+    garden_map.insert(0, "#"*len(garden_map[0]))
+    garden_map.append("#"*len(garden_map[0]))
+    (len1, len2) = (len(garden_map), len(garden_map[0]))
+
+    start = None
+    for i, j in product(range(len1), range(len2)):
+        if garden_map[i][j] == "S":
+            start = (i, j)
+            break
+    if start == None:
+        raise RuntimeError()
+
+    seen = set()
+    solution = set()
+    def bfs(i, j, steps_remaining):
+        if ((i, j, steps_remaining) in seen) or (garden_map[i][j] == "#"):
+            return
+        seen.add((i, j, steps_remaining))
+        if steps_remaining == 0:
+            solution.add((i, j))
+            return
+        for ii, jj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            bfs(i + ii, j + jj, steps_remaining - 1)
+    bfs(*start, NUM_STEPS)
+    print(len(solution))
+
+run(stdin)
+```
+
+### Part 2 TODO
+
+*I'm still trying to figure Part 2 out!*
 
 
 <Divider />
 
 ## Day 22 <Spec href="https://adventofcode.com/2023/day/22" />
 
-*TODO*
+### Part 1 TODO
+
+*I'm still trying to figure Part 1 out!*
+
+### Part 2 TODO
+
+*Still not up to Part 2!*
 
 
 <Divider />
 
 ## Day 23 <Spec href="https://adventofcode.com/2023/day/23" />
 
-*TODO*
+### Part 1 TODO
+
+*I'm still trying to figure Part 1 out!*
+
+### Part 2 TODO
+
+*Still not up to Part 2!*
 
 
 <Divider />
 
 ## Day 24 <Spec href="https://adventofcode.com/2023/day/24" />
 
-*TODO*
+### Part 1 TODO
+
+*I'm still trying to figure Part 1 out!*
+
+### Part 2 TODO
+
+*Still not up to Part 2!*
 
 
 <Divider />
 
 ## Day 25 <Spec href="https://adventofcode.com/2023/day/25" />
 
-*TODO*
+### Part 1 TODO
+
+*Day 25 hasn't released yet (as of writing)!*
+
+### Part 2 TODO
+
+*Day 25 hasn't released yet (as of writing)!*
 
