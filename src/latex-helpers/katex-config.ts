@@ -6,6 +6,8 @@ const katexConfig = {
     strict: "error",
     macros: {
         "\\Nth": "{{#1}^\\textit{#2}}",
+        "\\myvec": "{\\mathbf{#1}}",
+        "\\evalat": "{{\\left.#1\\right\\rvert{}}_{#2}}",
 
         // Hacky compatibility implementation of siunitx just so I can keep the same syntax.
         // Ideally, KaTeX should properly support some subset of the siunitx API.

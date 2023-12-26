@@ -5,9 +5,13 @@ description: My solutions and thoughts for Advent of Code 2023!
 keywords: ["advent of code", "2023", "day", "part", "solutions", "thoughts", "python"]
 ---
 
+import AlignVarLatex from "@components/AlignVarLatex";
 import DisplayLatex from "@components/DisplayLatex";
 import GatherVarLatex from "@components/GatherVarLatex";
 import Latex from "@components/Latex";
+
+import Eqref from "@components/Eqref";
+import Todo from "@components/Todo";
 
 import Divider from "../_shared.Divider.astro"; //_
 import Spec from "../_shared.Spec.astro"; //_
@@ -2397,13 +2401,217 @@ run(stdin)
 
 ## Day 24 <Spec href="https://adventofcode.com/2023/day/24" />
 
-### Part 1 TODO
+### Part 1 Mathematics Discussion
 
-*I'm still trying to figure Part 1 out!*
+Mathy question! Let's start with some mathematical analysis.
+
+The simplest starting point to me seems to be to consider the parametric form of the straight line. We're only dealing with the <Latex code="x" /> and <Latex code="y" /> coordinates, so we're obviously only dealing with 2D space.
+
+For the hailstone initial position vector <Latex code="\myvec{p}" /> and velocity vector <Latex code="\myvec{v}" />, we can get the position vector <Latex code="\myvec{x}\parens{t}" /> at time <Latex code="t" />:
+
+<DisplayLatex code="
+    \myvec{x}\parens{t} = \myvec{p} + \myvec{v} t
+" />
+
+Positions of the hailstone in the *future* will happen at <Latex code="t > 0" />, while positions "in the past" happened at <Latex code="t < 0" />.
+
+Let's try to find where two hailstones intersect. We'll need two equations:
+
+<GatherVarLatex code="
+    \myvec{x}_0 \parens{t_0} = \myvec{p}_0 + \myvec{v}_0 t_0 \tag{d24e1} \\
+    \myvec{x}_1 \parens{t_1} = \myvec{p}_1 + \myvec{v}_1 t_1 \tag{d24e2}
+" />
+
+We use two separate time variables rather than the same one since we're only looking if the paths will intersect, not necessarily that the hailstones will actually collide.
+
+The two paths intersect when <Latex code="\myvec{x}_0 \parens{t_0} = \myvec{x}_1 \parens{t_1}" />, so we can find the <Latex code="t_0" /> and <Latex code="t_1" /> values with:
+
+<DisplayLatex code="
+    \myvec{p}_0 + \myvec{v}_0 t_0 = \myvec{p}_1 + \myvec{v}_1 t_1
+" />
+
+At this point, it can be helpful to just break it up into component equations, then solve for one of the <Latex code="t" /> variables:
+
+<GatherVarLatex code="
+    \begin{cases}
+        p_{0x} + v_{0x} t_0 = p_{1x} + v_{1x} t_1 \\
+        p_{0y} + v_{0y} t_0 = p_{1y} + v_{1y} t_1
+    \end{cases}
+    \tag{d24e3}
+    \\
+    \begin{cases}
+        t_0 = \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}} \\
+        t_0 = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
+    \end{cases}
+    \\
+    \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}}
+    = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
+    \\
+    \frac{p_{1x} - p_{0x}}{v_{0x}}
+    - \frac{p_{1y} - p_{0y}}{v_{0y}}
+    = \frac{v_{1y} t_1}{v_{0y}}
+    - \frac{v_{1x} t_1}{v_{0x}}
+    \\
+    \frac{p_{1x} - p_{0x}}{v_{0x}}
+    - \frac{p_{1y} - p_{0y}}{v_{0y}}
+    = t_1 \parens{
+        \frac{v_{1y}}{v_{0y}}
+        - \frac{v_{1x}}{v_{0x}}
+    }
+" />
+
+<AlignVarLatex code="
+    t_1
+    &= \frac{
+        \frac{p_{1x} - p_{0x}}{v_{0x}}
+        - \frac{p_{1y} - p_{0y}}{v_{0y}}
+    }{
+        \frac{v_{1y}}{v_{0y}}
+        - \frac{v_{1x}}{v_{0x}}
+    }
+    = \frac{
+        v_{0y} \frac{p_{1x} - p_{0x}}{v_{0x}}
+        - \parens{p_{1y} - p_{0y}}
+    }{
+        v_{1y}
+        - v_{0y} \frac{v_{1x}}{v_{0x}}
+    }
+    \\
+    &= \frac{
+        v_{0y} \parens{p_{1x} - p_{0x}} - v_{0x} \parens{p_{1y} - p_{0y}}
+    }{
+        v_{0x} v_{1y} - v_{0y} v_{1x}
+    }
+    \tag{d24e4}
+" />
+
+To solve for the other variable <Latex code="t_0" />, we can simply plug the result of <Latex code="t_1" /> it back into either of the component equations <Eqref>d24e3</Eqref>. For my Part 1 solution, I will use either of these equations depending on whether the denominators are zero:
+
+<AlignVarLatex code="
+    t_0 = \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}} \\
+    t_0 = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
+" />
+
+<Todo>Huh. So if either <Latex code="v_{0x}" /> or <Latex code="v_{0y}" /> is zero, that means one of the equations evaluates to an undefined value... intuitively, that makes sense since in one dimension, it will have to be undefined but not in the other dimension. But does that actually make sense mathematically? I should look more into this line of reasoning because I'm not happy with it. Please let me know if there's a better way of thinking about it!</Todo>
+
+Since the question is asking for where the paths intersect only considering the *future*, we can simply check if *both* <Latex code="t_0" /> and <Latex code="t_1" /> are positive.
+
+Now, we'll need to consider how we can handle the edge cases of these results.
+
+Intuitively (and assuming the the past also counts as part of the path), these edge cases are:
+
+1. What if the paths are parallel but never intersect? *In this case, the paths will never intersect.*
+2. What if paths are exactly the same? *In this case, we'd need to check if the intersection region happens for positive <Latex code="t_0" /> and <Latex code="t_1" />.*
+3. What if any velocity is zero?
+
+I quickly checked the input for zero velocities as a sanity check. **We found no zero velocities, so we can neglect to look for this edge case.** Code snippet used (this code snippet will make sense in the context of my final solution):
+
+```py
+def run(f):
+    stones = [
+        [[int(y.strip()) for y in x.strip().split(",")] for x in s.strip().split("@")]
+        for s in f.readlines()
+    ]
+    if any(all(x == 0 for x in v) for _, v in stones):
+        raise RuntimeError(f"We expect no zero velocities.")
+```
+
+If any path is parallel but not the same, we intuitively expect to see no possible solution for <Latex code="t_0" /> or <Latex code="t_1" />. If the paths are the same, then we expect to see infinite solutions.
+
+A simple method used by a human might be to first check if the denominator of <Eqref>d24e4</Eqref> is zero, and if so, try checking if any hailstone's <Latex code="t = 0" /> position is a solution to the other hailstone's position equation for <Latex code="t \ge 0" />. If this is true for either hailstone in the manner described, then we know their future paths intersect, otherwise they don't.
+
+Let's try some concrete examples. Suppose we have two lines with a slope of <Latex code="\frac{y}{x} = 1" />:
+
+<GatherVarLatex code="
+    \myvec{p}_0 = {\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
+    \qquad
+    \myvec{v}_0 = {\begin{pmatrix} 1 \\ 1 \end{pmatrix}}
+    \\
+    \myvec{p}_1 = {\begin{pmatrix} 2 \\ 2 \end{pmatrix}}
+    \qquad
+    \myvec{v}_1 = {\begin{pmatrix} -1 \\ -1 \end{pmatrix}}
+" />
+
+Using <Eqref>d24e4</Eqref>, we see we get an undefined result:
+
+<DisplayLatex code="
+    t_1
+    = \frac{
+        1 \parens{2 - 0} - 1 \parens{2 - 0}
+    }{
+        1 \parens{-1} - 1 \parens{-1}
+    }
+    = \frac{2 - 2}{\parens{-1} - \parens{-1}}
+" />
+
+Let's try solving for <Latex code="t_1" /> if <Latex code="\myvec{p}_0 = \myvec{x}_1 \parens{t_1}" />. From <Eqref>d12e2</Eqref>:
+
+<GatherVarLatex code="
+    {\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
+    = {\begin{pmatrix} 2 \\ 2 \end{pmatrix}}
+    + {\begin{pmatrix} -1 \\ -1 \end{pmatrix}} t_1
+" />
+
+It is trivial to see that this equation is valid and results in <Latex code="t_1 = 2" />. Since this is positive, we know that <Latex code="\myvec{p}_0" /> is a valid solution for the <Latex code="\myvec{x}_1" /> hailstone for positive <Latex code="t_1" />.
+
+### Part 1 Solution
+
+With all the math sorted out in the previous section, the implementation is actually quite straightforward! We just look at every pair of hailstones and count the intersections.
+
+```py
+#!/usr/bin/env python3
+
+from sys import stdin
+from itertools import combinations
+
+#LOWER = 7
+#UPPER = 27
+LOWER = 200000000000000
+UPPER = 400000000000000
+
+def paths_intersect_within_bounds(p0, v0, p1, v1):
+    denom = (v0[0] * v1[1]) - (v0[1] * v1[0])
+    if denom == 0:
+        # case 1: parallel lines
+        t0_x = (p1[0] - p0[0]) / v0[0]
+        t0_y = (p1[1] - p0[1]) / v0[1]
+        t1_x = (p0[0] - p1[0]) / v1[0]
+        #t1_y = (p0[1] - p1[1]) / v1[1] # don't need this one
+        return (t0_x == t0_y) and ((t0_x >= 0) or (t1_x >= 0))
+    else:
+        # case 2: non-parallel lines
+        num = (v0[1] * (p1[0] - p0[0])) - (v0[0] * (p1[1] - p0[1]))
+        t1 = num / denom
+        i = 0 if v0[0] else 1
+        t0 = (p1[i] - p0[i] + (v1[i] * t1)) / v0[i]
+        if (t0 < 0) or (t1 < 0):
+            return False # Intersection is in the past
+        x1 = (p1[0] + (v1[0] * t1), p1[1] + (v1[1] * t1))
+        return (LOWER <= x1[0] <= UPPER) and (LOWER <= x1[1] <= UPPER)
+
+def run(f):
+    stones = [
+        [[int(y.strip()) for y in x.strip().split(",")] for x in s.strip().split("@")]
+        for s in f.readlines()
+    ]
+    if any(all(x == 0 for x in v) for _, v in stones):
+        raise RuntimeError(f"We expect no zero velocities.")
+
+    print(sum(paths_intersect_within_bounds(*a, *b) for a, b in combinations(stones, 2)))
+    print("Note: You may need to change constants depending on test case.")
+
+run(stdin)
+```
+
+### Part 2 Mathematics Discussion
+
+Perhaps we can ignore the time component and assume that as long as we find a single straight line that intersects all the paths, it should be the solution to the problem. And with hundreds of hailstones, surely there'd only be one solution for finding a path that intersects all the paths.
+
+*(I'm still thinking through this one!)*
 
 ### Part 2 TODO
 
-*Still not up to Part 2!*
+*I'm still trying to figure Part 2 out!*
 
 
 <Divider />
