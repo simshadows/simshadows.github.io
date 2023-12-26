@@ -136,8 +136,11 @@ const totalSFCost: Currency = allOrigins.reduce(
 </div>
 <script>
     const termExplainElem = document.querySelector("#terminology-explanation");
+    if (!termExplainElem) throw new Error();
     termExplainElem.classList.remove("active");
-    termExplainElem.querySelector(":scope > button").addEventListener("click", function(e) {
+    const button = termExplainElem.querySelector(":scope > button");
+    if (!button) throw new Error();
+    button.addEventListener("click", function() {
         if (termExplainElem.classList.contains("active")) {
             termExplainElem.classList.remove("active");
         } else {
