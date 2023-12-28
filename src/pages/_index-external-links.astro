@@ -1,0 +1,57 @@
+---
+/*
+ * Filename: _index-external-links.astro
+ * Author:   simshadows <contact@simshadows.com>
+ * License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
+ */
+
+import {
+    PUBLIC_EMAIL,
+
+    WEB_APPS_URL,
+    BLOG_URL,
+    DISCORD_SERVER_URL,
+} from "@root/constants";
+---
+
+<h4>External Links</h4>
+<p><ul>
+    <li><a href={WEB_APPS_URL}><b>Web Applications</b></a> (<code>apps.simshadows.com</code>)</li>
+    <li><a href={BLOG_URL}><b>Blog</b></a> (<code>blog.simshadows.com</code>)</li>
+</ul></p>
+<p><ul>
+    <li><b>YouTube</b>
+        <ul>
+            <li><b>Gaming Channels:</b>
+                <a href="https://www.youtube.com/channel/UCwKwh-ukQv4ihdjT28vBtpw">#1</a>
+                | <a href="https://www.youtube.com/channel/UCkMf8rvJ-oKfkNKbKmR3v8Q">#2</a>
+                | <a href="https://www.youtube.com/channel/UCDFNbrzQY5esRMLnRMELvPQ">#3</a>
+                | <a href="https://www.youtube.com/channel/UC0BZgs9YK4DGqEDP5ogC0KA">#4</a>
+            </li>
+            <li><b>Playlists:</b> <a href="https://www.youtube.com/playlist?list=PLxQR54BjCSigIGVqIsqhOgG6nCyFsuzI1">Saves</a> | <a href="https://www.youtube.com/playlist?list=PLxQR54BjCSiiBT43zEBBLDpGt9uR3RmNF">Candidate Saves</a> | <a href="https://www.youtube.com/playlist?list=PLxQR54BjCSihvQfn3jEijvJFC-dGCsKgP">Computing Conference Saves</a></li>
+        </ul>
+    </li>
+</ul></p>
+<p><ul>
+    <li><a href={DISCORD_SERVER_URL}><b>Discord</b></a></li>
+</ul></p>
+<p><ul>
+    <li><a href="https://github.com/simshadows"><b>GitHub</b> (@simshadows)</a></li>
+    <li><a href="https://gitlab.com/simshadows"><b>GitLab</b> (@simshadows)</a></li>
+</ul></p>
+<p><ul>
+    <li><a href="https://twitter.com/simishadows"><b>Twitter (@simishadows)</b></a></li>
+    <li><a href="https://simishadows.tumblr.com/"><b>Tumblr (@simishadows)</b></a></li>
+    <li><a href="https://mastodon.social/@simshadows"><b>Mastodon (@simshadows@mastodon.social)</b></a></li>
+</ul></p>
+<p><ul>
+    <li><a href="https://myanimelist.net/profile/simshadows"><b>MyAnimeList (simshadows)</b></a></li>
+    <li><a href="https://au.pcpartpicker.com/user/simshadows/saved/"><b>PCPartPicker (simshadows)</b></a></li>
+</ul></p>
+
+<h4>Contact</h4>
+<p>
+    <code><a href={`mailto:${PUBLIC_EMAIL}`}>{PUBLIC_EMAIL}</a></code><br />
+    <em>If it's urgent, please don’t use that email address. I don't check it often.</em>
+</p>
+
