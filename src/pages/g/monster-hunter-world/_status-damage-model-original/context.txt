@@ -1,0 +1,3 @@
+This is a copy of the original LaTeX version as it was before migrating to web, along with a compiled PDF. The `.tex` file also comes with a package file containing all sorts of macros, but I decided not to copy it over here. This isn't intended to be compiled anymore anyway. I'm just keeping this here for archival purposes.
+
+If you want to compile it, the original repository is <https://github.com/simshadows/monster-hunter-build-search/tree/master/monster-hunter-world/docs/status_damage_model>.

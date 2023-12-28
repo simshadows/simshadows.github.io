@@ -2605,9 +2605,27 @@ run(stdin)
 
 ### Part 2 Mathematics Discussion
 
-Perhaps we can ignore the time component and assume that as long as we find a single straight line that intersects all the paths, it should be the solution to the problem. And with hundreds of hailstones, surely there'd only be one solution for finding a path that intersects all the paths.
+The first approach I will try is to grab any two hailstones and come up with some set of solutions to throw a rock such that it will hit both hailstones. Such a set of solutions may be parameterized in some way to account for every possible way the two hailstones can be hit.
 
-*(I'm still thinking through this one!)*
+Once we have the set of solutions, we can try introducing another hailstone to somehow narrow down this set of solutions. And as long as there's only one solution, surely that should be the one solution that works for the full set of hailstones? It may even be possible that we solve this entirely analytically without writing any code.
+
+Let's try it out!
+
+Same as with Part 1, let's begin with two hailstone trajectories, though the vectors are now in <Latex code="\Reals^3" />. We use the same time variable now since we need the actual hailstone position at a point in time.
+
+<GatherVarLatex code="
+    \myvec{x}_0 \parens{t} = \myvec{p}_0 + \myvec{v}_0 t \tag{d24e5} \\
+    \myvec{x}_1 \parens{t} = \myvec{p}_1 + \myvec{v}_1 t \tag{d24e6}
+" />
+
+The rock trajectory will be defined the same way, but with an <Latex code="x" /> subscript:
+
+<DisplayLatex code="
+    \myvec{x}_x \parens{t} = \myvec{p}_x + \myvec{v}_x t \tag{d24e7}
+" />
+
+
+<Todo>Haven't finished this yet!</Todo>
 
 ### Part 2 TODO
 
