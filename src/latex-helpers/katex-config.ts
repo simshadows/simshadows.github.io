@@ -5,9 +5,29 @@ const katexConfig = {
     throwOnError: true,
     strict: "error",
     macros: {
-        "\\Nth": "{{#1}^\\textit{#2}}",
-        "\\myvec": "{\\mathbf{#1}}",
         "\\evalat": "{{\\left.#1\\right\\rvert{}}_{#2}}",
+        "\\myvec": "{\\mathbf{#1}}",
+        "\\Nth": "{{#1}^\\textit{#2}}",
+        "\\setdef": "{\\left\\{{#1} \\mid {#2}\\right\\}}",
+
+        // Relational algebra null value
+        "\\relnullvalue": "{\\mathord{\\bot}}",
+        // Relational algebra operators
+        "\\relselect": "{\\sigma}",
+        "\\relproject": "{\\pi}",
+        "\\relrename": "{\\rho}",
+        "\\relgroup": "{\\gamma}",
+        // ----------------------------------------------------------------------
+        // THESE DON'T WORK YET. I'M STILL FIGURING THEM OUT
+        //
+        // Relational Algebra outer join symbols
+        //     original source: https://tex.stackexchange.com/questions/20740/symbols-for-outer-joins/20749#20749
+        //     answer original author: egreg (https://tex.stackexchange.com/users/4427/egreg)
+        "\\TmpOJoin": "\\setbox0=\\hbox{$\\bowtie$} \\rule[-.02ex]{.25em}{.4pt}\\llap{\\rule[\\ht0]{.25em}{.4pt}}",
+        "\\relleftouterjoin": "{\\mathbin{\\TmpOJoin\\mkern-5.8mu\\bowtie}}",
+        "\\relrightouterjoin": "{\\mathbin{\\bowtie\\mkern-5.8mu\\TmpOJoin}}",
+        "\\relfullouterjoin": "{\\mathbin{\\TmpOJoin\\mkern-5.8mu\\bowtie\\mkern-5.8mu\\TmpOJoin}}",
+        // ----------------------------------------------------------------------
 
         // Hacky compatibility implementation of siunitx just so I can keep the same syntax.
         // Ideally, KaTeX should properly support some subset of the siunitx API.
@@ -22,6 +42,9 @@ const katexConfig = {
         "\\brackets": "{\\left[{#1}\\right]}",
         "\\braces": "{\\left\\{{#1}\\right\\}}",
         "\\floor": "{\\left\\lfloor{#1}\\right\\rfloor}",
+
+        // Hacky compatibility implementation of \DeclareMathOperator from amsmath
+        "\\dom": "\\operatorname{Dom}",
 
         ////////////////////////////////////////////////////////////
         // Some technical debt to figure out a better solution to //

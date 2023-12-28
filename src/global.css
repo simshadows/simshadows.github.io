@@ -49,6 +49,11 @@ span.highlight {
     white-space: nowrap;
 }
 
+/* For center-aligned text */
+p.center {
+    text-align: center;
+}
+
 /* Emulating the `description` environment from LaTeX */
 ul.description {
     text-indent: -2.1em;
@@ -60,6 +65,11 @@ ul.description > li {
 /* You're going to need to add the item titles yourself though */
 ul.description span.item-title {
     font-weight: bold;
+}
+
+/* An unordered list without the dots. */
+ul.no-deco {
+    list-style-type: none;
 }
 
 /* An unordered list without text indentation. */
@@ -75,5 +85,10 @@ ul.rootlevel > li {
 span.inactive {
     font-style: italic;
     text-decoration: line-through;
+}
+
+span.warning {
+    font-weight: bold;
+    color: red;
 }
 

@@ -1,0 +1,365 @@
+---
+layout: ../../../layouts/MDLayout.astro
+title: "Databases: The Relational Model and Relational Algebra"
+description: A cheatsheet for the relational model and relational algebra, in the context of relational databases and SQL.
+keywords: ["programming", "databases", "relational", "sql"]
+---
+
+import AlignVarLatex from "@components/AlignVarLatex";
+import DisplayLatex from "@components/DisplayLatex";
+import GatherVarLatex from "@components/GatherVarLatex";
+import Latex from "@components/Latex";
+
+import Eqref from "@components/Eqref";
+import Todo from "@components/Todo";
+
+*I'm still migrating my notes on the relational model over to this website, so there are a lot of missing sections below. Sorry about that!*
+
+## Basic Terms
+
+### Relation Schemas
+
+Relation schemas are <u>finite sets</u> of *attributes*.
+
+Notation for some relation <Latex code="R" /> with attributes <Latex code="A, B, C, D" /> and primary key <Latex code="B, D" />:
+
+<DisplayLatex code="
+    R(A, \underline{B}, C, \underline{D})
+" />
+
+The *domain* of a schema is the set of all possible tuples that can be associated with the schema.
+
+For relation <Latex code="R" />, this is denoted:
+
+<DisplayLatex code="
+    \dom{(R)}
+" />
+
+
+### Keys
+
+A *<u>superkey</u>* of a relation schema is any subset of that schema that can uniquely identify a tuple.
+
+In other words, all tuples have unique values in the superkey.
+
+Or more formally, for <Latex code="r(R)" /> and any two distinct tuples <Latex code="t_1, t_2 \in r" />, if <Latex code="t_1[K] \neq t_2[K]" /> for some <Latex code="K \subseteq R" />, then <Latex code="K" /> is a superkey.
+
+Note that for <Latex code="r(R)" />, <Latex code="R" /> is always a superkey.
+
+<br />A *<u>candidate key</u>* is a "minimal superkey".
+
+More formally, superkey <Latex code="K" /> is a candidate key if no subset <Latex code="K' \subset K" /> exists that is also a superkey.
+
+<br />A *<u>primary key</u>* is the specific candidate key designated to a relation schema.
+
+All relations must have exactly one primary key.
+
+<br />A *<u>foreign key</u>* of a relation schema is a subset of attributes that reference a particular primary key.
+
+The referenced primary key is often a different relation, but may also be of the same relation.
+
+
+### Attributes
+
+Attributes are labels for parts of a schema.
+
+The *domain* of an attribute is the set of values that can be associated with the attribute.
+
+For attribute <Latex code="A" />, this is denoted:
+
+<DisplayLatex code="
+    \dom{(A)}
+" />
+
+
+### Relation Instances
+
+Relation instances are <u>finite sets</u> of *tuples*.
+
+To show that <Latex code="r" /> is an instance of schema <Latex code="R" />, we write:
+
+<DisplayLatex code="
+    r(R)
+" />
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Tuples
+
+Tuples are <u>mappings</u> from schema to schema domain.
+
+Concretely, a tuple can be thought of as a set of attribute-value pairs.
+
+We will use the following notation in this cheatsheet:
+
+<ul class="no-deco">
+    <li>
+        <Latex code="t[X]" /> extracts attribute set <Latex code="X" />.<br />
+        <Latex code="t[X]" /> is itself a tuple.
+    </li>
+    <li>
+        <Latex code="t[A]" /> extracts a single attribute <Latex code="A" />.<br />
+        <Latex code="t[A]" /> is a value. *(Yes, I know this is confusing.)*
+    </li>
+    <li>
+        <Latex code="(t_r : t_s)" /> combines tuples <Latex code="t_r" /> and <Latex code="t_s" />.<br />
+        <Latex code="(t_r : t_s)" /> is itself a tuple.
+    </li>
+</ul>
+
+
+### The Null Value (Extended RA)
+
+The null value is a special value that may be part of an attribute domain.
+
+We will use the symbol <Latex code="\relnullvalue" /> to represent *null* in this cheatsheet.
+
+While the null value is an important part of the relational model, <u>it is not a core part of relational algebra</u>.
+
+
+## Operators
+
+### Selection
+
+Produces the subset of tuples that satisfy a condition.
+
+For <Latex code="r(R)" /> and selection condition <Latex code="c" />:
+
+<DisplayLatex code="
+    \relselect_{c}{(r)} = \setdef{t \in r}{c(t)}
+" />
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Projection
+
+Produces a relation with a subset of attributes.
+
+For <Latex code="r(R)" /> and attribute set <Latex code="X" />:
+
+<DisplayLatex code="
+    \relproject_{X}{(r)} = \setdef{t[X]}{t \in r}
+" />
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Rename
+
+Casts a relation to a different schema.
+
+For <Latex code="r(R)" /> and a compatible schema <Latex code="S" />:
+
+<DisplayLatex code="
+    \relrename_{S}{(r)}
+" />
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Union, Intersection, and Difference
+
+Set theoretic operations between *union-compatible* relations (i.e. same schema).
+
+For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
+
+<AlignVarLatex code="
+    r_1 \cup r_2 &= \setdef{t}{(t \in r_1) \vee   (t \in r_2)} \\
+    r_1 \cap r_2 &= \setdef{t}{(t \in r_1) \wedge (t \in r_2)} \\
+    r_1 - r_2    &= \setdef{t}{(t \in r_1) \wedge (t \notin r_2)}
+" />
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Cartesian Product
+
+Produces every possible combination of tuples from two relations.
+
+For <Latex code="r(R)" /> and <Latex code="s(S)" />:
+
+<DisplayLatex code="
+    r \times s = \setdef{(t_r:t_s)}{(t_r \in r) \wedge (t_s \in s)}
+" />
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Theta Join (or Inner Join) and Equijoin
+
+*<u>Theta join</u>* combines the tuples of two relations using a matching criterion.
+
+For <Latex code="r(R)" /> and <Latex code="s(S)" />, and some arbitrary matching criterion <Latex code="c" />:
+
+<DisplayLatex code="
+    r \bowtie_c s
+    = \setdef{
+        (t_r : t_s)
+    }{
+        (t_r \in r) \wedge (t_s \in s) \wedge c(t_r : t_s)
+    }
+" />
+
+Theta join can also be defined as:
+
+<DisplayLatex code="
+    r \bowtie_c s = \relselect_{c(r, s)}{\parens{r \times s}}
+" />
+
+Duplicate attributes are not removed.
+
+*<u>Equijoin</u>* is a special case of theta join that only tests for equality between attributes.
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Natural Join
+
+A special case of *equijoin* that matches tuples on all their common attributes.
+
+For <Latex code="r(R)" /> and <Latex code="s(S)" />:
+
+<DisplayLatex code="
+    r \bowtie s
+    = \setdef{
+        \parens{t_r : t_s[S - R]}
+    }{
+        (t_r \in r) \wedge (t_s \in s) \wedge m(t_r, t_s)
+    }
+" />
+
+where <Latex code="m" /> is "all common attributes must match":
+
+<DisplayLatex code="
+    m(t_r, t_s) = \parens{\vphantom{\frac{x}{x}} t_r[R \cap S] = t_s[R \cap S]}
+" />
+
+Natural join can also be defined as:
+
+<DisplayLatex code="
+    r \bowtie s
+    = \relproject_{R \cup S}{\parens{\relselect_{m(r, s)}{\parens{r \times s}}}}
+" />
+
+where <Latex code="m" /> is:
+
+<DisplayLatex code="
+    m(r, s)
+    = \parens{\vphantom{\frac{x}{x}} r[R \cap S] = s[R \cap S]}
+" />
+
+and <Latex code="\relproject_{R \cup S}" /> assumes removal of duplicate attributes.
+
+<p><span class="warning">*Natural join* is dangerous in real applications. Use *equijoin* to explicitly match tuples instead.</span></p>
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Division (Extended RA)
+
+For <Latex code="r(R)" /> and <Latex code="s(S)" />, with <Latex code="S \subseteq R" />:
+
+<DisplayLatex code="
+    r \div s = \setdef{t \in \relproject_{R-S}{(r)}}{\Phi(t)}
+" />
+
+where:
+
+<DisplayLatex code="
+    \newcommand{\X}{\rule[-2ex]{0mm}{2ex}}
+    \Phi(t) =
+        \underbrace{\X \forall t_s \in s}_{(1)}
+        \, \underbrace{\X \exists t_r \in r}_{(2)}
+        \, (
+            \underbrace{\X t_r[S] = t_s}_{(3)}
+            \underbrace{\X \wedge t = t_r[R-S]}_{(4)}
+        )
+" />
+
+*In plain English:* (1) For all tuples in <Latex code="s" />, (2) there is at least one relation in <Latex code="r" /> (3) whose common attributes match, (4) and whose non-common attributes are the same.
+
+Division can also be defined as:
+
+<DisplayLatex code="
+    r \div s =
+        r' -
+        \underbrace{ \rule[-2ex]{0mm}{2ex}
+            \relproject_{(R-S)}{\parens{\vphantom{\frac{x}{x}} [r' \times s] - r}}
+        }_{\text{``disqualifier'' term}}
+" />
+
+where <Latex code="r'" /> is "all possible result tuples":
+
+<DisplayLatex code="
+    r' = \relproject_{(R-S)}{(r)}
+" />
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Outer Join (Extended RA)
+
+Similar to *theta join*, except in the result relation, we also include tuples that don't have matches in the join.
+
+These unmatched tuples get padded with null values in the result relation.
+
+*<u>Full outer join</u>* includes all tuples of both operands:
+
+<p><Todo>Put the equation here. We'll need to somehow implement the outer join operators though.</Todo></p>
+
+*<u>Left outer join</u>* includes all tuples of the left:
+
+<p><Todo>Put the equation here. We'll need to somehow implement the outer join operators though.</Todo></p>
+
+*<u>Right outer join</u>* includes all tuples of the right:
+
+<p><Todo>Put the equation here. We'll need to somehow implement the outer join operators though.</Todo></p>
+
+To summarize the differences between the joins:
+
+<p><Todo>Put the venn diagrams here.</Todo></p>
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Grouping Operator (Extended RA)
+
+Performs calculations over groups of tuples within a relation. Produces a relation containing the results.
+
+For <Latex code="r(R)" /> and operator subscript <Latex code="G" />:
+
+<DisplayLatex code="
+    \relgroup_G{(R)}
+" />
+
+where <Latex code="G" /> is a list containing:
+
+- one or more attributes from <Latex code="R" /> to be taken as *grouping attributes*, and
+- one or more *aggregate functions*, written in the form <Latex code="\theta{(A, \dots)}" />, where <Latex code="\theta" /> is an aggregate function to be applied to attributes <Latex code="A, \dots" />.
+
+Formally, aggregate functions can be considered to take a multiset (i.e. a set with duplicates) of values.
+
+Aggregate functions defined in SQL-92:
+
+<p class="center">AVG, MAX, MIN, SUM, COUNT</p>
+
+Most major DBMS implementations offer many more aggregate functions and allow user-defined functions.
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+### Generalized Projection (Extended RA)
+
+We can extend the projection operator <Latex code="\pi" /> to also contain expressions for computation.
+
+<p><Todo>Put the example diagram here.</Todo></p>
+
+
+## Further Concepts
+
+### Functional Dependencies
+
+<p><Todo>Write about this!</Todo></p>
+
