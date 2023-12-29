@@ -1,0 +1,10 @@
+div.figures-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+div.figures-block div.figure {
+    text-align: center;
+}

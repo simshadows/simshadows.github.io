@@ -5,6 +5,9 @@ description: A cheatsheet for the relational model and relational algebra, in th
 keywords: ["programming", "databases", "relational", "sql"]
 ---
 
+import FiguresBlock from "@components/figures/FiguresBlock";
+import FigImg from "@components/figures/FigImg";
+
 import AlignVarLatex from "@components/AlignVarLatex";
 import DisplayLatex from "@components/DisplayLatex";
 import GatherVarLatex from "@components/GatherVarLatex";
@@ -12,6 +15,11 @@ import Latex from "@components/Latex";
 
 import Eqref from "@components/Eqref";
 import Todo from "@components/Todo";
+
+import SimpleVennIntersection from "@img_latex/simplevenn-intersection.svg";
+import SimpleVennLeft from "@img_latex/simplevenn-left.svg";
+import SimpleVennRight from "@img_latex/simplevenn-right.svg";
+import SimpleVennUnion from "@img_latex/simplevenn-union.svg";
 
 *I'm still migrating my notes on the relational model over to this website, so there are a lot of missing sections below. Sorry about that!*
 
@@ -351,7 +359,20 @@ These unmatched tuples get padded with null values in the result relation.
 
 To summarize the differences between the joins:
 
-<p><Todo>Put the venn diagrams here.</Todo></p>
+<p><FiguresBlock>
+    <FigImg src={SimpleVennIntersection} alt="A venn diagram representing the inner/theta join.">
+        Inner/Theta
+    </FigImg>
+    <FigImg src={SimpleVennLeft} alt="A venn diagram representing the left outer join.">
+        Left Outer
+    </FigImg>
+    <FigImg src={SimpleVennRight} alt="A venn diagram representing the right outer join.">
+        Right Outer
+    </FigImg>
+    <FigImg src={SimpleVennUnion} alt="A venn diagram representing the full outer join.">
+        Full Outer
+    </FigImg>
+</FiguresBlock></p>
 
 <p><Todo>Put the example diagram here.</Todo></p>
 

@@ -1,8 +1,8 @@
 // <https://katex.org/docs/options>
 
-import fullOuterJoinImg from "./symbol-images/generated-do-not-edit/rel-full-outer-join.svg";
-import leftOuterJoinImg from "./symbol-images/generated-do-not-edit/rel-left-outer-join.svg";
-import rightOuterJoinImg from "./symbol-images/generated-do-not-edit/rel-right-outer-join.svg";
+import fullOuterJoinImg from "@img_latex/rel-full-outer-join.svg";
+import leftOuterJoinImg from "@img_latex/rel-left-outer-join.svg";
+import rightOuterJoinImg from "@img_latex/rel-right-outer-join.svg";
 
 const katexConfig = {
     displayMode: true, // To be overwritten
@@ -28,7 +28,7 @@ const katexConfig = {
         //     "\\TmpOJoin": "\\setbox0=\\hbox{$\\bowtie$} \\rule[-.02ex]{.25em}{.4pt}\\llap{\\rule[\\ht0]{.25em}{.4pt}}",
         //     "\\relfullouterjoin": "{\\mathbin{\\TmpOJoin\\mkern-5.8mu\\bowtie\\mkern-5.8mu\\TmpOJoin}}",
         //     answer original author: egreg (https://tex.stackexchange.com/users/4427/egreg)
-        // The current implementation doesn't 
+        // The current implementation doesn't handle subscripts well.
         "\\relfullouterjoin": "{\\,\\includegraphics[height=0.75em, totalheight=1.0em, width=1.0em, alt=left outer join operator]{" + fullOuterJoinImg.src + "}\\,}",
         "\\relleftouterjoin": "{\\,\\includegraphics[height=0.75em, totalheight=1.0em, width=0.85em, alt=left outer join operator]{" + leftOuterJoinImg.src + "}\\,}",
         "\\relrightouterjoin": "{\\,\\includegraphics[height=0.75em, totalheight=1.0em, width=0.85em, alt=left outer join operator]{" + rightOuterJoinImg.src + "}\\,}",

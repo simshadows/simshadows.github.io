@@ -24,7 +24,8 @@
     "paths": {
       "@root/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "@layouts/*": ["src/layouts/*"],
+      "@img_latex/*": ["src/generic-images/latex-compiled/generated-do-not-edit/*"]
     }
   }
 }
