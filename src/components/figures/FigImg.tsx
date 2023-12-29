@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function Figure({src, alt, children}: Props) {
-    return <div class="figure">
+    return <div className="figure">
         {children}
         <img src={src.src} alt={alt} />
     </div>;

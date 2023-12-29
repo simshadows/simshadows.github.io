@@ -1,0 +1,16 @@
+div.example-frame {
+    border: 0.18em solid var(--color--example-frame-border);
+    border-radius: 0.4em;
+    margin: 0.4em 0.6em 0.4em 0.6em;
+    background-color: var(--color--example-frame-fill);
+}
+
+div.example-frame div.example-frame-head {
+    margin: 0.5em;
+    font-weight: bold;
+}
+
+div.example-frame div.example-frame-content {
+    margin: 0.5em;
+}
+

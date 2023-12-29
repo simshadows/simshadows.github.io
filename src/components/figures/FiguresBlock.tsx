@@ -6,6 +6,6 @@ interface Props {
 }
 
 export default function FiguresBlock({children}: Props) {
-    return <div class="figures-block">{children}</div>;
+    return <div className="figures-block">{children}</div>;
 }
 

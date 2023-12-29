@@ -15,6 +15,7 @@ import Latex from "@components/Latex";
 
 import Eqref from "@components/Eqref";
 import Todo from "@components/Todo";
+import ExampleFrame from "@components/ExampleFrame";
 
 import SimpleVennIntersection from "@img_latex/simplevenn-intersection.svg";
 import SimpleVennLeft from "@img_latex/simplevenn-left.svg";
@@ -90,7 +91,9 @@ To show that <Latex code="r" /> is an instance of schema <Latex code="R" />, we 
     r(R)
 " />
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Tuples
@@ -138,7 +141,9 @@ For <Latex code="r(R)" /> and selection condition <Latex code="c" />:
     \relselect_{c}{(r)} = \setdef{t \in r}{c(t)}
 " />
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Projection
@@ -151,7 +156,9 @@ For <Latex code="r(R)" /> and attribute set <Latex code="X" />:
     \relproject_{X}{(r)} = \setdef{t[X]}{t \in r}
 " />
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Rename
@@ -164,7 +171,9 @@ For <Latex code="r(R)" /> and a compatible schema <Latex code="S" />:
     \relrename_{S}{(r)}
 " />
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Union, Intersection, and Difference
@@ -179,7 +188,9 @@ For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
     r_1 - r_2    &= \setdef{t}{(t \in r_1) \wedge (t \notin r_2)}
 " />
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Cartesian Product
@@ -192,7 +203,9 @@ For <Latex code="r(R)" /> and <Latex code="s(S)" />:
     r \times s = \setdef{(t_r:t_s)}{(t_r \in r) \wedge (t_s \in s)}
 " />
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Theta Join (or Inner Join) and Equijoin
@@ -220,7 +233,9 @@ Duplicate attributes are not removed.
 
 *<u>Equijoin</u>* is a special case of theta join that only tests for equality between attributes.
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Natural Join
@@ -262,7 +277,9 @@ and <Latex code="\relproject_{R \cup S}" /> assumes removal of duplicate attribu
 
 <p><span class="warning">*Natural join* is dangerous in real applications. Use *equijoin* to explicitly match tuples instead.</span></p>
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Division (Extended RA)
@@ -304,7 +321,9 @@ where <Latex code="r'" /> is "all possible result tuples":
     r' = \relproject_{(R-S)}{(r)}
 " />
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Outer Join (Extended RA)
@@ -374,7 +393,9 @@ To summarize the differences between the joins:
     </FigImg>
 </FiguresBlock></p>
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Grouping Operator (Extended RA)
@@ -400,14 +421,18 @@ Aggregate functions defined in SQL-92:
 
 Most major DBMS implementations offer many more aggregate functions and allow user-defined functions.
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ### Generalized Projection (Extended RA)
 
 We can extend the projection operator <Latex code="\pi" /> to also contain expressions for computation.
 
-<p><Todo>Put the example diagram here.</Todo></p>
+<ExampleFrame>
+    <Todo>Put the example diagram here.</Todo>
+</ExampleFrame>
 
 
 ## Further Concepts
