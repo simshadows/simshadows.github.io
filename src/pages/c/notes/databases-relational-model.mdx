@@ -307,15 +307,47 @@ These unmatched tuples get padded with null values in the result relation.
 
 *<u>Full outer join</u>* includes all tuples of both operands:
 
-<p><Todo>Put the equation here. We'll need to somehow implement the outer join operators though.</Todo></p>
+<AlignVarLatex code="
+    r \relfullouterjoinSubscripted_c\, s &=
+        (r \bowtie_c s)
+        \cup \parens{\vphantom{\frac{x}{x}}
+            \parens{r - \relproject_R{(r \bowtie_c s)}}
+            \times \braces{(\relnullvalue, \dots)}
+        } \\
+    &
+        \qquad
+        \cup \parens{\vphantom{\frac{x}{x}}
+            \parens{r - \relproject_R{(r \bowtie_c s)}}
+            \times \braces{(\relnullvalue, \dots)}
+        } \\
+    &= (r \relleftouterjoinSubscripted_c\, s) \cup (r \relrightouterjoinSubscripted_c\, s)
+" />
 
 *<u>Left outer join</u>* includes all tuples of the left:
 
-<p><Todo>Put the equation here. We'll need to somehow implement the outer join operators though.</Todo></p>
+<AlignVarLatex code="
+    r \relleftouterjoinSubscripted_c\, s &=
+        (r \bowtie_c s)
+        \cup \parens{\vphantom{\frac{x}{x}}
+            \parens{r - \relproject_R{(r \bowtie_c s)}}
+            \times \braces{(\relnullvalue, \dots)}
+        } \\
+    &=
+        s \relrightouterjoinSubscripted_c\, r
+" />
 
 *<u>Right outer join</u>* includes all tuples of the right:
 
-<p><Todo>Put the equation here. We'll need to somehow implement the outer join operators though.</Todo></p>
+<AlignVarLatex code="
+    r \relrightouterjoinSubscripted_c\, s &=
+        (r \bowtie_c s)
+        \cup \parens{\vphantom{\frac{x}{x}}
+            \parens{s - \relproject_S{(r \bowtie_c s)}}
+            \times \braces{(\relnullvalue, \dots)}
+        } \\
+    &=
+        s \relleftouterjoinSubscripted_c\, r
+" />
 
 To summarize the differences between the joins:
 

@@ -1,9 +1,14 @@
 // <https://katex.org/docs/options>
 
+import fullOuterJoinImg from "./symbol-images/generated-do-not-edit/rel-full-outer-join.svg";
+import leftOuterJoinImg from "./symbol-images/generated-do-not-edit/rel-left-outer-join.svg";
+import rightOuterJoinImg from "./symbol-images/generated-do-not-edit/rel-right-outer-join.svg";
+
 const katexConfig = {
     displayMode: true, // To be overwritten
     throwOnError: true,
     strict: "error",
+    trust: true,
     macros: {
         "\\evalat": "{{\\left.#1\\right\\rvert{}}_{#2}}",
         "\\myvec": "{\\mathbf{#1}}",
@@ -17,17 +22,20 @@ const katexConfig = {
         "\\relproject": "{\\pi}",
         "\\relrename": "{\\rho}",
         "\\relgroup": "{\\gamma}",
-        // ----------------------------------------------------------------------
-        // THESE DON'T WORK YET. I'M STILL FIGURING THEM OUT
-        //
         // Relational Algebra outer join symbols
-        //     original source: https://tex.stackexchange.com/questions/20740/symbols-for-outer-joins/20749#20749
+        // I would've liked to implement the symbols in pure katex, but it doesn't seem to work.
+        // Attempting an implementation from <https://tex.stackexchange.com/questions/20740/symbols-for-outer-joins/20749#20749>:
+        //     "\\TmpOJoin": "\\setbox0=\\hbox{$\\bowtie$} \\rule[-.02ex]{.25em}{.4pt}\\llap{\\rule[\\ht0]{.25em}{.4pt}}",
+        //     "\\relfullouterjoin": "{\\mathbin{\\TmpOJoin\\mkern-5.8mu\\bowtie\\mkern-5.8mu\\TmpOJoin}}",
         //     answer original author: egreg (https://tex.stackexchange.com/users/4427/egreg)
-        "\\TmpOJoin": "\\setbox0=\\hbox{$\\bowtie$} \\rule[-.02ex]{.25em}{.4pt}\\llap{\\rule[\\ht0]{.25em}{.4pt}}",
-        "\\relleftouterjoin": "{\\mathbin{\\TmpOJoin\\mkern-5.8mu\\bowtie}}",
-        "\\relrightouterjoin": "{\\mathbin{\\bowtie\\mkern-5.8mu\\TmpOJoin}}",
-        "\\relfullouterjoin": "{\\mathbin{\\TmpOJoin\\mkern-5.8mu\\bowtie\\mkern-5.8mu\\TmpOJoin}}",
-        // ----------------------------------------------------------------------
+        // The current implementation doesn't 
+        "\\relfullouterjoin": "{\\,\\includegraphics[height=0.75em, totalheight=1.0em, width=1.0em, alt=left outer join operator]{" + fullOuterJoinImg.src + "}\\,}",
+        "\\relleftouterjoin": "{\\,\\includegraphics[height=0.75em, totalheight=1.0em, width=0.85em, alt=left outer join operator]{" + leftOuterJoinImg.src + "}\\,}",
+        "\\relrightouterjoin": "{\\,\\includegraphics[height=0.75em, totalheight=1.0em, width=0.85em, alt=left outer join operator]{" + rightOuterJoinImg.src + "}\\,}",
+        // Technical debt versions for adding subscripts without the awkward whitespace
+        "\\relfullouterjoinSubscripted": "{\\,\\includegraphics[height=0.75em, totalheight=1.0em, width=1.0em, alt=left outer join operator]{" + fullOuterJoinImg.src + "}}",
+        "\\relleftouterjoinSubscripted": "{\\,\\includegraphics[height=0.75em, totalheight=1.0em, width=0.85em, alt=left outer join operator]{" + leftOuterJoinImg.src + "}}",
+        "\\relrightouterjoinSubscripted": "{\\,\\includegraphics[height=0.75em, totalheight=1.0em, width=0.85em, alt=left outer join operator]{" + rightOuterJoinImg.src + "}}",
 
         // Hacky compatibility implementation of siunitx just so I can keep the same syntax.
         // Ideally, KaTeX should properly support some subset of the siunitx API.
