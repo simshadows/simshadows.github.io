@@ -7,13 +7,13 @@ interface Props {
 }
 
 export default function Centered({children}: Props) {
-    return <div className="example-frame">
+    return <p><div className="example-frame">
         <div className="example-frame-head">
             Example
         </div>
         <div className="example-frame-content">
             {children}
         </div>
-    </div>;
+    </div></p>;
 }
 
