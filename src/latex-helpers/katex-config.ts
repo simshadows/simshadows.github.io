@@ -10,10 +10,20 @@ const katexConfig = {
     strict: "error",
     trust: true,
     macros: {
+        "\\csch": "\\operatorname{csch}",
+        "\\sech": "\\operatorname{sech}",
+
+        "\\diff": "d",
         "\\evalat": "{{\\left.#1\\right\\rvert{}}_{#2}}",
         "\\myvec": "{\\mathbf{#1}}",
         "\\Nth": "{{#1}^\\textit{#2}}",
         "\\setdef": "{\\left\\{{#1} \\mid {#2}\\right\\}}",
+
+        // Originally \underbracket. I'd like to use underbracket once katex supports it.
+        "\\xcancelto": "\\underbrace{\\xcancel{#2}}_{#1}",
+
+        "\\rhs": "\\textit{RHS}",
+        "\\lhs": "\\textit{LHS}",
 
         // Relational algebra null value
         "\\relnullvalue": "{\\mathord{\\bot}}",
@@ -49,6 +59,7 @@ const katexConfig = {
         "\\parens": "{\\left({#1}\\right)}",
         "\\brackets": "{\\left[{#1}\\right]}",
         "\\braces": "{\\left\\{{#1}\\right\\}}",
+        "\\abs": "{\\lvert{}{#1}\\rvert{}}",
         "\\floor": "{\\left\\lfloor{#1}\\right\\rfloor}",
 
         // Hacky compatibility implementation of \DeclareMathOperator from amsmath

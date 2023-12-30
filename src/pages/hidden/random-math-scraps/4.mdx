@@ -1,0 +1,92 @@
+---
+layout: ../../../layouts/MDLayout.astro
+title: "Math Scrap 4"
+description: Math Scrap 4
+keywords: ["math"]
+
+hidetoc: true
+---
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+
+import Eqref from "@components/latex/Eqref";
+import Todo from "@components/Todo";
+
+import QuestionFrame from "@components/QuestionFrame";
+
+<QuestionFrame>
+    Solve the ODE:
+
+    <DisplayLatex code="
+        -y \,\diff{y} + \parens{x + \sqrt{xy}} \,\diff{y} = 0
+    " />
+</QuestionFrame>
+
+Rearranging the ODE:
+
+<DisplayLatex code="
+    \frac{\diff{x}}{\diff{y}} = \frac{x + \sqrt{xy}}{y} = \frac{x}{y} + \frac{\sqrt{x}}{\sqrt{y}}
+" />
+
+From this form, we can try the following substitution:
+
+<DisplayLatex code="
+    z := \frac{x}{y}
+    \qquad \Longrightarrow \qquad
+    x(y) = z(y) y
+    \qquad \Longrightarrow \qquad
+    \frac{\diff{x}}{\diff{y}} = z \xcancelto{1}{\frac{\diff{y}}{\diff{y}}} + y \frac{\diff{z}}{\diff{y}} = z + y \frac{\diff{z}}{\diff{y}}
+" />
+
+Substituting into our ODE, rearranging, then integrating both sides:
+
+<GatherLatex code="
+    z + y \frac{\diff{z}}{\diff{y}} = \frac{zy + \sqrt{z y^2}}{y} = \frac{z \cancel{y} + \cancel{y} \sqrt{z}}{\cancel{y}} = z + \sqrt{z} \\
+    y \frac{\diff{z}}{\diff{y}} = \sqrt{z} \\
+    z^{-\frac{1}{2}} \,\diff{z} = \frac{1}{y} \,\diff{y} \\
+    2 \sqrt{z} = \ln{\abs{y}} + C
+" />
+
+Reverting the substitution, we get our solution to the ODE:
+
+<DisplayLatex code="
+    2 \frac{\sqrt{x}}{\sqrt{y}} = \ln{\abs{y}} + C, \qquad C \in \mathbb{R}
+" />
+
+
+<br />*OPTIONAL: We shall now verify our solution.*
+
+Rearranging our solution:
+
+<GatherLatex code="
+    \sqrt{x} = \frac{1}{2} \sqrt{y} \parens{\ln{\abs{y}} + C}
+    \qquad \Longrightarrow \qquad
+    x = \frac{1}{4} y \parens{\ln{\abs{y}} + C}^2
+    \\
+    \begin{aligned}
+        4 \frac{\diff{x}}{\diff{y}}
+            &= y \frac{\diff{}}{\diff{y}}\parens{\parens{\ln{\abs{y}} + C}^2} + \parens{\ln{\abs{y}} + C}^2 \xcancelto{1}{\frac{\diff{y}}{\diff{y}}} \\
+            &= 2 y \parens{\ln{\abs{y}} + C} \frac{1}{y} + \parens{\ln{\abs{y}} + C}^2
+    \end{aligned}
+" />
+
+Thus, LHS of our ODE is:
+
+<DisplayLatex code="
+    \lhs = \frac{1}{2} \parens{\ln{\abs{y}} + C} + \frac{1}{4} \parens{\ln{\abs{y}} + C}^2
+" />
+
+For the RHS, we substitute our solution:
+
+<AlignLatex code="
+    \rhs
+        &= \frac{\frac{1}{4} \cancel{y} \parens{\ln{\abs{y}} + C}^2}{\cancel{y}} + \sqrt{\frac{\frac{1}{4} \cancel{y} \parens{\ln{\abs{y}} + C}^2}{\cancel{y}}}
+        = \frac{1}{4} \parens{\ln{\abs{y}} + C}^2 + \sqrt{\frac{1}{4} \parens{\ln{\abs{y}} + C}^2} \\
+        &= \frac{1}{4} \parens{\ln{\abs{y}} + C}^2 + \frac{1}{2} \parens{\ln{\abs{y}} + C} = \lhs
+" />
+
+Thus, our solution has been verified.
+

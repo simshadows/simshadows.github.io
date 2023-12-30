@@ -1,0 +1,73 @@
+---
+layout: ../../../layouts/MDLayout.astro
+title: "Math Scrap 2"
+description: Math Scrap 2
+keywords: ["math"]
+
+hidetoc: true
+---
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+
+import Eqref from "@components/latex/Eqref";
+import Todo from "@components/Todo";
+
+import QuestionFrame from "@components/QuestionFrame";
+
+<QuestionFrame>
+    Consider an arbitrary load (potentially both resistive and reactive) where:
+
+    <GatherLatex code="
+        v(t) = V_m \cos{(\omega t + \theta_v)} \\
+        i(t) = I_m \cos{(\omega t + \theta_i)}
+    " />
+
+    Instantaneous power is given by:
+
+    <DisplayLatex code="
+        p(t) = v(t)\ i(t) = V_m I_m \cos{(\omega t + \theta_v)} \cos{(\omega t + \theta_i)}
+    " />
+
+    Find the average power delivered to this load.
+</QuestionFrame>
+
+We can apply the following product-to-sum identity:
+
+<GatherLatex code="
+    \boxed{
+        2 \cos{A} \cos{B} = \cos{(A+B)} + \cos{(A-B)}
+    } \\
+    p(t) = \frac{V_m I_m}{2} \brackets{\cos{(2 \omega t + \theta_v + \theta_i)} + \cos{(\theta_v - \theta_i)}}
+" />
+
+To make things simpler, let's define the power angle <Latex code="\theta" />:
+
+<DisplayLatex code="
+    \theta := \theta_v - \theta_i
+    \qquad \Longrightarrow \qquad
+    \theta_i = \theta_v - \theta
+" />
+
+Substituting into <Latex code="p(t)" /> then applying the following compound angle identity:
+
+<GatherLatex code="
+    \boxed{
+        \cos{(\alpha - \beta)} = \cos{\alpha} \cos{\beta} + \sin{\alpha} \sin{\beta}
+    } \\
+    \begin{aligned}
+        p(t)
+            &= \frac{V_m I_m}{2} \brackets{\cos{\parens{[2 \omega t + 2 \theta_v] - \theta}} + \cos{(\theta)}} \\
+            &= \frac{V_m I_m}{2} \brackets{\cos{(2 \omega t + 2 \theta_v)} \cos{(\theta)} + \sin{(2 \omega t + 2 \theta_v)} \sin{(\theta)} + \cos{(\theta)}} \\
+            &= \frac{V_m I_m}{2} \cos{(\theta)} \brackets{\underbrace{\cos{(2 \omega t + 2 \theta_v)}}_{\text{average value} = 0} + 1} + \frac{V_m I_m}{2} \sin{(\theta)} \underbrace{\sin{(2 \omega t + 2 \theta_v)}}_{\text{average value} = 0}
+    \end{aligned}
+" />
+
+To find average power, we notice that two time-dependent sinusoids have average values of zero, therefore our average power <Latex code="P" /> is:
+
+<DisplayLatex code="
+    P = \frac{V_m I_m}{2} \cos{(\theta)}
+" />
+

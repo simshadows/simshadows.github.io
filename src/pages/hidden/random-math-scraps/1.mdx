@@ -1,0 +1,84 @@
+---
+layout: ../../../layouts/MDLayout.astro
+title: "Math Scrap 1"
+description: Math Scrap 1
+keywords: ["math"]
+
+hidetoc: true
+---
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+
+import Eqref from "@components/latex/Eqref";
+import Todo from "@components/Todo";
+
+import QuestionFrame from "@components/QuestionFrame";
+
+<QuestionFrame>
+    Considering:
+
+    <DisplayLatex code="
+        \int{\sech{ax} \,\diff{x}}
+            = \frac{1}{a} \tan^{-1}{\parens{\sinh{ax}}}
+            = \frac{2}{a} \tan^{-1}{\parens{\tanh{\frac{ax}{2}}}}
+    " />
+
+    Prove that:
+
+    <DisplayLatex code="
+        \frac{1}{a} \tan^{-1}{\parens{\sinh{ax}}}
+            = \frac{2}{a} \tan^{-1}{\parens{\tanh{\frac{ax}{2}}}}
+    " />
+</QuestionFrame>
+
+Let us use the following identities for this proof:
+
+<GatherLatex code="
+    \tan^{-1}{x} = 2 \tan^{-1}{\parens{\frac{x}{1 + \sqrt{1 + x^2}}}} \\
+    \sinh{x} = \frac{e^x - e^{-x}}{2} = \frac{e^{2x} - 1}{2 e^x} \\
+    \tanh{x} = \frac{e^x - e^{-x}}{e^x + e^{-x}} = \frac{e^{2x} - 1}{e^{2x} + 1}
+" />
+
+We start by rewriting LHS:
+
+<DisplayLatex code="
+    \lhs
+        = \frac{1}{a} \tan^{-1}{\parens{\sinh{ax}}}
+        = \frac{2}{a} \tan^{-1}{\parens{\frac{\sinh{ax}}{1 + \sqrt{1 + \sinh^2{ax}}}}} 
+" />
+
+Now, to finish the proof, we will now show the following to be true:
+
+<DisplayLatex code="
+    \tanh{\frac{ax}{2}} = \frac{\sinh{ax}}{1 + \sqrt{1 + \sinh^2{ax}}}
+" />
+
+To simplify further working, we will change the variable:
+
+<DisplayLatex code="
+    \tanh{x} = \frac{\sinh{2x}}{1 + \sqrt{1 + \sinh^2{2x}}}
+" />
+
+Starting with the RHS:
+
+<AlignLatex code="
+    \rhs
+    &= \frac{\frac{e^{4x} - 1}{2 e^{2x}}}{1 + \sqrt{1 + \parens{\frac{e^{4x} - 1}{2 e^{2x}}}^2}}
+    = \frac{e^{4x} - 1}{2 e^{2x} \parens{1 + \sqrt{1 + \frac{e^{8x} - 2 e^{4x} + 1}{4 e^{4x}}}}}
+    = \frac{e^{4x} - 1}{2 e^{2x} \parens{1 + \sqrt{\frac{e^{8x} - 2 e^{4x} + 1 + 4 e^{4x}}{4 e^{4x}}}}}
+    = \frac{e^{4x} - 1}{2 e^{2x} \parens{1 + \sqrt{\frac{e^{8x} + 2 e^{4x} + 1}{4 e^{4x}}}}}
+    \\
+    &= \frac{e^{4x} - 1}{2 e^{2x} \parens{1 + \sqrt{\frac{\parens{e^{4x} + 1}^2}{4 e^{4x}}}}}
+    = \frac{e^{4x} - 1}{2 e^{2x} \parens{1 + \frac{e^{4x} + 1}{2 e^{2x}}}}
+    = \frac{e^{4x} - 1}{2 e^{2x} + e^{4x} + 1}
+    = \frac{\parens{e^{2x} - 1} \parens{e^{2x} + 1}}{\parens{e^{2x} + 1}^2}
+    = \frac{e^{2x} - 1}{e^{2x} + 1}
+    = \tanh{x}
+    = \lhs
+" />
+
+as required.
+
