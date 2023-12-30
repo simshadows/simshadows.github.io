@@ -1,0 +1,148 @@
+\documentclass{article}
+
+%\usepackage[margin=2.5cm, bottom=3.0cm]{geometry}
+\usepackage[margin=1.5cm, bottom=2.0cm]{geometry}
+\usepackage{makecell} % cell formatting for tabular environments
+%\usepackage{multirow} % multi-row formatting for tabular environments
+%\usepackage{booktabs}
+\usepackage{cancel}
+\usepackage[
+    type={CC},
+    modifier={by-sa},
+    version={4.0},
+    hyphenation={RaggedRight},
+]{doclicense}
+
+\usepackage{./_latex_includes/sharedpkg}
+
+\usetikzlibrary{arrows,shapes.arrows}
+
+\def\TITLE{Databases: The Relational Model and Relational Algebra}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+
+\newcommand{\LoadHelper}[1]{\input{./helpers/#1}}
+\newcommand{\LoadCheatsheet}[1]{{\input{./sections-cheatsheets/#1}}}
+\newcommand{\LoadAppendix}[1]{{\input{./sections-appendices/#1}}}
+
+\LoadHelper{general}
+\LoadHelper{cheatsheet-helpers}
+
+\LoadHelper{tikz}
+
+\LoadHelper{circuitikz}
+\LoadHelper{math-and-cs}
+\LoadHelper{minipage}
+\LoadHelper{multicols}
+
+\begin{document}
+
+\thispagestyle{plain}
+\MakeCustomTitle
+\bigskip
+
+%\medskip
+%text goes here?
+%\medskip
+
+\begin{center}%
+    \parbox{0.7\textwidth}{\doclicenseThis}%
+\end{center}
+
+%{
+%    \hypersetup{linkcolor=black}
+%    \tableofcontents
+%}
+
+\newpage
+%\InvisiblePart{Cheatsheets}
+%
+%\section{Mathematics}
+%\label{sec:mathgeneral}
+%
+%    \LoadCheatsheet{mathematics-general/01-elementary-algebra}
+%    \newpage
+%    \LoadCheatsheet{mathematics-general/02-trig-and-hyperbolic-fns}
+%    \newpage
+%    \LoadCheatsheet{mathematics-general/03-linear-algebra}
+%    \newpage
+%    \LoadCheatsheet{mathematics-general/04-calculus}
+%    \newpage
+%    \LoadCheatsheet{mathematics-general/05-common-integrals}
+%    \newpage
+%    \LoadCheatsheet{mathematics-general/06-complex-analysis}
+%    \newpage
+%    \LoadCheatsheet{mathematics-general/07-differential-equations}
+%
+%\newpage
+%\section{Probability and Statistics}
+%\label{sec:probability-and-statistics}
+%
+%    \LoadCheatsheet{probability-and-statistics}
+%
+%\newpage
+%\section{Physics}
+%\label{sec:physics}
+%
+%    \LoadCheatsheet{physics}
+%
+%\newpage
+%\section{Electrical Engineering: Circuit Analysis}
+%\label{sec:ee-circuit-analysis}
+%
+%    \LoadCheatsheet{electrical-engineering-circuit-analysis/1-dc-analysis}
+%    \newpage
+%    \LoadCheatsheet{electrical-engineering-circuit-analysis/2a-intro}
+%    \newpage
+%    \LoadCheatsheet{electrical-engineering-circuit-analysis/2b-magnetically-coupled-circuits}
+%    \newpage
+%    \LoadCheatsheet{electrical-engineering-circuit-analysis/2c-power}
+%    \newpage
+%    \LoadCheatsheet{electrical-engineering-circuit-analysis/3a-op-amps}
+%    \newpage
+%    \LoadCheatsheet{electrical-engineering-circuit-analysis/3b-semiconductors}
+%    \newpage
+%    \LoadCheatsheet{electrical-engineering-circuit-analysis/3c-feedback}
+%    \newpage
+%    \LoadCheatsheet{electrical-engineering-circuit-analysis/4a-non-linear-circuits}
+%    \newpage
+%    \LoadCheatsheet{electrical-engineering-circuit-analysis/5a-common-configs-transistor-amplifiers}
+%
+%\newpage
+%\section{Electrical Engineering: Digital Systems}
+%\label{sec:ee-digital}
+%
+%    \LoadCheatsheet{electrical-engineering-digital-systems/1-basics}
+%    \newpage
+%    \LoadCheatsheet{electrical-engineering-digital-systems/2-digital-analogue-interfacing}
+%
+%\newpage
+%\section{Computer Science}
+%\label{sec:compsci}
+
+    \LoadCheatsheet{the-relational-model}
+
+%\newpage
+%\section{Symbols and Units}
+%\label{sec:units}
+%
+%    \LoadCheatsheet{symbols-and-units}
+%
+%\newpage
+%\InvisiblePart{Appendices}
+%
+%\section{Appendix: Mathematics}%
+%\label{sec:appendix-math}
+%
+%    \LoadAppendix{mathematics}
+%
+%\newpage
+%\section{Appendix: Electrical Engineering}%
+%\label{sec:appendix-ee}
+%
+%    \LoadAppendix{electrical-engineering/inductors-and-inductive-coupling}
+%    \newpage
+%    \LoadAppendix{electrical-engineering/amplifier-analysis}
+
+\end{document}
