@@ -5,8 +5,10 @@ description: A cheatsheet for the relational model and relational algebra, in th
 keywords: ["programming", "databases", "relational", "sql"]
 ---
 
-import FiguresBlock from "@components/figures/FiguresBlock";
+import Fig from "@components/figures/Fig";
 import FigImg from "@components/figures/FigImg";
+import FiguresBlock from "@components/figures/FiguresBlock";
+import FiguresGroupVertical from "@components/figures/FiguresGroupVertical";
 
 import AlignVarLatex from "@components/AlignVarLatex";
 import DisplayLatex from "@components/DisplayLatex";
@@ -24,7 +26,7 @@ import SimpleVennUnion from "@img_latex/simplevenn-union.svg";
 
 import RelationInstanceLabelled from "./_databases-relational-model.images/generated-do-not-edit/relation-instance-labelled.svg"; //_
 
-*I'm still migrating my notes on the relational model over to this website, so there are a lot of missing sections below. Sorry about that!*
+import "./databases-relational-model.css";
 
 ## Basic Terms
 
@@ -149,7 +151,70 @@ For <Latex code="r(R)" /> and selection condition <Latex code="c" />:
 " />
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="3"><Latex code="r" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="C" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_1" /></td>
+                        <td><Latex code="2" /></td>
+                        <td><Latex code="x" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="8" /></td>
+                        <td><Latex code="x" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="7" /></td>
+                        <td><Latex code="x" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_4" /></td>
+                        <td><Latex code="9" /></td>
+                        <td><Latex code="y" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="3"><Latex code="\relselect_{(B>5) \wedge (C=x)}{(r)}" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="C" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="8" /></td>
+                        <td><Latex code="x" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="7" /></td>
+                        <td><Latex code="x" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+    </FiguresBlock>
 </ExampleFrame>
 
 
@@ -164,7 +229,70 @@ For <Latex code="r(R)" /> and attribute set <Latex code="X" />:
 " />
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="4"><Latex code="r" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="C" /></th>
+                        <th><Latex code="D" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_1" /></td>
+                        <td><Latex code="b_1" /></td>
+                        <td><Latex code="c_1" /></td>
+                        <td><Latex code="d_1" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="b_2" /></td>
+                        <td><Latex code="c_2" /></td>
+                        <td><Latex code="d_2" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="b_3" /></td>
+                        <td><Latex code="c_3" /></td>
+                        <td><Latex code="d_3" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="2"><Latex code="\relproject_{B, D}{(r)}" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="D" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="b_1" /></td>
+                        <td><Latex code="d_1" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="b_2" /></td>
+                        <td><Latex code="d_2" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="b_3" /></td>
+                        <td><Latex code="d_3" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+    </FiguresBlock>
 </ExampleFrame>
 
 
@@ -179,7 +307,70 @@ For <Latex code="r(R)" /> and a compatible schema <Latex code="S" />:
 " />
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="4"><Latex code="r" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="C" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_1" /></td>
+                        <td><Latex code="b_1" /></td>
+                        <td><Latex code="c_1" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="b_2" /></td>
+                        <td><Latex code="c_2" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="b_3" /></td>
+                        <td><Latex code="c_3" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="4"><Latex code="\relrename_{S(D, E, F)}{(r)}" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="D" /></th>
+                        <th><Latex code="E" /></th>
+                        <th><Latex code="F" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_1" /></td>
+                        <td><Latex code="b_1" /></td>
+                        <td><Latex code="c_1" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="b_2" /></td>
+                        <td><Latex code="c_2" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="b_3" /></td>
+                        <td><Latex code="c_3" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+    </FiguresBlock>
 </ExampleFrame>
 
 
@@ -196,7 +387,225 @@ For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
 " />
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="r_1" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr class="red">
+                            <td><Latex code="\bm{a_1}" /></td>
+                            <td><Latex code="\bm{b_1}" /></td>
+                            <td><Latex code="\bm{c_1}" /></td>
+                        </tr>
+                        <tr class="red">
+                            <td><Latex code="\bm{a_2}" /></td>
+                            <td><Latex code="\bm{b_2}" /></td>
+                            <td><Latex code="\bm{c_2}" /></td>
+                        </tr>
+                        <tr class="red">
+                            <td><Latex code="\bm{a_3}" /></td>
+                            <td><Latex code="\bm{b_3}" /></td>
+                            <td><Latex code="\bm{c_3}" /></td>
+                        </tr>
+                        <tr class="purple">
+                            <td><Latex code="\bm{a_4}" /></td>
+                            <td><Latex code="\bm{b_4}" /></td>
+                            <td><Latex code="\bm{c_4}" /></td>
+                        </tr>
+                        <tr class="purple">
+                            <td><Latex code="\bm{a_5}" /></td>
+                            <td><Latex code="\bm{b_5}" /></td>
+                            <td><Latex code="\bm{c_5}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="r_2" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="D" /></th>
+                            <th><Latex code="E" /></th>
+                            <th><Latex code="F" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr class="purple">
+                            <td><Latex code="\bm{a_4}" /></td>
+                            <td><Latex code="\bm{b_4}" /></td>
+                            <td><Latex code="\bm{c_4}" /></td>
+                        </tr>
+                        <tr class="purple">
+                            <td><Latex code="\bm{a_5}" /></td>
+                            <td><Latex code="\bm{b_5}" /></td>
+                            <td><Latex code="\bm{c_5}" /></td>
+                        </tr>
+                        <tr class="blue">
+                            <td><Latex code="\bm{a_6}" /></td>
+                            <td><Latex code="\bm{b_6}" /></td>
+                            <td><Latex code="\bm{c_6}" /></td>
+                        </tr>
+                        <tr class="blue">
+                            <td><Latex code="\bm{a_7}" /></td>
+                            <td><Latex code="\bm{b_7}" /></td>
+                            <td><Latex code="\bm{c_7}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="r_1 \cup r_2" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr class="red">
+                            <td><Latex code="\bm{a_1}" /></td>
+                            <td><Latex code="\bm{b_1}" /></td>
+                            <td><Latex code="\bm{c_1}" /></td>
+                        </tr>
+                        <tr class="red">
+                            <td><Latex code="\bm{a_2}" /></td>
+                            <td><Latex code="\bm{b_2}" /></td>
+                            <td><Latex code="\bm{c_2}" /></td>
+                        </tr>
+                        <tr class="red">
+                            <td><Latex code="\bm{a_3}" /></td>
+                            <td><Latex code="\bm{b_3}" /></td>
+                            <td><Latex code="\bm{c_3}" /></td>
+                        </tr>
+                        <tr class="purple">
+                            <td><Latex code="\bm{a_4}" /></td>
+                            <td><Latex code="\bm{b_4}" /></td>
+                            <td><Latex code="\bm{c_4}" /></td>
+                        </tr>
+                        <tr class="purple">
+                            <td><Latex code="\bm{a_5}" /></td>
+                            <td><Latex code="\bm{b_5}" /></td>
+                            <td><Latex code="\bm{c_5}" /></td>
+                        </tr>
+                        <tr class="blue">
+                            <td><Latex code="\bm{a_6}" /></td>
+                            <td><Latex code="\bm{b_6}" /></td>
+                            <td><Latex code="\bm{c_6}" /></td>
+                        </tr>
+                        <tr class="blue">
+                            <td><Latex code="\bm{a_7}" /></td>
+                            <td><Latex code="\bm{b_7}" /></td>
+                            <td><Latex code="\bm{c_7}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="r_1 - r_2" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr class="red">
+                            <td><Latex code="\bm{a_1}" /></td>
+                            <td><Latex code="\bm{b_1}" /></td>
+                            <td><Latex code="\bm{c_1}" /></td>
+                        </tr>
+                        <tr class="red">
+                            <td><Latex code="\bm{a_2}" /></td>
+                            <td><Latex code="\bm{b_2}" /></td>
+                            <td><Latex code="\bm{c_2}" /></td>
+                        </tr>
+                        <tr class="red">
+                            <td><Latex code="\bm{a_3}" /></td>
+                            <td><Latex code="\bm{b_3}" /></td>
+                            <td><Latex code="\bm{c_3}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="r_1 \cap r_2" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="D" /></th>
+                            <th><Latex code="E" /></th>
+                            <th><Latex code="F" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr class="purple">
+                            <td><Latex code="\bm{a_4}" /></td>
+                            <td><Latex code="\bm{b_4}" /></td>
+                            <td><Latex code="\bm{c_4}" /></td>
+                        </tr>
+                        <tr class="purple">
+                            <td><Latex code="\bm{a_5}" /></td>
+                            <td><Latex code="\bm{b_5}" /></td>
+                            <td><Latex code="\bm{c_5}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="r_2 - r_1" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="D" /></th>
+                            <th><Latex code="E" /></th>
+                            <th><Latex code="F" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr class="blue">
+                            <td><Latex code="\bm{a_6}" /></td>
+                            <td><Latex code="\bm{b_6}" /></td>
+                            <td><Latex code="\bm{c_6}" /></td>
+                        </tr>
+                        <tr class="blue">
+                            <td><Latex code="\bm{a_7}" /></td>
+                            <td><Latex code="\bm{b_7}" /></td>
+                            <td><Latex code="\bm{c_7}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+    </FiguresBlock>
 </ExampleFrame>
 
 
@@ -211,7 +620,146 @@ For <Latex code="r(R)" /> and <Latex code="s(S)" />:
 " />
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="3"><Latex code="r" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="a_1" /></td>
+                            <td><Latex code="b_1" /></td>
+                            <td><Latex code="c_1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_2" /></td>
+                            <td><Latex code="b_2" /></td>
+                            <td><Latex code="c_2" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="2"><Latex code="s" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="M" /></th>
+                            <th><Latex code="N" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="m_1" /></td>
+                            <td><Latex code="n_1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="m_2" /></td>
+                            <td><Latex code="n_2" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="m_3" /></td>
+                            <td><Latex code="n_3" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="5"><Latex code="r \times s" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                            <th><Latex code="M" /></th>
+                            <th><Latex code="N" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="a_1" /></td>
+                            <td><Latex code="b_1" /></td>
+                            <td><Latex code="c_1" /></td>
+                            <td><Latex code="m_1" /></td>
+                            <td><Latex code="n_1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_1" /></td>
+                            <td><Latex code="b_1" /></td>
+                            <td><Latex code="c_1" /></td>
+                            <td><Latex code="m_2" /></td>
+                            <td><Latex code="n_2" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_1" /></td>
+                            <td><Latex code="b_1" /></td>
+                            <td><Latex code="c_1" /></td>
+                            <td><Latex code="m_3" /></td>
+                            <td><Latex code="n_3" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_2" /></td>
+                            <td><Latex code="b_2" /></td>
+                            <td><Latex code="c_2" /></td>
+                            <td><Latex code="m_1" /></td>
+                            <td><Latex code="n_1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_2" /></td>
+                            <td><Latex code="b_2" /></td>
+                            <td><Latex code="c_2" /></td>
+                            <td><Latex code="m_2" /></td>
+                            <td><Latex code="n_2" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_3" /></td>
+                            <td><Latex code="b_3" /></td>
+                            <td><Latex code="c_3" /></td>
+                            <td><Latex code="m_3" /></td>
+                            <td><Latex code="n_3" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_3" /></td>
+                            <td><Latex code="b_3" /></td>
+                            <td><Latex code="c_3" /></td>
+                            <td><Latex code="m_1" /></td>
+                            <td><Latex code="n_1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_3" /></td>
+                            <td><Latex code="b_3" /></td>
+                            <td><Latex code="c_3" /></td>
+                            <td><Latex code="m_2" /></td>
+                            <td><Latex code="n_2" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_3" /></td>
+                            <td><Latex code="b_3" /></td>
+                            <td><Latex code="c_3" /></td>
+                            <td><Latex code="m_3" /></td>
+                            <td><Latex code="n_3" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+    </FiguresBlock>
 </ExampleFrame>
 
 
@@ -241,7 +789,127 @@ Duplicate attributes are not removed.
 *<u>Equijoin</u>* is a special case of theta join that only tests for equality between attributes.
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="3"><Latex code="r" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="a_1" /></td>
+                            <td><Latex code="b_1" /></td>
+                            <td><Latex code="0" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_2" /></td>
+                            <td><Latex code="b_2" /></td>
+                            <td><Latex code="3" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_3" /></td>
+                            <td><Latex code="b_3" /></td>
+                            <td><Latex code="2" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="2"><Latex code="s" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="M" /></th>
+                            <th><Latex code="N" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="m_1" /></td>
+                            <td><Latex code="3" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="m_2" /></td>
+                            <td><Latex code="4" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="m_3" /></td>
+                            <td><Latex code="1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="m_4" /></td>
+                            <td><Latex code="2" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="5"><Latex code="r \bowtie_{N \le C} s" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                            <th><Latex code="M" /></th>
+                            <th><Latex code="N" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="a_2" /></td>
+                            <td><Latex code="b_2" /></td>
+                            <td><Latex code="3" /></td>
+                            <td><Latex code="m_1" /></td>
+                            <td><Latex code="3" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_2" /></td>
+                            <td><Latex code="b_2" /></td>
+                            <td><Latex code="3" /></td>
+                            <td><Latex code="m_3" /></td>
+                            <td><Latex code="1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_2" /></td>
+                            <td><Latex code="b_2" /></td>
+                            <td><Latex code="3" /></td>
+                            <td><Latex code="m_4" /></td>
+                            <td><Latex code="2" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_3" /></td>
+                            <td><Latex code="b_3" /></td>
+                            <td><Latex code="2" /></td>
+                            <td><Latex code="m_3" /></td>
+                            <td><Latex code="1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_3" /></td>
+                            <td><Latex code="b_3" /></td>
+                            <td><Latex code="2" /></td>
+                            <td><Latex code="m_4" /></td>
+                            <td><Latex code="2" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+    </FiguresBlock>
 </ExampleFrame>
 
 
@@ -285,7 +953,123 @@ and <Latex code="\relproject_{R \cup S}" /> assumes removal of duplicate attribu
 <p><span class="warning">*Natural join* is dangerous in real applications. Use *equijoin* to explicitly match tuples instead.</span></p>
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="r" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                            <th><Latex code="D" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="a_1" /></td>
+                            <td><Latex code="b_1" /></td>
+                            <td><Latex code="x" /></td>
+                            <td><Latex code="x" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_2" /></td>
+                            <td><Latex code="b_2" /></td>
+                            <td class="red"><Latex code="\bm{x}" /></td>
+                            <td class="red"><Latex code="\bm{y}" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_3" /></td>
+                            <td><Latex code="b_3" /></td>
+                            <td class="red"><Latex code="\bm{x}" /></td>
+                            <td class="red"><Latex code="\bm{y}" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_4" /></td>
+                            <td><Latex code="b_4" /></td>
+                            <td class="blue"><Latex code="\bm{x}" /></td>
+                            <td class="blue"><Latex code="\bm{y}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="3"><Latex code="s" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="C" /></th>
+                            <th><Latex code="D" /></th>
+                            <th><Latex code="E" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="y" /></td>
+                            <td><Latex code="y" /></td>
+                            <td><Latex code="e_1" /></td>
+                        </tr>
+                        <tr>
+                            <td class="red"><Latex code="\bm{x}" /></td>
+                            <td class="red"><Latex code="\bm{y}" /></td>
+                            <td><Latex code="e_2" /></td>
+                        </tr>
+                        <tr>
+                            <td class="blue"><Latex code="\bm{y}" /></td>
+                            <td class="blue"><Latex code="\bm{x}" /></td>
+                            <td><Latex code="e_3" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="5"><Latex code="r \bowtie s" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                            <th><Latex code="D" /></th>
+                            <th><Latex code="E" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="a_2" /></td>
+                            <td><Latex code="b_2" /></td>
+                            <td class="red"><Latex code="\bm{x}" /></td>
+                            <td class="red"><Latex code="\bm{y}" /></td>
+                            <td><Latex code="e_2" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_3" /></td>
+                            <td><Latex code="b_3" /></td>
+                            <td class="red"><Latex code="\bm{x}" /></td>
+                            <td class="red"><Latex code="\bm{y}" /></td>
+                            <td><Latex code="e_2" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="a_4" /></td>
+                            <td><Latex code="b_4" /></td>
+                            <td class="blue"><Latex code="\bm{y}" /></td>
+                            <td class="blue"><Latex code="\bm{x}" /></td>
+                            <td><Latex code="e_3" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+    </FiguresBlock>
 </ExampleFrame>
 
 
@@ -329,7 +1113,161 @@ where <Latex code="r'" /> is "all possible result tuples":
 " />
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="4"><Latex code="r" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="C" /></th>
+                        <th><Latex code="D" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="\alpha" /></td>
+                        <td><Latex code="\beta" /></td>
+                        <td><Latex code="x" /></td>
+                        <td><Latex code="x" /></td>
+                    </tr>
+                    <tr class="blue">
+                        <td><Latex code="\bm{\alpha}" /></td>
+                        <td><Latex code="\bm{\beta}" /></td>
+                        <td><Latex code="\bm{x}" /></td>
+                        <td><Latex code="\bm{z}" /></td>
+                    </tr>
+                    <tr class="blue">
+                        <td><Latex code="\bm{\alpha}" /></td>
+                        <td><Latex code="\bm{\beta}" /></td>
+                        <td><Latex code="\bm{w}" /></td>
+                        <td><Latex code="\bm{z}" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="\gamma" /></td>
+                        <td><Latex code="\delta" /></td>
+                        <td><Latex code="x" /></td>
+                        <td><Latex code="x" /></td>
+                    </tr>
+                    <tr class="red">
+                        <td><Latex code="\bm{\gamma}" /></td>
+                        <td><Latex code="\bm{\delta}" /></td>
+                        <td><Latex code="\bm{x}" /></td>
+                        <td><Latex code="\bm{y}" /></td>
+                    </tr>
+                    <tr class="red">
+                        <td><Latex code="\bm{\gamma}" /></td>
+                        <td><Latex code="\bm{\delta}" /></td>
+                        <td><Latex code="\bm{x}" /></td>
+                        <td><Latex code="\bm{z}" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="\gamma" /></td>
+                        <td><Latex code="\delta" /></td>
+                        <td><Latex code="w" /></td>
+                        <td><Latex code="x" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="\gamma" /></td>
+                        <td><Latex code="\delta" /></td>
+                        <td><Latex code="w" /></td>
+                        <td><Latex code="y" /></td>
+                    </tr>
+                    <tr class="red">
+                        <td><Latex code="\bm{\gamma}" /></td>
+                        <td><Latex code="\bm{\delta}" /></td>
+                        <td><Latex code="\bm{w}" /></td>
+                        <td><Latex code="\bm{z}" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="\gamma" /></td>
+                        <td><Latex code="\delta" /></td>
+                        <td><Latex code="w" /></td>
+                        <td><Latex code="w" /></td>
+                    </tr>
+                    <tr class="blue">
+                        <td><Latex code="\bm{\epsilon}" /></td>
+                        <td><Latex code="\bm{\zeta}" /></td>
+                        <td><Latex code="\bm{x}" /></td>
+                        <td><Latex code="\bm{y}" /></td>
+                    </tr>
+                    <tr class="blue">
+                        <td><Latex code="\bm{\epsilon}" /></td>
+                        <td><Latex code="\bm{\zeta}" /></td>
+                        <td><Latex code="\bm{x}" /></td>
+                        <td><Latex code="\bm{z}" /></td>
+                    </tr>
+                    <tr class="blue">
+                        <td><Latex code="\bm{\epsilon}" /></td>
+                        <td><Latex code="\bm{\zeta}" /></td>
+                        <td><Latex code="\bm{w}" /></td>
+                        <td><Latex code="\bm{z}" /></td>
+                    </tr>
+                    <tr class="red">
+                        <td><Latex code="\bm{\eta}" /></td>
+                        <td><Latex code="\bm{\theta}" /></td>
+                        <td><Latex code="\bm{x}" /></td>
+                        <td><Latex code="\bm{y}" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="2"><Latex code="s" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="C" /></th>
+                        <th><Latex code="D" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="x" /></td>
+                        <td><Latex code="y" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="x" /></td>
+                        <td><Latex code="z" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="w" /></td>
+                        <td><Latex code="z" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="2"><Latex code="r \div s" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="\gamma" /></td>
+                        <td><Latex code="\delta" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="\epsilon" /></td>
+                        <td><Latex code="\zeta" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+    </FiguresBlock>
+
+    In <Latex code="r" />, values <Latex code="(\gamma, \delta)" /> and <Latex code="(\epsilon, \zeta)" /> are the only values that occur with all values <Latex code="(x, y)" />, <Latex code="(x, z)" />, and <Latex code="(w, z)" />.
 </ExampleFrame>
 
 
@@ -401,7 +1339,179 @@ To summarize the differences between the joins:
 </FiguresBlock></p>
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="4"><Latex code="r" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="C" /></th>
+                        <th><Latex code="D" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_1" /></td>
+                        <td><Latex code="b_1" /></td>
+                        <td><Latex code="x" /></td>
+                        <td><Latex code="x" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="b_2" /></td>
+                        <td class="red"><Latex code="\bm{x}" /></td>
+                        <td class="red"><Latex code="\bm{y}" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="b_3" /></td>
+                        <td class="blue"><Latex code="\bm{y}" /></td>
+                        <td class="blue"><Latex code="\bm{x}" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_4" /></td>
+                        <td><Latex code="b_4" /></td>
+                        <td><Latex code="z" /></td>
+                        <td><Latex code="w" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="3"><Latex code="s" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="C" /></th>
+                        <th><Latex code="D" /></th>
+                        <th><Latex code="E" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="y" /></td>
+                        <td><Latex code="y" /></td>
+                        <td><Latex code="e_1" /></td>
+                    </tr>
+                    <tr>
+                        <td class="red"><Latex code="\bm{x}" /></td>
+                        <td class="red"><Latex code="\bm{y}" /></td>
+                        <td><Latex code="e_2" /></td>
+                    </tr>
+                    <tr>
+                        <td class="blue"><Latex code="\bm{y}" /></td>
+                        <td class="blue"><Latex code="\bm{x}" /></td>
+                        <td><Latex code="e_3" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="5"><Latex code="r \relfullouterjoin s" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="C" /></th>
+                        <th><Latex code="D" /></th>
+                        <th><Latex code="E" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_1" /></td>
+                        <td><Latex code="b_1" /></td>
+                        <td><Latex code="x" /></td>
+                        <td><Latex code="x" /></td>
+                        <td><Latex code="\relnullvalue" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="b_2" /></td>
+                        <td class="red"><Latex code="\bm{x}" /></td>
+                        <td class="red"><Latex code="\bm{y}" /></td>
+                        <td><Latex code="e_2" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="b_3" /></td>
+                        <td class="blue"><Latex code="\bm{y}" /></td>
+                        <td class="blue"><Latex code="\bm{x}" /></td>
+                        <td><Latex code="e_3" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_4" /></td>
+                        <td><Latex code="b_4" /></td>
+                        <td><Latex code="z" /></td>
+                        <td><Latex code="w" /></td>
+                        <td><Latex code="\relnullvalue" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="\relnullvalue" /></td>
+                        <td><Latex code="\relnullvalue" /></td>
+                        <td><Latex code="y" /></td>
+                        <td><Latex code="y" /></td>
+                        <td><Latex code="e_1" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="5"><Latex code="r \relleftouterjoin s" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="C" /></th>
+                        <th><Latex code="D" /></th>
+                        <th><Latex code="E" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_1" /></td>
+                        <td><Latex code="b_1" /></td>
+                        <td><Latex code="x" /></td>
+                        <td><Latex code="x" /></td>
+                        <td><Latex code="\relnullvalue" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="b_2" /></td>
+                        <td class="red"><Latex code="\bm{x}" /></td>
+                        <td class="red"><Latex code="\bm{y}" /></td>
+                        <td><Latex code="e_2" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="b_3" /></td>
+                        <td class="blue"><Latex code="\bm{y}" /></td>
+                        <td class="blue"><Latex code="\bm{x}" /></td>
+                        <td><Latex code="e_3" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_4" /></td>
+                        <td><Latex code="b_4" /></td>
+                        <td><Latex code="z" /></td>
+                        <td><Latex code="w" /></td>
+                        <td><Latex code="\relnullvalue" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+    </FiguresBlock>
 </ExampleFrame>
 
 
@@ -429,7 +1539,161 @@ Aggregate functions defined in SQL-92:
 Most major DBMS implementations offer many more aggregate functions and allow user-defined functions.
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="r" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="C" /></th>
+                            <th><Latex code="D" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="x" /></td>
+                            <td><Latex code="\alpha" /></td>
+                            <td><Latex code="5" /></td>
+                            <td><Latex code="7" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="x" /></td>
+                            <td><Latex code="\alpha" /></td>
+                            <td><Latex code="7" /></td>
+                            <td><Latex code="3" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="x" /></td>
+                            <td><Latex code="\beta" /></td>
+                            <td><Latex code="1" /></td>
+                            <td><Latex code="9" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="x" /></td>
+                            <td><Latex code="\beta" /></td>
+                            <td><Latex code="5" /></td>
+                            <td><Latex code="6" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="y" /></td>
+                            <td><Latex code="\alpha" /></td>
+                            <td><Latex code="3" /></td>
+                            <td><Latex code="1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="y" /></td>
+                            <td><Latex code="\alpha" /></td>
+                            <td><Latex code="2" /></td>
+                            <td><Latex code="1" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="y" /></td>
+                            <td><Latex code="\beta" /></td>
+                            <td><Latex code="3" /></td>
+                            <td><Latex code="5" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="z" /></td>
+                            <td><Latex code="\alpha" /></td>
+                            <td><Latex code="9" /></td>
+                            <td><Latex code="4" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="\relgroup_{A, \text{COUNT}(A), \text{MAX}(C), \text{MAX}(D)}{(r)}" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="\text{COUNT}(A)" /></th>
+                            <th><Latex code="\text{MAX}(C)" /></th>
+                            <th><Latex code="\text{MAX}(D)" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="x" /></td>
+                            <td><Latex code="4" /></td>
+                            <td><Latex code="7" /></td>
+                            <td><Latex code="9" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="y" /></td>
+                            <td><Latex code="3" /></td>
+                            <td><Latex code="3" /></td>
+                            <td><Latex code="5" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="z" /></td>
+                            <td><Latex code="1" /></td>
+                            <td><Latex code="9" /></td>
+                            <td><Latex code="4" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Latex code="\relgroup_{A, B, \text{COUNT}(A), \text{SUM}(C)}{(r)}" /></th>
+                        </tr>
+                        <tr>
+                            <th><Latex code="A" /></th>
+                            <th><Latex code="B" /></th>
+                            <th><Latex code="\text{COUNT}(A)" /></th>
+                            <th><Latex code="\text{SUM}(C)" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr>
+                            <td><Latex code="x" /></td>
+                            <td><Latex code="\alpha" /></td>
+                            <td><Latex code="2" /></td>
+                            <td><Latex code="12" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="x" /></td>
+                            <td><Latex code="\beta" /></td>
+                            <td><Latex code="2" /></td>
+                            <td><Latex code="6" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="y" /></td>
+                            <td><Latex code="\alpha" /></td>
+                            <td><Latex code="2" /></td>
+                            <td><Latex code="5" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="y" /></td>
+                            <td><Latex code="\beta" /></td>
+                            <td><Latex code="1" /></td>
+                            <td><Latex code="3" /></td>
+                        </tr>
+                        <tr>
+                            <td><Latex code="z" /></td>
+                            <td><Latex code="\alpha" /></td>
+                            <td><Latex code="1" /></td>
+                            <td><Latex code="9" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+    </FiguresBlock>
+
+    The <Latex code="\text{COUNT}()" /> function is interesting in that it doesn't really matter which column you use.
 </ExampleFrame>
 
 
@@ -438,7 +1702,70 @@ Most major DBMS implementations offer many more aggregate functions and allow us
 We can extend the projection operator <Latex code="\pi" /> to also contain expressions for computation.
 
 <ExampleFrame>
-    <Todo>Put the example diagram here.</Todo>
+    <FiguresBlock>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="4"><Latex code="r" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="A" /></th>
+                        <th><Latex code="B" /></th>
+                        <th><Latex code="C" /></th>
+                        <th><Latex code="D" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_1" /></td>
+                        <td><Latex code="2" /></td>
+                        <td><Latex code="6" /></td>
+                        <td><Latex code="d_1" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="8" /></td>
+                        <td><Latex code="9" /></td>
+                        <td><Latex code="d_2" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="3" /></td>
+                        <td><Latex code="2" /></td>
+                        <td><Latex code="d_3" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+        <Fig>
+            <table class="relation-table">
+                <thead>
+                    <tr class="table-label">
+                        <th colspan="2"><Latex code="\relproject_{A, B + C}{(r)}" /></th>
+                    </tr>
+                    <tr>
+                        <th><Latex code="\phantom{A}A\phantom{A}" /></th>
+                        <th><Latex code="B + C" /></th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    <tr>
+                        <td><Latex code="a_1" /></td>
+                        <td><Latex code="8" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_2" /></td>
+                        <td><Latex code="17" /></td>
+                    </tr>
+                    <tr>
+                        <td><Latex code="a_3" /></td>
+                        <td><Latex code="5" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fig>
+    </FiguresBlock>
 </ExampleFrame>
 
 

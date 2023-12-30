@@ -1,0 +1,36 @@
+table.relation-table tr th {
+    background-color: #bbb;
+}
+
+table.relation-table tr.table-label th {
+    background-color: transparent;
+    padding-bottom: 0.2em;
+}
+table.relation-table tr.table-label {
+    border: none;
+}
+
+table.relation-table tbody.table-bordered {
+    border: thin solid;
+}
+table.relation-table thead tr {
+    border: thin solid;
+}
+
+table.relation-table td,
+table.relation-table th {
+    padding: 0.15em 0.4em 0 0.4em;
+    white-space: pre-wrap; /* Makes "\n" act like <br> */
+    background-color: var(--color--background);
+}
+
+table.relation-table .blue {
+    color: var(--color--mycontrastblue);
+}
+table.relation-table .purple {
+    color: var(--color--mycontrastpurple);
+}
+table.relation-table .red {
+    color: var(--color--mycontrastred);
+}
+

@@ -1,4 +1,6 @@
 :root {
+    --color--background: #fff;
+
     /* Mirroring my LaTeX colour definitions */
     --color--myblue:   rgb(66,133,244);
     --color--myteal:   rgb(70,189,198);
@@ -11,6 +13,10 @@
     --color--mylightred:   #ffb3b3; /* Similar to LaTeX `red!30` */
     --color--mylightgreen: #b3ffb3; /* Similar to LaTeX `green!30` */
     --color--mylightblue:  #b3b3ff; /* Similar to LaTeX `blue!30` */
+
+    --color--mycontrastblue:   #00f;
+    --color--mycontrastpurple: #9900ff;
+    --color--mycontrastred:    #f00;
 
     --color--example-frame-fill: #d6e4f0;
     --color--example-frame-border: #90a2b1;

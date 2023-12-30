@@ -1,10 +1,21 @@
-div.figures-block {
+div.figures-block,
+div.figures-block div.figures-group-vertical {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2em;
+    flex-wrap: wrap;
+}
+
+div.figures-block {
+    margin-bottom: 1em;
+}
+
+div.figures-block div.figures-group-vertical {
+    flex-direction: column;
 }
 
 div.figures-block div.figure {
     text-align: center;
 }
+
