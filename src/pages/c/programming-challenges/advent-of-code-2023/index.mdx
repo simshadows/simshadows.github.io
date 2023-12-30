@@ -5,12 +5,12 @@ description: My solutions and thoughts for Advent of Code 2023!
 keywords: ["advent of code", "2023", "day", "part", "solutions", "thoughts", "python"]
 ---
 
-import AlignVarLatex from "@components/AlignVarLatex";
-import DisplayLatex from "@components/DisplayLatex";
-import GatherVarLatex from "@components/GatherVarLatex";
-import Latex from "@components/Latex";
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
 
-import Eqref from "@components/Eqref";
+import Eqref from "@components/latex/Eqref";
 import Todo from "@components/Todo";
 
 import Divider from "../_shared.Divider.astro"; //_
@@ -1644,7 +1644,7 @@ Additionally, we also have:
 
 For a concrete example, let's assume:
 
-<GatherVarLatex code="
+<GatherLatex code="
     \texttt{TARGET\_ITERATIONS} = 10 \\
     \texttt{dist} = 3 \\
     \texttt{end\_iteration} = 4
@@ -2417,7 +2417,7 @@ Positions of the hailstone in the *future* will happen at <Latex code="t > 0" />
 
 Let's try to find where two hailstones intersect. We'll need two equations:
 
-<GatherVarLatex code="
+<GatherLatex code="
     \myvec{x}_0 \parens{t_0} = \myvec{p}_0 + \myvec{v}_0 t_0 \tag{d24e1} \\
     \myvec{x}_1 \parens{t_1} = \myvec{p}_1 + \myvec{v}_1 t_1 \tag{d24e2}
 " />
@@ -2432,7 +2432,7 @@ The two paths intersect when <Latex code="\myvec{x}_0 \parens{t_0} = \myvec{x}_1
 
 At this point, it can be helpful to just break it up into component equations, then solve for one of the <Latex code="t" /> variables:
 
-<GatherVarLatex code="
+<GatherLatex code="
     \begin{cases}
         p_{0x} + v_{0x} t_0 = p_{1x} + v_{1x} t_1 \\
         p_{0y} + v_{0y} t_0 = p_{1y} + v_{1y} t_1
@@ -2460,7 +2460,7 @@ At this point, it can be helpful to just break it up into component equations, t
     }
 " />
 
-<AlignVarLatex code="
+<AlignLatex code="
     t_1
     &= \frac{
         \frac{p_{1x} - p_{0x}}{v_{0x}}
@@ -2487,7 +2487,7 @@ At this point, it can be helpful to just break it up into component equations, t
 
 To solve for the other variable <Latex code="t_0" />, we can simply plug the result of <Latex code="t_1" /> it back into either of the component equations <Eqref>d24e3</Eqref>. For my Part 1 solution, I will use either of these equations depending on whether the denominators are zero:
 
-<AlignVarLatex code="
+<AlignLatex code="
     t_0 = \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}} \\
     t_0 = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
 " />
@@ -2522,7 +2522,7 @@ A simple method used by a human might be to first check if the denominator of <E
 
 Let's try some concrete examples. Suppose we have two lines with a slope of <Latex code="\frac{y}{x} = 1" />:
 
-<GatherVarLatex code="
+<GatherLatex code="
     \myvec{p}_0 = {\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
     \qquad
     \myvec{v}_0 = {\begin{pmatrix} 1 \\ 1 \end{pmatrix}}
@@ -2546,7 +2546,7 @@ Using <Eqref>d24e4</Eqref>, we see we get an undefined result:
 
 Let's try solving for <Latex code="t_1" /> if <Latex code="\myvec{p}_0 = \myvec{x}_1 \parens{t_1}" />. From <Eqref>d12e2</Eqref>:
 
-<GatherVarLatex code="
+<GatherLatex code="
     {\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
     = {\begin{pmatrix} 2 \\ 2 \end{pmatrix}}
     + {\begin{pmatrix} -1 \\ -1 \end{pmatrix}} t_1
@@ -2613,7 +2613,7 @@ Let's try it out!
 
 Same as with Part 1, let's begin with two hailstone trajectories, though the vectors are now in <Latex code="\Reals^3" />. We use the same time variable now since we need the actual hailstone position at a point in time.
 
-<GatherVarLatex code="
+<GatherLatex code="
     \myvec{x}_0 \parens{t} = \myvec{p}_0 + \myvec{v}_0 t \tag{d24e5} \\
     \myvec{x}_1 \parens{t} = \myvec{p}_1 + \myvec{v}_1 t \tag{d24e6}
 " />

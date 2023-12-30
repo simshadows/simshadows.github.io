@@ -10,12 +10,12 @@ import FigImg from "@components/figures/FigImg";
 import FiguresBlock from "@components/figures/FiguresBlock";
 import FiguresGroupVertical from "@components/figures/FiguresGroupVertical";
 
-import AlignVarLatex from "@components/AlignVarLatex";
-import DisplayLatex from "@components/DisplayLatex";
-import GatherVarLatex from "@components/GatherVarLatex";
-import Latex from "@components/Latex";
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
 
-import Eqref from "@components/Eqref";
+import Eqref from "@components/latex/Eqref";
 import Todo from "@components/Todo";
 import ExampleFrame from "@components/ExampleFrame";
 
@@ -380,7 +380,7 @@ Set theoretic operations between *union-compatible* relations (i.e. same schema)
 
 For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
 
-<AlignVarLatex code="
+<AlignLatex code="
     r_1 \cup r_2 &= \setdef{t}{(t \in r_1) \vee   (t \in r_2)} \\
     r_1 \cap r_2 &= \setdef{t}{(t \in r_1) \wedge (t \in r_2)} \\
     r_1 - r_2    &= \setdef{t}{(t \in r_1) \wedge (t \notin r_2)}
@@ -1267,7 +1267,7 @@ These unmatched tuples get padded with null values in the result relation.
 
 *<u>Full outer join</u>* includes all tuples of both operands:
 
-<AlignVarLatex code="
+<AlignLatex code="
     r \relfullouterjoinSubscripted_c\, s &=
         (r \bowtie_c s)
         \cup \parens{\vphantom{\frac{x}{x}}
@@ -1285,7 +1285,7 @@ These unmatched tuples get padded with null values in the result relation.
 
 *<u>Left outer join</u>* includes all tuples of the left:
 
-<AlignVarLatex code="
+<AlignLatex code="
     r \relleftouterjoinSubscripted_c\, s &=
         (r \bowtie_c s)
         \cup \parens{\vphantom{\frac{x}{x}}
@@ -1298,7 +1298,7 @@ These unmatched tuples get padded with null values in the result relation.
 
 *<u>Right outer join</u>* includes all tuples of the right:
 
-<AlignVarLatex code="
+<AlignLatex code="
     r \relrightouterjoinSubscripted_c\, s &=
         (r \bowtie_c s)
         \cup \parens{\vphantom{\frac{x}{x}}

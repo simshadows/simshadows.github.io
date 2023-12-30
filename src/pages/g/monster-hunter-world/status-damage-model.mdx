@@ -5,12 +5,12 @@ description: My proposed method of directly comparing damage contributed by stat
 keywords: ["monster hunter world", "iceborne"]
 ---
 
-import AlignVarLatex from "@components/AlignVarLatex";
-import DisplayLatex from "@components/DisplayLatex";
-import GatherVarLatex from "@components/GatherVarLatex";
-import Latex from "@components/Latex";
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
 
-import Eqref from "@components/Eqref";
+import Eqref from "@components/latex/Eqref";
 import Todo from "@components/Todo";
 
 *This document is still a work-in-progress.*
@@ -173,7 +173,7 @@ Our model will attempt to find the average blast damage per attack.
 
 The following two equations are given for arithmetic progressions:
 
-<GatherVarLatex code="
+<GatherLatex code="
     a_n = a_1 + \parens{n - 1} d
     \tag{1}
     \\
@@ -187,25 +187,25 @@ Equivalently, <Latex code="a_n" /> is the threshold for the <Latex code="\Nth{n}
 
 Eliminating <Latex code="a_n" />:
 
-<AlignVarLatex code="
+<AlignLatex code="
     S_n &= \frac{n}{2} \parens{a_1 + a_1 + \parens{n - 1} d} \\
         &= \frac{n}{2} \parens{2 a_1 + \parens{n - 1} d}
 " />
 
 Solving for number of procs <Latex code="n" />:
 
-<AlignVarLatex code="
+<AlignLatex code="
     2 S_n &= n \parens{2 a_1 + \parens{n - 1} d} \\
           &= 2 n a_1 + n^2 d - n d
 " />
-<AlignVarLatex code="
+<AlignLatex code="
     0 &= 2 n a_1 + n^2 d - n d - 2 S_n \\
       &= n^2 d + n \parens{2 a_1 - d} - 2 S_n
 " />
 
 Since <Latex code="n \ge 0" />:
 
-<AlignVarLatex code="
+<AlignLatex code="
     n &= \frac{
         - \parens{2 a_1 - d} + \sqrt{\parens{2 a_1 - d}^2 - 4 d \times \parens{- 2 S_n}}
     }{2 d}
@@ -250,7 +250,7 @@ In order to slay the monster, total raw and blast damage must add to equal the t
 
 Substituting into <Latex code="R" />:
 
-<GatherVarLatex code="
+<GatherLatex code="
     B = P \frac{d - 2 a_1 + \sqrt{\parens{2 a_1 - d}^2 + 8 \parens{H - B} d \frac{\sigma}{\rho} }}{2 d}
     \\
     \frac{2Bd}{P} = d - 2 a_1 + \sqrt{\parens{2 a_1 - d}^2 + 8 \parens{H - B} d \frac{\sigma}{\rho} }
@@ -344,7 +344,7 @@ So to find where the pre-cap portion of the model stops, we must find the range 
 
 We start by substituting <Eqref>1</Eqref> into <Eqref>2</Eqref> via. <Latex code="n" />:
 
-<GatherVarLatex code="
+<GatherLatex code="
     a_n - a_1 = \parens{n - 1} d
     \\
     n = \frac{a_n - a_1}{d} + 1
@@ -355,7 +355,7 @@ We start by substituting <Eqref>1</Eqref> into <Eqref>2</Eqref> via. <Latex code
 
 Substituting <Eqref>4</Eqref> into <Eqref>8</Eqref> via. <Latex code="S_n" />:
 
-<GatherVarLatex code="
+<GatherLatex code="
     R_n \frac{\sigma}{\rho} = \parens{\frac{a_n - a_1}{d} + 1} \frac{1}{2} \parens{a_1 + a_n}
     \\
     2 R_n \frac{\sigma}{\rho} = \parens{\frac{a_n - a_1}{d} + 1} \parens{a_1 + a_n}
@@ -369,7 +369,7 @@ Substituting <Eqref>4</Eqref> into <Eqref>8</Eqref> via. <Latex code="S_n" />:
 
 Since <Latex code="a_n \ge 0" />:
 
-<GatherVarLatex code="
+<GatherLatex code="
     a_n = \frac{-d + \sqrt{d^2 - 4 \parens{a_1 d - a_1^2 - 2 R_n \frac{\sigma}{\rho} d}}}{2} 
     \\
     a_n = \frac{-d + \sqrt{d^2 + 4 \parens{a_1^2 - a_1 d + 2 R_n \frac{\sigma}{\rho} d}}}{2} 
@@ -377,7 +377,7 @@ Since <Latex code="a_n \ge 0" />:
 
 We can now introduce <Latex code="B" /> and <Latex code="H" /> using <Eqref>5</Eqref>, and substitute it into the blast cap condition <Eqref>7</Eqref>:
 
-<GatherVarLatex code="
+<GatherLatex code="
     c \ge \frac{
         -d + \sqrt{d^2 + 4 \parens{a_1^2 - a_1 d + 2 \parens{H - B} \frac{\sigma}{\rho} d}}
     }{2} 
@@ -400,7 +400,7 @@ We can now introduce <Latex code="B" /> and <Latex code="H" /> using <Eqref>5</E
 
 Substituting <Eqref>6</Eqref> into <Eqref>9</Eqref> via. <Latex code="B" />:
 
-<GatherVarLatex code="
+<GatherLatex code="
     \frac{\rho}{2 \sigma d} \parens{c^2 + c d + a_1 d - a_1^2}
     \ge
     H
@@ -436,7 +436,7 @@ Let <Latex code="X" /> be the left side of <Eqref>10</Eqref>:
 
 Isolating <Latex code="H" /> in <Eqref>10</Eqref>:
 
-<GatherVarLatex code="
+<GatherLatex code="
     X
     \ge
     H
@@ -534,7 +534,7 @@ We know that each hit after reaching blast cap deals an average of <Latex code="
 
 This allows us to construct an expression involving the actual effective average blast damage dealt per hit <Latex code="\beta_c" />, which *includes damage dealt before <Latex code="C" /> damage was dealt to the monster*. This expression is simply a weighted average:
 
-<GatherVarLatex code="
+<GatherLatex code="
     \rho + \beta_c
     = \frac{
         C \parens{\rho + \beta_p(C)} + \parens{H - C} \parens{\rho + \beta'_c}
@@ -578,7 +578,7 @@ The *effective average blast damage per hit* can be calculated as a function of 
 
 Functions <Latex code="\beta_p : [0, \infty) \to \Reals" /> and <Latex code="\beta_c : [C, \infty) \to \Reals" /> are defined as:
 
-<GatherVarLatex code="
+<GatherLatex code="
     \beta_p (H)
     = \rho \frac{B(H)}{H - B(H)}
     \\
@@ -602,7 +602,7 @@ Functions <Latex code="\beta_p : [0, \infty) \to \Reals" /> and <Latex code="\be
 
 Anonymous helper variables:
 
-<GatherVarLatex code="
+<GatherLatex code="
     X = \frac{\rho}{2 \sigma d} \parens{c^2 + c d + a_1 d - a_1^2} - PY
     \\
     Y = \frac{P}{2 d} \parens{

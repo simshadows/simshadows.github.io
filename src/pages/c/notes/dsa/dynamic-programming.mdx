@@ -5,13 +5,13 @@ description: Notes on dynamic programming.
 keywords: ["programming", "dynamic programming", "dp"]
 ---
 
-import AlignVarLatex from "@components/AlignVarLatex";
-import DisplayLatex from "@components/DisplayLatex";
-import GatherVarLatex from "@components/GatherVarLatex";
-import Latex from "@components/Latex";
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
 
 import Centered from "@components/Centered";
-import Eqref from "@components/Eqref";
+import Eqref from "@components/latex/Eqref";
 import HorizontalScrollingBox from "@components/HorizontalScrollingBox";
 import Todo from "@components/Todo";
 
@@ -298,7 +298,7 @@ Each cell of <Latex code="m\brackets{i, w}" /> is the highest total dollar value
 
 To fill the remaining cells, we must apply an optimal substructure. This can be expressed simply as:
 
-<GatherVarLatex code="
+<GatherLatex code="
     m \brackets{0, w} = 0
         \tag{1} \\
     m \brackets{i, w} = \max\parens{
@@ -664,7 +664,7 @@ Let's take a closer look at how <Latex code="\colorbox{\mylightblue}{$m \bracket
     v_3 = \dollars{2}
 " />
 
-<AlignVarLatex code="
+<AlignLatex code="
     \colorbox{\mylightblue}{$m \brackets{3, 5}$} &= \max\parens{
         m \brackets{i - 1, w - w_3} + v_3, \,
         m \brackets{i - 1, w}
@@ -710,7 +710,7 @@ The last line <Eqref>3</Eqref> reads that we choose the best dollar value of two
 
 Continuing on from <Eqref>3</Eqref>:
 
-<AlignVarLatex code="
+<AlignLatex code="
     \colorbox{\mylightblue}{$m \brackets{3, 5}$} &= \max\parens{0 + 2, \, 10}
     \\
     &= \dollars{10}
