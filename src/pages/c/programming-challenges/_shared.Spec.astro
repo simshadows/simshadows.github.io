@@ -3,14 +3,18 @@
 
 interface Props {
     href: string;
+    cdate?: string;
 }
 
 const {
     href,
+    cdate,
 } = Astro.props;
 
 if (!href) throw new Error("Blank href.");
 ---
 
-<a style="font-size: initial;" target="_blank" href={href}>[Spec]</a>
+<span style="font-size: initial;">
+    [<a target="_blank" href={href}>Spec</a>]{cdate && <> ({cdate})</>}
+</span>
 
