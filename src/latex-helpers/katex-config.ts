@@ -52,6 +52,7 @@ const katexConfig = {
         "\\qty": "{{#1}\\,{#2}}",
         "\\kilo": "{\\text{k}}",
         "\\gram": "{\\text{g}}",
+        "\\ang": "{#1\\degree}",
 
         // Hacky compatibility implementation of \DeclarePairedDelimiter from mathtools
         // I still haven't figured out how to make \parens*{} and such work (with the asterisk),

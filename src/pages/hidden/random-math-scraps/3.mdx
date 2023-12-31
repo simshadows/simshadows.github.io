@@ -7,6 +7,10 @@ keywords: ["math"]
 hidetoc: true
 ---
 
+import FigImg from "@components/figures/FigImg";
+import FiguresBlock from "@components/figures/FiguresBlock";
+
+import AlignatLatex from "@components/latex/AlignatLatex";
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
@@ -17,7 +21,172 @@ import Todo from "@components/Todo";
 
 import QuestionFrame from "@components/QuestionFrame";
 
+import CircuitImg from "./_latex-images/generated-do-not-edit/scrap003-q.svg"; //_
+
 <QuestionFrame>
-    <Todo>This!</Todo>
+    For the circuit below, find average power and reactive power delivered to the entire load <Latex code="\mathbf{Z} = R + jX" />, <Latex code="R" /> alone, and <Latex code="jX" /> alone:
+
+    - in terms of voltage, <Latex code="R" />, and <Latex code="X" />, but NOT current, and
+    - in terms of current, <Latex code="R" />, and <Latex code="X" />, but NOT voltage.
+
+    <FiguresBlock>
+        <FigImg
+            src={CircuitImg}
+            alt="A simple circuit."
+        />
+    </FiguresBlock>
 </QuestionFrame>
+
+Before we begin, we can define the following useful result:
+
+<DisplayLatex code="
+    \frac{1}{\cos{\theta} + j \sin{\theta}}
+        = \frac{1}{\cos{\theta} + j \sin{\theta}} \frac{\cos{\theta} - j \sin{\theta}}{\cos{\theta} - j \sin{\theta}}
+        = \frac{\cos{\theta} - j \sin{\theta}}{\cos^2{\theta} + \sin^2{\theta}}
+        = \cos{\theta} - j \sin{\theta}
+        = \cos{(-\theta)} + j \sin{(-\theta)}
+" />
+
+Start by defining the voltage as the reference:
+
+<DisplayLatex code="
+    \mathbf{V} := V_m \phase{\ang{0}}
+" />
+
+Thus, we can find the current:
+
+<DisplayLatex code="
+    \mathbf{I}
+        = \frac{\mathbf{V}}{\mathbf{Z}}
+        = \frac{V_m \phase{\ang{0}}}{\abs{\mathbf{Z}} \phase{\theta}}
+        = \frac{V_m}{\abs{\mathbf{Z}}} \frac{1}{\cos{\theta} + j \sin{\theta}}
+        %= \frac{V_m}{\abs{\mathbf{Z}}} \frac{1}{\cos{\theta} + j \sin{\theta}} \frac{\cos{\theta} - j \sin{\theta}}{\cos{\theta} - j \sin{\theta}}
+        %= \frac{V_m}{\abs{\mathbf{Z}}} \frac{\cos{\theta} - j \sin{\theta}}{\cos^2{\theta} + \sin^2{\theta}}
+        %= \frac{V_m}{\abs{\mathbf{Z}}} \frac{\cos{\theta} - j \sin{\theta}}{1}
+        = \frac{V_m}{\abs{\mathbf{Z}}} \parens{\cos{(-\theta)} + j \sin{(-\theta)}}
+        := I_m \phase{-\theta}
+" />
+
+From this, we get:
+
+<GatherLatex code="
+    \mathbf{V}
+        = \mathbf{I} \mathbf{Z}
+        \\
+    V_m
+        = \parens{R + jX} I_m \parens{\cos{\theta} - j \sin{\theta}}
+        \\
+    V_m \frac{1}{\cos{\theta} - j \sin{\theta}}
+        = I_m \parens{R + jX}
+        \\
+    V_m \parens{\cos{\theta} + j \sin{\theta}}
+        = I_m \parens{R + jX}
+" />
+
+And similarly:
+
+<GatherLatex code="
+    \mathbf{I}
+        = \frac{\mathbf{V}}{\mathbf{Z}}
+        \\
+    I_m \parens{\cos{\theta} - j \sin{\theta}}
+        = \frac{V_m}{R + jX}
+        = \frac{V_m}{R + jX} \frac{R - jX}{R - jX}
+        = \frac{V_m \parens{R - jX}}{R^2 + X^2}
+" />
+
+Thus, we get:
+
+<AlignLatex code="
+    V_m \cos{\theta} &= I_m R \\
+    V_m \sin{\theta} &= I_m X \\
+    I_m \cos{\theta} &= V_m \frac{R}{R^2 + X^2} \\
+    I_m \sin{\theta} &= V_m \frac{X}{R^2 + X^2}
+" />
+
+Using the equations for average power and reactive power (noting that the angle <Latex code="\theta" /> works because it is the angle in which current lags behind the voltage), we get our expressions for average and reactive power delivered to the entire load <Latex code="\mathbf{Z}" />:
+
+<DisplayLatex code="
+    \boxed{
+        P = \frac{1}{2} V_m I_m \cos{\theta}
+    }
+    \qquad
+    \boxed{
+        Q = \frac{1}{2} V_m I_m \sin{\theta}
+    }
+" />
+
+<AlignatLatex eqcols={3} code="
+    P_{\mathbf{Z}} &= \frac{1}{2} I_m \parens{I_m R} &
+        \qquad & \Longrightarrow \qquad &
+        P_{\mathbf{Z}} &= \frac{1}{2} I_m^2 R = I_{\text{rms}}^2 R
+        \nonumber %\label{eq:z-avg-power-as-i-r-x}
+        \\
+    Q_{\mathbf{Z}} &= \frac{1}{2} I_m \parens{I_m X} &
+        \qquad & \Longrightarrow \qquad &
+        Q_{\mathbf{Z}} &= \frac{1}{2} I_m^2 X = I_{\text{rms}}^2 X
+        \nonumber %\label{eq:z-rtv-power-as-i-r-x}
+        \\
+    P_{\mathbf{Z}} &= \frac{1}{2} V_m \parens{V_m \frac{R}{R^2 + X^2}} &
+        \qquad & \Longrightarrow \qquad &
+        P_{\mathbf{Z}} &= \frac{1}{2} V_m^2 \frac{R}{R^2 + X^2} = V_{\text{rms}}^2 \frac{R}{R^2 + X^2}
+        \tag{1}
+        \\
+    Q_{\mathbf{Z}} &= \frac{1}{2} V_m \parens{V_m \frac{X}{R^2 + X^2}} &
+        \qquad & \Longrightarrow \qquad &
+        Q_{\mathbf{Z}} &= \frac{1}{2} V_m^2 \frac{X}{R^2 + X^2} = V_{\text{rms}}^2 \frac{X}{R^2 + X^2}
+        \tag{2}
+" />
+
+Now, to find the average and reactive power delivered to <Latex code="R" /> and <Latex code="jX" />, we first note that <Latex code="R" /> will only receive average power while <Latex code="jX" /> will only receive reactive power:
+
+<AlignLatex code="
+    P_X &= 0 \\
+    Q_R &= 0
+" />
+
+Due to a common current <Latex code="\mathbf{I}" /> and conservation of AC power, we can also deduce:
+
+<AlignLatex code="
+    P_R &= P_{\mathbf{Z}} = \frac{1}{2} I_m^2 R = I_{\text{rms}}^2 R \\
+    Q_X &= Q_{\mathbf{Z}} = \frac{1}{2} I_m^2 X = I_{\text{rms}}^2 X
+" />
+
+However, <Latex code="R" /> and <Latex code="jX" /> experience different voltages <Latex code="\mathbf{V}_R := V_{Rm} \phase{\theta_R}" /> and <Latex code="\mathbf{V}_X := V_{Xm} \phase{\theta_X}" />.
+
+By voltage division:
+
+<AlignLatex code="
+    \mathbf{V}_R
+        &= \frac{R}{R + jX} \mathbf{V}
+        = V_m \frac{R}{\mathbf{Z}}
+        = V_m \frac{R}{\abs{\mathbf{Z}} \phase{\theta}}
+        = V_m \frac{R}{\sqrt{R^2 + X^2} \parens{\cos{\theta} + j \sin{\theta}}}
+        = V_m \frac{R}{\sqrt{R^2 + X^2}} \parens{\cos{(-\theta)} + j \sin{(-\theta)}}
+        \\
+    \mathbf{V}_X
+        &= \frac{jX}{R + jX} \mathbf{V}
+        = V_m \frac{jX}{\mathbf{Z}}
+        = V_m \frac{jX}{\abs{\mathbf{Z}} \phase{\theta}}
+        = V_m \frac{jX}{\sqrt{R^2 + X^2} \parens{\cos{\theta} + j \sin{\theta}}}
+        = V_m \frac{X}{\sqrt{R^2 + X^2}} j \parens{\cos{(-\theta)} + j \sin{(-\theta)}}
+" />
+
+We can find the magnitudes, rearrange, then substitute into equations <Eqref>1</Eqref> and <Eqref>2</Eqref>:
+
+<AlignatLatex eqcols={5} code="
+    V_{Rm} &= V_m \frac{R}{\sqrt{R^2 + X^2}} &
+        \qquad & \Longrightarrow \qquad &
+        \frac{V_{Rm}^2}{R} &= V_m^2 \frac{R}{R^2 + X^2}
+        \qquad & \Longrightarrow \qquad &
+        P_R &= P_{\mathbf{Z}} = \frac{1}{2} V_m^2 \frac{R}{R^2 + X^2} = \frac{1}{2} \frac{V_{Rm}^2}{R} = \frac{V_{Rrms}^2}{R}
+        \\
+    V_{Xm} &= V_m \frac{X}{\sqrt{R^2 + X^2}} &
+        \qquad & \Longrightarrow \qquad &
+        \frac{V_{Xm}^2}{X} &= V_m^2 \frac{X}{R^2 + X^2}
+        \qquad & \Longrightarrow \qquad &
+        Q_X &= Q_{\mathbf{Z}} = \frac{1}{2} V_m^2 \frac{X}{R^2 + X^2} = \frac{1}{2} \frac{V_{Xm}^2}{X} = \frac{V_{Xrms}^2}{X}
+" />
+
+Thus, we have found our solutions.
 

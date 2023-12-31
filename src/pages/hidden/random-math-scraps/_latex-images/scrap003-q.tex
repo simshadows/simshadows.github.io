@@ -1,0 +1,18 @@
+\documentclass[crop,tikz]{standalone}
+\standaloneenv{tikzpicture}%
+\input{./../../../../latex-helpers/general.tex}%
+\begin{document}%
+\begin{circuitikz}
+    \draw
+        (0,0)
+        -- ++(0,1)
+        to[V, invert, l=$\mathbf{V}$] ++(0,2)
+        -- ++(0,1)
+        to[short, i=$\mathbf{I}$] ++(3,0)
+        to[R, l=$R$, v=$\mathbf{V}_R$] ++(0,-2)
+        to[generic, l=$jX$, v=$\mathbf{V}_X$] ++(0,-2)
+        -- (0,0)
+    ;
+\end{circuitikz}%
+\end{document}
+

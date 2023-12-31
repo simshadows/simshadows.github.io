@@ -4,6 +4,10 @@
 % Core Mathematics
 \usepackage{siunitx}
 
+% circuitikz
+\usepackage{xstring} % CIRCUITIKZ DEPENDENCY
+\usepackage[american]{circuitikz}
+
 \usetikzlibrary{
     arrows,
     arrows.meta,
@@ -75,4 +79,158 @@
 \tikzstyle{GraphNodeOrange} = [
     GraphNode, draw=DiagramOrangeBorder, fill=DiagramOrangeFill
 ]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Circuitikz %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Custom Circuitikz options
+\ctikzset{tripoles/mos style/arrows} % Adds arrows to MOSFETs
+\ctikzset{label/align=straight} % Straightens diagonal labels
+
+% Circuitikz part proportions
+% Based on: https://github.com/circuitikz/circuitikz/blob/4feb150ba25cd7ad80c94a56f5d5d516200bfbf0/tex/circuitikz.sty#L258
+
+\ctikzset{monopoles/ground/width/.initial=.15}
+
+\ctikzset{bipoles/resistor/height/.initial=.23}
+\ctikzset{bipoles/resistor/width/.initial=.6}
+\ctikzset{bipoles/capacitor/height/.initial=.4}
+\ctikzset{bipoles/capacitor/width/.initial=.1}
+\ctikzset{bipoles/potentiometer/height/.initial=.6}
+\ctikzset{bipoles/potentiometer/height 2/.initial=.23}
+\ctikzset{bipoles/potentiometer/width/.initial=.6}
+\ctikzset{bipoles/photoresistor/height/.initial=.6}
+\ctikzset{bipoles/photoresistor/height 2/.initial=.23}
+\ctikzset{bipoles/photoresistor/width/.initial=.6}
+\ctikzset{bipoles/thermistor/main/.initial=.7}
+\ctikzset{bipoles/thermistor/height/.initial=.328}%.23/.7
+\ctikzset{bipoles/thermistor/width/.initial=.6}
+\ctikzset{bipoles/thermistorntc/width/.initial=.6}
+\ctikzset{bipoles/thermistorntc/main/.initial=.7}
+\ctikzset{bipoles/thermistorntc/height/.initial=.328}%.23/.7
+\ctikzset{bipoles/thermistorntc/height 2/.initial=.75}%.23/.7
+\ctikzset{bipoles/thermistorptc/width/.initial=.6}
+\ctikzset{bipoles/thermistorptc/main/.initial=.7}
+\ctikzset{bipoles/thermistorptc/height/.initial=.328}%.23/.7
+\ctikzset{bipoles/varistor/main/.initial=.7}
+\ctikzset{bipoles/varistor/height/.initial=.328}%.23/.7
+\ctikzset{bipoles/varistor/width/.initial=.6}
+\ctikzset{bipoles/vresistor/height/.initial=.45}
+\ctikzset{bipoles/vresistor/width/.initial=.6}
+\ctikzset{bipoles/generic/height/.initial=.23}
+\ctikzset{bipoles/generic/width/.initial=.6}
+\ctikzset{bipoles/generic potentiometer/height/.initial=.6}
+\ctikzset{bipoles/generic potentiometer/height 2/.initial=.23}
+\ctikzset{bipoles/generic potentiometer/width/.initial=.6}
+\ctikzset{bipoles/ageneric/height/.initial=.23}
+\ctikzset{bipoles/ageneric/width/.initial=.6}
+\ctikzset{bipoles/memristor/height/.initial=.23}
+\ctikzset{bipoles/memristor/wave height/.initial=.375}
+\ctikzset{bipoles/memristor/width/.initial=.60}
+\ctikzset{bipoles/tgeneric/height/.initial=.525}
+\ctikzset{bipoles/tgeneric/width/.initial=.6}
+\ctikzset{bipoles/tfullgeneric/height/.initial=.525}
+\ctikzset{bipoles/tfullgeneric/width/.initial=.60}
+\ctikzset{bipoles/fullgeneric/height/.initial=.23}
+\ctikzset{bipoles/fullgeneric/width/.initial=.6}
+\ctikzset{bipoles/diode/height/.initial=.3}
+\ctikzset{bipoles/diode/width/.initial=.25}
+\ctikzset{bipoles/bidirectionaldiode/height/.initial=.66}
+\ctikzset{bipoles/bidirectionaldiode/width/.initial=.6}
+\ctikzset{bipoles/bidirectionaldiode/diode width left/.initial=.3}
+\ctikzset{bipoles/bidirectionaldiode/diode width right/.initial=.3}
+
+\ctikzset{tripoles/thyristor/height/.initial=.66}
+\ctikzset{tripoles/thyristor/height 2/.initial=.3}
+\ctikzset{tripoles/thyristor/width/.initial=.6}
+\ctikzset{tripoles/thyristor/diode height/.initial=.3}
+\ctikzset{tripoles/thyristor/diode width left/.initial=.4}
+\ctikzset{tripoles/thyristor/diode width right/.initial=.3}
+
+\ctikzset{tripoles/triac/height/.initial=.66}
+\ctikzset{tripoles/triac/width/.initial=.6}
+\ctikzset{tripoles/triac/diode width left/.initial=.3}
+\ctikzset{tripoles/triac/diode width right/.initial=.3}
+
+% Custom Proportions
+
+\ctikzset{bipoles/crossing/size=.5}
+
+% Reusable Style Macros
+
+% Used for magnetic coupling arrows in electrical circuit diagrams.
+\tikzset{simshadows/style/ee/magneticcouplingarrow/.style={latex-latex, magneticcouplingcolor, line width=1.2pt}}
+
+% Used for iron/ferrite cores in electrical circuit diagrams.
+\tikzset{simshadows/style/ee/ironcore/.style={line width=2.0pt}}
+
+% Custom TikZ Graphics
+
+% Mesh current indicators
+% Example:
+%     \draw
+%         (0,0) pic {simshadows/ee/meshcw} node {$i_1$}
+%     ;
+\tikzset{
+    simshadows/ee/meshcw/.pic={
+        \draw[thick, stealth-]
+            (0,0) ++(-70:0.35) arc (-70:190:0.35)
+        ;
+    },
+    simshadows/ee/meshcc/.pic={
+        \draw[thick, -stealth]
+            (0,0) ++(-10:0.35) arc (-10:250:0.35)
+        ;
+    },
+}
+
+% Transformer core
+% (Note: This will need to be drawn manually if a longer/shorter core is desired. In which case, use this pic as a template.)
+% Example:
+%     \draw
+%         (0,0) pic {simshadows/ee/ironcore}
+%     ;
+\tikzset{
+    simshadows/ee/ironcore/.pic={
+        \draw[simshadows/style/ee/ironcore]
+            ( 0.08,0.55) -- ++(0,-1.1)
+            (-0.08,0.55) -- ++(0,-1.1)
+        ;
+    },
+}
+
+% Generic arrows
+% Example:
+%     \node[simshadows/GenericBlockArrow] {};
+%     \node[simshadows/GenericArrow] {};
+\tikzset{
+    simshadows/GenericBlockArrow/.style={
+        single arrow,
+        draw,
+        minimum width=4ex,
+        minimum height=5ex,
+        single arrow head extend=1.0ex,
+    },
+    simshadows/GenericGrayBlockArrow/.style={
+        single arrow,
+        draw,
+        minimum width=4.5ex,
+        minimum height=5.5ex,
+        single arrow head extend=1.1ex,
+        simshadows/style/softgray,
+    }
+}
+
+\newcommand{\DrawnDownArrow}[1][]{%
+    \begin{tikzpicture}[scale=1, transform shape]
+        \node[simshadows/GenericBlockArrow, rotate=-90, #1] {};
+    \end{tikzpicture}%
+}
+
+\newcommand{\DrawnRightArrow}[1][]{%
+    \begin{tikzpicture}[scale=1, transform shape]
+        \node[simshadows/GenericBlockArrow, #1] {};
+    \end{tikzpicture}%
+}
 
