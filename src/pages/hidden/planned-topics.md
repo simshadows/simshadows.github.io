@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MDLayout.astro
+layout: "@layouts/MDLayout.astro"
 title: "Planned topics"
 description: Topics I plan on addingn to my website some day
 keywords: []
