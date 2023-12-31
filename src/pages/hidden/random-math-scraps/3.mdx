@@ -37,7 +37,13 @@ import CircuitImg from "./_latex-images/generated-do-not-edit/scrap003-q.svg"; /
     </FiguresBlock>
 </QuestionFrame>
 
-Before we begin, we can define the following useful result:
+Start by defining the voltage as the reference:
+
+<DisplayLatex code="
+    \mathbf{V} := V_m \phase{\ang{0}}
+" />
+
+Thus, we can find the current:
 
 <DisplayLatex code="
     \frac{1}{\cos{\theta} + j \sin{\theta}}
@@ -46,14 +52,6 @@ Before we begin, we can define the following useful result:
         = \cos{\theta} - j \sin{\theta}
         = \cos{(-\theta)} + j \sin{(-\theta)}
 " />
-
-Start by defining the voltage as the reference:
-
-<DisplayLatex code="
-    \mathbf{V} := V_m \phase{\ang{0}}
-" />
-
-Thus, we can find the current:
 
 <DisplayLatex code="
     \mathbf{I}
@@ -83,8 +81,6 @@ From this, we get:
         = I_m \parens{R + jX}
 " />
 
-And similarly:
-
 <GatherLatex code="
     \mathbf{I}
         = \frac{\mathbf{V}}{\mathbf{Z}}
@@ -94,8 +90,6 @@ And similarly:
         = \frac{V_m}{R + jX} \frac{R - jX}{R - jX}
         = \frac{V_m \parens{R - jX}}{R^2 + X^2}
 " />
-
-Thus, we get:
 
 <AlignLatex code="
     V_m \cos{\theta} &= I_m R \\

@@ -1,12 +1,11 @@
-# Planned topics
+---
+layout: ../../layouts/MDLayout.astro
+title: "Planned topics"
+description: Topics I plan on addingn to my website some day
+keywords: []
 
-## General
-
-- Some pages on stuff I wish I knew
-    - Stuff about personal finance
-    - Stuff about personal philosophy and career
-    - Stuff about relationships (meeting people, platonic, dating, etc.)
-- Stuff I own that I really like or think is worthwhile to talk a bit about
+hidetoc: true
+---
 
 ## Programming
 
