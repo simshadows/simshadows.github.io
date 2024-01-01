@@ -1,6 +1,6 @@
 import {type JSXChildren} from "@root/tech-debt";
 
-import "./_html-css.ExampleDemo.css";
+import "./_index.ExampleDemo.css";
 
 interface Props {
     readonly children: JSXChildren;

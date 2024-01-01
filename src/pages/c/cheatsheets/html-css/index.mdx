@@ -8,9 +8,9 @@ keywords: ["programming", "html", "css", "cheatsheet"]
 import Divider from "@components/Divider";
 import SpoilerBlock from "@components/SpoilerBlock.astro";
 
-import ExampleGroup from "./_html-css.ExampleGroup"; //_
-import ExampleDemo from "./_html-css.ExampleDemo"; //_
-import ExampleCode from "./_html-css.ExampleCode"; //_
+import ExampleGroup from "./_index.ExampleGroup"; //_
+import ExampleDemo from "./_index.ExampleDemo"; //_
+import ExampleCode from "./_index.ExampleCode"; //_
 
 ### This is still a WIP. Still trying to figure out the formatting and the technical
 
@@ -42,7 +42,7 @@ References:
 
 ## Tables
 
-import TablesDemo from "./_html-css.demos/tables.html"; //_
+import TablesDemo from "./_demos/tables.html"; //_
 
 ```html
 <table class="a">
@@ -104,7 +104,7 @@ table.a th {
 </div>
 ```
 
-<SpoilerBlock client:load buttonLabel="Base CSS">
+<SpoilerBlock buttonLabel="Base CSS">
 ```css
 /* This is all purely styling unrelated to flexbox. */
 /* I'm just establishing a baseline with this. */
@@ -124,7 +124,7 @@ div.a > * {
 ```
 </SpoilerBlock>
 
-import FlexDemo1 from "./_html-css.demos/flexbox1.html"; //_
+import FlexDemo1 from "./_demos/flexbox1.html"; //_
 
 <ExampleGroup>
     <ExampleDemo>
