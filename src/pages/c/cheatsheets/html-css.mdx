@@ -10,12 +10,30 @@ keywords: ["programming", "html", "css", "cheatsheet"]
 References:
 
 - [**MDN Web Docs - HTML**](https://developer.mozilla.org/en-US/docs/Web/HTML) `(developer.mozilla.org)`
+- [**MDN Web Docs - CSS**](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) `(developer.mozilla.org)`
 
 
-## Examples
+## Text
+
+```css
+{
+    font-weight: bold;
+    font-weight: normal;
+    font-weight: lighter;
+    font-weight: 400; /* numeric values are in [1,1000] */
+
+    font-family: "Courier New", monospace; /* left is highest priority */
+}
+```
+
+## Tables
+
+import TablesDemo from "./_html-css.demos/tables.html"; //_
+
+<TablesDemo />
 
 ```html
-<table>
+<table class="a">
     <thead>
         <tr>
             <th>head1</th>
@@ -24,20 +42,103 @@ References:
     </thead>
     <tbody>
         <tr>
-            <td>cell1</td>
+            <td rowspan="2">cell1</td>
             <td>cell2</td>
         </tr>
         <tr>
             <td>cell3</td>
-            <td>cell4</td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
-            <td>foot1</td>
-            <td>foot2</td>
+            <td colspan="2">foot</td>
         </tr>
     </tfoot>
 </table>
 ```
+
+```css
+table.a th {
+    background-color: #bbb;
+}
+table.a td,
+table.a th {
+    border: 1px solid;
+    padding: 0.3em 0.6em 0.3em 0.6em;
+}
+```
+
+## Flexbox
+
+### Base Example
+
+```html
+<div class="a">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+</div>
+```
+
+```css
+/* This is all purely styling unrelated to flexbox. */
+/* I'm just establishing a baseline with this. */
+div.a {
+    border: 0.2em solid red;
+    background: white;
+}
+
+div.a > * {
+    border: 0.2em solid blue;
+    background: #faa;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+}
+```
+
+### Example 1
+
+import FlexDemo1 from "./_html-css.demos/flexbox1.html"; //_
+
+<FlexDemo1 />
+
+```css
+div.a {
+    display: flex;
+    gap: 0.5em;
+}
+
+div.a > * {
+}
+```
+
+### Some Alternative Attributes
+
+```css
+{
+    column-gap: 0.5em; /* alternative to 'gap' */
+    row-gap: 0.5em;    /* alternative to 'gap' */
+}
+```
+
+
+## Textboxes
+
+<textarea rows="3" readonly>
+    <>This is a read-only textbox.</>
+</textarea>
+
+```html
+<textarea rows="3" readonly>
+    This is a read-only textbox.
+</textarea>
+```
+
+
+## References
+
+- [CSS-Tricks - A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 

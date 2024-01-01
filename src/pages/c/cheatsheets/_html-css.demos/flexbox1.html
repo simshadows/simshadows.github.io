@@ -1,0 +1,33 @@
+<div class="a">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+</div>
+
+<style>
+div.a {
+    border: 0.2em solid red;
+    background: white;
+}
+
+div.a > * {
+    border: 0.2em solid blue;
+    background: #faa;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+}
+</style>
+
+<style>
+div.a {
+    display: flex;
+    gap: 0.5em;
+}
+
+div.a > * {
+}
+</style>
+
