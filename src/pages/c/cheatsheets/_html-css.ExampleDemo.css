@@ -1,0 +1,9 @@
+div.example-demo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 1em;
+}
+div.example-demo > div {
+}
+

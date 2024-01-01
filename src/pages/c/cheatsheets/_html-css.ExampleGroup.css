@@ -1,0 +1,13 @@
+div.example-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+    width: 100%;
+}
+div.example-group > * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc(50% - 1em);
+}
+

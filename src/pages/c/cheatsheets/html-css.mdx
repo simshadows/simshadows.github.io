@@ -7,6 +7,12 @@ keywords: ["programming", "html", "css", "cheatsheet"]
 
 import Divider from "@components/Divider";
 
+import ExampleGroup from "./_html-css.ExampleGroup"; //_
+import ExampleDemo from "./_html-css.ExampleDemo"; //_
+import ExampleCode from "./_html-css.ExampleCode"; //_
+
+### This is still a WIP. Still trying to figure out the formatting and the technical
+
 ## Resources
 
 References:
@@ -37,8 +43,6 @@ References:
 
 import TablesDemo from "./_html-css.demos/tables.html"; //_
 
-<TablesDemo />
-
 ```html
 <table class="a">
     <thead>
@@ -64,6 +68,11 @@ import TablesDemo from "./_html-css.demos/tables.html"; //_
 </table>
 ```
 
+<ExampleGroup>
+    <ExampleDemo>
+        <TablesDemo />
+    </ExampleDemo>
+    <ExampleCode>
 ```css
 table.a th {
     background-color: #bbb;
@@ -74,6 +83,8 @@ table.a th {
     padding: 0.3em 0.6em 0.3em 0.6em;
 }
 ```
+    </ExampleCode>
+</ExampleGroup>
 
 
 <Divider />
@@ -98,6 +109,7 @@ table.a th {
 div.a {
     border: 0.2em solid red;
     background: white;
+    width: 20em;
 }
 
 div.a > * {
@@ -113,24 +125,26 @@ div.a > * {
 
 import FlexDemo1 from "./_html-css.demos/flexbox1.html"; //_
 
-<FlexDemo1 />
-
+<ExampleGroup>
+    <ExampleDemo>
+        <FlexDemo1 />
+    </ExampleDemo>
+    <ExampleCode>
 ```css
 div.a {
     display: flex;
     gap: 0.5em;
 }
-
-div.a > * {
-}
 ```
+    </ExampleCode>
+</ExampleGroup>
 
 ### Some Alternative Attributes
 
 ```css
 {
-    column-gap: 0.5em; /* alternative to 'gap' */
-    row-gap: 0.5em;    /* alternative to 'gap' */
+    column-gap: 0.5em;
+    row-gap: 0.5em;
 }
 ```
 
@@ -139,15 +153,20 @@ div.a > * {
 
 ## Textboxes
 
-<textarea rows="3" readonly>
-    <>This is a read-only textbox.</>
-</textarea>
-
+<ExampleGroup>
+    <ExampleDemo>
+        <textarea rows="3" readonly>
+            <>This is a read-only textbox.</>
+        </textarea>
+    </ExampleDemo>
+    <ExampleCode>
 ```html
 <textarea rows="3" readonly>
     This is a read-only textbox.
 </textarea>
 ```
+    </ExampleCode>
+</ExampleGroup>
 
 
 <Divider />
