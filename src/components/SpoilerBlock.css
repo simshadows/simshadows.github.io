@@ -1,0 +1,6 @@
+div.spoiler-block {
+    border: thin solid;
+    border-radius: var(--border-radius--standard);
+    padding: 0.5em;
+}
+

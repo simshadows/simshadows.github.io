@@ -1,0 +1,25 @@
+---
+/*
+ * TECHNICAL DEBT.
+ * This component is a hacky workaround for weird double-rendering of
+ * islands using `client:load`.
+ */
+
+import SpoilerBlockOriginal from "./SpoilerBlock";
+
+interface Props {
+    buttonLabel: string;
+}
+
+const {
+    buttonLabel,
+} = Astro.props;
+---
+
+<SpoilerBlockOriginal buttonLabel={buttonLabel} client:only>
+    <slot />
+</SpoilerBlockOriginal>
+<noscript>
+    <slot />
+</noscript>
+

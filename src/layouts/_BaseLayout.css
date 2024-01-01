@@ -135,7 +135,7 @@ table {
 #right-sidebar {
     padding: 1em;
     background: rgb(39 40 34 / 16%);
-    border-radius: 0.4em;
+    border-radius: var(--border-radius--standard);
     overflow-y: auto;
     min-height: 10em;
     max-height: calc(100vh - (6 * var(--h1-margin-top)));
@@ -158,6 +158,6 @@ table {
 /* Code Blocks */
 .astro-code {
     padding: 0.8em;
-    border-radius: 0.4em;
+    border-radius: var(--border-radius--standard);
 }
 

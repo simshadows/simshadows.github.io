@@ -6,6 +6,7 @@ keywords: ["programming", "html", "css", "cheatsheet"]
 ---
 
 import Divider from "@components/Divider";
+import SpoilerBlock from "@components/SpoilerBlock.astro";
 
 import ExampleGroup from "./_html-css.ExampleGroup"; //_
 import ExampleDemo from "./_html-css.ExampleDemo"; //_
@@ -103,6 +104,7 @@ table.a th {
 </div>
 ```
 
+<SpoilerBlock client:load buttonLabel="Base CSS">
 ```css
 /* This is all purely styling unrelated to flexbox. */
 /* I'm just establishing a baseline with this. */
@@ -120,8 +122,7 @@ div.a > * {
     text-align: center;
 }
 ```
-
-### Example 1
+</SpoilerBlock>
 
 import FlexDemo1 from "./_html-css.demos/flexbox1.html"; //_
 
@@ -151,7 +152,22 @@ div.a {
 
 <Divider />
 
-## Textboxes
+## Inputs
+
+<ExampleGroup>
+    <ExampleDemo>
+        <button type="button">
+            Click Me
+        </button>
+    </ExampleDemo>
+    <ExampleCode>
+```html
+<button type="button">
+    Click Me
+</button>
+```
+    </ExampleCode>
+</ExampleGroup>
 
 <ExampleGroup>
     <ExampleDemo>
