@@ -34,14 +34,22 @@ export default class SpoilerBlock extends Component<Props, State> {
             ? this.props.buttonLabel
             : "Spoiler";
 
-        return <p>
-            <div className="spoiler-block">
-                <button type="button" onClick={this.handleButtonClick}>
-                    {this.state.expanded ? `Hide ${buttonLabel}` : `Show ${buttonLabel}`}
-                </button>
-                {this.state.expanded && this.props.children}
-            </div>
-        </p>;
+        if (this.state.expanded) {
+            return <p>
+                <div className="spoiler-block">
+                    <button type="button" onClick={this.handleButtonClick}>
+                        {/* this.state.expanded ? `Hide ${buttonLabel}` : `Show ${buttonLabel}` */}
+                        {`Hide ${buttonLabel}`}
+                    </button>
+                    {this.state.expanded && this.props.children}
+                </div>
+            </p>;
+        } else {
+            return <p><button type="button" onClick={this.handleButtonClick}>
+                {`Show ${buttonLabel}`}
+            </button></p>;
+        }
+
     }
 }
 
