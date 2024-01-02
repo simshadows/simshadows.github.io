@@ -1,0 +1,19 @@
+---
+import {type ComponentProps} from "preact";
+import Code from "@components/Code.astro";
+
+interface _Props {
+    src: string;
+};
+type Props = _Props & ComponentProps<typeof Code>;
+
+const props = Astro.props;
+
+if (!props.src) throw new Error("'src' must be non-empty.");
+
+const filePath = `./_solutions.${props.src}?raw`;
+const code = await import(filePath);
+---
+
+<Code {...props} code={code.default} />
+

@@ -5,10 +5,10 @@ description: My solutions and thoughts for the CSES problem set!
 keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data structures"]
 ---
 
-import Code from "@components/Code.astro";
 import SpoilerBlock from "@components/SpoilerBlock.astro";
 import Todo from "@components/Todo";
 
+import CodeImport from "./_common.CodeImport.astro" //_
 import Spec from "./../_shared.Spec.astro"; //_
 import Intro from "./_common.intro.astro"; //_
 
@@ -17,48 +17,37 @@ import Intro from "./_common.intro.astro"; //_
 
 ## Weird Algorithm <Spec href="https://cses.fi/problemset/task/1068" cdate="2023-12-31"/>
 
-import SolWeirdAlgorithm from "./_solutions.introductory-problems/weird-algorithm.py?raw" //_
-
-<Code code={SolWeirdAlgorithm} lang="py" />
+<CodeImport src="introductory-problems/weird-algorithm.py" lang="py" />
 
 
 ## Missing Number <Spec href="https://cses.fi/problemset/task/1083" cdate="2023-01-02"/>
 
 We take the expected sum of all numbers `sum_all`, calculated using [*Arithmetic Series*](https://en.wikipedia.org/wiki/Arithmetic_progression#Sum), and subtract the numbers we have to get the missing number.
 
-import SolMissingNumber from "./_solutions.introductory-problems/missing-number.py?raw" //_
-
-<Code code={SolMissingNumber} lang="py" />
+<CodeImport src="introductory-problems/missing-number.py" lang="py" />
 
 <Todo>There's a cool bit manipulation solution for this that I should study.</Todo>
 
 
 ## Repetitions <Spec href="https://cses.fi/problemset/task/1069" cdate="2023-01-02"/>
 
-import SolRepetitions from "./_solutions.introductory-problems/repetitions.py?raw" //_
-
-<Code code={SolRepetitions} lang="py" />
+<CodeImport src="introductory-problems/repetitions.py" lang="py" />
 
 
 ## Increasing Array <Spec href="https://cses.fi/problemset/task/1094/" cdate="2023-01-02"/>
 
-import SolIncreasingArray from "./_solutions.introductory-problems/increasing-array.py?raw" //_
-
-<Code code={SolIncreasingArray} lang="py" />
+<CodeImport src="introductory-problems/increasing-array.py" lang="py" />
 
 
 ## Permutations <Spec href="https://cses.fi/problemset/task/1070/" cdate="2023-01-02"/>
 
-import SolPermutationsOriginal from "./_solutions.introductory-problems/permutations--original.py?raw" //_
-import SolPermutations from "./_solutions.introductory-problems/permutations.py?raw" //_
-
 My initial solution was unnecessarily messy because I was sorting out the edge cases.
 
 <SpoilerBlock buttonLabel="Initial Solution">
-    <Code code={SolPermutationsOriginal} lang="py" />
+    <CodeImport src="introductory-problems/permutations--original.py" lang="py" />
 </SpoilerBlock>
 
 I improved on my initial solution by swapping the loop order and cutting the branches:
 
-<Code code={SolPermutations} lang="py" />
+<CodeImport src="introductory-problems/permutations.py" lang="py" />
 
