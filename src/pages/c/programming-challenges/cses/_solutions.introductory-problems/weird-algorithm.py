@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-from sys import stdin
-
-n = int("".join(stdin.readlines()).strip())
+n = int(input())
 while n > 1:
     print(n, end=" ")
     if n % 2:
