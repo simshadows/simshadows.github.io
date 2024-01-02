@@ -4,6 +4,7 @@ import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 
 import {
+    SHIKI_THEME,
     SITE,
 } from "./src/constants";
 
@@ -13,7 +14,7 @@ export default defineConfig({
     integrations: [mdx(), preact(), sitemap()],
     markdown: {
         shikiConfig: {
-            theme: "monokai",
+            theme: SHIKI_THEME,
         }
     }
 });

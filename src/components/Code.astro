@@ -1,0 +1,19 @@
+---
+/*
+ * This is mostly a passthrough to the built-in Code component,
+ * but injects some defaults so you're not constantly rewriting.
+ */
+
+import {type ComponentProps} from "preact";
+
+import {Code as Code_} from "astro:components";
+
+import {
+    SHIKI_THEME,
+} from "@root/constants";
+
+type Props = ComponentProps<typeof Code_>;
+---
+
+<Code_ theme={SHIKI_THEME} {...Astro.props} />
+

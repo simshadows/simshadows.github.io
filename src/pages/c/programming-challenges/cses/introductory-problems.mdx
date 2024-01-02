@@ -2,29 +2,19 @@
 layout: "@layouts/MDLayout.astro"
 title: Introductory Problems - CSES Problem Set Solutions
 description: My solutions and thoughts for the CSES problem set!
-keywords: []
+keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data structures"]
 ---
 
-import Spec from "./../_shared.Spec.astro"; //_
+import Code from "@components/Code.astro";
 
+import Spec from "./../_shared.Spec.astro"; //_
 import Intro from "./_common.intro.astro"; //_
 
 <Intro />
 
 ## Weird Algorithm <Spec href="https://cses.fi/problemset/task/1068" cdate="2023-12-31"/>
 
-```py
-#!/usr/bin/env python3
+import SolWeirdAlgorithm from "./_solutions.introductory-problems/weird-algorithm.py?raw" //_
 
-from sys import stdin
-
-n = int("".join(stdin.readlines()).strip())
-while n > 1:
-    print(n, end=" ")
-    if n % 2:
-        n = (n * 3) + 1
-    else:
-        n //= 2
-print(n)
-```
+<Code code={SolWeirdAlgorithm} lang="py" />
 

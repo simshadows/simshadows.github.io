@@ -1,3 +1,5 @@
+export const SHIKI_THEME = "monokai";
+
 export const SITE = "https://www.simshadows.com/";
 export const SITE_TITLE = "simshadows";
 export const AUTHOR = "simshadows";

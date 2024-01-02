@@ -10,4 +10,3 @@ while n > 1:
     else:
         n //= 2
 print(n)
-
