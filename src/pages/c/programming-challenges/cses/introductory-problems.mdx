@@ -5,12 +5,30 @@ description: My solutions and thoughts for the CSES problem set!
 keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data structures"]
 ---
 
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import Eqref from "@components/latex/Eqref";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+
+import FiguresBlock from "@components/figures/FiguresBlock";
+import Fig from "@components/figures/Fig";
+
 import Code from "@components/Code.astro";
 import SpoilerBlock from "@components/SpoilerBlock.astro";
 import Todo from "@components/Todo";
 
 import Spec from "./../_shared.Spec.astro"; //_
 import Intro from "./_common.intro.astro"; //_
+
+import DArr from "./_common.DArr.astro"; //_
+import UArr from "./_common.UArr.astro"; //_
+import LArr from "./_common.LArr.astro"; //_
+import RArr from "./_common.RArr.astro"; //_
+import DLArr from "./_common.DLArr.astro"; //_
+import URArr from "./_common.URArr.astro"; //_
+
+import "./_introductory-problems.css"; //_
 
 <Intro />
 
@@ -61,4 +79,502 @@ My initial solution was unnecessarily messy because I was sorting out the edge c
 I improved on my initial solution by swapping the loop order and cutting the branches:
 
 <Code code={SolPermutations} lang="py" />
+
+
+## Number Spiral <Spec href="https://cses.fi/problemset/task/1071/" cdate="2023-01-03"/>
+
+Let's work with the same <Latex code="5 \times 5" /> grid shown in the spec to get a feel for how this works, and let's query for <Latex code="y = 3" /> and <Latex code="x = 4" />.
+
+<FiguresBlock>
+<Fig>
+<table class="general" style="text-align: center;">
+    <tbody>
+        <tr><td>1</td><td>2</td><td>9</td><td>10</td><td>25</td></tr>
+        <tr><td>4</td><td>3</td><td>8</td><td>11</td><td>24</td></tr>
+        <tr><td>5</td><td>6</td><td>7</td><td class="cell-emph1">12</td><td>23</td></tr>
+        <tr><td>16</td><td>15</td><td>14</td><td>13</td><td>22</td></tr>
+        <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+    </tbody>
+</table>
+</Fig>
+</FiguresBlock>
+
+I arbitrarily chose to zero-index the coordinates, so the new zero-indexed coordinates are <Latex code="y' = 2" /> and <Latex code="x' = 3" />.
+
+I started by calculating the "layer number" of the queried coordinates, and recognizing that the only information you need about the previous layers is the total number of cells in all previous layers (excluding the aforementioned layer number):
+
+<FiguresBlock>
+<Fig>
+<table class="general" style="text-align: center;">
+    <tbody>
+        <tr>
+            <td class="cell-emph2">1</td>
+            <td class="cell-emph2">2</td>
+            <td class="cell-emph2">9</td>
+            <td class="cell-emph1">10</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td class="cell-emph2">4</td>
+            <td class="cell-emph2">3</td>
+            <td class="cell-emph2">8</td>
+            <td class="cell-emph1">11</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td class="cell-emph2">5</td>
+            <td class="cell-emph2">6</td>
+            <td class="cell-emph2">7</td>
+            <td class="cell-emph1">12</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td class="cell-emph1">16</td>
+            <td class="cell-emph1">15</td>
+            <td class="cell-emph1">14</td>
+            <td class="cell-emph1">13</td>
+            <td>22</td>
+        </tr>
+        <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+    </tbody>
+</table>
+</Fig>
+</FiguresBlock>
+
+In the figure above, we see that there are <Latex code="9" /> cells in the previous layers.
+
+Therefore, the largest number in all the previous layers is <Latex code="9" />, and the current layer will start with <Latex code="10" />. All we need now is to index within the layer.
+
+First, we need to know the direction of counting:
+
+<FiguresBlock>
+<Fig>
+<table class="general" style="text-align: center;">
+    <thead>
+        <tr>
+            <td style="border: none;">Layer:</td>
+            <td style="border: none;">0</td>
+            <td style="border: none;">1</td>
+            <td style="border: none;">2</td>
+            <td style="border: none;">3</td>
+            <td style="border: none;">4</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: none;"></td>
+            <td class="cell-emph2"><URArr /></td>
+            <td class="cell-emph1"><DArr /></td>
+            <td class="cell-emph2"><UArr /></td>
+            <td class="cell-emph1"><DArr /></td>
+            <td class="cell-emph2"><UArr /></td>
+        </tr>
+        <tr>
+            <td style="border: none;"></td>
+            <td class="cell-emph1"><LArr /></td>
+            <td class="cell-emph1"><DLArr /></td>
+            <td class="cell-emph2"><UArr /></td>
+            <td class="cell-emph1"><DArr /></td>
+            <td class="cell-emph2"><UArr /></td>
+        </tr>
+        <tr>
+            <td style="border: none;"></td>
+            <td class="cell-emph2"><RArr /></td>
+            <td class="cell-emph2"><RArr /></td>
+            <td class="cell-emph2"><URArr /></td>
+            <td class="cell-emph1"><DArr /></td>
+            <td class="cell-emph2"><UArr /></td>
+        </tr>
+        <tr>
+            <td style="border: none;"></td>
+            <td class="cell-emph1"><LArr /></td>
+            <td class="cell-emph1"><LArr /></td>
+            <td class="cell-emph1"><LArr /></td>
+            <td class="cell-emph1"><DLArr /></td>
+            <td class="cell-emph2"><UArr /></td>
+        </tr>
+        <tr>
+            <td style="border: none;"></td>
+            <td class="cell-emph2"><RArr /></td>
+            <td class="cell-emph2"><RArr /></td>
+            <td class="cell-emph2"><RArr /></td>
+            <td class="cell-emph2"><RArr /></td>
+            <td class="cell-emph2"><URArr /></td>
+        </tr>
+    </tbody>
+</table>
+</Fig>
+</FiguresBlock>
+
+We notice here that odd-numbered layers count "downward" while even-numbered layers count "upward". Therefore, for the example query, the layer counts downwards.
+
+This should be sufficient background to understand my initial solution:
+
+import SolNumberSpiral from "./_solutions.introductory-problems/number-spiral--original.py?raw" //_
+import SolNumberSpiralRefactor1 from "./_solutions.introductory-problems/number-spiral--original2.py?raw" //_
+import SolNumberSpiralRefactor2 from "./_solutions.introductory-problems/number-spiral.py?raw" //_
+
+<Code code={SolNumberSpiral} lang="py" />
+
+For fun, I decided to refactor into smaller code:
+
+<SpoilerBlock buttonLabel="Refactoring 1">
+    <Code code={SolNumberSpiralRefactor1} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="Refactoring 2">
+    <Code code={SolNumberSpiralRefactor2} lang="py" />
+</SpoilerBlock>
+
+Though, these refactorings start becoming less intuitive and comprehensible.
+
+
+## Two Knights <Spec href="https://cses.fi/problemset/task/1072" cdate="2023-01-03"/>
+
+The approach I went with was terribly lazy. I imagine there are some fancy combinatorics solutions? But I wasn't too sure how to incorporate the knight movements and board geometry. But hey, whatever works!
+
+I started with a hardcoded table for <Latex code="k \le 7" /> to get past some edge cases for low values of <Latex code="k" />. I chose <Latex code="7" /> arbitrarily and didn't think too deeply about what the smallest hardcoded table I can get away with is. It would've been tough to calculate up to <Latex code="k = 7" /> by hand, but I just used the example solution in the spec. How convenient!
+
+My solution considers "layers" in a vaguely similar way my *Number Spiral* solution did.
+
+Let's suppose a solution for layer <Latex code="k = 7" /> is already known to have <Latex code="1056" /> ways to place two knights. Therefore, we have "seen" a <Latex code="7 \times 7" /> grid of cells (<Latex code="49" /> cells):
+
+<FiguresBlock>
+<Fig>
+<table class="general table-of-squares" style="text-align: center;">
+    <tbody>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+    </tbody>
+</table>
+</Fig>
+</FiguresBlock>
+
+We seek to add another "layer" to this known square to get a solution for layer <Latex code="k = 8" />:
+
+<FiguresBlock>
+<Fig>
+<table class="general table-of-squares" style="text-align: center;">
+    <tbody>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+</Fig>
+</FiguresBlock>
+
+To do this, we take the approach of adding one more square at a time, and after adding each square, we recalculate the solution.
+
+Let's start by placing one new square at the bottom-left corner. The new square is labelled `K` while the squares that a knight placed on `K` can attack are labelled `#`:
+
+<FiguresBlock>
+<Fig>
+<table class="general table-of-squares" style="text-align: center;">
+    <tbody>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2">#</td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2">#</td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph1">K</td>
+        </tr>
+    </tbody>
+</table>
+</Fig>
+</FiguresBlock>
+
+So now, how many times can we place two knights in these <Latex code="50" /> cells? We find that there are <Latex code="1056 + 49 - 2 = 1103" /> ways to place two knights in these <Latex code="50" /> cells. The <Latex code="-2" /> in that calculation comes from accounting for the two squares that a knight in the new square can attack.
+
+Formula:
+
+<p class="center">`new_solution = prev_solution + prev_number_of_squares - ways_new_knight_can_attack_old_squares`</p>
+
+Next, we add another square in the new layer. With the new square, there are now <Latex code="1103 + 50 - 3 = 1150" /> ways to place two knights in these <Latex code="51" /> squares:
+
+<FiguresBlock>
+<Fig>
+<table class="general table-of-squares" style="text-align: center;">
+    <tbody>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2">#</td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2">#</td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2">#</td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph2"></td>
+        </tr>
+        <tr>
+            <td class="cell-emph2"></td>
+            <td class="cell-emph1">K</td>
+        </tr>
+    </tbody>
+</table>
+</Fig>
+</FiguresBlock>
+
+We simply keep going until the whole layer has been added and a solution for the whole layer has been calculated.
+
+import SolTwoKnights from "./_solutions.introductory-problems/two-knights.py?raw" //_
+
+<Code code={SolTwoKnights} lang="py" />
+
+
+## Two Sets <Spec href="https://cses.fi/problemset/task/1092/" cdate="2023-01-03"/>
+
+import SolTwoSets from "./_solutions.introductory-problems/two-sets.py?raw" //_
+
+<Code code={SolTwoSets} lang="py" />
 

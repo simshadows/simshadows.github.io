@@ -1,5 +1,6 @@
 :root {
     --color--background: #fff;
+    --color--foreground: #000;
 
     /* Mirroring my LaTeX colour definitions */
     --color--myblue:   rgb(66,133,244);

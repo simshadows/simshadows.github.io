@@ -1,0 +1,33 @@
+.cell-emph1 {
+    background: var(--color--foreground);
+    color: var(--color--background);
+    font-weight: bold;
+}
+
+.cell-emph2 {
+    background: #bbb;
+    font-weight: bold;
+}
+
+table.table-of-squares {
+    font-size: 140%;
+}
+table.table-of-squares tbody td {
+    /* tbody is a bit of a precedence hack */
+    height: 1.3em;
+    width: 1.3em;
+    padding: 0.05em;
+    font-family: "Courier New", monospace;
+    text-align: center;
+}
+
+/*
+.cell-red {
+    background: var(--color--mylightred);
+}
+
+.cell-blue {
+    background: var(--color--mylightblue);
+}
+*/
+
