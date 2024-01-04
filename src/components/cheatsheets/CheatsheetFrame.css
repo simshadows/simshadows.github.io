@@ -1,0 +1,12 @@
+div.cheatsheet-frame {
+    border: thin solid black;
+    padding: 0.6em;
+}
+
+div.cheatsheet-frame p:first-child {
+    margin-top: 0;
+}
+div.cheatsheet-frame p:last-child {
+    margin-bottom: 0;
+}
+

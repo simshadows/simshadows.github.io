@@ -58,8 +58,20 @@ table {
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 32px; /* TODO: Use media query to make this smaller on mobile? */
-    padding-right: 32px; /* TODO: Use media query to make this smaller on mobile? */
+    padding-left: 32px;
+    padding-right: 32px;
+}
+@media only screen and (max-width: 40em) {
+    .content-full-width {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}
+@media only screen and (max-width: 35em) {
+    .content-full-width {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 }
 
 #masthead {

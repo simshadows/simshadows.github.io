@@ -1,0 +1,17 @@
+div.cheatsheet-block {
+    column-width: 25em;
+    column-gap: 1.5em;
+}
+
+div.cheatsheet-block > * {
+    break-inside: avoid;
+    margin-bottom: 1.5em;
+}
+
+/* would this do anything? */
+/*
+div.cheatsheet-block > *:last-child {
+    margin-bottom: 0;
+}
+*/
+
