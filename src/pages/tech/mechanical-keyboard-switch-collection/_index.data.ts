@@ -1,9 +1,3 @@
-/*
- * Filename: index.data.ts
- * Author:   simshadows <contact@simshadows.com>
- * License:  Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA-4.0)
- */
-
 // TODO: Merge "Prime Keyboards Alpaca" with the other Alpaca listing
 
 export class Currency {

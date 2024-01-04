@@ -4,17 +4,16 @@ import {
     COPYRIGHT_YEAR,
     SOURCE_CODE_URL,
 } from "@root/constants";
-
-import ccbysaImg from "./_BaseFooter_images/cc-by-sa-4.0-88x31.png";
 ---
 
 <footer id="footer" class="content-column">
-    <div id="footer-text">
-        &copy; {`${COPYRIGHT_YEAR} ${AUTHOR}`}. All content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    <p id="footer-text">
+        &copy; {COPYRIGHT_YEAR} {AUTHOR}. All content on this site is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>
         <br />
         This site's source code is available on <a href={SOURCE_CODE_URL}>GitHub</a>.
-    </div>
-    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src={ccbysaImg.src} /></a>
-    <!-- ccbysaImg original source: src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" -->
+        <br />
+        <br />
+        <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
+    </p>
 </footer>
 
