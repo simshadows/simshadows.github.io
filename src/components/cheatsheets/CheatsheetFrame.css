@@ -2,11 +2,19 @@ div.cheatsheet-frame {
     border: thin solid black;
     padding: 0.6em;
 }
+div.cheatsheet-frame.wide {
+    column-span: all;
+    width: 100%;
+}
+div.cheatsheet-frame.after-wide { /* TECHNICAL DEBT */
+    margin-top: 0;
+}
 
 div.cheatsheet-frame p:first-child {
     margin-top: 0;
 }
 div.cheatsheet-frame p:last-child {
-    margin-bottom: 0;
+    margin-top: 0; /* TECHNICAL DEBT: a workaround for weird Latex rendering issues. */
+    margin-bottom: 0.3em;
 }
 

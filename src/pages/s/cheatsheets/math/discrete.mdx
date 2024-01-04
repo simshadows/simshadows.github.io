@@ -1,0 +1,56 @@
+---
+layout: "@layouts/MDFullWidthLayout.astro"
+title: Discrete Mathematics Cheatsheet
+description: My cheatsheet for discrete mathematics, with an emphasis on material useful for computer science.
+keywords: ["mathematics", "computer science", "programming"]
+
+hidetoc: true
+---
+
+import Layout from "@layouts/FullWidthLayout.astro";
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+
+import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
+import CSFrame from "@components/cheatsheets/CheatsheetFrame";
+import CSTitle from "@components/cheatsheets/CheatsheetFrameTitle";
+
+import Todo from "@components/Todo";
+
+*This cheatsheet will focus on what's useful for computer science students and programmers.*
+
+<CheatsheetBlock>
+
+<CSFrame>
+    <CSTitle>Factorial</CSTitle>
+    <GatherLatex code="
+        n!
+        = \prod_{k = 1}^n{k}
+        = 1 \times 2 \times 3 \times \dots \times (n-2) \times (n-1) \times n,
+        \\
+        \forall n \in \mathbb{Z} : n > 0.
+        \qquad\qquad
+        0! = 1
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle><Latex code="k" />-Permutations of <Latex code="n" /></CSTitle>
+    <DisplayLatex code="
+        \MyPermutations{n}{k}
+        = \frac{n!}{\parens{n - k}!}
+    " />
+
+    <CSTitle><Latex code="k" />-Combinations of <Latex code="n" /> / Binomial Coefficient</CSTitle>
+    <DisplayLatex code="
+        \MyCombinations{n}{k}
+        = \binom{n}{k}
+        = \frac{n!}{k! \, \parens{n - k}!}
+    " />
+</CSFrame>
+
+</CheatsheetBlock>
+

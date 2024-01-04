@@ -1,11 +1,17 @@
 div.cheatsheet-block {
-    column-width: 25em;
+    column-width: 30em;
     column-gap: 1.5em;
+    font-size: 92.7%; /* Just enough for a typical PC 1080p full-width browser window to show 4 columns */
 }
 
 div.cheatsheet-block > * {
     break-inside: avoid;
+    margin-top: 1.5em;
     margin-bottom: 1.5em;
+    /* width: 30em; */ /* Use for debugging */
+}
+div.cheatsheet-block > *:first-child {
+    margin-top: 0;
 }
 
 /* would this do anything? */

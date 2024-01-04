@@ -1,0 +1,390 @@
+---
+layout: "@layouts/MDFullWidthLayout.astro"
+title: Pre-Calculus Cheatsheet
+description: My cheatsheet for pre-calculus.
+keywords: ["mathematics", "elementary", "middleschool", "highschool"]
+
+hidetoc: true
+---
+
+import Layout from "@layouts/FullWidthLayout.astro";
+
+import AlignatLatex from "@components/latex/AlignatLatex";
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+
+import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
+import CSFrame from "@components/cheatsheets/CheatsheetFrame";
+import CSTitle from "@components/cheatsheets/CheatsheetFrameTitle";
+
+import Todo from "@components/Todo";
+
+import "./_precalc.css"; //_
+
+*This cheatsheet generally covers anything that is typically taught before calculus and linear algebra, and doesn't fit in the [Discrete Mathematics](../discrete/) cheatsheet.*
+
+<CheatsheetBlock>
+
+<CSFrame wide>
+    <CSTitle>Partial Fraction Decomposition</CSTitle>
+
+    A *proper rational function* can be rewritten as a sum of *partial fractions*.
+
+    For each irreducible factor in the denominator, the partial fractions are as follows:
+
+    <DisplayLatex code="
+        \begin{array}{ccccc}
+            \substack{\text{\underline{irreducible factor in denominator}}} &&&&
+                \substack{\text{\underline{partial fractions}}}
+                \\[1ex]
+            \displaystyle {(\memphR{ax + b})}^k &
+                & \Longrightarrow & \quad &
+                %\displaystyle \sum_{n=1}^k{\frac{A_n}{\memphR{(ax + b)}^n}}
+                \displaystyle \frac{A_1}{\memphR{ax + b}}
+                + \frac{A_2}{\parens{\memphR{ax + b}}^2}
+                + \dots
+                + \frac{A_k}{\parens{\memphR{ax + b}}^k}
+                \\[3ex]
+            \displaystyle {(\memphR{ax^2 + bx + c})}^k &
+                & \Longrightarrow & \quad &
+                %\displaystyle \sum_{n=1}^k{\frac{A_n x + B_n}{\memphR{(ax^2 + bx + c)}^n}}
+                \displaystyle \frac{A_1 x + B_1}{\memphR{ax^2 + bx + c}}
+                + \frac{A_2 x + B_2}{\parens{\memphR{ax^2 + bx + c}}^2}
+                + \dots
+                + \frac{A_k x + B_k}{\parens{\memphR{ax^2 + bx + c}}^k}
+        \end{array}
+    " />
+
+    For *improper rational functions*, you must first convert it to a *proper rational function*.
+
+    *Hint: You can use complex numbers to further reduce some factors. Example: <Latex code="\parens{1 + x^2} = \parens{1 + i x} \parens{1 - i x}" />*
+</CSFrame>
+
+<CSFrame afterWide>
+    <CSTitle>Exponentiation and Logarithm Identities</CSTitle>
+
+    <table id="exp-log-table">
+    <tbody>
+        <tr>
+            <td><Latex code="\displaystyle x = a^y" /></td>
+            <td><Latex code="\iff" /></td>
+            <td><Latex code="\displaystyle \log_a{x} = y" /></td>
+        </tr>
+        <tr>
+            <td><Latex code="\displaystyle a^{\log_a{x}} = x" /></td>
+            <td><Latex code="\iff" /></td>
+            <td><Latex code="\displaystyle \log_a{a^x} = x" /></td>
+        </tr>
+        <tr class="more-vspace">
+            <td></td>
+            <td></td>
+            <td><Latex code="\overset{\text{\textbf{Change of Base Law}}}{\boxed{\log_a{x} = \frac{\log_u{x}}{\log_u{a}}}}" /></td>
+        </tr>
+        <tr class="more-vspace">
+            <td><Latex code="\displaystyle a^0 = 1" /></td>
+            <td><Latex code="\longrightarrow" /></td>
+            <td><Latex code="\displaystyle \log_a{1} = 0" /></td>
+        </tr>
+        <tr>
+            <td><Latex code="\displaystyle a^1 = a" /></td>
+            <td><Latex code="\longrightarrow" /></td>
+            <td><Latex code="\displaystyle \log_a{a} = 1" /></td>
+        </tr>
+        <tr>
+            <td><Latex code="\displaystyle a^{-1} = \frac{1}{a}" /></td>
+            <td><Latex code="\longrightarrow" /></td>
+            <td><Latex code="\displaystyle \log_a{\frac{1}{a}} = -1" /></td>
+        </tr>
+        <tr class="more-vspace">
+            <td><Latex code="\displaystyle a^x a^y = a^{x+y}" /></td>
+            <td><Latex code="\longrightarrow" /></td>
+            <td><Latex code="\displaystyle \log_a{xy} = \log_a{x} + \log_a{y}" /></td>
+        </tr>
+        <tr>
+            <td><Latex code="\displaystyle a^x b^x = \parens{ab}^x" /></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Latex code="\parens{a^x}^y = a^{xy}" /></td>
+            <td><Latex code="\longrightarrow" /></td>
+            <td><Latex code="\displaystyle \log_a{x^n} = n \log_a{x}" /></td>
+        </tr>
+        <tr class="more-vspace">
+            <td><Latex code="\displaystyle \frac{1}{a^y} = a^{-y}" /></td>
+            <td></td>
+            <td><Latex code="\displaystyle \log_a{\frac{1}{y}} = -\log_a{y}" /></td>
+        </tr>
+        <tr>
+            <td><Latex code="\displaystyle \frac{a^x}{a^y} = a^{x-y}" /></td>
+            <td><Latex code="\longrightarrow" /></td>
+            <td><Latex code="\displaystyle \log_a{\frac{x}{y}} = \log_a{x} - \log_a{y}" /></td>
+        </tr>
+        <tr>
+            <td><Latex code="\displaystyle \frac{a^x}{b^x} = \parens{\frac{a}{b}}^x" /></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="more-vspace">
+            <td><Latex code="\displaystyle a^{\frac{1}{2}} = \sqrt{a}" /></td>
+            <td><Latex code="\longrightarrow" /></td>
+            <td><Latex code="\displaystyle \log_a{\sqrt{a}} = \frac{1}{2}" /></td>
+        </tr>
+        <tr>
+            <td><Latex code="\displaystyle a^{\frac{1}{y}} = \sqrt[y]{a}" /></td>
+            <td><Latex code="\longrightarrow" /></td>
+            <td><Latex code="\displaystyle \log_a{\sqrt[y]{a}} = \frac{1}{y}" /></td>
+        </tr>
+        <tr>
+            <td><Latex code="\displaystyle a^{\frac{x}{y}} = \parens{\sqrt[y]{a}}^x" /></td>
+            <td><Latex code="\longrightarrow" /></td>
+            <td><Latex code="\displaystyle \log_a{\parens{\sqrt[y]{a}}^x} = \frac{x}{y}" /></td>
+        </tr>
+    </tbody>
+    </table>
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Pascal's Triangle</CSTitle>
+
+    <DisplayLatex code="
+        \begin{matrix}
+            n = 0
+            &&
+            1
+            &&
+            \binom{0}{0}
+            \\
+            n = 1
+            &&
+            1 \quad 1
+            &&
+            \binom{1}{0}
+            \:\: \binom{1}{1}
+            \\
+            n = 2
+            &&
+            1 \quad 2 \quad 1
+            &&
+            \binom{2}{0}
+            \:\: \binom{2}{1}
+            \:\: \binom{2}{2}
+            \\
+            n = 3
+            &&
+            1 \quad 3 \quad 3 \quad 1
+            &&
+            \binom{3}{0}
+            \:\: \binom{3}{1}
+            \:\: \binom{3}{2}
+            \:\: \binom{3}{3}
+            \\
+            n = 4
+            &&
+            1 \quad 4 \quad 6 \quad 4 \quad 1
+            &&
+            \binom{4}{0}
+            \:\: \binom{4}{1}
+            \:\: \binom{4}{2}
+            \:\: \binom{4}{3}
+            \:\: \binom{4}{4}
+        \end{matrix}
+    " />
+
+    <CSTitle>Binomial Theorem</CSTitle>
+    <AlignLatex code="
+        \parens{x + y}^n
+        &= \binom{n}{0} x^n y^0
+        + \binom{n}{1} x^{n-1} y^1
+        + \dots
+        + \binom{n}{n} x^0 y^n
+        \\
+        &= \sum_{k=0}^n \binom{n}{k} x^{n-k} y^k
+        = \sum_{k=0}^n \binom{n}{k} x^k y^{n-k}
+    " />
+
+    *See [Discrete Mathematics](../discrete/) for the binomial coefficient.*
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Quadratic Formula</CSTitle>
+    <DisplayLatex code="
+        x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+        \qquad\quad
+        \MathOverLabel{\text{\underline{discriminant}}}{\Delta = b^2 - 4ac}
+    " />
+
+    <CSTitle>Quadratic Factorization</CSTitle>
+    <DisplayLatex code="
+            x^2 + bx + c = \parens{x+v} \parens{x+u}
+            \qquad\quad
+            %\MathOverLabel{\text{\ul{sums and products}}}{ % Too much space. Not worth it.
+                \begin{array}{c}
+                    b = u+v \\
+                    c = uv
+                \end{array}
+            %}
+    " />
+
+    <CSTitle>Completing The Square</CSTitle>
+    <DisplayLatex code="
+        x^2 + b x + c
+        = \parens{x + \xmemphR{\brackets{\memphR{\frac{b}{2}}}}}^2
+        + c
+        - \xmemphR{\brackets{\memphR{\frac{b}{2}}}^2}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Quadratic/Cubic Identities</CSTitle>
+    <AlignLatex code="
+        a^2 - b^2 &= \parens{a + b} \parens{a - b} \\
+        a^3 - b^3 &= \parens{a - b} \parens{a^2 + ab + b^2} \\
+        a^3 + b^3 &= \parens{a + b} \parens{a^2 - ab + b^2}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>sin/cos In Terms Of Exponentials</CSTitle>
+
+    Derived from Euler's formula.
+    
+    <AlignLatex code="
+        \sin{x} = \frac{e^{ix} - e^{-ix}}{2i} \\
+        \cos{x} = \frac{e^{ix} + e^{-ix}}{2}
+    " />
+
+    <CSTitle>Hyperbolic Function Exponential Definitions</CSTitle>
+
+    <AlignLatex code="
+        \sinh{x}
+            &= \frac{e^x - e^{-x}}{2}
+            = \frac{e^{2x} - 1}{2 e^x}
+            = \frac{1 - e^{-2x}}{2 e^{-x}} \\
+            %\quad \forall x \in \mathbb{R} \\
+        \cosh{x}
+            &= \frac{e^x + e^{-x}}{2}
+            = \frac{e^{2x} + 1}{2 e^x}
+            = \frac{1 + e^{-2x}}{2 e^{-x}} \\
+            %\quad \forall x \in \mathbb{R} \\
+        \tanh{x}
+            &= \frac{\sinh{x}}{\cosh{x}}
+            = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+            = \frac{e^{2x} - 1}{e^{2x} + 1}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Pythagorean Theorem</CSTitle>
+    <DisplayLatex code="
+        a^2 = b^2 + c^2
+    " />
+
+    <CSTitle>Pythagorean Identities</CSTitle>
+    <GatherLatex code="
+        \sin^2{\theta} + \cos^2{\theta} = 1 \\
+        \tan^2{\theta} + 1 = \sec^2{\theta}
+            \quad \parens{\cos{\theta} \ne 0} \\
+        \cot^2{\theta} + 1 = \csc^2{\theta}
+            \quad \parens{\sin{\theta} \ne 0}
+    " />
+
+    <CSTitle>Complementary Angles</CSTitle>
+    <DisplayLatex code="
+        \sin^{-1}{x} + \cos^{-1}{x} = \frac{\pi}{2}
+    " />
+
+    <CSTitle>Compound Angles</CSTitle>
+    <AlignLatex code="
+        \sin{\parens{\alpha \pm \beta}}
+        &= \sin{\alpha} \cos{\beta } \pm \cos{\alpha} \sin{\beta } \\
+        \cos{\parens{\alpha \pm \beta}}
+        &= \cos{\alpha} \cos{\beta } \mp \sin{\alpha} \sin{\beta } \\
+        \tan{\parens{\alpha \pm \beta}}
+        &= \frac{\tan{\alpha} \pm \tan{\beta}}{1 \mp \tan{\alpha} \tan{\beta}}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Double-Angle Formulae</CSTitle>
+
+    Derived from compound angle formulae.
+    
+    <AlignLatex code="
+        \sin{2 \theta} &= 2 \sin{\theta} \cos{\theta} \\
+        \cos{2 \theta} &= \cos^2{\theta} - \sin^2{\theta}  \, \overbrace{= 2 \cos^2{\theta} - 1} \\
+            &\phantom{{}= \cos^2{\theta} - \sin^2{\theta}} \, \underbrace{= 1 - 2 \sin^2{\theta}}_{
+                %\substack{
+                %    \text{simplified using} \\
+                    \sin^2{\theta} + \cos^2{\theta} = 1
+                %}
+            }\\
+        \tan{2 \theta} &= \frac{2 \tan{\theta}}{1 - \tan^2{\theta}}
+    " />
+
+    <CSTitle>Half-Angle Formulae</CSTitle>
+
+    Derived from the <Latex code="\cos{2 \theta}" /> compound angle formula.
+
+    <AlignLatex code="
+        \sin^2{\theta} &= \frac{1}{2} - \frac{1}{2} \cos{2 \theta} \\
+        \cos^2{\theta} &= \frac{1}{2} + \frac{1}{2} \cos{2 \theta}
+    " />
+
+    <CSTitle>Products to Sums</CSTitle>
+
+    Derived by adding compound angle formulae.
+
+    <AlignatLatex eqcols={8} code="
+         &2 \sin&&{A} && \cos&&{B} &&= \sin&&{\parens{A+B}} &&+ \sin&&{\parens{A-B}} \\
+         &2 \cos&&{A} && \sin&&{B} &&= \sin&&{\parens{A+B}} &&- \sin&&{\parens{A-B}} \\
+         &2 \cos&&{A} && \cos&&{B} &&= \cos&&{\parens{A+B}} &&+ \cos&&{\parens{A-B}} \\
+        -&2 \sin&&{A} && \sin&&{B} &&= \cos&&{\parens{A+B}} &&- \cos&&{\parens{A-B}}
+    " />
+
+    <CSTitle>Sums to Products</CSTitle>
+
+    Derived by reversing Products to Sums.
+
+    <AlignatLatex eqcols={4} code="
+        \sin{S} + \sin{T}
+        &= \phantom{+} 2 \sin&&{\parens{\frac{S+T}{2}}} \cos&&{\parens{\frac{S-T}{2}}} \\
+        \sin{S} - \sin{T}
+        &= \phantom{+} 2 \cos&&{\parens{\frac{S+T}{2}}} \sin&&{\parens{\frac{S-T}{2}}} \\
+        \cos{S} + \cos{T}
+        &= \phantom{+} 2 \cos&&{\parens{\frac{S+T}{2}}} \cos&&{\parens{\frac{S-T}{2}}} \\
+        \cos{S} - \cos{T}
+        &=          -  2 \sin&&{\parens{\frac{S+T}{2}}} \sin&&{\parens{\frac{S-T}{2}}}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Hyperbolic: Difference of Squares</CSTitle>
+    <GatherLatex code="
+        \cosh^2{x} - \sinh^2{x} = 1 \\
+        1 - \tanh^2{x} = \sech^2{x} \\
+        \coth^2{x} - 1 = \csch^2{x}
+    " />
+
+    <CSTitle>Hyperbolic: Sum and Difference Formulae</CSTitle>
+    <AlignLatex code="
+        \sinh{\parens{\alpha \pm \beta}}
+        &= \sinh{\alpha} \cosh{\beta } \pm \cosh{\alpha} \sinh{\beta } \\
+        \cosh{\parens{\alpha \pm \beta}}
+        &= \cosh{\alpha} \cosh{\beta } \pm \sinh{\alpha} \sinh{\beta } \\
+        \tanh{\parens{\alpha \pm \beta}}
+        &= \frac{\tanh{\alpha} \pm \tanh{\beta}}{1 \pm \tanh{\alpha} \tanh{\beta}}
+    " />
+
+    <CSTitle>Hyperbolic: Double-Angle Formulae</CSTitle>
+    <AlignLatex code="
+        \sinh{2x} &= 2 \sinh{x} \cosh{x} \\
+        \cosh{2x} &= \cosh^2{x} + \sinh^2{x} \\
+        \tanh{2x} &= \frac{2 \tanh{x}}{1 + \tanh^2{x}}
+    " />
+</CSFrame>
+
+</CheatsheetBlock>
+

@@ -1,6 +1,6 @@
-span.cheatsheet-frame-title {
-    display: block;
+p.cheatsheet-frame-title {
     font-weight: bold;
     text-decoration: underline;
+    margin-top: 1.6em;
 }
 

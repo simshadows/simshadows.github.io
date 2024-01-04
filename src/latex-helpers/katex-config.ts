@@ -15,7 +15,10 @@ const katexConfig = {
 
         "\\diff": "d",
         "\\evalat": "{{\\left.#1\\right\\rvert{}}_{#2}}",
+        "\\MathOverLabel": "{\\overset{\\substack{#1\\\\\\phantom{x}}}{#2}}",
         "\\myvec": "{\\mathbf{#1}}",
+        "\\MyPermutations": "{{}_{#1}P_{#2}}",
+        "\\MyCombinations": "{{}_{#1}C_{#2}}",
         "\\Nth": "{{#1}^\\textit{#2}}",
         "\\setdef": "{\\left\\{{#1} \\mid {#2}\\right\\}}",
 
@@ -24,6 +27,23 @@ const katexConfig = {
 
         "\\rhs": "\\textit{RHS}",
         "\\lhs": "\\textit{LHS}",
+
+        // Coloured emphasis in math environments.
+        "\\memph": "#1",
+        "\\memphR": "#1",
+        "\\memphRC": "#1",
+        "\\memphO": "#1",
+        "\\memphG": "#1",
+        "\\memphB": "#1",
+        "\\memphBC": "#1",
+        "\\memphP": "#1",
+        "\\memphPC": "#1",
+        // Alternatives if boldfacing is a problem
+        "\\xmemph": "#1",
+        "\\xmemphR": "#1",
+        "\\xmemphG": "#1",
+        "\\xmemphB": "#1",
+        "\\xmemphP": "#1",
 
         // Relational algebra null value
         "\\relnullvalue": "{\\mathord{\\bot}}",

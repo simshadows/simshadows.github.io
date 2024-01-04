@@ -1,0 +1,18 @@
+#exp-log-table {
+    margin: auto;
+    text-align: center;
+}
+#exp-log-table td {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+}
+#exp-log-table tr td:first-child {
+    width: 40%;
+}
+#exp-log-table tr td:last-child {
+    width: 60%;
+}
+#exp-log-table .more-vspace td {
+    padding-top: 1.5em;
+}
+

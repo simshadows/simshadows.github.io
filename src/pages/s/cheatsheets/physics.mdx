@@ -1,0 +1,43 @@
+---
+layout: "@layouts/MDFullWidthLayout.astro"
+title: Physics Cheatsheet
+description: My physics cheatsheet.
+keywords: ["mathematics", "physics"]
+
+hidetoc: true
+---
+
+import Layout from "@layouts/FullWidthLayout.astro";
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+
+import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
+import CSFrame from "@components/cheatsheets/CheatsheetFrame";
+import CSTitle from "@components/cheatsheets/CheatsheetFrameTitle";
+
+import Todo from "@components/Todo";
+
+*This cheatsheet will focus on what's useful for computer science students and programmers.*
+
+<CheatsheetBlock>
+
+<CSFrame>
+    <CSTitle>Frequency vs. Period</CSTitle>
+    <DisplayLatex code="
+        f = \frac{1}{T}
+    " />
+
+    <CSTitle>Angular Velocity</CSTitle>
+    <DisplayLatex code="
+        \omega
+        %= \dot{\theta}
+        = \frac{\diff{\theta}}{\diff{t}}
+        = 2 \pi f = \frac{2 \pi}{T}
+    " />
+</CSFrame>
+
+</CheatsheetBlock>
+
