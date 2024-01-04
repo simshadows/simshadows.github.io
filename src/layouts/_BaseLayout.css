@@ -54,6 +54,14 @@ table {
     padding-right: 18px;
 }
 
+.content-full-width {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 32px; /* TODO: Use media query to make this smaller on mobile? */
+    padding-right: 32px; /* TODO: Use media query to make this smaller on mobile? */
+}
+
 #masthead {
     padding-top: 1.4em;
     padding-bottom: 1.4em;

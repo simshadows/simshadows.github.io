@@ -71,7 +71,7 @@ span.highlight {
 }
 
 /* For center-aligned text */
-p.center {
+.center {
     text-align: center;
 }
 

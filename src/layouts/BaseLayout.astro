@@ -17,6 +17,7 @@ interface Props {
     description: string;
     keywords: string[];
     noRightSidebar?: boolean;
+    fullWidthLayout?: boolean;
 }
 
 const {
@@ -24,6 +25,7 @@ const {
     description,
     keywords,
     noRightSidebar,
+    fullWidthLayout,
 } = Astro.props;
 ---
 
@@ -59,7 +61,7 @@ Full source code is available here:
             </div>
         </div>
         */}
-        <div id="content-wrap" class="content-column">
+        <div id="content-wrap" class={(fullWidthLayout) ? "content-full-width" : "content-column"}>
             <div id="content">
                 <slot />
             </div>
