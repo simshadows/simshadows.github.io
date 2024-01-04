@@ -4,6 +4,11 @@ import {
     COPYRIGHT_YEAR,
     SOURCE_CODE_URL,
 } from "@root/constants";
+
+import ccImg from "./_BaseFooter_images/cc.svg";
+import byImg from "./_BaseFooter_images/by.svg";
+import ncImg from "./_BaseFooter_images/nc.svg";
+import saImg from "./_BaseFooter_images/sa.svg";
 ---
 
 <footer id="footer" class="content-column">
@@ -13,7 +18,7 @@ import {
         This site's source code is available on <a href={SOURCE_CODE_URL}>GitHub</a>.
         <br />
         <br />
-        <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
+        <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src={ccImg.src}><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src={byImg.src}><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src={ncImg.src}><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src={saImg.src}>
     </p>
 </footer>
 
