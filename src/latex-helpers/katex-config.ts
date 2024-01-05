@@ -7,7 +7,7 @@ import rightOuterJoinImg from "@img_latex/rel-right-outer-join.svg";
 const katexConfig = {
     displayMode: true, // To be overwritten
     throwOnError: true,
-    strict: "error",
+    strict: "ignore",
     trust: true,
     macros: {
         "\\csch": "\\operatorname{csch}",
@@ -29,8 +29,9 @@ const katexConfig = {
         "\\lhs": "\\textit{LHS}",
 
         // Coloured emphasis in math environments.
-        "\\memph": "#1",
-        "\\memphR": "#1",
+        //"\\memph": "{\\color{#1}\\bm{#2}}",
+        "\\memph": "{\\htmlStyle{color: var(#1);}{\\bm{#2}}}",
+        "\\memphR": "{\\memph{--color--myred}{#1}}",
         "\\memphRC": "#1",
         "\\memphO": "#1",
         "\\memphG": "#1",
