@@ -19,6 +19,8 @@
     --color--mycontrastpurple: #9900ff;
     --color--mycontrastred:    #f00;
 
+    --color--deemphasis: rgb(166,166,166); /* "Exn" from my LaTeX helpers */
+
     --color--example-frame-fill: #d6e4f0;
     --color--example-frame-border: #90a2b1;
 

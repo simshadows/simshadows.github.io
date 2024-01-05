@@ -1,0 +1,61 @@
+---
+layout: "@layouts/MDFullWidthLayout.astro"
+title: Probability and Statistics Cheatsheet
+description: My cheatsheet for probability and statistics.
+keywords: ["mathematics"]
+
+hidetoc: true
+---
+
+import Layout from "@layouts/FullWidthLayout.astro";
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+
+import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
+import CSFrame from "@components/cheatsheets/CheatsheetFrame";
+import CSTitle from "@components/cheatsheets/CheatsheetFrameTitle";
+
+import Todo from "@components/Todo";
+
+<CheatsheetBlock>
+
+<CSFrame>
+    <CSTitle>Probabilities Arithmetic</CSTitle>
+    <DisplayLatex code="
+        P(A^c) = 1 - P(A)
+    " />
+
+    <DisplayLatex code="
+        P(A|B) = \frac{P(A \cap B)}{P(B)}
+    " />
+
+    <DisplayLatex code="
+        \MathOverLabel{\textbf{Addition Rule}}{%
+            P(A \cup B) = P(A) + P(B) - P(A \cap B)
+        }
+    " />
+
+    <br />If <Latex code="A_1, \dots, A_n" /> partition a sample space and <Latex code="B" /> is an event in the same space, then:
+
+    <DisplayLatex code="
+        \MathOverLabel{\textbf{Multiplication Rule}}{%
+            P(B) = \sum_{i=1}^n{P(B|A_i) \, P(A_i)}
+        }
+    " />
+
+    <DisplayLatex code="
+        \MathOverLabel{\textbf{Bayes' Rule}}{%
+            P\parens{A_j|B} = \frac{
+                P\parens{B|A_j} \, P\parens{A_j}
+            }{
+                \displaystyle \sum_{i=1}^n{P\parens{B|A_i} \, P\parens{A_i}}
+            }
+        }
+    " />
+</CSFrame>
+
+</CheatsheetBlock>
+

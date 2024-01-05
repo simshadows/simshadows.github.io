@@ -1,0 +1,75 @@
+---
+layout: "@layouts/MDFullWidthLayout.astro"
+title: Calculus Cheatsheet
+description: My cheatsheet for calculus.
+keywords: ["mathematics"]
+
+hidetoc: true
+---
+
+import Layout from "@layouts/FullWidthLayout.astro";
+
+import AlignatLatex from "@components/latex/AlignatLatex";
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+
+import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
+import CSFrame from "@components/cheatsheets/CheatsheetFrame";
+import CSTitle from "@components/cheatsheets/CheatsheetFrameTitle";
+
+import Todo from "@components/Todo";
+
+<CheatsheetBlock>
+
+<CSFrame>
+    <CSTitle>First Principles</CSTitle>
+    <DisplayLatex code="
+        \frac{\diff{f\parens{x}}}{\diff{x}}
+        %= \lim_{\delta x \to 0}{\frac{\delta y}{\delta x}}
+        = \lim_{h \to 0}{\frac{f(x+h) - f(x)}{h}}
+        = \lim_{u \to x}{\frac{f(u) - f(x)}{u-x}}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Chain Rule</CSTitle>
+    <DisplayLatex code="
+        \frac{\memphRC{\diff{y}}}{\memphG{\diff{x}}}
+        = \frac{\memphRC{\diff{y}}}{\memphBC{\diff{u}}}
+        \times \frac{\memphBC{\diff{u}}}{\memphG{\diff{x}}}
+    " />
+
+    <CSTitle>Product Rule</CSTitle>
+    <GatherLatex code="
+        \frac{\diff{}}{\diff{x}} \parens{\memphRC{u} \memphG{v}}
+        = \memphRC{u} \memphG{ \frac{\diff{v}}{\diff{x}}}
+        + \memphG{v}  \memphRC{\frac{\diff{u}}{\diff{x}}}
+        \\
+        \frac{\diff{}}{\diff{x}} \parens{\memphRC{u} \memphG{v} \memphBC{w}}
+        = \memphG{v}  \memphBC{w} \memphRC{\frac{\diff{u}}{\diff{x}}}
+        + \memphRC{u} \memphBC{w} \memphG{ \frac{\diff{v}}{\diff{x}}}
+        + \memphRC{u} \memphG{v}  \memphBC{\frac{\diff{w}}{\diff{x}}}
+    " />
+
+    <CSTitle>Quotient Rule</CSTitle>
+    <DisplayLatex code="
+        \frac{\diff{}}{\diff{x}}{\parens{\frac{\memphRC{a}}{\memphBC{u}}}}
+        = \frac{
+            \displaystyle
+            \memphBC{u} \memphRC{\frac{\diff{a}}{\diff{x}}}
+            - \memphRC{a} \memphBC{\frac{\diff{u}}{\diff{x}}}
+        }{
+            \memphBC{u}^2
+        }
+        = \frac{
+            \memphBC{u} \memphRC{a'} - \memphRC{a} \memphBC{u'}
+        }{
+            \memphBC{u}^2
+        }
+    " />
+</CSFrame>
+
+</CheatsheetBlock>
+

@@ -23,7 +23,9 @@ import Todo from "@components/Todo";
 
 import "./_precalc.css"; //_
 
-*This cheatsheet generally covers anything that is typically taught before calculus and linear algebra, and doesn't fit in the [Discrete Mathematics](../discrete/) cheatsheet.*
+*This cheatsheet generally covers anything that is typically taught before calculus, including linear algebra and a bit of complex numbers.*
+
+*The [Discrete Mathematics](../discrete/) and [Probability and Statistics](../stats/) cheatsheets also contain some precalculus missing from this cheatsheet.*
 
 <CheatsheetBlock>
 
@@ -383,6 +385,341 @@ import "./_precalc.css"; //_
         \sinh{2x} &= 2 \sinh{x} \cosh{x} \\
         \cosh{2x} &= \cosh^2{x} + \sinh^2{x} \\
         \tanh{2x} &= \frac{2 \tanh{x}}{1 + \tanh^2{x}}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Imaginary Unit</CSTitle>
+    <DisplayLatex code="
+        i^2 = -1
+    " />
+
+    <CSTitle>Euler's Formula</CSTitle>
+    <DisplayLatex code="
+        e^{i \theta}
+        = \cos{\theta} + i \sin{\theta}, \qquad \forall \theta \in \Reals
+    " />
+
+    <CSTitle>Complex Number Representation</CSTitle>
+    <GatherLatex code="
+        a, b, r, \theta \in \mathbb{R}
+        \\
+        \begin{alignedat}{2}
+            z
+                &= a + ib &
+                    \qquad & \text{(Rectangular Form)} \\
+                &= r(\cos{\theta} + i \sin{\theta}) &
+                    \qquad & \text{(Polar Form)} \\
+                &= r e^{i \theta} &
+                    \qquad & \text{(Exponential Form)} \\
+                &= r \phase{\theta} &
+                    \qquad & \text{(Steinmetz Notation)} \\
+                &\mathbin{\Exn{=}} \Exn{r \cis{\theta}} &
+                    \qquad & \Exn{\text{(cis Form) \footnotesize [rarely used]}}
+        \end{alignedat}%
+    " />
+
+    <AlignatLatex eqcols={3} code="
+        \MyRe{(z)}  &= a      &&= r \cos{\theta} \phantom{\frac{}{a}} &
+            \qquad & \text{(Real Part)} \\
+        \MyIm{(z)}  &= b      &&= r \sin{\theta} \phantom{\frac{b}{a}} &
+            \qquad & \text{(Imaginary Part)} \\
+        \abs{z}    &= r      &&= \sqrt{a^2 + b^2} \phantom{\frac{b}{a}} &
+            \qquad & \text{(Modulus)} \\
+        \arg{(z)}   &= \theta &&= \atantwo{\parens{b, a}} &
+            \qquad & \text{(Argument)}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Complex Conjugate</CSTitle>
+    <DisplayLatex code="
+        \complexconjugate{a + ib}
+        = \parens{a + ib}^*
+        = a - ib
+    " />
+
+    Useful identities:
+
+    <GatherLatex code="
+        z \complexconjugate{z} = \abs{z}^2 \\
+        \parens{a + ib} \complexconjugate{\parens{a + ib}}
+        = \parens{a + ib} \parens{a - ib} = a^2 + b^2
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Dot Product / Scalar Product</CSTitle>
+
+    In <Latex code="\Reals^n" />:
+
+    <DisplayLatex code="
+        \mathbf{a} \cdot \mathbf{b} = a_1 b_1 + \cdots + a_n b_n = \sum_{k=0}^n{a_k b_k}
+    " />
+
+    In <Latex code="\Reals^2" /> or <Latex code="\Reals^3" />:
+
+    <DisplayLatex code="
+        \mathbf{a} \cdot \mathbf{b} = \abs{\mathbf{a}} \abs{\mathbf{b}} \cos{\theta}
+        ,\qquad \theta \in [0, \pi]
+    " />
+
+    Useful geometric properties:
+    - <Latex code="\mathbf{a} \cdot \mathbf{a} = \abs{a}^2" />, hence <Latex code="\abs{\mathbf{a}} = \sqrt{\mathbf{a} \cdot \mathbf{a}}" />.
+    - Vectors <Latex code="\mathbf{a}, \mathbf{b} \in \mathbb{R}^n" /> are orthogonal if <Latex code="\mathbf{a} \cdot \mathbf{b} = 0" />.
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Cross Product / Vector Product</CSTitle>
+
+    The *cross product* is only defined in <Latex code="\mathbb{R}^3" />.
+    <DisplayLatex code="
+        \begin{pmatrix}
+            a_1 \\
+            a_2 \\
+            a_3
+        \end{pmatrix}
+        \times
+        \begin{pmatrix}
+            b_1 \\
+            b_2 \\
+            b_3
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            a_2 b_3 - a_3 b_2 \\
+            a_3 b_1 - a_1 b_3 \\
+            a_1 b_2 - a_2 b_1
+        \end{pmatrix}
+    " />
+
+    Calculation using determinants:
+
+    <GatherLatex code="
+            \begin{pmatrix}
+                a_1 \\
+                a_2 \\
+                a_3
+            \end{pmatrix}
+            \times
+            \begin{pmatrix}
+                b_1 \\
+                b_2 \\
+                b_3
+            \end{pmatrix}
+            =
+            \begin{vmatrix}
+                \mathbf{e}_1 & \mathbf{e}_2 & \mathbf{e}_3 \\
+                a_1          & a_2          & a_3          \\
+                b_1          & b_2          & b_3
+            \end{vmatrix}
+        \\
+            =
+            \mathbf{e}_1
+            \begin{vmatrix}
+                \memphR{a_2} & \memphB{a_3} \\
+                \memphB{b_2} & \memphR{b_3}
+            \end{vmatrix}
+            -
+            \mathbf{e}_2
+            \begin{vmatrix}
+                \memphR{a_1} & \memphB{a_3} \\
+                \memphB{b_1} & \memphR{b_3}
+            \end{vmatrix}
+            +
+            \mathbf{e}_3
+            \begin{vmatrix}
+                \memphR{a_1} & \memphB{a_2} \\
+                \memphB{b_1} & \memphR{b_2}
+            \end{vmatrix}
+        \\
+            \begin{aligned}
+                = \mathbf{e}_1 &\parens{\memphR{a_2 b_3} - \memphB{a_3 b_2}} \\
+                &- \mathbf{e}_2 \parens{\memphR{a_1 b_3} - \memphB{a_3 b_1}} \\
+                &+ \mathbf{e}_3 \parens{\memphR{a_1 b_2} - \memphB{a_2 b_1}}
+            \end{aligned}
+    " />
+
+    Useful geometric properties:
+    - Vector <Latex code="\mathbf{a} \times \mathbf{b}" /> is orthogonal to <Latex code="\mathbf{a}" /> and <Latex code="\mathbf{b}" />.
+    - <Latex code="\abs{\mathbf{a} \times \mathbf{b}} = \abs{\mathbf{a}} \abs{\mathbf{b}} \sin{\theta} = \text{area of a parallelogram}" />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Cramer's Rule</CSTitle>
+
+    Consider the following linear system with <Latex code="n \times n" /> invertible matrix <Latex code="A" />:
+
+    <DisplayLatex code="
+        A \mathbf{x} = \mathbf{b}
+        ,\qquad A \in M_{nn},\ \mathbf{x} \in \mathbb{R}^n,\ \mathbf{b} \in \mathbb{R}^n
+    " />
+
+    The system has a unique solution:
+
+    <DisplayLatex code="
+        x_k = \frac{\det{\parens{B_k}}}{\det{\parens{A}}}
+        ,\qquad \forall k = 1, \dots, n,
+    " />
+
+    where <Latex code="B_k" /> is the matrix obtained from <Latex code="A" /> by replacing the <Latex code="\Nth{k}{th}" /> column with the vector <Latex code="\mathbf{b}" />.
+
+    <CSTitle>Cramer's Rule, <Latex code="2 \times 2" /> Matrix</CSTitle>
+
+    <DisplayLatex code="
+        \begin{dcases}
+            \xmemphB{a_{11}} x + \xmemphB{a_{12}} y = \xmemphR{b_1} \\
+            \xmemphB{a_{21}} x + \xmemphB{a_{22}} y = \xmemphR{b_2}
+        \end{dcases}
+        \quad \Rightarrow \quad
+            \xmemphB{
+                \begin{bmatrix}
+                    a_{11} & a_{12} \\
+                    a_{21} & a_{22}
+                \end{bmatrix}
+            }
+            \begin{bmatrix}
+                x \\
+                y
+            \end{bmatrix}
+            =
+            \xmemphR{
+                \begin{bmatrix}
+                    b_1 \\
+                    b_2
+                \end{bmatrix}
+            }
+    " />
+
+    <DisplayLatex code="
+        x
+            = \frac{
+                \xmemphB{
+                    \begin{vmatrix}
+                        \xmemphR{b_1} & a_{12} \\
+                        \xmemphR{b_2} & a_{22}
+                    \end{vmatrix}
+                }
+            }{
+                \xmemphB{
+                    \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        a_{21} & a_{22}
+                    \end{vmatrix}
+                }
+            }
+            ,\qquad
+        y
+            = \frac{
+                \xmemphB{
+                    \begin{vmatrix}
+                        a_{11} & \xmemphR{b_1} \\
+                        a_{21} & \xmemphR{b_2}
+                    \end{vmatrix}
+                }
+            }{
+                \xmemphB{
+                    \begin{vmatrix}
+                        a_{11} & a_{12} \\
+                        a_{21} & a_{22}
+                    \end{vmatrix}
+                }
+            }
+    " />
+
+    <CSTitle>Cramer's Rule, <Latex code="3 \times 3" /> Matrix</CSTitle>
+
+    <DisplayLatex code="
+        \begin{dcases}
+            \xmemphB{a_{11}} x + \xmemphB{a_{12}} y + \xmemphB{a_{13}} z = \xmemphR{b_1} \\
+            \xmemphB{a_{21}} x + \xmemphB{a_{22}} y + \xmemphB{a_{23}} z = \xmemphR{b_2} \\
+            \xmemphB{a_{31}} x + \xmemphB{a_{32}} y + \xmemphB{a_{33}} z = \xmemphR{b_3}
+        \end{dcases}
+    " />
+
+    <DisplayLatex code="
+        \xmemphB{
+            \begin{bmatrix}
+                a_{11} & a_{12} & a_{13} \\
+                a_{21} & a_{22} & a_{23} \\
+                a_{31} & a_{32} & a_{33}
+            \end{bmatrix}
+        }
+        \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix}
+        =
+        \xmemphR{
+            \begin{bmatrix}
+                b_1 \\
+                b_2 \\
+                b_3
+            \end{bmatrix}
+        }
+    " />
+
+    <DisplayLatex code="
+        x
+            = \frac{
+                \xmemphB{
+                    \begin{vmatrix}
+                        \xmemphR{b_1} & a_{12} & a_{13} \\
+                        \xmemphR{b_2} & a_{22} & a_{23} \\
+                        \xmemphR{b_3} & a_{32} & a_{33}
+                    \end{vmatrix}
+                }
+            }{
+                \xmemphB{
+                    \begin{vmatrix}
+                        a_{11} & a_{12} & a_{13} \\
+                        a_{21} & a_{22} & a_{23} \\
+                        a_{31} & a_{32} & a_{33}
+                    \end{vmatrix}
+                }
+            }
+            ,\qquad
+        y
+            = \frac{
+                \xmemphB{
+                    \begin{vmatrix}
+                        a_{11} & \xmemphR{b_1} & a_{13} \\
+                        a_{21} & \xmemphR{b_2} & a_{23} \\
+                        a_{31} & \xmemphR{b_3} & a_{33}
+                    \end{vmatrix}
+                }
+            }{
+                \xmemphB{
+                    \begin{vmatrix}
+                        a_{11} & a_{12} & a_{13} \\
+                        a_{21} & a_{22} & a_{23} \\
+                        a_{31} & a_{32} & a_{33}
+                    \end{vmatrix}
+                }
+            }
+            ,
+    " />
+
+    <DisplayLatex code="
+        z
+            = \frac{
+                \xmemphB{
+                    \begin{vmatrix}
+                        a_{11} & a_{12} & \xmemphR{b_1} \\
+                        a_{21} & a_{22} & \xmemphR{b_2} \\
+                        a_{31} & a_{32} & \xmemphR{b_3}
+                    \end{vmatrix}
+                }
+            }{
+                \xmemphB{
+                    \begin{vmatrix}
+                        a_{11} & a_{12} & a_{13} \\
+                        a_{21} & a_{22} & a_{23} \\
+                        a_{31} & a_{32} & a_{33}
+                    \end{vmatrix}
+                }
+            }
     " />
 </CSFrame>
 
