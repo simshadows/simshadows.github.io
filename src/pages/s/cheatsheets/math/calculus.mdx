@@ -71,5 +71,47 @@ import Todo from "@components/Todo";
     " />
 </CSFrame>
 
+<CSFrame>
+    <CSTitle>Notation of Second Order Partial Derivatives</CSTitle>
+
+    Consider a function of two variables <Latex code="f(x, y)" />.
+
+    <AlignatLatex
+        eqcols={4}
+        moreMacros={{
+            "\\Fun":    "\\memphG{f}",
+            "\\X":      "\\memphBC{x}",
+            "\\Y":      "\\memphRC{y}",
+            "\\DFun":   "\\memphG{\\partial{f}}",
+            "\\DX":     "\\memphBC{\\partial{x}}",
+            "\\DY":     "\\memphRC{\\partial{y}}",
+            "\\DsqFun": "\\memphG{\\partial^2{f}}",
+            "\\DXsq":   "\\memphBC{\\partial{x}^2}",
+            "\\DYsq":   "\\memphRC{\\partial{y}^2}"
+        }}
+        code="
+            \frac{\DsqFun}{\DXsq}
+                &= \frac{\partial{}}{\DX} && \parens{\frac{\DFun}{\DX}} &
+                &= (\memphG{f}_{\X})_{\X} &
+                &= \memphG{f}_{\X \X}
+                \\
+            \frac{\DsqFun}{\DYsq}
+                &= \frac{\partial{}}{\DY} && \parens{\frac{\DFun}{\DY}} &
+                &= (\memphG{f}_{\Y})_{\Y} &
+                &= \memphG{f}_{\Y \Y}
+                \\[2em]
+            \frac{\DsqFun}{\DY \, \DX}
+                &= \frac{\partial{}}{\DY} && \parens{\frac{\DFun}{\DX}} &
+                &= (\memphG{f}_{\X})_{\Y} &
+                &= \memphG{f}_{\X \Y}
+                \\
+            \frac{\DsqFun}{\DX \, \DY}
+                &= \frac{\partial{}}{\DX} && \parens{\frac{\DFun}{\DY}} &
+                &= (\memphG{f}_{\Y})_{\X} &
+                &= \memphG{f}_{\Y \X}
+        "
+    />
+</CSFrame>
+
 </CheatsheetBlock>
 

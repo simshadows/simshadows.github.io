@@ -11,7 +11,7 @@ interface Props {
 
 export default function GatherLatex({code}: Props) {
     const newCode = `\\begin{gather*} ${code} \\end{gather*}`;
-    const rawHTML = katex.renderToString(newCode, getConfig(true));
+    const rawHTML = katex.renderToString(newCode, getConfig(true, {}));
     return <p><div
         class="display-latex horizontally-scrolling-box"
         dangerouslySetInnerHTML={{__html: rawHTML}}

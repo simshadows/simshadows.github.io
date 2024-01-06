@@ -11,7 +11,7 @@ interface Props {
 
 export default function AlignLatex({code}: Props) {
     const newCode = `\\begin{align*} ${code} \\end{align*}`;
-    const rawHTML = katex.renderToString(newCode, getConfig(true));
+    const rawHTML = katex.renderToString(newCode, getConfig(true, {}));
     return <p><div
         class="display-latex horizontally-scrolling-box"
         dangerouslySetInnerHTML={{__html: rawHTML}}

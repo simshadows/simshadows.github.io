@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function Latex({code}: Props) {
-    const rawHTML = katex.renderToString(code, getConfig(false));
+    const rawHTML = katex.renderToString(code, getConfig(false, {}));
     return <span dangerouslySetInnerHTML={{__html: rawHTML}} />;
 }
 

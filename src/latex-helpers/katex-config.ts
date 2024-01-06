@@ -108,8 +108,8 @@ const katexConfig = {
     },
 }
 
-export function getConfig(displayMode: boolean) {
-    const deepcopy = {...katexConfig, macros: {...katexConfig.macros}};
+export function getConfig(displayMode: boolean, moreMacros: {[key: string]: string;}) {
+    const deepcopy = {...katexConfig, macros: {...katexConfig.macros, ...moreMacros}};
     deepcopy.displayMode = displayMode;
     return deepcopy;
 }
