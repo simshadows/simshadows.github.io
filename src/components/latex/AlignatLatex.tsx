@@ -10,7 +10,7 @@ export default function AlignatLatex(props: Props) {
     if (eqcols % 1) throw new Error("`eqcols` must be an integer.");
     return <BaseLatex
         {...props}
-        code={`\\begin{alignat*}{${eqcols}} lmao ${code} \\end{alignat*}`}
+        code={`\\begin{alignat*}{${eqcols}} ${code} \\end{alignat*}`}
         displayStyle={true}
     />;
 }
