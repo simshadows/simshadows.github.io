@@ -1,20 +1,13 @@
-import katex from "katex";
-import "katex/dist/katex.min.css";
+import {type ComponentProps} from "preact";
 
-import "./DisplayLatex.css";
+import DisplayLatex from "@components/latex/DisplayLatex";
 
-import {getConfig} from "@root/latex-helpers/katex-config";
+type Props = ComponentProps<typeof DisplayLatex>;
 
-interface Props {
-    readonly code: string;
-}
-
-export default function GatherLatex({code}: Props) {
-    const newCode = `\\begin{gather*} ${code} \\end{gather*}`;
-    const rawHTML = katex.renderToString(newCode, getConfig(true, {}));
-    return <p><div
-        class="display-latex horizontally-scrolling-box"
-        dangerouslySetInnerHTML={{__html: rawHTML}}
-    /></p>;
+export default function GatherLatex(props: Props) {
+    return <DisplayLatex
+        {...props}
+        code={`\\begin{gather*} ${props.code} \\end{gather*}`}
+    />;
 }
 
