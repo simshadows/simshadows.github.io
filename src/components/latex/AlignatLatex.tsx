@@ -1,17 +1,17 @@
-import {type ComponentProps} from "preact";
+import {type PropsTemplate, checkLatexProps, BaseLatex} from "./_base-latex";
 
-import DisplayLatex from "@components/latex/DisplayLatex";
-
-type Props = ComponentProps<typeof DisplayLatex> & {
+type Props = PropsTemplate & {
     readonly eqcols: number;
 }
 
 export default function AlignatLatex(props: Props) {
+    checkLatexProps(props);
     const {code, eqcols} = props;
     if (eqcols % 1) throw new Error("`eqcols` must be an integer.");
-    return <DisplayLatex
+    return <BaseLatex
         {...props}
-        code={`\\begin{alignat*}{${eqcols}} ${code} \\end{alignat*}`}
+        code={`\\begin{alignat*}{${eqcols}} lmao ${code} \\end{alignat*}`}
+        displayStyle={true}
     />;
 }
 

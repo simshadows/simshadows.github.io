@@ -1,13 +1,11 @@
-import {type ComponentProps} from "preact";
+import {type PropsTemplate, checkLatexProps, BaseLatex} from "./_base-latex";
 
-import DisplayLatex from "@components/latex/DisplayLatex";
-
-type Props = ComponentProps<typeof DisplayLatex>;
-
-export default function GatherLatex(props: Props) {
-    return <DisplayLatex
+export default function GatherLatex(props: PropsTemplate) {
+    checkLatexProps(props);
+    return <BaseLatex
         {...props}
         code={`\\begin{gather*} ${props.code} \\end{gather*}`}
+        displayStyle={true}
     />;
 }
 
