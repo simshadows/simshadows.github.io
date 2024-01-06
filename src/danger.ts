@@ -1,7 +1,6 @@
 /*
  * Filename: danger.ts
  * Author:   simshadows <contact@simshadows.com>
- * License:  Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC-BY-NC-SA-4.0)
  *
  * Spooky type checker overrides are defined here. We should aim to remove these
  * overrides whenever possible.
