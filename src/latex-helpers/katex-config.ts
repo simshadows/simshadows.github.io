@@ -18,6 +18,7 @@ const katexConfig = {
         "\\MyIm": "\\operatorname{Im}",
 
         "\\complexconjugate": "\\overline{#1}",
+        "\\defeq": "\\mathbin{\\vcentcolon=}",
         "\\diff": "d",
         "\\evalat": "{{\\left.#1\\right\\rvert{}}_{#2}}",
         "\\MathOverLabel": "{\\overset{\\substack{#1\\\\\\phantom{x}}}{#2}}",

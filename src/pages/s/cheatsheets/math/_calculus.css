@@ -1,0 +1,16 @@
+div.common-integrals-1col {
+    max-width: 58em;
+    margin: auto;
+}
+
+div.common-integrals-2col {
+    column-width: 28em;
+    column-gap: 1em;
+
+    max-width: 58em;
+    margin: auto;
+}
+
+div.common-integrals-2col > * {
+}
+

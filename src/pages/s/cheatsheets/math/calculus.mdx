@@ -19,11 +19,70 @@ import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
 import CSFrame from "@components/cheatsheets/CheatsheetFrame";
 import CSTitle from "@components/cheatsheets/CheatsheetFrameTitle";
 
+import Exn from "@components/Exn";
 import Todo from "@components/Todo";
+
+import "./_calculus.css"; //_
 
 <CheatsheetBlock>
 
-<CSFrame>
+<CSFrame wide>
+    <CSTitle>Common Integrals</CSTitle>
+
+    <Exn>*Note: Constant of integration <Latex code="+C" /> and trivial domain restrictions (usually <Latex code="a \ne 0" />) omitted for brevity except in places of particular significance.*</Exn>
+
+    <div class="common-integrals-1col">
+        <AlignatLatex
+            eqcols={2}
+            code="
+                &\int{\parens{ax + b}^n \,\diff{x}} = \frac{\parens{ax + b}^{n+1}}{a \parens{n+1}}
+                    ,\quad
+                    &&\Exn{
+                        %a \ne 0
+                        n \neq -1
+                        ;\ x \neq 0
+                        ,\ \text{if } n < 0
+                    }
+                    %&&
+                    %\qquad
+                    %{\color{extranotecolor}
+                    %    \frac{\diff{}}{\diff{x}} \parens{x^n} = n x^{n-1}
+                    %}
+                    %&&
+                    %\qquad
+                    %{\color{extranotecolor}
+                    %    \int{x^n \,\diff{x}} = \frac{1}{n+1} x^{n+1}
+                    %}
+                    \\
+                &\int{\frac{1}{ax + b} \,\diff{x}} = \frac{1}{a} \ln{\abs{ax + b}} + C
+                    = \frac{1}{a} \ln{\abs{K(ax + b)}}
+                    ,\quad
+                    &&\Exn{
+                        C = \frac{1}{a} \ln{K}
+                        %;\ a \ne 0
+                        ;\ ax + b \ne 0
+                    }
+                    %&&
+                    %\qquad
+                    %{\color{extranotecolor}
+                    %    \frac{\diff{}}{\diff{x}} \parens{\ln{x}} = \frac{1}{x}
+                    %}
+                    %&&
+                    %\qquad
+                    %{\color{extranotecolor}
+                    %    \int{\frac{1}{x} \,\diff{x}} = \ln{\abs{x}}
+                    %}
+            "
+        />
+    </div>
+    <div class="common-integrals-2col">
+        <p><Todo>Add more.</Todo></p>
+
+        <p><Todo>Add more.</Todo></p>
+    </div>
+</CSFrame>
+
+<CSFrame afterWide>
     <CSTitle>First Principles</CSTitle>
     <DisplayLatex code="
         \frac{\diff{f\parens{x}}}{\diff{x}}
@@ -111,6 +170,100 @@ import Todo from "@components/Todo";
                 &= \memphG{f}_{\Y \X}
         "
     />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Equality of Mixed Partials</CSTitle>
+
+    Consider a function of two variables <Latex code="f(x, y)" />.
+    
+    If <Latex code="f" /> and all of its first and second order partial derivatives are continuous, then:
+
+    <DisplayLatex
+        moreMacros={{
+            "\\DsqFun": "\\memphG{\\partial^2{f}}",
+            "\\DX": "\\memphBC{\\partial{x}}",
+            "\\DY": "\\memphRC{\\partial{y}}",
+        }}
+        code="
+            \frac{\DsqFun}{\DX \, \DY}
+            = \frac{\DsqFun}{\DY \, \DX}
+        "
+    />
+
+    <Todo>This apparently generalizes to higher derivatives. Rewrite this and find a good source about continuity requirements.</Todo>
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Reverse Chain Rule</CSTitle>
+    <DisplayLatex code="
+        \int{\memphRC{f'(x)} \, \memphBC{g(}\memphRC{f(x)}\memphBC{)} \,\diff{x}}
+            = \memphBC{g'(}\memphRC{f(x)}\memphBC{)} + C
+    " />
+
+    <CSTitle>Integration By Substitution</CSTitle>
+    <DisplayLatex code="
+        \memphRC{u} \defeq \memphRC{\varphi(x)}
+        \\
+        \begin{aligned}
+            \int_a^b{\memphBC{f(x)} \,\diff{x}}
+            &= \int_a^b{
+                \memphRC{\varphi'(x)}
+                \, \memphBC{f(\memphRC{\varphi(x)})}
+                \, \diff{x}
+            }
+            \\
+            &= \int_a^b{
+                \memphRC{\frac{\diff{u}}{\diff{x}}}
+                \, \memphBC{f(\memphRC{u})}
+                \, \diff{x}
+            }
+            = \int_{\memphRC{\varphi(a)}}^{\memphRC{\varphi(b)}}{
+                \, \memphBC{f(\memphRC{u})}
+                \, \memphRC{\diff{u}}
+            }
+        \end{aligned}
+    " />
+
+    <CSTitle>Integration By Parts</CSTitle>
+    <DisplayLatex code="
+        \int{\memphRC{f(x)} \, \memphBC{G(x)} \,\diff{x}}
+        = \memphRC{F(x)} \, \memphBC{G(x)} - \int{\memphRC{F(x)} \, \memphBC{g(x)} \,\diff{x}}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Flipped Integration Bounds</CSTitle>
+    <DisplayLatex code="
+        \int_a^b f\parens{x} \,\diff{x}
+        = - \int_b^a f\parens{x} \,\diff{x}
+    " />
+
+    <CSTitle>Leibniz Integral Rule</CSTitle>
+    <AlignLatex code="
+        &\frac{\diff{}}{\diff{x}}
+        \int_{b\parens{x}}^{a\parens{x}} f\parens{x,y} \,\diff{y}
+        = f \parens{x, a\parens{x}} \frac{\diff{}}{\diff{x}} a\parens{x}
+        \\
+        &\qquad
+        - f \parens{x, b\parens{x}} \frac{\diff{}}{\diff{x}} b\parens{x}
+        + \int_{b\parens{x}}^{a\parens{x}}{
+            \frac{\partial{}}{\partial{x}} f\parens{x,y} \,\diff{y}
+        }
+    " />
+
+    If the limits are constants:
+
+    <GatherLatex code="
+        \frac{\diff{}}{\diff{x}}
+        \int_b^a f\parens{x,y} \,\diff{y}
+        = \int_b^a \frac{\partial{}}{\partial{x}} f\parens{x,y} \,\diff{y}
+        %\\
+        %\frac{\diff{}}{\diff{x}}
+        %\int_b^x f\parens{x,y} \,\diff{y}
+        %= f\parens{x, x}
+        %+ \int_b^x \frac{\partial{}}{\partial{x}} f\parens{x,y} \,\diff{y}
+    " />
 </CSFrame>
 
 </CheatsheetBlock>

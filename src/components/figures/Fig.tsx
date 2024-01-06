@@ -6,7 +6,7 @@ interface Props {
     readonly children: JSXChildren;
 }
 
-export default function Figure({children}: Props) {
+export default function Fig({children}: Props) {
     return <div className="figure">
         {children}
     </div>;

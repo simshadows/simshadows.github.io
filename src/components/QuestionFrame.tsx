@@ -6,7 +6,7 @@ interface Props {
     readonly children: JSXChildren;
 }
 
-export default function Centered({children}: Props) {
+export default function QuestionFrame({children}: Props) {
     return <p><div className="question-frame">
         <div className="question-frame-content">
             {children}
