@@ -1,6 +1,6 @@
 div.cheatsheet-frame {
     border: thin solid black;
-    padding: 0.6em;
+    padding: 0.7em;
 }
 div.cheatsheet-frame.wide {
     column-span: all;

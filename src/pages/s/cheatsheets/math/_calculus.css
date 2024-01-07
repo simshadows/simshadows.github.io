@@ -1,25 +1,25 @@
-div.common-integrals-1col {
-    max-width: 69em;
-    margin: auto;
-    padding-top: 0.8em;
-    padding-bottom: 0.8em;
+div.common-integrals-cols {
+    width: 100%;
+    column-width: 53em;
+    column-rule: solid thin var(--color--deemphasis); /* TODO: Better colour? */
 }
-
-div.common-integrals-2col {
-    column-width: 34em;
-    column-gap: 1em;
-
-    max-width: 69em;
-    margin: auto;
-    padding-top: 0.8em;
-    padding-bottom: 0.8em;
-}
-
-div.common-integrals-2col > * {
+div.common-integrals-cols > div {
     break-inside: avoid;
+    margin: 0;
 }
 
-div.common-integrals-2col > * > * {
+div.common-integrals-frame-1col {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+div.common-integrals-frame-2col {
+    column-width: 26em;
+}
+div.common-integrals-frame-2col > div {
+    break-inside: avoid;
     margin: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
