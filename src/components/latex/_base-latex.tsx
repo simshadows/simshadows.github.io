@@ -13,6 +13,7 @@ import {getConfig} from "@root/latex-helpers/katex-config";
 export interface PropsTemplate {
     readonly code: string;
     readonly moreMacros?: {[key: string]: string;};
+    readonly fleqn?: boolean;
 }
 
 type Props = PropsTemplate & {
@@ -37,7 +38,8 @@ export function BaseLatex(props: Props) {
         throw new Error("`moreMacros` must be an object.");
     }
     if (!("displayStyle" in props)) throw new Error("`displayStyle` must exist.");
-    const rawHTML = katex.renderToString(props.code, getConfig(props.displayStyle, moreMacros));
+    const rendererConfig = getConfig(props.displayStyle, moreMacros, !!props.fleqn);
+    const rawHTML = katex.renderToString(props.code, rendererConfig);
     if (props.displayStyle) {
         return <p><div
             class="display-latex horizontally-scrolling-box"

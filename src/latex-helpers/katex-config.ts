@@ -6,6 +6,7 @@ import rightOuterJoinImg from "@img_latex/rel-right-outer-join.svg";
 
 const katexConfig = {
     displayMode: true, // To be overwritten
+    fleqn: false, // To be overwritten
     throwOnError: true,
     strict: "ignore",
     trust: true,
@@ -14,14 +15,20 @@ const katexConfig = {
         "\\cis": "\\operatorname{cis}",
         "\\csch": "\\operatorname{csch}",
         "\\sech": "\\operatorname{sech}",
+        "\\SignFunction": "\\operatorname{sgn}",
         "\\MyRe": "\\operatorname{Re}",
         "\\MyIm": "\\operatorname{Im}",
+
+        "\\FourierTransform": "\\mathcal{F}",
+        "\\LaplaceTransform": "\\mathcal{L}",
 
         "\\complexconjugate": "\\overline{#1}",
         "\\defeq": "\\mathbin{\\vcentcolon=}",
         "\\diff": "d",
         "\\evalat": "{{\\left.#1\\right\\rvert{}}_{#2}}",
+        "\\IntegerSet": "\\mathbb{Z}",
         "\\MathOverLabel": "{\\overset{\\substack{#1\\\\\\phantom{x}}}{#2}}",
+        "\\myul": "\\underline{#1}",
         "\\myvec": "{\\mathbf{#1}}",
         "\\MyPermutations": "{{}_{#1}P_{#2}}",
         "\\MyCombinations": "{{}_{#1}C_{#2}}",
@@ -50,6 +57,7 @@ const katexConfig = {
         "\\xmemphR": "{\\xmemph{--color--myred}{#1}}",
         //"\\xmemphG": "#1",
         "\\xmemphB": "{\\xmemph{--color--myblue}{#1}}",
+        "\\xmemphBC": "{\\xmemph{--color--mycontrastblue}{#1}}",
         //"\\xmemphP": "#1",
         // De-emphasis
         "\\Exn": "{\\htmlStyle{color: var(--color--deemphasis);}{#1}}",
@@ -109,9 +117,14 @@ const katexConfig = {
     },
 }
 
-export function getConfig(displayMode: boolean, moreMacros: {[key: string]: string;}) {
+export function getConfig(
+    displayMode: boolean,
+    moreMacros: {[key: string]: string;},
+    fleqn: boolean,
+) {
     const deepcopy = {...katexConfig, macros: {...katexConfig.macros, ...moreMacros}};
     deepcopy.displayMode = displayMode;
+    deepcopy.fleqn = fleqn;
     return deepcopy;
 }
 
