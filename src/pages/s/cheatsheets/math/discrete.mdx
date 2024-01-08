@@ -35,6 +35,15 @@ import Todo from "@components/Todo";
         \qquad\qquad
         0! = 1
     " />
+
+    Recursive definition:
+    <DisplayLatex code="
+        0! = 1
+        \qquad\qquad
+        n! = n \parens{n - 1} !
+    " />
+
+    <Todo>Binet's formula?</Todo>
 </CSFrame>
 
 <CSFrame>
@@ -52,5 +61,50 @@ import Todo from "@components/Todo";
     " />
 </CSFrame>
 
+<CSFrame>
+    <Todo>Notation? I don't think the notation I'm using here is common in mathematics.</Todo>
+
+    <CSTitle>Distributive Laws</CSTitle>
+    <GatherLatex code="
+        A \cdot (B + C) = (A \cdot B) + (A \cdot C) \\
+        A + (B \cdot C) = (A + B) \cdot (A + C)
+    " />
+
+    <CSTitle>Absorption Laws</CSTitle>
+    <GatherLatex code="
+        A + (A \cdot B) = A \\
+        A \cdot (A + B) = A \\
+        (A \cdot B) + (A \cdot \overline{B}) = A \\
+        (A + B) \cdot (A + \overline{B}) = A
+    " />
+
+    <CSTitle>De Morgan's Theorem</CSTitle>
+    <GatherLatex code="
+        \overline{A + B} = \overline{A} \cdot \overline{B} \\
+        \overline{A \cdot B} = \overline{A} + \overline{B}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Modular Arithmetic Properties</CSTitle>
+    <AlignLatex code="
+        \parens{a + b} \bmod m
+            &= \parens{\parens{a \bmod m} + \parens{b \bmod m}} \bmod m
+            \\
+        \parens{a - b} \bmod m
+            &= \parens{\parens{a \bmod m} - \parens{b \bmod m}} \bmod m
+            \\
+        \parens{a \times b} \bmod m
+            &= \parens{\parens{a \bmod m} \parens{b \bmod m}} \bmod m
+    " />
+</CSFrame>
+
 </CheatsheetBlock>
+
+
+# References
+
+- *Competitive Programmer's Handbook* by Antti Laaksonen
+    - [Full Book Source](https://github.com/pllk/cphb/)
+    - [PDF Copy](https://cses.fi/book/book.pdf)
 
