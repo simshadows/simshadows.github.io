@@ -1,0 +1,180 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Monster Hunter Now - Personal Notes
+description: My notes for Monster Hunter Now.
+keywords: ["monster hunter now"]
+
+hidetoc: true
+---
+
+import Nb from "@components/Nb";
+import SpoilerBlock from "@components/SpoilerBlock.astro";
+
+*These are just my personal notes for the game. Information may be inaccurate, out of date, or personalized for my needs only. Feel free to use my notes as a template for your own notes!*
+
+## Resources
+
+- [**mhn.quest**](https://mhn.quest/): I use it for gear planning, checking material costs, comparing weapon damage, and monster hitzone/break tables.
+- [**MHN Discord**](https://discord.gg/monsterhunternow): Find meta builds here.
+
+
+## Monster Break Order
+
+<SpoilerBlock buttonLabel="Explanation">
+    Legend:
+
+    - (S): Breakable with sever damage only.
+    - (B): Breakable with blunt damage only.
+
+    *Bonus Break* is usually not possible, but I like trying to see if I can get a break anyway. In the table below, if I list nothing for Bonus Break, then there are no other breaks available. Just kill it.
+
+    *Kill-Only* is what you'd focus on if you don't want to risk running the hunt timer, optimizing for best hitzone value with good accessibility. If I list nothing for *Kill-Only*, then it is implied that you can just focus on the first break part. This keeps the table simple.
+
+    I tend to prefer starting with the tail since we also hit the head when the monster turns to maximize uptime anyway.
+</SpoilerBlock>
+
+Reminder: If you're short on a particular material, check the drop tables and adjust your break order.
+
+### Sword and Shield, up to 7-star
+
+<p>
+<table class="general">
+    <thead>
+        <tr>
+            <th>Monster</th>
+            <th>Break</th>
+            <th>Kill-Only</th>
+            <th>Bonus Break</th>
+            <th>Break (5\* and lower)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><Nb>Great Jagras</Nb></td>
+            <td>Head &rarr; Forelegs</td>
+            <td></td>
+            <td>Stomach</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Kulu-Ya-Ku</Nb></td>
+            <td>Head &rarr; Forelegs</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Pukei-Pukei</Nb></td>
+            <td>**Tail (S)** &rarr; Head</td>
+            <td>Head</td>
+            <td>*Wings?*</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Barroth</Nb></td>
+            <td>Forelegs &rarr; **Tail (S)**</td>
+            <td></td>
+            <td>**Head (B)**</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Great Girros</Nb></td>
+            <td>Head &rarr; Forelegs</td>
+            <td></td>
+            <td>**Tail (S)**</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Tobi-Kadachi</Nb></td>
+            <td>Tail &rarr; Forelegs &rarr; Head</td>
+            <td>Head</td>
+            <td></td>
+            <td>*Do Tail last.*</td>
+        </tr>
+        <tr>
+            <td><Nb>Paolumu</Nb></td>
+            <td>Tail &rarr; \* Neck Pouch</td>
+            <td>Head</td>
+            <td>*Wings?*</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Jyuratodus</Nb></td>
+            <td>Body &rarr; Tail &rarr; Head</td>
+            <td>Head</td>
+            <td>Hindlegs</td>
+            <td>Body &rarr; Head &rarr; Tail</td>
+        </tr>
+        <tr>
+            <td><Nb>Anjanath</Nb></td>
+            <td>**Tail (S)** &rarr; Hindlegs</td>
+            <td>Head</td>
+            <td>Head</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Rathian</Nb><br /><Nb>Pink Rathian</Nb><br /><Nb>Rathalos</Nb></td>
+            <td>**Tail (S)** &rarr; Head</td>
+            <td>Head</td>
+            <td>*Wings/Back?*</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Diablos</Nb><br /><Nb>Black Diablos</Nb></td>
+            <td>**Tail (S)** &rarr; BOTH Horns</td>
+            <td>Head</td>
+            <td>*Back?*</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Legiana</Nb></td>
+            <td>Tail &rarr; Head</td>
+            <td>Head</td>
+            <td>*Wings?*</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><Nb>Radobaan</Nb></td>
+            <td>Body &rarr; BOTH Hindlegs &rarr; Head &rarr; **Tail (S)**</td>
+            <td>Head</td>
+            <td></td>
+            <td>*Do Body last.*</td>
+        </tr>
+        <tr>
+            <td><Nb>Banbaro</Nb></td>
+            <td>BOTH Horns</td>
+            <td></td>
+            <td>Hindlegs &rarr; **Tail (S)**</td>
+            <td>Hindlegs &rarr; **Tail (S)**</td>
+        </tr>
+        <tr>
+            <td><Nb>Barioth</Nb></td>
+            <td>Both Arms &rarr; Head</td>
+            <td></td>
+            <td>**Tail (S)**</td>
+            <td>*Do **Tail (S)** instead of Head.*</td>
+        </tr>
+        <tr>
+            <td><Nb>Zinogre</Nb></td>
+            <td>Forelegs &rarr; Head</td>
+            <td>Head</td>
+            <td>Head</td>
+            <td>*Do **Tail (S)** instead of Head*</td>
+        </tr>
+    </tbody>
+</table>
+</p>
+
+- Kulu-Ya-Ku:
+    - I prefer prioritizing the head since we can target the forelegs during rock phase.
+- Great Girros
+    - Prefer forelegs over tail due to drops. Also happens to be easier to hit.
+- Paolumu
+    - \*Can you only break Neck Pouch during flight phase? I'm not sure.
+- Jyuratodus
+    - I'm not sure if the body is targetable. It has good rewards though.
+- Diablos / Black Diablos
+    - I'll need to practice tail-cutting since it's difficult for Diablos.
+- Legiana
+    - Bonus rewards are terrible for melee. Prefer to use ranged.
+
