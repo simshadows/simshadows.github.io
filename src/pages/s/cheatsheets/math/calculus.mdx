@@ -159,7 +159,7 @@ import "./_calculus.css"; //_
         <div class="common-integrals-frame-1col">
             <AlignatLatex
                 moreMacros={{
-                    "\\TmpGap": "1.4em",
+                    "\\TmpGap": "1.0em",
                 }}
                 eqcols={3}
                 code="
@@ -180,15 +180,7 @@ import "./_calculus.css"; //_
                         ,\quad
                         &&\Exn{
                             a > 0 ,\ -a < x < a
-                        }
-                "
-            />
-            <AlignatLatex
-                moreMacros={{
-                    "\\TmpGap": "1.0em",
-                }}
-                eqcols={3}
-                code="
+                        } \\[\TmpGap]
                     &\int{\frac{1}{a^2 - x^2} \,\diff{x}} &&= \frac{1}{a} \tanh^{-1}{\frac{x}{a}} + C_1
                         ,\quad
                         &&\Exn{

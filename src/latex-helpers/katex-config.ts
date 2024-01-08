@@ -30,6 +30,7 @@ const katexConfig = {
         "\\MathOverLabel": "{\\overset{\\substack{#1\\\\\\phantom{x}}}{#2}}",
         "\\myul": "\\underline{#1}",
         "\\myvec": "{\\mathbf{#1}}",
+        "\\myReals": "\\Reals",
         "\\MyPermutations": "{{}_{#1}P_{#2}}",
         "\\MyCombinations": "{{}_{#1}C_{#2}}",
         "\\Nth": "{{#1}^\\textit{#2}}",
@@ -58,7 +59,7 @@ const katexConfig = {
         //"\\xmemphG": "#1",
         "\\xmemphB": "{\\xmemph{--color--myblue}{#1}}",
         "\\xmemphBC": "{\\xmemph{--color--mycontrastblue}{#1}}",
-        //"\\xmemphP": "#1",
+        "\\xmemphP": "{\\xmemph{--color--mypurple}{#1}}",
         // De-emphasis
         "\\Exn": "{\\htmlStyle{color: var(--color--deemphasis);}{#1}}",
 
@@ -87,9 +88,32 @@ const katexConfig = {
         // Hacky compatibility implementation of siunitx just so I can keep the same syntax.
         // Ideally, KaTeX should properly support some subset of the siunitx API.
         "\\qty": "{{#1}\\,{#2}}",
-        "\\kilo": "{\\text{k}}",
-        "\\gram": "{\\text{g}}",
+        "\\si": "{#1}",
         "\\ang": "{#1\\degree}",
+        //
+        "\\yotta": "{\\text{Y}}",  // 10^24
+        "\\zetta": "{\\text{Z}}",  // 10^21
+        "\\exa":   "{\\text{E}}",  // 10^18
+        "\\peta":  "{\\text{P}}",  // 10^15
+        "\\tera":  "{\\text{T}}",  // 10^12
+        "\\giga":  "{\\text{G}}",  // 10^9
+        "\\mega":  "{\\text{M}}",  // 10^6
+        "\\kilo":  "{\\text{k}}",  // 10^3
+        "\\hecto": "{\\text{h}}",  // 10^2
+        "\\deca":  "{\\text{da}}", // 10^1
+        "\\deci":  "{\\text{d}}",  // 10^-1
+        "\\centi": "{\\text{c}}",  // 10^-2
+        "\\milli": "{\\text{m}}",  // 10^-3
+        "\\micro": "{{\\mu}}", // 10^-6 // TODO: This should not be italicized
+        "\\nano":  "{\\text{n}}",  // 10^-9
+        "\\pico":  "{\\text{p}}",  // 10^-12
+        "\\femto": "{\\text{f}}",  // 10^-15
+        "\\atto":  "{\\text{a}}",  // 10^-18
+        "\\zepto": "{\\text{z}}",  // 10^-21
+        "\\yocto": "{\\text{y}}",  // 10^-24
+        //
+        "\\gram": "{\\text{g}}",
+        "\\sinounit": "", // does nothing here
 
         // Hacky compatibility implementation of \DeclarePairedDelimiter from mathtools
         // I still haven't figured out how to make \parens*{} and such work (with the asterisk),
@@ -102,6 +126,24 @@ const katexConfig = {
 
         // Hacky compatibility implementation of \DeclareMathOperator from amsmath
         "\\dom": "\\operatorname{Dom}",
+
+        // I actually don't remember why I made special math symbols for these.
+        // Probably not supported in regular LaTeX?
+        "\\myAlpha": "\\Alpha",
+        "\\myBeta": "\\Beta",
+        "\\myEpsilon": "\\Epsilon",
+        "\\myZeta": "\\Zeta",
+        "\\myEta": "\\Eta",
+        "\\myIota": "\\Iota",
+        "\\myKappa": "\\Kappa",
+        "\\myMu": "\\Mu",
+        "\\myNu": "\\Nu",
+        "\\myOmicron": "\\Omicron",
+        "\\myomicron": "\\omicron",
+        "\\myRho": "\\Rho",
+        "\\myTau": "\\Tau",
+        "\\myChi": "\\Chi",
+        "\\myDigamma": "\\mathrm{F}", // TODO: Find something better?
 
         ////////////////////////////////////////////////////////////
         // Some technical debt to figure out a better solution to //

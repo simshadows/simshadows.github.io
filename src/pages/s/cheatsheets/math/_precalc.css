@@ -16,3 +16,28 @@
     padding-top: 1.5em;
 }
 
+#symbols-and-units-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    margin: auto;
+}
+
+#si-prefixes-table > tbody > tr > td:nth-child(2) {
+    text-align: center;
+}
+
+#greek-table {
+    border: solid thin;
+}
+#greek-table tr > td:nth-child(1),
+#greek-table tr > td:nth-child(2),
+#greek-table tr > td:nth-child(3) {
+    width: 2.2em;
+    text-align: center;
+}
+#greek-table tr > td:nth-child(4) {
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+}
+

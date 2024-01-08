@@ -21,6 +21,9 @@ import CSTitle from "@components/cheatsheets/CheatsheetFrameTitle";
 
 import Todo from "@components/Todo";
 
+import GreekRow from "./_precalc.GreekRow"; //_
+import Sipr from "./_precalc.SIPrefixRow"; //_
+
 import "./_precalc.css"; //_
 
 *This cheatsheet generally covers anything that is typically taught before calculus. I also include linear algebra and a bit of complex numbers.*
@@ -720,6 +723,303 @@ import "./_precalc.css"; //_
                     \end{vmatrix}
                 }
             }
+    " />
+</CSFrame>
+
+</CheatsheetBlock>
+
+
+# Symbols and Units
+
+<div id="symbols-and-units-block">
+    <div>
+    <table id="si-prefixes-table" class="general">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th></th>
+                <th></th>
+                <th>Decimal Multiplier</th>
+            </tr>
+        </thead>
+        <tbody>
+            <Sipr name="yotta" e="24" ee="8"
+                dec="1\;000\;000\;000\;000\;000\;000\;000\;000" />
+            <Sipr name="zetta" e="21" ee="7"
+                dec="\phantom{0\;00}1\;000\;000\;000\;000\;000\;000\;000" />
+            <Sipr name="exa" e="18" ee="6"
+                dec="\phantom{0\;000\;00}1\;000\;000\;000\;000\;000\;000" />
+            <Sipr name="peta" e="15" ee="5"
+                dec="\phantom{0\;000\;000\;00}1\;000\;000\;000\;000\;000" />
+            <Sipr name="tera" e="12" ee="4"
+                dec="\phantom{0\;000\;000\;000\;00}1\;000\;000\;000\;000" />
+            <Sipr name="giga" e="9" ee="3"
+                dec="\phantom{0\;000\;000\;000\;000\;00}1\;000\;000\;000" />
+            <Sipr name="mega" e="6" ee="2"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;00}1\;000\;000" />
+            <Sipr name="kilo" e="3" ee="1"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;00}1\;000" />
+            <Sipr name="hecto" e="2" ee="2/3"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000}\;100" />
+            <Sipr name="deca" e="1" ee="1/3"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;0}10" />
+            <tr>
+                <td></td>
+                <td></td>
+                <td><Latex code="{10}^{0}" /></td>
+                <td><Latex code="{1000}^{0}" /></td>
+                <td><Latex code="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00}1" /></td>
+            </tr>
+            <Sipr name="deci" e="-1" ee="-1/3"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.1" />
+            <Sipr name="centi" e="-2" ee="-2/3"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.01" />
+            <Sipr name="milli" e="-3" ee="-1"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.001" />
+            <Sipr name="micro" e="-6" ee="-2"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.000\;001" />
+            <Sipr name="nano" e="-9" ee="-3"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.000\;000\;001" />
+            <Sipr name="pico" e="-12" ee="-4"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.000\;000\;000\;001" />
+            <Sipr name="femto" e="-15" ee="-5"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.000\;000\;000\;000\;001" />
+            <Sipr name="atto" e="-18" ee="-6"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.000\;000\;000\;000\;000\;001" />
+            <Sipr name="zepto" e="-21" ee="-7"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.000\;000\;000\;000\;000\;000\;001" />
+            <Sipr name="yocto" e="-24" ee="-8"
+                dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.000\;000\;000\;000\;000\;000\;000\;001" />
+        </tbody>
+    </table>
+    </div>
+
+    <div>
+    <table id="greek-table">
+        <tbody>
+            <GreekRow uc="myAlpha" lc="alpha" name="Alpha" />
+            <GreekRow uc="myBeta" lc="beta" name="Beta" />
+            <GreekRow uc="Gamma" lc="gamma" name="Gamma" />
+            <GreekRow uc="Delta" lc="delta" name="Delta" />
+            <GreekRow uc="myEpsilon" lc="epsilon" alt="varepsilon" name="Epsilon" />
+            <GreekRow uc="myZeta" lc="zeta" name="Zeta" />
+            <GreekRow uc="myEta" lc="eta" name="Eta" />
+            <GreekRow uc="Theta" lc="theta" alt="vartheta" name="Theta" />
+            <GreekRow uc="myIota" lc="iota" name="Iota" />
+            <GreekRow uc="myKappa" lc="kappa" alt="varkappa" name="Kappa" />
+            <GreekRow uc="Lambda" lc="lambda" name="Lambda" />
+            <GreekRow uc="myMu" lc="mu" name="Mu" />
+            <GreekRow uc="myNu" lc="nu" name="Nu" />
+            <GreekRow uc="Xi" lc="xi" name="Xi" />
+            <GreekRow uc="myOmicron" lc="myomicron" name="Omicron" />
+            <GreekRow uc="Pi" lc="pi" alt="varpi" name="Pi" />
+            <GreekRow uc="myRho" lc="rho" alt="varrho" name="Rho" />
+            <GreekRow uc="Sigma" lc="sigma" alt="varsigma" name="Sigma" />
+            <GreekRow uc="myTau" lc="tau" name="Tau" />
+            <GreekRow uc="Upsilon" lc="upsilon" name="Upsilon" />
+            <GreekRow uc="Phi" lc="phi" alt="varphi" name="Phi" />
+            <GreekRow uc="myChi" lc="chi" name="Chi" />
+            <GreekRow uc="Psi" lc="psi" name="Psi" />
+            <GreekRow uc="Omega" lc="omega" name="Omega" />
+            <GreekRow uc="myDigamma" lc="digamma" name="Digamma" />
+        </tbody>
+    </table>
+    </div>
+</div>
+
+# Appendix: Extended Cheatsheet
+
+<CheatsheetBlock>
+
+<CSFrame>
+    <CSTitle>Polynomial</CSTitle>
+
+    A function <Latex code="f : \myReals \to \myReals" /> is a *polynomial of degree <Latex code="n" />* if:
+
+    <GatherLatex code="
+        f(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_2 x^2 + a_1 x + a_0 \\
+        \forall x \in \myReals
+    " />
+
+    where:
+
+    <p><table style="margin: auto;">
+        <tbody>
+            <tr>
+                <td style="padding-right: 2em;">degree:</td>
+                <td style="text-align: center;"><Latex code="n = 0, 1, 2, 3, \dots" /></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 2em;">coefficients:</td>
+                <td style="text-align: center;">
+                    <Latex code="a_0, a_1, \dots, a_{n-1}, a_n \in \myReals" />
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-right: 2em;">leading coefficient:</td>
+                <td style="text-align: center;"><Latex code="a_n \ne 0" /></td>
+            </tr>
+        </tbody>
+    </table></p>
+
+    The most common polynomials are named:
+
+    <p><table class="general" style="margin: auto;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Form</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Degree 0</td><td>*constant*</td>
+                <td style="text-align: center;">
+                    <Latex code="a" />
+                </td>
+            </tr>
+            <tr>
+                <td>Degree 1</td><td>*linear*</td>
+                <td style="text-align: center;">
+                    <Latex code="a x + b" />
+                </td>
+            </tr>
+            <tr>
+                <td>Degree 2</td><td>*quadratic*</td>
+                <td style="text-align: center;">
+                    <Latex code="a x^2 + b x + c" />
+                </td>
+            </tr>
+            <tr>
+                <td>Degree 3</td><td>*cubic*</td>
+                <td style="text-align: center;">
+                    <Latex code="a x^3 + b x^2 + c x + d" />
+                </td>
+            </tr>
+            <tr>
+                <td>Degree 4</td><td>*quartic*</td>
+                <td style="text-align: center;">
+                    <Latex code="a x^4 + b x^3 + c x^2 + d x + e" />
+                </td>
+            </tr>
+        </tbody>
+    </table></p>
+
+    A *monic polynomial* is one where the leading coefficient is <Latex code="1" />.
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Rational Function</CSTitle>
+
+    A function <Latex code="f" /> is a rational function if it can be written in the form:
+
+    <DisplayLatex code="
+        f(x) = \frac{P(x)}{Q(x)}
+    " />
+
+    where <Latex code="P" /> and <Latex code="Q" /> are polynomial functions, and <Latex code="Q" /> is not the zero function.
+
+    The domain of <Latex code="f" /> excludes zeroes of the denominator:
+
+    <DisplayLatex code="
+        \dom{(f)} = \braces{x \in \myReals : Q(x) \ne 0}
+    " />
+</CSFrame>
+
+<CSFrame>
+    *The fundamental theorem of calculus is so useful that you should just know it intuitively.*
+
+    <CSTitle>First Fundamental Theorem of Calculus</CSTitle>
+
+    Let <Latex code="f" /> be a continuous real-valued function defined on <Latex code="[a, b]" />, and let <Latex code="F" /> be defined by:
+
+    <DisplayLatex code="
+        F : [a, b] \to \myReals
+            \qquad F(x) = \int_a^x{f(t) \,\diff{t}} .
+    " />
+
+    <Latex code="F" /> is continuous on <Latex code="[a, b]" />, differentiable on <Latex code="(a, b)" />, and has a derivative <Latex code="F'" /> given by:
+
+    <DisplayLatex code="
+        F'(x) = f(x)
+            \qquad \forall x \in (a, b) .
+    " />
+
+    <CSTitle>Second Fundamental Theorem of Calculus</CSTitle>
+
+    Let <Latex code="F" /> be a real-valued function on <Latex code="[a, b]" />, and <Latex code="F" /> be an antiderivative of <Latex code="f" /> on <Latex code="[a, b]" />. Then:
+
+    <DisplayLatex code="
+        \int_a^b{f(t) \,\diff{t}} = F(b) - F(a)
+    " />
+
+    <Todo>Look into this more. I'm not 100% certain on details such as whether the second fundamental theorem requires <Latex code="f" /> to be continuous, and whether or not <Latex code="f" /> being Riemann integrable is significant here.</Todo>
+</CSFrame>
+
+</CheatsheetBlock>
+
+# Appendix: Discussion
+
+<CheatsheetBlock>
+
+<CSFrame>
+    <CSTitle>Completing the Square</CSTitle>
+
+    Suppose we have a quadratic function:
+
+    <DisplayLatex code="
+        f(x) = a x^2 + b x + c
+    " />
+
+    We want to express the same quadratic in the form:
+
+    <DisplayLatex code="
+        f(x) = A(x + B)^2 + C
+    " />
+
+    We can expand this form, then equate coefficients:
+
+    <DisplayLatex code="
+        f(x) = A x^2 + 2ABx + A B^2 + C
+    " />
+    <DisplayLatex code="
+        A = a \qquad 2AB = b \qquad A B^2 + C = c
+    " />
+
+    Solving for <Latex code="A" />, <Latex code="B" />, and <Latex code="C" />, we get our function:
+
+    <DisplayLatex code="
+        f(x) = a \parens{x + \brackets{\frac{b}{2a}}}^2 + \brackets{c - \frac{b^2}{4a}}
+    " />
+
+    Thus, we have our general form for completing the square.
+
+    However, it can be a bit unwieldy. If we instead assume we have a monic (i.e. <Latex code="a=1" />), then:
+
+    <DisplayLatex code="
+        f(x)
+        = \parens{x + \xmemphR{\brackets{\frac{b}{2}}}}^2
+        + c
+        - \xmemphP{\brackets{\frac{b}{2}}^2}
+    " />
+
+    This form is easier for me to memorize since you just remember where <Latex code="\memphR{\frac{b}{2}}" /> and <span style="color: var(--color--mypurple);">its square</span> appears.
+
+    Though, if one forgets <span style="color: var(--color--mypurple);">the square</span>, you can guess the form of the outside by expanding <Latex code="\parens{x + \memphR{\frac{b}{2}}}^2" />:
+
+    <AlignLatex code="
+        f(x)
+            &= \parens{x + \xmemphR{\brackets{\frac{b}{2}}}}^2 + c + \text{something} \\
+            &= \parens{x^2 + 2 \xmemphR{\brackets{\frac{b}{2}}} + \xmemphP{\brackets{\frac{b}{2}}^2}} + c + \text{something}
+    " />
+
+    This *something* must be such that the constant doesn't change:
+
+    <DisplayLatex code="
+        f(x)
+        = \parens{x^2 + 2 \xmemphR{\brackets{\frac{b}{2}}} + \xmemphP{\brackets{\frac{b}{2}}^2}} + c - \xmemphP{\brackets{\frac{b}{2}}^2}
     " />
 </CSFrame>
 

@@ -1,6 +1,6 @@
 div.common-integrals-cols {
     width: 100%;
-    column-width: 53em;
+    column-width: 48em;
     column-rule: solid thin var(--color--deemphasis); /* TODO: Better colour? */
 }
 div.common-integrals-cols > div {
@@ -14,7 +14,7 @@ div.common-integrals-frame-1col {
 }
 
 div.common-integrals-frame-2col {
-    column-width: 26em;
+    column-width: 23.5em;
 }
 div.common-integrals-frame-2col > div {
     break-inside: avoid;
