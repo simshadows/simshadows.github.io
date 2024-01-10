@@ -255,9 +255,10 @@ import "./_precalc.css"; //_
     <CSTitle>sin/cos In Terms Of Exponentials</CSTitle>
 
     Derived from Euler's formula.
-    
-    <AlignLatex code="
-        \sin{x} = \frac{e^{ix} - e^{-ix}}{2i} \\
+
+    <DisplayLatex code="
+        \sin{x} = \frac{e^{ix} - e^{-ix}}{2i}
+        \qquad\quad
         \cos{x} = \frac{e^{ix} + e^{-ix}}{2}
     " />
 
@@ -333,9 +334,10 @@ import "./_precalc.css"; //_
 
     Derived from the <Latex code="\cos{2 \theta}" /> compound angle formula.
 
-    <AlignLatex code="
-        \sin^2{\theta} &= \frac{1}{2} - \frac{1}{2} \cos{2 \theta} \\
-        \cos^2{\theta} &= \frac{1}{2} + \frac{1}{2} \cos{2 \theta}
+    <DisplayLatex code="
+        \sin^2{\theta} = \frac{1}{2} - \frac{1}{2} \cos{2 \theta}
+        \qquad\enspace
+        \cos^2{\theta} = \frac{1}{2} + \frac{1}{2} \cos{2 \theta}
     " />
 
     <CSTitle>Products to Sums</CSTitle>
@@ -388,6 +390,18 @@ import "./_precalc.css"; //_
         \sinh{2x} &= 2 \sinh{x} \cosh{x} \\
         \cosh{2x} &= \cosh^2{x} + \sinh^2{x} \\
         \tanh{2x} &= \frac{2 \tanh{x}}{1 + \tanh^2{x}}
+    " />
+</CSFrame>
+
+<CSFrame>
+    <CSTitle>Arithmetic Progression and Series</CSTitle>
+    <GatherLatex code="
+        a_n = a_1 + \parens{n - 1} d
+        \\
+        S_n
+        = \sum_{k = 1}^{n} a_k
+        = \frac{n}{2} \brackets{2 a_1 + \parens{n - 1} d}
+        = \frac{n}{2} \brackets{a_1 - a_n}
     " />
 </CSFrame>
 
@@ -831,6 +845,26 @@ import "./_precalc.css"; //_
 # Appendix: Extended Cheatsheet
 
 <CheatsheetBlock>
+
+<CSFrame>
+    <CSTitle>Basic Number Sets</CSTitle>
+    <DisplayLatex code="
+        \MathOverLabel{\text{\footnotesize{Natural Numbers}}}{
+            \myNaturalsSet = \braces{1, 2, 3, \dots}
+        }
+        \qquad\,\,
+        \MathOverLabel{\text{\footnotesize{Integers}}}{
+            \myIntegerSet = \braces{\dots, -2, -1, 0, 1, 2, \dots}
+        }
+    " />
+    <DisplayLatex code="
+        \MathOverLabel{\text{\footnotesize{Rational Numbers}}}{\myRationalsSet}
+        \qquad
+        \MathOverLabel{\text{\footnotesize{Real Numbers}}}{\myReals}
+        \qquad
+        \MathOverLabel{\text{\footnotesize{Complex Numbers}}}{\myComplex}
+    " />
+</CSFrame>
 
 <CSFrame>
     <CSTitle>Polynomial</CSTitle>

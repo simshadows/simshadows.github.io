@@ -26,15 +26,19 @@ const katexConfig = {
         "\\defeq": "\\mathbin{\\vcentcolon=}",
         "\\diff": "d",
         "\\evalat": "{{\\left.#1\\right\\rvert{}}_{#2}}",
-        "\\IntegerSet": "\\mathbb{Z}",
         "\\MathOverLabel": "{\\overset{\\substack{#1\\\\\\phantom{x}}}{#2}}",
         "\\myul": "\\underline{#1}",
         "\\myvec": "{\\mathbf{#1}}",
-        "\\myReals": "\\Reals",
         "\\MyPermutations": "{{}_{#1}P_{#2}}",
         "\\MyCombinations": "{{}_{#1}C_{#2}}",
         "\\Nth": "{{#1}^\\textit{#2}}",
         "\\setdef": "{\\left\\{{#1} \\mid {#2}\\right\\}}",
+
+        "\\myNaturalsSet": "\\mathbb{N}",
+        "\\myIntegerSet": "\\mathbb{Z}",
+        "\\myRationalsSet": "\\mathbb{Q}",
+        "\\myReals": "\\Reals",
+        "\\myComplex": "\\Complex",
 
         // Originally \underbracket. I'd like to use underbracket once katex supports it.
         "\\xcancelto": "\\underbrace{\\xcancel{#2}}_{#1}",
