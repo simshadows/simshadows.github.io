@@ -1,0 +1,41 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Sorting and Searching - CSES Problem Set Solutions
+description: My solutions and thoughts for the CSES problem set!
+keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data structures"]
+---
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import Eqref from "@components/latex/Eqref";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+import Trl from "@components/latex/TableRowLatex";
+import Trhl from "@components/latex/TableRowHLatex";
+
+import FiguresBlock from "@components/figures/FiguresBlock";
+import Fig from "@components/figures/Fig";
+
+import Code from "@components/Code.astro";
+import SpoilerBlock from "@components/SpoilerBlock.astro";
+import Todo from "@components/Todo";
+
+import Spec from "./../_shared.Spec.astro"; //_
+import Intro from "./_common.intro.astro"; //_
+
+import DArr from "./_common.DArr.astro"; //_
+import UArr from "./_common.UArr.astro"; //_
+import LArr from "./_common.LArr.astro"; //_
+import RArr from "./_common.RArr.astro"; //_
+import DLArr from "./_common.DLArr.astro"; //_
+import URArr from "./_common.URArr.astro"; //_
+
+<Intro />
+
+
+## Distinct Numbers <Spec href="https://cses.fi/problemset/task/1621" cdate="2024-01-15"/>
+
+import SolDistinctNumbers from "./_solutions.sorting-and-searching/distinct-numbers.py?raw" //_
+
+<Code code={SolDistinctNumbers} lang="py" />
+
