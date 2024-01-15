@@ -13,6 +13,7 @@ import GatherLatex from "@components/latex/GatherLatex";
 import Latex from "@components/latex/Latex";
 
 import Eqref from "@components/latex/Eqref";
+import SpoilerBlock from "@components/SpoilerBlock.astro";
 import Todo from "@components/Todo";
 
 import Spec from "../_shared.Spec.astro"; //_
@@ -50,12 +51,13 @@ def run(f):
 run(stdin)
 ```
 
-### Part 2 Failure
+### Part 2 Solution
 
 I found Part 2 to be a pain in the ass because the exact conditions for a word to count as a number weren't clear.
 
 My first attempt would replace all valid substrings into digits, giving priority to what appears earlier:
 
+<SpoilerBlock buttonLabel="Failed Solution">
 ```py
 #!/usr/bin/env python3
 
@@ -96,8 +98,7 @@ def run():
 
 run(f)
 ```
-
-### Part 2 Solution
+</SpoilerBlock>
 
 After a bit more thought, I realized the important thing is probably the first and last actual valid word.
 

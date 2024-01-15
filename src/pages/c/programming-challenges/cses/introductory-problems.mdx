@@ -10,6 +10,8 @@ import DisplayLatex from "@components/latex/DisplayLatex";
 import Eqref from "@components/latex/Eqref";
 import GatherLatex from "@components/latex/GatherLatex";
 import Latex from "@components/latex/Latex";
+import Trl from "@components/latex/TableRowLatex";
+import Trhl from "@components/latex/TableRowHLatex";
 
 import FiguresBlock from "@components/figures/FiguresBlock";
 import Fig from "@components/figures/Fig";
@@ -70,7 +72,7 @@ import SolIncreasingArray from "./_solutions.introductory-problems/increasing-ar
 import SolPermutationsOriginal from "./_solutions.introductory-problems/permutations--original.py?raw" //_
 import SolPermutations from "./_solutions.introductory-problems/permutations.py?raw" //_
 
-My initial solution was unnecessarily messy because I was sorting out the edge cases.
+y initial solution was unnecessarily messy because I was sorting out the edge cases.
 
 <SpoilerBlock buttonLabel="Initial Solution">
     <Code code={SolPermutationsOriginal} lang="py" />
@@ -235,7 +237,7 @@ The approach I went with was terribly lazy. I imagine there are some fancy combi
 
 I started with a hardcoded table for <Latex code="k \le 7" /> to get past some edge cases for low values of <Latex code="k" />. I chose <Latex code="7" /> arbitrarily and didn't think too deeply about what the smallest hardcoded table I can get away with is. It would've been tough to calculate up to <Latex code="k = 7" /> by hand, but I just used the example solution in the spec. How convenient!
 
-My solution considers "layers" in a vaguely similar way my *Number Spiral* solution did.
+y solution considers "layers" in a vaguely similar way my *Number Spiral* solution did.
 
 Let's suppose a solution for layer <Latex code="k = 7" /> is already known to have <Latex code="1056" /> ways to place two knights. Therefore, we have "seen" a <Latex code="7 \times 7" /> grid of cells (<Latex code="49" /> cells):
 
@@ -588,4 +590,129 @@ import SolBitStrings from "./_solutions.introductory-problems/bit-strings.py?raw
 <Code code={SolBitStrings} lang="py" />
 
 <Todo>How to do it with fixed-size integers?</Todo>
+
+## Trailing Zeros <Spec href="https://cses.fi/problemset/task/1618" cdate="2023-01-13"/>
+
+The first thing that comes to mind is to consider the conditions where trailing zeroes appear. Let's start by considering the multiplication definition of factorial:
+
+<DisplayLatex code="
+    n!
+    = \prod_{k = 1}^n{k},
+    \qquad\qquad
+    \forall n \in \mathbb{Z} : n > 0.
+    \qquad\qquad
+    0! = 1.
+" />
+
+Trivially, <Latex code="k" /> being a multiple of <Latex code="10" /> will yield a trailing zero, but so will a trailing <Latex code="5" /> multiplied by a trailing <Latex code="2" />, among other combinations like <Latex code="4" /> and <Latex code="5" />.
+
+A possible naive algorithm that comes to mind at this point might be to incrementally calculate the factorial, including a new term of <Latex code="k" /> at each step while also truncating (and recording) trailing zeroes that appear. However, this approach is flawed since the number of non-zero digits is expected to explode.
+
+A better approach might involve something like truncating the left side of a <Latex code="k" />-term to get only the least-significant non-zero and all the zeroes to its right. However, is it possible that this least-significant non-zero digit is ever entirely consumed?
+
+Let's enumerate all possible pairs of non-zero digits:
+
+<FiguresBlock>
+    <Fig>
+    <table class="general">
+        <thead><Trhl rows={["a", "b", "ab"]} /></thead>
+        <tbody>
+            <Trl rows={[1, 1, 1]} /><Trl rows={[1, 2, 2]} />
+            <Trl rows={[1, 3, 3]} /><Trl rows={[1, 4, 4]} />
+            <Trl rows={[1, 5, 5]} /><Trl rows={[1, 6, 6]} />
+            <Trl rows={[1, 7, 7]} /><Trl rows={[1, 8, 8]} />
+            <Trl rows={[1, 9, 9]} />
+        </tbody>
+    </table>
+    </Fig>
+    <Fig>
+    <table class="general">
+        <thead><Trhl rows={["a", "b", "ab"]} /></thead>
+        <tbody>
+            <Trl rows={[2, 2,  4]} /><Trl rows={[2, 3,  6]} />
+            <Trl rows={[2, 4,  8]} /><Trl rows={[2, 5, 10]} />
+            <Trl rows={[2, 6, 12]} /><Trl rows={[2, 7, 14]} />
+            <Trl rows={[2, 8, 16]} /><Trl rows={[2, 9, 18]} />
+        </tbody>
+    </table>
+    </Fig>
+    <Fig>
+    <table class="general">
+        <thead><Trhl rows={["a", "b", "ab"]} /></thead>
+        <tbody>
+            <Trl rows={[3, 3,  9]} /><Trl rows={[3, 4, 12]} />
+            <Trl rows={[3, 5, 15]} /><Trl rows={[3, 6, 18]} />
+            <Trl rows={[3, 7, 21]} /><Trl rows={[3, 8, 24]} />
+            <Trl rows={[3, 9, 27]} />
+        </tbody>
+    </table>
+    </Fig>
+    <Fig>
+    <table class="general">
+        <thead><Trhl rows={["a", "b", "ab"]} /></thead>
+        <tbody>
+            <Trl rows={[4, 4, 16]} /><Trl rows={[4, 5, 20]} />
+            <Trl rows={[4, 6, 24]} /><Trl rows={[4, 7, 28]} />
+            <Trl rows={[4, 8, 32]} /><Trl rows={[4, 9, 36]} />
+            <Trl rows={[5, 5, 25]} /><Trl rows={[5, 6, 30]} />
+            <Trl rows={[5, 7, 35]} /><Trl rows={[5, 8, 40]} />
+            <Trl rows={[5, 9, 45]} />
+        </tbody>
+    </table>
+    </Fig>
+    <Fig>
+    <table class="general">
+        <thead><Trhl rows={["a", "b", "ab"]} /></thead>
+        <tbody>
+            <Trl rows={[6, 6, 36]} /><Trl rows={[6, 7, 42]} />
+            <Trl rows={[6, 8, 48]} /><Trl rows={[6, 9, 54]} />
+            <Trl rows={[7, 7, 49]} /><Trl rows={[7, 8, 56]} />
+            <Trl rows={[7, 9, 63]} /><Trl rows={[8, 8, 64]} />
+            <Trl rows={[8, 9, 72]} /><Trl rows={[9, 9, 81]} />
+        </tbody>
+    </table>
+    </Fig>
+</FiguresBlock>
+
+We notice that no pair ever generates purely zeroes, therefore we can design an algorithm that ignores all digits beyond this least-significant non-zero digit.
+
+Our next issue is to scale the algorithm for the <Latex code="n \le {10}^9" /> bound. Processing all <Latex code="{10}^9" /> terms of <Latex code="k" /> will be a very expensive operation.{/* At this point, it might be better to just read my implementation, but the basic idea I went with is to process one place value at a time and take advantage of cyclic patterns. */}
+
+My first idea is to try batching cycles where the least-significant non-zero digit goes through digits <Latex code="1, \dots, 9" /> in a cycle. For example, for <Latex code="31!" />, we can batch the following terms of <Latex code="k" /> together (with factorial calculations truncated to relevant digits):
+
+<AlignLatex code="
+    \braces{1, 2, 3, 4, 5, 6, 7, 8, 9}
+        &\quad\Longrightarrow\quad
+        9! = 362880
+        \\
+    \braces{11, 12, 13, 14, 15, 16, 17, 18, 19}
+        &\quad\Longrightarrow\quad
+        19! / 10! = \dots 40
+        \\
+    \braces{21, 22, 23, 24, 25, 26, 27, 28, 29}
+        &\quad\Longrightarrow\quad
+        29! / 20! = \dots 400
+        \\
+    \braces{31}
+        &\quad\Longrightarrow\quad
+        31! / 30! = 31
+        \\
+    \braces{10, 20, 30}&
+" />
+
+A couple more calculations I made while exploring the pattern:
+
+<AlignLatex code="
+    \braces{31, 32, 33, 34, 35, 36, 37, 38, 39}
+        &\quad\Longrightarrow\quad
+        39! / 30! = \dots 60
+        \\
+    \braces{41, 42, 43, 44, 45, 46, 47, 48, 49}
+        &\quad\Longrightarrow\quad
+        49! / 40! = \dots 20
+" />
+
+I used an online factorial table and a web-based large decimal calculator to explore this pattern. However, the pattern isn't clear. There could be a pattern, but I doubt that it's necessary to explore it for an introductory CSES problem.
+
+<Todo>Continue!</Todo>
 
