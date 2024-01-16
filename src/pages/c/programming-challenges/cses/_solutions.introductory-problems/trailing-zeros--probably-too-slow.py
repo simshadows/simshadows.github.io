@@ -8,6 +8,5 @@ for k in range(1, n + 1):
     while head % 10 == 0:
         trailing += 1
         head //= 10
-    head %= 1000000000
 print(trailing)
 

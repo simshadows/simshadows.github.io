@@ -1,0 +1,73 @@
+---
+layout: "@layouts/MDFullWidthLayout.astro"
+title: General Programming Cheatsheet
+description: A cheatsheet for common numbers we come across.
+keywords: ["programming", "tech", "cheatsheet"]
+
+hidetoc: true
+---
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import Eqref from "@components/latex/Eqref";
+import GatherLatex from "@components/latex/GatherLatex";
+import Latex from "@components/latex/Latex";
+import Trl from "@components/latex/TableRowLatex";
+import Trhl from "@components/latex/TableRowHLatex";
+
+import FiguresBlock from "@components/figures/FiguresBlock";
+import Fig from "@components/figures/Fig";
+
+import Todo from "@components/Todo";
+
+import Fwir from "./_general.FixedWidthIntegersRow"; //_
+
+import "./_general.css"; //_
+
+<Todo>There isn't a lot of content here yet since I'm only filling it out as I need it.</Todo>
+
+## Fixed-Width Integers
+
+This table assumes you're programming in C on a common computer architecture. "Minimum C Type" refers to C type in which the language specification requires this size to be the minimum. To keep it simple, I only include an easily recognizable subset.
+
+<FiguresBlock>
+<Fig>
+<table class="general fixed-width-ints-table">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th colspan={3}>Minimum</th>
+            <th colspan={3}>Maximum</th>
+            <th>Minimum C Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <Fwir bytes={1} signed={false} cTypes={["unsigned char"]}
+            sMin="0" sMax="255"
+        />
+        <Fwir bytes={2} signed={false} cTypes={["unsigned short", "unsigned int"]}
+            sMin="0" sMax="65535"
+        />
+        <Fwir bytes={4} signed={false} cTypes={["unsigned long"]}
+            sMin="0" sMax="4294967295"
+        />
+        <Fwir bytes={8} signed={false} cTypes={["unsigned long long"]}
+            sMin="0" sMax="18446744073709551615"
+        />
+        <Fwir bytes={1} signed={true} cTypes={["signed char"]}
+            sMin="-128" sMax="127"
+        />
+        <Fwir bytes={2} signed={true} cTypes={["short", "int"]}
+            sMin="-32768" sMax="32767"
+        />
+        <Fwir bytes={4} signed={true} cTypes={["long"]}
+            sMin="-2147483648" sMax="2147483647"
+        />
+        <Fwir bytes={8} signed={true} cTypes={["long long"]}
+            sMin="-9223372036854775808" sMax="9223372036854775807"
+        />
+    </tbody>
+</table>
+</Fig>
+</FiguresBlock>
+

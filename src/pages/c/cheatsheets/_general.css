@@ -1,0 +1,9 @@
+table.fixed-width-ints-table td {
+    text-align: left;
+    white-space: nowrap;
+}
+
+table.fixed-width-ints-table > tbody > tr > td:nth-child(2),
+table.fixed-width-ints-table > tbody > tr > td:nth-child(5) {
+    text-align: right;
+}
