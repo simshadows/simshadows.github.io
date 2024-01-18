@@ -53,3 +53,32 @@ import SolFerrisWheel from "./_solutions.sorting-and-searching/ferris-wheel.py?r
 
 <Code code={SolFerrisWheel} lang="py" />
 
+## Concert Tickets <Spec href="https://cses.fi/problemset/task/1091/" cdate="2024-01-18" />
+
+I initially misunderstood the problem spec and thought that there was no time dimension to the problem, leading to two totally incorrect solutions:
+
+import SolConcertTicketsFail01 from "./_solutions.sorting-and-searching/concert-tickets--fail01.py?raw" //_
+import SolConcertTicketsFail02 from "./_solutions.sorting-and-searching/concert-tickets--fail02.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Solution 1">
+    <Code code={SolConcertTicketsFail01} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="Failed Solution 2">
+    <Code code={SolConcertTicketsFail02} lang="py" />
+</SpoilerBlock>
+
+The first logically correct solution I made was too slow due to <Latex code="O(n)" /> element deletions (even when I submitted it for `PyPy3`), leading to an overall time complexity is <Latex code="O(nm)" />. I would've liked to use a BST data structure like C++'s `std::multiset`, but Python lacks a standard library implementation. The failed solution:
+
+import SolConcertTicketsFail03 from "./_solutions.sorting-and-searching/concert-tickets--fail03-tle.py?raw" //_
+
+<SpoilerBlock buttonLabel="Time Limit Exceeded Solution">
+    <Code code={SolConcertTicketsFail03} lang="py" />
+</SpoilerBlock>
+
+But at least I know the idea works, leading me to my first successful solution that passed all tests. I decided to rewrite in C++ since I wasn't having any luck in Python. This solution has time complexity <Latex code="O(m \log n)" /> due to <Latex code="O(\log n)" /> operations on `std::multiset`:
+
+import SolConcertTickets from "./_solutions.sorting-and-searching/concert-tickets.cpp?raw" //_
+
+<Code code={SolConcertTickets} lang="cpp" />
+
