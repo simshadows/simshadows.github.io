@@ -10,7 +10,7 @@ import Divider from "@components/Divider";
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import Eqref from "@components/latex/Eqref";
 import SpoilerBlock from "@components/SpoilerBlock.astro";
@@ -1531,9 +1531,9 @@ Part 2 asks for 1,000,000,000 iterations. Obviously, a brute-force solution shou
 
 *(When I say "iteration", I mean a single set of four pushes: north, then west, then south, then east.)*
 
-The next idea that I tried was the assumption that after enough iterations, we reach a *constant state* of `rockmap` (and therefore also the same "load value"). For example, I was thinking maybe we might see load values <Latex code="\brackets{12, 16, 14, 17, 15, 15, 15, 15, 15, \dots}" />, and the pattern of constant <Latex code="15" /> repeats all the way to infinity. However, when you run the brute-force algorithm on the actual puzzle input and print out the load values, we don't observe a constant value.
+The next idea that I tried was the assumption that after enough iterations, we reach a *constant state* of `rockmap` (and therefore also the same "load value"). For example, I was thinking maybe we might see load values <Eq code="\brackets{12, 16, 14, 17, 15, 15, 15, 15, 15, \dots}" />, and the pattern of constant <Eq code="15" /> repeats all the way to infinity. However, when you run the brute-force algorithm on the actual puzzle input and print out the load values, we don't observe a constant value.
 
-What we instead observe is a *cycle* of values. For example, maybe we might see load values <Latex code="\brackets{12, 16, 14, 17, 15, 19, 18, 15, 19, 18, 15, 19, 18, \dots}" />. In this example, we notice the repeating cycle of <Latex code="\brackets{15, 19, 18}" />.
+What we instead observe is a *cycle* of values. For example, maybe we might see load values <Eq code="\brackets{12, 16, 14, 17, 15, 19, 18, 15, 19, 18, 15, 19, 18, \dots}" />. In this example, we notice the repeating cycle of <Eq code="\brackets{15, 19, 18}" />.
 
 Based on this observation, I decided to cheat. Using the printouts, I manually identified the following repeating pattern:
 
@@ -1551,9 +1551,9 @@ The idea is that we directly calculate intermediate rockmaps and load values whi
 
 To directly calculate intermediate rockmaps, I chose to implement a function that rotates the the entire rockmap 90 degrees clockwise. Though, I could've instead just implemented a version of `push_north()` that just changes direction, or duplicated the `push_north()` function for each cardinal direction, but rotating the whole map just seemed simpler to me at the time.
 
-Unfortunately, I went into this problem with not a lot of experience with cycle-detection algorithms, so there might be something better. Otherwise, my quick-and-dirty cycle detection algorithm works on the assumption that at the end of an iteration (i.e. after pushing north, then west, then south, then east), if the same rockmap appears a second time, then the sequence between and including the two appearances is a repeating cycle of maps. This is because the map itself contains all information on the state of the system at the particular time step. If state <Latex code="A" /> was previously seen to transition to state <Latex code="B" />, then when we see state <Latex code="A" /> again, we know it will transition to state <Latex code="B" /> again.
+Unfortunately, I went into this problem with not a lot of experience with cycle-detection algorithms, so there might be something better. Otherwise, my quick-and-dirty cycle detection algorithm works on the assumption that at the end of an iteration (i.e. after pushing north, then west, then south, then east), if the same rockmap appears a second time, then the sequence between and including the two appearances is a repeating cycle of maps. This is because the map itself contains all information on the state of the system at the particular time step. If state <Eq code="A" /> was previously seen to transition to state <Eq code="B" />, then when we see state <Eq code="A" /> again, we know it will transition to state <Eq code="B" /> again.
 
-But on the other hand, if we relied on just reading the load values, this cycle detection algorithm would be insufficient. For example, for the sequence of load values <Latex code="\brackets{1, 2, 1, 3, 1, 2, 1, 3, \dots}" />, the algorithm may mistakenly think that the subsequence <Latex code="\brackets{1, 2}" /> is the repeated subsequence when the actual repeated subsequence is <Latex code="\brackets{1, 2, 1, 3}" />. In this case, <Latex code="1" /> is not guaranteed to transition to the same load value each time. `rockmap` states don't necessarily map one-to-one to load values (i.e. the mapping is not *bijective*), meaning that two different `rockmap` states may produce the same load value.
+But on the other hand, if we relied on just reading the load values, this cycle detection algorithm would be insufficient. For example, for the sequence of load values <Eq code="\brackets{1, 2, 1, 3, 1, 2, 1, 3, \dots}" />, the algorithm may mistakenly think that the subsequence <Eq code="\brackets{1, 2}" /> is the repeated subsequence when the actual repeated subsequence is <Eq code="\brackets{1, 2, 1, 3}" />. In this case, <Eq code="1" /> is not guaranteed to transition to the same load value each time. `rockmap` states don't necessarily map one-to-one to load values (i.e. the mapping is not *bijective*), meaning that two different `rockmap` states may produce the same load value.
 
 Once the cycle detection algorithm identifies the repeated subsequence, we use a bit of modular arithmetic to index into this repeated subsequence to get the final answer.
 
@@ -1688,9 +1688,9 @@ The number of remaining iterations is:
     \text{num remaining iterations} = \texttt{TARGET\_ITERATIONS} - \texttt{end\_iteration} - 1
 " />
 
-For our concrete example, <Latex code="\text{num remaining iterations} = 10 - 4 - 1 = 5" />.
+For our concrete example, <Eq code="\text{num remaining iterations} = 10 - 4 - 1 = 5" />.
 
-Due to zero-indexing, to get solution for <Latex code="n" /> iterations, we must get the <Latex code="n - 1" />, modulo the size of the `repeated` sequence.
+Due to zero-indexing, to get solution for <Eq code="n" /> iterations, we must get the <Eq code="n - 1" />, modulo the size of the `repeated` sequence.
 
 In code, we might write this out as:
 
@@ -2407,15 +2407,15 @@ run(stdin)
 
 Mathy question! Let's start with some mathematical analysis.
 
-The simplest starting point to me seems to be to consider the parametric form of the straight line. We're only dealing with the <Latex code="x" /> and <Latex code="y" /> coordinates, so we're obviously only dealing with 2D space.
+The simplest starting point to me seems to be to consider the parametric form of the straight line. We're only dealing with the <Eq code="x" /> and <Eq code="y" /> coordinates, so we're obviously only dealing with 2D space.
 
-For the hailstone initial position vector <Latex code="\myvec{p}" /> and velocity vector <Latex code="\myvec{v}" />, we can get the position vector <Latex code="\myvec{x}\parens{t}" /> at time <Latex code="t" />:
+For the hailstone initial position vector <Eq code="\myvec{p}" /> and velocity vector <Eq code="\myvec{v}" />, we can get the position vector <Eq code="\myvec{x}\parens{t}" /> at time <Eq code="t" />:
 
 <DisplayLatex code="
     \myvec{x}\parens{t} = \myvec{p} + \myvec{v} t
 " />
 
-Positions of the hailstone in the *future* will happen at <Latex code="t > 0" />, while positions "in the past" happened at <Latex code="t < 0" />.
+Positions of the hailstone in the *future* will happen at <Eq code="t > 0" />, while positions "in the past" happened at <Eq code="t < 0" />.
 
 Let's try to find where two hailstones intersect. We'll need two equations:
 
@@ -2426,13 +2426,13 @@ Let's try to find where two hailstones intersect. We'll need two equations:
 
 We use two separate time variables rather than the same one since we're only looking if the paths will intersect, not necessarily that the hailstones will actually collide.
 
-The two paths intersect when <Latex code="\myvec{x}_0 \parens{t_0} = \myvec{x}_1 \parens{t_1}" />, so we can find the <Latex code="t_0" /> and <Latex code="t_1" /> values with:
+The two paths intersect when <Eq code="\myvec{x}_0 \parens{t_0} = \myvec{x}_1 \parens{t_1}" />, so we can find the <Eq code="t_0" /> and <Eq code="t_1" /> values with:
 
 <DisplayLatex code="
     \myvec{p}_0 + \myvec{v}_0 t_0 = \myvec{p}_1 + \myvec{v}_1 t_1
 " />
 
-At this point, it can be helpful to just break it up into component equations, then solve for one of the <Latex code="t" /> variables:
+At this point, it can be helpful to just break it up into component equations, then solve for one of the <Eq code="t" /> variables:
 
 <GatherLatex code="
     \begin{cases}
@@ -2487,23 +2487,23 @@ At this point, it can be helpful to just break it up into component equations, t
     \tag{d24e4}
 " />
 
-To solve for the other variable <Latex code="t_0" />, we can simply plug the result of <Latex code="t_1" /> it back into either of the component equations <Eqref>d24e3</Eqref>. For my Part 1 solution, I will use either of these equations depending on whether the denominators are zero:
+To solve for the other variable <Eq code="t_0" />, we can simply plug the result of <Eq code="t_1" /> it back into either of the component equations <Eqref>d24e3</Eqref>. For my Part 1 solution, I will use either of these equations depending on whether the denominators are zero:
 
 <AlignLatex code="
     t_0 = \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}} \\
     t_0 = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
 " />
 
-<Todo>Huh. So if either <Latex code="v_{0x}" /> or <Latex code="v_{0y}" /> is zero, that means one of the equations evaluates to an undefined value... intuitively, that makes sense since in one dimension, it will have to be undefined but not in the other dimension. But does that actually make sense mathematically? I should look more into this line of reasoning because I'm not happy with it. Please let me know if there's a better way of thinking about it!</Todo>
+<Todo>Huh. So if either <Eq code="v_{0x}" /> or <Eq code="v_{0y}" /> is zero, that means one of the equations evaluates to an undefined value... intuitively, that makes sense since in one dimension, it will have to be undefined but not in the other dimension. But does that actually make sense mathematically? I should look more into this line of reasoning because I'm not happy with it. Please let me know if there's a better way of thinking about it!</Todo>
 
-Since the question is asking for where the paths intersect only considering the *future*, we can simply check if *both* <Latex code="t_0" /> and <Latex code="t_1" /> are positive.
+Since the question is asking for where the paths intersect only considering the *future*, we can simply check if *both* <Eq code="t_0" /> and <Eq code="t_1" /> are positive.
 
 Now, we'll need to consider how we can handle the edge cases of these results.
 
 Intuitively (and assuming the the past also counts as part of the path), these edge cases are:
 
 1. What if the paths are parallel but never intersect? *In this case, the paths will never intersect.*
-2. What if paths are exactly the same? *In this case, we'd need to check if the intersection region happens for positive <Latex code="t_0" /> and <Latex code="t_1" />.*
+2. What if paths are exactly the same? *In this case, we'd need to check if the intersection region happens for positive <Eq code="t_0" /> and <Eq code="t_1" />.*
 3. What if any velocity is zero?
 
 I quickly checked the input for zero velocities as a sanity check. **We found no zero velocities, so we can neglect to look for this edge case.** Code snippet used (this code snippet will make sense in the context of my final solution):
@@ -2518,11 +2518,11 @@ def run(f):
         raise RuntimeError(f"We expect no zero velocities.")
 ```
 
-If any path is parallel but not the same, we intuitively expect to see no possible solution for <Latex code="t_0" /> or <Latex code="t_1" />. If the paths are the same, then we expect to see infinite solutions.
+If any path is parallel but not the same, we intuitively expect to see no possible solution for <Eq code="t_0" /> or <Eq code="t_1" />. If the paths are the same, then we expect to see infinite solutions.
 
-A simple method used by a human might be to first check if the denominator of <Eqref>d24e4</Eqref> is zero, and if so, try checking if any hailstone's <Latex code="t = 0" /> position is a solution to the other hailstone's position equation for <Latex code="t \ge 0" />. If this is true for either hailstone in the manner described, then we know their future paths intersect, otherwise they don't.
+A simple method used by a human might be to first check if the denominator of <Eqref>d24e4</Eqref> is zero, and if so, try checking if any hailstone's <Eq code="t = 0" /> position is a solution to the other hailstone's position equation for <Eq code="t \ge 0" />. If this is true for either hailstone in the manner described, then we know their future paths intersect, otherwise they don't.
 
-Let's try some concrete examples. Suppose we have two lines with a slope of <Latex code="\frac{y}{x} = 1" />:
+Let's try some concrete examples. Suppose we have two lines with a slope of <Eq code="\frac{y}{x} = 1" />:
 
 <GatherLatex code="
     \myvec{p}_0 = {\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
@@ -2546,7 +2546,7 @@ Using <Eqref>d24e4</Eqref>, we see we get an undefined result:
     = \frac{2 - 2}{\parens{-1} - \parens{-1}}
 " />
 
-Let's try solving for <Latex code="t_1" /> if <Latex code="\myvec{p}_0 = \myvec{x}_1 \parens{t_1}" />. From <Eqref>d12e2</Eqref>:
+Let's try solving for <Eq code="t_1" /> if <Eq code="\myvec{p}_0 = \myvec{x}_1 \parens{t_1}" />. From <Eqref>d12e2</Eqref>:
 
 <GatherLatex code="
     {\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
@@ -2554,7 +2554,7 @@ Let's try solving for <Latex code="t_1" /> if <Latex code="\myvec{p}_0 = \myvec{
     + {\begin{pmatrix} -1 \\ -1 \end{pmatrix}} t_1
 " />
 
-It is trivial to see that this equation is valid and results in <Latex code="t_1 = 2" />. Since this is positive, we know that <Latex code="\myvec{p}_0" /> is a valid solution for the <Latex code="\myvec{x}_1" /> hailstone for positive <Latex code="t_1" />.
+It is trivial to see that this equation is valid and results in <Eq code="t_1 = 2" />. Since this is positive, we know that <Eq code="\myvec{p}_0" /> is a valid solution for the <Eq code="\myvec{x}_1" /> hailstone for positive <Eq code="t_1" />.
 
 ### Part 1 Solution
 
@@ -2613,14 +2613,14 @@ Once we have the set of solutions, we can try introducing another hailstone to s
 
 Let's try it out!
 
-Same as with Part 1, let's begin with two hailstone trajectories, though the vectors are now in <Latex code="\Reals^3" />. We use the same time variable now since we need the actual hailstone position at a point in time.
+Same as with Part 1, let's begin with two hailstone trajectories, though the vectors are now in <Eq code="\Reals^3" />. We use the same time variable now since we need the actual hailstone position at a point in time.
 
 <GatherLatex code="
     \myvec{x}_0 \parens{t} = \myvec{p}_0 + \myvec{v}_0 t \tag{d24e5} \\
     \myvec{x}_1 \parens{t} = \myvec{p}_1 + \myvec{v}_1 t \tag{d24e6}
 " />
 
-The rock trajectory will be defined the same way, but with an <Latex code="x" /> subscript:
+The rock trajectory will be defined the same way, but with an <Eq code="x" /> subscript:
 
 <DisplayLatex code="
     \myvec{x}_x \parens{t} = \myvec{p}_x + \myvec{v}_x t \tag{d24e7}

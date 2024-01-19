@@ -1,4 +1,4 @@
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 interface Props {
     readonly bytes: number;
@@ -54,11 +54,11 @@ export default function FixedWidthIntegersRow(
             return <>
                 <td>{`Signed ${bits}-bit (${bytes} bytes)`}</td>
                 <td><code>{vmin.toString()}</code></td>
-                <td><Latex code={`-2^{${bits - 1}}`} /></td>
-                <td><Latex code={`\\lessapprox ${vminMant} \\times {10}^{${vminExp}}`} /></td>
+                <td><Eq code={`-2^{${bits - 1}}`} /></td>
+                <td><Eq code={`\\lessapprox ${vminMant} \\times {10}^{${vminExp}}`} /></td>
                 <td><code>{vmax.toString()}</code></td>
-                <td><Latex code={`2^{${bits - 1}} - 1`} /></td>
-                <td><Latex code={`\\gtrapprox ${vmaxMant} \\times {10}^{${vmaxExp}}`} /></td>
+                <td><Eq code={`2^{${bits - 1}} - 1`} /></td>
+                <td><Eq code={`\\gtrapprox ${vmaxMant} \\times {10}^{${vmaxExp}}`} /></td>
             </>;
         } else {
             return <>
@@ -67,8 +67,8 @@ export default function FixedWidthIntegersRow(
                 <td></td>
                 <td></td>
                 <td><code>{vmax.toString()}</code></td>
-                <td><Latex code={`2^{${bits}} - 1`} /></td>
-                <td><Latex code={`\\gtrapprox ${vmaxMant} \\times {10}^{${vmaxExp}}`} /></td>
+                <td><Eq code={`2^{${bits}} - 1`} /></td>
+                <td><Eq code={`\\gtrapprox ${vmaxMant} \\times {10}^{${vmaxExp}}`} /></td>
             </>;
         }
     })()

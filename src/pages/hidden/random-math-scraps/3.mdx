@@ -14,7 +14,7 @@ import AlignatLatex from "@components/latex/AlignatLatex";
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import Eqref from "@components/latex/Eqref";
 import Todo from "@components/Todo";
@@ -24,10 +24,10 @@ import QuestionFrame from "@components/QuestionFrame";
 import CircuitImg from "./_latex-images/generated-do-not-edit/scrap003-q.svg"; //_
 
 <QuestionFrame>
-    For the circuit below, find average power and reactive power delivered to the entire load <Latex code="\mathbf{Z} = R + jX" />, <Latex code="R" /> alone, and <Latex code="jX" /> alone:
+    For the circuit below, find average power and reactive power delivered to the entire load <Eq code="\mathbf{Z} = R + jX" />, <Eq code="R" /> alone, and <Eq code="jX" /> alone:
 
-    - in terms of voltage, <Latex code="R" />, and <Latex code="X" />, but NOT current, and
-    - in terms of current, <Latex code="R" />, and <Latex code="X" />, but NOT voltage.
+    - in terms of voltage, <Eq code="R" />, and <Eq code="X" />, but NOT current, and
+    - in terms of current, <Eq code="R" />, and <Eq code="X" />, but NOT voltage.
 
     <FiguresBlock>
         <FigImg
@@ -98,7 +98,7 @@ From this, we get:
     I_m \sin{\theta} &= V_m \frac{X}{R^2 + X^2}
 " />
 
-Using the equations for average power and reactive power (noting that the angle <Latex code="\theta" /> works because it is the angle in which current lags behind the voltage), we get our expressions for average and reactive power delivered to the entire load <Latex code="\mathbf{Z}" />:
+Using the equations for average power and reactive power (noting that the angle <Eq code="\theta" /> works because it is the angle in which current lags behind the voltage), we get our expressions for average and reactive power delivered to the entire load <Eq code="\mathbf{Z}" />:
 
 <DisplayLatex code="
     \boxed{
@@ -132,21 +132,21 @@ Using the equations for average power and reactive power (noting that the angle 
         \tag{2}
 " />
 
-Now, to find the average and reactive power delivered to <Latex code="R" /> and <Latex code="jX" />, we first note that <Latex code="R" /> will only receive average power while <Latex code="jX" /> will only receive reactive power:
+Now, to find the average and reactive power delivered to <Eq code="R" /> and <Eq code="jX" />, we first note that <Eq code="R" /> will only receive average power while <Eq code="jX" /> will only receive reactive power:
 
 <AlignLatex code="
     P_X &= 0 \\
     Q_R &= 0
 " />
 
-Due to a common current <Latex code="\mathbf{I}" /> and conservation of AC power, we can also deduce:
+Due to a common current <Eq code="\mathbf{I}" /> and conservation of AC power, we can also deduce:
 
 <AlignLatex code="
     P_R &= P_{\mathbf{Z}} = \frac{1}{2} I_m^2 R = I_{\text{rms}}^2 R \\
     Q_X &= Q_{\mathbf{Z}} = \frac{1}{2} I_m^2 X = I_{\text{rms}}^2 X
 " />
 
-However, <Latex code="R" /> and <Latex code="jX" /> experience different voltages <Latex code="\mathbf{V}_R := V_{Rm} \phase{\theta_R}" /> and <Latex code="\mathbf{V}_X := V_{Xm} \phase{\theta_X}" />.
+However, <Eq code="R" /> and <Eq code="jX" /> experience different voltages <Eq code="\mathbf{V}_R := V_{Rm} \phase{\theta_R}" /> and <Eq code="\mathbf{V}_X := V_{Xm} \phase{\theta_X}" />.
 
 By voltage division:
 

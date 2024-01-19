@@ -12,7 +12,7 @@ import Layout from "@layouts/FullWidthLayout.astro";
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
 import CSFrame from "@components/cheatsheets/CheatsheetFrame";
@@ -47,13 +47,13 @@ import Todo from "@components/Todo";
 </CSFrame>
 
 <CSFrame>
-    <CSTitle><Latex code="k" />-Permutations of <Latex code="n" /></CSTitle>
+    <CSTitle><Eq code="k" />-Permutations of <Eq code="n" /></CSTitle>
     <DisplayLatex code="
         \MyPermutations{n}{k}
         = \frac{n!}{\parens{n - k}!}
     " />
 
-    <CSTitle><Latex code="k" />-Combinations of <Latex code="n" /> / Binomial Coefficient</CSTitle>
+    <CSTitle><Eq code="k" />-Combinations of <Eq code="n" /> / Binomial Coefficient</CSTitle>
     <DisplayLatex code="
         \MyCombinations{n}{k}
         = \binom{n}{k}

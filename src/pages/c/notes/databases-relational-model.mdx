@@ -13,7 +13,7 @@ import FiguresGroupVertical from "@components/figures/FiguresGroupVertical";
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import Eqref from "@components/latex/Eqref";
 import Todo from "@components/Todo";
@@ -34,7 +34,7 @@ import "./_databases-relational-model.css"; //_
 
 Relation schemas are <u>finite sets</u> of *attributes*.
 
-Notation for some relation <Latex code="R" /> with attributes <Latex code="A, B, C, D" /> and primary key <Latex code="B, D" />:
+Notation for some relation <Eq code="R" /> with attributes <Eq code="A, B, C, D" /> and primary key <Eq code="B, D" />:
 
 <DisplayLatex code="
     R(A, \underline{B}, C, \underline{D})
@@ -42,7 +42,7 @@ Notation for some relation <Latex code="R" /> with attributes <Latex code="A, B,
 
 The *domain* of a schema is the set of all possible tuples that can be associated with the schema.
 
-For relation <Latex code="R" />, this is denoted:
+For relation <Eq code="R" />, this is denoted:
 
 <DisplayLatex code="
     \dom{(R)}
@@ -55,13 +55,13 @@ A *<u>superkey</u>* of a relation schema is any subset of that schema that can u
 
 In other words, all tuples have unique values in the superkey.
 
-Or more formally, for <Latex code="r(R)" /> and any two distinct tuples <Latex code="t_1, t_2 \in r" />, if <Latex code="t_1[K] \neq t_2[K]" /> for some <Latex code="K \subseteq R" />, then <Latex code="K" /> is a superkey.
+Or more formally, for <Eq code="r(R)" /> and any two distinct tuples <Eq code="t_1, t_2 \in r" />, if <Eq code="t_1[K] \neq t_2[K]" /> for some <Eq code="K \subseteq R" />, then <Eq code="K" /> is a superkey.
 
-Note that for <Latex code="r(R)" />, <Latex code="R" /> is always a superkey.
+Note that for <Eq code="r(R)" />, <Eq code="R" /> is always a superkey.
 
 <br />A *<u>candidate key</u>* is a "minimal superkey".
 
-More formally, superkey <Latex code="K" /> is a candidate key if no subset <Latex code="K' \subset K" /> exists that is also a superkey.
+More formally, superkey <Eq code="K" /> is a candidate key if no subset <Eq code="K' \subset K" /> exists that is also a superkey.
 
 <br />A *<u>primary key</u>* is the specific candidate key designated to a relation schema.
 
@@ -78,7 +78,7 @@ Attributes are labels for parts of a schema.
 
 The *domain* of an attribute is the set of values that can be associated with the attribute.
 
-For attribute <Latex code="A" />, this is denoted:
+For attribute <Eq code="A" />, this is denoted:
 
 <DisplayLatex code="
     \dom{(A)}
@@ -89,7 +89,7 @@ For attribute <Latex code="A" />, this is denoted:
 
 Relation instances are <u>finite sets</u> of *tuples*.
 
-To show that <Latex code="r" /> is an instance of schema <Latex code="R" />, we write:
+To show that <Eq code="r" /> is an instance of schema <Eq code="R" />, we write:
 
 <DisplayLatex code="
     r(R)
@@ -115,16 +115,16 @@ We will use the following notation in this cheatsheet:
 
 <ul class="no-deco">
     <li>
-        <Latex code="t[X]" /> extracts attribute set <Latex code="X" />.<br />
-        <Latex code="t[X]" /> is itself a tuple.
+        <Eq code="t[X]" /> extracts attribute set <Eq code="X" />.<br />
+        <Eq code="t[X]" /> is itself a tuple.
     </li>
     <li>
-        <Latex code="t[A]" /> extracts a single attribute <Latex code="A" />.<br />
-        <Latex code="t[A]" /> is a value. *(Yes, I know this is confusing.)*
+        <Eq code="t[A]" /> extracts a single attribute <Eq code="A" />.<br />
+        <Eq code="t[A]" /> is a value. *(Yes, I know this is confusing.)*
     </li>
     <li>
-        <Latex code="(t_r : t_s)" /> combines tuples <Latex code="t_r" /> and <Latex code="t_s" />.<br />
-        <Latex code="(t_r : t_s)" /> is itself a tuple.
+        <Eq code="(t_r : t_s)" /> combines tuples <Eq code="t_r" /> and <Eq code="t_s" />.<br />
+        <Eq code="(t_r : t_s)" /> is itself a tuple.
     </li>
 </ul>
 
@@ -133,7 +133,7 @@ We will use the following notation in this cheatsheet:
 
 The null value is a special value that may be part of an attribute domain.
 
-We will use the symbol <Latex code="\relnullvalue" /> to represent *null* in this cheatsheet.
+We will use the symbol <Eq code="\relnullvalue" /> to represent *null* in this cheatsheet.
 
 While the null value is an important part of the relational model, <u>it is not a core part of relational algebra</u>.
 
@@ -144,7 +144,7 @@ While the null value is an important part of the relational model, <u>it is not 
 
 Produces the subset of tuples that satisfy a condition.
 
-For <Latex code="r(R)" /> and selection condition <Latex code="c" />:
+For <Eq code="r(R)" /> and selection condition <Eq code="c" />:
 
 <DisplayLatex code="
     \relselect_{c}{(r)} = \setdef{t \in r}{c(t)}
@@ -156,34 +156,34 @@ For <Latex code="r(R)" /> and selection condition <Latex code="c" />:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="3"><Latex code="r" /></th>
+                        <th colspan="3"><Eq code="r" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="2" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="2" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="8" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="8" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="7" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="7" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_4" /></td>
-                        <td><Latex code="9" /></td>
-                        <td><Latex code="y" /></td>
+                        <td><Eq code="a_4" /></td>
+                        <td><Eq code="9" /></td>
+                        <td><Eq code="y" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -192,24 +192,24 @@ For <Latex code="r(R)" /> and selection condition <Latex code="c" />:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="3"><Latex code="\relselect_{(B>5) \wedge (C=x)}{(r)}" /></th>
+                        <th colspan="3"><Eq code="\relselect_{(B>5) \wedge (C=x)}{(r)}" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="8" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="8" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="7" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="7" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -222,7 +222,7 @@ For <Latex code="r(R)" /> and selection condition <Latex code="c" />:
 
 Produces a relation with a subset of attributes.
 
-For <Latex code="r(R)" /> and attribute set <Latex code="X" />:
+For <Eq code="r(R)" /> and attribute set <Eq code="X" />:
 
 <DisplayLatex code="
     \relproject_{X}{(r)} = \setdef{t[X]}{t \in r}
@@ -234,33 +234,33 @@ For <Latex code="r(R)" /> and attribute set <Latex code="X" />:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="4"><Latex code="r" /></th>
+                        <th colspan="4"><Eq code="r" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="c_1" /></td>
-                        <td><Latex code="d_1" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="c_1" /></td>
+                        <td><Eq code="d_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="c_2" /></td>
-                        <td><Latex code="d_2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="c_2" /></td>
+                        <td><Eq code="d_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="c_3" /></td>
-                        <td><Latex code="d_3" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="c_3" /></td>
+                        <td><Eq code="d_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -269,25 +269,25 @@ For <Latex code="r(R)" /> and attribute set <Latex code="X" />:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="2"><Latex code="\relproject_{B, D}{(r)}" /></th>
+                        <th colspan="2"><Eq code="\relproject_{B, D}{(r)}" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="D" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="D" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="d_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="d_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="d_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="d_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="d_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="d_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -300,7 +300,7 @@ For <Latex code="r(R)" /> and attribute set <Latex code="X" />:
 
 Casts a relation to a different schema.
 
-For <Latex code="r(R)" /> and a compatible schema <Latex code="S" />:
+For <Eq code="r(R)" /> and a compatible schema <Eq code="S" />:
 
 <DisplayLatex code="
     \relrename_{S}{(r)}
@@ -312,29 +312,29 @@ For <Latex code="r(R)" /> and a compatible schema <Latex code="S" />:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="4"><Latex code="r" /></th>
+                        <th colspan="4"><Eq code="r" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="c_1" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="c_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="c_2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="c_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="c_3" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="c_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -343,29 +343,29 @@ For <Latex code="r(R)" /> and a compatible schema <Latex code="S" />:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="4"><Latex code="\relrename_{S(D, E, F)}{(r)}" /></th>
+                        <th colspan="4"><Eq code="\relrename_{S(D, E, F)}{(r)}" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="D" /></th>
-                        <th><Latex code="E" /></th>
-                        <th><Latex code="F" /></th>
+                        <th><Eq code="D" /></th>
+                        <th><Eq code="E" /></th>
+                        <th><Eq code="F" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="c_1" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="c_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="c_2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="c_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="c_3" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="c_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -378,7 +378,7 @@ For <Latex code="r(R)" /> and a compatible schema <Latex code="S" />:
 
 Set theoretic operations between *union-compatible* relations (i.e. same schema).
 
-For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
+For <Eq code="r_1(R)" /> and <Eq code="r_2(R)" />:
 
 <AlignLatex code="
     r_1 \cup r_2 &= \setdef{t}{(t \in r_1) \vee   (t \in r_2)} \\
@@ -393,39 +393,39 @@ For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
                 <table class="relation-table">
                     <thead>
                         <tr class="table-label">
-                            <th colspan="4"><Latex code="r_1" /></th>
+                            <th colspan="4"><Eq code="r_1" /></th>
                         </tr>
                         <tr>
-                            <th><Latex code="A" /></th>
-                            <th><Latex code="B" /></th>
-                            <th><Latex code="C" /></th>
+                            <th><Eq code="A" /></th>
+                            <th><Eq code="B" /></th>
+                            <th><Eq code="C" /></th>
                         </tr>
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="red">
-                            <td><Latex code="\bm{a_1}" /></td>
-                            <td><Latex code="\bm{b_1}" /></td>
-                            <td><Latex code="\bm{c_1}" /></td>
+                            <td><Eq code="\bm{a_1}" /></td>
+                            <td><Eq code="\bm{b_1}" /></td>
+                            <td><Eq code="\bm{c_1}" /></td>
                         </tr>
                         <tr class="red">
-                            <td><Latex code="\bm{a_2}" /></td>
-                            <td><Latex code="\bm{b_2}" /></td>
-                            <td><Latex code="\bm{c_2}" /></td>
+                            <td><Eq code="\bm{a_2}" /></td>
+                            <td><Eq code="\bm{b_2}" /></td>
+                            <td><Eq code="\bm{c_2}" /></td>
                         </tr>
                         <tr class="red">
-                            <td><Latex code="\bm{a_3}" /></td>
-                            <td><Latex code="\bm{b_3}" /></td>
-                            <td><Latex code="\bm{c_3}" /></td>
+                            <td><Eq code="\bm{a_3}" /></td>
+                            <td><Eq code="\bm{b_3}" /></td>
+                            <td><Eq code="\bm{c_3}" /></td>
                         </tr>
                         <tr class="purple">
-                            <td><Latex code="\bm{a_4}" /></td>
-                            <td><Latex code="\bm{b_4}" /></td>
-                            <td><Latex code="\bm{c_4}" /></td>
+                            <td><Eq code="\bm{a_4}" /></td>
+                            <td><Eq code="\bm{b_4}" /></td>
+                            <td><Eq code="\bm{c_4}" /></td>
                         </tr>
                         <tr class="purple">
-                            <td><Latex code="\bm{a_5}" /></td>
-                            <td><Latex code="\bm{b_5}" /></td>
-                            <td><Latex code="\bm{c_5}" /></td>
+                            <td><Eq code="\bm{a_5}" /></td>
+                            <td><Eq code="\bm{b_5}" /></td>
+                            <td><Eq code="\bm{c_5}" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -434,87 +434,34 @@ For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
                 <table class="relation-table">
                     <thead>
                         <tr class="table-label">
-                            <th colspan="4"><Latex code="r_2" /></th>
+                            <th colspan="4"><Eq code="r_2" /></th>
                         </tr>
                         <tr>
-                            <th><Latex code="D" /></th>
-                            <th><Latex code="E" /></th>
-                            <th><Latex code="F" /></th>
+                            <th><Eq code="D" /></th>
+                            <th><Eq code="E" /></th>
+                            <th><Eq code="F" /></th>
                         </tr>
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="purple">
-                            <td><Latex code="\bm{a_4}" /></td>
-                            <td><Latex code="\bm{b_4}" /></td>
-                            <td><Latex code="\bm{c_4}" /></td>
+                            <td><Eq code="\bm{a_4}" /></td>
+                            <td><Eq code="\bm{b_4}" /></td>
+                            <td><Eq code="\bm{c_4}" /></td>
                         </tr>
                         <tr class="purple">
-                            <td><Latex code="\bm{a_5}" /></td>
-                            <td><Latex code="\bm{b_5}" /></td>
-                            <td><Latex code="\bm{c_5}" /></td>
+                            <td><Eq code="\bm{a_5}" /></td>
+                            <td><Eq code="\bm{b_5}" /></td>
+                            <td><Eq code="\bm{c_5}" /></td>
                         </tr>
                         <tr class="blue">
-                            <td><Latex code="\bm{a_6}" /></td>
-                            <td><Latex code="\bm{b_6}" /></td>
-                            <td><Latex code="\bm{c_6}" /></td>
+                            <td><Eq code="\bm{a_6}" /></td>
+                            <td><Eq code="\bm{b_6}" /></td>
+                            <td><Eq code="\bm{c_6}" /></td>
                         </tr>
                         <tr class="blue">
-                            <td><Latex code="\bm{a_7}" /></td>
-                            <td><Latex code="\bm{b_7}" /></td>
-                            <td><Latex code="\bm{c_7}" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </Fig>
-        </FiguresGroupVertical>
-        <FiguresGroupVertical>
-            <Fig>
-                <table class="relation-table">
-                    <thead>
-                        <tr class="table-label">
-                            <th colspan="4"><Latex code="r_1 \cup r_2" /></th>
-                        </tr>
-                        <tr>
-                            <th><Latex code="A" /></th>
-                            <th><Latex code="B" /></th>
-                            <th><Latex code="C" /></th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-bordered">
-                        <tr class="red">
-                            <td><Latex code="\bm{a_1}" /></td>
-                            <td><Latex code="\bm{b_1}" /></td>
-                            <td><Latex code="\bm{c_1}" /></td>
-                        </tr>
-                        <tr class="red">
-                            <td><Latex code="\bm{a_2}" /></td>
-                            <td><Latex code="\bm{b_2}" /></td>
-                            <td><Latex code="\bm{c_2}" /></td>
-                        </tr>
-                        <tr class="red">
-                            <td><Latex code="\bm{a_3}" /></td>
-                            <td><Latex code="\bm{b_3}" /></td>
-                            <td><Latex code="\bm{c_3}" /></td>
-                        </tr>
-                        <tr class="purple">
-                            <td><Latex code="\bm{a_4}" /></td>
-                            <td><Latex code="\bm{b_4}" /></td>
-                            <td><Latex code="\bm{c_4}" /></td>
-                        </tr>
-                        <tr class="purple">
-                            <td><Latex code="\bm{a_5}" /></td>
-                            <td><Latex code="\bm{b_5}" /></td>
-                            <td><Latex code="\bm{c_5}" /></td>
-                        </tr>
-                        <tr class="blue">
-                            <td><Latex code="\bm{a_6}" /></td>
-                            <td><Latex code="\bm{b_6}" /></td>
-                            <td><Latex code="\bm{c_6}" /></td>
-                        </tr>
-                        <tr class="blue">
-                            <td><Latex code="\bm{a_7}" /></td>
-                            <td><Latex code="\bm{b_7}" /></td>
-                            <td><Latex code="\bm{c_7}" /></td>
+                            <td><Eq code="\bm{a_7}" /></td>
+                            <td><Eq code="\bm{b_7}" /></td>
+                            <td><Eq code="\bm{c_7}" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -525,29 +472,82 @@ For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
                 <table class="relation-table">
                     <thead>
                         <tr class="table-label">
-                            <th colspan="4"><Latex code="r_1 - r_2" /></th>
+                            <th colspan="4"><Eq code="r_1 \cup r_2" /></th>
                         </tr>
                         <tr>
-                            <th><Latex code="A" /></th>
-                            <th><Latex code="B" /></th>
-                            <th><Latex code="C" /></th>
+                            <th><Eq code="A" /></th>
+                            <th><Eq code="B" /></th>
+                            <th><Eq code="C" /></th>
                         </tr>
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="red">
-                            <td><Latex code="\bm{a_1}" /></td>
-                            <td><Latex code="\bm{b_1}" /></td>
-                            <td><Latex code="\bm{c_1}" /></td>
+                            <td><Eq code="\bm{a_1}" /></td>
+                            <td><Eq code="\bm{b_1}" /></td>
+                            <td><Eq code="\bm{c_1}" /></td>
                         </tr>
                         <tr class="red">
-                            <td><Latex code="\bm{a_2}" /></td>
-                            <td><Latex code="\bm{b_2}" /></td>
-                            <td><Latex code="\bm{c_2}" /></td>
+                            <td><Eq code="\bm{a_2}" /></td>
+                            <td><Eq code="\bm{b_2}" /></td>
+                            <td><Eq code="\bm{c_2}" /></td>
                         </tr>
                         <tr class="red">
-                            <td><Latex code="\bm{a_3}" /></td>
-                            <td><Latex code="\bm{b_3}" /></td>
-                            <td><Latex code="\bm{c_3}" /></td>
+                            <td><Eq code="\bm{a_3}" /></td>
+                            <td><Eq code="\bm{b_3}" /></td>
+                            <td><Eq code="\bm{c_3}" /></td>
+                        </tr>
+                        <tr class="purple">
+                            <td><Eq code="\bm{a_4}" /></td>
+                            <td><Eq code="\bm{b_4}" /></td>
+                            <td><Eq code="\bm{c_4}" /></td>
+                        </tr>
+                        <tr class="purple">
+                            <td><Eq code="\bm{a_5}" /></td>
+                            <td><Eq code="\bm{b_5}" /></td>
+                            <td><Eq code="\bm{c_5}" /></td>
+                        </tr>
+                        <tr class="blue">
+                            <td><Eq code="\bm{a_6}" /></td>
+                            <td><Eq code="\bm{b_6}" /></td>
+                            <td><Eq code="\bm{c_6}" /></td>
+                        </tr>
+                        <tr class="blue">
+                            <td><Eq code="\bm{a_7}" /></td>
+                            <td><Eq code="\bm{b_7}" /></td>
+                            <td><Eq code="\bm{c_7}" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Fig>
+        </FiguresGroupVertical>
+        <FiguresGroupVertical>
+            <Fig>
+                <table class="relation-table">
+                    <thead>
+                        <tr class="table-label">
+                            <th colspan="4"><Eq code="r_1 - r_2" /></th>
+                        </tr>
+                        <tr>
+                            <th><Eq code="A" /></th>
+                            <th><Eq code="B" /></th>
+                            <th><Eq code="C" /></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <tr class="red">
+                            <td><Eq code="\bm{a_1}" /></td>
+                            <td><Eq code="\bm{b_1}" /></td>
+                            <td><Eq code="\bm{c_1}" /></td>
+                        </tr>
+                        <tr class="red">
+                            <td><Eq code="\bm{a_2}" /></td>
+                            <td><Eq code="\bm{b_2}" /></td>
+                            <td><Eq code="\bm{c_2}" /></td>
+                        </tr>
+                        <tr class="red">
+                            <td><Eq code="\bm{a_3}" /></td>
+                            <td><Eq code="\bm{b_3}" /></td>
+                            <td><Eq code="\bm{c_3}" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -556,24 +556,24 @@ For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
                 <table class="relation-table">
                     <thead>
                         <tr class="table-label">
-                            <th colspan="4"><Latex code="r_1 \cap r_2" /></th>
+                            <th colspan="4"><Eq code="r_1 \cap r_2" /></th>
                         </tr>
                         <tr>
-                            <th><Latex code="D" /></th>
-                            <th><Latex code="E" /></th>
-                            <th><Latex code="F" /></th>
+                            <th><Eq code="D" /></th>
+                            <th><Eq code="E" /></th>
+                            <th><Eq code="F" /></th>
                         </tr>
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="purple">
-                            <td><Latex code="\bm{a_4}" /></td>
-                            <td><Latex code="\bm{b_4}" /></td>
-                            <td><Latex code="\bm{c_4}" /></td>
+                            <td><Eq code="\bm{a_4}" /></td>
+                            <td><Eq code="\bm{b_4}" /></td>
+                            <td><Eq code="\bm{c_4}" /></td>
                         </tr>
                         <tr class="purple">
-                            <td><Latex code="\bm{a_5}" /></td>
-                            <td><Latex code="\bm{b_5}" /></td>
-                            <td><Latex code="\bm{c_5}" /></td>
+                            <td><Eq code="\bm{a_5}" /></td>
+                            <td><Eq code="\bm{b_5}" /></td>
+                            <td><Eq code="\bm{c_5}" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -582,24 +582,24 @@ For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
                 <table class="relation-table">
                     <thead>
                         <tr class="table-label">
-                            <th colspan="4"><Latex code="r_2 - r_1" /></th>
+                            <th colspan="4"><Eq code="r_2 - r_1" /></th>
                         </tr>
                         <tr>
-                            <th><Latex code="D" /></th>
-                            <th><Latex code="E" /></th>
-                            <th><Latex code="F" /></th>
+                            <th><Eq code="D" /></th>
+                            <th><Eq code="E" /></th>
+                            <th><Eq code="F" /></th>
                         </tr>
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="blue">
-                            <td><Latex code="\bm{a_6}" /></td>
-                            <td><Latex code="\bm{b_6}" /></td>
-                            <td><Latex code="\bm{c_6}" /></td>
+                            <td><Eq code="\bm{a_6}" /></td>
+                            <td><Eq code="\bm{b_6}" /></td>
+                            <td><Eq code="\bm{c_6}" /></td>
                         </tr>
                         <tr class="blue">
-                            <td><Latex code="\bm{a_7}" /></td>
-                            <td><Latex code="\bm{b_7}" /></td>
-                            <td><Latex code="\bm{c_7}" /></td>
+                            <td><Eq code="\bm{a_7}" /></td>
+                            <td><Eq code="\bm{b_7}" /></td>
+                            <td><Eq code="\bm{c_7}" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -613,7 +613,7 @@ For <Latex code="r_1(R)" /> and <Latex code="r_2(R)" />:
 
 Produces every possible combination of tuples from two relations.
 
-For <Latex code="r(R)" /> and <Latex code="s(S)" />:
+For <Eq code="r(R)" /> and <Eq code="s(S)" />:
 
 <DisplayLatex code="
     r \times s = \setdef{(t_r:t_s)}{(t_r \in r) \wedge (t_s \in s)}
@@ -625,24 +625,24 @@ For <Latex code="r(R)" /> and <Latex code="s(S)" />:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="3"><Latex code="r" /></th>
+                        <th colspan="3"><Eq code="r" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="c_1" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="c_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="c_2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="c_2" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -651,25 +651,25 @@ For <Latex code="r(R)" /> and <Latex code="s(S)" />:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="2"><Latex code="s" /></th>
+                        <th colspan="2"><Eq code="s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="M" /></th>
-                        <th><Latex code="N" /></th>
+                        <th><Eq code="M" /></th>
+                        <th><Eq code="N" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="m_1" /></td>
-                        <td><Latex code="n_1" /></td>
+                        <td><Eq code="m_1" /></td>
+                        <td><Eq code="n_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="m_2" /></td>
-                        <td><Latex code="n_2" /></td>
+                        <td><Eq code="m_2" /></td>
+                        <td><Eq code="n_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="m_3" /></td>
-                        <td><Latex code="n_3" /></td>
+                        <td><Eq code="m_3" /></td>
+                        <td><Eq code="n_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -678,79 +678,79 @@ For <Latex code="r(R)" /> and <Latex code="s(S)" />:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="5"><Latex code="r \times s" /></th>
+                        <th colspan="5"><Eq code="r \times s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="M" /></th>
-                        <th><Latex code="N" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="M" /></th>
+                        <th><Eq code="N" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="c_1" /></td>
-                        <td><Latex code="m_1" /></td>
-                        <td><Latex code="n_1" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="c_1" /></td>
+                        <td><Eq code="m_1" /></td>
+                        <td><Eq code="n_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="c_1" /></td>
-                        <td><Latex code="m_2" /></td>
-                        <td><Latex code="n_2" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="c_1" /></td>
+                        <td><Eq code="m_2" /></td>
+                        <td><Eq code="n_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="c_1" /></td>
-                        <td><Latex code="m_3" /></td>
-                        <td><Latex code="n_3" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="c_1" /></td>
+                        <td><Eq code="m_3" /></td>
+                        <td><Eq code="n_3" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="c_2" /></td>
-                        <td><Latex code="m_1" /></td>
-                        <td><Latex code="n_1" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="c_2" /></td>
+                        <td><Eq code="m_1" /></td>
+                        <td><Eq code="n_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="c_2" /></td>
-                        <td><Latex code="m_2" /></td>
-                        <td><Latex code="n_2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="c_2" /></td>
+                        <td><Eq code="m_2" /></td>
+                        <td><Eq code="n_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="c_3" /></td>
-                        <td><Latex code="m_3" /></td>
-                        <td><Latex code="n_3" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="c_3" /></td>
+                        <td><Eq code="m_3" /></td>
+                        <td><Eq code="n_3" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="c_3" /></td>
-                        <td><Latex code="m_1" /></td>
-                        <td><Latex code="n_1" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="c_3" /></td>
+                        <td><Eq code="m_1" /></td>
+                        <td><Eq code="n_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="c_3" /></td>
-                        <td><Latex code="m_2" /></td>
-                        <td><Latex code="n_2" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="c_3" /></td>
+                        <td><Eq code="m_2" /></td>
+                        <td><Eq code="n_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="c_3" /></td>
-                        <td><Latex code="m_3" /></td>
-                        <td><Latex code="n_3" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="c_3" /></td>
+                        <td><Eq code="m_3" /></td>
+                        <td><Eq code="n_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -763,7 +763,7 @@ For <Latex code="r(R)" /> and <Latex code="s(S)" />:
 
 *<u>Theta join</u>* combines the tuples of two relations using a matching criterion.
 
-For <Latex code="r(R)" /> and <Latex code="s(S)" />, and some arbitrary matching criterion <Latex code="c" />:
+For <Eq code="r(R)" /> and <Eq code="s(S)" />, and some arbitrary matching criterion <Eq code="c" />:
 
 <DisplayLatex code="
     r \bowtie_c s
@@ -790,29 +790,29 @@ Duplicate attributes are not removed.
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="3"><Latex code="r" /></th>
+                        <th colspan="3"><Eq code="r" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="0" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="0" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="3" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="3" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="2" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="2" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -821,29 +821,29 @@ Duplicate attributes are not removed.
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="2"><Latex code="s" /></th>
+                        <th colspan="2"><Eq code="s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="M" /></th>
-                        <th><Latex code="N" /></th>
+                        <th><Eq code="M" /></th>
+                        <th><Eq code="N" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="m_1" /></td>
-                        <td><Latex code="3" /></td>
+                        <td><Eq code="m_1" /></td>
+                        <td><Eq code="3" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="m_2" /></td>
-                        <td><Latex code="4" /></td>
+                        <td><Eq code="m_2" /></td>
+                        <td><Eq code="4" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="m_3" /></td>
-                        <td><Latex code="1" /></td>
+                        <td><Eq code="m_3" /></td>
+                        <td><Eq code="1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="m_4" /></td>
-                        <td><Latex code="2" /></td>
+                        <td><Eq code="m_4" /></td>
+                        <td><Eq code="2" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -852,51 +852,51 @@ Duplicate attributes are not removed.
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="5"><Latex code="r \bowtie_{N \le C} s" /></th>
+                        <th colspan="5"><Eq code="r \bowtie_{N \le C} s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="M" /></th>
-                        <th><Latex code="N" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="M" /></th>
+                        <th><Eq code="N" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="3" /></td>
-                        <td><Latex code="m_1" /></td>
-                        <td><Latex code="3" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="3" /></td>
+                        <td><Eq code="m_1" /></td>
+                        <td><Eq code="3" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="3" /></td>
-                        <td><Latex code="m_3" /></td>
-                        <td><Latex code="1" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="3" /></td>
+                        <td><Eq code="m_3" /></td>
+                        <td><Eq code="1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td><Latex code="3" /></td>
-                        <td><Latex code="m_4" /></td>
-                        <td><Latex code="2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td><Eq code="3" /></td>
+                        <td><Eq code="m_4" /></td>
+                        <td><Eq code="2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="2" /></td>
-                        <td><Latex code="m_3" /></td>
-                        <td><Latex code="1" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="2" /></td>
+                        <td><Eq code="m_3" /></td>
+                        <td><Eq code="1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td><Latex code="2" /></td>
-                        <td><Latex code="m_4" /></td>
-                        <td><Latex code="2" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td><Eq code="2" /></td>
+                        <td><Eq code="m_4" /></td>
+                        <td><Eq code="2" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -909,7 +909,7 @@ Duplicate attributes are not removed.
 
 A special case of *equijoin* that matches tuples on all their common attributes.
 
-For <Latex code="r(R)" /> and <Latex code="s(S)" />:
+For <Eq code="r(R)" /> and <Eq code="s(S)" />:
 
 <DisplayLatex code="
     r \bowtie s
@@ -920,7 +920,7 @@ For <Latex code="r(R)" /> and <Latex code="s(S)" />:
     }
 " />
 
-where <Latex code="m" /> is "all common attributes must match":
+where <Eq code="m" /> is "all common attributes must match":
 
 <DisplayLatex code="
     m(t_r, t_s) = \parens{\vphantom{\frac{x}{x}} t_r[R \cap S] = t_s[R \cap S]}
@@ -933,14 +933,14 @@ Natural join can also be defined as:
     = \relproject_{R \cup S}{\parens{\relselect_{m(r, s)}{\parens{r \times s}}}}
 " />
 
-where <Latex code="m" /> is:
+where <Eq code="m" /> is:
 
 <DisplayLatex code="
     m(r, s)
     = \parens{\vphantom{\frac{x}{x}} r[R \cap S] = s[R \cap S]}
 " />
 
-and <Latex code="\relproject_{R \cup S}" /> assumes removal of duplicate attributes.
+and <Eq code="\relproject_{R \cup S}" /> assumes removal of duplicate attributes.
 
 <p><span class="warning">*Natural join* is dangerous in real applications. Use *equijoin* to explicitly match tuples instead.</span></p>
 
@@ -950,39 +950,39 @@ and <Latex code="\relproject_{R \cup S}" /> assumes removal of duplicate attribu
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="4"><Latex code="r" /></th>
+                        <th colspan="4"><Eq code="r" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td class="red"><Latex code="\bm{x}" /></td>
-                        <td class="red"><Latex code="\bm{y}" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td class="red"><Eq code="\bm{x}" /></td>
+                        <td class="red"><Eq code="\bm{y}" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td class="red"><Latex code="\bm{x}" /></td>
-                        <td class="red"><Latex code="\bm{y}" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td class="red"><Eq code="\bm{x}" /></td>
+                        <td class="red"><Eq code="\bm{y}" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_4" /></td>
-                        <td><Latex code="b_4" /></td>
-                        <td class="blue"><Latex code="\bm{x}" /></td>
-                        <td class="blue"><Latex code="\bm{y}" /></td>
+                        <td><Eq code="a_4" /></td>
+                        <td><Eq code="b_4" /></td>
+                        <td class="blue"><Eq code="\bm{x}" /></td>
+                        <td class="blue"><Eq code="\bm{y}" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -991,29 +991,29 @@ and <Latex code="\relproject_{R \cup S}" /> assumes removal of duplicate attribu
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="3"><Latex code="s" /></th>
+                        <th colspan="3"><Eq code="s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
-                        <th><Latex code="E" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
+                        <th><Eq code="E" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="y" /></td>
-                        <td><Latex code="y" /></td>
-                        <td><Latex code="e_1" /></td>
+                        <td><Eq code="y" /></td>
+                        <td><Eq code="y" /></td>
+                        <td><Eq code="e_1" /></td>
                     </tr>
                     <tr>
-                        <td class="red"><Latex code="\bm{x}" /></td>
-                        <td class="red"><Latex code="\bm{y}" /></td>
-                        <td><Latex code="e_2" /></td>
+                        <td class="red"><Eq code="\bm{x}" /></td>
+                        <td class="red"><Eq code="\bm{y}" /></td>
+                        <td><Eq code="e_2" /></td>
                     </tr>
                     <tr>
-                        <td class="blue"><Latex code="\bm{y}" /></td>
-                        <td class="blue"><Latex code="\bm{x}" /></td>
-                        <td><Latex code="e_3" /></td>
+                        <td class="blue"><Eq code="\bm{y}" /></td>
+                        <td class="blue"><Eq code="\bm{x}" /></td>
+                        <td><Eq code="e_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -1022,37 +1022,37 @@ and <Latex code="\relproject_{R \cup S}" /> assumes removal of duplicate attribu
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="5"><Latex code="r \bowtie s" /></th>
+                        <th colspan="5"><Eq code="r \bowtie s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
-                        <th><Latex code="E" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
+                        <th><Eq code="E" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td class="red"><Latex code="\bm{x}" /></td>
-                        <td class="red"><Latex code="\bm{y}" /></td>
-                        <td><Latex code="e_2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td class="red"><Eq code="\bm{x}" /></td>
+                        <td class="red"><Eq code="\bm{y}" /></td>
+                        <td><Eq code="e_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td class="red"><Latex code="\bm{x}" /></td>
-                        <td class="red"><Latex code="\bm{y}" /></td>
-                        <td><Latex code="e_2" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td class="red"><Eq code="\bm{x}" /></td>
+                        <td class="red"><Eq code="\bm{y}" /></td>
+                        <td><Eq code="e_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_4" /></td>
-                        <td><Latex code="b_4" /></td>
-                        <td class="blue"><Latex code="\bm{y}" /></td>
-                        <td class="blue"><Latex code="\bm{x}" /></td>
-                        <td><Latex code="e_3" /></td>
+                        <td><Eq code="a_4" /></td>
+                        <td><Eq code="b_4" /></td>
+                        <td class="blue"><Eq code="\bm{y}" /></td>
+                        <td class="blue"><Eq code="\bm{x}" /></td>
+                        <td><Eq code="e_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -1063,7 +1063,7 @@ and <Latex code="\relproject_{R \cup S}" /> assumes removal of duplicate attribu
 
 ### Division (Extended RA)
 
-For <Latex code="r(R)" /> and <Latex code="s(S)" />, with <Latex code="S \subseteq R" />:
+For <Eq code="r(R)" /> and <Eq code="s(S)" />, with <Eq code="S \subseteq R" />:
 
 <DisplayLatex code="
     r \div s = \setdef{t \in \relproject_{R-S}{(r)}}{\Phi(t)}
@@ -1082,7 +1082,7 @@ where:
         )
 " />
 
-*In plain English:* (1) For all tuples in <Latex code="s" />, (2) there is at least one relation in <Latex code="r" /> (3) whose common attributes match, (4) and whose non-common attributes are the same.
+*In plain English:* (1) For all tuples in <Eq code="s" />, (2) there is at least one relation in <Eq code="r" /> (3) whose common attributes match, (4) and whose non-common attributes are the same.
 
 Division can also be defined as:
 
@@ -1094,7 +1094,7 @@ Division can also be defined as:
         }_{\text{``disqualifier'' term}}
 " />
 
-where <Latex code="r'" /> is "all possible result tuples":
+where <Eq code="r'" /> is "all possible result tuples":
 
 <DisplayLatex code="
     r' = \relproject_{(R-S)}{(r)}
@@ -1106,99 +1106,99 @@ where <Latex code="r'" /> is "all possible result tuples":
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="4"><Latex code="r" /></th>
+                        <th colspan="4"><Eq code="r" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="\alpha" /></td>
-                        <td><Latex code="\beta" /></td>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="\alpha" /></td>
+                        <td><Eq code="\beta" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                     <tr class="blue">
-                        <td><Latex code="\bm{\alpha}" /></td>
-                        <td><Latex code="\bm{\beta}" /></td>
-                        <td><Latex code="\bm{x}" /></td>
-                        <td><Latex code="\bm{z}" /></td>
+                        <td><Eq code="\bm{\alpha}" /></td>
+                        <td><Eq code="\bm{\beta}" /></td>
+                        <td><Eq code="\bm{x}" /></td>
+                        <td><Eq code="\bm{z}" /></td>
                     </tr>
                     <tr class="blue">
-                        <td><Latex code="\bm{\alpha}" /></td>
-                        <td><Latex code="\bm{\beta}" /></td>
-                        <td><Latex code="\bm{w}" /></td>
-                        <td><Latex code="\bm{z}" /></td>
+                        <td><Eq code="\bm{\alpha}" /></td>
+                        <td><Eq code="\bm{\beta}" /></td>
+                        <td><Eq code="\bm{w}" /></td>
+                        <td><Eq code="\bm{z}" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="\gamma" /></td>
-                        <td><Latex code="\delta" /></td>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="\gamma" /></td>
+                        <td><Eq code="\delta" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                     <tr class="red">
-                        <td><Latex code="\bm{\gamma}" /></td>
-                        <td><Latex code="\bm{\delta}" /></td>
-                        <td><Latex code="\bm{x}" /></td>
-                        <td><Latex code="\bm{y}" /></td>
+                        <td><Eq code="\bm{\gamma}" /></td>
+                        <td><Eq code="\bm{\delta}" /></td>
+                        <td><Eq code="\bm{x}" /></td>
+                        <td><Eq code="\bm{y}" /></td>
                     </tr>
                     <tr class="red">
-                        <td><Latex code="\bm{\gamma}" /></td>
-                        <td><Latex code="\bm{\delta}" /></td>
-                        <td><Latex code="\bm{x}" /></td>
-                        <td><Latex code="\bm{z}" /></td>
+                        <td><Eq code="\bm{\gamma}" /></td>
+                        <td><Eq code="\bm{\delta}" /></td>
+                        <td><Eq code="\bm{x}" /></td>
+                        <td><Eq code="\bm{z}" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="\gamma" /></td>
-                        <td><Latex code="\delta" /></td>
-                        <td><Latex code="w" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="\gamma" /></td>
+                        <td><Eq code="\delta" /></td>
+                        <td><Eq code="w" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="\gamma" /></td>
-                        <td><Latex code="\delta" /></td>
-                        <td><Latex code="w" /></td>
-                        <td><Latex code="y" /></td>
+                        <td><Eq code="\gamma" /></td>
+                        <td><Eq code="\delta" /></td>
+                        <td><Eq code="w" /></td>
+                        <td><Eq code="y" /></td>
                     </tr>
                     <tr class="red">
-                        <td><Latex code="\bm{\gamma}" /></td>
-                        <td><Latex code="\bm{\delta}" /></td>
-                        <td><Latex code="\bm{w}" /></td>
-                        <td><Latex code="\bm{z}" /></td>
+                        <td><Eq code="\bm{\gamma}" /></td>
+                        <td><Eq code="\bm{\delta}" /></td>
+                        <td><Eq code="\bm{w}" /></td>
+                        <td><Eq code="\bm{z}" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="\gamma" /></td>
-                        <td><Latex code="\delta" /></td>
-                        <td><Latex code="w" /></td>
-                        <td><Latex code="w" /></td>
+                        <td><Eq code="\gamma" /></td>
+                        <td><Eq code="\delta" /></td>
+                        <td><Eq code="w" /></td>
+                        <td><Eq code="w" /></td>
                     </tr>
                     <tr class="blue">
-                        <td><Latex code="\bm{\epsilon}" /></td>
-                        <td><Latex code="\bm{\zeta}" /></td>
-                        <td><Latex code="\bm{x}" /></td>
-                        <td><Latex code="\bm{y}" /></td>
+                        <td><Eq code="\bm{\epsilon}" /></td>
+                        <td><Eq code="\bm{\zeta}" /></td>
+                        <td><Eq code="\bm{x}" /></td>
+                        <td><Eq code="\bm{y}" /></td>
                     </tr>
                     <tr class="blue">
-                        <td><Latex code="\bm{\epsilon}" /></td>
-                        <td><Latex code="\bm{\zeta}" /></td>
-                        <td><Latex code="\bm{x}" /></td>
-                        <td><Latex code="\bm{z}" /></td>
+                        <td><Eq code="\bm{\epsilon}" /></td>
+                        <td><Eq code="\bm{\zeta}" /></td>
+                        <td><Eq code="\bm{x}" /></td>
+                        <td><Eq code="\bm{z}" /></td>
                     </tr>
                     <tr class="blue">
-                        <td><Latex code="\bm{\epsilon}" /></td>
-                        <td><Latex code="\bm{\zeta}" /></td>
-                        <td><Latex code="\bm{w}" /></td>
-                        <td><Latex code="\bm{z}" /></td>
+                        <td><Eq code="\bm{\epsilon}" /></td>
+                        <td><Eq code="\bm{\zeta}" /></td>
+                        <td><Eq code="\bm{w}" /></td>
+                        <td><Eq code="\bm{z}" /></td>
                     </tr>
                     <tr class="red">
-                        <td><Latex code="\bm{\eta}" /></td>
-                        <td><Latex code="\bm{\theta}" /></td>
-                        <td><Latex code="\bm{x}" /></td>
-                        <td><Latex code="\bm{y}" /></td>
+                        <td><Eq code="\bm{\eta}" /></td>
+                        <td><Eq code="\bm{\theta}" /></td>
+                        <td><Eq code="\bm{x}" /></td>
+                        <td><Eq code="\bm{y}" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -1207,25 +1207,25 @@ where <Latex code="r'" /> is "all possible result tuples":
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="2"><Latex code="s" /></th>
+                        <th colspan="2"><Eq code="s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="y" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="y" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="z" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="z" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="w" /></td>
-                        <td><Latex code="z" /></td>
+                        <td><Eq code="w" /></td>
+                        <td><Eq code="z" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -1234,28 +1234,28 @@ where <Latex code="r'" /> is "all possible result tuples":
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="2"><Latex code="r \div s" /></th>
+                        <th colspan="2"><Eq code="r \div s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="\gamma" /></td>
-                        <td><Latex code="\delta" /></td>
+                        <td><Eq code="\gamma" /></td>
+                        <td><Eq code="\delta" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="\epsilon" /></td>
-                        <td><Latex code="\zeta" /></td>
+                        <td><Eq code="\epsilon" /></td>
+                        <td><Eq code="\zeta" /></td>
                     </tr>
                 </tbody>
             </table>
         </Fig>
     </FiguresBlock>
 
-    In <Latex code="r" />, values <Latex code="(\gamma, \delta)" /> and <Latex code="(\epsilon, \zeta)" /> are the only values that occur with all values <Latex code="(x, y)" />, <Latex code="(x, z)" />, and <Latex code="(w, z)" />.
+    In <Eq code="r" />, values <Eq code="(\gamma, \delta)" /> and <Eq code="(\epsilon, \zeta)" /> are the only values that occur with all values <Eq code="(x, y)" />, <Eq code="(x, z)" />, and <Eq code="(w, z)" />.
 </ExampleFrame>
 
 
@@ -1332,39 +1332,39 @@ To summarize the differences between the joins:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="4"><Latex code="r" /></th>
+                        <th colspan="4"><Eq code="r" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="x" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="x" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td class="red"><Latex code="\bm{x}" /></td>
-                        <td class="red"><Latex code="\bm{y}" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td class="red"><Eq code="\bm{x}" /></td>
+                        <td class="red"><Eq code="\bm{y}" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td class="blue"><Latex code="\bm{y}" /></td>
-                        <td class="blue"><Latex code="\bm{x}" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td class="blue"><Eq code="\bm{y}" /></td>
+                        <td class="blue"><Eq code="\bm{x}" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_4" /></td>
-                        <td><Latex code="b_4" /></td>
-                        <td><Latex code="z" /></td>
-                        <td><Latex code="w" /></td>
+                        <td><Eq code="a_4" /></td>
+                        <td><Eq code="b_4" /></td>
+                        <td><Eq code="z" /></td>
+                        <td><Eq code="w" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -1373,29 +1373,29 @@ To summarize the differences between the joins:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="3"><Latex code="s" /></th>
+                        <th colspan="3"><Eq code="s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
-                        <th><Latex code="E" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
+                        <th><Eq code="E" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="y" /></td>
-                        <td><Latex code="y" /></td>
-                        <td><Latex code="e_1" /></td>
+                        <td><Eq code="y" /></td>
+                        <td><Eq code="y" /></td>
+                        <td><Eq code="e_1" /></td>
                     </tr>
                     <tr>
-                        <td class="red"><Latex code="\bm{x}" /></td>
-                        <td class="red"><Latex code="\bm{y}" /></td>
-                        <td><Latex code="e_2" /></td>
+                        <td class="red"><Eq code="\bm{x}" /></td>
+                        <td class="red"><Eq code="\bm{y}" /></td>
+                        <td><Eq code="e_2" /></td>
                     </tr>
                     <tr>
-                        <td class="blue"><Latex code="\bm{y}" /></td>
-                        <td class="blue"><Latex code="\bm{x}" /></td>
-                        <td><Latex code="e_3" /></td>
+                        <td class="blue"><Eq code="\bm{y}" /></td>
+                        <td class="blue"><Eq code="\bm{x}" /></td>
+                        <td><Eq code="e_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -1404,51 +1404,51 @@ To summarize the differences between the joins:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="5"><Latex code="r \relfullouterjoin s" /></th>
+                        <th colspan="5"><Eq code="r \relfullouterjoin s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
-                        <th><Latex code="E" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
+                        <th><Eq code="E" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="\relnullvalue" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="\relnullvalue" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td class="red"><Latex code="\bm{x}" /></td>
-                        <td class="red"><Latex code="\bm{y}" /></td>
-                        <td><Latex code="e_2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td class="red"><Eq code="\bm{x}" /></td>
+                        <td class="red"><Eq code="\bm{y}" /></td>
+                        <td><Eq code="e_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td class="blue"><Latex code="\bm{y}" /></td>
-                        <td class="blue"><Latex code="\bm{x}" /></td>
-                        <td><Latex code="e_3" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td class="blue"><Eq code="\bm{y}" /></td>
+                        <td class="blue"><Eq code="\bm{x}" /></td>
+                        <td><Eq code="e_3" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_4" /></td>
-                        <td><Latex code="b_4" /></td>
-                        <td><Latex code="z" /></td>
-                        <td><Latex code="w" /></td>
-                        <td><Latex code="\relnullvalue" /></td>
+                        <td><Eq code="a_4" /></td>
+                        <td><Eq code="b_4" /></td>
+                        <td><Eq code="z" /></td>
+                        <td><Eq code="w" /></td>
+                        <td><Eq code="\relnullvalue" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="\relnullvalue" /></td>
-                        <td><Latex code="\relnullvalue" /></td>
-                        <td><Latex code="y" /></td>
-                        <td><Latex code="y" /></td>
-                        <td><Latex code="e_1" /></td>
+                        <td><Eq code="\relnullvalue" /></td>
+                        <td><Eq code="\relnullvalue" /></td>
+                        <td><Eq code="y" /></td>
+                        <td><Eq code="y" /></td>
+                        <td><Eq code="e_1" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -1457,44 +1457,44 @@ To summarize the differences between the joins:
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="5"><Latex code="r \relleftouterjoin s" /></th>
+                        <th colspan="5"><Eq code="r \relleftouterjoin s" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
-                        <th><Latex code="E" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
+                        <th><Eq code="E" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="b_1" /></td>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="x" /></td>
-                        <td><Latex code="\relnullvalue" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="b_1" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="x" /></td>
+                        <td><Eq code="\relnullvalue" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="b_2" /></td>
-                        <td class="red"><Latex code="\bm{x}" /></td>
-                        <td class="red"><Latex code="\bm{y}" /></td>
-                        <td><Latex code="e_2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="b_2" /></td>
+                        <td class="red"><Eq code="\bm{x}" /></td>
+                        <td class="red"><Eq code="\bm{y}" /></td>
+                        <td><Eq code="e_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="b_3" /></td>
-                        <td class="blue"><Latex code="\bm{y}" /></td>
-                        <td class="blue"><Latex code="\bm{x}" /></td>
-                        <td><Latex code="e_3" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="b_3" /></td>
+                        <td class="blue"><Eq code="\bm{y}" /></td>
+                        <td class="blue"><Eq code="\bm{x}" /></td>
+                        <td><Eq code="e_3" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_4" /></td>
-                        <td><Latex code="b_4" /></td>
-                        <td><Latex code="z" /></td>
-                        <td><Latex code="w" /></td>
-                        <td><Latex code="\relnullvalue" /></td>
+                        <td><Eq code="a_4" /></td>
+                        <td><Eq code="b_4" /></td>
+                        <td><Eq code="z" /></td>
+                        <td><Eq code="w" /></td>
+                        <td><Eq code="\relnullvalue" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -1507,16 +1507,16 @@ To summarize the differences between the joins:
 
 Performs calculations over groups of tuples within a relation. Produces a relation containing the results.
 
-For <Latex code="r(R)" /> and operator subscript <Latex code="G" />:
+For <Eq code="r(R)" /> and operator subscript <Eq code="G" />:
 
 <DisplayLatex code="
     \relgroup_G{(R)}
 " />
 
-where <Latex code="G" /> is a list containing:
+where <Eq code="G" /> is a list containing:
 
-- one or more attributes from <Latex code="R" /> to be taken as *grouping attributes*, and
-- one or more *aggregate functions*, written in the form <Latex code="\theta{(A, \dots)}" />, where <Latex code="\theta" /> is an aggregate function to be applied to attributes <Latex code="A, \dots" />.
+- one or more attributes from <Eq code="R" /> to be taken as *grouping attributes*, and
+- one or more *aggregate functions*, written in the form <Eq code="\theta{(A, \dots)}" />, where <Eq code="\theta" /> is an aggregate function to be applied to attributes <Eq code="A, \dots" />.
 
 Formally, aggregate functions can be considered to take a multiset (i.e. a set with duplicates) of values.
 
@@ -1533,63 +1533,63 @@ Most major DBMS implementations offer many more aggregate functions and allow us
                 <table class="relation-table">
                     <thead>
                         <tr class="table-label">
-                            <th colspan="4"><Latex code="r" /></th>
+                            <th colspan="4"><Eq code="r" /></th>
                         </tr>
                         <tr>
-                            <th><Latex code="A" /></th>
-                            <th><Latex code="B" /></th>
-                            <th><Latex code="C" /></th>
-                            <th><Latex code="D" /></th>
+                            <th><Eq code="A" /></th>
+                            <th><Eq code="B" /></th>
+                            <th><Eq code="C" /></th>
+                            <th><Eq code="D" /></th>
                         </tr>
                     </thead>
                     <tbody class="table-bordered">
                         <tr>
-                            <td><Latex code="x" /></td>
-                            <td><Latex code="\alpha" /></td>
-                            <td><Latex code="5" /></td>
-                            <td><Latex code="7" /></td>
+                            <td><Eq code="x" /></td>
+                            <td><Eq code="\alpha" /></td>
+                            <td><Eq code="5" /></td>
+                            <td><Eq code="7" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="x" /></td>
-                            <td><Latex code="\alpha" /></td>
-                            <td><Latex code="7" /></td>
-                            <td><Latex code="3" /></td>
+                            <td><Eq code="x" /></td>
+                            <td><Eq code="\alpha" /></td>
+                            <td><Eq code="7" /></td>
+                            <td><Eq code="3" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="x" /></td>
-                            <td><Latex code="\beta" /></td>
-                            <td><Latex code="1" /></td>
-                            <td><Latex code="9" /></td>
+                            <td><Eq code="x" /></td>
+                            <td><Eq code="\beta" /></td>
+                            <td><Eq code="1" /></td>
+                            <td><Eq code="9" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="x" /></td>
-                            <td><Latex code="\beta" /></td>
-                            <td><Latex code="5" /></td>
-                            <td><Latex code="6" /></td>
+                            <td><Eq code="x" /></td>
+                            <td><Eq code="\beta" /></td>
+                            <td><Eq code="5" /></td>
+                            <td><Eq code="6" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="y" /></td>
-                            <td><Latex code="\alpha" /></td>
-                            <td><Latex code="3" /></td>
-                            <td><Latex code="1" /></td>
+                            <td><Eq code="y" /></td>
+                            <td><Eq code="\alpha" /></td>
+                            <td><Eq code="3" /></td>
+                            <td><Eq code="1" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="y" /></td>
-                            <td><Latex code="\alpha" /></td>
-                            <td><Latex code="2" /></td>
-                            <td><Latex code="1" /></td>
+                            <td><Eq code="y" /></td>
+                            <td><Eq code="\alpha" /></td>
+                            <td><Eq code="2" /></td>
+                            <td><Eq code="1" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="y" /></td>
-                            <td><Latex code="\beta" /></td>
-                            <td><Latex code="3" /></td>
-                            <td><Latex code="5" /></td>
+                            <td><Eq code="y" /></td>
+                            <td><Eq code="\beta" /></td>
+                            <td><Eq code="3" /></td>
+                            <td><Eq code="5" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="z" /></td>
-                            <td><Latex code="\alpha" /></td>
-                            <td><Latex code="9" /></td>
-                            <td><Latex code="4" /></td>
+                            <td><Eq code="z" /></td>
+                            <td><Eq code="\alpha" /></td>
+                            <td><Eq code="9" /></td>
+                            <td><Eq code="4" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1600,33 +1600,33 @@ Most major DBMS implementations offer many more aggregate functions and allow us
                 <table class="relation-table">
                     <thead>
                         <tr class="table-label">
-                            <th colspan="4"><Latex code="\relgroup_{A, \text{COUNT}(A), \text{MAX}(C), \text{MAX}(D)}{(r)}" /></th>
+                            <th colspan="4"><Eq code="\relgroup_{A, \text{COUNT}(A), \text{MAX}(C), \text{MAX}(D)}{(r)}" /></th>
                         </tr>
                         <tr>
-                            <th><Latex code="A" /></th>
-                            <th><Latex code="\text{COUNT}(A)" /></th>
-                            <th><Latex code="\text{MAX}(C)" /></th>
-                            <th><Latex code="\text{MAX}(D)" /></th>
+                            <th><Eq code="A" /></th>
+                            <th><Eq code="\text{COUNT}(A)" /></th>
+                            <th><Eq code="\text{MAX}(C)" /></th>
+                            <th><Eq code="\text{MAX}(D)" /></th>
                         </tr>
                     </thead>
                     <tbody class="table-bordered">
                         <tr>
-                            <td><Latex code="x" /></td>
-                            <td><Latex code="4" /></td>
-                            <td><Latex code="7" /></td>
-                            <td><Latex code="9" /></td>
+                            <td><Eq code="x" /></td>
+                            <td><Eq code="4" /></td>
+                            <td><Eq code="7" /></td>
+                            <td><Eq code="9" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="y" /></td>
-                            <td><Latex code="3" /></td>
-                            <td><Latex code="3" /></td>
-                            <td><Latex code="5" /></td>
+                            <td><Eq code="y" /></td>
+                            <td><Eq code="3" /></td>
+                            <td><Eq code="3" /></td>
+                            <td><Eq code="5" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="z" /></td>
-                            <td><Latex code="1" /></td>
-                            <td><Latex code="9" /></td>
-                            <td><Latex code="4" /></td>
+                            <td><Eq code="z" /></td>
+                            <td><Eq code="1" /></td>
+                            <td><Eq code="9" /></td>
+                            <td><Eq code="4" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1635,45 +1635,45 @@ Most major DBMS implementations offer many more aggregate functions and allow us
                 <table class="relation-table">
                     <thead>
                         <tr class="table-label">
-                            <th colspan="4"><Latex code="\relgroup_{A, B, \text{COUNT}(A), \text{SUM}(C)}{(r)}" /></th>
+                            <th colspan="4"><Eq code="\relgroup_{A, B, \text{COUNT}(A), \text{SUM}(C)}{(r)}" /></th>
                         </tr>
                         <tr>
-                            <th><Latex code="A" /></th>
-                            <th><Latex code="B" /></th>
-                            <th><Latex code="\text{COUNT}(A)" /></th>
-                            <th><Latex code="\text{SUM}(C)" /></th>
+                            <th><Eq code="A" /></th>
+                            <th><Eq code="B" /></th>
+                            <th><Eq code="\text{COUNT}(A)" /></th>
+                            <th><Eq code="\text{SUM}(C)" /></th>
                         </tr>
                     </thead>
                     <tbody class="table-bordered">
                         <tr>
-                            <td><Latex code="x" /></td>
-                            <td><Latex code="\alpha" /></td>
-                            <td><Latex code="2" /></td>
-                            <td><Latex code="12" /></td>
+                            <td><Eq code="x" /></td>
+                            <td><Eq code="\alpha" /></td>
+                            <td><Eq code="2" /></td>
+                            <td><Eq code="12" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="x" /></td>
-                            <td><Latex code="\beta" /></td>
-                            <td><Latex code="2" /></td>
-                            <td><Latex code="6" /></td>
+                            <td><Eq code="x" /></td>
+                            <td><Eq code="\beta" /></td>
+                            <td><Eq code="2" /></td>
+                            <td><Eq code="6" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="y" /></td>
-                            <td><Latex code="\alpha" /></td>
-                            <td><Latex code="2" /></td>
-                            <td><Latex code="5" /></td>
+                            <td><Eq code="y" /></td>
+                            <td><Eq code="\alpha" /></td>
+                            <td><Eq code="2" /></td>
+                            <td><Eq code="5" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="y" /></td>
-                            <td><Latex code="\beta" /></td>
-                            <td><Latex code="1" /></td>
-                            <td><Latex code="3" /></td>
+                            <td><Eq code="y" /></td>
+                            <td><Eq code="\beta" /></td>
+                            <td><Eq code="1" /></td>
+                            <td><Eq code="3" /></td>
                         </tr>
                         <tr>
-                            <td><Latex code="z" /></td>
-                            <td><Latex code="\alpha" /></td>
-                            <td><Latex code="1" /></td>
-                            <td><Latex code="9" /></td>
+                            <td><Eq code="z" /></td>
+                            <td><Eq code="\alpha" /></td>
+                            <td><Eq code="1" /></td>
+                            <td><Eq code="9" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1681,13 +1681,13 @@ Most major DBMS implementations offer many more aggregate functions and allow us
         </FiguresGroupVertical>
     </FiguresBlock>
 
-    The <Latex code="\text{COUNT}()" /> function is interesting in that it doesn't really matter which column you use.
+    The <Eq code="\text{COUNT}()" /> function is interesting in that it doesn't really matter which column you use.
 </ExampleFrame>
 
 
 ### Generalized Projection (Extended RA)
 
-We can extend the projection operator <Latex code="\pi" /> to also contain expressions for computation.
+We can extend the projection operator <Eq code="\pi" /> to also contain expressions for computation.
 
 <ExampleFrame>
     <FiguresBlock>
@@ -1695,33 +1695,33 @@ We can extend the projection operator <Latex code="\pi" /> to also contain expre
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="4"><Latex code="r" /></th>
+                        <th colspan="4"><Eq code="r" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="A" /></th>
-                        <th><Latex code="B" /></th>
-                        <th><Latex code="C" /></th>
-                        <th><Latex code="D" /></th>
+                        <th><Eq code="A" /></th>
+                        <th><Eq code="B" /></th>
+                        <th><Eq code="C" /></th>
+                        <th><Eq code="D" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="2" /></td>
-                        <td><Latex code="6" /></td>
-                        <td><Latex code="d_1" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="2" /></td>
+                        <td><Eq code="6" /></td>
+                        <td><Eq code="d_1" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="8" /></td>
-                        <td><Latex code="9" /></td>
-                        <td><Latex code="d_2" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="8" /></td>
+                        <td><Eq code="9" /></td>
+                        <td><Eq code="d_2" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="3" /></td>
-                        <td><Latex code="2" /></td>
-                        <td><Latex code="d_3" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="3" /></td>
+                        <td><Eq code="2" /></td>
+                        <td><Eq code="d_3" /></td>
                     </tr>
                 </tbody>
             </table>
@@ -1730,25 +1730,25 @@ We can extend the projection operator <Latex code="\pi" /> to also contain expre
             <table class="relation-table">
                 <thead>
                     <tr class="table-label">
-                        <th colspan="2"><Latex code="\relproject_{A, B + C}{(r)}" /></th>
+                        <th colspan="2"><Eq code="\relproject_{A, B + C}{(r)}" /></th>
                     </tr>
                     <tr>
-                        <th><Latex code="\phantom{A}A\phantom{A}" /></th>
-                        <th><Latex code="B + C" /></th>
+                        <th><Eq code="\phantom{A}A\phantom{A}" /></th>
+                        <th><Eq code="B + C" /></th>
                     </tr>
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
-                        <td><Latex code="a_1" /></td>
-                        <td><Latex code="8" /></td>
+                        <td><Eq code="a_1" /></td>
+                        <td><Eq code="8" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_2" /></td>
-                        <td><Latex code="17" /></td>
+                        <td><Eq code="a_2" /></td>
+                        <td><Eq code="17" /></td>
                     </tr>
                     <tr>
-                        <td><Latex code="a_3" /></td>
-                        <td><Latex code="5" /></td>
+                        <td><Eq code="a_3" /></td>
+                        <td><Eq code="5" /></td>
                     </tr>
                 </tbody>
             </table>

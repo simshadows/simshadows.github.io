@@ -13,7 +13,7 @@ import AlignatLatex from "@components/latex/AlignatLatex";
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
 import CSFrame from "@components/cheatsheets/CheatsheetFrame";
@@ -64,7 +64,7 @@ import "./_precalc.css"; //_
 
     For *improper rational functions*, you must first convert it to a *proper rational function*.
 
-    *Hint: You can use complex numbers to further reduce some factors. Example: <Latex code="\parens{1 + x^2} = \parens{1 + i x} \parens{1 - i x}" />*
+    *Hint: You can use complex numbers to further reduce some factors. Example: <Eq code="\parens{1 + x^2} = \parens{1 + i x} \parens{1 - i x}" />*
 </CSFrame>
 
 <CSFrame afterWide>
@@ -73,79 +73,79 @@ import "./_precalc.css"; //_
     <table id="exp-log-table">
     <tbody>
         <tr>
-            <td><Latex code="\displaystyle x = a^y" /></td>
-            <td><Latex code="\iff" /></td>
-            <td><Latex code="\displaystyle \log_a{x} = y" /></td>
+            <td><Eq code="\displaystyle x = a^y" /></td>
+            <td><Eq code="\iff" /></td>
+            <td><Eq code="\displaystyle \log_a{x} = y" /></td>
         </tr>
         <tr>
-            <td><Latex code="\displaystyle a^{\log_a{x}} = x" /></td>
-            <td><Latex code="\iff" /></td>
-            <td><Latex code="\displaystyle \log_a{a^x} = x" /></td>
+            <td><Eq code="\displaystyle a^{\log_a{x}} = x" /></td>
+            <td><Eq code="\iff" /></td>
+            <td><Eq code="\displaystyle \log_a{a^x} = x" /></td>
         </tr>
         <tr class="more-vspace">
             <td></td>
             <td></td>
-            <td><Latex code="\overset{\text{\textbf{Change of Base Law}}}{\boxed{\log_a{x} = \frac{\log_u{x}}{\log_u{a}}}}" /></td>
+            <td><Eq code="\overset{\text{\textbf{Change of Base Law}}}{\boxed{\log_a{x} = \frac{\log_u{x}}{\log_u{a}}}}" /></td>
         </tr>
         <tr class="more-vspace">
-            <td><Latex code="\displaystyle a^0 = 1" /></td>
-            <td><Latex code="\longrightarrow" /></td>
-            <td><Latex code="\displaystyle \log_a{1} = 0" /></td>
+            <td><Eq code="\displaystyle a^0 = 1" /></td>
+            <td><Eq code="\longrightarrow" /></td>
+            <td><Eq code="\displaystyle \log_a{1} = 0" /></td>
         </tr>
         <tr>
-            <td><Latex code="\displaystyle a^1 = a" /></td>
-            <td><Latex code="\longrightarrow" /></td>
-            <td><Latex code="\displaystyle \log_a{a} = 1" /></td>
+            <td><Eq code="\displaystyle a^1 = a" /></td>
+            <td><Eq code="\longrightarrow" /></td>
+            <td><Eq code="\displaystyle \log_a{a} = 1" /></td>
         </tr>
         <tr>
-            <td><Latex code="\displaystyle a^{-1} = \frac{1}{a}" /></td>
-            <td><Latex code="\longrightarrow" /></td>
-            <td><Latex code="\displaystyle \log_a{\frac{1}{a}} = -1" /></td>
+            <td><Eq code="\displaystyle a^{-1} = \frac{1}{a}" /></td>
+            <td><Eq code="\longrightarrow" /></td>
+            <td><Eq code="\displaystyle \log_a{\frac{1}{a}} = -1" /></td>
         </tr>
         <tr class="more-vspace">
-            <td><Latex code="\displaystyle a^x a^y = a^{x+y}" /></td>
-            <td><Latex code="\longrightarrow" /></td>
-            <td><Latex code="\displaystyle \log_a{xy} = \log_a{x} + \log_a{y}" /></td>
+            <td><Eq code="\displaystyle a^x a^y = a^{x+y}" /></td>
+            <td><Eq code="\longrightarrow" /></td>
+            <td><Eq code="\displaystyle \log_a{xy} = \log_a{x} + \log_a{y}" /></td>
         </tr>
         <tr>
-            <td><Latex code="\displaystyle a^x b^x = \parens{ab}^x" /></td>
+            <td><Eq code="\displaystyle a^x b^x = \parens{ab}^x" /></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
-            <td><Latex code="\parens{a^x}^y = a^{xy}" /></td>
-            <td><Latex code="\longrightarrow" /></td>
-            <td><Latex code="\displaystyle \log_a{x^n} = n \log_a{x}" /></td>
+            <td><Eq code="\parens{a^x}^y = a^{xy}" /></td>
+            <td><Eq code="\longrightarrow" /></td>
+            <td><Eq code="\displaystyle \log_a{x^n} = n \log_a{x}" /></td>
         </tr>
         <tr class="more-vspace">
-            <td><Latex code="\displaystyle \frac{1}{a^y} = a^{-y}" /></td>
+            <td><Eq code="\displaystyle \frac{1}{a^y} = a^{-y}" /></td>
             <td></td>
-            <td><Latex code="\displaystyle \log_a{\frac{1}{y}} = -\log_a{y}" /></td>
+            <td><Eq code="\displaystyle \log_a{\frac{1}{y}} = -\log_a{y}" /></td>
         </tr>
         <tr>
-            <td><Latex code="\displaystyle \frac{a^x}{a^y} = a^{x-y}" /></td>
-            <td><Latex code="\longrightarrow" /></td>
-            <td><Latex code="\displaystyle \log_a{\frac{x}{y}} = \log_a{x} - \log_a{y}" /></td>
+            <td><Eq code="\displaystyle \frac{a^x}{a^y} = a^{x-y}" /></td>
+            <td><Eq code="\longrightarrow" /></td>
+            <td><Eq code="\displaystyle \log_a{\frac{x}{y}} = \log_a{x} - \log_a{y}" /></td>
         </tr>
         <tr>
-            <td><Latex code="\displaystyle \frac{a^x}{b^x} = \parens{\frac{a}{b}}^x" /></td>
+            <td><Eq code="\displaystyle \frac{a^x}{b^x} = \parens{\frac{a}{b}}^x" /></td>
             <td></td>
             <td></td>
         </tr>
         <tr class="more-vspace">
-            <td><Latex code="\displaystyle a^{\frac{1}{2}} = \sqrt{a}" /></td>
-            <td><Latex code="\longrightarrow" /></td>
-            <td><Latex code="\displaystyle \log_a{\sqrt{a}} = \frac{1}{2}" /></td>
+            <td><Eq code="\displaystyle a^{\frac{1}{2}} = \sqrt{a}" /></td>
+            <td><Eq code="\longrightarrow" /></td>
+            <td><Eq code="\displaystyle \log_a{\sqrt{a}} = \frac{1}{2}" /></td>
         </tr>
         <tr>
-            <td><Latex code="\displaystyle a^{\frac{1}{y}} = \sqrt[y]{a}" /></td>
-            <td><Latex code="\longrightarrow" /></td>
-            <td><Latex code="\displaystyle \log_a{\sqrt[y]{a}} = \frac{1}{y}" /></td>
+            <td><Eq code="\displaystyle a^{\frac{1}{y}} = \sqrt[y]{a}" /></td>
+            <td><Eq code="\longrightarrow" /></td>
+            <td><Eq code="\displaystyle \log_a{\sqrt[y]{a}} = \frac{1}{y}" /></td>
         </tr>
         <tr>
-            <td><Latex code="\displaystyle a^{\frac{x}{y}} = \parens{\sqrt[y]{a}}^x" /></td>
-            <td><Latex code="\longrightarrow" /></td>
-            <td><Latex code="\displaystyle \log_a{\parens{\sqrt[y]{a}}^x} = \frac{x}{y}" /></td>
+            <td><Eq code="\displaystyle a^{\frac{x}{y}} = \parens{\sqrt[y]{a}}^x" /></td>
+            <td><Eq code="\longrightarrow" /></td>
+            <td><Eq code="\displaystyle \log_a{\parens{\sqrt[y]{a}}^x} = \frac{x}{y}" /></td>
         </tr>
     </tbody>
     </table>
@@ -332,7 +332,7 @@ import "./_precalc.css"; //_
 
     <CSTitle>Half-Angle Formulae</CSTitle>
 
-    Derived from the <Latex code="\cos{2 \theta}" /> compound angle formula.
+    Derived from the <Eq code="\cos{2 \theta}" /> compound angle formula.
 
     <DisplayLatex code="
         \sin^2{\theta} = \frac{1}{2} - \frac{1}{2} \cos{2 \theta}
@@ -468,13 +468,13 @@ import "./_precalc.css"; //_
 <CSFrame>
     <CSTitle>Dot Product / Scalar Product</CSTitle>
 
-    In <Latex code="\Reals^n" />:
+    In <Eq code="\Reals^n" />:
 
     <DisplayLatex code="
         \mathbf{a} \cdot \mathbf{b} = a_1 b_1 + \cdots + a_n b_n = \sum_{k=0}^n{a_k b_k}
     " />
 
-    In <Latex code="\Reals^2" /> or <Latex code="\Reals^3" />:
+    In <Eq code="\Reals^2" /> or <Eq code="\Reals^3" />:
 
     <DisplayLatex code="
         \mathbf{a} \cdot \mathbf{b} = \abs{\mathbf{a}} \abs{\mathbf{b}} \cos{\theta}
@@ -482,14 +482,14 @@ import "./_precalc.css"; //_
     " />
 
     Useful geometric properties:
-    - <Latex code="\mathbf{a} \cdot \mathbf{a} = \abs{a}^2" />, hence <Latex code="\abs{\mathbf{a}} = \sqrt{\mathbf{a} \cdot \mathbf{a}}" />.
-    - Vectors <Latex code="\mathbf{a}, \mathbf{b} \in \mathbb{R}^n" /> are orthogonal if <Latex code="\mathbf{a} \cdot \mathbf{b} = 0" />.
+    - <Eq code="\mathbf{a} \cdot \mathbf{a} = \abs{a}^2" />, hence <Eq code="\abs{\mathbf{a}} = \sqrt{\mathbf{a} \cdot \mathbf{a}}" />.
+    - Vectors <Eq code="\mathbf{a}, \mathbf{b} \in \mathbb{R}^n" /> are orthogonal if <Eq code="\mathbf{a} \cdot \mathbf{b} = 0" />.
 </CSFrame>
 
 <CSFrame>
     <CSTitle>Cross Product / Vector Product</CSTitle>
 
-    The *cross product* is only defined in <Latex code="\mathbb{R}^3" />.
+    The *cross product* is only defined in <Eq code="\mathbb{R}^3" />.
     <DisplayLatex code="
         \begin{pmatrix}
             a_1 \\
@@ -558,14 +558,14 @@ import "./_precalc.css"; //_
     " />
 
     Useful geometric properties:
-    - Vector <Latex code="\mathbf{a} \times \mathbf{b}" /> is orthogonal to <Latex code="\mathbf{a}" /> and <Latex code="\mathbf{b}" />.
-    - <Latex code="\abs{\mathbf{a} \times \mathbf{b}} = \abs{\mathbf{a}} \abs{\mathbf{b}} \sin{\theta} = \text{area of a parallelogram}" />
+    - Vector <Eq code="\mathbf{a} \times \mathbf{b}" /> is orthogonal to <Eq code="\mathbf{a}" /> and <Eq code="\mathbf{b}" />.
+    - <Eq code="\abs{\mathbf{a} \times \mathbf{b}} = \abs{\mathbf{a}} \abs{\mathbf{b}} \sin{\theta} = \text{area of a parallelogram}" />
 </CSFrame>
 
 <CSFrame>
     <CSTitle>Cramer's Rule</CSTitle>
 
-    Consider the following linear system with <Latex code="n \times n" /> invertible matrix <Latex code="A" />:
+    Consider the following linear system with <Eq code="n \times n" /> invertible matrix <Eq code="A" />:
 
     <DisplayLatex code="
         A \mathbf{x} = \mathbf{b}
@@ -579,9 +579,9 @@ import "./_precalc.css"; //_
         ,\qquad \forall k = 1, \dots, n,
     " />
 
-    where <Latex code="B_k" /> is the matrix obtained from <Latex code="A" /> by replacing the <Latex code="\Nth{k}{th}" /> column with the vector <Latex code="\mathbf{b}" />.
+    where <Eq code="B_k" /> is the matrix obtained from <Eq code="A" /> by replacing the <Eq code="\Nth{k}{th}" /> column with the vector <Eq code="\mathbf{b}" />.
 
-    <CSTitle>Cramer's Rule, <Latex code="2 \times 2" /> Matrix</CSTitle>
+    <CSTitle>Cramer's Rule, <Eq code="2 \times 2" /> Matrix</CSTitle>
 
     <DisplayLatex code="
         \begin{dcases}
@@ -644,7 +644,7 @@ import "./_precalc.css"; //_
             }
     " />
 
-    <CSTitle>Cramer's Rule, <Latex code="3 \times 3" /> Matrix</CSTitle>
+    <CSTitle>Cramer's Rule, <Eq code="3 \times 3" /> Matrix</CSTitle>
 
     <DisplayLatex code="
         \begin{dcases}
@@ -781,9 +781,9 @@ import "./_precalc.css"; //_
             <tr>
                 <td></td>
                 <td></td>
-                <td><Latex code="{10}^{0}" /></td>
-                <td><Latex code="{1000}^{0}" /></td>
-                <td><Latex code="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00}1" /></td>
+                <td><Eq code="{10}^{0}" /></td>
+                <td><Eq code="{1000}^{0}" /></td>
+                <td><Eq code="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00}1" /></td>
             </tr>
             <Sipr name="deci" e="-1" ee="-1/3"
                 dec="\phantom{0\;000\;000\;000\;000\;000\;000\;000\;00} 0.1" />
@@ -869,7 +869,7 @@ import "./_precalc.css"; //_
 <CSFrame>
     <CSTitle>Polynomial</CSTitle>
 
-    A function <Latex code="f : \myReals \to \myReals" /> is a *polynomial of degree <Latex code="n" />* if:
+    A function <Eq code="f : \myReals \to \myReals" /> is a *polynomial of degree <Eq code="n" />* if:
 
     <GatherLatex code="
         f(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_2 x^2 + a_1 x + a_0 \\
@@ -882,17 +882,17 @@ import "./_precalc.css"; //_
         <tbody>
             <tr>
                 <td style="padding-right: 2em;">degree:</td>
-                <td style="text-align: center;"><Latex code="n = 0, 1, 2, 3, \dots" /></td>
+                <td style="text-align: center;"><Eq code="n = 0, 1, 2, 3, \dots" /></td>
             </tr>
             <tr>
                 <td style="padding-right: 2em;">coefficients:</td>
                 <td style="text-align: center;">
-                    <Latex code="a_0, a_1, \dots, a_{n-1}, a_n \in \myReals" />
+                    <Eq code="a_0, a_1, \dots, a_{n-1}, a_n \in \myReals" />
                 </td>
             </tr>
             <tr>
                 <td style="padding-right: 2em;">leading coefficient:</td>
-                <td style="text-align: center;"><Latex code="a_n \ne 0" /></td>
+                <td style="text-align: center;"><Eq code="a_n \ne 0" /></td>
             </tr>
         </tbody>
     </table></p>
@@ -911,51 +911,51 @@ import "./_precalc.css"; //_
             <tr>
                 <td>Degree 0</td><td>*constant*</td>
                 <td style="text-align: center;">
-                    <Latex code="a" />
+                    <Eq code="a" />
                 </td>
             </tr>
             <tr>
                 <td>Degree 1</td><td>*linear*</td>
                 <td style="text-align: center;">
-                    <Latex code="a x + b" />
+                    <Eq code="a x + b" />
                 </td>
             </tr>
             <tr>
                 <td>Degree 2</td><td>*quadratic*</td>
                 <td style="text-align: center;">
-                    <Latex code="a x^2 + b x + c" />
+                    <Eq code="a x^2 + b x + c" />
                 </td>
             </tr>
             <tr>
                 <td>Degree 3</td><td>*cubic*</td>
                 <td style="text-align: center;">
-                    <Latex code="a x^3 + b x^2 + c x + d" />
+                    <Eq code="a x^3 + b x^2 + c x + d" />
                 </td>
             </tr>
             <tr>
                 <td>Degree 4</td><td>*quartic*</td>
                 <td style="text-align: center;">
-                    <Latex code="a x^4 + b x^3 + c x^2 + d x + e" />
+                    <Eq code="a x^4 + b x^3 + c x^2 + d x + e" />
                 </td>
             </tr>
         </tbody>
     </table></p>
 
-    A *monic polynomial* is one where the leading coefficient is <Latex code="1" />.
+    A *monic polynomial* is one where the leading coefficient is <Eq code="1" />.
 </CSFrame>
 
 <CSFrame>
     <CSTitle>Rational Function</CSTitle>
 
-    A function <Latex code="f" /> is a rational function if it can be written in the form:
+    A function <Eq code="f" /> is a rational function if it can be written in the form:
 
     <DisplayLatex code="
         f(x) = \frac{P(x)}{Q(x)}
     " />
 
-    where <Latex code="P" /> and <Latex code="Q" /> are polynomial functions, and <Latex code="Q" /> is not the zero function.
+    where <Eq code="P" /> and <Eq code="Q" /> are polynomial functions, and <Eq code="Q" /> is not the zero function.
 
-    The domain of <Latex code="f" /> excludes zeroes of the denominator:
+    The domain of <Eq code="f" /> excludes zeroes of the denominator:
 
     <DisplayLatex code="
         \dom{(f)} = \braces{x \in \myReals : Q(x) \ne 0}
@@ -967,14 +967,14 @@ import "./_precalc.css"; //_
 
     <CSTitle>First Fundamental Theorem of Calculus</CSTitle>
 
-    Let <Latex code="f" /> be a continuous real-valued function defined on <Latex code="[a, b]" />, and let <Latex code="F" /> be defined by:
+    Let <Eq code="f" /> be a continuous real-valued function defined on <Eq code="[a, b]" />, and let <Eq code="F" /> be defined by:
 
     <DisplayLatex code="
         F : [a, b] \to \myReals
             \qquad F(x) = \int_a^x{f(t) \,\diff{t}} .
     " />
 
-    <Latex code="F" /> is continuous on <Latex code="[a, b]" />, differentiable on <Latex code="(a, b)" />, and has a derivative <Latex code="F'" /> given by:
+    <Eq code="F" /> is continuous on <Eq code="[a, b]" />, differentiable on <Eq code="(a, b)" />, and has a derivative <Eq code="F'" /> given by:
 
     <DisplayLatex code="
         F'(x) = f(x)
@@ -983,13 +983,13 @@ import "./_precalc.css"; //_
 
     <CSTitle>Second Fundamental Theorem of Calculus</CSTitle>
 
-    Let <Latex code="F" /> be a real-valued function on <Latex code="[a, b]" />, and <Latex code="F" /> be an antiderivative of <Latex code="f" /> on <Latex code="[a, b]" />. Then:
+    Let <Eq code="F" /> be a real-valued function on <Eq code="[a, b]" />, and <Eq code="F" /> be an antiderivative of <Eq code="f" /> on <Eq code="[a, b]" />. Then:
 
     <DisplayLatex code="
         \int_a^b{f(t) \,\diff{t}} = F(b) - F(a)
     " />
 
-    <Todo>Look into this more. I'm not 100% certain on details such as whether the second fundamental theorem requires <Latex code="f" /> to be continuous, and whether or not <Latex code="f" /> being Riemann integrable is significant here.</Todo>
+    <Todo>Look into this more. I'm not 100% certain on details such as whether the second fundamental theorem requires <Eq code="f" /> to be continuous, and whether or not <Eq code="f" /> being Riemann integrable is significant here.</Todo>
 </CSFrame>
 
 </CheatsheetBlock>
@@ -1022,7 +1022,7 @@ import "./_precalc.css"; //_
         A = a \qquad 2AB = b \qquad A B^2 + C = c
     " />
 
-    Solving for <Latex code="A" />, <Latex code="B" />, and <Latex code="C" />, we get our function:
+    Solving for <Eq code="A" />, <Eq code="B" />, and <Eq code="C" />, we get our function:
 
     <DisplayLatex code="
         f(x) = a \parens{x + \brackets{\frac{b}{2a}}}^2 + \brackets{c - \frac{b^2}{4a}}
@@ -1030,7 +1030,7 @@ import "./_precalc.css"; //_
 
     Thus, we have our general form for completing the square.
 
-    However, it can be a bit unwieldy. If we instead assume we have a monic (i.e. <Latex code="a=1" />), then:
+    However, it can be a bit unwieldy. If we instead assume we have a monic (i.e. <Eq code="a=1" />), then:
 
     <DisplayLatex code="
         f(x)
@@ -1039,9 +1039,9 @@ import "./_precalc.css"; //_
         - \xmemphP{\brackets{\frac{b}{2}}^2}
     " />
 
-    This form is easier for me to memorize since you just remember where <Latex code="\memphR{\frac{b}{2}}" /> and <span style="color: var(--color--mypurple);">its square</span> appears.
+    This form is easier for me to memorize since you just remember where <Eq code="\memphR{\frac{b}{2}}" /> and <span style="color: var(--color--mypurple);">its square</span> appears.
 
-    Though, if one forgets <span style="color: var(--color--mypurple);">the square</span>, you can guess the form of the outside by expanding <Latex code="\parens{x + \memphR{\frac{b}{2}}}^2" />:
+    Though, if one forgets <span style="color: var(--color--mypurple);">the square</span>, you can guess the form of the outside by expanding <Eq code="\parens{x + \memphR{\frac{b}{2}}}^2" />:
 
     <AlignLatex code="
         f(x)

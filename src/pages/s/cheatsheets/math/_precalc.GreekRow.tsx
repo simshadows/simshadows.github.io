@@ -1,4 +1,4 @@
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 interface Props {
     readonly uc:   string;
@@ -9,10 +9,10 @@ interface Props {
 
 export default function GreekRow(props: Props) {
     const {uc, lc, name} = props;
-    const alt = (props.alt) ? <Latex code={`\\${props.alt}`} /> : <></>;
+    const alt = (props.alt) ? <Eq code={`\\${props.alt}`} /> : <></>;
     return <tr>
-        <td><Latex code={`\\${uc}`} /></td>
-        <td><Latex code={`\\${lc}`} /></td>
+        <td><Eq code={`\\${uc}`} /></td>
+        <td><Eq code={`\\${lc}`} /></td>
         <td>{alt}</td>
         <td>{name}</td>
     </tr>;

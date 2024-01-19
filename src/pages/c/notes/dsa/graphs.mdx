@@ -7,14 +7,14 @@ keywords: ["programming", "graphs"]
 
 import Centered from "@components/Centered";
 import HorizontalScrollingBox from "@components/HorizontalScrollingBox";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 import Todo from "@components/Todo";
 
 # THIS PAGE IS A VERY EARLY WORK-IN-PROGRESS.
 
 ## Basic Definitions
 
-A graph <Latex code="G" /> consists of two finite sets: a nonempty set <Latex code="V \parens{G}" /> of *vertices*, and a set <Latex code="E \parens{G}" /> of *edges*, where each edge is associated with a set consisting of either one or two vertices called its *endpoints*.
+A graph <Eq code="G" /> consists of two finite sets: a nonempty set <Eq code="V \parens{G}" /> of *vertices*, and a set <Eq code="E \parens{G}" /> of *edges*, where each edge is associated with a set consisting of either one or two vertices called its *endpoints*.
 
 <HorizontalScrollingBox>
 <Centered>
@@ -22,7 +22,7 @@ A graph <Latex code="G" /> consists of two finite sets: a nonempty set <Latex co
 </Centered>
 </HorizontalScrollingBox>
 
-Instead of <Latex code="E \parens{G}" />, a *directed graph* (or *digraph*) has a set <Latex code="D \parens{G}" /> of *directed edges*. A *mixed graph* can contain both directed and undirected edges.
+Instead of <Eq code="E \parens{G}" />, a *directed graph* (or *digraph*) has a set <Eq code="D \parens{G}" /> of *directed edges*. A *mixed graph* can contain both directed and undirected edges.
 
 A *weighted graph* has valued edges. A *multigraph* may have parallel edges. A *simple graph* has no loops or parallel edges.
 
@@ -54,17 +54,17 @@ A *path* is a walk with no repeated edges or vertices. A *simple circuit* is a c
 
 <p><Todo>Diagram for path? Also, we should rework these walk/trail/path and related definitions.</Todo></p>
 
-<p><Todo>Define *complete graphs* <Latex code="K_n" />. Make diagrams for them. (Epp, Page 633)</Todo></p>
+<p><Todo>Define *complete graphs* <Eq code="K_n" />. Make diagrams for them. (Epp, Page 633)</Todo></p>
 
-<p><Todo>Define *complete bipartite graphs* <Latex code="K_{m,n}" />. Make diagrams for them. (Epp, Page 633)</Todo></p>
+<p><Todo>Define *complete bipartite graphs* <Eq code="K_{m,n}" />. Make diagrams for them. (Epp, Page 633)</Todo></p>
 
 <p><Todo>Define *subgraph*. (Epp, Page 634)</Todo></p>
 
 Two vertices are *connected* iff there is a walk between them. A graph is *connected* iff there is a walk between every pair of its vertices.
 
-A graph <Latex code="H" /> is a *connected component* of its supergraph <Latex code="G" /> iff <Latex code="H" /> is connected, and no connected subgraph of <Latex code="G" /> is a supergraph of <Latex code="H" /> that also contains vertices and edges not in <Latex code="H" />. <Todo>Can we simplify this definition? Also, we should draw diagrams for this.</Todo>
+A graph <Eq code="H" /> is a *connected component* of its supergraph <Eq code="G" /> iff <Eq code="H" /> is connected, and no connected subgraph of <Eq code="G" /> is a supergraph of <Eq code="H" /> that also contains vertices and edges not in <Eq code="H" />. <Todo>Can we simplify this definition? Also, we should draw diagrams for this.</Todo>
 
-The *degree* of a vertex (denoted <Latex code="\mathrm{deg}\parens{v}" /> for the degree of vertex <Latex code="v" />) is the number of edges incident on it, with loops counted twice. The *total degree* of a graph is the sum of the degrees of all vertices in the graph.
+The *degree* of a vertex (denoted <Eq code="\mathrm{deg}\parens{v}" /> for the degree of vertex <Eq code="v" />) is the number of edges incident on it, with loops counted twice. The *total degree* of a graph is the sum of the degrees of all vertices in the graph.
 
 
 ## Graph Representation
@@ -98,7 +98,7 @@ The *degree* of a vertex (denoted <Latex code="\mathrm{deg}\parens{v}" /> for th
 
 ## References
 
-- *Discrete Mathematics with Applications* (<Latex code="\Nth{4}{th}" /> edition) by Susanna S. Epp, Chapter 10
+- *Discrete Mathematics with Applications* (<Eq code="\Nth{4}{th}" /> edition) by Susanna S. Epp, Chapter 10
     - A major resource I used to learn about graphs and write this section out. Highly recommended to go through it yourself if you're still learning.
     - I like the first sentence of the definition on page 626, so I copied it verbatim for the first sentence of [Basic Definitions](#basic-definitions).
 - [**<u>Wikipedia</u>**](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics))

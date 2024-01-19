@@ -9,7 +9,7 @@ import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import Eqref from "@components/latex/Eqref";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 import Trl from "@components/latex/TableRowLatex";
 import Trhl from "@components/latex/TableRowHLatex";
 
@@ -85,7 +85,7 @@ I improved on my initial solution by swapping the loop order and cutting the bra
 
 ## Number Spiral <Spec href="https://cses.fi/problemset/task/1071/" cdate="2023-01-03"/>
 
-Let's work with the same <Latex code="5 \times 5" /> grid shown in the spec to get a feel for how this works, and let's query for <Latex code="y = 3" /> and <Latex code="x = 4" />.
+Let's work with the same <Eq code="5 \times 5" /> grid shown in the spec to get a feel for how this works, and let's query for <Eq code="y = 3" /> and <Eq code="x = 4" />.
 
 <FiguresBlock>
 <Fig>
@@ -101,7 +101,7 @@ Let's work with the same <Latex code="5 \times 5" /> grid shown in the spec to g
 </Fig>
 </FiguresBlock>
 
-I arbitrarily chose to zero-index the coordinates, so the new zero-indexed coordinates are <Latex code="y' = 2" /> and <Latex code="x' = 3" />.
+I arbitrarily chose to zero-index the coordinates, so the new zero-indexed coordinates are <Eq code="y' = 2" /> and <Eq code="x' = 3" />.
 
 I started by calculating the "layer number" of the queried coordinates, and recognizing that the only information you need about the previous layers is the total number of cells in all previous layers (excluding the aforementioned layer number):
 
@@ -143,9 +143,9 @@ I started by calculating the "layer number" of the queried coordinates, and reco
 </Fig>
 </FiguresBlock>
 
-In the figure above, we see that there are <Latex code="9" /> cells in the previous layers.
+In the figure above, we see that there are <Eq code="9" /> cells in the previous layers.
 
-Therefore, the largest number in all the previous layers is <Latex code="9" />, and the current layer will start with <Latex code="10" />. All we need now is to index within the layer.
+Therefore, the largest number in all the previous layers is <Eq code="9" />, and the current layer will start with <Eq code="10" />. All we need now is to index within the layer.
 
 First, we need to know the direction of counting:
 
@@ -235,11 +235,11 @@ Though, these refactorings start becoming less intuitive and comprehensible.
 
 The approach I went with was terribly lazy. I imagine there are some fancy combinatorics solutions? But I wasn't too sure how to incorporate the knight movements and board geometry. But hey, whatever works!
 
-I started with a hardcoded table for <Latex code="k \le 7" /> to get past some edge cases for low values of <Latex code="k" />. I chose <Latex code="7" /> arbitrarily and didn't think too deeply about what the smallest hardcoded table I can get away with is. It would've been tough to calculate up to <Latex code="k = 7" /> by hand, but I just used the example solution in the spec. How convenient!
+I started with a hardcoded table for <Eq code="k \le 7" /> to get past some edge cases for low values of <Eq code="k" />. I chose <Eq code="7" /> arbitrarily and didn't think too deeply about what the smallest hardcoded table I can get away with is. It would've been tough to calculate up to <Eq code="k = 7" /> by hand, but I just used the example solution in the spec. How convenient!
 
 y solution considers "layers" in a vaguely similar way my *Number Spiral* solution did.
 
-Let's suppose a solution for layer <Latex code="k = 7" /> is already known to have <Latex code="1056" /> ways to place two knights. Therefore, we have "seen" a <Latex code="7 \times 7" /> grid of cells (<Latex code="49" /> cells):
+Let's suppose a solution for layer <Eq code="k = 7" /> is already known to have <Eq code="1056" /> ways to place two knights. Therefore, we have "seen" a <Eq code="7 \times 7" /> grid of cells (<Eq code="49" /> cells):
 
 <FiguresBlock>
 <Fig>
@@ -313,7 +313,7 @@ Let's suppose a solution for layer <Latex code="k = 7" /> is already known to ha
 </Fig>
 </FiguresBlock>
 
-We seek to add another "layer" to this known square to get a solution for layer <Latex code="k = 8" />:
+We seek to add another "layer" to this known square to get a solution for layer <Eq code="k = 8" />:
 
 <FiguresBlock>
 <Fig>
@@ -483,13 +483,13 @@ Let's start by placing one new square at the bottom-left corner. The new square 
 </Fig>
 </FiguresBlock>
 
-So now, how many times can we place two knights in these <Latex code="50" /> cells? We find that there are <Latex code="1056 + 49 - 2 = 1103" /> ways to place two knights in these <Latex code="50" /> cells. The <Latex code="-2" /> in that calculation comes from accounting for the two squares that a knight in the new square can attack.
+So now, how many times can we place two knights in these <Eq code="50" /> cells? We find that there are <Eq code="1056 + 49 - 2 = 1103" /> ways to place two knights in these <Eq code="50" /> cells. The <Eq code="-2" /> in that calculation comes from accounting for the two squares that a knight in the new square can attack.
 
 Formula:
 
 <p class="center">`new_solution = prev_solution + prev_number_of_squares - ways_new_knight_can_attack_old_squares`</p>
 
-Next, we add another square in the new layer. With the new square, there are now <Latex code="1103 + 50 - 3 = 1150" /> ways to place two knights in these <Latex code="51" /> squares:
+Next, we add another square in the new layer. With the new square, there are now <Eq code="1103 + 50 - 3 = 1150" /> ways to place two knights in these <Eq code="51" /> squares:
 
 <FiguresBlock>
 <Fig>
@@ -604,11 +604,11 @@ The first thing that comes to mind is to consider the conditions where trailing 
     0! = 1.
 " />
 
-Trivially, <Latex code="k" /> being a multiple of <Latex code="10" /> will yield a trailing zero, but so will a trailing <Latex code="5" /> multiplied by a trailing <Latex code="2" />, among other combinations like <Latex code="4" /> and <Latex code="5" />.
+Trivially, <Eq code="k" /> being a multiple of <Eq code="10" /> will yield a trailing zero, but so will a trailing <Eq code="5" /> multiplied by a trailing <Eq code="2" />, among other combinations like <Eq code="4" /> and <Eq code="5" />.
 
-A possible naive algorithm that comes to mind at this point might be to incrementally calculate the factorial, including a new term of <Latex code="k" /> at each step while also truncating (and recording) trailing zeroes that appear. However, this approach is flawed since the number of non-zero digits is expected to explode.
+A possible naive algorithm that comes to mind at this point might be to incrementally calculate the factorial, including a new term of <Eq code="k" /> at each step while also truncating (and recording) trailing zeroes that appear. However, this approach is flawed since the number of non-zero digits is expected to explode.
 
-A better approach might involve something like truncating the left side of a <Latex code="k" />-term to get only the least-significant non-zero and all the zeroes to its right. However, is it possible that this least-significant non-zero digit is ever entirely consumed?
+A better approach might involve something like truncating the left side of a <Eq code="k" />-term to get only the least-significant non-zero and all the zeroes to its right. However, is it possible that this least-significant non-zero digit is ever entirely consumed?
 
 Let's enumerate all possible pairs of non-zero digits:
 
@@ -676,9 +676,9 @@ Let's enumerate all possible pairs of non-zero digits:
 
 We notice that no pair ever generates purely zeroes, therefore we can design an algorithm that ignores all digits beyond this least-significant non-zero digit.
 
-Our next issue is to scale the algorithm for the <Latex code="n \le {10}^9" /> bound. Processing all <Latex code="{10}^9" /> terms of <Latex code="k" /> will be a very expensive operation.{/* At this point, it might be better to just read my implementation, but the basic idea I went with is to process one place value at a time and take advantage of cyclic patterns. */}
+Our next issue is to scale the algorithm for the <Eq code="n \le {10}^9" /> bound. Processing all <Eq code="{10}^9" /> terms of <Eq code="k" /> will be a very expensive operation.{/* At this point, it might be better to just read my implementation, but the basic idea I went with is to process one place value at a time and take advantage of cyclic patterns. */}
 
-My first idea is to try batching cycles where the least-significant non-zero digit goes through digits <Latex code="1, \dots, 9" /> in a cycle. For example, for <Latex code="31!" />, we can batch the following terms of <Latex code="k" /> together (with factorial calculations truncated to relevant digits):
+My first idea is to try batching cycles where the least-significant non-zero digit goes through digits <Eq code="1, \dots, 9" /> in a cycle. For example, for <Eq code="31!" />, we can batch the following terms of <Eq code="k" /> together (with factorial calculations truncated to relevant digits):
 
 <AlignLatex code="
     \braces{1, 2, 3, 4, 5, 6, 7, 8, 9}

@@ -2,7 +2,7 @@
  * A utility component for simple latex-only data rows.
  */
 
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 interface Props {
     readonly rows: (string | number)[];
@@ -10,7 +10,7 @@ interface Props {
 
 export default function TableRowLatex(props: Props) {
     return <tr>
-        {props.rows.map((s) => <td><Latex code={s.toString()} /></td>)}
+        {props.rows.map((s) => <td><Eq code={s.toString()} /></td>)}
     </tr>;
 }
 

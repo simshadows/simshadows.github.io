@@ -10,7 +10,7 @@ hidetoc: true
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import Eqref from "@components/latex/Eqref";
 import Todo from "@components/Todo";
@@ -43,7 +43,7 @@ We can apply the following product-to-sum identity:
     p(t) = \frac{V_m I_m}{2} \brackets{\cos{(2 \omega t + \theta_v + \theta_i)} + \cos{(\theta_v - \theta_i)}}
 " />
 
-To make things simpler, let's define the power angle <Latex code="\theta" />:
+To make things simpler, let's define the power angle <Eq code="\theta" />:
 
 <DisplayLatex code="
     \theta := \theta_v - \theta_i
@@ -51,7 +51,7 @@ To make things simpler, let's define the power angle <Latex code="\theta" />:
     \theta_i = \theta_v - \theta
 " />
 
-Substituting into <Latex code="p(t)" /> then applying the following compound angle identity:
+Substituting into <Eq code="p(t)" /> then applying the following compound angle identity:
 
 <GatherLatex code="
     \boxed{
@@ -65,7 +65,7 @@ Substituting into <Latex code="p(t)" /> then applying the following compound ang
     \end{aligned}
 " />
 
-To find average power, we notice that two time-dependent sinusoids have average values of zero, therefore our average power <Latex code="P" /> is:
+To find average power, we notice that two time-dependent sinusoids have average values of zero, therefore our average power <Eq code="P" /> is:
 
 <DisplayLatex code="
     P = \frac{V_m I_m}{2} \cos{(\theta)}

@@ -8,7 +8,7 @@ keywords: ["programming", "heaps", "binary heaps", "priority queue"]
 import Centered from "@components/Centered";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import HorizontalScrollingBox from "@components/HorizontalScrollingBox";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 import Nb from "@components/Nb";
 import Todo from "@components/Todo";
 
@@ -50,43 +50,43 @@ Some common operations:
     </thead>
     <tbody>
         <tr>
-            <td><Nb><Latex code="\text{Push}\parens{\textit{item}}" /></Nb></td>
-            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
+            <td><Nb><Eq code="\text{Push}\parens{\textit{item}}" /></Nb></td>
+            <td><Nb><Eq code="O\parens{\log n}" /></Nb></td>
             <td>Add a single item.</td>
         </tr>
         <tr>
-            <td><Nb><Latex code="\text{Pop}\parens{} \to \textit{item}" /></Nb></td>
-            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
+            <td><Nb><Eq code="\text{Pop}\parens{} \to \textit{item}" /></Nb></td>
+            <td><Nb><Eq code="O\parens{\log n}" /></Nb></td>
             <td>Extract and remove the root of the heap (i.e. the <u>biggest item</u> of a max-heap, or the <u>smallest item</u> of a min-heap).</td>
         </tr>
         <tr>
-            <td><Nb><Latex code="\text{Push-Pop}\parens{\textit{item}} \to \textit{item}" /></Nb></td>
-            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
+            <td><Nb><Eq code="\text{Push-Pop}\parens{\textit{item}} \to \textit{item}" /></Nb></td>
+            <td><Nb><Eq code="O\parens{\log n}" /></Nb></td>
             <td>Equivalent to a push and then a pop, in that order. <em>Typically more efficient than using the individual operations.</em></td>
         </tr>
         <tr>
-            <td><Nb><Latex code="\text{Pop-Push}\parens{\textit{item}} \to \textit{item}" /></Nb></td>
-            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
+            <td><Nb><Eq code="\text{Pop-Push}\parens{\textit{item}} \to \textit{item}" /></Nb></td>
+            <td><Nb><Eq code="O\parens{\log n}" /></Nb></td>
             <td>Equivalent to a pop and then a push, in that order. <em>Typically more efficient than using the individual operations.</em></td>
         </tr>
         <tr>
-            <td><Nb><Latex code="\text{Heapify}\parens{}" /></Nb></td>
-            <td><Nb><Latex code="O\parens{n}" /></Nb></td>
+            <td><Nb><Eq code="\text{Heapify}\parens{}" /></Nb></td>
+            <td><Nb><Eq code="O\parens{n}" /></Nb></td>
             <td>Convert an arbitrary <em>complete binary tree</em> into a valid heap.</td>
         </tr>
         <tr>
-            <td><Nb><Latex code="\text{Get-Size}\parens{} \to \textit{size}" /></Nb></td>
-            <td><Nb><Latex code="O\parens{1}" /></Nb></td>
+            <td><Nb><Eq code="\text{Get-Size}\parens{} \to \textit{size}" /></Nb></td>
+            <td><Nb><Eq code="O\parens{1}" /></Nb></td>
             <td>Get the number of items in the heap.</td>
         </tr>
         <tr>
-            <td><Nb>(internal) <Latex code="\text{Sift-Up}\parens{\textit{node}}" /></Nb></td>
-            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
+            <td><Nb>(internal) <Eq code="\text{Sift-Up}\parens{\textit{node}}" /></Nb></td>
+            <td><Nb><Eq code="O\parens{\log n}" /></Nb></td>
             <td>Moves a node up the tree until it is in a valid position.</td>
         </tr>
         <tr>
-            <td><Nb>(internal) <Latex code="\text{Sift-Down}\parens{\textit{node}}" /></Nb></td>
-            <td><Nb><Latex code="O\parens{\log n}" /></Nb></td>
+            <td><Nb>(internal) <Eq code="\text{Sift-Down}\parens{\textit{node}}" /></Nb></td>
+            <td><Nb><Eq code="O\parens{\log n}" /></Nb></td>
             <td>Moves a node down the tree until it is in a valid position.</td>
         </tr>
     </tbody>
@@ -97,7 +97,7 @@ Some common operations:
 
 ## Array Indexing
 
-For <u>0-indexed arrays</u>, given an index <Latex code="i" />, we can find the indices of its left child <Latex code="c_1" />, right child <Latex code="c_2" />, and parent <Latex code="p" /> with:
+For <u>0-indexed arrays</u>, given an index <Eq code="i" />, we can find the indices of its left child <Eq code="c_1" />, right child <Eq code="c_2" />, and parent <Eq code="p" /> with:
 
 <DisplayLatex code="
     c_1 = 2 i + 1
@@ -113,7 +113,7 @@ To quickly derive these equations, let's try using a 1-indexed array:
     ![The earlier array implementation with 1-indexation.](./_heaps.images/generated-do-not-edit/array-indexing-example.svg)
 </Centered>
 
-With 1-indexing, the pattern is much more obvious. Using <Latex code="i'" />, <Latex code="c'_1" />, <Latex code="c'_2" />, and <Latex code="p'" /> as our 1-indexed array indices, we observe that the following are true:
+With 1-indexing, the pattern is much more obvious. Using <Eq code="i'" />, <Eq code="c'_1" />, <Eq code="c'_2" />, and <Eq code="p'" /> as our 1-indexed array indices, we observe that the following are true:
 
 <DisplayLatex code="
     c'_1 = 2 i'
@@ -123,7 +123,7 @@ With 1-indexing, the pattern is much more obvious. Using <Latex code="i'" />, <L
     p' = \floor{\frac{i'}{2}}
 " />
 
-To convert back to 0-indexing, we apply <Latex code="i' = i + 1" /> and such:
+To convert back to 0-indexing, we apply <Eq code="i' = i + 1" /> and such:
 
 <DisplayLatex code="
     \begin{gathered}
@@ -167,7 +167,7 @@ The *sift-up* operation moves a node up the tree until it is in the correct posi
 1. Compare the current node with its parent. If they are in the correct order, then we are done.
 2. Otherwise, swap them, move to the new position of our node, and repeat *sift-up*.
 
-Both algorithms have <Latex code="O\parens{\log n}" /> runtime.
+Both algorithms have <Eq code="O\parens{\log n}" /> runtime.
 
 Sample implementation:
 
@@ -219,7 +219,7 @@ The *sift-down* operation moves a node down the tree until it is in the correct 
 2. Otherwise, swap the current node and one of the children it's out-of-order with. For a max-heap, we must swap with the larger child, and for a min-heap, we must swap with the smaller child, otherwise these nodes will still be out of order.
 3. Move to our node's new location, and repeat *sift-down*.
 
-Both algorithms have <Latex code="O\parens{\log n}" /> runtime.
+Both algorithms have <Eq code="O\parens{\log n}" /> runtime.
 
 Sample implementation:
 
@@ -281,7 +281,7 @@ The *pop-push* operation is the other way around (a *pop* followed by a *push*).
 2. Replace the root node with the new item.
 3. Perform *sift-down* starting from the root node.
 
-*Push-pop* and *pop-push* are typically more efficient than using the individual *push* and *pop* operations together. Both operations have <Latex code="O\parens{\log n}" /> runtime.
+*Push-pop* and *pop-push* are typically more efficient than using the individual *push* and *pop* operations together. Both operations have <Eq code="O\parens{\log n}" /> runtime.
 
 Sample implementation and driver code for *push-pop*:
 
@@ -345,9 +345,9 @@ print(heap) # [95, 87, 81, 57, 68, 74, 5, 35, 36, 29, 41, 18]
     \text{Heapify}\parens{}
 " />
 
-The *heapify* operation converts an arbitrary *complete binary tree* into a valid heap. The algorithm simply runs *sift-down* on array nodes <Latex code="\brackets{\floor{n / 2}, \dots, 1, 0}" />, in that order.
+The *heapify* operation converts an arbitrary *complete binary tree* into a valid heap. The algorithm simply runs *sift-down* on array nodes <Eq code="\brackets{\floor{n / 2}, \dots, 1, 0}" />, in that order.
 
-This algorithm runs in <Latex code="O\parens{n}" />.
+This algorithm runs in <Eq code="O\parens{n}" />.
 
 Sample implementation:
 

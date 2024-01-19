@@ -12,7 +12,7 @@ import Layout from "@layouts/FullWidthLayout.astro";
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
 import CSFrame from "@components/cheatsheets/CheatsheetFrame";
@@ -38,7 +38,7 @@ import Todo from "@components/Todo";
         }
     " />
 
-    <br />If <Latex code="A_1, \dots, A_n" /> partition a sample space and <Latex code="B" /> is an event in the same space, then:
+    <br />If <Eq code="A_1, \dots, A_n" /> partition a sample space and <Eq code="B" /> is an event in the same space, then:
 
     <DisplayLatex code="
         \MathOverLabel{\textbf{Multiplication Rule}}{%

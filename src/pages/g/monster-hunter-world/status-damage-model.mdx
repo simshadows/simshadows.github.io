@@ -8,7 +8,7 @@ keywords: ["monster hunter world", "iceborne"]
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import Eqref from "@components/latex/Eqref";
 import Todo from "@components/Todo";
@@ -39,28 +39,28 @@ All monsters have unique tables regarding status effect application. Buildup usu
 
 To illustrate how these values work, let's consider Dodogama's sleep values:
 
-- Base:    <Latex code="150" />
-- Buildup: <Latex code="100" />
-- Cap:     <Latex code="550" />
-- Decay:   <Latex code="-\frac{5}{10} \text{ per second}" />
+- Base:    <Eq code="150" />
+- Buildup: <Eq code="100" />
+- Cap:     <Eq code="550" />
+- Decay:   <Eq code="-\frac{5}{10} \text{ per second}" />
 
 Additionally, let's specifically consider the following quest values:
 
-- Base Multiplier: <Latex code="1.25" />
-- Buildup/Cap Multiplier: <Latex code="1.90" />
+- Base Multiplier: <Eq code="1.25" />
+- Buildup/Cap Multiplier: <Eq code="1.90" />
 
 Thus, our effective sleep values for that particular quest are:
 
-- Base:    <Latex code="150 \times 1.25 = 187.5" />
-- Buildup: <Latex code="100 \times 1.90 = 190" />
-- Cap:     <Latex code="550 \times 1.90 = 1045" />
-- Decay:   <Latex code="-\frac{5}{10} \text{ per second}" />
+- Base:    <Eq code="150 \times 1.25 = 187.5" />
+- Buildup: <Eq code="100 \times 1.90 = 190" />
+- Cap:     <Eq code="550 \times 1.90 = 1045" />
+- Decay:   <Eq code="-\frac{5}{10} \text{ per second}" />
 
-Our first threshold is <Latex code="188" />, so we must apply <Latex code="188" /> sleep in order to get the first sleep proc.
+Our first threshold is <Eq code="188" />, so we must apply <Eq code="188" /> sleep in order to get the first sleep proc.
 
-After the first sleep proc, our new threshold is <Latex code="188+190=378" />, so we must apply <Latex code="378" /> sleep for the second proc.
+After the first sleep proc, our new threshold is <Eq code="188+190=378" />, so we must apply <Eq code="378" /> sleep for the second proc.
 
-After the second sleep proc, our new threshold is <Latex code="378+190=568" />, so we must apply <Latex code="568" /> sleep for the third proc.
+After the second sleep proc, our new threshold is <Eq code="378+190=568" />, so we must apply <Eq code="568" /> sleep for the third proc.
 
 This follows an arithmetic progression up until the cap, where it is clipped:
 
@@ -84,9 +84,9 @@ This follows an arithmetic progression up until the cap, where it is clipped:
 
 ### Blast
 
-Blast is a status effect that *does not decay* (i.e. decay is <Latex code="0" /> blast per second).
+Blast is a status effect that *does not decay* (i.e. decay is <Eq code="0" /> blast per second).
 
-A blast proc deals fixed damage, regardless of monster (<Latex code="100" /> in Low Rank, <Latex code="120" /> in High Rank, and <Latex code="300" /> in Master Rank). The damage is dealt instantly, and the status can immediately continue being built-up.
+A blast proc deals fixed damage, regardless of monster (<Eq code="100" /> in Low Rank, <Eq code="120" /> in High Rank, and <Eq code="300" /> in Master Rank). The damage is dealt instantly, and the status can immediately continue being built-up.
 
 ### Model Design Goals
 
@@ -105,32 +105,32 @@ The model is described and discussed in [*How Poison Works: Poison Guide \& Math
 
 We require three input variables:
 
-- <Latex code="\rho" /> (average raw damage of an attack)
-- <Latex code="Q" /> (total damage per poison proc)
-- <Latex code="n" /> (expected number of procs per hunt)
-- <Latex code="H" /> (monster total health)
+- <Eq code="\rho" /> (average raw damage of an attack)
+- <Eq code="Q" /> (total damage per poison proc)
+- <Eq code="n" /> (expected number of procs per hunt)
+- <Eq code="H" /> (monster total health)
 
-While <Latex code="Q" /> and <Latex code="H" /> are very easy to finding depending on the quest, <Latex code="n" /> must be found through experimentation.
+While <Eq code="Q" /> and <Eq code="H" /> are very easy to finding depending on the quest, <Eq code="n" /> must be found through experimentation.
 
 This model is used due to the relatively low number of procs per hunt that can usually be determined.
 
-Do note that this model assumes that poison status applied is already factored into <Latex code="n" /> by the player, therefore all poison weapons will behave the same under this model.
+Do note that this model assumes that poison status applied is already factored into <Eq code="n" /> by the player, therefore all poison weapons will behave the same under this model.
 
 ### Model Derivation
 
-Let <Latex code="R" /> be the total raw damage done during the quest. <Latex code="Q n" /> is the total poison damage, so:
+Let <Eq code="R" /> be the total raw damage done during the quest. <Eq code="Q n" /> is the total poison damage, so:
 
 <DisplayLatex code="
     R = H - Q n
 " />
 
-Let <Latex code="k" /> be the total number of hits required to kill the monster. Then:
+Let <Eq code="k" /> be the total number of hits required to kill the monster. Then:
 
 <DisplayLatex code="
     k = \frac{R}{\rho} = \frac{H - Q n}{\rho} 
 " />
 
-Let <Latex code="\psi" /> be the effective poison damage per hit. This can be easily found:
+Let <Eq code="\psi" /> be the effective poison damage per hit. This can be easily found:
 
 <DisplayLatex code="
     \psi = \frac{Q n}{k} = \frac{\rho Q n}{H - Q n} 
@@ -145,25 +145,25 @@ Thus, we have found our damage model.
 
 Our model is based on the idea that a single specified attack always deals a predictable amount of average damage and blast application each time the attack is performed.
 
-For example, if a greatsword draw attack dealt <Latex code="100" /> raw damage and <Latex code="5" /> status buildup on average, we can expect that using the attack <Latex code="n" />-times would deal <Latex code="n \times 100" /> raw damage and <Latex code="n \times 5" /> status buildup on average.
+For example, if a greatsword draw attack dealt <Eq code="100" /> raw damage and <Eq code="5" /> status buildup on average, we can expect that using the attack <Eq code="n" />-times would deal <Eq code="n \times 100" /> raw damage and <Eq code="n \times 5" /> status buildup on average.
 
 These variables shall be:
 
-- <Latex code="\rho" /> (average raw damage of an attack)
-- <Latex code="\sigma" /> (average status application of an attack)
+- <Eq code="\rho" /> (average raw damage of an attack)
+- <Eq code="\sigma" /> (average status application of an attack)
 
 Conceptually, we can try counting how many of the specified attack (such as the greatsword draw attack) we have to deal before we slay the monster, so we consider monster health to be another variable:
 
-- <Latex code="H" /> (monster total health)
+- <Eq code="H" /> (monster total health)
 
-If we ignore blast damage and assume all our damage comes from raw, it is trivial to see that we'd require <Latex code="\frac{H}{\rho}" /> uses of the specified attack in order to kill the monster. However, it gets tricky when we factor in blast.
+If we ignore blast damage and assume all our damage comes from raw, it is trivial to see that we'd require <Eq code="\frac{H}{\rho}" /> uses of the specified attack in order to kill the monster. However, it gets tricky when we factor in blast.
 
 The variables related to blast are:
 
-- <Latex code="a_1" /> (blast base)
-- <Latex code="d" /> (blast buildup)
-- <Latex code="c" /> (blast cap)
-- <Latex code="P" /> (blast damage *per proc*)
+- <Eq code="a_1" /> (blast base)
+- <Eq code="d" /> (blast buildup)
+- <Eq code="c" /> (blast cap)
+- <Eq code="P" /> (blast damage *per proc*)
 
 Blast does not decay and blast procs do not cause status-application downtime (like how you cannot apply poison status if a monster is actively suffering from poison). This means that blast damage prediction can be completely independent of time, and dependent only on parameters relating to the sequence of attacks performed on the monster.
 
@@ -181,18 +181,18 @@ The following two equations are given for arithmetic progressions:
     \tag{2}
 " />
 
-where <Latex code="a_1" /> is the first element of the sequence, <Latex code="a_n" /> is the <Latex code="\Nth{n}{th}" /> element, <Latex code="d = a_{i+1} - a_{i}" />, and <Latex code="S_n" /> is the sum of the first <Latex code="n" /> elements.
+where <Eq code="a_1" /> is the first element of the sequence, <Eq code="a_n" /> is the <Eq code="\Nth{n}{th}" /> element, <Eq code="d = a_{i+1} - a_{i}" />, and <Eq code="S_n" /> is the sum of the first <Eq code="n" /> elements.
 
-Equivalently, <Latex code="a_n" /> is the threshold for the <Latex code="\Nth{n}{th}" /> blast proc, and <Latex code="S_n" /> is the total blast that must be applied to reach the <Latex code="\Nth{n}{th}" /> blast proc.
+Equivalently, <Eq code="a_n" /> is the threshold for the <Eq code="\Nth{n}{th}" /> blast proc, and <Eq code="S_n" /> is the total blast that must be applied to reach the <Eq code="\Nth{n}{th}" /> blast proc.
 
-Eliminating <Latex code="a_n" />:
+Eliminating <Eq code="a_n" />:
 
 <AlignLatex code="
     S_n &= \frac{n}{2} \parens{a_1 + a_1 + \parens{n - 1} d} \\
         &= \frac{n}{2} \parens{2 a_1 + \parens{n - 1} d}
 " />
 
-Solving for number of procs <Latex code="n" />:
+Solving for number of procs <Eq code="n" />:
 
 <AlignLatex code="
     2 S_n &= n \parens{2 a_1 + \parens{n - 1} d} \\
@@ -203,7 +203,7 @@ Solving for number of procs <Latex code="n" />:
       &= n^2 d + n \parens{2 a_1 - d} - 2 S_n
 " />
 
-Since <Latex code="n \ge 0" />:
+Since <Eq code="n \ge 0" />:
 
 <AlignLatex code="
     n &= \frac{
@@ -214,41 +214,41 @@ Since <Latex code="n \ge 0" />:
     \tag{3}
 " />
 
-Let <Latex code="R_n" /> and <Latex code="B_n" /> denote the total raw and blast damage (respectively), given <Latex code="n" /> blast procs.
+Let <Eq code="R_n" /> and <Eq code="B_n" /> denote the total raw and blast damage (respectively), given <Eq code="n" /> blast procs.
 
-Since <Latex code="P" /> is blast damage per proc, total blast damage is simply:
+Since <Eq code="P" /> is blast damage per proc, total blast damage is simply:
 
 <DisplayLatex code="
     B_n = Pn
 " />
 
-Thus, we can calculate <Latex code="B" /> as:
+Thus, we can calculate <Eq code="B" /> as:
 
 <DisplayLatex code="
     B_n = P \frac{d - 2 a_1 + \sqrt{\parens{2 a_1 - d}^2 + 8 d S_n}}{2 d}
 " />
 
-Since we know that we apply <Latex code="\sigma" /> status for every <Latex code="\rho" /> raw damage, it is trivial to calculate <Latex code="R_n" /> using:
+Since we know that we apply <Eq code="\sigma" /> status for every <Eq code="\rho" /> raw damage, it is trivial to calculate <Eq code="R_n" /> using:
 
 <DisplayLatex code="
     \frac{\rho}{\sigma} = \frac{R_n}{S_n}
     \tag{4}
 " />
 
-Thus, we can introduce <Latex code="R_n" /> into our equation. Additionally, we no longer care about counting blast procs, so we can simplify the notation of total raw and blast damage to <Latex code="R" /> and <Latex code="B" />:
+Thus, we can introduce <Eq code="R_n" /> into our equation. Additionally, we no longer care about counting blast procs, so we can simplify the notation of total raw and blast damage to <Eq code="R" /> and <Eq code="B" />:
 
 <DisplayLatex code="
     B = P \frac{d - 2 a_1 + \sqrt{\parens{2 a_1 - d}^2 + 8 R d \frac{\sigma}{\rho} }}{2 d}
 " />
 
-In order to slay the monster, total raw and blast damage must add to equal the total health pool <Latex code="H" />:
+In order to slay the monster, total raw and blast damage must add to equal the total health pool <Eq code="H" />:
 
 <DisplayLatex code="
     H = R + B
     \tag{5}
 " />
 
-Substituting into <Latex code="R" />:
+Substituting into <Eq code="R" />:
 
 <GatherLatex code="
     B = P \frac{d - 2 a_1 + \sqrt{\parens{2 a_1 - d}^2 + 8 \parens{H - B} d \frac{\sigma}{\rho} }}{2 d}
@@ -305,9 +305,9 @@ Thus, we now have an expression for total blast damage, given the monster's tota
 
 Now, we want to find out the average amount of blast damage dealt per attack, given the attack's raw damage.
 
-Let <Latex code="\beta_p" /> denote the average blast damage per attack, *before hitting the blast cap*.
+Let <Eq code="\beta_p" /> denote the average blast damage per attack, *before hitting the blast cap*.
 
-It is trivial to use the ratio between <Latex code="R" /> and <Latex code="B" />:
+It is trivial to use the ratio between <Eq code="R" /> and <Eq code="B" />:
 
 <DisplayLatex code="
     \frac{\beta_p}{\rho}
@@ -315,21 +315,21 @@ It is trivial to use the ratio between <Latex code="R" /> and <Latex code="B" />
     = \frac{B}{H - B} 
 " />
 
-Thus, we get an expression for <Latex code="\beta_p" /> in terms of <Latex code="B" />, <Latex code="H" />, and <Latex code="\rho" />:
+Thus, we get an expression for <Eq code="\beta_p" /> in terms of <Eq code="B" />, <Eq code="H" />, and <Eq code="\rho" />:
 
 <DisplayLatex code="
     \beta_p = \rho \frac{B}{H - B}
 " />
 
-Since we can use <Eqref>6</Eqref> to calculate <Latex code="B" /> in terms of model input values, we now have an expression for calculating average blast damage per attack, given only our model input values.
+Since we can use <Eqref>6</Eqref> to calculate <Eq code="B" /> in terms of model input values, we now have an expression for calculating average blast damage per attack, given only our model input values.
 
-For this model, it is useful to think of average blast damage per attack as a function of <Latex code="H" />, so we shall rewrite <Latex code="\beta_p" /> as a function <Latex code="[0, \infty) \to \Reals" /> such that:
+For this model, it is useful to think of average blast damage per attack as a function of <Eq code="H" />, so we shall rewrite <Eq code="\beta_p" /> as a function <Eq code="[0, \infty) \to \Reals" /> such that:
 
 <DisplayLatex code="
     \beta_p (H) = \rho \frac{B(H)}{H - B(H)}
 " />
 
-<Latex code="\beta_p (H)" /> is only valid up until <Latex code="H" /> reaches the blast cap.
+<Eq code="\beta_p (H)" /> is only valid up until <Eq code="H" /> reaches the blast cap.
 
 ### Blast Cap Derivation
 
@@ -340,9 +340,9 @@ The blast cap can be expressed as:
     \tag{7}
 " />
 
-So to find where the pre-cap portion of the model stops, we must find the range of <Latex code="H" /> in which <Eqref>7</Eqref> is true.
+So to find where the pre-cap portion of the model stops, we must find the range of <Eq code="H" /> in which <Eqref>7</Eqref> is true.
 
-We start by substituting <Eqref>1</Eqref> into <Eqref>2</Eqref> via. <Latex code="n" />:
+We start by substituting <Eqref>1</Eqref> into <Eqref>2</Eqref> via. <Eq code="n" />:
 
 <GatherLatex code="
     a_n - a_1 = \parens{n - 1} d
@@ -353,7 +353,7 @@ We start by substituting <Eqref>1</Eqref> into <Eqref>2</Eqref> via. <Latex code
     \tag{8}
 " />
 
-Substituting <Eqref>4</Eqref> into <Eqref>8</Eqref> via. <Latex code="S_n" />:
+Substituting <Eqref>4</Eqref> into <Eqref>8</Eqref> via. <Eq code="S_n" />:
 
 <GatherLatex code="
     R_n \frac{\sigma}{\rho} = \parens{\frac{a_n - a_1}{d} + 1} \frac{1}{2} \parens{a_1 + a_n}
@@ -367,7 +367,7 @@ Substituting <Eqref>4</Eqref> into <Eqref>8</Eqref> via. <Latex code="S_n" />:
     0 = a_n^2 + a_n d + \parens{a_1 d - a_1^2 - 2 R_n \frac{\sigma}{\rho} d}
 " />
 
-Since <Latex code="a_n \ge 0" />:
+Since <Eq code="a_n \ge 0" />:
 
 <GatherLatex code="
     a_n = \frac{-d + \sqrt{d^2 - 4 \parens{a_1 d - a_1^2 - 2 R_n \frac{\sigma}{\rho} d}}}{2} 
@@ -375,7 +375,7 @@ Since <Latex code="a_n \ge 0" />:
     a_n = \frac{-d + \sqrt{d^2 + 4 \parens{a_1^2 - a_1 d + 2 R_n \frac{\sigma}{\rho} d}}}{2} 
 " />
 
-We can now introduce <Latex code="B" /> and <Latex code="H" /> using <Eqref>5</Eqref>, and substitute it into the blast cap condition <Eqref>7</Eqref>:
+We can now introduce <Eq code="B" /> and <Eq code="H" /> using <Eqref>5</Eqref>, and substitute it into the blast cap condition <Eqref>7</Eqref>:
 
 <GatherLatex code="
     c \ge \frac{
@@ -398,7 +398,7 @@ We can now introduce <Latex code="B" /> and <Latex code="H" /> using <Eqref>5</E
     \tag{9}
 " />
 
-Substituting <Eqref>6</Eqref> into <Eqref>9</Eqref> via. <Latex code="B" />:
+Substituting <Eqref>6</Eqref> into <Eqref>9</Eqref> via. <Eq code="B" />:
 
 <GatherLatex code="
     \frac{\rho}{2 \sigma d} \parens{c^2 + c d + a_1 d - a_1^2}
@@ -425,7 +425,7 @@ Substituting <Eqref>6</Eqref> into <Eqref>9</Eqref> via. <Latex code="B" />:
 
 <Todo>The equations above are too long.</Todo>
 
-Let <Latex code="X" /> be the left side of <Eqref>10</Eqref>:
+Let <Eq code="X" /> be the left side of <Eqref>10</Eqref>:
 
 <DisplayLatex code="
     X
@@ -434,7 +434,7 @@ Let <Latex code="X" /> be the left side of <Eqref>10</Eqref>:
     - \frac{P^2}{2d} \parens{\frac{2 a_1 - d}{P} + \frac{2 \sigma}{\rho}}
 " />
 
-Isolating <Latex code="H" /> in <Eqref>10</Eqref>:
+Isolating <Eq code="H" /> in <Eqref>10</Eqref>:
 
 <GatherLatex code="
     X
@@ -492,9 +492,9 @@ Isolating <Latex code="H" /> in <Eqref>10</Eqref>:
     }
 " />
 
-Thus, we have our range for <Latex code="H" /> in which the pre-cap part of the model (derived in [Pre-Cap Model Derivation](#pre-cap-model-derivation)) is valid.
+Thus, we have our range for <Eq code="H" /> in which the pre-cap part of the model (derived in [Pre-Cap Model Derivation](#pre-cap-model-derivation)) is valid.
 
-We shall define <Latex code="C" /> to be the exact value of <Latex code="H" /> where we hit the blast cap:
+We shall define <Eq code="C" /> to be the exact value of <Eq code="H" /> where we hit the blast cap:
 
 <DisplayLatex code="
     C
@@ -510,29 +510,29 @@ We shall define <Latex code="C" /> to be the exact value of <Latex code="H" /> w
 
 ### Post-Cap Model Derivation
 
-At this point, the status buildup threshold remains constant at <Latex code="c" />.
+At this point, the status buildup threshold remains constant at <Eq code="c" />.
 
 Since we have a constant threshold, then if we ignore pre-cap damage, any status buildup dealt will be linearly proportional to the damage it deals.
 
-We will start by forming a relation between some number of hits <Latex code="k" />, average status per hit <Latex code="\sigma" />, and a blast threshold <Latex code="c" />:
+We will start by forming a relation between some number of hits <Eq code="k" />, average status per hit <Eq code="\sigma" />, and a blast threshold <Eq code="c" />:
 
 <DisplayLatex code="
     k \coloneqq \frac{c}{\sigma}
 " />
 
-Thus, <Latex code="k" /> hits is required to cause a blast proc.
+Thus, <Eq code="k" /> hits is required to cause a blast proc.
 
-Let <Latex code="\beta'_c" /> be the effective average blast damage dealt per hit, but *only valid to damage dealt after <Latex code="C" /> damage has been dealt to the monster*:
+Let <Eq code="\beta'_c" /> be the effective average blast damage dealt per hit, but *only valid to damage dealt after <Eq code="C" /> damage has been dealt to the monster*:
 
 <DisplayLatex code="
     \beta'_c \coloneqq \frac{P}{k} = \frac{\sigma P}{c}
 " />
 
-Note that <Latex code="\beta'_c" /> does not depend on monster health.
+Note that <Eq code="\beta'_c" /> does not depend on monster health.
 
-We know that each hit after reaching blast cap deals an average of <Latex code="\rho + \beta'_c" /> damage, and we must distribute this damage in the remaining <Latex code="H - C" /> health of the monster.
+We know that each hit after reaching blast cap deals an average of <Eq code="\rho + \beta'_c" /> damage, and we must distribute this damage in the remaining <Eq code="H - C" /> health of the monster.
 
-This allows us to construct an expression involving the actual effective average blast damage dealt per hit <Latex code="\beta_c" />, which *includes damage dealt before <Latex code="C" /> damage was dealt to the monster*. This expression is simply a weighted average:
+This allows us to construct an expression involving the actual effective average blast damage dealt per hit <Eq code="\beta_c" />, which *includes damage dealt before <Eq code="C" /> damage was dealt to the monster*. This expression is simply a weighted average:
 
 <GatherLatex code="
     \rho + \beta_c
@@ -546,7 +546,7 @@ This allows us to construct an expression involving the actual effective average
     - \rho
 " />
 
-Rewriting <Latex code="\beta_c" /> as a function <Latex code="[C, \infty) \to \Reals" /> such that:
+Rewriting <Eq code="\beta_c" /> as a function <Eq code="[C, \infty) \to \Reals" /> such that:
 
 <DisplayLatex code="
     \beta_c (H)
@@ -558,15 +558,15 @@ Rewriting <Latex code="\beta_c" /> as a function <Latex code="[C, \infty) \to \R
 
 Our model takes the following input variables:
 
-- <Latex code="\rho" /> (average raw damage of an attack)
-- <Latex code="\sigma" /> (average status application of an attack)
-- <Latex code="H" /> (monster total health)
-- <Latex code="a_1" /> (blast base)
-- <Latex code="d" /> (blast buildup)
-- <Latex code="c" /> (blast cap)
-- <Latex code="P" /> (blast damage *per proc*)
+- <Eq code="\rho" /> (average raw damage of an attack)
+- <Eq code="\sigma" /> (average status application of an attack)
+- <Eq code="H" /> (monster total health)
+- <Eq code="a_1" /> (blast base)
+- <Eq code="d" /> (blast buildup)
+- <Eq code="c" /> (blast cap)
+- <Eq code="P" /> (blast damage *per proc*)
 
-The *effective average blast damage per hit* can be calculated as a function of monster health <Latex code="\beta : [0, \infty) \to \Reals" /> such that:
+The *effective average blast damage per hit* can be calculated as a function of monster health <Eq code="\beta : [0, \infty) \to \Reals" /> such that:
 
 <DisplayLatex code="
     \beta (H) =
@@ -576,7 +576,7 @@ The *effective average blast damage per hit* can be calculated as a function of 
         \end{cases}
 " />
 
-Functions <Latex code="\beta_p : [0, \infty) \to \Reals" /> and <Latex code="\beta_c : [C, \infty) \to \Reals" /> are defined as:
+Functions <Eq code="\beta_p : [0, \infty) \to \Reals" /> and <Eq code="\beta_c : [C, \infty) \to \Reals" /> are defined as:
 
 <GatherLatex code="
     \beta_p (H)
@@ -588,13 +588,13 @@ Functions <Latex code="\beta_p : [0, \infty) \to \Reals" /> and <Latex code="\be
     - \rho
 " />
 
-<Latex code="C" /> is the maximum amount of health before reaching the blast cap:
+<Eq code="C" /> is the maximum amount of health before reaching the blast cap:
 
 <DisplayLatex code="
     C = Z + \sqrt{Y^2 + X^2 + Z^2}
 " />
 
-<Latex code="B \parens{H}" /> is the total blast damage dealt when we've dealt a total of <Latex code="H" /> damage to the monster:
+<Eq code="B \parens{H}" /> is the total blast damage dealt when we've dealt a total of <Eq code="H" /> damage to the monster:
 
 <DisplayLatex code="
     B \parens{H} = \sqrt{2 H Z + Y^2} - PY
@@ -626,9 +626,9 @@ Anonymous helper variables:
 
 In reality, blast damage is done on the monster only every now and then (though in a predictable manner).
 
-For example, the continuous model might calculate the total number of blast procs as the non-integer number of <Latex code="25.7" />, leading to a total blast damage calculation of <Latex code="25.7 \times 300 = 7710" />.
+For example, the continuous model might calculate the total number of blast procs as the non-integer number of <Eq code="25.7" />, leading to a total blast damage calculation of <Eq code="25.7 \times 300 = 7710" />.
 
-If one wishes to model the DPS fluctuations that are associated with this effect, then this total number of blast procs must be floored. In this case, the continuous model calculation of <Latex code="25.7" /> must be floored down to <Latex code="25" />, leading to a total blast calculation of <Latex code="25 \times 300 = 7500" />.
+If one wishes to model the DPS fluctuations that are associated with this effect, then this total number of blast procs must be floored. In this case, the continuous model calculation of <Eq code="25.7" /> must be floored down to <Eq code="25" />, leading to a total blast calculation of <Eq code="25 \times 300 = 7500" />.
 
 ### TODO
 
@@ -643,11 +643,11 @@ I left out certain interpretations of the models in order to keep discussion as 
 
 It turns out that if you can predict the average amount of raw damage and status application of a single attack, you can also do it for a given sequence of attacks.
 
-Thus, <Latex code="\rho" /> and <Latex code="\sigma" /> can instead be interpreted as values for a given sequence attacks rather than just a single attack.
+Thus, <Eq code="\rho" /> and <Eq code="\sigma" /> can instead be interpreted as values for a given sequence attacks rather than just a single attack.
 
 ### Target Health
 
-<Latex code="H" /> doesn't actually have to be the monster's total health pool if we don't intend on slaying it. For example, we can instead make <Latex code="H" /> the damage required in order to capture the monster.
+<Eq code="H" /> doesn't actually have to be the monster's total health pool if we don't intend on slaying it. For example, we can instead make <Eq code="H" /> the damage required in order to capture the monster.
 
-Multiplayer might also be considered here since multiple players share the full health pool of the monster. For example, if we assume four perfectly equal players, then we might want to divide the full 4-player health pool by <Latex code="4" />.
+Multiplayer might also be considered here since multiple players share the full health pool of the monster. For example, if we assume four perfectly equal players, then we might want to divide the full 4-player health pool by <Eq code="4" />.
 

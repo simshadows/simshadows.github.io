@@ -13,7 +13,7 @@ import AlignatLatex from "@components/latex/AlignatLatex";
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import CheatsheetBlock from "@components/cheatsheets/CheatsheetBlock";
 import CSFrame from "@components/cheatsheets/CheatsheetFrame";
@@ -29,7 +29,7 @@ import "./_calculus.css"; //_
 <CSFrame wide>
     <CSTitle>Common Integrals</CSTitle>
 
-    <Exn>*Note: Constant of integration <Latex code="+C" /> and trivial domain restrictions (usually <Latex code="a \ne 0" />) omitted for brevity except in places of particular significance.*</Exn>
+    <Exn>*Note: Constant of integration <Eq code="+C" /> and trivial domain restrictions (usually <Eq code="a \ne 0" />) omitted for brevity except in places of particular significance.*</Exn>
 
     <div class="common-integrals-cols">
         <div class="common-integrals-frame-1col">
@@ -267,7 +267,7 @@ import "./_calculus.css"; //_
 <CSFrame>
     <CSTitle>Notation of Second Order Partial Derivatives</CSTitle>
 
-    Consider a function of two variables <Latex code="f(x, y)" />.
+    Consider a function of two variables <Eq code="f(x, y)" />.
 
     <AlignatLatex
         eqcols={4}
@@ -309,9 +309,9 @@ import "./_calculus.css"; //_
 <CSFrame>
     <CSTitle>Equality of Mixed Partials</CSTitle>
 
-    Consider a function of two variables <Latex code="f(x, y)" />.
+    Consider a function of two variables <Eq code="f(x, y)" />.
     
-    If <Latex code="f" /> and all of its first and second order partial derivatives are continuous, then:
+    If <Eq code="f" /> and all of its first and second order partial derivatives are continuous, then:
 
     <DisplayLatex
         moreMacros={{
@@ -425,7 +425,7 @@ import "./_calculus.css"; //_
         \frac{\diff{y}}{\diff{x}} + f(x) \, y = g(x)
     " />
 
-    First, define the *integrating factor* <Latex code="h" />:
+    First, define the *integrating factor* <Eq code="h" />:
 
     <DisplayLatex code="
         h(x) = e^{\int{f(x) \,\diff{x}}}
@@ -435,7 +435,7 @@ import "./_calculus.css"; //_
         }
     " />
 
-    Multiply the ODE by <Latex code="h" /> and undo the product rule:
+    Multiply the ODE by <Eq code="h" /> and undo the product rule:
 
     <DisplayLatex code="
         h(x) \, \frac{\diff{y}}{\diff{x}} + h(x) \, f(x) \, y = g(x) \, h(x) \\
@@ -506,7 +506,7 @@ import "./_calculus.css"; //_
 <CSFrame>
     <CSTitle>Trigonometric Fourier Series</CSTitle>
 
-    For any *periodic function* <Latex code="f \parens{t} = f \parens{t + n T}" />:
+    For any *periodic function* <Eq code="f \parens{t} = f \parens{t + n T}" />:
 
     <AlignLatex code="
         f \parens{t}
@@ -552,9 +552,9 @@ import "./_calculus.css"; //_
 
     Dirichlet conditions (for a convergent Fourier series):
 
-    - <Latex code="f" /> must be single-valued everywhere.
-    - <Latex code="f" /> must have a finite number of finite discontinuities, maxima, and minima in any one period.
-    - <Latex code="\int_{t_0}^{t_0+T} \abs{f\parens{t}} \,\diff{t} < \infty" /> for any <Latex code="t_0" />.
+    - <Eq code="f" /> must be single-valued everywhere.
+    - <Eq code="f" /> must have a finite number of finite discontinuities, maxima, and minima in any one period.
+    - <Eq code="\int_{t_0}^{t_0+T} \abs{f\parens{t}} \,\diff{t} < \infty" /> for any <Eq code="t_0" />.
 </CSFrame>
 
 <CSFrame>
@@ -615,7 +615,7 @@ import "./_calculus.css"; //_
 <CSFrame>
     <CSTitle>Fourier Transform</CSTitle>
 
-    For function <Latex code="f" /> *(not necessarily periodic)* which we interpret as a periodic function with *infinite period*:
+    For function <Eq code="f" /> *(not necessarily periodic)* which we interpret as a periodic function with *infinite period*:
 
     <GatherLatex code="
         F\parens{\omega}
@@ -628,7 +628,7 @@ import "./_calculus.css"; //_
         \int_{-\infty}^\infty F\parens{\omega} \, e^{i \omega t} \,\diff{\omega}
     " />
 
-    The Fourier transform <Latex code="F" /> exists when the Fourier integral converges.
+    The Fourier transform <Eq code="F" /> exists when the Fourier integral converges.
 </CSFrame>
 
 <CSFrame>
@@ -643,7 +643,7 @@ import "./_calculus.css"; //_
             \end{cases}
     " />
 
-    Commonly also written as <Latex code="u\parens{x}" /> or <Latex code="\theta\parens{x}" />.
+    Commonly also written as <Eq code="u\parens{x}" /> or <Eq code="\theta\parens{x}" />.
 
     <CSTitle>Dirac Delta Function</CSTitle>
 
@@ -913,7 +913,7 @@ import "./_calculus.css"; //_
 <CSFrame>
     <CSTitle>Discrete Fourier Transform (DFT)</CSTitle>
 
-    Instead of a continuous function over time, suppose we instead discretely sample it, denoted <Latex code="x_n" />. The DFT of <Latex code="x_n" /> is:
+    Instead of a continuous function over time, suppose we instead discretely sample it, denoted <Eq code="x_n" />. The DFT of <Eq code="x_n" /> is:
 
     <AlignLatex code="
         X_n
@@ -933,7 +933,7 @@ import "./_calculus.css"; //_
 <CSFrame>
     <CSTitle>Laplace Transform</CSTitle>
 
-    For function <Latex code="f" /> and some complex variable <Latex code="s = \sigma + i \omega" />:
+    For function <Eq code="f" /> and some complex variable <Eq code="s = \sigma + i \omega" />:
 
     <DisplayLatex code="
         \LaplaceTransform\brackets{f\parens{t}}

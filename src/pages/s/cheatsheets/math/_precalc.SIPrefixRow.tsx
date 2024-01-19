@@ -1,4 +1,4 @@
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 interface Props {
     readonly name: string;
@@ -13,10 +13,10 @@ export default function SIPrefixRow(props: Props) {
     const sym = props.sym || name;
     return <tr>
         <td>{name}</td>
-        <td><Latex code={`\\si{\\${sym}\\sinounit}`} /></td>
-        <td><Latex code={`{10}^{${e}}`} /></td>
-        <td><Latex code={`{1000}^{${ee}}`} /></td>
-        <td><Latex code={dec} /></td>
+        <td><Eq code={`\\si{\\${sym}\\sinounit}`} /></td>
+        <td><Eq code={`{10}^{${e}}`} /></td>
+        <td><Eq code={`{1000}^{${ee}}`} /></td>
+        <td><Eq code={dec} /></td>
     </tr>;
 }
 

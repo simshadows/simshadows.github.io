@@ -8,7 +8,7 @@ keywords: ["programming", "dynamic programming", "dp"]
 import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
-import Latex from "@components/latex/Latex";
+import Eq from "@components/latex/Eq";
 
 import Centered from "@components/Centered";
 import Eqref from "@components/latex/Eqref";
@@ -28,7 +28,7 @@ import "./_dynamic-programming.css"; //_
 
 ### Introduction
 
-The *Fibonacci sequence* is a sequence in which each number is the sum of the two preceding ones. The sequence commonly begins with <Latex code="0" /> and <Latex code="1" />, so the sequence is written as:
+The *Fibonacci sequence* is a sequence in which each number is the sum of the two preceding ones. The sequence commonly begins with <Eq code="0" /> and <Eq code="1" />, so the sequence is written as:
 
 <DisplayLatex code="
     0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \dots
@@ -49,7 +49,7 @@ For our purposes, we are interested in computing a single term of the sequence.
 
 ### Naive Recursive Algorithm
 
-A very simple algorithm is to simply implement our definition as a recursive function, though the runtime performance is a nasty <Latex code="O \parens{2^n}" />. Calculating <Latex code="F_{42}" /> took 45 seconds with an AMD Ryzen 7 5800HS CPU:
+A very simple algorithm is to simply implement our definition as a recursive function, though the runtime performance is a nasty <Eq code="O \parens{2^n}" />. Calculating <Eq code="F_{42}" /> took 45 seconds with an AMD Ryzen 7 5800HS CPU:
 
 ```py
 def fib(n):
@@ -64,7 +64,7 @@ timeit(lambda : fib(42), number=1) # approx. 45 seconds
 
 ### Top-Down Memoization Algorithm
 
-One way to speed it up is the recognition that once we've computed a term of the sequence, we can store it for future use. This algorithm runs in <Latex code="O \parens{n}" /> time since we calculate each term only once:
+One way to speed it up is the recognition that once we've computed a term of the sequence, we can store it for future use. This algorithm runs in <Eq code="O \parens{n}" /> time since we calculate each term only once:
 
 ```py
 def fib(n):
@@ -82,11 +82,11 @@ timeit(lambda : fib(994), number=1) # approx. 0.00040 seconds (400 microseconds)
 timeit(lambda : fib(995), number=1) # Python 3.10.9 'maximum recursion depth exceeded' error
 ```
 
-*Interestingly, if we calculate for <Latex code="n = 995" /> or higher, Python throws a `maximum recursion depth exceeded` error.*
+*Interestingly, if we calculate for <Eq code="n = 995" /> or higher, Python throws a `maximum recursion depth exceeded` error.*
 
 ### Bottom-Up Algorithm
 
-You may have already spotted that rather than start from <Latex code="F_n" /> and recursively figuring out what we need to solve it, we could instead start from <Latex code="F_2" /> (and hardcode the base cases <Latex code="F_0" /> and <Latex code="F_1" />) and work our way upwards. This algorithm also runs in <Latex code="O \parens{n}" />:
+You may have already spotted that rather than start from <Eq code="F_n" /> and recursively figuring out what we need to solve it, we could instead start from <Eq code="F_2" /> (and hardcode the base cases <Eq code="F_0" /> and <Eq code="F_1" />) and work our way upwards. This algorithm also runs in <Eq code="O \parens{n}" />:
 
 ```py
 def fib(n):
@@ -119,7 +119,7 @@ There is only one copy of each item available for you to take. Each item is eith
 
 ### Example
 
-Suppose your bag can only carry up to <Latex code="\qty{15}{\kilo\gram}" /> in total. The possible items we can choose from are shown in the table below:
+Suppose your bag can only carry up to <Eq code="\qty{15}{\kilo\gram}" /> in total. The possible items we can choose from are shown in the table below:
 
 <Centered>
 <table class="general">
@@ -133,36 +133,36 @@ Suppose your bag can only carry up to <Latex code="\qty{15}{\kilo\gram}" /> in t
     <tbody>
         <tr>
             <td>Item 1</td>
-            <td><Latex code="\qty{12}{\kilo\gram}" /></td>
-            <td><Latex code="\dollars{4}" /></td>
+            <td><Eq code="\qty{12}{\kilo\gram}" /></td>
+            <td><Eq code="\dollars{4}" /></td>
         </tr>
         <tr>
             <td>Item 2</td>
-            <td><Latex code="\qty{4}{\kilo\gram}" /></td>
-            <td><Latex code="\dollars{10}" /></td>
+            <td><Eq code="\qty{4}{\kilo\gram}" /></td>
+            <td><Eq code="\dollars{10}" /></td>
         </tr>
         <tr>
             <td>Item 3</td>
-            <td><Latex code="\qty{2}{\kilo\gram}" /></td>
-            <td><Latex code="\dollars{2}" /></td>
+            <td><Eq code="\qty{2}{\kilo\gram}" /></td>
+            <td><Eq code="\dollars{2}" /></td>
         </tr>
         <tr>
             <td>Item 4</td>
-            <td><Latex code="\qty{1}{\kilo\gram}" /></td>
-            <td><Latex code="\dollars{2}" /></td>
+            <td><Eq code="\qty{1}{\kilo\gram}" /></td>
+            <td><Eq code="\dollars{2}" /></td>
         </tr>
         <tr>
             <td>Item 5</td>
-            <td><Latex code="\qty{1}{\kilo\gram}" /></td>
-            <td><Latex code="\dollars{1}" /></td>
+            <td><Eq code="\qty{1}{\kilo\gram}" /></td>
+            <td><Eq code="\dollars{1}" /></td>
         </tr>
     </tbody>
 </table>
 </Centered>
 
-The optimal solution is to take all items except Item 1. The total value of these items is <Latex code="\dollars{10} + \dollars{2} + \dollars{2} + \dollars{1} = \dollars{15}" />. The total weight of these items is <Latex code="\qty{4}{\kilo\gram} + \qty{2}{\kilo\gram} + \qty{1}{\kilo\gram} + \qty{1}{\kilo\gram} = \qty{8}{\kilo\gram}" />, which is clearly within the bag's <Latex code="\qty{15}{\kilo\gram}" /> limit.
+The optimal solution is to take all items except Item 1. The total value of these items is <Eq code="\dollars{10} + \dollars{2} + \dollars{2} + \dollars{1} = \dollars{15}" />. The total weight of these items is <Eq code="\qty{4}{\kilo\gram} + \qty{2}{\kilo\gram} + \qty{1}{\kilo\gram} + \qty{1}{\kilo\gram} = \qty{8}{\kilo\gram}" />, which is clearly within the bag's <Eq code="\qty{15}{\kilo\gram}" /> limit.
 
-If we took Item 1, we will only have <Latex code="\qty{3}{\kilo\gram}" /> remaining. We wouldn't be able to take Item 2, which is a significantly valuable item in the list. The best we can do is to take Item 3 and Item 5, giving us a total of <Latex code="\dollars{4} + \dollars{2} + \dollars{1} = \dollars{7}" />.
+If we took Item 1, we will only have <Eq code="\qty{3}{\kilo\gram}" /> remaining. We wouldn't be able to take Item 2, which is a significantly valuable item in the list. The best we can do is to take Item 3 and Item 5, giving us a total of <Eq code="\dollars{4} + \dollars{2} + \dollars{1} = \dollars{7}" />.
 
 ### Naive Brute Force Solution
 
@@ -175,21 +175,21 @@ We can try enumerating every possible subset of items:
 </Centered>
 </HorizontalScrollingBox>
 
-By rejecting all subsets above the weight limit (<Latex code="\qty{15}{\kilo\gram}" />) and getting the highest-value subset, we can clearly see that this will lead to an optimal solution. However, the runtime complexity is <Latex code="O \parens{2^n}" />.
+By rejecting all subsets above the weight limit (<Eq code="\qty{15}{\kilo\gram}" />) and getting the highest-value subset, we can clearly see that this will lead to an optimal solution. However, the runtime complexity is <Eq code="O \parens{2^n}" />.
 
 ### Bottom-Up Tabulation Algorithm
 
 Let:
 
-- <Latex code="W = {}" />the bag's carrying weight limit.
-- <Latex code="N = {}" />the number of items we can choose from.
-- <Latex code="\braces{S_1, S_2, \dots, S_I} = {}" />the set of all items we can choose from. *(This intentionally uses one-based indexing.)*
-- <Latex code="w_i = {}" />the weight of item <Latex code="S_i" />.
-- <Latex code="v_i = {}" />the dollar value of item <Latex code="S_i" />.
+- <Eq code="W = {}" />the bag's carrying weight limit.
+- <Eq code="N = {}" />the number of items we can choose from.
+- <Eq code="\braces{S_1, S_2, \dots, S_I} = {}" />the set of all items we can choose from. *(This intentionally uses one-based indexing.)*
+- <Eq code="w_i = {}" />the weight of item <Eq code="S_i" />.
+- <Eq code="v_i = {}" />the dollar value of item <Eq code="S_i" />.
 
-For this solution, we will assume integer weight values, <Latex code="W \ge 0" />, and <Latex code="w_i \le W" /> for all possible <Latex code="w_i" />.
+For this solution, we will assume integer weight values, <Eq code="W \ge 0" />, and <Eq code="w_i \le W" /> for all possible <Eq code="w_i" />.
 
-Our main data structure will be a table <Latex code="m \brackets{i, w}" /> with size <Latex code="\parens{N + 1} \times \parens{W + 1}" />. For example:
+Our main data structure will be a table <Eq code="m \brackets{i, w}" /> with size <Eq code="\parens{N + 1} \times \parens{W + 1}" />. For example:
 
 <HorizontalScrollingBox>
 <Centered>
@@ -197,7 +197,7 @@ Our main data structure will be a table <Latex code="m \brackets{i, w}" /> with 
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
-            <th colspan="16"><Latex code="w" /></th>
+            <th colspan="16"><Eq code="w" /></th>
         </tr>
         <tr>
             <th>0</th>
@@ -220,7 +220,7 @@ Our main data structure will be a table <Latex code="m \brackets{i, w}" /> with 
     </thead>
     <tbody>
         <tr>
-            <th rowspan="6"><Latex code="i" /></th>
+            <th rowspan="6"><Eq code="i" /></th>
             <th>0</th>
             <td>0</td>
             <td>0</td>
@@ -279,22 +279,22 @@ Our main data structure will be a table <Latex code="m \brackets{i, w}" /> with 
 </Centered>
 </HorizontalScrollingBox>
 
-<Latex code="i" /> corresponds to the subset of items we have currently selected from. For our example:
+<Eq code="i" /> corresponds to the subset of items we have currently selected from. For our example:
 
-- <Latex code="i = 0" /> means we have selected from an empty set <Latex code="\{\}" />.
-- <Latex code="i = 1" /> means we have selected from <Latex code="\braces{S_1}" />.
-- <Latex code="i = 2" /> means we have selected from <Latex code="\braces{S_1, S_2}" />.
-- <Latex code="i = 3" /> means we have selected from <Latex code="\braces{S_1, S_2, S_3}" />.
-- <Latex code="i = 4" /> means we have selected from <Latex code="\braces{S_1, S_2, S_3, S_4}" />.
-- <Latex code="i = 5" /> means we have selected from <Latex code="\braces{S_1, S_2, S_3, S_4, S_5}" />.
+- <Eq code="i = 0" /> means we have selected from an empty set <Eq code="\{\}" />.
+- <Eq code="i = 1" /> means we have selected from <Eq code="\braces{S_1}" />.
+- <Eq code="i = 2" /> means we have selected from <Eq code="\braces{S_1, S_2}" />.
+- <Eq code="i = 3" /> means we have selected from <Eq code="\braces{S_1, S_2, S_3}" />.
+- <Eq code="i = 4" /> means we have selected from <Eq code="\braces{S_1, S_2, S_3, S_4}" />.
+- <Eq code="i = 5" /> means we have selected from <Eq code="\braces{S_1, S_2, S_3, S_4, S_5}" />.
 
-<Latex code="w" /> corresponds to hypothetical weight limits up until the weight limit <Latex code="W" />. For example:
+<Eq code="w" /> corresponds to hypothetical weight limits up until the weight limit <Eq code="W" />. For example:
 
-- <Latex code="w = 0" /> corresponds to a bag of weight limit <Latex code="\qty{0}{\kilo\gram}" />,
-- <Latex code="w = 1" /> corresponds to a bag of weight limit <Latex code="\qty{1}{\kilo\gram}" />,
-- <Latex code="w = 2" /> corresponds to a bag of weight limit <Latex code="\qty{2}{\kilo\gram}" />, etc.
+- <Eq code="w = 0" /> corresponds to a bag of weight limit <Eq code="\qty{0}{\kilo\gram}" />,
+- <Eq code="w = 1" /> corresponds to a bag of weight limit <Eq code="\qty{1}{\kilo\gram}" />,
+- <Eq code="w = 2" /> corresponds to a bag of weight limit <Eq code="\qty{2}{\kilo\gram}" />, etc.
 
-Each cell of <Latex code="m\brackets{i, w}" /> is the highest total dollar value possible for the given <Latex code="i" /> and <Latex code="w" />.
+Each cell of <Eq code="m\brackets{i, w}" /> is the highest total dollar value possible for the given <Eq code="i" /> and <Eq code="w" />.
 
 To fill the remaining cells, we must apply an optimal substructure. This can be expressed simply as:
 
@@ -312,7 +312,7 @@ To fill the remaining cells, we must apply an optimal substructure. This can be 
 
 <Todo>Make the table reference above clear? Original Latex version has an actual `\cref{}`.</Todo>
 
-<Eqref>2</Eqref> is a recursive equation based around a yes/no decision on whether or not to include an item in the bag. Importantly, this equation only references the previous row <Latex code="i - 1" />, meaning that we must calculate each row in order starting from <Latex code="i = 1" />. Without concerning ourselves with the details of the calculation, let's fill out this first row <Latex code="i = 1" />:
+<Eqref>2</Eqref> is a recursive equation based around a yes/no decision on whether or not to include an item in the bag. Importantly, this equation only references the previous row <Eq code="i - 1" />, meaning that we must calculate each row in order starting from <Eq code="i = 1" />. Without concerning ourselves with the details of the calculation, let's fill out this first row <Eq code="i = 1" />:
 
 <HorizontalScrollingBox>
 <Centered>
@@ -320,7 +320,7 @@ To fill the remaining cells, we must apply an optimal substructure. This can be 
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
-            <th colspan="16"><Latex code="w" /></th>
+            <th colspan="16"><Eq code="w" /></th>
         </tr>
         <tr>
             <th>0</th>
@@ -343,7 +343,7 @@ To fill the remaining cells, we must apply an optimal substructure. This can be 
     </thead>
     <tbody>
         <tr>
-            <th rowspan="6"><Latex code="i" /></th>
+            <th rowspan="6"><Eq code="i" /></th>
             <th>0</th>
             <td>0</td>
             <td>0</td>
@@ -414,7 +414,7 @@ To fill the remaining cells, we must apply an optimal substructure. This can be 
 </Centered>
 </HorizontalScrollingBox>
 
-Using the results of row <Latex code="i = 1" />, we can now calculate row <Latex code="i = 2" />:
+Using the results of row <Eq code="i = 1" />, we can now calculate row <Eq code="i = 2" />:
 
 <HorizontalScrollingBox>
 <Centered>
@@ -422,7 +422,7 @@ Using the results of row <Latex code="i = 1" />, we can now calculate row <Latex
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
-            <th colspan="16"><Latex code="w" /></th>
+            <th colspan="16"><Eq code="w" /></th>
         </tr>
         <tr>
             <th>0</th>
@@ -445,7 +445,7 @@ Using the results of row <Latex code="i = 1" />, we can now calculate row <Latex
     </thead>
     <tbody>
         <tr>
-            <th rowspan="6"><Latex code="i" /></th>
+            <th rowspan="6"><Eq code="i" /></th>
             <th>0</th>
             <td>0</td>
             <td>0</td>
@@ -530,7 +530,7 @@ Using the results of row <Latex code="i = 1" />, we can now calculate row <Latex
 
 ...and so on.
 
-To understand how equation <Eqref>2</Eqref> works and how we've been calculating these rows, let's use the <Latex code="i = 3" /> row as an example since this is where things get more interesting:
+To understand how equation <Eqref>2</Eqref> works and how we've been calculating these rows, let's use the <Eq code="i = 3" /> row as an example since this is where things get more interesting:
 
 <HorizontalScrollingBox>
 <Centered>
@@ -538,7 +538,7 @@ To understand how equation <Eqref>2</Eqref> works and how we've been calculating
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
-            <th colspan="16"><Latex code="w" /></th>
+            <th colspan="16"><Eq code="w" /></th>
         </tr>
         <tr>
             <th>0</th>
@@ -561,7 +561,7 @@ To understand how equation <Eqref>2</Eqref> works and how we've been calculating
     </thead>
     <tbody>
         <tr>
-            <th rowspan="6"><Latex code="i" /></th>
+            <th rowspan="6"><Eq code="i" /></th>
             <th>0</th>
             <td>0</td>
             <td>0</td>
@@ -656,7 +656,7 @@ To understand how equation <Eqref>2</Eqref> works and how we've been calculating
 </Centered>
 </HorizontalScrollingBox>
 
-Let's take a closer look at how <Latex code="\colorbox{\mylightblue}{$m \brackets{3, 5}$}" /> is calculated. <Latex code="m \brackets{3, 5}" /> is the highest dollar value of a bag with a carrying capacity of <Latex code="\qty{5}{\kilo\gram}" />, selecting only from the set of items <Latex code="\braces{S_1, S_2, S_3}" />. If we apply equation <Eqref>2</Eqref>, we get:
+Let's take a closer look at how <Eq code="\colorbox{\mylightblue}{$m \brackets{3, 5}$}" /> is calculated. <Eq code="m \brackets{3, 5}" /> is the highest dollar value of a bag with a carrying capacity of <Eq code="\qty{5}{\kilo\gram}" />, selecting only from the set of items <Eq code="\braces{S_1, S_2, S_3}" />. If we apply equation <Eqref>2</Eqref>, we get:
 
 <DisplayLatex code="
     w_3 = \qty{2}{\kilo\gram}
@@ -704,8 +704,8 @@ Let's take a closer look at how <Latex code="\colorbox{\mylightblue}{$m \bracket
 The last line <Eqref>3</Eqref> reads that we choose the best dollar value of two options:
 
 <ul class="description">
-    <li><span class="item-title">Option 1:</span> *We put item <Latex code="S_3" /> in the bag.* To calculate this option, we are essentially taking the empty <Latex code="\qty{5}{\kilo\gram}" /> bag, putting item <Latex code="S_3" /> into it, and then asking for the best dollar value that we can put <u>in the space that remains in the bag</u> using only the previous items <Latex code="\braces{S_1, S_2}" />. The weight of item <Latex code="S_3" /> is <Latex code="w_3 = \qty{2}{\kilo\gram}" />, so the remaining space is <Latex code="w - w_3 = 5 - 2 = \qty{3}{\kilo\gram}" />.</li>
-    <li><span class="item-title">Option 2:</span> *We don't put item <Latex code="S_3" /> in the bag.* To calculate this option, we ask what the highest dollar value of a bag with a carrying capacity of the same <Latex code="\qty{5}{\kilo\gram}" />, except we select only from items <Latex code="\braces{S_1, S_2}" />.</li>
+    <li><span class="item-title">Option 1:</span> *We put item <Eq code="S_3" /> in the bag.* To calculate this option, we are essentially taking the empty <Eq code="\qty{5}{\kilo\gram}" /> bag, putting item <Eq code="S_3" /> into it, and then asking for the best dollar value that we can put <u>in the space that remains in the bag</u> using only the previous items <Eq code="\braces{S_1, S_2}" />. The weight of item <Eq code="S_3" /> is <Eq code="w_3 = \qty{2}{\kilo\gram}" />, so the remaining space is <Eq code="w - w_3 = 5 - 2 = \qty{3}{\kilo\gram}" />.</li>
+    <li><span class="item-title">Option 2:</span> *We don't put item <Eq code="S_3" /> in the bag.* To calculate this option, we ask what the highest dollar value of a bag with a carrying capacity of the same <Eq code="\qty{5}{\kilo\gram}" />, except we select only from items <Eq code="\braces{S_1, S_2}" />.</li>
 </ul>
 
 Continuing on from <Eqref>3</Eqref>:
@@ -726,7 +726,7 @@ Continuing until the whole table is complete, we get:
     <thead>
         <tr>
             <th colspan="2" rowspan="2"></th>
-            <th colspan="16"><Latex code="w" /></th>
+            <th colspan="16"><Eq code="w" /></th>
         </tr>
         <tr>
             <th>0</th>
@@ -749,7 +749,7 @@ Continuing until the whole table is complete, we get:
     </thead>
     <tbody>
         <tr>
-            <th rowspan="6"><Latex code="i" /></th>
+            <th rowspan="6"><Eq code="i" /></th>
             <th>0</th>
             <td>0</td>
             <td>0</td>
@@ -868,9 +868,9 @@ Continuing until the whole table is complete, we get:
 </Centered>
 </HorizontalScrollingBox>
 
-Thus, the best dollar value that we can put in a <Latex code="\qty{15}{\kilo\gram}" /> bag using items <Latex code="\braces{S_1, S_2, S_3, S_4, S_5}" /> is <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} = \dollars{15}" />.
+Thus, the best dollar value that we can put in a <Eq code="\qty{15}{\kilo\gram}" /> bag using items <Eq code="\braces{S_1, S_2, S_3, S_4, S_5}" /> is <Eq code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} = \dollars{15}" />.
 
-To read back an optimal set of items, we must *backtrack* starting from <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />. The idea is to first look directly backwards to see if the weight is the same, otherwise we subtract the value and the weight and check the appropriate cell. If done correctly, we touch the following cells:
+To read back an optimal set of items, we must *backtrack* starting from <Eq code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />. The idea is to first look directly backwards to see if the weight is the same, otherwise we subtract the value and the weight and check the appropriate cell. If done correctly, we touch the following cells:
 
 <HorizontalScrollingBox>
 <Centered>
@@ -878,7 +878,7 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
     <thead>
         <tr>
             <th colspan="3" rowspan="2"></th>
-            <th colspan="16"><Latex code="w" /></th>
+            <th colspan="16"><Eq code="w" /></th>
         </tr>
         <tr>
             <th>0</th>
@@ -902,7 +902,7 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
     <tbody>
         <tr>
             <th></th>
-            <th rowspan="6"><Latex code="i" /></th>
+            <th rowspan="6"><Eq code="i" /></th>
             <th>0</th>
             <td>0</td>
             <td>0</td>
@@ -922,7 +922,7 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
             <td>0</td>
         </tr>
         <tr>
-            <th><Latex code="S_1 \to\qty{12}{\kilo\gram} \quad \dollars{4}" /></th>
+            <th><Eq code="S_1 \to\qty{12}{\kilo\gram} \quad \dollars{4}" /></th>
             <th>1</th>
             <td>0</td>
             <td>0</td>
@@ -942,7 +942,7 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
             <td>4</td>
         </tr>
         <tr>
-            <th><Latex code="S_2 \to\qty{4}{\kilo\gram} \quad \dollars{10}" /></th>
+            <th><Eq code="S_2 \to\qty{4}{\kilo\gram} \quad \dollars{10}" /></th>
             <th>2</th>
             <td>0</td>
             <td>0</td>
@@ -962,7 +962,7 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
             <td>10</td>
         </tr>
         <tr>
-            <th><Latex code="S_3 \to\qty{2}{\kilo\gram} \quad \dollars{2}" /></th>
+            <th><Eq code="S_3 \to\qty{2}{\kilo\gram} \quad \dollars{2}" /></th>
             <th>3</th>
             <td>0</td>
             <td>0</td>
@@ -982,7 +982,7 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
             <td>12</td>
         </tr>
         <tr>
-            <th><Latex code="S_4 \to\qty{1}{\kilo\gram} \quad \dollars{2}" /></th>
+            <th><Eq code="S_4 \to\qty{1}{\kilo\gram} \quad \dollars{2}" /></th>
             <th>4</th>
             <td>0</td>
             <td>2</td>
@@ -1002,7 +1002,7 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
             <td>14</td>
         </tr>
         <tr>
-            <th><Latex code="S_5 \to\qty{1}{\kilo\gram} \quad \dollars{1}" /></th>
+            <th><Eq code="S_5 \to\qty{1}{\kilo\gram} \quad \dollars{1}" /></th>
             <th>5</th>
             <td>0</td>
             <td>2</td>
@@ -1026,7 +1026,7 @@ To read back an optimal set of items, we must *backtrack* starting from <Latex c
 </Centered>
 </HorizontalScrollingBox>
 
-To understand how it works, let's start from the beginning at <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />:
+To understand how it works, let's start from the beginning at <Eq code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" />:
 
 <HorizontalScrollingBox>
 <Centered>
@@ -1034,7 +1034,7 @@ To understand how it works, let's start from the beginning at <Latex code="\colo
     <thead>
         <tr>
             <th colspan="3" rowspan="2"></th>
-            <th colspan="16"><Latex code="w" /></th>
+            <th colspan="16"><Eq code="w" /></th>
         </tr>
         <tr>
             <th>0</th>
@@ -1058,7 +1058,7 @@ To understand how it works, let's start from the beginning at <Latex code="\colo
     <tbody>
         <tr>
             <th></th>
-            <th rowspan="6"><Latex code="i" /></th>
+            <th rowspan="6"><Eq code="i" /></th>
             <th>0</th>
             <td>0</td>
             <td>0</td>
@@ -1078,7 +1078,7 @@ To understand how it works, let's start from the beginning at <Latex code="\colo
             <td>0</td>
         </tr>
         <tr>
-            <th><Latex code="S_1 \to\qty{12}{\kilo\gram} \quad \dollars{4}" /></th>
+            <th><Eq code="S_1 \to\qty{12}{\kilo\gram} \quad \dollars{4}" /></th>
             <th>1</th>
             <td>0</td>
             <td>0</td>
@@ -1098,7 +1098,7 @@ To understand how it works, let's start from the beginning at <Latex code="\colo
             <td>4</td>
         </tr>
         <tr>
-            <th><Latex code="S_2 \to\qty{4}{\kilo\gram} \quad \dollars{10}" /></th>
+            <th><Eq code="S_2 \to\qty{4}{\kilo\gram} \quad \dollars{10}" /></th>
             <th>2</th>
             <td>0</td>
             <td>0</td>
@@ -1118,7 +1118,7 @@ To understand how it works, let's start from the beginning at <Latex code="\colo
             <td>10</td>
         </tr>
         <tr>
-            <th><Latex code="S_3 \to\qty{2}{\kilo\gram} \quad \dollars{2}" /></th>
+            <th><Eq code="S_3 \to\qty{2}{\kilo\gram} \quad \dollars{2}" /></th>
             <th>3</th>
             <td>0</td>
             <td>0</td>
@@ -1138,7 +1138,7 @@ To understand how it works, let's start from the beginning at <Latex code="\colo
             <td>12</td>
         </tr>
         <tr>
-            <th><Latex code="S_4 \to\qty{1}{\kilo\gram} \quad \dollars{2}" /></th>
+            <th><Eq code="S_4 \to\qty{1}{\kilo\gram} \quad \dollars{2}" /></th>
             <th>4</th>
             <td>0</td>
             <td>2</td>
@@ -1158,7 +1158,7 @@ To understand how it works, let's start from the beginning at <Latex code="\colo
             <td style="background: var(--color--mylightblue)">14</td>
         </tr>
         <tr>
-            <th><Latex code="S_5 \to\qty{1}{\kilo\gram} \quad \dollars{1}" /></th>
+            <th><Eq code="S_5 \to\qty{1}{\kilo\gram} \quad \dollars{1}" /></th>
             <th>5</th>
             <td>0</td>
             <td>2</td>
@@ -1182,39 +1182,39 @@ To understand how it works, let's start from the beginning at <Latex code="\colo
 </Centered>
 </HorizontalScrollingBox>
 
-Directly behind <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" /> is <Latex code="\colorbox{\mylightblue}{$m \brackets{4, 15}$}" />. Here, we check for one of two possible branches:
+Directly behind <Eq code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$}" /> is <Eq code="\colorbox{\mylightblue}{$m \brackets{4, 15}$}" />. Here, we check for one of two possible branches:
 
 <ul class="description">
-    <li><span class="item-title">Branch 1:</span> If <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} \ne \colorbox{\mylightblue}{$m \brackets{4, 15}$}" />, then we know that *our optimal set does contain item <Latex code="S_5" />*. This is because the optimal set's composition <u>must have changed</u> when we introduced the new item <Latex code="S_5" />.</li>
-    <li><span class="item-title">Branch 2:</span> If <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} = \colorbox{\mylightblue}{$m \brackets{4, 15}$}" />, then we say that *our optimal set does not necessarily contain item <Latex code="S_5" />*. This is because the optimal set's composition <u>doesn't need to have changed</u> when we introduced the new item <Latex code="S_5" />.</li>
+    <li><span class="item-title">Branch 1:</span> If <Eq code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} \ne \colorbox{\mylightblue}{$m \brackets{4, 15}$}" />, then we know that *our optimal set does contain item <Eq code="S_5" />*. This is because the optimal set's composition <u>must have changed</u> when we introduced the new item <Eq code="S_5" />.</li>
+    <li><span class="item-title">Branch 2:</span> If <Eq code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} = \colorbox{\mylightblue}{$m \brackets{4, 15}$}" />, then we say that *our optimal set does not necessarily contain item <Eq code="S_5" />*. This is because the optimal set's composition <u>doesn't need to have changed</u> when we introduced the new item <Eq code="S_5" />.</li>
 </ul>
 
-*(Side note: Branch 2 is carefully worded to say that it's possible but uncertain that item <Latex code="S_5" /> can be included in the optimal set, but that we know for certain that it can be left out, hence we "say" that the optimal set does not necessarily contain <Latex code="S_5" />. It simplifies our discussion to skip over checking if we can include <Latex code="S_5" />.)*
+*(Side note: Branch 2 is carefully worded to say that it's possible but uncertain that item <Eq code="S_5" /> can be included in the optimal set, but that we know for certain that it can be left out, hence we "say" that the optimal set does not necessarily contain <Eq code="S_5" />. It simplifies our discussion to skip over checking if we can include <Eq code="S_5" />.)*
 
-In this example, we see that <Latex code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} \ne \colorbox{\mylightblue}{$m \brackets{4, 15}$}" />, so we take item <Latex code="S_5" /> as part of the optimal set.
+In this example, we see that <Eq code="\colorbox{\mylightgreen}{$m \brackets{5, 15}$} \ne \colorbox{\mylightblue}{$m \brackets{4, 15}$}" />, so we take item <Eq code="S_5" /> as part of the optimal set.
 
 Now, depending on the branch, we will visit a new cell. This is simply the corresponding cell as described by equation <Eqref>2</Eqref>:
 
 <ul class="description">
-    <li><span class="item-title">If we took Branch 1:</span> We visit <Latex code="m \brackets{i - 1, w - w_i}" />. In this case, we visit <Latex code="\colorbox{\mylightred}{$m \brackets{4, 14}$}" />.</li>
-    <li><span class="item-title">If we took Branch 2:</span> We visit <Latex code="m \brackets{i - 1, w}" />. In this case, we visit <Latex code="\colorbox{\mylightblue}{$m \brackets{4, 15}$}" />.</li>
+    <li><span class="item-title">If we took Branch 1:</span> We visit <Eq code="m \brackets{i - 1, w - w_i}" />. In this case, we visit <Eq code="\colorbox{\mylightred}{$m \brackets{4, 14}$}" />.</li>
+    <li><span class="item-title">If we took Branch 2:</span> We visit <Eq code="m \brackets{i - 1, w}" />. In this case, we visit <Eq code="\colorbox{\mylightblue}{$m \brackets{4, 15}$}" />.</li>
 </ul>
 
-This process can repeat until we arrive at the <Latex code="i = 0" /> row.
+This process can repeat until we arrive at the <Eq code="i = 0" /> row.
 
 Thus, we backtrack through the table:
 
-- took Branch 1 at <Latex code="m \brackets{5, 15}" />,
-- took Branch 1 at <Latex code="m \brackets{4, 14}" />,
-- took Branch 1 at <Latex code="m \brackets{3, 13}" />,
-- took Branch 1 at <Latex code="m \brackets{2, 11}" />, and
-- took Branch 2 at <Latex code="m \brackets{1, 7}" />.
+- took Branch 1 at <Eq code="m \brackets{5, 15}" />,
+- took Branch 1 at <Eq code="m \brackets{4, 14}" />,
+- took Branch 1 at <Eq code="m \brackets{3, 13}" />,
+- took Branch 1 at <Eq code="m \brackets{2, 11}" />, and
+- took Branch 2 at <Eq code="m \brackets{1, 7}" />.
 
 <p><Todo>The original Latex version has a direct reference back to the backtracking table rather than just saying "the table". Maybe we should figure out how to make this clearer here?</Todo></p>
 
-Therefore, our optimal set is <Latex code="\braces{S_5, S_4, S_3, S_2}" />, which has a total value of <Latex code="\dollars{15}" />.
+Therefore, our optimal set is <Eq code="\braces{S_5, S_4, S_3, S_2}" />, which has a total value of <Eq code="\dollars{15}" />.
 
-This tabulation algorithm runs in <Latex code="O\parens{NW}" /> time and space. Further minor improvements to the algorithm are possible and is left as an exercise for the reader.
+This tabulation algorithm runs in <Eq code="O\parens{NW}" /> time and space. Further minor improvements to the algorithm are possible and is left as an exercise for the reader.
 
 ### Naive Top-Down Recursion Algorithm
 
