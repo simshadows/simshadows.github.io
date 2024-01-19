@@ -1,0 +1,9 @@
+/*
+ * Formatting is broken for C++ code blocks.
+ * Using `std::` causes broken underlining.
+ * Better to just disable it until it's fixed.
+ */
+pre.astro-code span {
+    text-decoration: none !important;
+}
+
