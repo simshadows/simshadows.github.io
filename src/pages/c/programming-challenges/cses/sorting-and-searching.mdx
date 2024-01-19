@@ -125,9 +125,15 @@ import SolRestaurantCustomers from "./_solutions.sorting-and-searching/restauran
 
 ## Movie Festival <Spec href="https://cses.fi/problemset/task/1629/" cdate="2024-01-19" />
 
+I went straight to C++ due to my experience with Python TLE'ing *Restaurant Customers*:
+
 import SolMovieFestival from "./_solutions.sorting-and-searching/movie-festival.cpp?raw" //_
 
 <Code code={SolMovieFestival} lang="cpp" />
 
-<p><Todo>Maybe try to get a Python solution to pass!</Todo></p>
+As it turns out, my C++ solution wouldn't have to take advantage of BSTs, so I did a quick Python rewrite. It passes CPython3, but somehow TLE's with PyPy3:
+
+import SolMovieFestivalAlt01 from "./_solutions.sorting-and-searching/movie-festival--alternative01.py?raw" //_
+
+<Code code={SolMovieFestivalAlt01} lang="py" />
 
