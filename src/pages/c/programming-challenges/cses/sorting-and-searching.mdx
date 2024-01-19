@@ -77,11 +77,19 @@ import SolConcertTicketsFail03 from "./_solutions.sorting-and-searching/concert-
     <Code code={SolConcertTicketsFail03} lang="py" />
 </SpoilerBlock>
 
-But at least I know the idea works, leading me to my first successful solution that passed all tests. I decided to rewrite in C++ since I wasn't having any luck in Python. This solution has time complexity <Eq code="O(m \log n)" /> due to <Eq code="O(\log n)" /> operations on `std::multiset`:
+But at least I know the idea works, leading me to my first successful solution that passed all tests. I decided to rewrite in C++ since I wasn't having any luck in Python. This solution has time complexity <Eq code="O(m \log n + n \log n)" /> due to <Eq code="O(\log n)" /> operations on `std::multiset`, <Eq code="O(n \log n)" /> sorting, and <Eq code="O(m \log n)" /> main loop:
 
 import SolConcertTickets from "./_solutions.sorting-and-searching/concert-tickets.cpp?raw" //_
 
 <Code code={SolConcertTickets} lang="cpp" />
+
+I decided to see if I can still make Python work without too much effort. I could probably try to paste a BST implementation, but I'd rather not.
+
+I used *union find* to let me skip over "deleted" tickets efficiently rather than carry out <Eq code="O(n)" /> deletions. My solution passes on both `CPython3` and `PyPy3`:
+
+import SolConcertTicketsAlt02 from "./_solutions.sorting-and-searching/concert-tickets--alternative02.py?raw" //_
+
+<Code code={SolConcertTicketsAlt02} lang="py" />
 
 
 ## Restaurant Customers <Spec href="https://cses.fi/problemset/task/1619/" cdate="2024-01-19" />
