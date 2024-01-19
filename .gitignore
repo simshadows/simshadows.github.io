@@ -47,3 +47,7 @@ pnpm-debug.log*
 # LibreOffice lockfile
 .~lock.*
 
+# I aliased quick-and-dirty C++ compile commands to output a file simply named 'a.out'.
+# (It's the default output filename for GCC, which I kept since I'm already used to it.)
+a.out
+

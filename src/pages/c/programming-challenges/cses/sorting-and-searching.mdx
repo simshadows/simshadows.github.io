@@ -53,6 +53,7 @@ import SolFerrisWheel from "./_solutions.sorting-and-searching/ferris-wheel.py?r
 
 <Code code={SolFerrisWheel} lang="py" />
 
+
 ## Concert Tickets <Spec href="https://cses.fi/problemset/task/1091/" cdate="2024-01-18" />
 
 I initially misunderstood the problem spec and thought that there was no time dimension to the problem, leading to two totally incorrect solutions:
@@ -68,11 +69,11 @@ import SolConcertTicketsFail02 from "./_solutions.sorting-and-searching/concert-
     <Code code={SolConcertTicketsFail02} lang="py" />
 </SpoilerBlock>
 
-The first logically correct solution I made was too slow due to <Latex code="O(n)" /> element deletions (even when I submitted it for `PyPy3`), leading to an overall time complexity is <Latex code="O(nm)" />. I would've liked to use a BST data structure like C++'s `std::multiset`, but Python lacks a standard library implementation. The failed solution:
+The first logically correct solution I made was too slow due to <Latex code="O(n)" /> element deletions (even when I submitted it for `PyPy3`), leading to an overall time complexity is <Latex code="O(nm)" />. I would've liked to use a BST data structure like C++'s `std::multiset`, but Python lacks a standard library implementation.
 
 import SolConcertTicketsFail03 from "./_solutions.sorting-and-searching/concert-tickets--fail03-tle.py?raw" //_
 
-<SpoilerBlock buttonLabel="Time Limit Exceeded Solution">
+<SpoilerBlock buttonLabel="TLE'd Python Solution">
     <Code code={SolConcertTicketsFail03} lang="py" />
 </SpoilerBlock>
 
@@ -81,4 +82,33 @@ But at least I know the idea works, leading me to my first successful solution t
 import SolConcertTickets from "./_solutions.sorting-and-searching/concert-tickets.cpp?raw" //_
 
 <Code code={SolConcertTickets} lang="cpp" />
+
+
+## Restaurant Customers <Spec href="https://cses.fi/problemset/task/1619/" cdate="2024-01-19" />
+
+I initially attempted Python, but TLE'd with PyPy3:
+
+import SolRestaurantCustomersFail01 from "./_solutions.sorting-and-searching/restaurant-customers--fail01-tle.py?raw" //_
+
+import SolRestaurantCustomersFail02 from "./_solutions.sorting-and-searching/restaurant-customers--fail02-tle.py?raw" //_
+
+import SolRestaurantCustomersFail03 from "./_solutions.sorting-and-searching/restaurant-customers--fail03-tle.py?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution 1">
+    <Code code={SolRestaurantCustomersFail01} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution 2">
+    <Code code={SolRestaurantCustomersFail02} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution 3">
+    <Code code={SolRestaurantCustomersFail03} lang="py" />
+</SpoilerBlock>
+
+Switching over to C++ and reimplementing my first Python solution passed all tests:
+
+import SolRestaurantCustomers from "./_solutions.sorting-and-searching/restaurant-customers.cpp?raw" //_
+
+<Code code={SolRestaurantCustomers} lang="cpp" />
 
