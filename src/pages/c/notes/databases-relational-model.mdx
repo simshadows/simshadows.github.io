@@ -14,6 +14,8 @@ import AlignLatex from "@components/latex/AlignLatex";
 import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
 import Eq from "@components/latex/Eq";
+import Trl from "@components/latex/TableRowLatex";
+import Trhl from "@components/latex/TableRowHLatex";
 
 import Eqref from "@components/latex/Eqref";
 import Todo from "@components/Todo";
@@ -158,33 +160,13 @@ For <Eq code="r(R)" /> and selection condition <Eq code="c" />:
                     <tr class="table-label">
                         <th colspan="3"><Eq code="r" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="2" /></td>
-                        <td><Eq code="x" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="8" /></td>
-                        <td><Eq code="x" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="7" /></td>
-                        <td><Eq code="x" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_4" /></td>
-                        <td><Eq code="9" /></td>
-                        <td><Eq code="y" /></td>
-                    </tr>
+                    <Trl rows={["a_1", "2", "x"]} />
+                    <Trl rows={["a_2", "8", "x"]} />
+                    <Trl rows={["a_3", "7", "x"]} />
+                    <Trl rows={["a_4", "9", "y"]} />
                 </tbody>
             </table>
         </Fig>
@@ -194,23 +176,11 @@ For <Eq code="r(R)" /> and selection condition <Eq code="c" />:
                     <tr class="table-label">
                         <th colspan="3"><Eq code="\relselect_{(B>5) \wedge (C=x)}{(r)}" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="8" /></td>
-                        <td><Eq code="x" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="7" /></td>
-                        <td><Eq code="x" /></td>
-                    </tr>
+                    <Trl rows={["a_2", "8", "x"]} />
+                    <Trl rows={["a_3", "7", "x"]} />
                 </tbody>
             </table>
         </Fig>
@@ -236,32 +206,12 @@ For <Eq code="r(R)" /> and attribute set <Eq code="X" />:
                     <tr class="table-label">
                         <th colspan="4"><Eq code="r" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "D"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="b_1" /></td>
-                        <td><Eq code="c_1" /></td>
-                        <td><Eq code="d_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="c_2" /></td>
-                        <td><Eq code="d_2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="c_3" /></td>
-                        <td><Eq code="d_3" /></td>
-                    </tr>
+                    <Trl rows={["a_1", "b_1", "c_1", "d_1"]} />
+                    <Trl rows={["a_2", "b_2", "c_2", "d_2"]} />
+                    <Trl rows={["a_3", "b_3", "c_3", "d_3"]} />
                 </tbody>
             </table>
         </Fig>
@@ -271,24 +221,12 @@ For <Eq code="r(R)" /> and attribute set <Eq code="X" />:
                     <tr class="table-label">
                         <th colspan="2"><Eq code="\relproject_{B, D}{(r)}" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="D" /></th>
-                    </tr>
+                    <Trhl rows={["B", "D"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="b_1" /></td>
-                        <td><Eq code="d_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="d_2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="d_3" /></td>
-                    </tr>
+                    <Trl rows={["b_1", "d_1"]} />
+                    <Trl rows={["b_2", "d_2"]} />
+                    <Trl rows={["b_3", "d_3"]} />
                 </tbody>
             </table>
         </Fig>
@@ -314,28 +252,12 @@ For <Eq code="r(R)" /> and a compatible schema <Eq code="S" />:
                     <tr class="table-label">
                         <th colspan="4"><Eq code="r" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="b_1" /></td>
-                        <td><Eq code="c_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="c_2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="c_3" /></td>
-                    </tr>
+                    <Trl rows={["a_1", "b_1", "c_1"]} />
+                    <Trl rows={["a_2", "b_2", "c_2"]} />
+                    <Trl rows={["a_3", "b_3", "c_3"]} />
                 </tbody>
             </table>
         </Fig>
@@ -345,28 +267,12 @@ For <Eq code="r(R)" /> and a compatible schema <Eq code="S" />:
                     <tr class="table-label">
                         <th colspan="4"><Eq code="\relrename_{S(D, E, F)}{(r)}" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="D" /></th>
-                        <th><Eq code="E" /></th>
-                        <th><Eq code="F" /></th>
-                    </tr>
+                    <Trhl rows={["D", "E", "F"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="b_1" /></td>
-                        <td><Eq code="c_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="c_2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="c_3" /></td>
-                    </tr>
+                    <Trl rows={["a_1", "b_1", "c_1"]} />
+                    <Trl rows={["a_2", "b_2", "c_2"]} />
+                    <Trl rows={["a_3", "b_3", "c_3"]} />
                 </tbody>
             </table>
         </Fig>
@@ -395,11 +301,7 @@ For <Eq code="r_1(R)" /> and <Eq code="r_2(R)" />:
                         <tr class="table-label">
                             <th colspan="4"><Eq code="r_1" /></th>
                         </tr>
-                        <tr>
-                            <th><Eq code="A" /></th>
-                            <th><Eq code="B" /></th>
-                            <th><Eq code="C" /></th>
-                        </tr>
+                        <Trhl rows={["A", "B", "C"]} />
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="red">
@@ -436,11 +338,7 @@ For <Eq code="r_1(R)" /> and <Eq code="r_2(R)" />:
                         <tr class="table-label">
                             <th colspan="4"><Eq code="r_2" /></th>
                         </tr>
-                        <tr>
-                            <th><Eq code="D" /></th>
-                            <th><Eq code="E" /></th>
-                            <th><Eq code="F" /></th>
-                        </tr>
+                        <Trhl rows={["A", "B", "C"]} />
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="purple">
@@ -527,11 +425,7 @@ For <Eq code="r_1(R)" /> and <Eq code="r_2(R)" />:
                         <tr class="table-label">
                             <th colspan="4"><Eq code="r_1 - r_2" /></th>
                         </tr>
-                        <tr>
-                            <th><Eq code="A" /></th>
-                            <th><Eq code="B" /></th>
-                            <th><Eq code="C" /></th>
-                        </tr>
+                        <Trhl rows={["A", "B", "C"]} />
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="red">
@@ -558,11 +452,7 @@ For <Eq code="r_1(R)" /> and <Eq code="r_2(R)" />:
                         <tr class="table-label">
                             <th colspan="4"><Eq code="r_1 \cap r_2" /></th>
                         </tr>
-                        <tr>
-                            <th><Eq code="D" /></th>
-                            <th><Eq code="E" /></th>
-                            <th><Eq code="F" /></th>
-                        </tr>
+                        <Trhl rows={["A", "B", "C"]} />
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="purple">
@@ -584,11 +474,7 @@ For <Eq code="r_1(R)" /> and <Eq code="r_2(R)" />:
                         <tr class="table-label">
                             <th colspan="4"><Eq code="r_2 - r_1" /></th>
                         </tr>
-                        <tr>
-                            <th><Eq code="D" /></th>
-                            <th><Eq code="E" /></th>
-                            <th><Eq code="F" /></th>
-                        </tr>
+                        <Trhl rows={["A", "B", "C"]} />
                     </thead>
                     <tbody class="table-bordered">
                         <tr class="blue">
@@ -627,23 +513,11 @@ For <Eq code="r(R)" /> and <Eq code="s(S)" />:
                     <tr class="table-label">
                         <th colspan="3"><Eq code="r" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="b_1" /></td>
-                        <td><Eq code="c_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="c_2" /></td>
-                    </tr>
+                    <Trl rows={["a_1", "b_1", "c_1"]} />
+                    <Trl rows={["a_2", "b_2", "c_2"]} />
                 </tbody>
             </table>
         </Fig>
@@ -653,24 +527,12 @@ For <Eq code="r(R)" /> and <Eq code="s(S)" />:
                     <tr class="table-label">
                         <th colspan="2"><Eq code="s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="M" /></th>
-                        <th><Eq code="N" /></th>
-                    </tr>
+                    <Trhl rows={["M", "N"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="m_1" /></td>
-                        <td><Eq code="n_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="m_2" /></td>
-                        <td><Eq code="n_2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="m_3" /></td>
-                        <td><Eq code="n_3" /></td>
-                    </tr>
+                    <Trl rows={["m_1", "n_1"]} />
+                    <Trl rows={["m_2", "n_2"]} />
+                    <Trl rows={["m_3", "n_3"]} />
                 </tbody>
             </table>
         </Fig>
@@ -680,78 +542,15 @@ For <Eq code="r(R)" /> and <Eq code="s(S)" />:
                     <tr class="table-label">
                         <th colspan="5"><Eq code="r \times s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="M" /></th>
-                        <th><Eq code="N" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "M", "N"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="b_1" /></td>
-                        <td><Eq code="c_1" /></td>
-                        <td><Eq code="m_1" /></td>
-                        <td><Eq code="n_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="b_1" /></td>
-                        <td><Eq code="c_1" /></td>
-                        <td><Eq code="m_2" /></td>
-                        <td><Eq code="n_2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="b_1" /></td>
-                        <td><Eq code="c_1" /></td>
-                        <td><Eq code="m_3" /></td>
-                        <td><Eq code="n_3" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="c_2" /></td>
-                        <td><Eq code="m_1" /></td>
-                        <td><Eq code="n_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="c_2" /></td>
-                        <td><Eq code="m_2" /></td>
-                        <td><Eq code="n_2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="c_3" /></td>
-                        <td><Eq code="m_3" /></td>
-                        <td><Eq code="n_3" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="c_3" /></td>
-                        <td><Eq code="m_1" /></td>
-                        <td><Eq code="n_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="c_3" /></td>
-                        <td><Eq code="m_2" /></td>
-                        <td><Eq code="n_2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="c_3" /></td>
-                        <td><Eq code="m_3" /></td>
-                        <td><Eq code="n_3" /></td>
-                    </tr>
+                    <Trl rows={["a_1", "b_1", "c_1", "m_1", "n_1"]} />
+                    <Trl rows={["a_1", "b_1", "c_1", "m_2", "n_2"]} />
+                    <Trl rows={["a_1", "b_1", "c_1", "m_3", "n_3"]} />
+                    <Trl rows={["a_2", "b_2", "c_2", "m_1", "n_1"]} />
+                    <Trl rows={["a_2", "b_2", "c_2", "m_2", "n_2"]} />
+                    <Trl rows={["a_2", "b_2", "c_2", "m_3", "n_3"]} />
                 </tbody>
             </table>
         </Fig>
@@ -792,28 +591,12 @@ Duplicate attributes are not removed.
                     <tr class="table-label">
                         <th colspan="3"><Eq code="r" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="b_1" /></td>
-                        <td><Eq code="0" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="3" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="2" /></td>
-                    </tr>
+                    <Trl rows={["a_1", "b_1", "0"]} />
+                    <Trl rows={["a_2", "b_2", "3"]} />
+                    <Trl rows={["a_3", "b_3", "2"]} />
                 </tbody>
             </table>
         </Fig>
@@ -823,28 +606,13 @@ Duplicate attributes are not removed.
                     <tr class="table-label">
                         <th colspan="2"><Eq code="s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="M" /></th>
-                        <th><Eq code="N" /></th>
-                    </tr>
+                    <Trhl rows={["M", "N"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="m_1" /></td>
-                        <td><Eq code="3" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="m_2" /></td>
-                        <td><Eq code="4" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="m_3" /></td>
-                        <td><Eq code="1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="m_4" /></td>
-                        <td><Eq code="2" /></td>
-                    </tr>
+                    <Trl rows={["m_1", "3"]} />
+                    <Trl rows={["m_2", "4"]} />
+                    <Trl rows={["m_3", "1"]} />
+                    <Trl rows={["m_4", "2"]} />
                 </tbody>
             </table>
         </Fig>
@@ -854,50 +622,14 @@ Duplicate attributes are not removed.
                     <tr class="table-label">
                         <th colspan="5"><Eq code="r \bowtie_{N \le C} s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="M" /></th>
-                        <th><Eq code="N" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "M", "N"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="3" /></td>
-                        <td><Eq code="m_1" /></td>
-                        <td><Eq code="3" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="3" /></td>
-                        <td><Eq code="m_3" /></td>
-                        <td><Eq code="1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="b_2" /></td>
-                        <td><Eq code="3" /></td>
-                        <td><Eq code="m_4" /></td>
-                        <td><Eq code="2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="2" /></td>
-                        <td><Eq code="m_3" /></td>
-                        <td><Eq code="1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="b_3" /></td>
-                        <td><Eq code="2" /></td>
-                        <td><Eq code="m_4" /></td>
-                        <td><Eq code="2" /></td>
-                    </tr>
+                    <Trl rows={["a_2", "b_2", "3", "m_1", "3"]} />
+                    <Trl rows={["a_2", "b_2", "3", "m_3", "1"]} />
+                    <Trl rows={["a_2", "b_2", "3", "m_4", "2"]} />
+                    <Trl rows={["a_3", "b_3", "2", "m_3", "1"]} />
+                    <Trl rows={["a_3", "b_3", "2", "m_4", "2"]} />
                 </tbody>
             </table>
         </Fig>
@@ -952,12 +684,7 @@ and <Eq code="\relproject_{R \cup S}" /> assumes removal of duplicate attributes
                     <tr class="table-label">
                         <th colspan="4"><Eq code="r" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "D"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -993,11 +720,7 @@ and <Eq code="\relproject_{R \cup S}" /> assumes removal of duplicate attributes
                     <tr class="table-label">
                         <th colspan="3"><Eq code="s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                        <th><Eq code="E" /></th>
-                    </tr>
+                    <Trhl rows={["C", "D", "E"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -1024,13 +747,7 @@ and <Eq code="\relproject_{R \cup S}" /> assumes removal of duplicate attributes
                     <tr class="table-label">
                         <th colspan="5"><Eq code="r \bowtie s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                        <th><Eq code="E" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "D", "E"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -1108,12 +825,7 @@ where <Eq code="r'" /> is "all possible result tuples":
                     <tr class="table-label">
                         <th colspan="4"><Eq code="r" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "D"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -1209,10 +921,7 @@ where <Eq code="r'" /> is "all possible result tuples":
                     <tr class="table-label">
                         <th colspan="2"><Eq code="s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                    </tr>
+                    <Trhl rows={["C", "D"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -1236,10 +945,7 @@ where <Eq code="r'" /> is "all possible result tuples":
                     <tr class="table-label">
                         <th colspan="2"><Eq code="r \div s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -1334,12 +1040,7 @@ To summarize the differences between the joins:
                     <tr class="table-label">
                         <th colspan="4"><Eq code="r" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "D"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -1375,11 +1076,7 @@ To summarize the differences between the joins:
                     <tr class="table-label">
                         <th colspan="3"><Eq code="s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                        <th><Eq code="E" /></th>
-                    </tr>
+                    <Trhl rows={["C", "D", "E"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -1406,13 +1103,7 @@ To summarize the differences between the joins:
                     <tr class="table-label">
                         <th colspan="5"><Eq code="r \relfullouterjoin s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                        <th><Eq code="E" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "D", "E"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -1459,13 +1150,7 @@ To summarize the differences between the joins:
                     <tr class="table-label">
                         <th colspan="5"><Eq code="r \relleftouterjoin s" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                        <th><Eq code="E" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "D", "E"]} />
                 </thead>
                 <tbody class="table-bordered">
                     <tr>
@@ -1535,62 +1220,17 @@ Most major DBMS implementations offer many more aggregate functions and allow us
                         <tr class="table-label">
                             <th colspan="4"><Eq code="r" /></th>
                         </tr>
-                        <tr>
-                            <th><Eq code="A" /></th>
-                            <th><Eq code="B" /></th>
-                            <th><Eq code="C" /></th>
-                            <th><Eq code="D" /></th>
-                        </tr>
+                        <Trhl rows={["A", "B", "C", "D"]} />
                     </thead>
                     <tbody class="table-bordered">
-                        <tr>
-                            <td><Eq code="x" /></td>
-                            <td><Eq code="\alpha" /></td>
-                            <td><Eq code="5" /></td>
-                            <td><Eq code="7" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="x" /></td>
-                            <td><Eq code="\alpha" /></td>
-                            <td><Eq code="7" /></td>
-                            <td><Eq code="3" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="x" /></td>
-                            <td><Eq code="\beta" /></td>
-                            <td><Eq code="1" /></td>
-                            <td><Eq code="9" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="x" /></td>
-                            <td><Eq code="\beta" /></td>
-                            <td><Eq code="5" /></td>
-                            <td><Eq code="6" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="y" /></td>
-                            <td><Eq code="\alpha" /></td>
-                            <td><Eq code="3" /></td>
-                            <td><Eq code="1" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="y" /></td>
-                            <td><Eq code="\alpha" /></td>
-                            <td><Eq code="2" /></td>
-                            <td><Eq code="1" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="y" /></td>
-                            <td><Eq code="\beta" /></td>
-                            <td><Eq code="3" /></td>
-                            <td><Eq code="5" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="z" /></td>
-                            <td><Eq code="\alpha" /></td>
-                            <td><Eq code="9" /></td>
-                            <td><Eq code="4" /></td>
-                        </tr>
+                        <Trl rows={["x", "\\alpha", "5", "7"]} />
+                        <Trl rows={["x", "\\alpha", "7", "3"]} />
+                        <Trl rows={["x", "\\beta ", "1", "9"]} />
+                        <Trl rows={["x", "\\beta ", "5", "6"]} />
+                        <Trl rows={["y", "\\alpha", "3", "1"]} />
+                        <Trl rows={["y", "\\alpha", "2", "1"]} />
+                        <Trl rows={["y", "\\beta ", "3", "5"]} />
+                        <Trl rows={["z", "\\alpha", "9", "4"]} />
                     </tbody>
                 </table>
             </Fig>
@@ -1602,32 +1242,12 @@ Most major DBMS implementations offer many more aggregate functions and allow us
                         <tr class="table-label">
                             <th colspan="4"><Eq code="\relgroup_{A, \text{COUNT}(A), \text{MAX}(C), \text{MAX}(D)}{(r)}" /></th>
                         </tr>
-                        <tr>
-                            <th><Eq code="A" /></th>
-                            <th><Eq code="\text{COUNT}(A)" /></th>
-                            <th><Eq code="\text{MAX}(C)" /></th>
-                            <th><Eq code="\text{MAX}(D)" /></th>
-                        </tr>
+                        <Trhl rows={["A", "\\text{COUNT}(A)", "\\text{MAX}(C)", "\\text{MAX}(D)"]} />
                     </thead>
                     <tbody class="table-bordered">
-                        <tr>
-                            <td><Eq code="x" /></td>
-                            <td><Eq code="4" /></td>
-                            <td><Eq code="7" /></td>
-                            <td><Eq code="9" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="y" /></td>
-                            <td><Eq code="3" /></td>
-                            <td><Eq code="3" /></td>
-                            <td><Eq code="5" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="z" /></td>
-                            <td><Eq code="1" /></td>
-                            <td><Eq code="9" /></td>
-                            <td><Eq code="4" /></td>
-                        </tr>
+                        <Trl rows={["x", "4", "7", "9"]} />
+                        <Trl rows={["y", "3", "3", "5"]} />
+                        <Trl rows={["z", "1", "9", "4"]} />
                     </tbody>
                 </table>
             </Fig>
@@ -1637,44 +1257,14 @@ Most major DBMS implementations offer many more aggregate functions and allow us
                         <tr class="table-label">
                             <th colspan="4"><Eq code="\relgroup_{A, B, \text{COUNT}(A), \text{SUM}(C)}{(r)}" /></th>
                         </tr>
-                        <tr>
-                            <th><Eq code="A" /></th>
-                            <th><Eq code="B" /></th>
-                            <th><Eq code="\text{COUNT}(A)" /></th>
-                            <th><Eq code="\text{SUM}(C)" /></th>
-                        </tr>
+                        <Trhl rows={["A", "B", "\\text{COUNT}(A)", "\\text{SUM}(C)"]} />
                     </thead>
                     <tbody class="table-bordered">
-                        <tr>
-                            <td><Eq code="x" /></td>
-                            <td><Eq code="\alpha" /></td>
-                            <td><Eq code="2" /></td>
-                            <td><Eq code="12" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="x" /></td>
-                            <td><Eq code="\beta" /></td>
-                            <td><Eq code="2" /></td>
-                            <td><Eq code="6" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="y" /></td>
-                            <td><Eq code="\alpha" /></td>
-                            <td><Eq code="2" /></td>
-                            <td><Eq code="5" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="y" /></td>
-                            <td><Eq code="\beta" /></td>
-                            <td><Eq code="1" /></td>
-                            <td><Eq code="3" /></td>
-                        </tr>
-                        <tr>
-                            <td><Eq code="z" /></td>
-                            <td><Eq code="\alpha" /></td>
-                            <td><Eq code="1" /></td>
-                            <td><Eq code="9" /></td>
-                        </tr>
+                        <Trl rows={["x", "\\alpha", "2", "12"]} />
+                        <Trl rows={["x", "\\beta ", "2", " 6"]} />
+                        <Trl rows={["y", "\\alpha", "2", " 5"]} />
+                        <Trl rows={["y", "\\beta ", "1", " 3"]} />
+                        <Trl rows={["z", "\\alpha", "1", " 9"]} />
                     </tbody>
                 </table>
             </Fig>
@@ -1697,32 +1287,12 @@ We can extend the projection operator <Eq code="\pi" /> to also contain expressi
                     <tr class="table-label">
                         <th colspan="4"><Eq code="r" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="A" /></th>
-                        <th><Eq code="B" /></th>
-                        <th><Eq code="C" /></th>
-                        <th><Eq code="D" /></th>
-                    </tr>
+                    <Trhl rows={["A", "B", "C", "D"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="2" /></td>
-                        <td><Eq code="6" /></td>
-                        <td><Eq code="d_1" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="8" /></td>
-                        <td><Eq code="9" /></td>
-                        <td><Eq code="d_2" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="3" /></td>
-                        <td><Eq code="2" /></td>
-                        <td><Eq code="d_3" /></td>
-                    </tr>
+                    <Trl rows={["a_1", "2", "6", "d_1"]} />
+                    <Trl rows={["a_2", "8", "9", "d_2"]} />
+                    <Trl rows={["a_3", "3", "2", "d_3"]} />
                 </tbody>
             </table>
         </Fig>
@@ -1732,24 +1302,12 @@ We can extend the projection operator <Eq code="\pi" /> to also contain expressi
                     <tr class="table-label">
                         <th colspan="2"><Eq code="\relproject_{A, B + C}{(r)}" /></th>
                     </tr>
-                    <tr>
-                        <th><Eq code="\phantom{A}A\phantom{A}" /></th>
-                        <th><Eq code="B + C" /></th>
-                    </tr>
+                    <Trhl rows={["\\phantom{A}A\\phantom{A}", "B + C"]} />
                 </thead>
                 <tbody class="table-bordered">
-                    <tr>
-                        <td><Eq code="a_1" /></td>
-                        <td><Eq code="8" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_2" /></td>
-                        <td><Eq code="17" /></td>
-                    </tr>
-                    <tr>
-                        <td><Eq code="a_3" /></td>
-                        <td><Eq code="5" /></td>
-                    </tr>
+                    <Trl rows={["a_1", " 8"]} />
+                    <Trl rows={["a_2", "17"]} />
+                    <Trl rows={["a_3", " 5"]} />
                 </tbody>
             </table>
         </Fig>
