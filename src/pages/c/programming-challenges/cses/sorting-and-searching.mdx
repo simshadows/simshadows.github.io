@@ -137,3 +137,24 @@ import SolMovieFestivalAlt01 from "./_solutions.sorting-and-searching/movie-fest
 
 <Code code={SolMovieFestivalAlt01} lang="py" />
 
+
+## Sum of Two Values <Spec href="https://cses.fi/problemset/task/1640/" cdate="2024-01-20" />
+
+Two different approaches came to mind immediately: two-pointer, or dictionary.
+
+I went for the dictionary approach first, but it TLE'd on both CPython3 and PyPy3:
+
+import SolSumOfTwoValuesFail01 from "./_solutions.sorting-and-searching/sum-of-two-values--fail01-tle.py?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution">
+    <Code code={SolSumOfTwoValuesFail01} lang="py" />
+</SpoilerBlock>
+
+Redoing it with a two-pointer approach passed all tests for CPython3:
+
+import SolSumOfTwoValues from "./_solutions.sorting-and-searching/sum-of-two-values.py?raw" //_
+
+<Code code={SolSumOfTwoValues} lang="py" />
+
+In retrospect, I should've started with the two-pointer approach. It turned out much simpler to work through.
+
