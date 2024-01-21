@@ -84,6 +84,9 @@ arr.some((x) => x > 0) // true if at least one value is true
 
 Array.isArray(x) // Returns boolean. Unfortunately type-narrows to any[].
 // This is a known limitation with TS: <https://github.com/microsoft/TypeScript/issues/17002>
+
+arr.sort() // THIS WILL ALWAYS SORT BY IMPLICIT STRING CONVERSION
+arr.sort((a, b) => b - a)
 ```
 
 ### `Map`

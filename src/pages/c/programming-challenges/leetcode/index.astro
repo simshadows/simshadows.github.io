@@ -1,9 +1,15 @@
 ---
+import {type MDXInstance} from "astro";
+
 import Layout from "@layouts/GeneralLayout.astro";
 
 import {slugToLeetcodeURL, difficultyIDToName} from "./_utils";
 
-const allPosts = await Astro.glob("./sol/*.mdx");
+// TODO: I don't like that we almost have to use 'any' here.
+type PostMetadata = MDXInstance<Record<string, any>>;
+
+const allPosts: PostMetadata[] = await Astro.glob("./sol/*.mdx");
+allPosts.sort((a, b) => a.frontmatter["num"] - b.frontmatter["num"])
 ---
 
 <Layout

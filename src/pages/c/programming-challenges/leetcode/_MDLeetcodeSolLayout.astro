@@ -32,9 +32,6 @@ function errStr(expectedType: string, k: string, v: unknown) {
 if (typeof difficulty !== "string") {
     throw new Error(errStr("a string", "difficulty", difficulty));
 }
-if (!["easy", "medium", "hard"].includes(difficulty)) {
-    throw new Error("'difficulty' must be either 'easy', 'medium', or 'hard'.");
-}
 
 if (typeof num !== "number") {
     throw new Error(errStr("a number", "num", num));
