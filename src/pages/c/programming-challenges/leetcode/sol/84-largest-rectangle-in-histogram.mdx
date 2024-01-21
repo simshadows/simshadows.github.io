@@ -1,0 +1,23 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: 84. Largest Rectangle in Histogram
+description: My solution!
+keywords: []
+
+hidetoc: true
+---
+
+```py
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        largest_area = 0
+        asc_stack = [(0, 0)] # [(bar height, index of the bar), ...] ascending based on bar height
+        for i, h in enumerate(chain(heights, (0,))):
+            i2 = i # we keep track of last popped i2
+            while asc_stack[-1][0] > h:
+                (h2, i2) = asc_stack.pop()
+                largest_area = max(largest_area, h2 * (i - i2))
+            asc_stack.append((h, i2))
+        return largest_area
+```
+
