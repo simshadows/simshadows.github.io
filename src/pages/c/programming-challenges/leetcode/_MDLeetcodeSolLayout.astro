@@ -1,0 +1,74 @@
+---
+import {isStrArray} from "@root/danger";
+import Layout from "@layouts/BaseLayout.astro";
+
+import Todo from "@components/Todo";
+
+import {slugToLeetcodeURL, difficultyIDToName} from "./_utils";
+
+interface Props {
+    frontmatter: {[key: string]: unknown;};
+    //headings: {depth: number; slug: string; text: string}[];
+}
+
+const {
+    frontmatter,
+    //headings,
+} = Astro.props;
+const {
+    difficulty,
+    num,
+    name,
+    webslug,
+    accessed,
+    keywords,
+} = frontmatter;
+const wip: boolean = !!frontmatter["wip"];
+
+function errStr(expectedType: string, k: string, v: unknown) {
+    return `Expected ${k} to be ${expectedType}. Actually received: ${v}`;
+}
+
+if (typeof difficulty !== "string") {
+    throw new Error(errStr("a string", "difficulty", difficulty));
+}
+if (!["easy", "medium", "hard"].includes(difficulty)) {
+    throw new Error("'difficulty' must be either 'easy', 'medium', or 'hard'.");
+}
+
+if (typeof num !== "number") {
+    throw new Error(errStr("a number", "num", num));
+}
+if (typeof name !== "string") {
+    throw new Error(errStr("a string", "name", name));
+}
+if (typeof webslug !== "string") {
+    throw new Error(errStr("a string", "webslug", webslug));
+}
+// TODO: check if it's a valid date
+if (typeof accessed !== "string") {
+    throw new Error(errStr("a string", "accessed", accessed));
+}
+if (!isStrArray(keywords)) {
+    throw new Error(errStr("an array of strings", "keywords", keywords));
+}
+
+const pageTitle = `${num}. ${name}`;
+const leetcodeURL = slugToLeetcodeURL(webslug);
+
+const difficultyName = difficultyIDToName(difficulty);
+---
+
+<Layout
+    title={pageTitle}
+    description="A solution to a Leetcode problem."
+    keywords={keywords}
+    noRightSidebar={true}
+>
+    {wip && <p><Todo>This solution is still incomplete :(</Todo></p>}
+    <h3 style="margin-bottom: 0;">Leetcode - {difficultyName}</h3>
+    <h1 style="margin-top: 0.2em;">{pageTitle} <span style="font-size: initial;">[<a target="_blank" href={leetcodeURL}>Original Spec</a>] [{accessed.slice(0, 10)}]</span></h1>
+    <slot />
+</Layout>
+
+

@@ -1,0 +1,46 @@
+---
+layout: "../_MDLeetcodeSolLayout.astro" #_
+difficulty: hard
+num: 2736
+name: Maximum Sum Queries
+webslug: maximum-sum-queries
+accessed: 2024-01-21
+keywords: []
+---
+
+```py
+class Solution:
+    def maximumSumQueries(self, nums1: List[int], nums2: List[int], queries: List[List[int]]) -> List[int]:
+        nums = [(a, b, a + b) for (a, b) in zip(nums1, nums2)]
+        nums.sort()
+
+        queries = [(*x, i) for (i, x) in enumerate(queries)]
+        queries.sort(reverse=True)
+
+        sortedarr = [(inf, -1)] # [(num2, sum), ...] num2 decreasing, sum increasing
+        def add(_, num2, _sum):
+            j = len(sortedarr)
+            for i in reversed(range(j)):
+                (stored_num2, stored_sum) = sortedarr[i]
+                if stored_num2 >= num2:
+                    if stored_sum < _sum:
+                        sortedarr.insert(i + 1, (num2, _sum))
+                    return
+                elif stored_sum <= _sum:
+                    del sortedarr[i]
+
+        # Naive O(n) for now. We do binary search when it works!
+        def search(y):
+            # NOTE: We get the -1 naturally from the initial element!
+            for num2, _sum in reversed(sortedarr):
+                if num2 >= y:
+                    return _sum
+
+        solution = [None]*len(queries)
+        for x, y, i in queries:
+            while len(nums) and (nums[-1][0] >= x):
+                add(*nums.pop())
+            solution[i] = search(y)
+        return solution
+```
+

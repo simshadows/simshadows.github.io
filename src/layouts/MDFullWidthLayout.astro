@@ -20,7 +20,7 @@ const {
 const hidetoc: boolean = !!frontmatter["hidetoc"];
 
 function errStr(expectedType: string, k: string, v: unknown) {
-    return `Expected ${k} to be a ${expectedType}. Actually received: ${v}`;
+    return `Expected ${k} to be ${expectedType}. Actually received: ${v}`;
 }
 
 if (typeof title !== "string") {

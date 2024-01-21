@@ -1,0 +1,20 @@
+---
+layout: "../_MDLeetcodeSolLayout.astro" #_
+difficulty: easy
+num: 1
+name: Two Sum
+webslug: two-sum
+accessed: 2024-01-21
+keywords: []
+---
+
+```py
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i, iv in enumerate(nums):
+            for j, jv in enumerate(nums[i + 1:]):
+                if iv + jv == target:
+                    return [i, i + j + 1]
+        raise RuntimeError()
+```
+
