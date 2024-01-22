@@ -1,6 +1,9 @@
 ---
 import Layout from "@layouts/GeneralLayout.astro";
 
+//import Fig from "@components/figures/Fig";
+//import FiguresBlock from "@components/figures/FiguresBlock";
+
 import {processSolLayoutFrontmatter} from "./_utils.ts";
 
 import SolLink from "./_index.SolLink.astro";
@@ -15,6 +18,18 @@ const allPosts = (await Astro.glob("./sol/*.mdx")).map(
     }
 );
 allPosts.sort((a, b) => a.fm.num - b.fm.num)
+
+const completedStats = [0, 0, 0];
+const wipStats = [0, 0, 0];
+for (const post of allPosts) {
+    const thisStats = (post.fm.wip) ? wipStats : completedStats;
+    switch (post.fm.difficulty) {
+        case "easy":   ++thisStats[0]; break;
+        case "medium": ++thisStats[1]; break;
+        case "hard":   ++thisStats[2]; break;
+        default: throw new Error();
+    }
+}
 ---
 
 <Layout
@@ -22,12 +37,62 @@ allPosts.sort((a, b) => a.fm.num - b.fm.num)
     description="My Leetcode solutions!"
     keywords={["data structures and algorithms", "dsa", "oa", "interview", "competitive programming", "programming challenges"]}
 >
+<> {/* TODO: What the fuck why do we need the nested fragments? Layout breaks without it. */}
+<> {/*       Maybe we need to update Astro. */}
 
-<ul class="rootlevel">
-    {allPosts.map((post) =>
-        (!post.fm.wip) && <SolLink url={post.url} fm={post.fm} />
-    )}
-</ul>
+    <h4>Completed Solutions</h4>
 
+    <p><ul class="rootlevel">
+        {allPosts.map((post) =>
+            (!post.fm.wip) && <SolLink url={post.url} fm={post.fm} />
+        )}
+    </ul></p>
+
+    <p><table class="general">
+        <tbody>
+            <tr>
+                <th rowspan={3}>Completed</td>
+                <th style="text-align: left;">Easy</td>
+                <td>{completedStats[0]}</td>
+            </tr>
+            <tr>
+                <th style="text-align: left;">Medium</td>
+                <td>{completedStats[1]}</td>
+            </tr>
+            <tr>
+                <th style="text-align: left;">Hard</td>
+                <td>{completedStats[2]}</td>
+            </tr>
+        </tbody>
+    </table></p>
+
+    <h4>Incomplete Work-In-Progress Solutions</h4>
+
+    <p><ul class="rootlevel">
+        {allPosts.map((post) =>
+            post.fm.wip && <SolLink url={post.url} fm={post.fm} />
+        )}
+    </ul></p>
+
+    <p><table class="general">
+        <tbody>
+            <tr>
+                <th rowspan={3}>Work-In-Progress</td>
+                <th style="text-align: left;">Easy</td>
+                <td>{wipStats[0]}</td>
+            </tr>
+            <tr>
+                <th style="text-align: left;">Medium</td>
+                <td>{wipStats[1]}</td>
+            </tr>
+            <tr>
+                <th style="text-align: left;">Hard</td>
+                <td>{wipStats[2]}</td>
+            </tr>
+        </tbody>
+    </table></p>
+
+</>
+</>
 </Layout>
 
