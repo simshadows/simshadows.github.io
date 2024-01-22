@@ -1,15 +1,20 @@
 ---
-import {type MDXInstance} from "astro";
-
 import Layout from "@layouts/GeneralLayout.astro";
 
-import {slugToLeetcodeURL, difficultyIDToName} from "./_utils";
+import {processSolLayoutFrontmatter} from "./_utils.ts";
 
-// TODO: I don't like that we almost have to use 'any' here.
-type PostMetadata = MDXInstance<Record<string, any>>;
+import SolLink from "./_index.SolLink.astro";
 
-const allPosts: PostMetadata[] = await Astro.glob("./sol/*.mdx");
-allPosts.sort((a, b) => a.frontmatter["num"] - b.frontmatter["num"])
+const allPosts = (await Astro.glob("./sol/*.mdx")).map(
+    (x) => {
+        if (!x.url) throw new Error(`Expected non-empty string. Instead got: ${x.url}`);
+        return {
+            url: x.url,
+            fm: processSolLayoutFrontmatter(x.frontmatter),
+        };
+    }
+);
+allPosts.sort((a, b) => a.fm.num - b.fm.num)
 ---
 
 <Layout
@@ -20,8 +25,7 @@ allPosts.sort((a, b) => a.frontmatter["num"] - b.frontmatter["num"])
 
 <ul class="rootlevel">
     {allPosts.map((post) =>
-        (!post.frontmatter["wip"]) &&
-        <li><a href={post.url}>{post.frontmatter["num"]}. {post.frontmatter["name"]} ({difficultyIDToName(post.frontmatter["difficulty"])})</a> [<a href={slugToLeetcodeURL(post.frontmatter["webslug"])}>Spec</a>]</li>
+        (!post.fm.wip) && <SolLink url={post.url} fm={post.fm} />
     )}
 </ul>
 
