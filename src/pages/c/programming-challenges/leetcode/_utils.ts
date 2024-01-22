@@ -20,6 +20,7 @@ export interface solLayoutFM {
     //webslug:  string; // Not provided directly.
     //accessed: string; // Not provided directly.
     keywords:   string[];
+    needsimprovement: boolean;
     wip:        boolean;
 
     accessedStr:    string;
@@ -36,6 +37,7 @@ export function processSolLayoutFrontmatter(frontmatter: Record<string, unknown>
         keywords,
     } = frontmatter;
     const wip: boolean = !!frontmatter["wip"];
+    const needsimprovement: boolean = !!frontmatter["needsimprovement"];
 
     function errStr(expectedType: string, k: string, v: unknown) {
         return `Expected ${k} to be ${expectedType}. Actually received: ${v}`;
@@ -74,6 +76,7 @@ export function processSolLayoutFrontmatter(frontmatter: Record<string, unknown>
         num,
         name,
         keywords,
+        needsimprovement,
         wip,
 
         accessedStr: (new Date(accessed)).toISOString().slice(0, 10),
