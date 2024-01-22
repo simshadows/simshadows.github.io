@@ -1,0 +1,17 @@
+table.leetcode-solutions-list tr > td:first-child {
+    font-weight: bold;
+    padding: 0.1em 0.3em 0.1em 0.3em;
+}
+table.leetcode-solutions-list tr > td:nth-child(2) {
+    padding-left: 0.5em;
+}
+
+table.leetcode-solutions-list tr > td.difficulty-easy {
+    background: var(--color--mygreen);
+}
+table.leetcode-solutions-list tr > td.difficulty-medium {
+    background: var(--color--myyellow);
+}
+table.leetcode-solutions-list tr > td.difficulty-hard {
+    background: var(--color--myred);
+}

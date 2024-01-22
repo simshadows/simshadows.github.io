@@ -12,5 +12,8 @@ const {
 } = Astro.props;
 ---
 
-<li><a href={url}>{fm.num}. {fm.name} ({fm.difficultyName})</a> [<a href={fm.leetcodeURL}>Spec</a>]</li>
+<tr>
+    <td class={`difficulty-${fm.difficulty}`}>{fm.difficultyName}</td>
+    <td><a href={url}>{fm.num}. {fm.name}</a> [<a href={fm.leetcodeURL}>Spec</a>]</td>
+</tr>
 
