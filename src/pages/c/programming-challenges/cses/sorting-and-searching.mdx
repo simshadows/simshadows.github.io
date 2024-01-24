@@ -61,11 +61,11 @@ I initially misunderstood the problem spec and thought that there was no time di
 import SolConcertTicketsFail01 from "./_solutions.sorting-and-searching/concert-tickets--fail01.py?raw" //_
 import SolConcertTicketsFail02 from "./_solutions.sorting-and-searching/concert-tickets--fail02.py?raw" //_
 
-<SpoilerBlock buttonLabel="Failed Solution 1">
+<SpoilerBlock buttonLabel="Wrong Solution 1">
     <Code code={SolConcertTicketsFail01} lang="py" />
 </SpoilerBlock>
 
-<SpoilerBlock buttonLabel="Failed Solution 2">
+<SpoilerBlock buttonLabel="Wrong Solution 2">
     <Code code={SolConcertTicketsFail02} lang="py" />
 </SpoilerBlock>
 
@@ -164,4 +164,369 @@ In retrospect, I should've started with the two-pointer approach. It turned out 
 import SolMaximumSubarraySum from "./_solutions.sorting-and-searching/maximum-subarray-sum.py?raw" //_
 
 <Code code={SolMaximumSubarraySum} lang="py" />
+
+
+## Stick Lengths <Spec href="https://cses.fi/problemset/task/1074" cdate="2024-01-23" />
+
+This one took an embarrassing amount of time for me to figure out.
+
+I started off with an incorrect solution of taking the average stick length and finding the cost of bringing all sticks to the average length:
+
+import SolStickLengthsFail01 from "./_solutions.sorting-and-searching/stick-lengths--fail01-wrong-answers.py?raw" //_
+
+<SpoilerBlock buttonLabel="Wrong Solution 1">
+    <Code code={SolStickLengthsFail01} lang="py" />
+</SpoilerBlock>
+
+I mistakenly thought maybe it was a rounding error with finding the average since I used floor/integer division. In an attempt to solve this, I took the best solution of the floored average and floored average plus 1. This also produced incorrect answers:
+
+import SolStickLengthsFail02 from "./_solutions.sorting-and-searching/stick-lengths--fail02-wrong-but-a-bit-better.py?raw" //_
+
+<SpoilerBlock buttonLabel="Wrong Solution 2">
+    <Code code={SolStickLengthsFail02} lang="py" />
+</SpoilerBlock>
+
+The next idea I tried was to sort the sticks and use a two-pointer approach.
+
+The first key insight in working through a two-pointer solution was that I didn't need to worry about the order of the sticks, so I could sort the sticks. With a sorted array, I found that you can incrementally calculate costs. For example, consider a sorted sticks array <Eq code="\brackets{1, 2, 4, 6, 6, 7, 8, 8}" />. We can draw this with ASCII art:
+
+```
+                        H   H
+                    H   H   H
+            H   H   H   H   H
+            H   H   H   H   H
+        H   H   H   H   H   H
+        H   H   H   H   H   H
+    H   H   H   H   H   H   H
+H   H   H   H   H   H   H   H
+
+0   1   2   3   4   5   6   7    <-- indices
+```
+
+Suppose we want all the sticks to all be 6 units long. Sticks at indices 3 and 4 are already 6 units long, but the sticks to the left (indices 0-2) must be increased in length while the sticks to the right (indices 5-7) must have their lengths reduced:
+
+```
+                        .   .
+                    .   .   .
+.   .   .   H   H   H   H   H
+.   .   .   H   H   H   H   H
+.   .   H   H   H   H   H   H
+.   .   H   H   H   H   H   H
+.   H   H   H   H   H   H   H
+H   H   H   H   H   H   H   H
+
+0   1   2   3   4   5   6   7
+```
+
+We see that the cost to make all sticks 6 units long is <Eq code="5 + 4 + 2 + 0 + 0 + 1 + 2 + 2 = 16" />.
+
+To calculate these costs incrementally, we might start by making all sticks the same length as stick 0. **For purposes of this discussion, we say that we are "visiting stick 0".** The diagram for visiting stick 0:
+
+```
+                        .   .
+                    .   .   .
+            .   .   .   .   .
+            .   .   .   .   .
+        .   .   .   .   .   .
+        .   .   .   .   .   .
+    .   .   .   .   .   .   .
+H   H   H   H   H   H   H   H
+
+0   1   2   3   4   5   6   7
+```
+
+We also precalculate the cost of this configuration. Here, we see that the cost when visiting stick 0 is <Eq code="1 + 3 + 5 + 5 + 6 + 7 + 7 = 34" />.
+
+Now let's visit the next stick up (stick 1). Since it's hard to see what's going on in the example, I will skip over explaining it. Drawing it out:
+
+```
+                        .   .
+                    .   .   .
+            .   .   .   .   .
+            .   .   .   .   .
+        .   .   .   .   .   .
+        .   .   .   .   .   .
+.   H   H   H   H   H   H   H
+H   H   H   H   H   H   H   H
+
+0   1   2   3   4   5   6   7
+```
+
+The cost when visiting stick 1 is <Eq code="28" />.
+
+Now, this is where things get more interesting. Let's visit the next stick up (stick 2). The diagram should now look like this:
+
+```
+                        .   .
+                    .   .   .
+            .   .   .   .   .
+            .   .   .   .   .
+.   .   H   H   H   H   H   H
+.   .   H   H   H   H   H   H
+.   H   H   H   H   H   H   H
+H   H   H   H   H   H   H   H
+
+0   1   2   3   4   5   6   7
+```
+
+The cost when visiting stick 2 is <Eq code="3 + 2 + 0 + 2 + 2 + 3 + 4 + 4 = 20" />.
+
+Notice that the difference between visiting stick 1 and visiting stick 2 is "two rectangles".
+
+"Rectangle 1" spans sticks 0-1:
+
+```
+                          .   .
+                      .   .   .
+              .   .   .   .   .
+              .   .   .   .   .
+ [X   X]  H   H   H   H   H   H
+ [X   X]  H   H   H   H   H   H
+  .   H   H   H   H   H   H   H
+  H   H   H   H   H   H   H   H
+
+  0   1   2   3   4   5   6   7
+```
+
+"Rectangle 2" spans sticks 2-7:
+
+```
+                        .   .
+                    .   .   .
+            .   .   .   .   .
+            .   .   .   .   .
+.   .  [X   X   X   X   X   X]
+.   .  [X   X   X   X   X   X]
+.   H   H   H   H   H   H   H
+H   H   H   H   H   H   H   H
+
+0   1   2   3   4   5   6   7
+```
+
+The widths and heights of these rectangles simply depend on:
+
+1. the current visited stick, and
+2. the difference in length between the currently-visited stick and the previously-visited stick.
+
+To calculate the cost of visiting the current stick, we can simply add the size of "rectangle 1" to the cost, and then subtract the size of "rectangle 2" from the cost:
+
+<AlignLatex code="
+    \text{cost of visiting stick $2$}
+    &= \text{cost of visiting stick $1$}
+    + \text{rectangle 1}
+    - \text{rectangle 2}
+    \\
+    &= 28 + \parens{2 \times 2} - \parens{6 \times 2}
+    \\
+    &= 28 + 4 - 12
+    \\
+    &= 20
+" />
+
+This cost matches the cost we calculated for visiting stick 2.
+
+This method of course generalizes across the entire sorted array of sticks.
+
+The second key insight I made while working out how a two-pointer solution might work was that the optimal stick size will always be one of the stick sizes that already exist in the array.
+
+To get at why this is the case, let's consider a very simple sorted array of sticks <Eq code="\brackets{3, 3, 5, 5, 5, 5}" />:
+
+```
+        H   H   H   H
+        H   H   H   H
+H   H   H   H   H   H
+H   H   H   H   H   H
+H   H   H   H   H   H
+
+0   1   2   3   4   5
+```
+
+We can roughly do two things:
+
+1. we can add length to sticks 0-1, or
+2. we can remove length from sticks 2-5.
+
+Doing the first option will add 2 to the cost for every unit of length added, while doing the second option will add 4 to the cost for every unit of length removed. Clearly, the best option is to simply bring sticks 0-1 up to height 5, which incurs a total cost of 4. Note that if you "meet halfway" by bringing all sticks to length 4, you still find that cutting the length of sticks 2-5 is less-efficient than adding length to sticks 0-1.
+
+This should be sufficient background for understanding my remaining solutions.
+
+Unfortunately, my two-pointer idea didn't work and gave wrong answers. The idea of the algorithm was that I would start with a sort of "visit the left pointer" and "visit the right pointer", then I check which pointer is cheaper to move. I keep moving the pointers until they meet, and the meeting point is my solution. The issue is evidently locally suboptimal solutions which I won't expand further on. In retrospect, I should've checked the edge cases better. The failed two-pointer solution:
+
+import SolStickLengthsFail03 from "./_solutions.sorting-and-searching/stick-lengths--fail03-wrong-answer.py?raw" //_
+
+<SpoilerBlock buttonLabel="Wrong Solution 3">
+    <Code code={SolStickLengthsFail03} lang="py" />
+</SpoilerBlock>
+
+I quickly come up with the idea to just try visiting every stick in the sorted list and getting the lowest-cost. My very first solution that passed all tests:
+
+import SolStickLengths from "./_solutions.sorting-and-searching/stick-lengths.py?raw" //_
+
+<SpoilerBlock buttonLabel="Original Successful Solution">
+    <Code code={SolStickLengths} lang="py" />
+</SpoilerBlock>
+
+I also did another solution that is based around a cumulative sum array:
+
+import SolStickLengthsAlt03 from "./_solutions.sorting-and-searching/stick-lengths--alternative03.py?raw" //_
+
+<SpoilerBlock buttonLabel="Alternative Solution">
+    <Code code={SolStickLengthsAlt03} lang="py" />
+</SpoilerBlock>
+
+My favourite variant I made that uses this incremental solutions idea:
+
+import SolStickLengthsAlt05 from "./_solutions.sorting-and-searching/stick-lengths--alternative05.py?raw" //_
+
+<Code code={SolStickLengthsAlt05} lang="py" />
+
+That solution notably uses a conditional break ("short circuit"). This works since cost behaves like a parabola when visiting each stick in a sorted stick array.
+
+**This is the point where I spoiled the answers for myself and looked at other peoples' solutions.**
+
+After spoiling solutions, a common one I found was to simply visit the median/middle stick:
+
+import SolStickLengthsAlt06 from "./_solutions.sorting-and-searching/stick-lengths--alternative06.py?raw" //_
+
+<Code code={SolStickLengthsAlt06} lang="py" />
+
+To gain an intuition for going on here, let's try a skewed distribution <Eq code="\brackets{1, 2, 2, 4, 8, 9, 10}" />. The median is calculated by the `len(sticks) // 2` code. Calculating this by hand: <Eq code="\floor{7 / 2} = \floor{3.5} = 3" />. Sketching out the diagram:
+
+```
+                        H
+                    H   H
+                H   H   H
+                H   H   H
+                H   H   H
+                H   H   H
+            H   H   H   H
+            H   H   H   H
+    H   H   H   H   H   H
+H   H   H   H   H   H   H
+
+0   1   2   3   4   5   6
+            ^
+          median
+```
+
+All sticks need to be brought to the same length, so the outliers necessarily have to be dealt with anyway. The following diagram incurs a cost of <Eq code="4" />:
+
+```
+                            .
+                        .   .
+                   [H   H   H]
+                   [H   H   H]
+                   [H   H   H]
+                   [H   H   H]
+               H   [H   H   H]
+               H   [H   H   H]
+ [.   H   H]   H   [H   H   H]
+ [H   H   H]   H   [H   H   H]
+  
+  0   1   2    3    4   5   6
+               ^
+```
+
+I also highlighted two rectangles in the diagram above. Notice that both rectangles are the same width, therefore they will incur the same cost to modify.
+
+The one stick that we shouldn't touch is the median stick (stick 3) since modifying it at all will incur unnecessary cost. Therefore, stick 3's length will be the target length for all the sticks. The cheapest cost for this distribution is to then lengthen the left rectangle by 2, and shorten the right rectangle by 4:
+
+
+```
+                            .
+                        .   .
+                    .   .   .
+                    .   .   .
+                    .   .   .
+                    .   .   .
+ [.   .   .]   H   [H   H   H]
+ [.   .   .]   H   [H   H   H]
+ [.   H   H]   H   [H   H   H]
+ [H   H   H]   H   [H   H   H]
+  
+  0   1   2    3    4   5   6
+               ^
+```
+
+These rectangle-lengthenings and shortenings adds <Eq code="(2 \times 3) + (4 \times 3) = 6 + 12 = 18" />, so the total cost is <Eq code="4 + 18 = 22" />, and this is the cheapest cost for this distribution.
+
+But what about an even-numbered distribution? Let's try <Eq code="1, 2, 2, 4, 9, 10" />. The ~~median~~ middle is calculated as <Eq code="\floor{6 / 2} = 3" />. Sketching out the diagram:
+
+```
+                    H
+                H   H
+                H   H
+                H   H
+                H   H
+                H   H
+            H   H   H
+            H   H   H
+    H   H   H   H   H
+H   H   H   H   H   H
+
+0   1   2   3   4   5
+            ^
+          middle
+```
+
+Once again, we deal with the outliers, this time incurring a cost of <Eq code="2" />:
+
+```
+                        .
+                   [H   H]
+                   [H   H]
+                   [H   H]
+                   [H   H]
+                   [H   H]
+               H   [H   H]
+               H   [H   H]
+ [.   H   H]   H   [H   H]
+ [H   H   H]   H   [H   H]
+  
+  0   1   2    3    4   5
+               ^
+```
+
+This time, the two rectangles are mismatched in width!
+
+However, we can conceptually combine the middle stick with the rectangle with the smallest width. This is efficient because the smaller width is cheaper to modify than the wider width. This will always be the rectangle to the right. Modifying this right rectangle and thereby adding to the cost by <Eq code="2 \times 5 = 10" />:
+
+```
+                        .
+                    .   .
+                    .   .
+                    .   .
+                    .   .
+                    .   .
+               [H   H   H]
+               [H   H   H]
+ [.   H   H]   [H   H   H]
+ [H   H   H]   [H   H   H]
+  
+  0   1   2     3   4   5
+                ^
+              middle
+```
+
+Now, there's just two rectangles. Trivially, you can modify either of them and it will incur the same cost. For fun, let's modify both of them, thereby adding to the cost by <Eq code="(3 \times 1) + (3 \times 1) = 6" />:
+
+```
+                        .
+                    .   .
+                    .   .
+                    .   .
+                    .   .
+                    .   .
+                .   .   .
+ [.   .   .]   [H   H   H]
+ [.   H   H]   [H   H   H]
+ [H   H   H]   [H   H   H]
+  
+  0   1   2     3   4   5
+                ^
+```
+
+The total cost of these operations is <Eq code="2 + 10 + 6 = 18" />, and this is the cheapest cost.
+
+Though, in practice, we'll just keep things simple and bring everything to the same level as the middle stick, which is what that Python implementation does.
 
