@@ -390,7 +390,7 @@ import SolStickLengthsAlt06 from "./_solutions.sorting-and-searching/stick-lengt
 
 <Code code={SolStickLengthsAlt06} lang="py" />
 
-To gain an intuition for going on here, let's try a skewed distribution <Eq code="\brackets{1, 2, 2, 4, 8, 9, 10}" />. The median is calculated by the `len(sticks) // 2` code. Calculating this by hand: <Eq code="\floor{7 / 2} = \floor{3.5} = 3" />. Sketching out the diagram:
+To gain an intuition for going on here, let's try a skewed distribution <Eq code="\brackets{1, 2, 2, 4, 8, 9, 10}" />. The median is calculated as <Eq code="\texttt{(len(sticks) // 2)} = \floor{7 / 2} = \floor{3.5} = 3" />. Sketching out the diagram:
 
 ```
                         H
@@ -429,7 +429,7 @@ All sticks need to be brought to the same length, so the outliers necessarily ha
 
 I also highlighted two rectangles in the diagram above. Notice that both rectangles are the same width, therefore they will incur the same cost to modify.
 
-The one stick that we shouldn't touch is the median stick (stick 3) since modifying it at all will incur unnecessary cost. Therefore, stick 3's length will be the target length for all the sticks. The cheapest cost for this distribution is to then lengthen the left rectangle by 2, and shorten the right rectangle by 4:
+The one stick that we shouldn't touch is the median stick (stick 3) since modifying it at all will incur unnecessary cost. Therefore, stick 3's length will be the target length for all the sticks. The cheapest cost for this distribution is to then lengthen the left rectangle by 2, and shorten the right rectangle by <Eq code="4" />:
 
 
 ```
@@ -450,7 +450,7 @@ The one stick that we shouldn't touch is the median stick (stick 3) since modify
 
 These rectangle-lengthenings and shortenings adds <Eq code="(2 \times 3) + (4 \times 3) = 6 + 12 = 18" />, so the total cost is <Eq code="4 + 18 = 22" />, and this is the cheapest cost for this distribution.
 
-But what about an even-numbered distribution? Let's try <Eq code="1, 2, 2, 4, 9, 10" />. The ~~median~~ middle is calculated as <Eq code="\floor{6 / 2} = 3" />. Sketching out the diagram:
+But what about an even-numbered distribution? Let's try <Eq code="\brackets{1, 2, 2, 4, 9, 10}" />. The ~~median~~ middle is calculated as <Eq code="\floor{6 / 2} = 3" />. Sketching out the diagram:
 
 ```
                     H
