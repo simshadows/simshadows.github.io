@@ -30,6 +30,11 @@ import RArr from "./_common.RArr.astro"; //_
 import DLArr from "./_common.DLArr.astro"; //_
 import URArr from "./_common.URArr.astro"; //_
 
+import "./_sorting-and-searching.css";
+
+import MissingCoinSumNumline from "./_sorting-and-searching.MissingCoinSumNumline.astro"; //_
+
+
 <Intro />
 
 
@@ -529,4 +534,189 @@ Now, there's just two rectangles. Trivially, you can modify either of them and i
 The total cost of these operations is <Eq code="2 + 10 + 6 = 18" />, and this is the cheapest cost.
 
 Though, in practice, we'll just keep things simple and bring everything to the same level as the middle stick, which is what that Python implementation does.
+
+
+## Missing Coin Sum <Spec href="https://cses.fi/problemset/task/2183/" cdate="2024-01-24" />
+
+This was a fun one to figure out!
+
+I started by sorting the input array and thinking about how smaller coins have a different effect to larger coins in that they allow for "finer-grained sums". Therefore, dealing with the smaller coins first may be a useful strategy for this problem.
+
+My next idea was to think of intervals of consecutive integers (i.e. sequences where each element is one greater than the previous). I thought about different ideas like needing to track intervals using tuples and whether or not to start the intervals from <Eq code="1" />, but here's what I found worked.
+
+We track a single unbroken interval of possible coin sums that starts with <Eq code="0" />. The basic idea is that we incrementally grow this interval until we find a gap where a sum isn't possible. To understand what this means, let's look at an example.
+
+Let's consider a simple sorted list of three coins <Eq code="\brackets{1, 2, 6, 7}" />. Let's *conceptually* initialize a set of "seen coins" called <Eq code="\text{seen}" />. I say *conceptually* because the set isn't explicitly initialized in my Python implementation, but it will be useful for understanding it.
+
+Before starting the loop, the set is empty:
+
+<DisplayLatex code="
+    \text{seen} = \braces{}
+" />
+
+We find that the only possible coin sum for <Eq code="\text{seen} = \braces{}" /> is <Eq code="0" /> because <Eq code="\text{seen}" /> is an empty set. Let's track this with an interval we'll call <Eq code="\text{sums}" />, and also sketch it out using an integer number line (with bold **X** representing set membership):
+
+<DisplayLatex code="
+    \text{sums} = [0, 1)
+" />
+
+<MissingCoinSumNumline>
+    <td class="mcsi-marked">X</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</MissingCoinSumNumline>
+
+*(This interval notation <Eq code="[0, 1)" /> means an interval starting at <Eq code="0" /> (inclusive) and ending at <Eq code="1" /> (exclusive). This notation is typically used for real number intervals rather than integers, but I like borrowing the notation for integer intervals as well.)*
+
+Now, let's start the loop.
+
+Let's visit the first element of the sorted coins list:
+
+```
+[ 1, 2, 6, 7 ]
+  ^
+```
+
+Therefore we add the element to the `seen` set:
+
+<DisplayLatex code="
+    \text{seen} = \braces{1}
+" />
+
+And therefore, the set of possible coin sums is:
+
+<DisplayLatex code="
+    \text{sums} = [0, 2)
+" />
+
+<MissingCoinSumNumline>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</MissingCoinSumNumline>
+
+This new interval <Eq code="\text{sums} = [0, 2)" /> makes sense since there are now two possible subsets of <Eq code="\text{seen} = \braces{1}" />:
+
+<AlignLatex code="
+    \sum \braces{}  &= 0 \\
+    \sum \braces{1} &= 1
+" />
+
+Let's visit the next element:
+
+```
+[ 1, 2, 6, 7 ]
+     ^
+```
+
+Therefore we add the element to the `seen` set:
+
+<DisplayLatex code="
+    \text{seen} = \braces{1, 2}
+" />
+
+And therefore, the set of possible coin sums is:
+
+<DisplayLatex code="
+    \text{sums} = [0, 4)
+" />
+
+<MissingCoinSumNumline>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</MissingCoinSumNumline>
+
+This new interval <Eq code="\text{sums} = [0, 4)" /> makes sense since there are four possible subsets of <Eq code="\text{seen} = \braces{1, 2}" />, each with unique sum values:
+
+<GatherLatex code="
+    \begin{aligned}
+        \sum \braces{}  &= 0 \\
+        \sum \braces{1} &= 1
+    \end{aligned}
+    \quad\qquad
+    \begin{aligned}
+        \sum \braces{2} &= 2 \\
+        \sum \braces{1, 2} &= 3
+    \end{aligned}
+" />
+
+Let's visit the next element:
+
+```
+[ 1, 2, 6, 7 ]
+        ^
+```
+
+And now, we notice something interesting happens:
+
+<GatherLatex code="
+    \text{seen} = \braces{1, 2, 6} \\
+    \text{sums} = \text{???}
+" />
+
+<MissingCoinSumNumline>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td></td>
+    <td></td>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td class="mcsi-marked">X</td>
+    <td></td>
+</MissingCoinSumNumline>
+
+<GatherLatex code="
+    \begin{aligned}
+        \sum \braces{}  &= 0 \\
+        \sum \braces{1} &= 1
+    \end{aligned}
+    \quad\qquad
+    \begin{aligned}
+        \sum \braces{2} &= 2 \\
+        \sum \braces{1, 2} &= 3
+    \end{aligned}
+    \quad\qquad
+    \begin{aligned}
+        \sum \braces{6} &= 6 \\
+        \sum \braces{1, 6} &= 7 \\
+        \sum \braces{2, 6} &= 8 \\
+        \sum \braces{1, 2, 6} &= 9
+    \end{aligned}
+" />
+
+We now have a gap in what should've been a single unbroken interval! The algorithm terminates here, and the answer is <Eq code="4" />.
+
+My solution uses these ideas, but with many shortcuts applied:
+
+import SolMissingCoinSum from "./_solutions.sorting-and-searching/missing-coin-sum.py?raw" //_
+
+<Code code={SolMissingCoinSum} lang="py" />
 

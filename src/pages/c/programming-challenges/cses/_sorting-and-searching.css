@@ -1,0 +1,14 @@
+table.missing-coin-sum-interval td {
+    width: 2.2em;
+    text-align: center;
+}
+table.missing-coin-sum-interval > tbody > tr:nth-child(1) > td {
+    font-weight: bold;
+}
+table.missing-coin-sum-interval > tbody > tr:nth-child(2) > td {
+    border: none;
+    padding: 0.3em;
+}
+table.missing-coin-sum-interval td.mcsi-marked {
+    background-color: var(--color--mylightred);
+}
