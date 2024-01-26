@@ -546,7 +546,7 @@ My next idea was to think of intervals of consecutive integers (i.e. sequences w
 
 We track a single unbroken interval of possible coin sums that starts with <Eq code="0" />. The basic idea is that we incrementally grow this interval until we find a gap where a sum isn't possible. To understand what this means, let's look at an example.
 
-Let's consider a simple sorted list of three coins <Eq code="\brackets{1, 2, 6, 7}" />. Let's *conceptually* initialize a set of "seen coins" called <Eq code="\text{seen}" />. I say *conceptually* because the set isn't explicitly initialized in my Python implementation, but it will be useful for understanding it.
+Let's consider a simple sorted list of four coins <Eq code="\brackets{1, 2, 6, 7}" />. Let's *conceptually* initialize a set of "seen coins" called <Eq code="\text{seen}" />. I say *conceptually* because the set isn't explicitly initialized in my Python implementation, but it will be useful for understanding it.
 
 Before starting the loop, the set is empty:
 
@@ -719,4 +719,11 @@ My solution uses these ideas, but with many shortcuts applied:
 import SolMissingCoinSum from "./_solutions.sorting-and-searching/missing-coin-sum.py?raw" //_
 
 <Code code={SolMissingCoinSum} lang="py" />
+
+
+## Collecting Numbers <Spec href="https://cses.fi/problemset/task/2216/" cdate="2024-01-26" />
+
+import SolCollectingNumbers from "./_solutions.sorting-and-searching/collecting-numbers.py?raw" //_
+
+<Code code={SolCollectingNumbers} lang="py" />
 
