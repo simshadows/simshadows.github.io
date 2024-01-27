@@ -727,3 +727,16 @@ import SolCollectingNumbers from "./_solutions.sorting-and-searching/collecting-
 
 <Code code={SolCollectingNumbers} lang="py" />
 
+
+## Collecting Numbers II <Spec href="https://cses.fi/problemset/task/2217/" cdate="2024-01-27" />
+
+I took ages to get my first successful solution, and I feel like there should be a much simpler solution here. I originally went for C++ for the BST data structures, but my attempts to use BSTs didn't work out due to the complexity of my idea of using tuple representations of range intervals (tracking the start and end of each interval). I eventually settled on just tracking the base of these range intervals.
+
+This solution comes awfully close to TLE'ing (it took 0.88s for test 2).
+
+<p><Todo>There is almost certainly a better solution. I should meditate on this some more.</Todo></p>
+
+import SolCollectingNumbers2 from "./_solutions.sorting-and-searching/collecting-numbers2.cpp?raw" //_
+
+<Code code={SolCollectingNumbers2} lang="cpp" />
+
