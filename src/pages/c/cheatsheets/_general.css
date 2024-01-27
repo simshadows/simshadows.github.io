@@ -1,9 +1,11 @@
-table.fixed-width-ints-table td {
+table.c-cheatsheets-tables td {
     text-align: left;
     white-space: nowrap;
 }
 
 table.fixed-width-ints-table > tbody > tr > td:nth-child(2),
-table.fixed-width-ints-table > tbody > tr > td:nth-child(5) {
+table.fixed-width-ints-table > tbody > tr > td:nth-child(5),
+table.data-units-table > tbody > tr > td:nth-child(4),
+table.powers-of-two-table > tbody > tr > td:nth-child(2) {
     text-align: right;
 }

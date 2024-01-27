@@ -32,7 +32,7 @@ This table assumes you're programming in C on a common computer architecture. "M
 
 <FiguresBlock>
 <Fig>
-<table class="general fixed-width-ints-table">
+<table class="general c-cheatsheets-tables fixed-width-ints-table">
     <thead>
         <tr>
             <th>Description</th>
@@ -66,6 +66,99 @@ This table assumes you're programming in C on a common computer architecture. "M
         <Fwir bytes={8} signed={true} cTypes={["long long"]}
             sMin="-9223372036854775808" sMax="9223372036854775807"
         />
+    </tbody>
+</table>
+</Fig>
+</FiguresBlock>
+
+
+## Units
+
+<FiguresBlock>
+<Fig>
+<table class="general c-cheatsheets-tables data-units-table">
+    <thead>
+        <tr>
+            <th>Common Name</th>
+            <th>IEC Name</th>
+            <th colspan={2}>Bytes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>kilobyte (kB)</td>
+            <td>kibibyte (KiB)</td>
+            <td><Eq code="{1024}^1" /></td>
+            <td>`1024`</td>
+        </tr>
+        <tr>
+            <td>megabyte (MB)</td>
+            <td>mebibyte (MiB)</td>
+            <td><Eq code="{1024}^2" /></td>
+            <td>`1048576`</td>
+        </tr>
+        <tr>
+            <td>gigabyte (GB)</td>
+            <td>gibibyte (GiB)</td>
+            <td><Eq code="{1024}^3" /></td>
+            <td>`1073741824`</td>
+        </tr>
+        <tr>
+            <td>terabyte (TB)</td>
+            <td>tebibyte (TiB)</td>
+            <td><Eq code="{1024}^4" /></td>
+            <td>`1099511627776`</td>
+        </tr>
+        <tr>
+            <td>petabyte (PB)</td>
+            <td>pebibyte (PiB)</td>
+            <td><Eq code="{1024}^5" /></td>
+            <td>`1125899906842624`</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr><th colspan={4} style="text-align: center;"><em>See [Wikipedia](https://en.wikipedia.org/wiki/Byte#Multiple-byte_units) for larger units.</em></th></tr>
+    </tfoot>
+</table>
+</Fig>
+<Fig>
+<table class="general c-cheatsheets-tables powers-of-two-table">
+    <tbody>
+        <tr><td><Eq code="2^{0}" /></td><td>`1`</td></tr>
+        <tr><td><Eq code="2^{1}" /></td><td>`2`</td></tr>
+        <tr><td><Eq code="2^{2}" /></td><td>`4`</td></tr>
+        <tr><td><Eq code="2^{3}" /></td><td>`8`</td></tr>
+        <tr><td><Eq code="2^{4}" /></td><td>`16`</td></tr>
+        <tr><td><Eq code="2^{5}" /></td><td>`32`</td></tr>
+        <tr><td><Eq code="2^{6}" /></td><td>`64`</td></tr>
+        <tr><td><Eq code="2^{7}" /></td><td>`128`</td></tr>
+        <tr><td><Eq code="2^{8}" /></td><td>`256`</td></tr>
+        <tr><td><Eq code="2^{9}" /></td><td>`512`</td></tr>
+        <tr><td><Eq code="2^{10}" /></td><td>`1024`</td></tr>
+        <tr>
+            <td><Eq code="2 \times 1024" /></td>
+            <td>`2048`</td>
+        </tr>
+        <tr>
+            <td><Eq code="4 \times 1024" /></td>
+            <td>`4096`</td>
+        </tr>
+        <tr>
+            <td><Eq code="8 \times 1024" /></td>
+            <td>`8192`</td>
+        </tr>
+        <tr>
+            <td><Eq code="16 \times 1024" /></td>
+            <td>`16384`</td>
+        </tr>
+        <tr>
+            <td><Eq code="32 \times 1024" /></td>
+            <td>`32768`</td>
+        </tr>
+        <tr>
+            <td><Eq code="64 \times 1024" /></td>
+            <td>`65536`</td>
+        </tr>
     </tbody>
 </table>
 </Fig>
