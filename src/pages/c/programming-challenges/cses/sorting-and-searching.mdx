@@ -758,3 +758,56 @@ import SolTowers from "./_solutions.sorting-and-searching/towers.cpp?raw" //_
 
 <Code code={SolTowers} lang="cpp" />
 
+
+## Traffic Lights <Spec href="https://cses.fi/problemset/task/1163/" cdate="2024-01-28" />
+
+I don't like this problem description. It's not very clear how it's meant to work, so I spent a long time trying ideas on the example until something worked.
+
+I initially thought there were <Eq code="x + 1" /> "units", and a traffic light would take up one whole unit. Therefore, for the example input of <Eq code="x = 8" /> and <Eq code="p = \brackets{3, 6, 2}" />, I sketched out the example and found my interpretation to be wrong:
+
+```
+012345678    passage lengths: [9]
+012 45678    passage lengths: [3, 5]       longest passage: 5
+012 45 78    passage lengths: [3, 2, 2]    longest passage: 3
+01  45 78    passage lengths: [2, 2, 2]    longest passage: 2
+```
+
+I then tried interpreting the <Eq code="p" /> positions as zero-length boundaries, which was also wrong:
+
+```
+012345678       passage lengths: [9]
+012 345678      passage lengths: [3, 6]          longest passage: 6
+012 345 678     passage lengths: [3, 3, 3]       longest passage: 3
+01 2 345 678    passage lengths: [2, 1, 3, 3]    longest passage: 3
+```
+
+```
+012345678       passage lengths: [9]
+0123 45678      passage lengths: [4, 5]          longest passage: 5
+0123 456 78     passage lengths: [4, 3, 2]       longest passage: 4
+012 3 456 78    passage lengths: [3, 1, 3, 2]    longest passage: 3
+```
+
+Only when I considered position <Eq code="x" /> to implicitly come with a traffic light did the example make sense:
+
+```
+01234567       passage lengths: [8]
+012 34567      passage lengths: [3, 5]          longest passage: 5
+012 345 67     passage lengths: [3, 3, 2]       longest passage: 3
+01 2 345 67    passage lengths: [2, 1, 3, 2]    longest passage: 3
+```
+
+I went for C++ for the BST implementations. It went awfully close to TLE'ing (it took 0.98-0.99s for many tests).
+
+import SolTrafficLights from "./_solutions.sorting-and-searching/traffic-lights.cpp?raw" //_
+
+<Code code={SolTrafficLights} lang="cpp" />
+
+I also had the idea to iterate in reverse and use union find to merge together intervals. It turned out very cursed, but somehow runs faster than my initial C++ implementation, even in CPython3:
+
+<p><Todo>There should be a better solution. I should meditate on this some more.</Todo></p>
+
+import SolTrafficLightsAlt01 from "./_solutions.sorting-and-searching/traffic-lights--alternative01-reversed-dsu-based.py?raw" //_
+
+<Code code={SolTrafficLightsAlt01} lang="py" />
+
