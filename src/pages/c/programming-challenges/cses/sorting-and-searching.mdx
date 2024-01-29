@@ -811,3 +811,113 @@ import SolTrafficLightsAlt01 from "./_solutions.sorting-and-searching/traffic-li
 
 <Code code={SolTrafficLightsAlt01} lang="py" />
 
+
+## Josephus Problem I <Spec href="https://cses.fi/problemset/task/2162/" cdate="2024-01-29" />
+
+I used union find to calculate skips:
+
+import SolJosephusProblemI from "./_solutions.sorting-and-searching/josephus-problem-i.py?raw" //_
+
+<Code code={SolJosephusProblemI} lang="py" />
+
+Along the way, I learnt something interesting about chain assignments in Python:
+
+import SolJosephusProblemIFail01 from "./_solutions.sorting-and-searching/josephus-problem-i--fail01.py?raw" //_
+import SolJosephusProblemIAlt01 from "./_solutions.sorting-and-searching/josephus-problem-i--alternative01.py?raw" //_
+
+<SpoilerBlock buttonLabel="Python Chain Assignment Experimentation">
+    In trying to refactor my solution to something nicer, I found this version to fail:
+
+    <Code code={SolJosephusProblemIFail01} lang="py" />
+
+    As it turns out, Python chained assignments work by evaluating the right-most expression, then assigning to the remaining targets from left to right ([source](https://stackoverflow.com/questions/48633951/why-does-chained-assignment-work-this-way)):
+
+    ```
+    Python 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> m = {1: 2}
+    >>> i = 1
+    >>> i = m[i] = "x"
+    >>> i
+    'x'
+    >>> m
+    {1: 2, 'x': 'x'}
+    ```
+
+    In the example above, if `"x"` assigns to `m[i]` first before assigning `m[i]` to `i`, you'd expect it to behave like:
+
+    ```
+    Python 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> m = {1: 2}
+    >>> i = 1
+    >>> m[i] = "x"
+    >>> i = m[i]
+    >>> i
+    'x'
+    >>> m
+    {1: 'x'}
+    ```
+
+    But instead, it behaves like:
+
+    ```
+    Python 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> m = {1: 2}
+    >>> i = 1
+    >>> i = "x"
+    >>> m[i] = "x"
+    >>> i
+    'x'
+    >>> m
+    {1: 2, 'x': 'x'}
+    ```
+
+    So if I wanted to refactor away the explicit new variable `nxt`, it would have to be rewritten as:
+
+    <Code code={SolJosephusProblemIAlt01} lang="py" />
+
+    This version passes all tests.
+</SpoilerBlock>
+
+I also wrote a much simpler solution that passes according to my understanding of the problem, but it doesn't pass the tests:
+
+import SolJosephusProblemIFail02 from "./_solutions.sorting-and-searching/josephus-problem-i--fail02.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Solution">
+    This solution assumes that the current child will remove the child before them. For example, suppose we have four children:
+
+    ```
+    1 2 3 4
+    ```
+
+    Child 1 will remove child 4:
+
+    ```
+    1 2 3
+    ^
+    ```
+
+    Child 2 will remove child 1:
+    ```
+      2 3
+      ^
+    ```
+
+    Child 3 will remove child 2:
+
+    ```
+        3
+        ^
+    ```
+
+    And child 3 will also remove itself. Therefore the solution for four children would be `4 1 2 3`.
+
+    Python implementation:
+
+    <Code code={SolJosephusProblemIFail02} lang="py" />
+</SpoilerBlock>
+
+<p><Todo>I'm actually not yet sure why that solution isn't considered valid. Nothing in the problem specification seems to disallow it.</Todo></p>
+
