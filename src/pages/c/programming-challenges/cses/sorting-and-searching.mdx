@@ -820,6 +820,14 @@ import SolJosephusProblemI from "./_solutions.sorting-and-searching/josephus-pro
 
 <Code code={SolJosephusProblemI} lang="py" />
 
+Rewritten in C++:
+
+import SolJosephusProblemIAlt04 from "./_solutions.sorting-and-searching/josephus-problem-i--alternative04.cpp?raw" //_
+
+<SpoilerBlock buttonLabel="C++ Rewrite">
+    <Code code={SolJosephusProblemIAlt04} lang="py" />
+</SpoilerBlock>
+
 Along the way, I learnt something interesting about chain assignments in Python:
 
 import SolJosephusProblemIFail01 from "./_solutions.sorting-and-searching/josephus-problem-i--fail01.py?raw" //_
@@ -920,4 +928,52 @@ import SolJosephusProblemIFail02 from "./_solutions.sorting-and-searching/joseph
 </SpoilerBlock>
 
 <p><Todo>I'm actually not yet sure why that solution isn't considered valid. Nothing in the problem specification seems to disallow it.</Todo></p>
+
+Alternative C++ solution using BST/`std::set`, though it somehow runs slower than the Python solution even with IO desync:
+
+import SolJosephusProblemIAlt02 from "./_solutions.sorting-and-searching/josephus-problem-i--alternative02.cpp?raw" //_
+
+<Code code={SolJosephusProblemIAlt02} lang="cpp" />
+
+Another solution, this time using list shifting for fast deletions. Actually runs faster than my previous solutions (including C++). The item deletion overhead is fast since we're deleting half of the set at any given time. Implementation:
+
+import SolJosephusProblemIAlt06 from "./_solutions.sorting-and-searching/josephus-problem-i--alternative06.py?raw" //_
+
+<Code code={SolJosephusProblemIAlt06} lang="py" />
+
+I rewrote it in C++, but it's somehow slower than the Python version:
+
+import SolJosephusProblemIAlt07 from "./_solutions.sorting-and-searching/josephus-problem-i--alternative07.cpp?raw" //_
+
+<SpoilerBlock buttonLabel="C++ Rewrite">
+    <Code code={SolJosephusProblemIAlt07} lang="cpp" />
+</SpoilerBlock>
+
+
+## Josephus Problem II [UNFINISHED] <Spec href="https://cses.fi/problemset/task/2163/" cdate="2024-01-29" />
+
+I used my Josephus Problem I union find solution as a starting point. After a cold start of misunderstanding the problem specification, my first logically correct solution ran out of time and caused a stack overflow with the default recursion limit). Not unexpected since it's <Eq code="O(n k)" /> for quite large <Eq code="n" /> and <Eq code="k" />:
+
+import SolJosephusProblemIIFail02 from "./_solutions.sorting-and-searching/josephus-problem-ii--fail02-tle-and-stack-overflow.py?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution 1">
+    <Code code={SolJosephusProblemIIFail02} lang="py" />
+</SpoilerBlock>
+
+I tried adding a modulo to cut down on the <Eq code="k" />-iterations. It passes some more tests, but as expected, it still TLE's and causes a stack overflow:
+
+import SolJosephusProblemIIFail03 from "./_solutions.sorting-and-searching/josephus-problem-ii--fail03-tle-and-stack-overflow.py?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution 2">
+    <Code code={SolJosephusProblemIIFail03} lang="py" />
+
+    The only difference from the first TLE'd solution is these lines:
+
+    ```py
+    for i in range(n):
+        for _ in range(k % (n - i)):
+    ```
+</SpoilerBlock>
+
+<p><Todo>Finish this</Todo></p>
 
