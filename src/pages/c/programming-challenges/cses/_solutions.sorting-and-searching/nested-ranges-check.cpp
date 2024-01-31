@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <iostream>
-#include <set>
 #include <vector>
 #include <limits>
 #include <ranges>
@@ -11,14 +10,12 @@ int main() {
     int n;
     std::cin >> n;
 
-    std::vector<Tup3> ranges; // (start, end, index)
     std::unordered_map<long, std::vector<Tup3>> groupedMap; // grouped[start] = ranges subset
     std::unordered_map<long, std::unordered_map<long, long>> cnt; // cnt[start][end] = count
     for (int i = 0; i < n; ++i) {
         long start, end;
         std::cin >> start >> end;
 
-        ranges.emplace_back(start, end, i);
         groupedMap[start].emplace_back(start, end, i);
         ++cnt[start][end];
     }
