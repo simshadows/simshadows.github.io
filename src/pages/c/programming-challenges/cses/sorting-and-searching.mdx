@@ -998,3 +998,92 @@ I also made some further modifications to add I/O desync and switch `solution` t
 
 <p><Todo>Maybe we can still get more significant performance wins?</Todo></p>
 
+
+## Nested Ranges Count [UNFINISHED] <Spec href="https://cses.fi/problemset/task/2169" cdate="2024-02-01" />
+
+I started by looking into how to count intervals contained within another interval.
+
+My first idea was to sort the ranges twice (once sorted by start point and once sorted by endpoint), and calculate cumulative counts, to be stored in BSTs/`std::map`. In an attempt to make this idea work, I looked into possible ways to write out the set arithmetic, but I conclude that it's unlikely to be a useful approach on its own.
+
+
+<SpoilerBlock buttonLabel={"explanation of my attempt at a \"cumulative counts\" approach"}>
+Let's have a look at a concrete example:
+
+```
+     t====
+       a-
+      b--
+   c--- d---
+e---       f---
+ g------------
+```
+
+Above, we have one target interval labelled `t`, and seven other intervals that are also part of the set.
+
+I see a few different operations to quickly count/enumerate relevant subsets just by a simple inequality. Here's a minimal subset of operations:
+
+1. Total *other* intervals: <Eq code="\braces{a, b, c, d, e, f, g} \quad\longrightarrow\quad \text{count} = 7" />
+2. Intervals with starting points after the start of `t`: <Eq code="\braces{a, b, d, f} \quad\longrightarrow\quad \text{count} = 4" />
+3. Intervals with starting points after the end of `t`: <Eq code="\braces{f} \quad\longrightarrow\quad \text{count} = 1" />
+4. Intervals with ending points after the start of `t`: <Eq code="\braces{a, b, c, d, f, g} \quad\longrightarrow\quad \text{count} = 6" />
+5. Intervals with ending points after the end of `t`: <Eq code="\braces{d, f, g} \quad\longrightarrow\quad \text{count} = 3" />
+
+For completeness, let's derive the opposites:
+
+6. Intervals with starting points before the start of `t`: <Eq code="\text{count} = 7 - 4 = 3" />
+7. Intervals with starting points before the end of `t`: <Eq code="\text{count} = 7 - 1 = 6" />
+8. Intervals with ending points before the start of `t`: <Eq code="\text{count} = 7 - 6 = 1" />
+9. Intervals with ending points before the end of `t`: <Eq code="\text{count} = 7 - 3 = 4" />
+
+Unsurprisingly, the numbers of the opposites are the same since our example is quite symmetrical.
+
+The theoretically useful thing here is that it's relatively quick (<Eq code="O(\log n)" />) to query the count of these subsets after constructing a BST in <Eq code="O(n \log n)" />. So maybe we can construct an equation that simply operates on the sizes of these subsets?
+
+However, I feel like it's unlikely to be a useful solution since you need to be able to query for both the start and end points simultaneously.
+
+Let's play around with the example a bit.
+
+A good place to start might be #2 (intervals with starting points after the start of `t`):
+
+```
+     t====
+       a-
+      b--
+        d---
+           f---
+```
+
+But how do we filter out interval `d` and `f`?
+
+Let's try just querying for #5 (intervals with ending points after the start of `t`):
+
+```
+     t====
+        d---
+           f---
+ g------------
+```
+
+But how do we filter out interval `g` from query #5?
+
+I haven't figured a solution to this problem yet. I imagine it might be possible to prove that this approach is possible or impossible, but I'm not going into that right now.
+</SpoilerBlock>
+
+An evolution of the idea might be to incrementally build the cumulative counts data structure as you iterate through the list of ranges, sorted by starting point.
+
+<SpoilerBlock buttonLabel={"explanation of my attempt at a \"gradual cumulative counts\" approach"}>
+For example, maybe you start with the intervals at the lowest starting point, which we'll pretend to be <Eq code="1" />. You'd have a cumulative counts data structure for every possible interval since all intervals will start with at least the lowest starting point. You'd go through all the intervals with starting point <Eq code="1" />, querying for the number of intervals with endpoints no further than the currently-visited interval.
+
+After you're done with all intervals with starting point <Eq code="1" />, you go to the next-highest starting point, which let's pretend it's <Eq code="2" />. This requires us to modify the cumulative counts data structure to discard all intervals with starting points before <Eq code="2" />.
+
+This process is simply repeated until we exhaust all intervals.
+
+Alternatively (and probably better), you could do the reverse by starting with the highest starting point and working your way backwards to the lowest starting point.
+
+However, the trouble is finding a data structure that lets you insert fast while also letting you quickly query cumulative counts. A BST in lets you insert in <Eq code="O(\log n)" /> but is probably difficult to get a cumulative count without <Eq code="O(n)" /> sequential counting. A array that we keep sorted lets you get a cumulative count in potentially <Eq code="O(\log n)" /> due to <Eq code="O(\log n)" /> binary search and <Eq code="O(1)" /> count (ignoring multiplicity edge cases for now), but suffers from <Eq code="O(n)" /> insertions.
+
+Therefore, this is probably not the right approach.
+</SpoilerBlock>
+
+<p><Todo>Continue!</Todo></p>
+
