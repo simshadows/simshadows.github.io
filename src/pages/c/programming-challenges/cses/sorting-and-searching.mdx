@@ -977,3 +977,24 @@ import SolJosephusProblemIIFail03 from "./_solutions.sorting-and-searching/josep
 
 <p><Todo>Finish this</Todo></p>
 
+
+## Nested Ranges Check <Spec href="https://cses.fi/problemset/task/2168" cdate="2024-01-31" />
+
+My first attempt TLE'd, but otherwise seems promising in terms of correctness:
+
+import SolNestedRangesCheckFail01 from "./_solutions.sorting-and-searching/nested-ranges-check--fail01-tle.py?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution">
+    <Code code={SolNestedRangesCheckFail01} lang="py" />
+</SpoilerBlock>
+
+Rewriting it for C++ passed all tests! Full solution:
+
+import SolNestedRangesCheck from "./_solutions.sorting-and-searching/nested-ranges-check.cpp?raw" //_
+
+<Code code={SolNestedRangesCheck} lang="cpp" />
+
+I also made some further modifications to add I/O desync and switch `solution` to `std::vector<bool>`. Both very slightly improved performance.
+
+<p><Todo>Maybe we can still get more significant performance wins?</Todo></p>
+
