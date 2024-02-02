@@ -50,7 +50,7 @@ import SolMissingNumber from "./_solutions.introductory-problems/missing-number.
 
 <Code code={SolMissingNumber} lang="py" />
 
-<Todo>There's a cool bit manipulation solution for this that I should study.</Todo>
+<p><Todo>There's a cool bit manipulation solution for this that I should study.</Todo></p>
 
 
 ## Repetitions <Spec href="https://cses.fi/problemset/task/1069" cdate="2023-01-02"/>
@@ -589,7 +589,7 @@ import SolBitStrings from "./_solutions.introductory-problems/bit-strings.py?raw
 
 <Code code={SolBitStrings} lang="py" />
 
-<Todo>How to do it with fixed-size integers?</Todo>
+<p><Todo>How to do it with fixed-size integers?</Todo></p>
 
 ## Trailing Zeros [UNFINISHED] <Spec href="https://cses.fi/problemset/task/1618" cdate="2023-01-13"/>
 
@@ -712,5 +712,68 @@ A couple more calculations I made while exploring the pattern:
 
 I used an online factorial table and a web-based large decimal calculator to explore this pattern. However, the pattern isn't clear. There could be a pattern, but I doubt that it's necessary to explore it for an introductory CSES problem.
 
-<Todo>Continue!</Todo>
+<p><Todo>Continue!</Todo></p>
+
+
+## Coin Piles <Spec href="https://cses.fi/problemset/task/1754" cdate="2024-02-02"/>
+
+The first thing that comes to mind is the observation that you take exactly three coins at a time, therefore the total coins must be a multiple of 3.
+
+One pile also can never have more than double of the other pile. The reason for that should be trivial.
+
+Let's work through what we know as candidate passing instances of the probem to see if a pattern emerges.
+
+<SpoilerBlock buttonLabel="Playing With Examples">
+```
+2 4 -> 1 2 -> 0 0
+3 3 -> 2 1 -> 0 0
+
+3 6 -> trivial 0 0
+4 5 -> 3 3 -> trivial 0 0
+
+4 8 -> trivial 0 0
+5 7 -> 3 6 -> trivial 0 0
+6 6 -> 4 5 -> trivial 0 0
+
+5 10 -> trivial 0 0
+6 9 -> 4 8 -> trivial 0 0
+7 8 -> 5 7 -> trivial 0 0
+
+6 12 -> trivial 0 0
+7 11 -> 5 10 -> trivial 0 0
+8 10 -> 6 9 -> trivial 0 0
+9 9 -> 7 8 -> trivial 0 0
+
+7 14 -> trivial 0 0
+8 13 -> 6 12 -> trivial 0 0
+9 12 -> 7 11 -> trivial 0 0
+10 11 -> 8 10 -> trivial 0 0
+```
+</SpoilerBlock>
+
+Naively, it seems reasonable that the solution is to simply check for the conditions described earlier:
+
+import SolCoinPiles from "./_solutions.introductory-problems/coin-piles.py?raw" //_
+
+<Code code={SolCoinPiles} lang="py" />
+
+This solution passes all tests.
+
+
+## Palindrome Reorder <Spec href="https://cses.fi/problemset/task/1755/" cdate="2024-02-02"/>
+
+import SolPalindromeReorder from "./_solutions.introductory-problems/palindrome-reorder.py?raw" //_
+
+<Code code={SolPalindromeReorder} lang="py" />
+
+
+## Gray Code <Spec href="https://cses.fi/problemset/task/2205" cdate="2024-02-02"/>
+
+This is a classic code number encoding scheme that was covered a few times during my university career. I went for a very simple Python solution:
+
+import SolGrayCode from "./_solutions.introductory-problems/gray-code.py?raw" //_
+
+<Code code={SolGrayCode} lang="py" />
+
+<p><Todo>Try some other algorithms?</Todo></p>
 
