@@ -1087,3 +1087,36 @@ Therefore, this is probably not the right approach.
 
 <p><Todo>Continue!</Todo></p>
 
+
+## Room Allocation <Spec href="https://cses.fi/problemset/task/1164/" cdate="2024-02-02" />
+
+I attempted a straightforward Python implementation using `heapq` but it TLE's on one test case (a test case that seems quite significantly harder than even my longest-running accepted test case). The solution otherwise seems logically correct, and passes all the other test cases within the time limit:
+
+import SolRoomAllocationFail01 from "./_solutions.sorting-and-searching/room-allocation--fail01-tle.py?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution">
+    <Code code={SolRoomAllocationFail01} lang="py" />
+</SpoilerBlock>
+
+Rewriting it in C++ passed all tests:
+
+import SolRoomAllocationAlt01 from "./_solutions.sorting-and-searching/room-allocation--alt01-cleaned-up.cpp?raw" //_
+
+<Code code={SolRoomAllocationAlt01} lang="cpp" />
+
+In an attempt to get a Python solution working, I tried batching start times *(it makes sense in context)* but it generally caused a slight slowdown compared to my first Python attempt:
+
+import SolRoomAllocationFail02 from "./_solutions.sorting-and-searching/room-allocation--fail02-useless-optimization.py?raw" //_
+
+<SpoilerBlock buttonLabel={"TLE'd Python \"Start Time Batching\" Solution"}>
+    <Code code={SolRoomAllocationFail02} lang="py" />
+</SpoilerBlock>
+
+I also tried taking it further by replacing the priority queue with a sorted queue, but it was even slower:
+
+import SolRoomAllocationFail05 from "./_solutions.sorting-and-searching/room-allocation--fail05-useless-optimization.py?raw" //_
+
+<SpoilerBlock buttonLabel={"TLE'd Python \"Ghetto Priority Queue\" Solution"}>
+    <Code code={SolRoomAllocationFail05} lang="py" />
+</SpoilerBlock>
+
