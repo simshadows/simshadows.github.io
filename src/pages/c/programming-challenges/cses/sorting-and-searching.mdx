@@ -1168,3 +1168,12 @@ import SolFactoryMachinesAlt01 from "./_solutions.sorting-and-searching/factory-
 
 <p><Todo>Is there a nicer solution than binary search? Or maybe a faster way to calculate how many products can be made at a given point in time? It feels like there should be something better.</Todo></p>
 
+
+## Tasks and Deadlines <Spec href="https://cses.fi/problemset/task/1630/" cdate="2024-02-05" />
+
+I think the key to this question is realizing that even if you finish a task super-early at the expense of doing another task later and possibly even eating a negative reward, the super-early task could cancel it out. Therefore, the most optimal play is to just worry about how fast you can do tasks, and always do the shortest task before a longer task, that way you collect the reward as soon as possible.
+
+import SolTasksAndDeadlines from "./_solutions.sorting-and-searching/tasks-and-deadlines.py?raw" //_
+
+<Code code={SolTasksAndDeadlines} lang="py" />
+
