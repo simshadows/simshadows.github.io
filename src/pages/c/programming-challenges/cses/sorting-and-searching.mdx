@@ -1120,3 +1120,51 @@ import SolRoomAllocationFail05 from "./_solutions.sorting-and-searching/room-all
     <Code code={SolRoomAllocationFail05} lang="py" />
 </SpoilerBlock>
 
+
+## Factory Machines <Spec href="https://cses.fi/problemset/task/1620/" cdate="2024-02-05" />
+
+The first thing I tried was a relatively naive <Eq code="O(n + t \log n)" /> solution, but I didn't properly read the problem bounds at the time, which says <Eq code="1 \le t \le {10}^9" />. With these bounds, it's clear why it doesn't pass. I wrote it in Python and then rewrote in C++:
+
+import SolFactoryMachinesFail01 from "./_solutions.sorting-and-searching/factory-machines--fail01-tle.py?raw" //_
+import SolFactoryMachinesFail02 from "./_solutions.sorting-and-searching/factory-machines--fail02-tle.cpp?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Naive Solution (Python)">
+    <Code code={SolFactoryMachinesFail01} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="TLE'd Naive Solution (Rewrote in C++)">
+    <Code code={SolFactoryMachinesFail02} lang="cpp" />
+</SpoilerBlock>
+
+The next thing I did was a very low-effort adaptation to start with a binary search to go almost the whole way, and then getting the final solution by applying my original naive solution, which wouldn't have a lot left to do after binary search has already done the work. It's almost certainly possible to just make it a pure binary search, but doing it this way allows me to be lazy and be loose with the algorithm design to at least get something to pass, and I already had the naive code anyway. Unfortunately, it had an extremely trivial bug, causing my initial implementations to TLE:
+
+import SolFactoryMachinesFail04 from "./_solutions.sorting-and-searching/factory-machines--fail04-tle.py?raw" //_
+import SolFactoryMachinesFail05 from "./_solutions.sorting-and-searching/factory-machines--fail05-tle.cpp?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Buggy Low-Effort Binary Search Solution (Python)">
+    <Code code={SolFactoryMachinesFail04} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="TLE'd Buggy Low-Effort Binary Search Solution (Rewrote in C++)">
+    <Code code={SolFactoryMachinesFail05} lang="cpp" />
+</SpoilerBlock>
+
+The issue was that my binary search only covered outputs of up to <Eq code="2^{32} \approx {10}^9" />. However, outputs could actually be even larger, meaning that if an output was actually something like <Eq code="2^{60} \approx {10}^{18}" />, the second stage of the algorithm (the naive stage) may still have a lot more products left to process.
+
+
+This actually eluded me for several days until I actually read the test cases I TLE'd on and realized how big the outputs were. The only change I had to make was to change from `bitmask = 1 << 31` to `bitmask = 1 << 63`, leading to my first solution (written in Python and C++) that passes all tests:
+
+
+import SolFactoryMachines from "./_solutions.sorting-and-searching/factory-machines.cpp?raw" //_
+import SolFactoryMachinesAlt01 from "./_solutions.sorting-and-searching/factory-machines--alt01.py?raw" //_
+
+<Code code={SolFactoryMachinesAlt01} lang="py" />
+
+<SpoilerBlock buttonLabel="C++ version of my first solution">
+    <Code code={SolFactoryMachines} lang="cpp" />
+</SpoilerBlock>
+
+<p><Todo>I think a purely binary search solution should be possible, without the naive heap-based part. I should try it! I'm just feeling a bit lazy rn</Todo></p>
+
+<p><Todo>Is there a nicer solution than binary search? Or maybe a faster way to calculate how many products can be made at a given point in time? It feels like there should be something better.</Todo></p>
+
