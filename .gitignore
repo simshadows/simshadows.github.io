@@ -51,3 +51,6 @@ pnpm-debug.log*
 # (It's the default output filename for GCC, which I kept since I'm already used to it.)
 a.out
 
+# I also like having temporary text files
+tmp.txt
+

@@ -1177,3 +1177,29 @@ import SolTasksAndDeadlines from "./_solutions.sorting-and-searching/tasks-and-d
 
 <Code code={SolTasksAndDeadlines} lang="py" />
 
+
+## Reading Books [UNFINISHED] <Spec href="https://cses.fi/problemset/task/1631" cdate="2024-02-06" />
+
+<p><Todo>I have some ideas, but otherwise haven't come up with a possible solution for this problem yet.</Todo></p>
+
+
+## Sum of Three Values <Spec href="https://cses.fi/problemset/task/1641" cdate="2024-02-12" />
+
+For a question this simple, this one took an embarrassing amount of time for me to get!
+
+My initial solution was to incrementally build a *sum of two values* dictionary, then for each value, we check if there is a sum of two other values that we can add to it to sum to the target <Eq code="x" />. However, the solution is quite slow:
+
+import SumOfThreeValuesFail02 from "./_solutions.sorting-and-searching/sum-of-three-values--fail02-tle.py?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution">
+    <Code code={SumOfThreeValuesFail02} lang="py" />
+</SpoilerBlock>
+
+I took an embarrassing amount of time writing increasingly optimized versions of it, and even contemplated redoing it in C++.
+
+However, my breakthrough came after realizing we can run a two-pointer algorithm as the inner loop, which is much lighter-weight than dictionary-building even though they're both <Eq code="O(n^2)" />:
+
+import SumOfThreeValuesAlt01 from "./_solutions.sorting-and-searching/sum-of-three-values--alt01-simplified.py?raw" //_
+
+<Code code={SumOfThreeValuesAlt01} lang="py" />
+
