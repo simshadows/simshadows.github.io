@@ -1212,3 +1212,21 @@ import SumOfFourValues from "./_solutions.sorting-and-searching/sum-of-four-valu
 
 <Code code={SumOfFourValues} lang="py" />
 
+
+## Nearest Smaller Values <Spec href="https://cses.fi/problemset/task/1645/" cdate="2024-02-13" />
+
+Right off the bat, a monotonic stack seems to fit the problem very well. It's a very straightforward algorithm, though my first attempt unfortunately involves a binary search since I was still working through how you'd query the stack:
+
+import NearestSmallerValues from "./_solutions.sorting-and-searching/nearest-smaller-values.py?raw" //_
+
+<SpoilerBlock buttonLabel="Initial Python Solution">
+    <Code code={NearestSmallerValues} lang="py" />
+</SpoilerBlock>
+
+After submitting that initial solution, I quickly fixed it up to remove the unnecessary binary search:
+
+import NearestSmallerValuesAlt01 from "./_solutions.sorting-and-searching/nearest-smaller-values--alt01.py?raw" //_
+
+<Code code={NearestSmallerValuesAlt01} lang="py" />
+
+
