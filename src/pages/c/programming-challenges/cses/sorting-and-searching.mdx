@@ -13,6 +13,7 @@ import Eq from "@components/latex/Eq";
 import Trl from "@components/latex/TableRowLatex";
 import Trhl from "@components/latex/TableRowHLatex";
 
+import FigImg from "@components/figures/FigImg";
 import FiguresBlock from "@components/figures/FiguresBlock";
 import Fig from "@components/figures/Fig";
 
@@ -1235,4 +1236,79 @@ import NearestSmallerValuesAlt01 from "./_solutions.sorting-and-searching/neares
 import SubarraySumsI from "./_solutions.sorting-and-searching/subarray-sums-i.py?raw" //_
 
 <Code code={SubarraySumsI} lang="py" />
+
+
+## Subarray Sums II <Spec href="https://cses.fi/problemset/task/1661" cdate="2024-02-14" />
+
+My first attempt was to adapt my Subarray Sums I solution, but to use a multiset (the `Counter` type from the Python standard library) instead of a regular set. However, it kept TLE'ing on 1-2 tests depending on whether you choose `CPython3` or `PyPy3`. I feel like maybe some people devised some very clever Python `dict` hashing worst-case input sequences! Full implementation:
+
+import SubarraySumsIIFail01 from "./_solutions.sorting-and-searching/subarray-sums-ii--fail01-tle.py?raw" //_
+import SubarraySumsIIFail01Submissions from "./_images.sorting-and-searching/subarray-sums-ii--initial-solution-submissions.png" //_
+
+<SpoilerBlock buttonLabel="Python TLE'd Solution">
+    <Code code={SubarraySumsIIFail01} lang="py" />
+    <FiguresBlock>
+        <FigImg src={SubarraySumsIIFail01Submissions} alt="Submission details for my initial Subarray Sums II solution." />
+    </FiguresBlock>
+</SpoilerBlock>
+
+It feels like there isn't much more you can do with Python to make this initial attempt work. However, I came up with a new idea that avoids hashing. The approach uses a two-pointer strategy that first builds a sorted list of tuples of cumulative sums with indices (named `accs`). Importantly, this array is sorted first by the cumulative sum, and then by the index. Without sorting also by index, this algorithm won't work.
+
+<p><Todo>I know that the explanation below (of my first successful solution) is very difficult to understand. I want to rewrite it whenever I have the time.</Todo></p>
+
+We begin with two pointers (`lo` and `hi`) around the start of the list. If the two pointers don't indicate a possible subarray sum that can add up to the `target`, the pointers increment appropriately until it does add up to `target`. For example, if the current subarray sum is bigger than `target`, we'd need to increment `lo`. If the current subarray sum is smaller than `target`, we'd need to increment `hi`.
+
+When we do encounter a subarray sum that adds up to `target`, we now have to deal with the indices that make up the second part of the tuples in `accs`. A subarray sum is only actually valid if `hi`'s index is greater than `lo`'s index.
+
+When we first find a *potentially valid* subarray sum (i.e. it adds up to `target` but not yet known if `hi`'s index is greater than `lo`'s index), the pointers will be at the beginning of the groups of cumulative sums. For example:
+
+```
+target = 3
+
+                       nums = [   7, -3, 3, -3, 1, 3, -4, 3]
+accumulate(sums, initial=0) = [0, 7,  4, 7,  4, 5, 8,  4, 7]
+the `i` part of `enumerate` = [0, 1,  2, 3,  4, 5, 6,  7, 8]
+
+accs = [..., (4,2), (4,4), (4,7),  ...,  (7,1), (7,3), (7,8), ...]
+             ^^^^^                       ^^^^^
+               lo                          hi
+```
+
+In this example, we see that the subarray sum is not valid because although <Eq code="7 - 4 = 3" /> so it satisfies the target sum, the indices are wrong. To get the sum of the subarray `nums[1:2]`, we need the cumulative sum at `nums[1]` minus the cumulative sum at `nums[0]`. However, since `hi`'s index is `1` and `lo`'s index is `2`, this implies that the subarray sum was calculated using the cumulative sum at `nums[0]` minus the cumulative sum at `nums[1]`.
+
+<p><Todo>The explanation above is very difficult to understand without clearer diagrams. I should make diagrams.</Todo></p>
+
+However, now notice what happens when we increment `hi`:
+
+```
+accs = [..., (4,2), (4,4), (4,7),  ...,  (7,1), (7,3), (7,8), ...]
+             ^^^^^                              ^^^^^
+               lo                                 hi
+```
+
+We now have a valid subarray sum because `lo` and `hi` correctly implies the sum of the subarray `nums[2:3]`.
+
+<p><Todo>This is extra-confusing because `accs` has an extra element at the beginning. I need to make this clearer somehow.</Todo></p>
+
+Let's skip a few steps and consider the following state of the algorithm:
+
+```
+accs = [..., (4,2), (4,4), (4,7),  ...,  (7,1), (7,3), (7,8), ...]
+                           ^^^^^                       ^^^^^
+                             lo                          hi
+```
+
+`lo` and `hi` not only correctly implies the sum of the subarray `nums[7:8]` to equal `target`, but also two more subarrays `nums[4:8]` and `nums[2:8]` also equal `target`. We know this because there are two other cumulative sums to the left of `lo` with the same cumulative sum that also have indices lower than `hi`! It's very easy to keep track of this sort of thing in my implementation thanks to the variables `lo_acc` and `lo_count`.
+
+That should now be sufficient background to understand how my first successful solution works:
+
+import SubarraySumsII from "./_solutions.sorting-and-searching/subarray-sums-ii.py?raw" //_
+
+<Code code={SubarraySumsII} lang="py" />
+
+For completeness, I decided to see if my initial Python solution can work in C++, and it turns out that it does! Implementation:
+
+import SubarraySumsIIAlt01 from "./_solutions.sorting-and-searching/subarray-sums-ii--alt01.cpp?raw" //_
+
+<Code code={SubarraySumsIIAlt01} lang="cpp" />
 
