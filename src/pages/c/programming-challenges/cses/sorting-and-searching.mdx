@@ -1312,3 +1312,59 @@ import SubarraySumsIIAlt01 from "./_solutions.sorting-and-searching/subarray-sum
 
 <Code code={SubarraySumsIIAlt01} lang="cpp" />
 
+
+## Subarray Divisibility <Spec href="https://cses.fi/problemset/task/1662/" cdate="2024-02-14" />
+
+Clearly a followup from Subarray Sums II. This problem was initially very intimidating until I realized you can just use the modulo of the cumulative sum!
+
+I started out with my initial attempt at Subarray Sums II (which was in Python) and modified it with the modulo trick. Unfortunately, it TLE'd in a somewhat similar way to my initial attempt at Subarray Sums II. Like Subarray Sums II, maybe the TLE'd test case was also a Python `dict` hashing worst-case input sequence? Implementation:
+
+import SubarrayDivisibilityFail02 from "./_solutions.sorting-and-searching/subarray-divisibility--fail02-tle.py?raw" //_
+import SubarrayDivisibilityFail02Submissions from "./_images.sorting-and-searching/subarray-divisibility--initial-solution-submissions.png" //_
+
+<SpoilerBlock buttonLabel="Python TLE'd Solution">
+    <Code code={SubarrayDivisibilityFail02} lang="py" />
+    <FiguresBlock>
+        <FigImg src={SubarrayDivisibilityFail02Submissions} alt="Submission details for my initial Subarray Divisibility solution." />
+    </FiguresBlock>
+</SpoilerBlock>
+
+This time, I just went straight to rewriting it in C++ since I already had a C++ solution for Subarray Sums II. This became my first passing solution:
+
+import SubarrayDivisibility from "./_solutions.sorting-and-searching/subarray-divisibility.cpp?raw" //_
+
+<Code code={SubarrayDivisibility} lang="cpp" />
+
+I also learnt something interesting about modulo with negative numbers in C++, hence the funny `(((acc + v) % n) + n) % n`.
+
+<SpoilerBlock buttonLabel="explanation of modulo with negative numbers in C++">
+C++ is designed such that the the modulo operator `%` is actually always the remainder of a division. In other words, this will always be true (for <Eq code="b \ne 0" />):
+
+```
+(a/b)*b + a%b == a
+```
+
+To always get a positive number, you can simply add the modulo then modding again:
+
+```
+positive_modulo = ((a % b) + b) % b
+```
+
+Interestingly, the behaviour is different with Python, hence why my Python solution doesn't need this trick.
+</SpoilerBlock>
+
+I also went ahead and adapted my Python two-pointer solution for Subarray Sums II:
+
+import SubarrayDivisibilityAlt01 from "./_solutions.sorting-and-searching/subarray-divisibility--alt01.py?raw" //_
+
+<Code code={SubarrayDivisibilityAlt01} lang="py" />
+
+The only differences are that I calculated the modulos when constructing `accs`:
+
+```py
+target = len(nums)
+accs = sorted((v % target, i) for (i, v) in enumerate(accumulate(nums, initial=0)))
+```
+
+and I changed the conditions in the main loop to `v < 0` and `v > 0`.
+
