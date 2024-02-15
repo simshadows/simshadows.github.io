@@ -1252,7 +1252,7 @@ import SubarraySumsIIFail01Submissions from "./_images.sorting-and-searching/sub
     </FiguresBlock>
 </SpoilerBlock>
 
-It feels like there isn't much more you can do with Python to make this initial attempt work. However, I came up with a new idea that avoids hashing. The approach uses a two-pointer strategy that first builds a sorted list of tuples of cumulative sums with indices (named `accs`). Importantly, this array is sorted first by the cumulative sum, and then by the index. Without sorting also by index, this algorithm won't work.
+It feels like there isn't much more you can do with Python to make this initial attempt work. However, I came up with a new idea that avoids hashing. The approach uses a sliding window strategy that first builds a sorted list of tuples of cumulative sums with indices (named `accs`). Importantly, this array is sorted first by the cumulative sum, and then by the index. Without sorting also by index, this algorithm won't work.
 
 <p><Todo>I know that the explanation below (of my first successful solution) is very difficult to understand. I want to rewrite it whenever I have the time.</Todo></p>
 
@@ -1353,7 +1353,7 @@ positive_modulo = ((a % b) + b) % b
 Interestingly, the behaviour is different with Python, hence why my Python solution doesn't need this trick.
 </SpoilerBlock>
 
-I also went ahead and adapted my Python two-pointer solution for Subarray Sums II:
+I also went ahead and adapted my Python sliding window solution for Subarray Sums II:
 
 import SubarrayDivisibilityAlt01 from "./_solutions.sorting-and-searching/subarray-divisibility--alt01.py?raw" //_
 
@@ -1367,4 +1367,13 @@ accs = sorted((v % target, i) for (i, v) in enumerate(accumulate(nums, initial=0
 ```
 
 and I changed the conditions in the main loop to `v < 0` and `v > 0`.
+
+
+## Subarray Distinct Values <Spec href="https://cses.fi/problemset/task/2428/" cdate="2024-02-15" />
+
+Very straightforward sliding window strategy:
+
+import SubarrayDistinctValues from "./_solutions.sorting-and-searching/subarray-distinct-values.py?raw" //_
+
+<Code code={SubarrayDistinctValues} lang="py" />
 
