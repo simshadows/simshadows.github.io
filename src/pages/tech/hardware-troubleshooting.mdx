@@ -1,0 +1,27 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Computer Hardware Troubleshooting
+description: Some of my notes on hardware troubleshooting!
+keywords: []
+
+hidetoc: true
+---
+
+## Notes on a friend's experience with faulty RAM (2024-02-21)
+
+Symptoms they experienced happened randomly. Sometimes, the computer works as if nothing was wrong. Rebooting usually "fixes" it for a while, but over time, the corruption symptoms start appearing.
+
+Specific symptoms:
+
+- Downloaded files are corrupted or pieces missing, cannot extract ZIP (and similar) files, CRC check fails, and torrents having missing pieces during recheck no matter how many times you redownload and recheck.
+- Problems loading into videogames (infinite loading time, or crashes).
+- Many BSOD with weird random error codes. Sometimes no BSOD, and the computer just crashes/freezes into reboot.
+- Program freezes and crash to desktop.
+- Chrome tabs crashing randomly.
+
+Some other interesting observations:
+
+- In the torrent client, torrent statistics seem off. For example, `4.2 MiB` might show up when it's likely wrong. (4.2 MiB is `0xffffffff` bytes, which is an awfully specific number.)
+
+You may need to use a tool like MemTest86, which boots up via. USB drive. Diagnosing RAM faults may be difficult within an OS like Windows due to physical memory being managed by the OS.
+
