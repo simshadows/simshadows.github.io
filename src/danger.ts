@@ -20,4 +20,11 @@ export function isStrArray(obj: unknown): obj is string[] {
     }
     return true;
 }
+export function isNumArray(obj: unknown): obj is number[] {
+    if (!Array.isArray(obj)) return false;
+    for (const v of obj) {
+        if (typeof v !== "number") return false;
+    }
+    return true;
+}
 
