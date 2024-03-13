@@ -1,0 +1,73 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Dynamic Programming - CSES Problem Set Solutions
+description: My solutions and thoughts for the CSES problem set!
+keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data structures"]
+---
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import Eqref from "@components/latex/Eqref";
+import GatherLatex from "@components/latex/GatherLatex";
+import Eq from "@components/latex/Eq";
+import Trl from "@components/latex/TableRowLatex";
+import Trhl from "@components/latex/TableRowHLatex";
+
+import FigImg from "@components/figures/FigImg";
+import FiguresBlock from "@components/figures/FiguresBlock";
+import Fig from "@components/figures/Fig";
+
+import Code from "@components/Code.astro";
+import SpoilerBlock from "@components/SpoilerBlock.astro";
+import Todo from "@components/Todo";
+
+import Spec from "./../_shared.Spec.astro"; //_
+import Intro from "./_common.intro.astro"; //_
+
+import DArr from "./_common.DArr.astro"; //_
+import UArr from "./_common.UArr.astro"; //_
+import LArr from "./_common.LArr.astro"; //_
+import RArr from "./_common.RArr.astro"; //_
+import DLArr from "./_common.DLArr.astro"; //_
+import URArr from "./_common.URArr.astro"; //_
+
+
+<Intro />
+
+
+## Dice Combinations <Spec href="https://cses.fi/problemset/task/1633" cdate="2024-03-13" />
+
+My first attempt was a top-down implementation, though it comes to no surprise that it causes runtime errors (presumably stack overflow):
+
+import SolDiceCombinations01 from "./_solutions.dynamic-programming/dice-combinations--01-fail--stackoverflow.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Solution (Stack Overflow)">
+    <Code code={SolDiceCombinations01} lang="py" />
+</SpoilerBlock>
+
+Setting a higher `setrecursionlimit` fixed the runtime errors, but instead TLE's. Not too surprising. Implementation:
+
+import SolDiceCombinations02 from "./_solutions.dynamic-programming/dice-combinations--02-fail--tle.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Solution (TLE)">
+    <Code code={SolDiceCombinations02} lang="py" />
+</SpoilerBlock>
+
+Switching to a simple top-down approach passed all tests:
+
+import SolDiceCombinations03 from "./_solutions.dynamic-programming/dice-combinations--03-success.py?raw" //_
+
+<Code code={SolDiceCombinations03} lang="py" />
+
+Switching to only storing a fixed-size window reduced the worst test case runtime from 1.00s to 0.44s:
+
+import SolDiceCombinations04 from "./_solutions.dynamic-programming/dice-combinations--04-success.py?raw" //_
+
+<Code code={SolDiceCombinations04} lang="py" />
+
+Making it so we don't re-add all six elements of `tab` anymore turned out to perform worse:
+
+import SolDiceCombinations05 from "./_solutions.dynamic-programming/dice-combinations--05-success.py?raw" //_
+
+<Code code={SolDiceCombinations05} lang="py" />
+
