@@ -1,0 +1,78 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: bash and Linux CLI Utilities Cheatsheet
+description: My bash cheatsheet because I forget names and syntax a lot.
+keywords: ["programming", "scripting", "terminal", "linux", "unix", "command line", "cli", "sh", "zsh", "bourne shell", "system administration"]
+---
+
+import Code from "@components/Code.astro";
+import Todo from "@components/Todo";
+
+
+*This is NOT a first-time learning resource. Some parts are intentionally out of order and kept as.*
+
+## Resources
+
+References:
+
+- [**Learn X in Y minutes - bash**](https://learnxinyminutes.com/docs/bash/) `(learnxinyminutes.com)`
+- [**Learn X in Y minutes - sed**](https://learnxinyminutes.com/docs/sed/) `(learnxinyminutes.com)`
+
+Tutorials:
+
+- [*Bash Guide for Beginners* by Machtelt Garrels](https://linux.die.net/Bash-Beginners-Guide/)
+- [*Advanced Bash-Scripting Guide* by Mendel Cooper](https://tldp.org/LDP/abs/html/)
+
+
+## bash
+
+
+### Basics and I/O
+
+```
+$ ./demo.sh foo bar baz
+```
+
+import SrcScriptArgs from "./_sources/scriptargs.sh?raw" //_
+
+<Code code={SrcScriptArgs} lang="bash" />
+
+
+### Variables & Assignment
+
+import SrcVariables from "./_sources/variables.sh?raw" //_
+
+<Code code={SrcVariables} lang="bash" />
+
+
+### Structure & Control Flow
+
+import SrcControlFlow from "./_sources/controlflow.sh?raw" //_
+
+<Code code={SrcControlFlow} lang="bash" />
+
+
+## Summary of Basic CLI Utilities
+
+<Todo>Whirlwind tour of everything including sed and awk.</Todo>
+
+
+## sed
+
+<Todo>This</Todo>
+
+
+## awk
+
+<Todo>This</Todo>
+
+
+## Some Common Sysadmin Utilities
+
+<Todo>Whirlwind tour of everything including sed and awk.</Todo>
+
+
+## TODO
+
+<Todo>`jobs`, `fg`, `bg`, `kill`</Todo>
+

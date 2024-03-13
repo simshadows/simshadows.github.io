@@ -27,6 +27,7 @@ const {
 <ul>
     <li><a href="/c/cheatsheets/"><b>Cheatsheets</b></a>
         <ul>
+            {showWIP && <li><a href="/c/cheatsheets/bash/"><b>bash</b></a> <Wip /></li>}
             {showWIP && <li><a href="/c/cheatsheets/cpp/"><b>C++</b></a> <Wip /></li>}
             {showWIP && <li><a href="/c/cheatsheets/general/"><b>General</b></a> <Wip /></li>}
             {showWIP && <li><a href="/c/cheatsheets/html-css/"><b>HTML/CSS</b></a> <Wip /></li>}
@@ -62,6 +63,7 @@ const {
             <li><a href="/c/programming-challenges/leetcode/"><b>Leetcode</b></a></li>
         </ul>
     </li>
+    {showWIP && <li><a href="/c/job-hunt/behavioural/"><b>Behavioural Interviews</b></a> <Wip /></li>}
 </ul>
 
 <h4>Math Cheatsheets</h4>
