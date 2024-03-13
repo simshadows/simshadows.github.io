@@ -1,0 +1,55 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Graph Algorithms - CSES Problem Set Solutions
+description: My solutions and thoughts for the CSES problem set!
+keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data structures"]
+---
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import Eqref from "@components/latex/Eqref";
+import GatherLatex from "@components/latex/GatherLatex";
+import Eq from "@components/latex/Eq";
+import Trl from "@components/latex/TableRowLatex";
+import Trhl from "@components/latex/TableRowHLatex";
+
+import FigImg from "@components/figures/FigImg";
+import FiguresBlock from "@components/figures/FiguresBlock";
+import Fig from "@components/figures/Fig";
+
+import Code from "@components/Code.astro";
+import SpoilerBlock from "@components/SpoilerBlock.astro";
+import Todo from "@components/Todo";
+
+import Spec from "./../_shared.Spec.astro"; //_
+import Intro from "./_common.intro.astro"; //_
+
+import DArr from "./_common.DArr.astro"; //_
+import UArr from "./_common.UArr.astro"; //_
+import LArr from "./_common.LArr.astro"; //_
+import RArr from "./_common.RArr.astro"; //_
+import DLArr from "./_common.DLArr.astro"; //_
+import URArr from "./_common.URArr.astro"; //_
+
+
+<Intro />
+
+
+## Counting Rooms <Spec href="https://cses.fi/problemset/task/1192" cdate="2024-03-13" />
+
+My solution involves iterating through every cell of the graph, and if a room is discovered, we flood fill the room with `'#'` characters and increment a counter by 1.
+
+My first attempt involved a recursive flood fill, which caused segfaults due to stack overflow:
+
+import SolCountingRooms01 from "./_solutions.graph-algorithms/counting-rooms--01-fail--tle-and-segfault.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Solution (Stack Overflow)">
+    <Code code={SolCountingRooms01} lang="py" />
+</SpoilerBlock>
+
+Switching the flood fill implementation to an iterative one passed all test cases when using PyPy3 (but TLE's when using CPython3):
+
+import SolCountingRooms02 from "./_solutions.graph-algorithms/counting-rooms--02-pass.py?raw" //_
+
+<Code code={SolCountingRooms02} lang="py" />
+
