@@ -53,3 +53,37 @@ import SolCountingRooms02 from "./_solutions.graph-algorithms/counting-rooms--02
 
 <Code code={SolCountingRooms02} lang="py" />
 
+
+## Labyrinth <Spec href="https://cses.fi/problemset/task/1193" cdate="2024-03-16" />
+
+This took a very unnecessarily long path towards reaching a successful Python solution that started with a naive BFS solution. That TLE'd, so I tried multiple A\* variants which also TLE'd. When I circled back around to trying BFS with a simple optimization, that one passed.
+
+TLE'd solutions in the order I tried them:
+
+import SolLabyrinth01 from "./_solutions.graph-algorithms/labyrinth--01-fail-tle-bfs.py?raw" //_
+import SolLabyrinth02 from "./_solutions.graph-algorithms/labyrinth--02-fail-tle-astar-manhattan.py?raw" //_
+import SolLabyrinth03 from "./_solutions.graph-algorithms/labyrinth--03-fail-tle-seen-optimization.py?raw" //_
+import SolLabyrinth06 from "./_solutions.graph-algorithms/labyrinth--06-fail-tle-astar-doubleended.py?raw" //_
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution 1: BFS">
+    <Code code={SolLabyrinth01} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution 2: A* (Manhattan Distance Heuristic)">
+    <Code code={SolLabyrinth02} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution 3: A* with a 'seen set' optimization">
+    <Code code={SolLabyrinth03} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="TLE'd Python Solution 4: Double-ended A*">
+    <Code code={SolLabyrinth06} lang="py" />
+</SpoilerBlock>
+
+When I applied the 'seen set' optimization to my original BFS solution, it passed all tests in PyPy3 (but TLE's in CPython3):
+
+import SolLabyrinth07 from "./_solutions.graph-algorithms/labyrinth--07-pass-bfs-with-optimization.py?raw" //_
+
+<Code code={SolLabyrinth07} lang="py" />
+
