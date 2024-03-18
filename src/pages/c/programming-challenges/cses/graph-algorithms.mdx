@@ -56,7 +56,7 @@ import SolCountingRooms02 from "./_solutions.graph-algorithms/counting-rooms--02
 
 ## Labyrinth <Spec href="https://cses.fi/problemset/task/1193" cdate="2024-03-16" />
 
-This took a very unnecessarily long path towards reaching a successful Python solution that started with a naive BFS solution. That TLE'd, so I tried multiple A\* variants which also TLE'd. When I circled back around to trying BFS with a simple optimization, that one passed.
+This took a very unnecessarily long path towards reaching a successful Python solution that started with a naive BFS solution. That TLE'd, so I tried multiple A\* variants which also TLE'd. When I circled back around to trying BFS with a simple optimization that reduced overhead, that one passed.
 
 TLE'd solutions in the order I tried them:
 
@@ -86,4 +86,39 @@ When I applied the 'seen set' optimization to my original BFS solution, it passe
 import SolLabyrinth07 from "./_solutions.graph-algorithms/labyrinth--07-pass-bfs-with-optimization.py?raw" //_
 
 <Code code={SolLabyrinth07} lang="py" />
+
+
+## Building Roads <Spec href="https://cses.fi/problemset/task/1666" cdate="2024-03-18" />
+
+I used a DFS approach, first traversing every node reachable from node 1 and marking them all as seen. After the DFS operation concludes and there are still unseen nodes, we build a road from node 1 to any unseen node, then we DFS from that unseen node. We repeat until all nodes have been seen.
+
+I initially implemented DFS using recursion, but ran into stack overflow errors:
+
+import SolBuildingRoads02 from "./_solutions.graph-algorithms/building-roads--02-fail-stackoverflow.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Solution">
+    <Code code={SolBuildingRoads02} lang="py" />
+</SpoilerBlock>
+
+Reimplementing DFS using a stack data structure passed all tests:
+
+import SolBuildingRoads03 from "./_solutions.graph-algorithms/building-roads--03-pass-dfs.py?raw" //_
+
+<Code code={SolBuildingRoads03} lang="py" />
+
+I also implemented a simple graph representation optimization, which did improve the performance slightly:
+
+import SolBuildingRoads04 from "./_solutions.graph-algorithms/building-roads--04-pass-graph-rep-optimization.py?raw" //_
+
+<SpoilerBlock buttonLabel="Alternative Python 1">
+    <Code code={SolBuildingRoads04} lang="py" />
+</SpoilerBlock>
+
+I also tried union find to replace the `unseen` set, but it ran slightly slower:
+
+import SolBuildingRoads05 from "./_solutions.graph-algorithms/building-roads--05-pass-attempted-dsu-optimization.py?raw" //_
+
+<SpoilerBlock buttonLabel="Alternative Python 2">
+    <Code code={SolBuildingRoads05} lang="py" />
+</SpoilerBlock>
 
