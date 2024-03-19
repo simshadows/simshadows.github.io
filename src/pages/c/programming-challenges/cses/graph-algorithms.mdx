@@ -56,7 +56,7 @@ import SolCountingRooms02 from "./_solutions.graph-algorithms/counting-rooms--02
 
 ## Labyrinth <Spec href="https://cses.fi/problemset/task/1193" cdate="2024-03-16" />
 
-This took a very unnecessarily long path towards reaching a successful Python solution that started with a naive BFS solution. That TLE'd, so I tried multiple A\* variants which also TLE'd. When I circled back around to trying BFS with a simple optimization that reduced overhead, that one passed.
+This took a very unnecessarily long path towards reaching a successful Python solution that started with a naive BFS solution. That TLE'd, so I tried multiple A\* variants which also TLE'd. When I circled back around to trying BFS with a simple optimization that reduced overhead, which passed.
 
 TLE'd solutions in the order I tried them:
 
@@ -130,4 +130,13 @@ A very simple BFS solution:
 import SolMessageRoute01 from "./_solutions.graph-algorithms/message-route--01-pass-bfs.py?raw" //_
 
 <Code code={SolMessageRoute01} lang="py" />
+
+
+## Building Teams <Spec href="https://cses.fi/problemset/task/1668/" cdate="2024-03-19" />
+
+The idea is to BFS, and assign one layer of nodes at a time. When we check through a layer's connections, if we see that there is a connection within the layer, we terminate the algorithm early and print "IMPOSSIBLE". Full solution:
+
+import SolBuildingTeams04 from "./_solutions.graph-algorithms/building-teams--04-pass-bfs.py?raw" //_
+
+<Code code={SolBuildingTeams04} lang="py" />
 

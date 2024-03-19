@@ -39,7 +39,7 @@ import URArr from "./_common.URArr.astro"; //_
 
 My first attempt was a top-down implementation, though it comes to no surprise that it causes runtime errors (presumably stack overflow):
 
-import SolDiceCombinations01 from "./_solutions.dynamic-programming/dice-combinations--01-fail--stackoverflow.py?raw" //_
+import SolDiceCombinations01 from "./_solutions.dynamic-programming/dice-combinations--01-fail-stackoverflow.py?raw" //_
 
 <SpoilerBlock buttonLabel="Failed Python Solution (Stack Overflow)">
     <Code code={SolDiceCombinations01} lang="py" />
@@ -47,7 +47,7 @@ import SolDiceCombinations01 from "./_solutions.dynamic-programming/dice-combina
 
 Setting a higher `setrecursionlimit` fixed the runtime errors, but instead TLE's. Not too surprising. Implementation:
 
-import SolDiceCombinations02 from "./_solutions.dynamic-programming/dice-combinations--02-fail--tle.py?raw" //_
+import SolDiceCombinations02 from "./_solutions.dynamic-programming/dice-combinations--02-fail-tle.py?raw" //_
 
 <SpoilerBlock buttonLabel="Failed Python Solution (TLE)">
     <Code code={SolDiceCombinations02} lang="py" />
