@@ -165,3 +165,16 @@ Interestingly, I switch the line `elif level[nxt]:` to `elif seen[nxt]:` and it 
 
 <Todo>Find out why!</Todo>
 
+
+## Monsters <Spec href="https://cses.fi/problemset/task/1194/" cdate="2024-03-20" />
+
+I used a BFS solution that deals with one layer at a time.
+
+The main loop starts by propagating monster positions by one layer, blocking off squares by writing `'#'` characters to the graph. Where the monsters are, they may as well be walls. The second part within the main loop propagates player positions by one layer.
+
+For convenience, I add a new column to the right-most and a new row at the bottom-most, all filled with `'X'`. This character represents the boundary of the graph. This works not just when our search algorithm attempts to move past the right edge or the bottom edge, but also when the algo attempts to move past the left edge or the top edge. This is because of Python's negative indexing, meaning an index of `-1` will reference the end of the list. With the boundary indicated by `'X'` characters, we no longer need to explicitly check if an index exists within the graph, or if the player has reached the boundary.
+
+import SolMonsters01 from "./_solutions.graph-algorithms/monsters--01-pass-bfs.py?raw" //_
+
+<Code code={SolMonsters01} lang="py" />
+
