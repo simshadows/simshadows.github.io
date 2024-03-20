@@ -178,3 +178,12 @@ import SolMonsters01 from "./_solutions.graph-algorithms/monsters--01-pass-bfs.p
 
 <Code code={SolMonsters01} lang="py" />
 
+
+## Shortest Routes I <Spec href="https://cses.fi/problemset/task/1671/" cdate="2024-03-20" />
+
+I used a simple modified Dijkstra's algorithm that passes through all nodes. Note that every time we pop from the priority queue, it is guaranteed that the distance to that node is the shortest distance to that node, so for convenience, we can prune the search by ignoring anything where we already know the shortest path to.
+
+import SolShortestRoutesI02 from "./_solutions.graph-algorithms/shortest-routes-i--02-pass-dijkstra.py?raw" //_
+
+<Code code={SolShortestRoutesI02} lang="py" />
+
