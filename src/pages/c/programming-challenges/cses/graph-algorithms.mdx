@@ -140,3 +140,28 @@ import SolBuildingTeams04 from "./_solutions.graph-algorithms/building-teams--04
 
 <Code code={SolBuildingTeams04} lang="py" />
 
+
+## Round Trip <Spec href="https://cses.fi/problemset/task/1669/" cdate="2024-03-20" />
+
+I went for a DFS/backtracking approach. We basically attempt every possible path, going as deep as possible and if we find we can loop back to another node along the current path, we terminate.
+
+Full implementation:
+
+import SolRoundTrip04 from "./_solutions.graph-algorithms/round-trip--04-pass-backtracking.py?raw" //_
+
+<Code code={SolRoundTrip04} lang="py" />
+
+In theory, if the entire graph is fully connected (i.e. there is always a path between any two nodes in the entire graph), we can always start our algorithm at any arbitrary node, and that would be enough to solve the problem. However, we find that there are test cases involving multiple components (i.e. you can find two nodes in the graph such that there is no path between them). To test this, I added a single break (the third-last line), which failed some tests (as predicted if the graph has multiple components):
+
+import SolRoundTrip06 from "./_solutions.graph-algorithms/round-trip--06-fail-experiment.py?raw" //_
+
+<SpoilerBlock buttonLabel="Experimental Code">
+    <Code code={SolRoundTrip06} lang="py" />
+</SpoilerBlock>
+
+Multiple components is the reason why the `seen` set (implemented as a list) and the `for i in range(1, n + 1):` loop are included in my solution. The `seen` set and that loop lets my code scan for components that haven't been dealt with yet before terminating.
+
+Interestingly, I switch the line `elif level[nxt]:` to `elif seen[nxt]:` and it passes all the tests, but I'm still not entirely sure why.
+
+<Todo>Find out why!</Todo>
+
