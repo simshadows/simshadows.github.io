@@ -1,0 +1,106 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: My Notes On SWE Technical Interviews
+description: Some of my notes on technical interviews.
+keywords: []
+
+hidetoc: true
+---
+
+## Resources
+
+- [AusDevs Wiki: Interviewing Resources](https://ausdevs.com/resources/interviewing/)
+    - *I actually help maintain this wiki. We aim to make it a great meta-resource!*
+- [Tech Interview Handbook: Coding interview preparation](https://www.techinterviewhandbook.org/coding-interview-prep/)
+
+
+## Checklist for the days before the interview
+
+- Know how you can introduce yourself.
+    - [This page from Tech Interview Handbook](https://www.techinterviewhandbook.org/self-introduction/)
+- Have some questions prepared to ask at the end.
+    - [This page from Tech Interview Handbook](https://www.techinterviewhandbook.org/final-questions/)
+
+
+## Checklist for the hour before the interview
+
+Technical stuff:
+
+- Be presentable!
+    - Dress well!
+    - Shave if you need to.
+- Clean glasses?
+- Video conferencing setup is ready
+    - If it's a Teams interview, open the Teams link and set the camera, microphone, and headphones.
+    - Optionally, set up something like Nvidia Broadcast.
+    - Optionally, set up your lighting so that you're well lit for the camera.
+- Depending on the coding interview platform, you might want to set up an account.
+    - Also see if there are more settings you can set up.
+- Open Microsoft Paint so you can scribble diagrams.
+- Open another browser tab, ready to look up language documentation.
+    - Optionally, also open up this page!
+    - Optionally, also open up [one of my language cheatsheets](https://www.simshadows.com/c/cheatsheets/python/)!
+- Fill up your water bottle!
+- Try to use the bathroom so you're not uncomfortable.
+
+Behavioural stuff:
+
+- Be comfortable with your self-introduction.
+- Be comfortable with the questions you will ask at the end.
+
+
+## Summary of General Tips
+
+General flow:
+
+1. **Clarify** the question.
+    1. **Paraphrase/repeat** the question back.
+    2. Clarify **what inputs** you have.
+    3. Clarify **assumptions**.
+        - Also consider **input format**. *(Negatives? Floats? Nulls? Empty? Duplicates?)*
+    4. Ask about **input range**.
+    5. Work through some **simple examples**.
+2. Discuss **approaches**.
+    - Identify and explain them at a high-level.
+        - **Tradeoffs**?
+        - Time/space **complexity**?
+    - Consider:
+        - **Visualizing**/Drawing
+        - **Solving by hand**.
+        - Come up with more **examples**.
+        - **Decompose** the problem! (E.g. a grouping step? A hash function?)
+3. **Optimize** the chosen approach.
+    - Different data structures?
+    - In-place modifications?
+4. **Write code** while talking through it.
+    - Point out any corner-cutting (such as use of `.split()` rather than regex).
+5. **Write test cases**.
+    - Edge cases!
+    - Worst case time/space performance!
+6. Implement some **improvements**?
+    - *(Also refer to STEP 3)*
+    - Refactor redundant work?
+    - Early termination?
+7. Revisit **time/space complexity**.
+8. **Discuss more improvements** that you could do if you had time.
+9. **Revisit tradeoffs?**
+
+
+## Common Design Approaches
+
+(TODO: I should write this out!)
+
+
+## Word Bank
+
+It can be easy to forget the names very trivial things sometimes, even if you're comfortable using the concepts intuitively. I'm perhaps more comfortable than most when it comes to data structures and algorithms, but here are the things that I still need to be reminded of the names for:
+
+- Graph data structures:
+    - **Adjacency List**: `[[2], [2], [0,1]]`
+    - **Adjacency Matrix** `[[0,0,1], [0,0,1], [1,1,0]]`
+- BST traversals:
+    - **Preorder**: node &#10132; left &#10132; right
+    - **Inorder**: left &#10132; node &#10132; right
+    - **Postorder**: left &#10132; right &#10132; node
+    - **Level Order**: BFS.
+
