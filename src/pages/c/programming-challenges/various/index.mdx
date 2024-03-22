@@ -1,0 +1,49 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Various Programming Challenge Solutions
+description: My solutions and thoughts for various programming challenges!
+keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data structures", "kattis"]
+---
+
+import AlignLatex from "@components/latex/AlignLatex";
+import DisplayLatex from "@components/latex/DisplayLatex";
+import Eqref from "@components/latex/Eqref";
+import GatherLatex from "@components/latex/GatherLatex";
+import Eq from "@components/latex/Eq";
+import Trl from "@components/latex/TableRowLatex";
+import Trhl from "@components/latex/TableRowHLatex";
+
+import FigImg from "@components/figures/FigImg";
+import FiguresBlock from "@components/figures/FiguresBlock";
+import Fig from "@components/figures/Fig";
+
+import Intro from "../_shared.intro.astro"; //_
+
+import Code from "@components/Code.astro";
+import SpoilerBlock from "@components/SpoilerBlock.astro";
+import Todo from "@components/Todo";
+
+import Spec from "./../_shared.Spec.astro"; //_
+
+
+<Intro />
+
+
+## Kattis: Need for Speed <Spec href="https://open.kattis.com/problems/speed" cdate="2024-03-21" />
+
+*This problem was solved in the context of competitive programming practice, solving problems in a group setting. I was the writer, but other members of the group provided the vast majority of the thinking/solving.*
+
+The group's original solution:
+
+import SolNeedForSpeed01 from "./_solutions.kattis/need-for-speed--01-pass.py?raw" //_
+
+<SpoilerBlock buttonLabel="Original Group Solution">
+    <Code code={SolNeedForSpeed01} lang="py" />
+</SpoilerBlock>
+
+I also did a little bit of cleanup afterwards on my own for a nicer solution:
+
+import SolNeedForSpeed02 from "./_solutions.kattis/need-for-speed--02-pass.py?raw" //_
+
+<Code code={SolNeedForSpeed02} lang="py" />
+
