@@ -33,7 +33,7 @@ Common third-party library references:
 
 ## Misc.
 
-Python Documentation - [**Built-In Functions**](https://docs.python.org/3/library/functions.html), [**Built-In Exceptions**](https://docs.python.org/3/library/exceptions.html#concrete-exceptions)<br />
+Python Documentation - [**Built-In Functions**](https://docs.python.org/3/library/functions.html), [**Built-In Exceptions**](https://docs.python.org/3/library/exceptions.html#concrete-exceptions), [**Data Model**](https://docs.python.org/3/reference/datamodel.html)<br />
 Python Documentation - [**`functools`**](https://docs.python.org/3/library/functools.html), [**`itertools`**](https://docs.python.org/3/library/itertools.html), [**`heapq`**](https://docs.python.org/3/library/heapq.html)
 
 ```py
@@ -45,7 +45,7 @@ itertools.accumulate(myiterable, lambda acc, cur: acc * cur, initial=1) # Return
 filter(lambda x: x > 0, myiterable) # Returns an iterator
 
 # `heapq` implements some general-purpose functions that aren't just heap operations
-heapq.merge(*myiterables, key=None, reverse=False) # Merge multiple sorted iterables into one sorted iterable
+heapq.merge(*myiterables, key=None, reverse=False) # multiple sorted iterables --> one sorted iterable
 heapq.nlargest(n, myiterable, key=None)  # Returns a list. For large n, prefer to just use sorted().
 heapq.nsmallest(n, myiterable, key=None) # Returns a list. For large n, prefer to just use sorted().
 
@@ -56,6 +56,14 @@ raise NotImplementedError("your error description")
 zip([1, 2, 3], [a, b, c], strict=True) # (1, a), (2, b), (3, c)   # strict=True throws ValueError if iterable "lengths" mismatch
 zip([1, 2, 3], [x, y]) # (1, x), (2, y)   # strict=False is by default. Takes the shortest "length".
 itertools.zip_longest("ABCD", "xy", fillvalue="-") # ("A", "x"), ("B", "y"), ("C", "-"), ("D", "-")
+
+# For the other magic methods, look at the Data Model documentation.
+class MyClass(MyBaseClass):
+    __slots__ = ("_foo",)
+    def __init__(self, foo):
+        super().__init__(foo)
+        self._foo = foo
+x = MyClass("lmao")
 ```
 
 
@@ -293,7 +301,7 @@ Python lacks sorted associative containers like C++'s `std::set` and `std::map`.
 from collections import defaultdict
 
 class Trie:
-    __slots__ = ["_root"]
+    __slots__ = ("_root",)
 
     def __init__(self):
         op = lambda: defaultdict(op)
