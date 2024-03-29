@@ -1,7 +1,7 @@
 ---
 layout: "@layouts/MDLayout.astro"
-title: My Notes On SWE Technical Interviews
-description: Some of my notes on technical interviews.
+title: My Notes On SWE Technical Coding Interviews
+description: Some of my notes on technical coding interviews.
 keywords: []
 
 hidetoc: true
@@ -14,12 +14,24 @@ hidetoc: true
 - [Tech Interview Handbook: Coding interview preparation](https://www.techinterviewhandbook.org/coding-interview-prep/)
 
 
+## Some General Tips
+
+- In my experience, recruiters can tell you the interview will be in a certain format, but the actual interviewer may give you something different. Be prepared for it!
+    - For one interview, I was given a Microsoft Teams and a Codility link well in advance, in the email the recruiters/schedulers sent to confirm my interview time. I emailed back to ask if I am required to screen share, and I got a response back that I will not be screen sharing during the interview. When it came down to the interview, I joined the Teams call and the interviewer asked me to screen share and open an IDE. **My recommendation is to always prepare your IDE and screen just in case.**
+    - Also be prepared for entirely different formats. You often hear about coding interviews focused on one question. However, some technical interviews in my experience may also be multiple smaller/easier questions, or you may not have enough time to go through the same rigorous discussion as you'd expect. **Always ask about the format/expectations of the interview early on, and be prepared to adapt to it.**
+- **Expect to possibly be quizzed on various technical things, likely directly relevant for the role** (e.g. if it's a role involving Kubernetes, you may get quizzed on Kubernetes). For backend roles, I've also been asked about basic programming concepts (e.g. *pass by value* vs. *pass by reference*), OOP, and concurrency.
+    - In my experience, **interviewers may ask technical questions specific to your resume**. These interviewers specifically tell me they're looking at my resume and noticed specific technologies or areas of work that they want to quiz me on. For example, I have included Kubernetes, Docker, and Golang in my resume, which have been of particular interest to interviewers (possibly since they're rarer and more sought-after skills).
+
+
 ## Checklist for the days before the interview
 
 - Know how you can introduce yourself.
     - [This page from Tech Interview Handbook](https://www.techinterviewhandbook.org/self-introduction/)
 - Have some questions prepared to ask at the end.
     - [This page from Tech Interview Handbook](https://www.techinterviewhandbook.org/final-questions/)
+- Look or ask around for what to expect out of the interview.
+    - Maybe some of your friends have done it already?
+    - Maybe the format will be similar to last year's interviews?
 
 
 ## Checklist for the hour before the interview
@@ -36,6 +48,7 @@ Technical stuff:
     - Optionally, set up your lighting so that you're well lit for the camera.
 - Depending on the coding interview platform, you might want to set up an account.
     - Also see if there are more settings you can set up.
+- **Always have your development environment/IDE ready to screen share. Do this even if you were told you don't need it.**
 - Open Microsoft Paint so you can scribble diagrams.
 - Open another browser tab, ready to look up language documentation.
     - Optionally, also open up this page!
@@ -49,10 +62,13 @@ Behavioural stuff:
 - Be comfortable with the questions you will ask at the end.
 
 
-## Summary of General Tips
+## Summary of General Tips For Coding
 
 General flow:
 
+0. **Ask about the format/expectations of the interview.**
+    - How many questions?
+    - How much time do you have?
 1. **Clarify** the question.
     1. **Paraphrase/repeat** the question back.
     2. Clarify **what inputs** you have.
