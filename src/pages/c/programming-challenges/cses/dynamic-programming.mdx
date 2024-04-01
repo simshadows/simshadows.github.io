@@ -134,7 +134,7 @@ import SolMinimizingCoins05 from "./_solutions.dynamic-programming/minimizing-co
 
 ## Coin Combinations I <Spec href="https://cses.fi/problemset/task/1635" cdate="2024-04-01" />
 
-Orderings appear significant, which makes subproblem selection easier. My chosen subproblem is to find the number of combinations for each possible target sum <Eq code="0" /> to <Eq code="x" />. For <Eq code="n" /> coins, the runtime is <Eq code="O(xn)" />:
+Different orderings of the same set of coins count as different combinations, which makes subproblem selection easier. My chosen subproblem is to find the number of combinations for each possible target sum <Eq code="0" /> to <Eq code="x" />. For <Eq code="n" /> coins, the runtime is <Eq code="O(xn)" />:
 
 <DisplayLatex code="
     C = \braces{c_0, \dots, c_{n-1}} = \text{set of all coin values}
@@ -169,5 +169,40 @@ import SolCoinCombinationsI02 from "./_solutions.dynamic-programming/coin-combin
 
 ## Coin Combinations II [UNFINISHED] <Spec href="https://cses.fi/problemset/task/1636" cdate="2024-04-01" />
 
-<Todo>Start this!</Todo>
+If we used the strategy from Coin Combinations I, we run into the problem of needing to avoid double-counting combinations. To deal with this, maybe we need a two-dimensional table: one dimension for coin value, and another dimension for coin sum. The following subproblem comes to mind, which may naively run in <Eq code="O(x^2 n)" /> time:
+
+<DisplayLatex code="
+    C = \braces{c_1, \dots, c_n} = \text{set of all coin values}
+" />
+<GatherLatex code="
+    F\brackets{0, x} =
+    \begin{cases}
+        1 &\text{ if } x = 0 \\
+        0 &\text{ otherwise}
+    \end{cases}
+    \\
+    F\brackets{i, x} =
+    \begin{cases}
+        \displaystyle
+        0 \vphantom{\sum_C^A}
+        &\text{ if } x < 0 \\
+        \displaystyle
+        \sum_{j = 0}^{\infty}{
+            F\brackets{i - 1, x - j c_i}
+        }
+        &\text{ otherwise}
+    \end{cases}
+" />
+
+I say "naively" because there may be a way to cut that runtime to <Eq code="O(xn)" /> with a clever optimization. I'll get to my idea for that later.
+
+I am very certain it will TLE (even if I were to add the optimization), but I made an <Eq code="O(x^2 n)" /> top-down Python implementation anyway just for fun. It passes some tests, but TLE's everything else. Good to know that we're not getting any wrong answers! Implementation:
+
+import SolCoinCombinationsII01 from "./_solutions.dynamic-programming/coin-combinations-ii--01-fail-tle-topdown.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (TLE)">
+    <Code code={SolCoinCombinationsII01} lang="py" />
+</SpoilerBlock>
+
+<Todo>Continue this!</Todo>
 
