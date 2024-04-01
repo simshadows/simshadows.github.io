@@ -37,6 +37,21 @@ import URArr from "./_common.URArr.astro"; //_
 
 ## Dice Combinations <Spec href="https://cses.fi/problemset/task/1633" cdate="2024-03-13" />
 
+The subproblem is simply a Fibonacci-esque recursive function:
+
+<GatherLatex code="
+    F_{<0} = 0
+    \qquad
+    F_0 = 1
+    \\
+    F_n = F_{n-1} + F_{n-2} + F_{n-3} + F_{n-4} + F_{n-5} + F_{n-6}
+    \quad\text{for}\quad n > 0
+" />
+
+With DP, this runs in <Eq code="O(n)" /> time. Considering how the input bounds set <Eq code="n \le {10}^6" />, a test case can in theory run a hotspot <Eq code="6 \times {10}^6" /> times.
+
+We choose <Eq code="F_{n-1}" /> through to <Eq code="F_{n-6}" /> since we know each dice roll has to be integers 1-6.
+
 My first attempt was a top-down implementation, though it comes to no surprise that it causes runtime errors (presumably stack overflow):
 
 import SolDiceCombinations01 from "./_solutions.dynamic-programming/dice-combinations--01-fail-stackoverflow.py?raw" //_
@@ -53,13 +68,13 @@ import SolDiceCombinations02 from "./_solutions.dynamic-programming/dice-combina
     <Code code={SolDiceCombinations02} lang="py" />
 </SpoilerBlock>
 
-Switching to a simple top-down approach passed all tests:
+Switching to a simple top-down approach passed all tests (worst-case runtime in CPython and PyPy3 was 1.00s and 0.22s, respectively):
 
 import SolDiceCombinations03 from "./_solutions.dynamic-programming/dice-combinations--03-pass.py?raw" //_
 
 <Code code={SolDiceCombinations03} lang="py" />
 
-Switching to only storing a fixed-size window reduced the worst test case runtime from 1.00s to 0.44s:
+Switching to only storing a fixed-size window reduced the worst test case runtimes to 0.44s and 0.13s (CPython and PyPy3, respectively):
 
 import SolDiceCombinations04 from "./_solutions.dynamic-programming/dice-combinations--04-pass.py?raw" //_
 
@@ -70,4 +85,49 @@ Making it so we don't re-add all six elements of `tab` anymore turned out to per
 import SolDiceCombinations05 from "./_solutions.dynamic-programming/dice-combinations--05-pass.py?raw" //_
 
 <Code code={SolDiceCombinations05} lang="py" />
+
+
+## Minimizing Coins <Spec href="https://cses.fi/problemset/task/1634" cdate="2024-03-31" />
+
+The first subproblem that comes to mind is, for every integer from <Eq code="0" /> to <Eq code="x" />, we find the fewest number of coins possible. Runtime is <Eq code="O(xn)" />:
+
+<DisplayLatex code="
+    C = \braces{c_0, \dots, c_{n-1}} = \text{set of all coin values}
+" />
+<GatherLatex code="
+    F_{<0} = \infty
+    \qquad
+    F_0 = 0
+    \\
+    F_x = \min_{c \in C}\parens{
+        x - c
+    } + 1
+    \quad\text{for}\quad x > 0
+" />
+
+Considering how the input bounds set <Eq code="n \le 100" /> and <Eq code="x \le {10}^6" />, a test case can in theory run a hotspot <Eq code="{10}^8" /> times. Assuming a similar style of implementation to my first Dice Combinations passed solution which had a worst runtime of 0.22s, it doesn't sound like Minimizing Coins in Python should pass since we get a hotspot running at least 10x as many times.
+
+For fun, we start with a Python top-down solution, as well as bottom-up, and I also tried an optimization that precomputes some trivial table entries. The logic appears correct, but they TLE as expected:
+
+import SolMinimizingCoins01 from "./_solutions.dynamic-programming/minimizing-coins--01-fail-tle-topdown.py?raw" //_
+import SolMinimizingCoins02 from "./_solutions.dynamic-programming/minimizing-coins--02-fail-tle-bottomup.py?raw" //_
+import SolMinimizingCoins03 from "./_solutions.dynamic-programming/minimizing-coins--03-fail-tle-added-precomputes.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (TLE)">
+    <Code code={SolMinimizingCoins01} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="Failed Python Bottom-Up Solution (TLE)">
+    <Code code={SolMinimizingCoins02} lang="py" />
+</SpoilerBlock>
+
+<SpoilerBlock buttonLabel="Failed Python Bottom-Up Solution With Optimization (TLE)">
+    <Code code={SolMinimizingCoins03} lang="py" />
+</SpoilerBlock>
+
+Implementing the bottom-up approach in C++ passed all tests (with a longest runtime of 0.15s):
+
+import SolMinimizingCoins05 from "./_solutions.dynamic-programming/minimizing-coins--05-pass-bottomup.cpp?raw" //_
+
+<Code code={SolMinimizingCoins05} lang="cpp" />
 
