@@ -100,7 +100,7 @@ The first subproblem that comes to mind is, for every integer from <Eq code="0" 
     F_0 = 0
     \\
     F_x = \min_{c \in C}\parens{
-        x - c
+        F_{x - c}
     } + 1
     \quad\text{for}\quad x > 0
 " />
@@ -130,4 +130,44 @@ Implementing the bottom-up approach in C++ passed all tests (with a longest runt
 import SolMinimizingCoins05 from "./_solutions.dynamic-programming/minimizing-coins--05-pass-bottomup.cpp?raw" //_
 
 <Code code={SolMinimizingCoins05} lang="cpp" />
+
+
+## Coin Combinations I <Spec href="https://cses.fi/problemset/task/1635" cdate="2024-04-01" />
+
+Orderings appear significant, which makes subproblem selection easier. My chosen subproblem is to find the number of combinations for each possible target sum <Eq code="0" /> to <Eq code="x" />. For <Eq code="n" /> coins, the runtime is <Eq code="O(xn)" />:
+
+<DisplayLatex code="
+    C = \braces{c_0, \dots, c_{n-1}} = \text{set of all coin values}
+" />
+<GatherLatex code="
+    F_{<0} = 0
+    \qquad
+    F_0 = 1
+    \\
+    F_x = \sum_{c \in C}{
+        F_{x - c}
+    }
+    \quad\text{for}\quad x > 0
+" />
+
+Input bounds are similar to Minimizing Coins, so a hotspot possibly runs <Eq code="{10}^8" /> times, and is similarly unlikely to pass using Python.
+
+But let's write a top-down Python implementation anyway! As expected, it TLE's:
+
+import SolCoinCombinationsI01 from "./_solutions.dynamic-programming/coin-combinations-i--01-fail-tle-topdown.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (TLE)">
+    <Code code={SolCoinCombinationsI01} lang="py" />
+</SpoilerBlock>
+
+Implementing bottom-up in C++ passes all tests:
+
+import SolCoinCombinationsI02 from "./_solutions.dynamic-programming/coin-combinations-i--02-pass-bottomup.cpp?raw" //_
+
+<Code code={SolCoinCombinationsI02} lang="cpp" />
+
+
+## Coin Combinations II [UNFINISHED] <Spec href="https://cses.fi/problemset/task/1636" cdate="2024-04-01" />
+
+<Todo>Start this!</Todo>
 
