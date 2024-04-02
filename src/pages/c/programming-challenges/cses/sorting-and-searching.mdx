@@ -48,6 +48,14 @@ import SolDistinctNumbers from "./_solutions.sorting-and-searching/distinct-numb
 
 ## Apartments <Spec href="https://cses.fi/problemset/task/1084/" cdate="2024-01-15" />
 
+My approach starts by making the applicants and apartments arrays each into sorted stacks (the top is the biggest). We then compare the current biggest apartment with the current applicant with the biggest desired size:
+
+- If the apartment is too big, then we know the apartment will never be filled since the current biggest applicant doesn't want it. We pop it from the apartment stack.
+- Otherwise, if the apartment is too small, then we know the applicant will never get an apartment since the current biggest apartment is too small. We pop that applicant from the applicant stack.
+- Otherwise, we know that the applicant can fill the apartment, so we pop both the applicant and apartment from their stacks and we increment our current count of filled apartments.
+
+Full solution:
+
 import SolApartments from "./_solutions.sorting-and-searching/apartments.py?raw" //_
 
 <Code code={SolApartments} lang="py" />

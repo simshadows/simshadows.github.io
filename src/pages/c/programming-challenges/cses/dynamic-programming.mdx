@@ -167,7 +167,7 @@ import SolCoinCombinationsI02 from "./_solutions.dynamic-programming/coin-combin
 <Code code={SolCoinCombinationsI02} lang="cpp" />
 
 
-## Coin Combinations II [UNFINISHED] <Spec href="https://cses.fi/problemset/task/1636" cdate="2024-04-01" />
+## Coin Combinations II <Spec href="https://cses.fi/problemset/task/1636" cdate="2024-04-01" />
 
 If we used the strategy from Coin Combinations I, we run into the problem of needing to avoid double-counting combinations. To deal with this, maybe we need a two-dimensional table: one dimension for coin value, and another dimension for coin sum. The following subproblem comes to mind, which may naively run in <Eq code="O(x^2 n)" /> time:
 
@@ -196,7 +196,7 @@ If we used the strategy from Coin Combinations I, we run into the problem of nee
 
 I say "naively" because there may be a way to cut that runtime to <Eq code="O(xn)" /> with a clever optimization. I'll get to my idea for that later.
 
-I am very certain it will TLE (even if I were to add the optimization), but I made an <Eq code="O(x^2 n)" /> top-down Python implementation anyway just for fun. It passes some tests, but TLE's everything else. Good to know that we're not getting any wrong answers! Implementation:
+I am very certain <Eq code="O(x^2 n)" /> will TLE, but I made a top-down Python implementation anyway just for fun. It passes some tests, but TLE's everything else. Good to know that we're not getting any wrong answers! Implementation:
 
 import SolCoinCombinationsII01 from "./_solutions.dynamic-programming/coin-combinations-ii--01-fail-tle-topdown.py?raw" //_
 
@@ -204,5 +204,29 @@ import SolCoinCombinationsII01 from "./_solutions.dynamic-programming/coin-combi
     <Code code={SolCoinCombinationsII01} lang="py" />
 </SpoilerBlock>
 
-<Todo>Continue this!</Todo>
+Let's have a look at my <Eq code="O(xn)" /> idea now. I'd use the same subproblem and implement it bottom-up, but I'd fill up the table with the help of an accumulator, which should let me avoid doing the whole <Eq code="\sum_{j=0}^{\infty}" /> summation in <Eq code="O(x)" /> time each time. Instead, the accumulator calculates this summation in <Eq code="O(1)" /> on average.
+
+It's probably easier to just see how this works in code.
+
+My first implementation works perfectly fine on my computer, but causes weird `RUNTIME ERROR`s on some test cases when I submit to CSES. I have a screenshot included in the spoiler block below. My code provides the correct answers when I run them on my computer, and none of them TLE, so... I'm not sure what's going on. Full implementation:
+
+import SolCoinCombinationsII02 from "./_solutions.dynamic-programming/coin-combinations-ii--02-fail-runtimeerr-works-on-my-machine.cpp?raw" //_
+import SolCoinCombinationsII02TestResults from "./_images.dynamic-programming/coin-combinations-ii--02-test-results.png" //_
+
+<SpoilerBlock buttonLabel="Failed C++ Bottom-Up Solution, Weird Runtime Error?">
+    <Code code={SolCoinCombinationsII02} lang="cpp" />
+    <FiguresBlock>
+        <FigImg src={SolCoinCombinationsII02TestResults} alt="Submission test results for my first C++ optimized bottom-up solution." />
+    </FiguresBlock>
+</SpoilerBlock>
+
+*(If anyone knows why I'm getting `RUNTIME ERROR`, I'd love to know!)*
+
+I improved on this solution by changing to a more space-efficient 1D vector, which did pass all test cases:
+
+import SolCoinCombinationsII04 from "./_solutions.dynamic-programming/coin-combinations-ii--04-pass-bottomup-optimized.cpp?raw" //_
+
+<Code code={SolCoinCombinationsII04} lang="cpp" />
+
+<Todo>Were the `RUNTIME ERROR`s to do with the way I implemented the 2D table as 2D vectors?</Todo>
 
