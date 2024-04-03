@@ -264,3 +264,45 @@ import SolRemovingDigits03 from "./_solutions.dynamic-programming/removing-digit
 
 <Code code={SolRemovingDigits03} lang="py" />
 
+
+## Grid Paths <Spec href="https://cses.fi/problemset/task/1638" cdate="2024-04-03" />
+
+The fact that paths can only move in one direction makes this problem so much easier since you don't have to worry about paths backtracking. The first subproblem that comes to mind is to, at each cell in the grid, you add up how many paths can come from above with how many paths can come from the left. It runs in <Eq code="O(n^2)" /> (or more usefully, <Eq code="O(N)" /> for <Eq code="N" /> total cells in the grid):
+
+<GatherLatex code="
+    G\brackets{i, j} \in \braces{\texttt{EMPTY}, \texttt{TRAP}}
+" />
+<GatherLatex code="
+    F\brackets{i, j} =
+    \begin{cases}
+        0
+        \quad&
+            \text{if } \parens{i < 0}
+            \lor \parens{j < 0}
+            \lor \parens{G\brackets{i, j} = \texttt{TRAP}}
+        \\
+        F\brackets{i - 1, j} + F\brackets{i, j - 1}
+        \quad& \text{otherwise}
+    \end{cases}
+" />
+
+Surprisingly, a Python top-down implementation using `@functools.cache` (and running on CPython3) almost passed, but TLE'd on only 2 out of the 15 test cases:
+
+import SolGridPaths01 from "./_solutions.dynamic-programming/grid-paths--01-fail-tle-topdown.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (TLE)">
+    <Code code={SolGridPaths01} lang="py" />
+</SpoilerBlock>
+
+It took 0.99s for one of the passed <Eq code="1000 \times 1000" /> test cases, which indicates to me that not only should Python be feasible, but Python top-down is likely to be feasible as well if I can lower the overhead. And indeed it did pass, although the code isn't quite that nice since I'm implementing my own memoization:
+
+import SolGridPaths03 from "./_solutions.dynamic-programming/grid-paths--03-pass-topdown.py?raw" //_
+
+<Code code={SolGridPaths03} lang="py" />
+
+My bottom-up implementation is also a bit obscured since I used some tricks to avoid adding if-statements to the main loop (and therefore unnecessary overhead). Here, I pad the grid with an extra row and column (on the top and left sides) so that we automatically get zeroes for paths that try to come from outside of the grid. Implementation:
+
+import SolGridPaths04 from "./_solutions.dynamic-programming/grid-paths--04-pass-bottomup.py?raw" //_
+
+<Code code={SolGridPaths04} lang="py" />
+
