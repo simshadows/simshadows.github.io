@@ -306,3 +306,69 @@ import SolGridPaths04 from "./_solutions.dynamic-programming/grid-paths--04-pass
 
 <Code code={SolGridPaths04} lang="py" />
 
+
+## Book Shop <Spec href="https://cses.fi/problemset/task/1158" cdate="2024-04-03" />
+
+This is the classic *0-1 knapsack problem*, which I've already done a very detailed writeup on ([here](http://localhost:3000/c/notes/dsa/dynamic-programming/#0-1-knapsack-problem)), so unfortunately, I've already been very thoroughly spoiled on this problem.
+
+The subproblem has two dimensions: "the current book", and current max cost of currently selected books (from <Eq code="0" /> to <Eq code="x" />). At each "current book" (and corresponding current max cost), we find out what the best possible number of pages is whether or not we purchase the current book. It runs in <Eq code="O(nx)" />:
+
+<DisplayLatex code="
+    \braces{\parens{c_1, p_1}, \dots, \parens{c_n, p_n}} = \text{costs and number of pages}
+" />
+<DisplayLatex code="
+    F\brackets{i, x} =
+    \begin{cases}
+        {\displaystyle
+            \vphantom{\sum}
+            -\infty
+        }
+        \quad& \text{if } x < 0
+        \\
+        {\displaystyle
+            \vphantom{\sum}
+            0
+        }
+        \quad& \text{if } \parens{x \ge 0} \land \parens{i = 0}
+        \\
+        {\displaystyle
+            \max\parens{
+                \vphantom{\sum}
+                F\brackets{i - 1, x - c_i} + p_i,
+                F\brackets{i - 1, x}
+            }
+        }
+        \quad& \text{otherwise}
+    \end{cases}
+" />
+
+My first top-down Python implementation TLE'd as I expected:
+
+import SolBookShop01 from "./_solutions.dynamic-programming/book-shop--01-fail-tle-topdown.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (TLE)">
+    <Code code={SolBookShop01} lang="py" />
+</SpoilerBlock>
+
+Implementing bottom-up Python with a full <Eq code="O(nx)" />-sized table caused many `RUNTIME ERROR` results, but they otherwise gave me correct answers on my computer (albeit very slowly):
+
+import SolBookShop02 from "./_solutions.dynamic-programming/book-shop--02-fail-runtimeerr-works-on-my-machine.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Bottom-Up Solution With Full Table (TLE)">
+    <Code code={SolBookShop02} lang="py" />
+</SpoilerBlock>
+
+My more optimized bottom-up Python implementation that instead uses a <Eq code="O(x)" />-sized table TLE'd, even on PyPy3:
+
+import SolBookShop04 from "./_solutions.dynamic-programming/book-shop--04-fail-tle-bottomup.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Bottom-Up Solution With Smaller Table (TLE)">
+    <Code code={SolBookShop04} lang="py" />
+</SpoilerBlock>
+
+Reimplementing this optimized bottom-up solution in C++ passes all tests with a worst runtime of only 0.15s:
+
+import SolBookShop05 from "./_solutions.dynamic-programming/book-shop--05-pass-bottomup.cpp?raw" //_
+
+<Code code={SolBookShop05} lang="cpp" />
+
