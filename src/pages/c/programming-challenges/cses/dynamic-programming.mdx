@@ -182,16 +182,10 @@ If we used the strategy from Coin Combinations I, we run into the problem of nee
     \end{cases}
     \\
     F\brackets{i, x} =
-    \begin{cases}
-        \displaystyle
-        0 \vphantom{\sum_C^A}
-        &\text{ if } x < 0 \\
-        \displaystyle
-        \sum_{j = 0}^{\infty}{
-            F\brackets{i - 1, x - j c_i}
-        }
-        &\text{ otherwise}
-    \end{cases}
+    \sum_{j = 0}^{\infty}{
+        F\brackets{i - 1, x - j c_i}
+    }
+    \quad\text{for}\quad i > 0
 " />
 
 I say "naively" because there may be a way to cut that runtime to <Eq code="O(xn)" /> with a clever optimization. I'll get to my idea for that later.
@@ -229,4 +223,44 @@ import SolCoinCombinationsII04 from "./_solutions.dynamic-programming/coin-combi
 <Code code={SolCoinCombinationsII04} lang="cpp" />
 
 <Todo>Were the `RUNTIME ERROR`s to do with the way I implemented the 2D table as 2D vectors?</Todo>
+
+
+## Removing Digits <Spec href="https://cses.fi/problemset/task/1637" cdate="2024-04-03" />
+
+The first subproblem that comes to mind finds the minimum number of steps for each number from <Eq code="0" /> to <Eq code="n" />. It runs in <Eq code="O(n \log_{10} n)" /> since there are <Eq code="O(n)" /> entries in the 1D table, and at each entry, you check every decimal digit (which is <Eq code="O(\log_{10} n)" />). The subproblem written out:
+
+<DisplayLatex code="
+    n = \text{input number}
+" />
+<GatherLatex code="
+    F_0 = 0
+    \\
+    F_n = \min_{d \in D\parens{n}}\parens{
+        F_{n - d}
+    } + 1
+    \quad\text{for}\quad x > 0
+" />
+<DisplayLatex code="
+    \text{where } D\parens{n} = \text{all decimal digits of } n \text{ except } 0
+" />
+
+For fun, I started with a Python top-down implementation, which TLE's as expected, but also didn't give any wrong answers:
+
+import SolRemovingDigits01 from "./_solutions.dynamic-programming/removing-digits--01-fail-tle-topdown.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (TLE)">
+    <Code code={SolRemovingDigits01} lang="py" />
+</SpoilerBlock>
+
+My bottom-up implementation in Python passed all tests:
+
+import SolRemovingDigits02 from "./_solutions.dynamic-programming/removing-digits--02-pass-bottomup.py?raw" //_
+
+<Code code={SolRemovingDigits02} lang="py" />
+
+It also passed all tests when I used string conversion to get the digits:
+
+import SolRemovingDigits03 from "./_solutions.dynamic-programming/removing-digits--03-pass-bottomup-strconv.py?raw" //_
+
+<Code code={SolRemovingDigits03} lang="py" />
 
