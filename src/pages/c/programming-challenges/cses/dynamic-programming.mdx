@@ -177,8 +177,8 @@ If we used the strategy from Coin Combinations I, we run into the problem of nee
 <GatherLatex code="
     F\brackets{0, x} =
     \begin{cases}
-        1 &\text{ if } x = 0 \\
-        0 &\text{ otherwise}
+        1 \quad& x = 0 \\
+        0 \quad& \text{otherwise}
     \end{cases}
     \\
     F\brackets{i, x} =
@@ -277,7 +277,7 @@ The fact that paths can only move in one direction makes this problem so much ea
     \begin{cases}
         0
         \quad&
-            \text{if } \parens{i < 0}
+            \parens{i < 0}
             \lor \parens{j < 0}
             \lor \parens{G\brackets{i, j} = \texttt{TRAP}}
         \\
@@ -323,13 +323,13 @@ The subproblem has two dimensions: "the current book", and current max cost of c
             \vphantom{\sum}
             -\infty
         }
-        \quad& \text{if } x < 0
+        \quad& x < 0
         \\
         {\displaystyle
             \vphantom{\sum}
             0
         }
-        \quad& \text{if } \parens{x \ge 0} \land \parens{i = 0}
+        \quad& \parens{x \ge 0} \land \parens{i = 0}
         \\
         {\displaystyle
             \max\parens{
@@ -371,4 +371,72 @@ Reimplementing this optimized bottom-up solution in C++ passes all tests with a 
 import SolBookShop05 from "./_solutions.dynamic-programming/book-shop--05-pass-bottomup.cpp?raw" //_
 
 <Code code={SolBookShop05} lang="cpp" />
+
+
+## Array Description <Spec href="https://cses.fi/problemset/task/1746/" cdate="2024-04-03" />
+
+The first subproblem that comes to mind has two dimensions: current position in the array description, and candidate value for the position. At each position, we simply count the number of possible "paths" coming from the start of the array. The runtime is <Eq code="O(nm)" />.
+
+What I mean by "path" is, let's pretend that the beginning of the array (index 0) is known to be the value 5. From index 0, we might be able to "walk" to three different positions in index 1: \{index 1, value 4\}, \{index 1, value 5\}, and \{index 1, value 6\}. We say that there are valid "paths" from the beginning of the array to these three positions. These paths may extend all the way through the array, constrained by the known array values.
+
+<p><Todo>I should illustrate what I mean by a "path".</Todo></p>
+
+The subproblem written out:
+
+<GatherLatex code="
+    m = \text{upper bound for array values}
+    \\
+    \braces{a_0, \dots, a_{n - 1}} = \text{the array description}
+" />
+<DisplayLatex code="
+    F\brackets{i, v} =
+    \begin{cases}
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            1
+        \end{array}
+        \quad& \parens{0 < v \le m} \land \parens{a_0 \in \braces{0, v}} \land \parens{i = 0}
+        \\
+        \displaystyle
+        \begin{array}{l}
+            F\brackets{i - 1, v} \\
+            \quad + F\brackets{i - 1, v - 1} \\
+            \quad + F\brackets{i - 1, v + 1}
+        \end{array}
+        \quad& \parens{0 < v \le m} \land \parens{a_0 \in \braces{0, v}} \land \parens{i > 0}
+        \\
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            0
+        \end{array}
+        \quad& \text{otherwise}
+    \end{cases}
+" />
+<DisplayLatex code="
+    \text{solution} = \sum_{v = 1}^m F\brackets{n - 1, v}
+" />
+
+A top-down implementation in Python TLE'd, but otherwise gave no wrong answers:
+
+import SolArrayDescription01 from "./_solutions.dynamic-programming/array-description--01-fail-tle-topdown.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (TLE)">
+    <Code code={SolArrayDescription01} lang="py" />
+</SpoilerBlock>
+
+Changing to a bottom-up with a full <Eq code="O(nm)" /> sized table passed all tests with a PyPy3 worst-case runtime of 0.33s:
+
+import SolArrayDescription02 from "./_solutions.dynamic-programming/array-description--02-pass-bottomup.py?raw" //_
+
+<Code code={SolArrayDescription02} lang="py" />
+
+Improving on the bottom-up solution by switching to an <Eq code="O(m)" /> table also passed, but now with a PyPy3 worst-case runtime of 0.13s:
+
+import SolArrayDescription03 from "./_solutions.dynamic-programming/array-description--03-pass-bottomup-optimized.py?raw" //_
+
+<SpoilerBlock buttonLabel="Alternative Python Bottom-Up Solution With O(m) Table (TLE)">
+    <Code code={SolArrayDescription03} lang="py" />
+</SpoilerBlock>
 
