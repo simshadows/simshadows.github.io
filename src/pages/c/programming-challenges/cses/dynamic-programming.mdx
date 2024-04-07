@@ -440,3 +440,658 @@ import SolArrayDescription03 from "./_solutions.dynamic-programming/array-descri
     <Code code={SolArrayDescription03} lang="py" />
 </SpoilerBlock>
 
+
+## Counting Towers <Spec href="https://cses.fi/problemset/task/2413" cdate="2024-04-04" />
+
+This one's a hard one! Let's start by enumerating some simple examples to get a feel for how this works:
+
+```
+n=1  --> solution=2
+
+AB  AA
+```
+```
+n=2  --> solution=8
+
+CD       AB  BA  AB
+AB       AC  CA  AB
+
+AA       AA  BC  AA
+AA       BC  AA  BB
+```
+
+The first idea that comes to mind is to try a subproblem with two dimensions: the <Eq code="x" /> and <Eq code="y" /> coordinates of the top-right of the tower, where the bottom-left corner is at coordinates <Eq code="\parens{0, 0}" />. Let's call this subproblem <Eq code="F\brackets{x, y}" />. <Eq code="x" /> is the column index while <Eq code="y" /> is the row index. However, it doesn't work well:
+
+<SpoilerBlock buttonLabel="explanation of this failed idea">
+We expect <Eq code="F\brackets{0, 0} = 1" /> since the only possible tower is a single <Eq code="1 \times 1" /> block.
+
+We expect <Eq code="F\brackets{1, 0} = 2" /> since it's the <Eq code="n = 1" /> case. Perhaps we should try calculating every possible block that contains coordinates <Eq code="\parens{1, 0}" />? Let's try sketching it out:
+
+```
+(Apologies if this is hard to understand, but hopefully it'll be clear
+by the time you also see the F[1, 1] example.)
+
+There are two cases of blocks that contain (1, 0):
+
+    ?A   AA
+
+The first case can only be the tower:
+
+    BA
+
+Therefore, the first case shows one possible tower.
+
+The second case is trivially just the entire tower being a single block,
+therefore it also shows only one tower.
+
+Therefore, there are two possible towers for F[1, 0].
+```
+
+Let's also try <Eq code="F\brackets{1, 1}" />, which is the <Eq code="n = 2" /> case:
+
+```
+There are four cases to consider:
+
+    ?A   AA   ?A   AA
+    ??   ??   ?A   AA
+
+Case 1 has 3 combinations:
+
+    BA   BA  BA
+    CD   BD  DD
+
+Case 2 has 2 combinations:
+
+    AA   AA
+    BC   BB
+
+Case 3 has 2 combinations:
+
+    BA   BA
+    CA   BA
+
+Case 4 trivially only has the one combination:
+
+    AA
+    AA
+
+Therefore, there are 8 possible towers for F[1, 1].
+```
+
+And let's also try <Eq code="F\brackets{1, 2}" />:
+
+```
+n=3
+
+case 1 has 1 combination:
+XX
+XX
+XX
+
+case 2 has 2 combinations:
+XX       XX XX
+XX  -->  XX XX
+??       AB AA
+
+case 3 has 8 combinations:
+XX       XX   XX XX XX   XX   XX XX XX   (These are all similar
+??  -->  CD   AB BA AB   AA   AA BC AA   to n=1.)
+??       AB   AC CA AB   AA   BC AA BB
+
+case 4 has 4 combinations:
+?X       AX AX CX AX
+?X  -->  BX AX AX AX
+?X       CX CX AX AX
+
+case 5 has 6 combinations:
+?X       AX   AX BX BX   AX   AX
+?X  -->  BX   AX AX CX   AX   AX
+??       CD   CD AD AA   BB   AB
+
+case 6 has 12 combinations:
+?X       YX   YX YX YX   YX   YX YX YX   (This row is all
+??  -->  CD   AB BA AB   AA   AA BC AA   similar to case 3.)
+??       AB   AC CA AB   AA   BC AA BB
+
+         YX YX YX        YX
+         YD YB YA        YX
+         AB AA BA        YA
+
+
+Therefore, there are 33 possible towers for F[1, 2].
+```
+
+So how might we calculate each cases of <Eq code="F\brackets{1, 2}" />?
+
+The first thing that comes to mind is to try breaking it down into three calculations. Let's try Case 6 as an example. Case 6 might be seen as a combination of three cases: <Eq code="F\brackets{0, 2}" />, <Eq code="F\brackets{1, 1}" />, and <Eq code="F\brackets{0, 1}" />:
+
+```
+F[0, 2]  |  F[1, 1]  |  F[0, 1]
+         |           |
+   ?     |           |
+   ?     |     ??    |     ?
+   ?     |     ??    |     ?
+         |           |
+4 combs. | 8 combs.  | 2 combs.
+```
+
+<AlignLatex code="
+    F\brackets{0, 2} + F\brackets{1, 1} - F\brackets{0, 1}
+    &= 4 + 8 - 2
+    \\
+    &= 10 \ne 12
+" />
+
+I also tried out:
+
+<AlignLatex code="
+    F\brackets{0, 2} + F\brackets{1, 1}
+    &= 4 + 8
+    \\
+    &= 12
+" />
+
+But this doesn't generalize well. For example:
+
+```
+The case to consider:
+
+    ?A
+    ??
+
+This would be F[0, 1] + F[1, 0] = 2 + 2 = 4
+
+But we have already seen that this case should only have 3 combinations.
+```
+
+I'm still not sure how to make this idea work, so let's move on to something different.
+</SpoilerBlock>
+
+import SolCountingTowers01 from "./_solutions.dynamic-programming/counting-towers--01-fail-wrong-answer-example.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (Wrong Answers)">
+    <Code code={SolCountingTowers01} lang="py" />
+</SpoilerBlock>
+
+The next idea that comes to mind is also two dimensions, with one dimension for height of the left side, and one for the right side. It naively sounds like it should perform poorly at <Eq code="O(n^2)" /> where <Eq code="n \le {10}^6" />, but maybe we can apply the same trick as Coin Combinations II where we use an accumulator?
+
+Let's start by visualizing what's going on then formalizing the subproblem:
+
+```
+Case 1: Both sides same level
+        We arbitrarily pick the top-right block to be fixed.
+
+   F[3,3] = F[3,2] + F[3,1] + F[3,0] + F[2,2] + F[1,1] + F[0,0]
+
+     ??       ?        ?        ?
+     ??   =   ??   +   ?    +   ?    +   ??   +        +
+     ??       ??       ??       ?        ??       ??
+
+Case 2: Left side is taller
+        We pick the tallest block to be fixed.
+
+   F[3,2] = F[2,2] + F[1,2] + F[0,2]
+
+     ?
+     ??   =   ??   +    ?   +    ?
+     ??       ??       ??        ?
+
+Case 3: Right side is taller
+        We just mirror it.
+
+   F[2,3] = F[3,2]
+
+      ?       ?
+     ??   =   ??
+     ??       ??
+```
+
+Writing out the subproblem:
+
+<DisplayLatex code="
+    F\brackets{a, b} =
+    \begin{cases}
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            1
+        \end{array}
+        \quad& \parens{a = b = 0}
+        \\
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            \displaystyle
+            \sum_{x = 0}^{b - 1}\parens{\vphantom{\sum} F\brackets{a, x} + F\brackets{x, x}}
+        \end{array}
+        \quad& \parens{a = b \ne 0}
+        \\
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            F\brackets{b, a}
+        \end{array}
+        \quad& \parens{a < b \ne 0}
+        \\
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            \displaystyle
+            \sum_{x = 0}^{a - 1}{F\brackets{x, b}}
+        \end{array}
+        \quad& \parens{b < a \ne 0}
+    \end{cases}
+" />
+
+I made a naive top-down Python implementation and ran it against the example and it passed! However, it was really, really, terribly slow. Implementation:
+
+import SolCountingTowers02 from "./_solutions.dynamic-programming/counting-towers--02-fail-topdown-naive.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (Extremely Slow)">
+    <Code code={SolCountingTowers02} lang="py" />
+</SpoilerBlock>
+
+In an attempt to optimize, I tried expanding some calculations to get a feel for what we might build accumulators for. However, I found nothing. Here's what I tried:
+
+<SpoilerBlock buttonLabel="Full Working">
+<AlignLatex code="
+    F\brackets{1, 1}
+    &= F\brackets{1, 0} + F\brackets{0, 0}
+" />
+<AlignLatex code="
+    F\brackets{2, 2}
+    &= F\brackets{2, 1} + F\brackets{1, 1}
+    \\
+    &\qquad + F\brackets{2, 0} + F\brackets{0, 0}
+    \\
+    &= \parens{F\brackets{1, 1} + F\brackets{0, 1}} + F\brackets{1, 1}
+    \\
+    &\qquad + \parens{F\brackets{1, 0} + F\brackets{0, 0}} + F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{1, 1} + 2 F\brackets{0, 0} + 2 F\brackets{1, 0}
+" />
+<AlignLatex code="
+    F\brackets{3, 3}
+    &= F\brackets{3, 2} + F\brackets{2, 2}
+    \\
+    &\qquad + F\brackets{3, 1} + F\brackets{1, 1}
+    \\
+    &\qquad + F\brackets{3, 0} + F\brackets{0, 0}
+    \\
+    &= \parens{F\brackets{2, 2} + F\brackets{1, 2} + F\brackets{0, 2}} + F\brackets{2, 2}
+    \\
+    &\qquad + \parens{F\brackets{2, 1} + F\brackets{1, 1} + F\brackets{0, 1}} + F\brackets{1, 1}
+    \\
+    &\qquad + \parens{F\brackets{2, 0} + F\brackets{1, 0} + F\brackets{0, 0}} + F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{2, 1} + 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
+    \\
+    &\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+    \\
+    &= 2 \parens{F\brackets{1, 1} + F\brackets{0, 1}} + 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
+    \\
+    &\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
+    \\
+    &\qquad + 4 F\brackets{1, 1} + 4 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+" />
+<AlignLatex code="
+    F\brackets{4, 4}
+    &= F\brackets{4, 3} + F\brackets{3, 3}
+    \\
+    &\qquad + F\brackets{4, 2} + F\brackets{2, 2}
+    \\
+    &\qquad + F\brackets{4, 1} + F\brackets{1, 1}
+    \\
+    &\qquad + F\brackets{4, 0} + F\brackets{0, 0}
+    \\
+    &= \parens{F\brackets{3, 3} + F\brackets{2, 3} + F\brackets{1, 3} + F\brackets{0, 3}}
+    + F\brackets{3, 3}
+    \\
+    &\qquad + \parens{F\brackets{3, 2} + F\brackets{2, 2} + F\brackets{1, 2} + F\brackets{0, 2}}
+    + F\brackets{2, 2}
+    \\
+    &\qquad + \parens{F\brackets{3, 1} + F\brackets{2, 1} + F\brackets{1, 1} + F\brackets{0, 1}}
+    + F\brackets{1, 1}
+    \\
+    &\qquad + \parens{F\brackets{3, 0} + F\brackets{2, 0} + F\brackets{1, 0} + F\brackets{0, 0}}
+    + F\brackets{0, 0}
+    \\
+    &= \parens{F\brackets{3, 2} + F\brackets{3, 1} + F\brackets{3, 0}}
+    + 2 F\brackets{3, 3}
+    \\
+    &\qquad + \parens{F\brackets{3, 2} + F\brackets{2, 1} + F\brackets{2, 0}}
+    + 2 F\brackets{2, 2}
+    \\
+    &\qquad + \parens{F\brackets{3, 1} + F\brackets{2, 1} + F\brackets{1, 0}}
+    + 2 F\brackets{1, 1}
+    \\
+    &\qquad + \parens{F\brackets{3, 0} + F\brackets{2, 0} + F\brackets{1, 0}}
+    + 2 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{3, 3} + 2 F\brackets{3, 2} + 2 F\brackets{3, 1} + 2 F\brackets{3, 0}
+    \\
+    &\qquad + 2 F\brackets{2, 2} + 2 F\brackets{2, 1} + 2 F\brackets{2, 0}
+    \\
+    &\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{3, 3}
+    + 2 \parens{F\brackets{2, 2} + F\brackets{2, 1} + F\brackets{2, 0}}
+    + 2 \parens{F\brackets{2, 1} + F\brackets{1, 1} + F\brackets{1, 0}}
+    + 2 F\brackets{3, 0}
+    \\
+    &\qquad + 2 F\brackets{2, 2}
+    + 2 \parens{F\brackets{1, 1} + F\brackets{1, 0}}
+    + 2 F\brackets{2, 0}
+    \\
+    &\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{3, 3}
+    + 4 \parens{F\brackets{2, 1}}
+    + 2 F\brackets{3, 0}
+    \\
+    &\qquad + 4 F\brackets{2, 2}
+    + 4 F\brackets{2, 0}
+    \\
+    &\qquad + 6 F\brackets{1, 1} + 6 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{3, 3}
+    + 4 \parens{F\brackets{1, 1} + F\brackets{1, 0}}
+    + 2 F\brackets{3, 0}
+    \\
+    &\qquad + 4 F\brackets{2, 2}
+    + 4 F\brackets{2, 0}
+    \\
+    &\qquad + 6 F\brackets{1, 1} + 6 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{3, 3} + 2 F\brackets{3, 0}
+    \\
+    &\qquad + 4 F\brackets{2, 2} + 4 F\brackets{2, 0}
+    \\
+    &\qquad + 10 F\brackets{1, 1} + 10 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+" />
+</SpoilerBlock>
+
+<AlignLatex code="
+    F\brackets{1, 1}
+    &= F\brackets{1, 0} + F\brackets{0, 0}
+" />
+<AlignLatex code="
+    F\brackets{2, 2}
+    &= 2 F\brackets{1, 1} + 2 F\brackets{0, 0} + 2 F\brackets{1, 0}
+" />
+<AlignLatex code="
+    F\brackets{3, 3}
+    &= 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
+    \\
+    &\qquad + 4 F\brackets{1, 1} + 4 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+" />
+<AlignLatex code="
+    F\brackets{4, 4}
+    &= 2 F\brackets{3, 3} + 2 F\brackets{3, 0}
+    \\
+    &\qquad + 4 F\brackets{2, 2} + 4 F\brackets{2, 0}
+    \\
+    &\qquad + 10 F\brackets{1, 1} + 10 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+" />
+
+I also tried expanding out the <Eq code="F\brackets{x, 0}" />'s:
+
+<SpoilerBlock buttonLabel="Full Working">
+<AlignLatex code="
+    F\brackets{2, 2}
+    &= 2 F\brackets{1, 1} + 2 F\brackets{0, 0} + 2 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{1, 1} + 4 F\brackets{0, 0}
+" />
+<AlignLatex code="
+    F\brackets{3, 3}
+    &= 2 F\brackets{2, 2} + 2 \parens{F\brackets{1, 0} + F\brackets{0, 0}}
+    \\
+    &\qquad + 4 F\brackets{1, 1} + 4 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{2, 2}
+    \\
+    &\qquad + 4 F\brackets{1, 1} + 6 F\brackets{1, 0}
+    \\
+    &\qquad + 4 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{2, 2} + 4 F\brackets{1, 1} + 10 F\brackets{0, 0}
+" />
+<AlignLatex code="
+    F\brackets{4, 4}
+    &= 2 F\brackets{3, 3} + 2 \parens{F\brackets{2, 0} + F\brackets{1, 0} + F\brackets{0, 0}}
+    \\
+    &\qquad + 4 F\brackets{2, 2} + 4 F\brackets{2, 0}
+    \\
+    &\qquad + 10 F\brackets{1, 1} + 10 F\brackets{1, 0}
+    \\
+    &\qquad + 2 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{3, 3}
+    \\
+    &\qquad + 4 F\brackets{2, 2} + 6 F\brackets{2, 0}
+    \\
+    &\qquad + 10 F\brackets{1, 1} + 12 F\brackets{1, 0}
+    \\
+    &\qquad + 4 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{3, 3}
+    \\
+    &\qquad + 4 F\brackets{2, 2} + 6 \parens{F\brackets{0, 0} + F\brackets{0, 0}}
+    \\
+    &\qquad + 10 F\brackets{1, 1} + 12 F\brackets{0, 0}
+    \\
+    &\qquad + 4 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{3, 3} + 4 F\brackets{2, 2} + 10 F\brackets{1, 1} + 28 F\brackets{0, 0}
+" />
+</SpoilerBlock>
+
+<AlignLatex code="
+    F\brackets{2, 2}
+    &= 2 F\brackets{1, 1} + 4 F\brackets{0, 0}
+    \\
+    F\brackets{3, 3}
+    &= 2 F\brackets{2, 2} + 4 F\brackets{1, 1} + 10 F\brackets{0, 0}
+    \\
+    F\brackets{4, 4}
+    &= 2 F\brackets{3, 3} + 4 F\brackets{2, 2} + 10 F\brackets{1, 1} + 28 F\brackets{0, 0}
+" />
+
+I also tried expanding the <Eq code="F\brackets{x, x}" />'s:
+
+<SpoilerBlock buttonLabel="Full Working">
+<AlignLatex code="
+    F\brackets{2, 2}
+    &= 4 F\brackets{0, 0} + 4 F\brackets{1, 0}
+" />
+<AlignLatex code="
+    F\brackets{3, 3}
+    &= 2 \parens{4 F\brackets{0, 0} + 4 F\brackets{1, 0}} + 2 F\brackets{2, 0}
+    \\
+    &\qquad + 8 F\brackets{1, 0}
+    \\
+    &\qquad + 6 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{2, 0} + 16 F\brackets{1, 0} + 14 F\brackets{0, 0}
+" />
+<AlignLatex code="
+    F\brackets{4, 4}
+    &= 2 \parens{2 F\brackets{2, 0} + 16 F\brackets{1, 0} + 14 F\brackets{0, 0}} + 2 F\brackets{3, 0}
+    \\
+    &\qquad + 4 \parens{4 F\brackets{0, 0} + 4 F\brackets{1, 0}} + 4 F\brackets{2, 0}
+    \\
+    &\qquad + 20 F\brackets{1, 0}
+    \\
+    &\qquad + 12 F\brackets{0, 0}
+    \\
+    &= 2 F\brackets{3, 0} + 36 F\brackets{2, 0} + 68 F\brackets{1, 0} + 28 F\brackets{0, 0}
+" />
+</SpoilerBlock>
+
+<AlignLatex code="
+    F\brackets{2, 2}
+    &= 4 F\brackets{0, 0} + 4 F\brackets{1, 0}
+    \\
+    F\brackets{3, 3}
+    &= 2 F\brackets{2, 0} + 16 F\brackets{1, 0} + 14 F\brackets{0, 0}
+    \\
+    F\brackets{4, 4}
+    &= 2 F\brackets{3, 0} + 36 F\brackets{2, 0} + 68 F\brackets{1, 0} + 28 F\brackets{0, 0}
+" />
+
+So let's try a different approach. I believe that the following sums should be easy to build accumulators for:
+
+<DisplayLatex code="
+    \sum_{x = 0}^n F\brackets{x, x}
+    \qquad\qquad
+    \sum_{x = 0}^n F\brackets{x, 0}
+" />
+
+But this sum is giving me headaches right now:
+
+<DisplayLatex code="
+    S\brackets{b} \coloneqq \sum_{x = 0}^{b - 1} F\brackets{x, b}
+    \quad\text{for } b > 0
+" />
+
+That sum is an important part of the second line of the subproblem. So is it possible to build an accumulator for it?
+
+<AlignLatex code="
+    S\brackets{b}
+    &= \sum_{x = 0}^{b - 1} F\brackets{b, x}
+    = \sum_{x = 0}^{b - 1} \sum_{y = 0}^{b - 1} F\brackets{y, x}
+" />
+
+Now, let's visualize what's happening. For example, <Eq code="S\brackets{4}" /> is the sum of all of these:
+
+<DisplayLatex code="
+    \begin{array}{cccc}
+        F\brackets{0, 3}
+            & F\brackets{1, 3}
+            & F\brackets{2, 3}
+            & \xmemphR{F\brackets{3, 3}}
+            \\
+        F\brackets{0, 2}
+            & F\brackets{1, 2}
+            & \xmemphR{F\brackets{2, 2}}
+            & F\brackets{3, 2}
+            \\
+        F\brackets{0, 1}
+            & \xmemphR{F\brackets{1, 1}}
+            & F\brackets{2, 1}
+            & F\brackets{3, 1}
+            \\
+        \xmemphR{F\brackets{0, 0}}
+            & F\brackets{1, 0}
+            & F\brackets{2, 0}
+            & F\brackets{3, 0}
+    \end{array}
+" />
+
+Using the third case of the subproblem, we can reduce this to:
+
+<DisplayLatex code="
+    \begin{array}{cccc}
+        {}
+            & {}
+            & {}
+            & \xmemphR{F\brackets{3, 3}}
+            \\
+        {}
+            & {}
+            & \xmemphR{F\brackets{2, 2}}
+            & 2 F\brackets{3, 2}
+            \\
+        {}
+            & \xmemphR{F\brackets{1, 1}}
+            & 2 F\brackets{2, 1}
+            & 2 F\brackets{3, 1}
+            \\
+        \xmemphR{F\brackets{0, 0}}
+            & 2 F\brackets{1, 0}
+            & 2 F\brackets{2, 0}
+            & 2 F\brackets{3, 0}
+    \end{array}
+" />
+
+Based on this pattern, <Eq code="S\brackets{b}" /> is reducible to:
+
+<DisplayLatex code="
+    S\brackets{b}
+    = \sum_{x = 0}^{b - 1} F\brackets{x, x}
+    + 2 \sum_{x = 1}^{b - 1} S\brackets{x}
+    \qquad\text{for } b > 0
+" />
+
+Therefore, we can calculate <Eq code="S\brackets{b}" /> using accumulators!
+
+Let's now construct an alternative subproblem derived from this, where <Eq code="F'\brackets{n}" /> is the solution for the number of combinations to construct an <Eq code="n" />-sized tower:
+
+<AlignLatex code="
+    F'\brackets{n}
+    &\coloneqq F\brackets{n, n}
+    = \sum_{x=0}^{n - 1}\parens{F\brackets{n, x} + F\brackets{x, x}}
+    \\
+    &= \sum_{x=0}^{n - 1}F\brackets{n, x}
+    + \sum_{x=0}^{n - 1}F\brackets{x, x}
+    \\
+    &= S\brackets{n}
+    + \sum_{x=0}^{n - 1}F'\brackets{x}
+" />
+<GatherLatex code="
+    S\brackets{n}
+    = \sum_{x = 0}^{n - 1} F'\brackets{x}
+    + 2 \sum_{x = 1}^{n - 1} S\brackets{x}
+    \qquad\text{for } b > 0
+" />
+
+Attempting to simplify seems... too complicated for me to bother right now.
+
+<SpoilerBlock buttonLabel="starting attempt at simplifying">
+<AlignLatex code="
+    F'\brackets{n}
+    &= \sum_{x=0}^{n - 1}F'\brackets{x}
+    + \sum_{x = 0}^{n - 1} F'\brackets{x}
+    + 2 \sum_{x = 1}^{n - 1} S\brackets{x}
+" />
+</SpoilerBlock>
+
+My Python top-down implementation passed the first two test cases containing queries for <Eq code="n \le 100" />, but we get `RUNTIME ERROR` for the other much bigger test cases, so my code probably goes over the memory usage limit of the auto-judge. Implementation:
+
+import SolCountingTowers05 from "./_solutions.dynamic-programming/counting-towers--05-fail-topdown-runtime-error.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (RUNTIME ERROR)">
+    <Code code={SolCountingTowers05} lang="py" />
+</SpoilerBlock>
+
+Reimplementing as bottom-up passed all tests:
+
+import SolCountingTowers07 from "./_solutions.dynamic-programming/counting-towers--07-pass-bottomup.py?raw" //_
+
+<Code code={SolCountingTowers07} lang="py" />
+
