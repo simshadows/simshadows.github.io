@@ -60,6 +60,7 @@ const katexConfig = {
         // Alternatives if boldfacing is a problem
         "\\xmemph": "{\\htmlStyle{color: var(#1);}{#2}}",
         "\\xmemphR": "{\\xmemph{--color--myred}{#1}}",
+        "\\xmemphRC": "{\\xmemph{--color--mycontrastred}{#1}}",
         //"\\xmemphG": "#1",
         "\\xmemphB": "{\\xmemph{--color--myblue}{#1}}",
         "\\xmemphBC": "{\\xmemph{--color--mycontrastblue}{#1}}",

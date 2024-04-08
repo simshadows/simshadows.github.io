@@ -443,7 +443,7 @@ import SolArrayDescription03 from "./_solutions.dynamic-programming/array-descri
 
 ## Counting Towers <Spec href="https://cses.fi/problemset/task/2413" cdate="2024-04-04" />
 
-This one's a hard one! Let's start by enumerating some simple examples to get a feel for how this works:
+This one's a hard one! But also a fun one! Let's start by enumerating some simple examples to get a feel for how this works:
 
 ```
 n=1  --> solution=2
@@ -1062,12 +1062,16 @@ Let's now construct an alternative subproblem derived from this, where <Eq code=
     \\
     &= S\brackets{n}
     + \sum_{x=0}^{n - 1}F'\brackets{x}
+    \qquad\text{for } n > 0
 " />
-<GatherLatex code="
+<DisplayLatex code="
+    F'\brackets{0} = 1
+" />
+<DisplayLatex code="
     S\brackets{n}
     = \sum_{x = 0}^{n - 1} F'\brackets{x}
     + 2 \sum_{x = 1}^{n - 1} S\brackets{x}
-    \qquad\text{for } b > 0
+    \qquad\text{for } n > 0
 " />
 
 Attempting to simplify seems... too complicated for me to bother right now.
@@ -1094,4 +1098,235 @@ Reimplementing as bottom-up passed all tests:
 import SolCountingTowers07 from "./_solutions.dynamic-programming/counting-towers--07-pass-bottomup.py?raw" //_
 
 <Code code={SolCountingTowers07} lang="py" />
+
+
+## Edit Distance <Spec href="https://cses.fi/problemset/task/1639" cdate="2024-04-08" />
+
+Thinking through some edge cases, it was tempting to conclude that you'd never need to remove characters from the shorter word, but I believe this would break that assumption:
+
+```
+Test case:
+   xxABCDEFGH
+   ABCDEFGHxxx
+
+The actual edit distance is 5:
+   xxABCDEFGH   (0)
+   xABCDEFGH    (1)
+   ABCDEFGH     (2)
+   ABCDEFGHx    (3)
+   ABCDEFGHxx   (4)
+   ABCDEFGHxxx  (5)
+
+If we disallowed removing characters:
+   xxABCDEFGH   (0)
+   AxABCDEFGH   (1)
+   ABABCDEFGH   (2)
+   ...
+   ABCDEFGHGH   (8)
+   ABCDEFGHxH   (9)
+   ABCDEFGHxx   (10)
+   ABCDEFGHxxx  (11)
+```
+
+The first subproblem that comes to mind is two-dimensional, each dimension is an index into each string. Subproblem <Eq code="F\brackets{i, j}" /> is the edit distance of substrings `string1[0..i]` and `string2[0..j]` (`i` and `j` being inclusive).
+
+I jumped straight into coding a solution first. Here's my Python top-down solution that passes many test cases but only fails due to `RUNTIME ERROR` (almost certainly due to memory usage):
+
+import SolEditDistance02 from "./_solutions.dynamic-programming/edit-distance--02-fail-topdown-runtime-error.py?raw" //_
+
+<SpoilerBlock buttonLabel="Failed Python Top-Down Solution (RUNTIME ERROR)">
+    <Code code={SolEditDistance02} lang="py" />
+</SpoilerBlock>
+
+Writing out the subproblem:
+
+<DisplayLatex code="
+    s_1 = \text{string 1}
+    \qquad\qquad
+    s_2 = \text{string 2}
+" />
+<DisplayLatex code="
+    F\brackets{i, j}
+    = \begin{cases}
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            0
+        \end{array}
+        \quad& \parens{i < 0} \land \parens{j < 0}
+        \\
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            j + 1
+        \end{array}
+        \quad& \parens{i < 0} \land \parens{j \ge 0}
+        \\
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            i + 1
+        \end{array}
+        \quad& \parens{i \ge 0} \land \parens{j < 0}
+        \\
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            F\brackets{i - 1, j - 1}
+        \end{array}
+        \quad& \parens{i \ge 0}
+            \land \parens{j \ge 0}
+            \land \parens{s_1\brackets{i} = s_2\brackets{j}}
+        \\
+        \displaystyle
+        \vphantom{\sum_{A}^A}
+        \begin{array}{l}
+            \displaystyle
+            1 + \min(F\brackets{i - 1, j - 1},
+            \\
+            \qquad F\brackets{i - 1, j}, F\brackets{i, j - 1})
+        \end{array}
+        \quad& \text{otherwise}
+    \end{cases}
+" />
+
+The first case is simply the case of two empty substrings. Naturally, empty substrings are already equivalent.
+
+The second and third cases are the case where you compare an empty substring with a non-empty substring. Naturally, the solution is just the length of the non-empty substring.
+
+My top-down Python solution simplifies these first three cases down with:
+
+```py
+if (i < 0) or (j < 0):
+    return i + j + 2
+```
+
+The fourth case is the case where the two indices point to an equivalent character. This means no change needs to be made at that character.
+
+The final case is where the two indices don't point to an equivalent character. There's a lot going on in that one line, so to see how this works, let's consider this example:
+
+```
+              v i=4
+string 1: ...AB...
+string 2: ..XY.....
+             ^ j=3
+```
+
+The dots represent characters that we don't care about. Index `i` points to that `B` character in string 1, while index `j` points to that `Y` character in string 2.
+
+To make it easier to understand, let's write this situation down in two different but conceptually identical ways:
+
+<DisplayLatex code='
+    \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+' />
+<DisplayLatex code="
+    F\brackets{4, 3}
+" />
+
+Recall that the problem specification allows these operations:
+
+1. *Add one character to the string.*
+2. *Remove one character from the string.*
+3. *Replace one character in the string.*
+
+Let's start with operation 3 because it's the simplest. Let's suppose we change the `B` in string 1 to `Y`:
+
+<AlignLatex code='
+    \text{EditDistance31}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+    &= 1 + \text{EditDistance}\parens{\texttt{"...A\xmemphRC{Y}"}, \texttt{"..XY"}}
+    \\
+    &= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..X"}}
+' />
+<DisplayLatex code="
+    F_{31}\brackets{4, 3} = 1 + F\brackets{3, 2}
+" />
+
+The math works out identically even if we instead changed the `Y` in string 2 to `B`:
+
+<AlignLatex code='
+    \text{EditDistance32}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+    &= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..X\xmemphRC{B}"}}
+    \\
+    &= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..X"}}
+' />
+<DisplayLatex code="
+    F_{32}\brackets{4, 3} = 1 + F\brackets{3, 2}
+" />
+
+Now, let's try operation 2. If we remove `B` from string 1:
+
+<DisplayLatex code='
+    \text{EditDistance21}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+    = 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..XY"}}
+' />
+<DisplayLatex code="
+    F_{21}\brackets{4, 3} = 1 + F\brackets{3, 3}
+" />
+
+Or if we remove `Y` from string 2 instead:
+
+<DisplayLatex code='
+    \text{EditDistance22}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+    = 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..X"}}
+' />
+<DisplayLatex code="
+    F_{22}\brackets{4, 3} = 1 + F\brackets{4, 2}
+" />
+
+And finally, let's try operation 1. If we insert `Y` to string 1:
+
+<AlignLatex code='
+    \text{EditDistance11}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+    &= 1 + \text{EditDistance}\parens{\texttt{"...AB\xmemphRC{Y}"}, \texttt{"..XY"}}
+    \\
+    &= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..X"}}
+' />
+<DisplayLatex code="
+    F_{11}\brackets{4, 3} = 1 + F\brackets{4, 2}
+" />
+
+And if we instead insert `B` into string 2:
+
+<AlignLatex code='
+    \text{EditDistance12}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+    &= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..XY\xmemphRC{B}"}}
+    \\
+    &= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..XY"}}
+' />
+<DisplayLatex code="
+    F_{12}\brackets{4, 3} = 1 + F\brackets{3, 3}
+" />
+
+Having gone through all six possible operations, it should be fairly straightforward to see how we get <Eq code="1 + \min\parens{F\brackets{i - 1, j - 1}, F\brackets{i - 1, j}, F\brackets{i, j - 1}}" /> as the final case of the subproblem.
+
+I think it's also useful to point out that the equivalence of <Eq code="F_{21} = F_{12}" /> and <Eq code="F_{22} = F_{11}" /> can also be examined more intuitively.
+
+Let's consider these two strings:
+
+```
+AXXX
+XXX
+```
+
+To make the equivalent, you can either delete the `A` from string 1:
+
+```
+XXX
+XXX
+```
+
+or, you can add an `A` to string 2:
+
+```
+AXXX
+AXXX
+```
+
+Either way, we incurred a cost of <Eq code="1" /> operation.
+
+My Python bottom-up implementation passes all tests:
+
+import SolEditDistance03 from "./_solutions.dynamic-programming/edit-distance--03-pass-bottomup.py?raw" //_
+
+<Code code={SolEditDistance03} lang="py" />
 
