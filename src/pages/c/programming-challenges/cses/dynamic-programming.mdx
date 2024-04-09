@@ -1194,9 +1194,10 @@ The first case is simply the case of two empty substrings. Naturally, empty subs
 
 The second and third cases are the case where you compare an empty substring with a non-empty substring. Naturally, the solution is just the length of the non-empty substring.
 
-My top-down Python solution simplifies these first three cases down with:
+My top-down Python solution simplifies these first three cases down with essentially:
 
 ```py
+assert (i >= -1) and (j >= -1)
 if (i < 0) or (j < 0):
     return i + j + 2
 ```
@@ -1308,7 +1309,7 @@ AXXX
 XXX
 ```
 
-To make the equivalent, you can either delete the `A` from string 1:
+To make them equivalent, you can either delete the `A` from string 1:
 
 ```
 XXX
