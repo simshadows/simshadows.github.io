@@ -1,0 +1,71 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: System Design Interviews
+description: WIP notes on system design for job interviews.
+keywords: ["programming"]
+---
+
+import Exn from "@components/Exn";
+import Todo from "@components/Todo";
+
+
+## Resources
+
+- [AusDevs Wiki: Interviewing Resources](https://ausdevs.com/resources/interviewing/)
+    - *I actually help maintain this wiki. We aim to make it a great meta-resource!*
+- [GitHub: donnemartin / system-design-primer](https://github.com/donnemartin/system-design-primer)
+    - *I'm largely studying this document, so my notes will retain a lot of the structure from it.*
+
+
+## Distributed Systems Concepts
+
+- Performance vs. Scalability
+    - **Performance:** "How it is normally."
+    - **Scalability:** "It's slow under heavy load."
+    - **Scalability:** "Adding resources improves performance linearly."
+- Latency vs. Throughput
+- CAP Theorem (for distributed systems)
+    - **CAP Theorem:** Can only guarantee two properties of:
+        - **Consistency:** Every read receives the most recent write or an error.
+        - **Availability:** Every request receives a non-error response. *(Not necessarily the most recent.)*
+        - **Partition Tolerance:** The system continues to operate even with arbitrary network failures/delays.
+    - Choices of guarantees:
+        - <Exn>**CA:** Consistency + Availability</Exn>
+            - <Exn>Networks are never reliable. Almost never choose CA.</Exn>
+        - **CP:** Consistency + Partition Tolerance
+            - Good if you need atomic reads/writes.
+            - <Todo>Atomic in what way?</Todo>
+        - **AP:** Availability + Partition Tolerance
+            - Good if you need reliable access to the system.
+            - <Todo>It also talks about a business needing eventual consistency. Why would a business need it specifically?</Todo>
+- Consistency Patterns
+    - **Weak Consistency:** After a write, reads may or may not see it.
+        - Example: real-time use cases like VoIP and multiplayer games.
+    - **Eventual Consistency:** After a write, reads will eventually see it. (Typically milliseconds.)
+        - Useful if you need high availability.
+        - Example: DNS and email.
+    - **Strong consistency:** After a write, reads will always see it.
+        - Useful if you need transactions.
+        - <Todo>What is a transaction?</Todo>
+        - Example: File systems and RDBMSes.
+- Availability Patterns
+    - **Active-Passive Failover:**
+        - Active server normally manages traffic.
+        - Only one "IP address" is needed.
+            - <Todo>Be more clear that "IP address" doesn't necessarily mean a literal IP address?</Todo>
+        - If active server heartbeats stop, passive server takes over the "IP address".
+    - **Active-Active Failover:**
+        - Load is spread between both servers.
+        - Requires "two IP addresses".
+            - <Todo>Be more clear that this doesn't necessarily mean literal IP addresses?</Todo>
+    - **Master-Slave Replication:**
+        - One master, many slaves.
+        - Master server can read/write. Slave servers can only read.
+        - If master fails, a slave can be promoted to master.
+    - **Master-Master Replication:**
+        - All servers are masters and can all read/write.
+    - <Todo>Talk more about the advantages/disadvantages of each approach?</Todo>
+- Availability also depends on whether components are in series or parallel.
+    - 99.9% availability in series with 99.9% = 99.8%
+    - 99.9% availability in parallel with 99.9% = 99.9999%
+

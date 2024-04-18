@@ -5,9 +5,99 @@ description: WIP notes on concurrency.
 keywords: ["programming"]
 ---
 
+import Todo from "@components/Todo";
+
+import Code from "@components/Code.astro";
+
+
 # THIS PAGE IS A VERY EARLY WORK-IN-PROGRESS.
 
-## TODO
+These notes on concurrency serve as a summary/refresher/reference. Some sections may be "pedagogically out of order" in order to make it more useful as a reference.
+
+There's a lot of overlap between concurrency and operating systems internals, so basic concurrency is often taught within an operating systems course in undergraduate university. For this page, I aim to summarize the practical core concepts of concurrency while avoiding going into too much detail about operating systems internals. I will often assume that you already have background in Linux, systems-level programming, and operating systems internals.
+
+
+## Synchronization Primitives
+
+### Mutex
+
+import MutexExample from "./_concurrency.code/mutex2.go?raw" //_
+
+<Code code={MutexExample} lang="go" />
+
+This will print: `1 2 3 4 5 6 7 8 9`.
+
+If you remove the mutex, it prints: `1 1 1 2 2 2 3 3 3`.
+
+<p><Todo>Hmm maybe rewrite it in C?</Todo></p>
+
+### Semaphore
+
+TODO
+
+### Condition Variable
+
+TODO
+
+
+## Useful Concurrency Abstractions
+
+### Thread/Process Pools
+
+<p><Todo>Start this!</Todo></p>
+
+### Monitors
+
+<p><Todo>Start this!</Todo></p>
+
+### Readers-Writer Lock
+
+<p><Todo>Start this!</Todo></p>
+
+### Channels (Golang)
+
+<p><Todo>Start this!</Todo></p>
+
+### Async/Await
+
+Async/await isn't really a concurrency, though it gives the illusion of it.
+
+<p><Todo>Actually, why isn't async/await considered concurrency? Maybe find some proper references on it.</Todo></p>
+
+
+## Concurrency Bugs
+
+### Deadlock
+
+<p><Todo>Start this!</Todo></p>
+
+
+## Implementations: Threads and Processes
+
+<p><Todo>Start this!</Todo></p>
+
+
+## Implementations: Inter-Process Communication (IPC)
+
+<p><Todo>Start this!</Todo></p>
+
+
+## Lock-Free Data Structures
+
+<p><Todo>Start this!</Todo></p>
+
+
+## Non-Blocking Algorithms
+
+<p><Todo>Start this!</Todo></p>
+
+
+## Relevant Topics Not Covered
+
+- Interrupts *(It's more of a systems internals topic.)*
+
+<p><Todo>Anything else? It's a very short list...</Todo></p>
+
 
 ## References and Acknowledgements
 
@@ -15,5 +105,5 @@ I used someone's study list as a foundation for what to study. I'm not sure if t
 
 References:
 
-- (TODO)
+- [UNSW 22T2 COMP3151 (Foundations of Concurrency)](https://www.cse.unsw.edu.au/~cs3151/22T2/outline.html)
 

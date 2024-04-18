@@ -1,0 +1,303 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Kubernetes Notes
+description: WIP notes I started a long time ago about Kubernetes.
+keywords: ["programming", "kubernetes", "k8s"]
+---
+
+# THIS PAGE IS A VERY EARLY WORK-IN-PROGRESS.
+
+_**I pretty much copied in some notes I wrote a long time ago, originally written in a visually-structured `.txt` format. I'm trying to port those notes to mdx. I plan on continuing learning Kubernetes and working on these notes to help consolidate my learning.**_
+
+
+## Resources
+
+References:
+
+- [**LinuxFoundationX LFS158x - Introduction to Kubernetes**](https://learning.edx.org/course/course-v1:LinuxFoundationX+LFS158x+3T2020/home) *(These notes were written while going through this resource.)*
+
+
+## Chapter 1. From Monolith to Microservices
+
+- Running many modules on a single server can have dependency issues.
+- But implementing microservices with one full virtual server per module to separate dependencies may be too heavy.
+- (By module, do they mean like, a single "instance" of a module?)
+- Application containers solve the problem by segregating things in a lightweight manner.
+
+
+## Chapter 2. Container Orchestration
+
+Ideally, we want a single controller/management unit (or "Container Orchestrators") rather than having to individually manage containers.
+
+- container = portable isolated virtual environments. Containers don't run microservices directly; they run container images.
+- microservice = a kind of lightweight application with specific dependencies and envirionmental requirements
+- container image = an application bundled with its dependencies and environmental requirements to run on a container.
+
+Container orchestrators group systems together to form clusters where containers' deployment and management is automated at scale while meeting requirements:
+- Fault-tolerance
+- On-demand scalability
+- Optimal resource usage
+- Auto-discovery to automatically discover and communicate with each other
+- Accessibility from the outside world
+- Seamless updates/rollbacks without any downtime.
+
+Kubernetes is an orchestration tool.<br />
+(Others include: Amazon ECS, Azure Service Fabric, and Docker Swarm.)
+
+
+## Chapter 3. Kubernetes
+
+(I don't really get what software-defined storage (SDS) is yet.)
+
+
+## Chapter 4. Kubernetes Architecture
+
+master node = provides running environment for control plane<br />
+(TODO: idk what this means)
+
+*[SEE LATER]* Pod
+
+Must keep control plane running at all costs. Master node is replicated for resiliency.
+
+Master node runs the following control plane components:
+
+- Data Store (etcd)
+    - Stores all cluster state data (as a distributed key-value store).
+    - New data is written only by appending to it.
+    - etcdctl
+        - A CLI tool for backup/snapshot/restore.
+        - (TODO: Only on a single etcd instance? More useful for learning, but not as useful in production?)
+    - stacked topology
+        - [for example] etcd is configured on master node
+        - Notably, stacking etcd with with master node means etcd is replicated with master node, while external etcd must be separately replicated.
+    - external topology
+        - [for example] etcd is on an external host (TODO: what precisely does this mean?)
+        - Useful topology for isolation from other control plane components.
+- API Server (kube-apiserver)
+        - Intercepts RESTful calls from users, operators and external agents, then validates and processes them.<br />
+            During processing API Server reads and writes etcd.
+        - API Server is the only master plane component that can talk to etcd.
+        - Highly configurable and customizable.<br />
+            Secondary API servers can be used. Primary API server can function as a proxy for secondary API servers.
+- Scheduler (kube-scheduler)
+        - Assigns new workload objects, such as pods, to nodes.<br />
+            Reads from API server: Resource usage data from etcd, and the new workload object's requirements.<br />
+            Makes a decision, then communicates it to the API server. API server itself delegates workload deployment to other control plane components.
+        - Highly configurable and customizable.<br />
+            Can have multiple schedulers. Object configuration data should include a name of a scheduler to be expected to use. (Otherwise, default scheduler is used.)<br />
+            Scheduling can get very complex for multi-node clusters.
+- Controller Managers
+        - Runs controllers to regulate the state of the cluster. (TODO: what does it mean by "run controllers"?)<br />
+            Controllers continuously compare cluster's desired state with current state.<br />
+            Corrective action is taken if needed to achieve desired state.
+        - kube-controller-manager
+            - Runs controllers that act when nodes become unavailable.
+            - (TODO: What does this mean?) "to ensure pod counts are as expected, to create endpoints, service accounts, and API access tokens."
+        - cloud-controller-manager
+            - Runs controllers "responsible for interacting with the underlying infrastructure of a cloud provider when nodes become unavailable, to manage storage volumes when provided by a cloud service, and to manage load balancing and routing."
+            - (TODO: What does this mean?)
+
+In addition, the master node runs:
+
+- Container Runtime
+- Node Agent
+- Proxy
+
+worker node = provides running environment for client applications.
+
+Worker nodes have following components:
+
+- Container Runtime
+    - Kubernetes doesn't directly handle containers.<br />
+        It needs a container runtime such as:
+        - Docker
+        - CRI-O
+        - containerd
+        - frakti
+
+- Node Agent (kubelet)
+    - An agent running on each node. Communicates with the control plane.
+    - Receives pod definitions (primarily from the API server), and interacts with the container runtime through the CRI (Container Runtime Interface).<br />
+        ```
+            +--------+         +----------+         +-------------------+
+            | kublet |  <--->  | CRI shim |  <--->  | Container Runtime |
+            +--------+         +----------+         +-------------------+
+        ```
+    - CRI shims
+        - Implements the CRI.
+        - Sits between kublet and the container runtime to provide an abstraction layer.
+    - The CRI implements two services:
+        - ImageService: responsible for all image-related operations.
+        - RuntimeService: responsible for all pod and container-related operations.
+- Proxy (kube-proxy)
+    - An agent running on each node. Responsible for dynamic updates and maintenance of all networking rules on the node.
+    - Abstracts pod networking and forwards connection requests to pods (e.g. TCP, UDP, and SCTP).
+- Addons
+    - Implements functionality not yet built into Kubernetes.
+    - Examples:
+        - Cluster DNS to assign DNS records to Kubernetes objects and resources.
+        - Dashboard web user interface for cluster management.
+        - Cluster-level monitoring container metrics. (Saves them to a central data store.)
+        - Cluster-level container logs. (Saves them to a central data store.)
+
+(TODO: What's a "client user"?)
+
+(TODO: Get back to "Networking Challenges" and subsequent slides later. I don't entirely understand them at the moment.)
+
+- IP-per-Pod
+    - Kubernetes assigns a unique IP address to each pod.
+- CNI (Container Network Interface)
+    - A set of specifications and libraries for plugins to configure the networking for containers.
+    - Container runtime offloads IP assignment to CNI, which gets an IP address from a plugin before forwarding it back to the container runtime.
+    - (TODO: idk what any of this really means.)
+- Services
+    - Enables external networking accessibility.
+    - (TODO: "complex encapsulations of network routing rule definitions stored in iptables on cluster nodes and implemented by kube-proxy agents". What does this mean?)
+
+
+## Chapters 5-7
+
+*Relevant chapters:*
+
+- *Chapter 5. Installing Kubernetes*
+- *Chapter 6. Minikube - A Local Kubernetes Cluster*
+- *Chapter 7. Accessing Minikube*
+
+kubectl = CLI tool to manage cluster resources and applications.
+
+Useful commands:
+
+```
+minikube start
+minikube start --container-runtime cri-o
+minikube status
+minikube ssh
+minikube dashboard
+minikube stop
+
+kubectl config view
+kubectl cluster-info
+kubectl get namespaces
+
+kubectl proxy
+curl http://localhost:8001/
+```
+
+Authentication using bearer tokens:
+
+```
+TOKEN=$(kubectl describe secret -n kube-system $(kubectl get secrets -n kube-system | grep default | cut -f1 -d ' ') | grep -E '^token' | cut -f2 -d':' | tr -d '\t' | tr -d " ")
+APISERVER=$(kubectl config view | grep https | cut -f 2- -d ":" | tr -d " ")
+
+curl $APISERVER --header "Authorization: Bearer $TOKEN" --insecure
+```
+
+You can also authenticate with client certificate, client key, and certificate authority.<br />
+TODO: Figure out how this works.
+    - STEP 1: Find client-certificate and client-key in `.kube/config`
+    - STEP 2: Encode them.
+    - STEP 3: Run command `curl $APISERVER --cert encoded-cert --key encoded-key --cacert encoded-ca`
+
+Useful commands within minikube ssh:
+
+```
+sudo docker container ls
+sudo runc list
+```
+
+
+Useful commands within minikube ssh:
+
+```
+sudo docker container ls
+sudo runc list
+```
+
+
+Other interesting-but-contextual commands seen:
+
+```
+kubectl -n kube-system describe pod kube-scheduler-minikube | grep "Container ID"
+```
+
+
+## Chapter 8. Kubernetes Building Blocks
+
+With each object, we declare our intent (the desired state of the object) in the `spec` section.<br />
+Kubernetes manages the `status` section for objects, where it records the actual state of the object.<br />
+At any given point in time, the Control Plane tries to match the object's actual state to the desired state.
+    
+### Labels
+
+Key-value pairs to organize objects.<br />
+Labels don't provide unique identification. (Objects can share the same set of labels.)
+
+Controllers use label selectors to select a subset of objects.<br />
+Kubernetes supports two types of selector:
+
+- equality-based selector
+    - `=`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`==`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`!=`
+- set-based selector
+    - `in`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`notin`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`exist`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`does not exist`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`!`
+
+### Namespaces
+
+Virtual subclusters.<br />
+Names within a namespace are unique, but not across namespaces.
+
+By default, Kubernetes creates the following namespaces:
+
+- kube-system
+    - Objects created by the system, mostly control plane objects.
+- default
+    - Objects and resources created by admins and developers.
+- kube-public
+    - Unsecured and readable by anyone. Used for exposing public/non-sensitive information about the cluster.
+- kube-node-lease
+    - Node lease objects used for node heartbeat data. (TODO: idk what this means)
+
+### Objects
+
+- Pod
+    - It is the smallest and simplest object.<br />
+        It is a unit of deployment in Kubernetes, representing a single instance of an app.
+    - A pod is a collection of one or more containers which:
+        - are scheduled together
+            - It is also the smallest scheduling unit in Kubernetes. Starts/stops/rescheduled as a single unit of work.
+        - share the same network namespace
+            - All containers within share the Pod IP address (TODO: NAT?).
+        - have access to the same volumes
+    - Pods cannot self-heal.<br />
+        They are always(?) used with controller objects which handle replication, fault-tolerance, etc.<br />
+        Pod specification is attached to controller objects using pod template (`template`).
+- ReplicationController
+    - (NO LONGER A RECOMMENDED CONTROLLER)
+- ReplicaSet
+    - Maintains a specified number of replicas of a pod template by constantly checking desired vs. current pods.
+    - ReplicaSet is limited in features, so it's generally used with Deployment.
+- Deployment
+    - Deployment creates a ReplicaSet, which then creates the replicas of a pod template.
+    - Deployments can handle rolling updates.
+        - When something is updated (e.g. updated container image), Deployment may create a new ReplicaSet. (TODO: or multiple?)<br />
+            It transitions seamlessly to the new ReplicaSet.
+        - Some updates trigger a new revision number, while others (like scaling and labelling) don't.
+        - Once a rolling update is complete, Deployment will still show the old ReplicaSet (as scaled to 0).<br />
+            This is for the rollback capability.
+
+### TODO: controller objects?
+
+TODO
+
+
+## Chapter 9. Authentication, Authorization, Admission Control
+
+- (TODO: Reread this and maybe take notes. Didn't really read in too much detail due to low-priority for now.)
+- (TODO: I don't really understand the details of authorization yet. Bit too abstract atm for me atm without trying it out.)
+- (TODO: Useful exercise on access control towards the end of Chapter 9. Also check out the video.)
+    - [link](https://learning.edx.org/course/course-v1:LinuxFoundationX+LFS158x+3T2020/block-v1:LinuxFoundationX+LFS158x+3T2020+type@sequential+block@f6f8a73dc38647eeb576dce791500901/block-v1:LinuxFoundationX+LFS158x+3T2020+type@vertical+block@a6255f1b366641339fda7aed6af626f7)
+
+
+## Interesting Tidbits
+
+etcd is based on the Raft Consensus Algorithm ([link](https://web.stanford.edu/~ouster/cgi-bin/papers/raft-atc14)).
+
