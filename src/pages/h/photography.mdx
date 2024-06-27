@@ -1,0 +1,86 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Photography Notes
+description: WIP notes on various stuff on photography
+keywords: []
+---
+
+import DisplayLatex from "@components/latex/DisplayLatex";
+import Eq from "@components/latex/Eq";
+
+import Ref from "@components/referencing/Ref";
+import YTRef from "@components/referencing/YTRef";
+
+import SpoilerBlock from "@components/SpoilerBlock.astro";
+import Todo from "@components/Todo";
+
+
+*I'm mainly interested in digital photography, so that will be the focus of my notes.*
+
+*I've been dabbling with my current DSLR and phone photography for quite a while now and I enjoy the composition side of things, but I started this document mainly to fill a gap in knowledge around the technical side of photography, so that's what I'm focusing on fleshing out for now.*
+
+
+## Section 1a: Core Technical Concepts
+
+### Exposure Triangle
+
+#### Shutter Speed
+
+Slower shutter speed &#8594; more exposure, more motion blur.
+
+#### Aperture
+
+Smaller f-stop number &#8594; larger aperture &#8594; more exposure, shallower depth of field.
+
+Mathematically, the f-stop (<Eq code="N" />) is a dimensionless ratio:
+
+<DisplayLatex code="
+    N
+    = \frac{f}{D}
+    = \frac{\text{focal length}}{\text{diameter of entrance pupil (effective aperture)}}
+" />
+
+
+#### ISO
+
+Higher ISO number &#8594; more exposure, and *usually* more noise.
+
+### Lenses
+
+#### Focal Length
+
+TODO
+
+### References
+
+<SpoilerBlock buttonLabel="References">
+- <Ref date="2024-04-19" href="https://www.adobe.com/au/creativecloud/photography/discover.html" desc="Adobe - Discover Photography" />
+- <YTRef date="2024-04-19" vidID="5vu8ZVlSSqs" title="MASTER YOUR CAMERA in 15 mins: settings, dials, functions." channel="Simon d'Entremont" />
+- <Ref date="2024-04-19" href="https://en.wikipedia.org/wiki/F-number" desc="Wikipedia - f-number" />
+</SpoilerBlock>
+
+
+## Section 1b: Videography-Specific Concepts
+
+TODO
+
+
+## Section 1c: Gear Considerations
+
+### Single vs. Dual Card Slots
+
+- Dual card slots running mirrored lowers the impact of single-card failures.
+- *Lots of people on the internet say you should never do professional photography without dual card slots.*
+
+
+## Section 2: Post-Production
+
+TODO
+
+
+## Section 3: Framing and Composition
+
+*Although this section is put after all the technical stuff, this may be the most important thing in photography. I placed this section here to let the technical stuff give the framing and composition techniques context.*
+
+TODO
+
