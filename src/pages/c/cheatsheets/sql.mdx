@@ -5,17 +5,64 @@ description: My SQL cheatsheet because I forget names and syntax a lot.
 keywords: ["programming", "postgres", "mysql", "rdbms", "optimization", "cheatsheet"]
 ---
 
-# I haven't started this page yet.
+*I am using **Microsoft SQL Server** these days, so this cheatsheet will currently assume you're using it.*
+
+*I will rework this cheatsheet to be more DBMS-agnostic later.*
 
 
 ## Resources
 
 References:
 
-- [**foo.com**](https://foo.com/) `(foo.com)`
+- [**Transact-SQL Reference**](https://learn.microsoft.com/en-us/sql/t-sql/language-reference) `(learn.microsoft.com)`
+- My theory notes on: [**The Relational Model and Relational Algebra**](/c/notes/databases-relational-model/)
+    - *I will assume that you are familiar with the basic relational model language from these notes.*
 
 
-## TODO
+## `SELECT` Statements
 
-TODO
+### Whole Table
+
+```sql
+SELECT * FROM mytable;
+```
+
+### Common Clauses
+
+```sql
+SELECT
+    MyCol1,
+    MyCol2,
+    MyCol3,
+    SUM(MyCol4) AS MySum
+FROM MyTable
+GROUP BY
+    MyCol2,
+    MyCol3
+WHERE 
+    MyCol1 = '1969-04-01'
+    AND MyCol2 in ('mystr1', 'mystr2')
+    AND (
+        MyCol3 <= 4
+        OR MyCol3 BETWEEN 10 AND 20
+    )
+HAVING
+    SUM(MyCol4) > 2
+ORDER BY
+    MyCol1 ASC,
+    MyCol3 DESC
+;
+```
+
+- `BETWEEN` is all inclusive.
+- `ORDER BY` is `ASC` by default if you omit the `ASC`/`DESC`.
+- **DISCLAIMER: I'm actually not 100% sure a query like this is entirely correct since I'm just building up a contrived example. I should test it somehow, and then remove this disclaimer when I'm confident it works.**
+
+### Joins
+
+(TODO)
+
+### Unions
+
+(TODO)
 
