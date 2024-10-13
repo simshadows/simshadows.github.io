@@ -1,0 +1,20 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: git Cheatsheet
+description: My git cheatsheet because I forget commands a lot.
+keywords: ["programming", "git", "version control", "cheatsheet"]
+---
+
+
+## Rebase
+
+```
+git rebase master
+```
+
+More complex example:
+```
+git rebase --onto master foo bar
+```
+*"Take the **bar** branch, figure out the patches since it diverged from the **foo** branch, and replay those patches in the **bar** branch as if it was based directly off the **master** branch instead."*
+
