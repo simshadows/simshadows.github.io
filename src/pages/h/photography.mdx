@@ -14,25 +14,106 @@ import YTRef from "@components/referencing/YTRef";
 import SpoilerBlock from "@components/SpoilerBlock.astro";
 import Todo from "@components/Todo";
 
+import Fsc from "./_photography.FStopCells"; //_
+
 
 *I'm mainly interested in digital photography, so that will be the focus of my notes.*
 
 *I've been dabbling with my current DSLR and phone photography for quite a while now and I enjoy the composition side of things, but I started this document mainly to fill a gap in knowledge around the technical side of photography, so that's what I'm focusing on fleshing out for now.*
 
 
-## Section 1a: Core Technical Concepts
+## Section 1: Cheatsheet
+
+<p>
+<table class="general">
+    <thead>
+        <tr>
+            <th>Full-Frame<br/>36 x 24 mm</th>
+            <th>Sony APS-C<br/>23.5 x 15.6 mm</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>16mm</td>
+            <td>10.46mm</td>
+        </tr>
+        <tr>
+            <td>24mm</td>
+            <td>15.7mm</td>
+        </tr>
+        <tr>
+            <td>35mm</td>
+            <td>22.88mm</td>
+        </tr>
+        <tr>
+            <td>50mm</td>
+            <td>32.7mm</td>
+        </tr>
+        <tr>
+            <td>85mm</td>
+            <td>55.6mm</td>
+        </tr>
+    </tbody>
+</table>
+</p>
+
+<p>
+<table class="general">
+    <thead>
+        <tr>
+            <th colspan="3">Standard Full-Stop f-Numbers</th>
+        </tr>
+        <tr>
+            <th>AV</th>
+            <th>Standard</th>
+            <th>Calculated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><Fsc a={3*0    } n={ 10}/></tr>
+        <tr><Fsc a={3*0 + 1} n={ 11}/></tr>
+        <tr><Fsc a={3*0 + 2} n={ 12}/></tr>
+        <tr><Fsc a={3*1    } n={ 14}/></tr>
+        <tr><Fsc a={3*1 + 1} n={ 16}/></tr>
+        <tr><Fsc a={3*1 + 2} n={ 18}/></tr>
+        <tr><Fsc a={3*2    } n={ 20}/></tr>
+        <tr><Fsc a={3*2 + 1} n={ 22}/></tr>
+        <tr><Fsc a={3*2 + 2} n={ 25}/></tr>
+        <tr><Fsc a={3*3    } n={ 28}/></tr>
+        <tr><Fsc a={3*3 + 1} n={ 32}/></tr>
+        <tr><Fsc a={3*3 + 2} n={ 35}/></tr>
+        <tr><Fsc a={3*4    } n={ 40}/></tr>
+        <tr><Fsc a={3*4 + 1} n={ 45}/></tr>
+        <tr><Fsc a={3*4 + 2} n={ 50}/></tr>
+        <tr><Fsc a={3*5    } n={ 56}/></tr>
+        <tr><Fsc a={3*5 + 1} n={ 63}/></tr>
+        <tr><Fsc a={3*5 + 2} n={ 71}/></tr>
+        <tr><Fsc a={3*6    } n={ 80}/></tr>
+        <tr><Fsc a={3*6 + 1} n={ 90}/></tr>
+        <tr><Fsc a={3*6 + 2} n={100}/></tr>
+        <tr><Fsc a={3*7    } n={110}/></tr>
+        <tr><Fsc a={3*7 + 1} n={130}/></tr>
+        <tr><Fsc a={3*7 + 2} n={140}/></tr>
+        <tr><Fsc a={3*8    } n={160}/></tr>
+    </tbody>
+</table>
+</p>
+
+
+## Section 2a: Core Technical Concepts
 
 ### Exposure Triangle
 
-#### Shutter Speed
+#### Shutter Speed (t)
 
 Slower shutter speed &#8594; more exposure, more motion blur.
 
-#### Aperture
+
+#### Aperture (N)
 
 Smaller f-stop number &#8594; larger aperture &#8594; more exposure, shallower depth of field.
 
-Mathematically, the f-stop (<Eq code="N" />) is a dimensionless ratio:
+The f-stop (<Eq code="N"/>) is a dimensionless ratio:
 
 <DisplayLatex code="
     N
@@ -40,10 +121,36 @@ Mathematically, the f-stop (<Eq code="N" />) is a dimensionless ratio:
     = \frac{\text{focal length}}{\text{diameter of entrance pupil (effective aperture)}}
 " />
 
+Often written in the format "f/N", which usefully forms an expression of <Eq code="D"/>.
+
+Recall the area of a circle (<Eq code="A"/>) as a function of radius (<Eq code="r"/>) or diameter (<Eq code="D"/>):
+
+<DisplayLatex code="
+    A = \pi r^2 = \frac{1}{4} \pi D^2
+    \qquad\qquad
+    A \propto D^2 \propto \sqrt{N}
+" />
+
+<p><Todo>Link area to exposure and find out how focal length affects things...</Todo></p>
+
 
 #### ISO
 
 Higher ISO number &#8594; more exposure, and *usually* more noise.
+
+
+#### Exposure Value (EV)
+
+EV represents the overall exposure of the image as a function of <Eq code="t"/> and <Eq code="N"/>. Commonly referred to as *stops of light*.
+
+It's a base-2 logarithm, so a difference of <Eq code="\pm 1 \text{EV}"/> represents a doubling or halving of light hitting the camera sensor:
+
+<DisplayLatex code="
+    \text{EV}
+    = \log_2{\frac{N^2}{t}}
+    = 2 \log_2{N} - \log_2{t}
+"/>
+
 
 ### Lenses
 
@@ -54,33 +161,13 @@ TODO
 ### References
 
 <SpoilerBlock buttonLabel="References">
-- <Ref date="2024-04-19" href="https://www.adobe.com/au/creativecloud/photography/discover.html" desc="Adobe - Discover Photography" />
-- <YTRef date="2024-04-19" vidID="5vu8ZVlSSqs" title="MASTER YOUR CAMERA in 15 mins: settings, dials, functions." channel="Simon d'Entremont" />
-- <Ref date="2024-04-19" href="https://en.wikipedia.org/wiki/F-number" desc="Wikipedia - f-number" />
+- <Ref date="2024-04-19" href="https://www.adobe.com/au/creativecloud/photography/discover.html" desc="Adobe - Discover Photography"/>
+- <YTRef date="2024-04-19" vidID="5vu8ZVlSSqs" title="MASTER YOUR CAMERA in 15 mins: settings, dials, functions." channel="Simon d'Entremont"/>
+- <Ref date="2024-04-19" href="https://en.wikipedia.org/wiki/F-number" desc="Wikipedia - f-number"/>
 </SpoilerBlock>
 
 
-## Section 1b: Videography-Specific Concepts
-
-TODO
-
-
-## Section 1c: Gear Considerations
-
-### Single vs. Dual Card Slots
-
-- Dual card slots running mirrored lowers the impact of single-card failures.
-- *Lots of people on the internet say you should never do professional photography without dual card slots.*
-
-
-## Section 2: Post-Production
-
-TODO
-
-
-## Section 3: Framing and Composition
-
-*Although this section is put after all the technical stuff, this may be the most important thing in photography. I placed this section here to let the technical stuff give the framing and composition techniques context.*
+## Section 2b: Videography-Specific Concepts
 
 TODO
 
