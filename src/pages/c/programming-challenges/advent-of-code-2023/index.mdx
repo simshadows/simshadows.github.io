@@ -12,6 +12,7 @@ import DisplayLatex from "@components/latex/DisplayLatex";
 import GatherLatex from "@components/latex/GatherLatex";
 import Eq from "@components/latex/Eq";
 
+import Code from "@components/Code.astro";
 import Eqref from "@components/latex/Eqref";
 import SpoilerBlock from "@components/SpoilerBlock.astro";
 import Todo from "@components/Todo";
@@ -36,20 +37,10 @@ Links to the full challenge specifications are included throughout this document
 
 ### Part 1 Solution
 
-```py
-#!/usr/bin/env python3
+import Day01Part1 from "./_solutions/day01-part1.py?raw" //_
 
-from sys import stdin
+<Code code={Day01Part1} lang="py" />
 
-def run(f):
-    n = 0
-    for s in f.readlines():
-        s = [c for c in s if (c in "1234567890")]
-        n += int(s[0] + s[-1])
-    print(n)
-
-run(stdin)
-```
 
 ### Part 2 Solution
 
@@ -57,47 +48,10 @@ I found Part 2 to be a pain in the ass because the exact conditions for a word t
 
 My first attempt would replace all valid substrings into digits, giving priority to what appears earlier:
 
+import Day01Part2v01 from "./_solutions/day01-part2--01-fail.py?raw" //_
+
 <SpoilerBlock buttonLabel="Failed Solution">
-```py
-#!/usr/bin/env python3
-
-from sys import stdin
-from math import isinf, inf
-
-nums = {str(s) for s in range(10)}
-tab = {
-    "one": "1",
-    "two": "2",
-    "three": "3",
-    "four": "4",
-    "five": "5",
-    "six": "6",
-    "seven": "7",
-    "eight": "8",
-    "nine": "9",
-    #"zero": "0",
-}
-
-def run():
-    n = 0
-    for i, s in enumerate(x.strip() for x in f.readlines()):
-        while True:
-            best_idx = inf
-            best_str = ""
-            for (query, digit) in tab.items():
-                idx = s.find(query)
-                if idx >= 0 and idx < best_idx:
-                    best_idx = idx
-                    best_str = query
-            if isinf(best_idx):
-                break
-            s = s.replace(best_str, tab[best_str], 1)
-        s = list(filter(lambda x : x in nums, s))
-        n += int(s[0] + s[-1])
-    print(n)
-
-run(f)
-```
+    <Code code={Day01Part2v01} lang="py" />
 </SpoilerBlock>
 
 After a bit more thought, I realized the important thing is probably the first and last actual valid word.
@@ -110,60 +64,9 @@ In the interest of getting something done quick, I produced a terribly inelegant
 
 The full solution:
 
-```py
-#!/usr/bin/env python3
+import Day01Part2v02 from "./_solutions/day01-part2--02.py?raw" //_
 
-from sys import stdin
-from math import isinf, inf
-
-nums = {str(s) for s in range(10)}
-tab = {
-    "one": "1",
-    "two": "2",
-    "three": "3",
-    "four": "4",
-    "five": "5",
-    "six": "6",
-    "seven": "7",
-    "eight": "8",
-    "nine": "9",
-    #"zero": "0",
-}
-
-def run(f):
-    n = 0
-    for i, s in enumerate(x.strip() for x in f.readlines()):
-        # replace first
-        s1 = s
-        best_idx = inf
-        best_str = ""
-        for (query, digit) in tab.items():
-            idx = s1.find(query)
-            if idx >= 0 and idx < best_idx:
-                best_idx = idx
-                best_str = query
-        if not isinf(best_idx):
-            s1 = s1.replace(best_str, tab[best_str], 1)
-        s1 = [c for c in s1 if (c in nums)]
-
-        # replace last
-        s2 = s
-        best_idx = -1
-        best_str = ""
-        for (query, digit) in tab.items():
-            idx = s2.rfind(query)
-            if idx >= 0 and idx > best_idx:
-                best_idx = idx
-                best_str = query
-        if best_idx >= 1:
-            s2 = s2.replace(best_str, tab[best_str])
-        s2 = [c for c in s2 if (c in nums)]
-
-        n += int(s1[0] + s2[-1])
-    print(n)
-
-run(stdin)
-```
+<Code code={Day01Part2v02} lang="py" />
 
 
 <Divider />
@@ -174,63 +77,18 @@ run(stdin)
 
 My solution just checks if every number of cubes falls within the limits (`R_LIMIT`, `G_LIMIT`, and `B_LIMIT`).
 
-```py
-#!/usr/bin/env python3
+import Day02Part1 from "./_solutions/day02-part1.py?raw" //_
 
-from sys import stdin
+<Code code={Day02Part1} lang="py" />
 
-R_LIMIT = 12
-G_LIMIT = 13
-B_LIMIT = 14
-
-def run(f):
-    solution = 0
-    for i, s in enumerate(f.readlines()):
-        (title, tail) = s.strip().split(":")
-        (_, game_num) = title.split()
-        sets = [dict(reversed(y.split()) for y in x.split(",")) for x in tail.split(";")]
-
-        game_is_possible = all(
-            (
-                int(d.get("red", 0)) <= R_LIMIT
-                and int(d.get("green", 0)) <= G_LIMIT
-                and int(d.get("blue", 0)) <= B_LIMIT
-            )
-            for d in sets
-        )
-        if game_is_possible:
-            solution += int(game_num)
-    print(solution)
-
-run(stdin)
-```
 
 ### Part 2 Solution
 
 Straightforward modification that instead just grabs the maximum numbers of red, green, and blue seen within each game.
 
-```py
-#!/usr/bin/env python3
+import Day02Part2 from "./_solutions/day02-part2.py?raw" //_
 
-from sys import stdin
-
-def run(f):
-    solution = 0
-    for i, s in enumerate(f.readlines()):
-        (title, tail) = s.strip().split(":")
-        (_, game_num) = title.split()
-        sets = [dict(reversed(y.split()) for y in x.split(",")) for x in tail.split(";")]
-
-        (r, g, b) = (0, 0, 0)
-        for d in sets:
-            r = max(r, int(d.get("red", 0)))
-            g = max(g, int(d.get("green", 0)))
-            b = max(b, int(d.get("blue", 0)))
-        solution += r * g * b
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day02Part2} lang="py" />
 
 
 <Divider />
@@ -251,34 +109,10 @@ At the same time, we also scan all adjacent cells for part symbols (`*`, `#`, et
 
 Once again, the `"."` padding helps us simplify our code to avoid explicitly dealing with an edge case. Since the final column is `"."`, we will know that any part number still stored in the accumulator will be forced to flush, and thus be included in the solution.
 
-```py
-#!/usr/bin/env python3
+import Day03Part1 from "./_solutions/day03-part1.py?raw" //_
 
-from sys import stdin
-from itertools import product
+<Code code={Day03Part1} lang="py" />
 
-def run(f):
-    solution = 0
-    grid = [list(x.strip()) + ["."] for x in f]
-    (len1, len2) = (len(grid), len(grid[0]))
-    grid.append(["."] * len2)
-    for i, row in enumerate(grid):
-        (num, is_part_num) = (0, False)
-        for j, v in enumerate(row):
-            if v.isdigit():
-                num = (num * 10) + int(v)
-                for i2, j2 in product((i - 1, i, i + 1), (j - 1, j, j + 1)):
-                    (i2, j2) = (i2 % len1, j2 % len2)
-                    if (not grid[i2][j2].isdigit()) and (grid[i2][j2] != "."):
-                        is_part_num = True
-            else:
-                if is_part_num:
-                    solution += num
-                (num, is_part_num) = (0, False)
-    print(solution)
-
-run(stdin)
-```
 
 ### Part 2 Solution
 
@@ -286,35 +120,9 @@ We keep a lot of the same tricks as Part 1, but this time, instead of `is_part_n
 
 Then, we just loop through `gear_adjs`, summing up gear ratios (`x[0] * x[1]`) after filtering for gears with exactly two adjacencies (`len(x) == 2`).
 
-```py
-#!/usr/bin/env python3
+import Day03Part2 from "./_solutions/day03-part2.py?raw" //_
 
-from sys import stdin
-from itertools import product
-from collections import defaultdict
-
-def run(f):
-    grid = [x.strip() + "." for x in f]
-    (len1, len2) = (len(grid), len(grid[0]))
-    grid.append("." * len2)
-    gear_adjs = defaultdict(list) # "gear adjacencies", {(i, j): [part nums]}
-    for i, row in enumerate(grid):
-        (num, gears) = (0, set())
-        for j, v in enumerate(row):
-            if v.isdigit():
-                num = (num * 10) + int(v)
-                for i2, j2 in product((i - 1, i, i + 1), (j - 1, j, j + 1)):
-                    (i2, j2) = (i2 % len1, j2 % len2)
-                    if grid[i2][j2] == "*":
-                        gears.add((i2, j2))
-            else:
-                for i2, j2 in gears:
-                    gear_adjs[(i2, j2)].append(num)
-                (num, gears) = (0, set())
-    print(sum(x[0] * x[1] for x in gear_adjs.values() if len(x) == 2))
-
-run(stdin)
-```
+<Code code={Day03Part2} lang="py" />
 
 
 <Divider />
@@ -325,48 +133,18 @@ run(stdin)
 
 We just take a set intersection between what's present on the card and the winning numbers to get the number of winning numbers. Easy!
 
-```py
-#!/usr/bin/env python3
+import Day04Part1 from "./_solutions/day04-part1.py?raw" //_
 
-from sys import stdin
+<Code code={Day04Part1} lang="py" />
 
-def run(f):
-    solution = 0
-    for line in f:
-        (_, all_numbers) = line.split(":")
-        (card, winning_numbers) = [x.strip().split() for x in all_numbers.strip().split("|")]
-        matches = len(set(card) & set(winning_numbers))
-        if matches > 0:
-            solution += 2 ** (matches - 1)
-    print(solution)
-
-run(stdin)
-```
 
 ### Part 2 Solution
 
 I went for a 1D dynamic programming solution. Each card's final value is only dependent on cards of higher indices, so we iterate through the list of cards in reverse.
 
-```py
-#!/usr/bin/env python3
+import Day04Part2 from "./_solutions/day04-part2.py?raw" //_
 
-from sys import stdin
-
-def run(f):
-    cards = []
-    for line in f:
-        (_, all_numbers) = line.split(":")
-        (card, winning_numbers) = [x.strip().split() for x in all_numbers.strip().split("|")]
-        cards.append(len(set(card) & set(winning_numbers)))
-
-    solution = 0
-    for i, v in reversed(list(enumerate(cards))):
-        cards[i] = sum(cards[i+1:i+1+cards[i]]) + 1
-        solution += cards[i]
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day04Part2} lang="py" />
 
 
 <Divider />
@@ -377,46 +155,10 @@ run(stdin)
 
 Each `X-to-Y map:` section is doing basically the same thing, mapping some set of input IDs to some set of output IDs. To avoid code duplication, I wrote ID mapping functionality that is simply reused for each "X-to-Y map:" in the order dictated by `maps_order`.
 
-```py
-#!/usr/bin/env python3
+import Day05Part1 from "./_solutions/day05-part1.py?raw" //_
 
-from sys import stdin
+<Code code={Day05Part1} lang="py" />
 
-maps_order = (
-    "seed-to-soil map",
-    "soil-to-fertilizer map",
-    "fertilizer-to-water map",
-    "water-to-light map",
-    "light-to-temperature map",
-    "temperature-to-humidity map",
-    "humidity-to-location map",
-)
-
-def run(f):
-    sections = [x.split(":") for x in "".join(f.readlines()).split("\n\n")]
-    sections = {k.strip(): v.strip() for k, v in sections}
-
-    seeds = [int(x) for x in sections["seeds"].split()]
-    del sections["seeds"]
-
-    maps = {k: [[int(y) for y in x.split()] for x in v.split("\n")] for k, v in sections.items()}
-
-    ids = seeds
-    for map_name in maps_order:
-        ranges = maps[map_name]
-        new_ids = []
-        for i in ids:
-            new_i = i
-            for dst, src, rangelen in ranges:
-                if (i >= src) and (i < src + rangelen):
-                    new_i = dst + (i - src)
-                    break
-            new_ids.append(new_i)
-        ids = new_ids
-    print(min(ids))
-
-run(stdin)
-```
 
 ### Part 2 Solution
 
@@ -432,70 +174,9 @@ For the case where an ID range tuple doesn't match with any mapping, it just map
 
 The `grouper()` function is taken directly from [Itertools Recipes](https://docs.python.org/3/library/itertools.html#itertools-recipes) from the official documentation.
 
-```py
-#!/usr/bin/env python3
+import Day05Part2 from "./_solutions/day05-part2.py?raw" //_
 
-from sys import stdin
-from itertools import chain, pairwise, zip_longest
-
-maps_order = (
-    "seed-to-soil map",
-    "soil-to-fertilizer map",
-    "fertilizer-to-water map",
-    "water-to-light map",
-    "light-to-temperature map",
-    "temperature-to-humidity map",
-    "humidity-to-location map",
-)
-
-# <https://docs.python.org/3/library/itertools.html#itertools-recipes>
-def grouper(iterable, n, *, incomplete='fill', fillvalue=None):
-    "Collect data into non-overlapping fixed-length chunks or blocks"
-    # grouper('ABCDEFG', 3, fillvalue='x') --> ABC DEF Gxx
-    # grouper('ABCDEFG', 3, incomplete='strict') --> ABC DEF ValueError
-    # grouper('ABCDEFG', 3, incomplete='ignore') --> ABC DEF
-    args = [iter(iterable)] * n
-    if incomplete == 'fill':
-        return zip_longest(*args, fillvalue=fillvalue)
-    if incomplete == 'strict':
-        return zip(*args, strict=True)
-    if incomplete == 'ignore':
-        return zip(*args)
-    else:
-        raise ValueError('Expected fill, strict, or ignore')
-
-def run(f):
-    sections = [x.split(":") for x in "".join(f.readlines()).split("\n\n")]
-    sections = {k.strip(): v.strip() for k, v in sections}
-
-    seeds = list(grouper((int(x) for x in sections["seeds"].split()), 2))
-    del sections["seeds"]
-
-    maps = {k: [[int(y) for y in x.split()] for x in v.split("\n")] for k, v in sections.items()}
-
-    ids = seeds
-    for map_name in maps_order:
-        ranges = maps[map_name]
-        new_ids = []
-        while len(ids):
-            id_start, id_len = ids.pop()
-            if id_len == 0:
-                continue
-            for dst, src, rangelen in ranges:
-                intersect_start = max(id_start, src)
-                intersect_end = min(id_start + id_len, src + rangelen)
-                if intersect_end > intersect_start:
-                    ids.append((id_start, intersect_start - id_start))
-                    ids.append((intersect_end, id_start + id_len - intersect_end))
-                    new_ids.append((intersect_start + dst - src, intersect_end - intersect_start))
-                    break
-            else:
-                new_ids.append((id_start, id_len))
-        ids = new_ids
-    print(min((x for (x, _) in ids), default="NONE"))
-
-run(stdin)
-```
+<Code code={Day05Part2} lang="py" />
 
 
 <Divider />
@@ -506,28 +187,10 @@ run(stdin)
 
 I just tried every possible button-hold-time and counted the record-breakers.
 
-```py
-#!/usr/bin/env python3
+import Day06Part1 from "./_solutions/day06-part1.py?raw" //_
 
-from sys import stdin
+<Code code={Day06Part1} lang="py" />
 
-def run(f):
-    sections = [s.split(":") for s in f.readlines()]
-    sections = {k.strip(): [int(x) for x in v.strip().split()] for k, v in sections}
-
-    solution = 1
-    for time_limit, dist_record in zip(sections["Time"], sections["Distance"]):
-        combos = 0
-        for hold_time in range(1, time_limit):
-            dist_travelled = (time_limit - hold_time) * hold_time
-            if dist_travelled > dist_record:
-                combos += 1
-        solution *= combos
-
-    print(solution)
-
-run(stdin)
-```
 
 ### Part 2 Solution
 
@@ -539,27 +202,9 @@ Instead of making lists of integers, I joined the integers together with this li
 
 The full solution:
 
-```py
-#!/usr/bin/env python3
+import Day06Part2 from "./_solutions/day06-part2.py?raw" //_
 
-from sys import stdin
-
-def run(f):
-    sections = [s.split(":") for s in f.readlines()]
-    sections = {k.strip(): int("".join(v.strip().split())) for k, v in sections}
-
-    (time_limit, dist_record) = (sections["Time"], sections["Distance"])
-
-    combos = 0
-    for hold_time in range(1, time_limit):
-        dist_travelled = (time_limit - hold_time) * hold_time
-        if dist_travelled > dist_record:
-            combos += 1
-
-    print(combos)
-
-run(stdin)
-```
+<Code code={Day06Part2} lang="py" />
 
 
 <Divider />
@@ -581,97 +226,18 @@ The inner lists are sorted by natural order before then chained together into a 
 
 The full solution:
 
-```py
-#!/usr/bin/env python3
+import Day07Part1 from "./_solutions/day07-part1.py?raw" //_
 
-from sys import stdin
-from collections import Counter
-from itertools import chain, count
+<Code code={Day07Part1} lang="py" />
 
-label_order = {c: i for c, i in zip(reversed("AKQJT98765432"), count())}
-
-def run(f):
-    hands = [s.split() for s in f.readlines()]
-
-    sorted_hands = [[], [], [], [], [], [], []]
-    for labels, bid in hands:
-        bid = int(bid)
-        cnt = Counter(labels)
-        freqs = Counter(cnt.values())
-
-        tup = (tuple(label_order[c] for c in labels), bid)
-        if 5 in freqs:
-            sorted_hands[6].append(tup)
-        elif 4 in freqs:
-            sorted_hands[5].append(tup)
-        elif 3 in freqs:
-            if 2 in freqs:
-                sorted_hands[4].append(tup)
-            else:
-                sorted_hands[3].append(tup)
-        elif freqs[2] == 2:
-            sorted_hands[2].append(tup)
-        elif freqs[2] == 1:
-            sorted_hands[1].append(tup)
-        else:
-            sorted_hands[0].append(tup)
-
-    all_sorted = chain(*(tuple(sorted(lst)) for lst in sorted_hands))
-    print(sum(bid * rank for ((_, bid), rank) in zip(all_sorted, count(1))))
-
-run(stdin)
-```
 
 ### Part 2 Solution
 
 For Part 2, I modified Part 1 to try every possible card that a joker can "mimic", and taking the best strength.
 
-```py
-#!/usr/bin/env python3
+import Day07Part2 from "./_solutions/day07-part2.py?raw" //_
 
-from sys import stdin
-from collections import Counter
-from itertools import chain, count
-
-label_order = {c: i for c, i in zip(reversed("AKQT98765432J"), count())}
-
-def run(f):
-    hands = [s.split() for s in f.readlines()]
-
-    sorted_hands = [[], [], [], [], [], [], []]
-    for labels, bid in hands:
-        bid = int(bid)
-
-        tup = (tuple(label_order[c] for c in labels), bid)
-        strength = -1
-        for joker_mimic in "AKQT98765432J":
-            mimicked = labels.replace("J", joker_mimic)
-            print(mimicked)
-            cnt = Counter(mimicked)
-            freqs = Counter(cnt.values())
-
-            if 5 in freqs:
-                strength = max(strength, 6)
-            elif 4 in freqs:
-                strength = max(strength, 5)
-            elif 3 in freqs:
-                if 2 in freqs:
-                    strength = max(strength, 4)
-                else:
-                    strength = max(strength, 3)
-            elif freqs[2] == 2:
-                strength = max(strength, 2)
-            elif freqs[2] == 1:
-                strength = max(strength, 1)
-            else:
-                strength = max(strength, 0)
-        sorted_hands[strength].append(tup)
-
-    all_sorted = chain(*(tuple(sorted(lst)) for lst in sorted_hands))
-    print(sum(bid * rank for ((_, bid), rank) in zip(all_sorted, count(1))))
-
-run(stdin)
-```
+<Code code={Day07Part2} lang="py" />
 
 
 <Divider />
@@ -682,110 +248,25 @@ run(stdin)
 
 My solution builds a `graph` and just follows the instructions until we reach `ZZZ`.
 
-```py
-#!/usr/bin/env python3
+import Day08Part1 from "./_solutions/day08-part1.py?raw" //_
 
-from sys import stdin
-
-def run(f):
-    (instructions, graph) = f.read().strip().split("\n\n")
-    graph = {x[0]: (x[2][1:-1], x[3][:-1]) for x in (s.split() for s in graph.split("\n"))}
-
-    steps = 0
-    cur = "AAA"
-    while cur != "ZZZ":
-        cur = graph[cur][0] if (instructions[steps % len(instructions)] == "L") else graph[cur][1]
-        steps += 1
-    print(steps)
-
-run(stdin)
-```
+<Code code={Day08Part1} lang="py" />
 
 ### Part 2 Failed Brute Force
 
 At each iteration of the loop, I transform a vector of current nodes to a new vector of current nodes. However, I ran it for a few hours (I had to leave my computer anyway lol) and when I got back, it was still running, so it was clear that something smarter was needed.
 
-```py
-#!/usr/bin/env python3
+import Day08Part2v1 from "./_solutions/day08-part2--01-fail.py?raw" //_
 
-from sys import stdin
-
-def run(f):
-    (instructions, graph) = f.read().strip().split("\n\n")
-    graph = {x[0]: (x[2][1:-1], x[3][:-1]) for x in (s.split() for s in graph.split("\n"))}
-
-    steps = 0
-    cur = [x for x in graph.keys() if x[-1] == "A"]
-    while any((x[-1] != "Z") for x in cur):
-        i = 0 if (instructions[steps % len(instructions)] == "L") else 1
-        cur[:] = [graph[x][i] for x in cur]
-        steps += 1
-        if steps % 1000000 == 0:
-            print(steps)
-    print(steps)
-
-run(stdin)
-```
+<Code code={Day08Part2v1} lang="py" />
 
 ### Part 2 Solution
 
 Here's my original full solution:
 
-```py
-#!/usr/bin/env python3
+import Day08Part2v2 from "./_solutions/day08-part2--02.py?raw" //_
 
-from sys import stdin
-from itertools import cycle
-from math import lcm
-
-def run(f):
-    (instructions, graph) = f.read().strip().split("\n\n")
-    instructions = [(0 if x == "L" else 1) for x in instructions]
-    graph = {x[0]: (x[2][1:-1], x[3][:-1]) for x in (s.split() for s in graph.split("\n"))}
-
-    starts = list({x for x in graph.keys() if x[-1] == "A"})
-    cycle_exits = []
-    cycle_bounds = []
-    for i, start in enumerate(starts):
-        seen = {} # {(node, instruction order): step, ...}
-        cycle_exits.append([])
-        cur = start
-        for step, (j, instr) in enumerate(cycle(enumerate(instructions))):
-            tup = (cur, j)
-            if tup in seen:
-                cycle_bounds.append((seen[tup], step))
-                break
-            if cur[-1] == "Z":
-                cycle_exits[-1].append(step)
-            seen[tup] = step
-            cur = graph[cur][instr]
-    print("exits:", cycle_exits)
-    print()
-    print("bounds:", cycle_bounds)
-    print()
-
-    # the rest of this code works only because we know there is only exactly one exit for
-    # each cycle
-    if any(len(x) != 1 for x in cycle_exits):
-        raise RuntimeError()
-
-    # also, we ignore any steps before they all enter a cycle
-    offset = max(start for (start, _) in cycle_bounds)
-    cycle_lens = [end - start for (start, end) in cycle_bounds]
-    first_exit = [x[0] - offset for x in cycle_exits]
-    diffs = [cl - fe for cl, fe in zip(cycle_lens, first_exit)]
-
-    print("cycle lengths - first exit:", diffs)
-    print()
-
-    # the rest of the code below assumes the same difference!
-    if any(x != diffs[0] for x in diffs):
-        raise RuntimeError()
-    
-    print(lcm(*cycle_lens))
-
-run(stdin)
-```
+<Code code={Day08Part2v2} lang="py" />
 
 Getting an efficient Part 2 solution was a big pain in the ass. At the moment, I'm not sure of a better approach, but here's what I did at the time to get that final solution.
 
@@ -820,55 +301,15 @@ The `exits:` and `bounds:` printouts above correspond to these lines in my solut
 
 ### Part 1 Solution
 
-```py
-#!/usr/bin/env python3
+import Day09Part1 from "./_solutions/day09-part1.py?raw" //_
 
-from sys import stdin
-from itertools import pairwise
-
-def run(f):
-    seqs = [[int(x) for x in s.split()] for s in f.readlines()]
-
-    solution = 0
-    for seq in seqs:
-        diffs = [seq.copy()]
-        while any(x != 0 for x in diffs[-1]):
-            diffs.append([b - a for a, b in pairwise(diffs[-1])])
-        next_diff = 0
-        for i in reversed(range(len(diffs) - 1)):
-            next_diff = diffs[i][-1] + next_diff
-            diffs[i].append(next_diff)
-        solution += diffs[0][-1]
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day09Part1} lang="py" />
 
 ### Part 2 Solution
 
-```py
-#!/usr/bin/env python3
+import Day09Part2 from "./_solutions/day09-part2.py?raw" //_
 
-from sys import stdin
-from itertools import pairwise
-
-def run(f):
-    seqs = [[int(x) for x in s.split()] for s in f.readlines()]
-
-    solution = 0
-    for seq in seqs:
-        diffs = [list(reversed(seq))] # this is literally the only change
-        while any(x != 0 for x in diffs[-1]):
-            diffs.append([b - a for a, b in pairwise(diffs[-1])])
-        next_diff = 0
-        for i in reversed(range(len(diffs) - 1)):
-            next_diff = diffs[i][-1] + next_diff
-            diffs[i].append(next_diff)
-        solution += diffs[0][-1]
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day09Part2} lang="py" />
 
 
 <Divider />
@@ -877,115 +318,15 @@ run(stdin)
 
 ### Part 1 Solution
 
-```py
-#!/usr/bin/env python3
+import Day10Part1 from "./_solutions/day10-part1.py?raw" //_
 
-from sys import stdin, setrecursionlimit
-from itertools import chain
-
-CONNECTIONS = {
-    (-1,  0): {"S", "|", "L", "J"},
-    ( 1,  0): {"S", "|", "7", "F"},
-    ( 0, -1): {"S", "-", "J", "7"},
-    ( 0,  1): {"S", "-", "L", "F"},
-}
-
-def run(f):
-    pipemap = [s.strip() + "." for s in f.readlines()]
-    pipemap.append("."*len(pipemap[0]))
-
-    start = None
-    for row, col in enumerate(s.find("S") for s in pipemap):
-        if col >= 0:
-            start = (row, col)
-            break
-
-    dummy = len(pipemap) * len(pipemap[0])
-    distances = [[dummy]*len(pipemap[0]) for _ in range(len(pipemap))]
-
-    setrecursionlimit(dummy)
-    def dfs(i, j, dist):
-        if distances[i][j] <= dist:
-            return
-        distances[i][j] = dist
-        for (ii, jj), symbols in CONNECTIONS.items():
-            if (pipemap[i][j] in symbols) and (pipemap[i + ii][j + jj] in CONNECTIONS[(-ii, -jj)]):
-                dfs(i + ii, j + jj, dist + 1)
-    dfs(*start, 0)
-    print(max(x for x in chain(*distances) if (x < dummy)))
-
-run(stdin)
-```
+<Code code={Day10Part1} lang="py" />
 
 ### Part 2 Solution
 
-```py
-#!/usr/bin/env python3
+import Day10Part2 from "./_solutions/day10-part2.py?raw" //_
 
-from sys import stdin#, setrecursionlimit
-from itertools import chain, product
-
-TILE_CONVERTER = {
-    (-1,  0): {"S", "|", "L", "J"},
-    ( 1,  0): {"S", "|", "7", "F"},
-    ( 0, -1): {"S", "-", "J", "7"},
-    ( 0,  1): {"S", "-", "L", "F"},
-    ( 0,  0): {"S", "|", "-", "L", "J", "F", "7"},
-}
-
-def run(f):
-    pipemap = [s.strip() for s in f.readlines()]
-
-    start = None
-    for i, j in enumerate(s.find("S") for s in pipemap):
-        if j >= 0:
-            start = (i, j)
-            break
-
-    expanded_map = [["."]*(3*len(pipemap[0])) for _ in range(3 * len(pipemap))]
-    for i, row in enumerate(pipemap):
-        for j, c in enumerate(row):
-            if c != ".":
-                (i2, j2) = ((i*3) + 1, (j*3) + 1)
-                for (i3, j3), symbols in TILE_CONVERTER.items():
-                    if c in symbols:
-                        expanded_map[i2 + i3][j2 + j3] = "X"
-    start = ((start[0]*3) + 1, (start[1]*3) + 1)
-
-    #setrecursionlimit(len(expanded_map) * len(expanded_map[0]))
-
-    print()
-    print("\n".join("".join(x) for x in expanded_map))
-
-    # The code below only works because we know for sure that 'S' passes through
-    # just one loop and has no ambiguity. This is confirmed by just inspecting
-    # the input file visually.
-
-    # Can't do recursion because we'll literally crash CPython lmao
-    def floodfill(i, j, to_replace, new_char):
-        stack = [(i, j)]
-        while len(stack):
-            (i, j) = stack.pop()
-            if (i < 0) or (j < 0) \
-                    or (i >= len(expanded_map)) or (j >= len(expanded_map[0])) \
-                    or expanded_map[i][j] not in to_replace:
-                continue
-            expanded_map[i][j] = new_char
-            for ii, jj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-                stack.append((i + ii, j + jj))
-    floodfill(*start, {"X"}, "Y")
-    floodfill(0, 0, {".", "X"}, "Y")
-
-    print("\n".join("".join(x) for x in expanded_map))
-
-    solution = 0
-    for i, j in product(range(len(pipemap)), range(len(pipemap[0]))):
-        solution += expanded_map[(i*3) + 1][(j*3) + 1] != "Y"
-    print()
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day10Part2} lang="py" />
 
 
 <Divider />
@@ -996,57 +337,10 @@ run(stdin)
 
 My first solution was a very bad and overly complex approach involving repeated BFS, and takes ages to run.
 
-```py
-#!/usr/bin/env python3
+import Day11Part1v1 from "./_solutions/day11-part1--01-bfs.py?raw" //_
 
-from sys import stdin
-from heapq import heappush, heappop
-from itertools import product
+<Code code={Day11Part1v1} lang="py" />
 
-def expand_space(galaxymap):
-    (rows, cols) = (len(galaxymap), len(galaxymap[0]))
-    for row in reversed(range(rows)):
-        if all(c == "." for c in galaxymap[row]):
-            galaxymap.insert(row, ["."]*len(galaxymap[0]))
-    rows = len(galaxymap)
-    for col in reversed(range(cols)):
-        if all(galaxymap[row][col] == "." for row in range(rows)):
-            for lst in galaxymap:
-                lst.insert(col, ".")
-
-def sum_paths(galaxymap, pairs_seen, init):
-    pq = [(0, *init)]
-    seen = set()
-    solution = 0
-    while len(pq):
-        (dist, i, j) = heappop(pq)
-        if ((i, j) in seen) or (i < 0) or (j < 0) \
-                or (i >= len(galaxymap)) or (j >= len(galaxymap[0])):
-            continue
-        seen.add((i, j))
-        if (galaxymap[i][j] == "#") and ((init, (i, j)) not in pairs_seen):
-            solution += dist
-            pairs_seen.add((init, (i, j)))
-            pairs_seen.add(((i, j), init))
-        for ii, jj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            heappush(pq, (dist + 1, i + ii, j + jj))
-    return solution
-
-def run(f):
-    galaxymap = [list(s.strip()) for s in f.readlines()]
-    expand_space(galaxymap)
-
-    solution = 0
-    pairs_seen = set()
-    for i, j in product(range(len(galaxymap)), range(len(galaxymap[0]))):
-        if galaxymap[i][j] == "#":
-            galaxymap[i][j] = "."
-            solution += sum_paths(galaxymap, pairs_seen, (i, j))
-            galaxymap[i][j] = "#"
-    print(solution)
-
-run(stdin)
-```
 
 ### Part 1 "Point List" Mathematical Solution
 
@@ -1054,41 +348,9 @@ When I read Part 2, I realized the original approach will scale horribly due to 
 
 The new approach simply involves storing a list of galaxy coordinates (`galaxies`) then doing math on each coordinate and each pair of coordinates. Much more elegant, and runs so much faster!
 
-```py
-#!/usr/bin/env python3
+import Day11Part1v2 from "./_solutions/day11-part1--02-point-list.py?raw" //_
 
-from sys import stdin
-from itertools import product, combinations
-
-def run(f):
-    galaxymap = [s.strip() for s in f.readlines()]
-    galaxies = []
-    for i, j in product(range(len(galaxymap)), range(len(galaxymap[0]))):
-        if galaxymap[i][j] == "#":
-            galaxies.append((i, j))
-
-    empty_rows = [
-        i for i in range(len(galaxymap))
-        if all(c == "." for c in galaxymap[i])
-    ]
-    empty_cols = [
-        j for j in range(len(galaxymap[0]))
-        if all(galaxymap[i][j] == "." for i in range(len(galaxymap)))
-    ]
-
-    # Apply expansion
-    galaxies = [
-        (i + sum(i > ii for ii in empty_rows), j + sum(j > jj for jj in empty_cols))
-        for i, j in galaxies
-    ]
-
-    print(sum(
-        abs(i2 - i1) + abs(j2 - j1)
-        for (i1, j1), (i2, j2) in combinations(galaxies, 2)
-    ))
-
-run(stdin)
-```
+<Code code={Day11Part1v2} lang="py" />
 
 ### Part 2 Solution
 
@@ -1113,46 +375,9 @@ EXPANSION = 1000000 - 1
 
 The full solution:
 
-```py
-#!/usr/bin/env python3
+import Day11Part2 from "./_solutions/day11-part2.py?raw" //_
 
-from sys import stdin
-from itertools import product, combinations
-
-EXPANSION = 1000000 - 1
-
-def run(f):
-    galaxymap = [s.strip() for s in f.readlines()]
-    galaxies = []
-    for i, j in product(range(len(galaxymap)), range(len(galaxymap[0]))):
-        if galaxymap[i][j] == "#":
-            galaxies.append((i, j))
-
-    empty_rows = [
-        i for i in range(len(galaxymap))
-        if all(c == "." for c in galaxymap[i])
-    ]
-    empty_cols = [
-        j for j in range(len(galaxymap[0]))
-        if all(galaxymap[i][j] == "." for i in range(len(galaxymap)))
-    ]
-
-    # Apply expansion
-    galaxies = [
-        (
-            i + (EXPANSION * sum(i > ii for ii in empty_rows)),
-            j + (EXPANSION * sum(j > jj for jj in empty_cols)),
-        )
-        for i, j in galaxies
-    ]
-
-    print(sum(
-        abs(i2 - i1) + abs(j2 - j1)
-        for (i1, j1), (i2, j2) in combinations(galaxies, 2)
-    ))
-
-run(stdin)
-```
+<Code code={Day11Part2} lang="py" />
 
 
 <Divider />
@@ -1161,140 +386,21 @@ run(stdin)
 
 ### Part 1 Brute Force Solution
 
-```py
-#!/usr/bin/env python3
+import Day12Part1v1 from "./_solutions/day12-part1--01-brute-force.py?raw" //_
 
-from sys import stdin
-from itertools import product
-
-OK = "."
-BAD = "#"
-UNKNOWN = "?"
-
-def run(f):
-    solution = 0
-    for s in f.readlines():
-        (springs, groups) = s.split()
-        springs = list(springs)
-        groups = tuple(int(x) for x in groups.split(","))
-
-        num_wildcards = springs.count(UNKNOWN)
-        for wildcards in product(OK + BAD, repeat=num_wildcards):
-            wildcards = list(wildcards)
-            springs2 = springs.copy()
-            for i in range(len(springs2)):
-                if springs2[i] == UNKNOWN:
-                    springs2[i] = wildcards.pop()
-            if groups == tuple(len(x) for x in "".join(springs2).replace(".", " ").split()):
-                solution += 1
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day12Part1v1} lang="py" />
 
 ### Part 1 Backtracking Solution
 
-```py
-#!/usr/bin/env python3
+import Day12Part1v2 from "./_solutions/day12-part1--02-backtracking.py?raw" //_
 
-from sys import stdin
-from itertools import product
-
-OK = "."
-BAD = "#"
-UNKNOWN = "?"
-
-def run(f):
-    solution = 0
-    for s in f.readlines():
-        (springs, groups) = s.split()
-        #springs = list("?".join([springs]*5))
-        #groups = tuple(int(x) for x in groups.split(","))*5
-        springs = list(springs) + ["."]
-        groups = [0] + [int(x) for x in reversed(groups.split(","))]
-
-        subsolution = 0
-        def backtrack(i, is_contiguous_bads):
-            nonlocal subsolution
-            if i == len(springs):
-                if (len(groups) == 1) and (groups[0] == 0):
-                    subsolution += 1
-                return
-            elif springs[i] == UNKNOWN:
-                springs[i] = OK
-                backtrack(i, is_contiguous_bads)
-                springs[i] = BAD
-                backtrack(i, is_contiguous_bads)
-                springs[i] = UNKNOWN
-            elif springs[i] == OK:
-                if is_contiguous_bads:
-                    if groups[-1] != 0:
-                        return
-                    groups.pop()
-                    if len(groups):
-                        backtrack(i + 1, False)
-                    groups.append(0)
-                else:
-                    backtrack(i + 1, False)
-            else: # springs[1] == BAD
-                if is_contiguous_bads and (groups[-1] == 0):
-                    return
-                groups[-1] -= 1
-                backtrack(i + 1, True)
-                groups[-1] += 1
-        backtrack(0, False)
-        solution += subsolution
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day12Part1v2} lang="py" />
 
 ### Part 1 Dynamic Programming Solution
 
-```py
-#!/usr/bin/env python3
+import Day12Part1v3 from "./_solutions/day12-part1--03-dp.py?raw" //_
 
-from sys import stdin
-from functools import cache
-from itertools import product
-
-OK = "."
-BAD = "#"
-UNKNOWN = "?"
-
-def run(f):
-    solution = 0
-    for s in f.readlines():
-        (springs, groups) = s.split()
-        springs = "." + springs
-        groups = tuple(int(x) for x in groups.split(","))
-
-        # Returns number of combinations
-        # `i` is the beginning of a subarray in `springs`
-        # `j` is the beginning of a subarray in `groups`
-        #@cache # runs fast enough without it
-        def subproblem(i, j):
-            if j == len(groups):
-                return all((c != BAD) for c in springs[i:])
-            elif len(springs) - i < groups[j] + 1:
-                return 0 # not enough room
-            elif springs[i] == BAD:
-                return 0 # must not connect with previous group
-            i += 1
-            subsolution = 0
-            for i in range(i, len(springs) - groups[j] + 1):
-                s = springs[i : i + groups[j]]
-                if all(c != OK for c in s):
-                    subsolution += subproblem(i + groups[j], j + 1)
-                if springs[i] == BAD:
-                    break
-            return subsolution
-        solution += subproblem(0, 0)
-
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day12Part1v3} lang="py" />
 
 ### Part 2 Solution
 
@@ -1318,50 +424,9 @@ and I uncomment the `@cache` line since `subproblem()` runs too slow without mem
 
 The full solution is thus:
 
-```py
-#!/usr/bin/env python3
+import Day12Part2 from "./_solutions/day12-part2.py?raw" //_
 
-from sys import stdin
-from functools import cache
-from itertools import product
-
-OK = "."
-BAD = "#"
-UNKNOWN = "?"
-
-def run(f):
-    solution = 0
-    for s in f.readlines():
-        (springs, groups) = s.split()
-        springs = ["."] + list("?".join([springs]*5))
-        groups = [int(x) for x in groups.split(",")]*5
-
-        # Returns number of combinations
-        # `i` is the beginning of a subarray in `springs`
-        # `j` is the beginning of a subarray in `groups`
-        @cache
-        def subproblem(i, j):
-            if j == len(groups):
-                return all((c != BAD) for c in springs[i:])
-            elif len(springs) - i < groups[j] + 1:
-                return 0 # not enough room
-            elif springs[i] == BAD:
-                return 0 # must not connect with previous group
-            i += 1
-            subsolution = 0
-            for i in range(i, len(springs) - groups[j] + 1):
-                s = springs[i : i + groups[j]]
-                if all(c != OK for c in s):
-                    subsolution += subproblem(i + groups[j], j + 1)
-                if springs[i] == BAD:
-                    break
-            return subsolution
-        solution += subproblem(0, 0)
-
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day12Part2} lang="py" />
 
 
 <Divider />
@@ -1376,41 +441,9 @@ My solution then visit each cell one-by-one. For each cell, it tries every possi
 
 After checking every cell and every line of reflection, `is_horz_refl` and `is_vert_refl` should only contain one `True` element between them. This corresponds to the one valid line of reflection for the pattern.
 
-```py
-#!/usr/bin/env python3
+import Day13Part1 from "./_solutions/day13-part1.py?raw" //_
 
-from sys import stdin
-from itertools import product
-
-def run(f):
-    patterns = [s.split() for s in "".join(f.readlines()).split("\n\n")]
-
-    solution = 0
-    for pattern in patterns:
-        is_horz_refl = [True]*(len(pattern[0]) - 1)
-        is_vert_refl = [True]*(len(pattern) - 1)
-        for i, j in product(range(len(pattern)), range(len(pattern[0]))):
-            c = pattern[i][j]
-            # check horizontal reflections
-            for j_midline in range(j, len(pattern[0])):
-                j_refl = j_midline + (j_midline - j) + 1
-                if j_refl >= len(pattern[0]):
-                    break
-                elif c != pattern[i][j_refl]:
-                    is_horz_refl[j_midline] = False
-            # check vertical reflections
-            for i_midline in range(i, len(pattern)):
-                i_refl = i_midline + (i_midline - i) + 1
-                if i_refl >= len(pattern):
-                    break
-                elif c != pattern[i_refl][j]:
-                    is_vert_refl[i_midline] = False
-        solution += sum(i + 1 for i, v in enumerate(is_horz_refl) if v)
-        solution += sum(i + 1 for i, v in enumerate(is_vert_refl) if v) * 100
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day13Part1} lang="py" />
 
 ### Part 2 Solution
 
@@ -1423,41 +456,9 @@ I mainly modified my Part 1 solution so that we count line-of-reflection breakag
 
 The full solution:
 
-```py
-#!/usr/bin/env python3
+import Day13Part2 from "./_solutions/day13-part2.py?raw" //_
 
-from sys import stdin
-from itertools import product
-
-def run(f):
-    patterns = [s.split() for s in "".join(f.readlines()).split("\n\n")]
-
-    solution = 0
-    for pattern in patterns:
-        horz_refl_breakages = [0]*(len(pattern[0]) - 1)
-        vert_refl_breakages = [0]*(len(pattern) - 1)
-        for i, j in product(range(len(pattern)), range(len(pattern[0]))):
-            c = pattern[i][j]
-            # check horizontal reflections
-            for j_midline in range(j, len(pattern[0])):
-                j_refl = j_midline + (j_midline - j) + 1
-                if j_refl >= len(pattern[0]):
-                    break
-                elif c != pattern[i][j_refl]:
-                    horz_refl_breakages[j_midline] += 1
-            # check vertical reflections
-            for i_midline in range(i, len(pattern)):
-                i_refl = i_midline + (i_midline - i) + 1
-                if i_refl >= len(pattern):
-                    break
-                elif c != pattern[i_refl][j]:
-                    vert_refl_breakages[i_midline] += 1
-        solution += sum(i + 1 for i, v in enumerate(horz_refl_breakages) if v == 1)
-        solution += sum(i + 1 for i, v in enumerate(vert_refl_breakages) if v == 1) * 100
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day13Part2} lang="py" />
 
 
 <Divider />
@@ -1468,62 +469,17 @@ run(stdin)
 
 My Part 1 solution is basically a two-pointer solution where I pretend to move the `O` rocks, but I don't actually modify the underlying data structure.
 
-```py
-#!/usr/bin/env python3
+import Day14Part1v1 from "./_solutions/day14-part1--01-non-modifying-2ptr.py?raw" //_
 
-from sys import stdin
-
-def run(f):
-    rockmap = [s.strip() for s in f.readlines()]
-
-    solution = 0
-    for j in range(len(rockmap[0])):
-        empty_i = 0
-        for i in range(len(rockmap)):
-            c = rockmap[i][j]
-            if c == "#":
-                empty_i = i + 1
-            elif c == "O":
-                solution += len(rockmap) - empty_i
-                empty_i += 1
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day14Part1v1} lang="py" />
 
 ### Part 1 Modifying Two-Pointer Solution
 
 To help me out for Part 2, I modified my original Part 1 solution so that instead of pretending to move the `O` rocks without modifying the `rockmap` data structure, we actually do modify it, moving the `O` rocks to new places, then running a `sum()` to get the final answer.
 
-```py
-#!/usr/bin/env python3
+import Day14Part1v2 from "./_solutions/day14-part1--02-modifying-2ptr.py?raw" //_
 
-from sys import stdin
-from itertools import product
-
-def push_north(rockmap):
-    for j in range(len(rockmap[0])):
-        empty_i = 0
-        for i in range(len(rockmap)):
-            c = rockmap[i][j]
-            if c == "#":
-                empty_i = i + 1
-            elif c == "O":
-                rockmap[i][j] = "."
-                rockmap[empty_i][j] = "O"
-                empty_i += 1
-
-def run(f):
-    rockmap = [list(s.strip()) for s in f.readlines()]
-    push_north(rockmap)
-    print(sum(
-        len(rockmap) - i
-        for i, j in product(range(len(rockmap)), range(len(rockmap[0])))
-        if rockmap[i][j] == "O"
-    ))
-
-run(stdin)
-```
+<Code code={Day14Part1v2} lang="py" />
 
 ### Part 2 Lazy Solution
 
@@ -1559,72 +515,9 @@ Once the cycle detection algorithm identifies the repeated subsequence, we use a
 
 My full automated solution:
 
-```py
-#!/usr/bin/env python3
+import Day14Part2 from "./_solutions/day14-part2.py?raw" //_
 
-from sys import stdin
-from itertools import chain, product
-
-TARGET_ITERATIONS = 1000000000
-
-def rotate_grid(rockmap):
-    new_map = []
-    for j in range(len(rockmap[0])):
-        new_row = []
-        new_map.append(new_row)
-        for i in reversed(range(len(rockmap))):
-            new_row.append(rockmap[i][j])
-    return new_map
-
-def push_north(rockmap):
-    for j in range(len(rockmap[0])):
-        empty_i = 0
-        for i in range(len(rockmap)):
-            c = rockmap[i][j]
-            if c == "#":
-                empty_i = i + 1
-            elif c == "O":
-                rockmap[i][j] = "."
-                rockmap[empty_i][j] = "O"
-                empty_i += 1
-
-def calculate_load(rockmap):
-    return sum(
-        len(rockmap) - i
-        for i, j in product(range(len(rockmap)), range(len(rockmap[0])))
-        if rockmap[i][j] == "O"
-    )
-
-def run(f):
-    rockmap = [list(s.strip()) for s in f.readlines()]
-    latest_i = {} # {stringified map: latest iteration}
-    history = [] # loads
-
-    dist = 0
-    end_iteration = None
-    for i in range(TARGET_ITERATIONS):
-        for _ in range(4):
-            push_north(rockmap)
-            rockmap = rotate_grid(rockmap)
-        s = "".join(chain(*rockmap))
-        history.append(calculate_load(rockmap))
-        if s in latest_i:
-            dist = i - latest_i[s]
-            end_iteration = i
-            break
-        latest_i[s] = i
-
-    # we assume we actually do find a repeat
-    # (not going to bother dealing with the edge case of no periodicity)
-    if end_iteration is None:
-        raise RuntimeError()
-
-    repeated = history[-dist:] # just get the repeated section
-    #print(repeated)
-    print(repeated[(TARGET_ITERATIONS - end_iteration - 2) % len(repeated)])
-
-run(stdin)
-```
+<Code code={Day14Part2} lang="py" />
 
 For completeness, let's derive the section where I select the correct element of the repeated subsequence:
 
@@ -1709,25 +602,9 @@ which can then be simplified to remove the `num_remaining_iterations` variable.
 
 ### Part 1 Solution
 
-```py
-#!/usr/bin/env python3
+import Day15Part1 from "./_solutions/day15-part1.py?raw" //_
 
-from sys import stdin
-from itertools import product
-
-def run(f):
-    strs = f.readlines()[0].strip().split(",")
-
-    solution = 0
-    for s in strs:
-        cur_hash = 0
-        for c in s:
-            cur_hash = ((cur_hash + ord(c)) * 17) % 256
-        solution += cur_hash
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day15Part1} lang="py" />
 
 ### Part 2 Solution
 
@@ -1740,45 +617,9 @@ Along the way, I made two notable misunderstandings of the problem specification
 
 My final solution after resolving all misunderstandings:
 
-```py
-#!/usr/bin/env python3
+import Day15Part2 from "./_solutions/day15-part2.py?raw" //_
 
-from sys import stdin
-
-def get_box_num(s):
-    boxnum = 0
-    for c in s:
-        boxnum = ((boxnum + ord(c)) * 17) % 256
-    return boxnum
-
-def run(f):
-    strs = f.readlines()[0].strip().split(",")
-
-    boxes = [[] for _ in range(256)] # [[[label, focal length], ...], ...]
-    for s in strs:
-        if "-" in s:
-            label = s[:-1]
-            box = boxes[get_box_num(label)]
-            box[:] = [x for x in box if (x[0] != label)]
-        else:
-            (label, focal_len) = s.split("=")
-            box = boxes[get_box_num(label)]
-            for tup in box:
-                if tup[0] == label:
-                    tup[1] = focal_len
-                    break
-            else:
-                box.append([label, focal_len])
-
-    print(sum(
-        ((1 + boxnum) * sum(
-            (i + 1) * int(focal_len) for i, (label, focal_len) in enumerate(box)
-        ))
-        for boxnum, box in enumerate(boxes)
-    ))
-
-run(stdin)
-```
+<Code code={Day15Part2} lang="py" />
 
 
 <Divider />
@@ -1793,50 +634,9 @@ We prevent infinite loops by *conceptually* keeping a set of `(i, j, i_dir, j_di
 
 The DFS starts with `travel(0, 0, 0, 1)`, meaning we start at the `i=0` and `j=0` (i.e. the top-left corner) and travelling in the direction of `i_dir=0` and `j_dir=1` (i.e. we are travelling in the positive-j direction).
 
-```py
-#!/usr/bin/env python3
+import Day16Part1 from "./_solutions/day16-part1.py?raw" //_
 
-from sys import stdin, setrecursionlimit
-from itertools import chain
-
-def run(f):
-    grid = [s.strip() for s in f.readlines()]
-    setrecursionlimit(len(grid) * len(grid[0]))
-
-    # grid of sets of unit directional vectors (i, j)
-    seen = [[set() for _ in range(len(grid[0]))] for _ in range(len(grid))]
-
-    def travel(i, j, i_dir, j_dir):
-        if (i < 0) or (i >= len(grid)) \
-                or (j < 0) or (j >= len(grid[0])) \
-                or (i_dir, j_dir) in seen[i][j]:
-            return
-        seen[i][j].add((i_dir, j_dir))
-        c = grid[i][j]
-        if c == ".":
-            travel(i + i_dir, j + j_dir, i_dir, j_dir)
-        elif c == "|":
-            if j_dir:
-                travel(i + 1, j,  1, 0)
-                travel(i - 1, j, -1, 0)
-            else:
-                travel(i + i_dir, j + j_dir, i_dir, j_dir)
-        elif c == "-":
-            if i_dir:
-                travel(i, j + 1, 0,  1)
-                travel(i, j - 1, 0, -1)
-            else:
-                travel(i + i_dir, j + j_dir, i_dir, j_dir)
-        elif c == "/":
-            travel(i - j_dir, j - i_dir, -j_dir, -i_dir)
-        else: # "\"
-            travel(i + j_dir, j + i_dir, j_dir, i_dir)
-    travel(0, 0, 0, 1)
-
-    print(sum(len(x) > 0 for x in chain(*seen)))
-
-run(stdin)
-```
+<Code code={Day16Part1} lang="py" />
 
 I didn't actually write out those `elif c = "/":` and `else:` branches like that the first time around. I originally wrote it out explicitly:
 
@@ -1867,61 +667,9 @@ Only after verifying I got the right answer did I refactor to the final version 
 
 I refactored the Part 1 functionality into a new function `calculate_coverage()` before running `calculate_coverage()` on every possible entrypoint into the grid to get the final answer.
 
-```py
-#!/usr/bin/env python3
+import Day16Part2 from "./_solutions/day16-part2.py?raw" //_
 
-from sys import stdin, setrecursionlimit
-from itertools import chain
-
-def calculate_coverage(grid, _i, _j, _i_dir, _j_dir):
-    # grid of sets of unit directional vectors (i, j)
-    seen = [[set() for _ in range(len(grid[0]))] for _ in range(len(grid))]
-
-    def travel(i, j, i_dir, j_dir):
-        if (i < 0) or (i >= len(grid)) \
-                or (j < 0) or (j >= len(grid[0])) \
-                or (i_dir, j_dir) in seen[i][j]:
-            return
-        seen[i][j].add((i_dir, j_dir))
-        c = grid[i][j]
-        if c == ".":
-            travel(i + i_dir, j + j_dir, i_dir, j_dir)
-        elif c == "|":
-            if j_dir:
-                travel(i + 1, j,  1, 0)
-                travel(i - 1, j, -1, 0)
-            else:
-                travel(i + i_dir, j + j_dir, i_dir, j_dir)
-        elif c == "-":
-            if i_dir:
-                travel(i, j + 1, 0,  1)
-                travel(i, j - 1, 0, -1)
-            else:
-                travel(i + i_dir, j + j_dir, i_dir, j_dir)
-        elif c == "/":
-            travel(i - j_dir, j - i_dir, -j_dir, -i_dir)
-        else: # "\"
-            travel(i + j_dir, j + i_dir, j_dir, i_dir)
-    travel(_i, _j, _i_dir, _j_dir)
-    return sum(len(x) > 0 for x in chain(*seen))
-
-def run(f):
-    grid = [s.strip() for s in f.readlines()]
-    setrecursionlimit(len(grid) * len(grid[0]))
-
-    solution = 0
-    for i in range(len(grid)): # left edge
-        solution = max(solution, calculate_coverage(grid, i, 0, 0, 1))
-    for i in range(len(grid)): # right edge
-        solution = max(solution, calculate_coverage(grid, i, len(grid[0]) - 1, 0, -1))
-    for j in range(len(grid[0])): # top edge
-        solution = max(solution, calculate_coverage(grid, 0, j, 1, 0))
-    for j in range(len(grid[0])): # bottom edge
-        solution = max(solution, calculate_coverage(grid, len(grid) - 1, j, -1, 0))
-    print(solution)
-
-run(stdin)
-```
+<Code code={Day16Part2} lang="py" />
 
 
 <Divider />
@@ -1932,44 +680,9 @@ run(stdin)
 
 I went for a Dijkstra's algorithm solution. The cost of a path is the "heat loss", and we further distinguish states not just by position (`i` and `j`), but also travelling-direction unit vectors (`travel_i` and `travel_j`) and the number of steps made in a straight line (`moves`).
 
-```py
-#!/usr/bin/env python3
+import Day17Part1 from "./_solutions/day17-part1.py?raw" //_
 
-from sys import stdin
-from math import inf
-from heapq import heappush, heappop
-
-def run(f):
-    citymap = [s.strip() for s in f.readlines()]
-    goal = (len(citymap) - 1, len(citymap[0]) - 1)
-
-    seen = set()
-    pq = [(0, 0, 0, 0, 1, 0)]
-    def pqpush(cost, i, j, travel_i, travel_j, moves):
-        if (0 <= i <= goal[0]) and (0 <= j <= goal[1]):
-            heappush(pq, (cost + int(citymap[i][j]), i, j, travel_i, travel_j, moves))
-
-    solution = inf
-    while len(pq):
-        (cost, i, j, travel_i, travel_j, moves) = heappop(pq)
-        if (i, j, travel_i, travel_j, moves) in seen:
-            continue
-        if (i, j) == goal:
-            print(cost)
-            return
-        seen.add((i, j, travel_i, travel_j, moves))
-        if moves < 3:
-            pqpush(cost, i + travel_i, j + travel_j, travel_i, travel_j, moves + 1)
-        if travel_i:
-            pqpush(cost, i, j + 1, 0, 1, 1)
-            pqpush(cost, i, j - 1, 0, -1, 1)
-        elif travel_j:
-            pqpush(cost, i + 1, j, 1, 0, 1)
-            pqpush(cost, i - 1, j, -1, 0, 1)
-    raise RuntimeError()
-
-run(stdin)
-```
+<Code code={Day17Part1} lang="py" />
 
 ### Part 2 Solution
 
@@ -1989,47 +702,9 @@ The only modification from my Part 1 solution was the change to this new chunk o
 
 The full solution:
 
-```py
-#!/usr/bin/env python3
+import Day17Part2 from "./_solutions/day17-part2.py?raw" //_
 
-from sys import stdin
-from math import inf
-from heapq import heappush, heappop
-
-print("lmao")
-
-def run(f):
-    citymap = [s.strip() for s in f.readlines()]
-    goal = (len(citymap) - 1, len(citymap[0]) - 1)
-
-    seen = set()
-    pq = [(0, 0, 0, 0, 1, 0)]
-    def pqpush(cost, i, j, travel_i, travel_j, moves):
-        if (0 <= i <= goal[0]) and (0 <= j <= goal[1]):
-            heappush(pq, (cost + int(citymap[i][j]), i, j, travel_i, travel_j, moves))
-
-    solution = inf
-    while len(pq):
-        (cost, i, j, travel_i, travel_j, moves) = heappop(pq)
-        if (i, j, travel_i, travel_j, moves) in seen:
-            continue
-        if (i, j) == goal:
-            print(cost)
-            return
-        seen.add((i, j, travel_i, travel_j, moves))
-        if moves < 10:
-            pqpush(cost, i + travel_i, j + travel_j, travel_i, travel_j, moves + 1)
-        if 4 <= moves <= 10:
-            if travel_i:
-                pqpush(cost, i, j + 1, 0, 1, 1)
-                pqpush(cost, i, j - 1, 0, -1, 1)
-            elif travel_j:
-                pqpush(cost, i + 1, j, 1, 0, 1)
-                pqpush(cost, i - 1, j, -1, 0, 1)
-    raise RuntimeError()
-
-run(stdin)
-```
+<Code code={Day17Part2} lang="py" />
 
 
 <Divider />
@@ -2038,55 +713,10 @@ run(stdin)
 
 ### Part 1 Solution
 
-```py
-#!/usr/bin/env python3
+import Day18Part1 from "./_solutions/day18-part1.py?raw" //_
 
-from sys import stdin
-from itertools import product
+<Code code={Day18Part1} lang="py" />
 
-def run(f):
-    digplan = [s.strip().split() for s in f.readlines()]
-    digplan = [(_dir, int(_len)) for _dir, _len, _ in digplan]
-
-    dugouts = {(0, 0)} # set of coordinates
-    (i, j) = (0, 0)
-    for _dir, _len in digplan:
-        for _ in range(_len):
-            if _dir == "U":
-                i -= 1
-            elif _dir == "D":
-                i += 1
-            elif _dir == "L":
-                j -= 1
-            elif _dir == "R":
-                j += 1
-            dugouts.add((i, j))
-
-    i_lo_bound = min(i for i, _ in dugouts) - 1
-    i_hi_bound = max(i for i, _ in dugouts) + 1
-    j_lo_bound = min(j for _, j in dugouts) - 1
-    j_hi_bound = max(j for _, j in dugouts) + 1
-
-    nondugout = set()
-    to_visit = [(i_lo_bound, j_lo_bound)] # initial coords guaranteed to be outside
-    def floodfill_nondugout(i, j):
-        if (i < i_lo_bound) or (i > i_hi_bound) \
-                or (j < j_lo_bound) or (j > j_hi_bound) \
-                or ((i, j) in dugouts) or ((i, j) in nondugout):
-            return
-        nondugout.add((i, j))
-        for ii, jj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            to_visit.append((i + ii, j + jj))
-    while len(to_visit):
-        floodfill_nondugout(*to_visit.pop())
-
-    print(sum(
-        (i, j) not in nondugout
-        for i, j in product(range(i_lo_bound, i_hi_bound + 1), range(j_lo_bound, j_hi_bound + 1))
-    ))
-
-run(stdin)
-```
 
 ### Part 2 TODO
 
@@ -2099,143 +729,15 @@ run(stdin)
 
 ### Part 1 Solution
 
-```py
-#!/usr/bin/env python3
+import Day19Part1 from "./_solutions/day19-part1.py?raw" //_
 
-from sys import stdin
-from collections import defaultdict
-
-def evaluate_destination(raw_rules, part_data):
-    for raw_rule in raw_rules:
-        if ":" in raw_rule:
-            (condition, send_to) = raw_rule.split(":")
-            condition = condition.replace("x", str(part_data["x"]))
-            condition = condition.replace("m", str(part_data["m"]))
-            condition = condition.replace("a", str(part_data["a"]))
-            condition = condition.replace("s", str(part_data["s"]))
-            if eval(condition):
-                return send_to
-        else:
-            return raw_rule
-    raise RuntimeError()
-
-def run(f):
-    (workflows, parts) = "".join(f.readlines()).strip().split("\n\n")
-
-    workflows = [s.split("{") for s in workflows.split()]
-    workflows = {k: v[:-1].split(",") for k, v in workflows}
-
-    parts = [[x.split("=") for x in s[1:-1].split(",")] for s in parts.split()]
-    parts = [{k: int(v) for k, v in x} for x in parts]
-
-    progress = defaultdict(set)
-    progress["in"] = set(range(len(parts)))
-    
-    accepted = []
-
-    while any(len(x) for x in progress.values()):
-        progress2 = defaultdict(set)
-        for workflow_id, cur_parts in progress.items():
-            raw_rules = workflows[workflow_id]
-            for part_id in cur_parts:
-                send_to = evaluate_destination(raw_rules, parts[part_id])
-                if send_to == "A":
-                    accepted.append(parts[part_id])
-                elif send_to != "R":
-                    progress2[send_to].add(part_id)
-        progress = progress2
-
-    print(sum(sum(part.values()) for part in accepted))
-
-run(stdin)
-```
+<Code code={Day19Part1} lang="py" />
 
 ### Part 2 Solution
 
-```py
-#!/usr/bin/env python3
+import Day19Part2 from "./_solutions/day19-part2.py?raw" //_
 
-from sys import stdin
-
-LOW_BOUND = 1
-HIGH_BOUND = 4001
-
-def new_range():
-    return {s: [LOW_BOUND, HIGH_BOUND] for s in "xmas"}
-def copy_range(x):
-    return {k: v.copy() for k, v in x.items()}
-def range_union(a, b): # can return None if empty union
-    ret = {k: [max(a[k][0], b[k][0]), min(a[k][1], b[k][1])] for k in a.keys()}
-    if any(hi <= lo for lo, hi in ret.values()):
-        return None
-    return ret
-
-def parse_rules(raw_rules):
-    out = []
-    cur1 = new_range()
-    raw_rules = raw_rules.split(",")
-    for raw_rule in raw_rules:
-        if ":" in raw_rule:
-            (condition, label) = raw_rule.split(":")
-            cur2 = copy_range(cur1)
-            if "<" in condition:
-                (var, boundary) = condition.split("<")
-                boundary = int(boundary)
-                cur2[var] = [cur1[var][0], boundary]
-                cur1[var] = [boundary, cur1[var][1]]
-                out.append((label, cur2))
-            elif ">" in condition:
-                (var, boundary) = condition.split(">")
-                boundary = int(boundary)
-                cur2[var] = [boundary + 1, cur1[var][1]]
-                cur1[var] = [cur1[var][0], boundary + 1]
-                out.append((label, cur2))
-            else:
-                raise RuntimeError("Unexpected operator")
-
-            if (cur1[var][1] <= cur1[var][0]) or (cur2[var][1] <= cur2[var][0]):
-                raise RuntimeError("Bad range")
-        else:
-            out.append((raw_rule, cur1))
-    return out
-
-def run(f):
-    (workflows, _) = "".join(f.readlines()).strip().split("\n\n")
-
-    workflows = [s.split("{") for s in workflows.split()]
-    workflows = {k: parse_rules(v[:-1]) for k, v in workflows}
-
-    accepted_ranges = []
-
-    total_combos = 0
-    def dfs(label, cur_range):
-        nonlocal total_combos
-        for nxt_label, condition_range in workflows[label]:
-            union = range_union(cur_range, condition_range)
-            if (not union) or (nxt_label == "R"):
-                continue
-            elif nxt_label == "A":
-                accepted_ranges.append(union)
-                # reduce is unnecessarily complicated for this, but it works lol
-                #total_combos += reduce(
-                #    lambda ac, cur: ac * (cur[1] - cur[0]),
-                #    union.values(),
-                #    1
-                #)
-                total_combos += (
-                    (union["x"][1] - union["x"][0])
-                    * (union["m"][1] - union["m"][0])
-                    * (union["a"][1] - union["a"][0])
-                    * (union["s"][1] - union["s"][0])
-                )
-            else:
-                dfs(nxt_label, union)
-    dfs("in", new_range())
-
-    print(total_combos)
-
-run(stdin)
-```
+<Code code={Day19Part2} lang="py" />
 
 
 <Divider />
@@ -2244,77 +746,10 @@ run(stdin)
 
 ### Part 1 Solution
 
-```py
-#!/usr/bin/env python3
+import Day20Part1 from "./_solutions/day20-part1.py?raw" //_
 
-from sys import stdin
-from collections import defaultdict, deque
+<Code code={Day20Part1} lang="py" />
 
-HI = True
-LO = False
-
-UNCATEGORIZED = "."
-FLIPFLOP = "%"
-CONJ = "&"
-
-def run(f):
-    raw_rules = [s.strip().split("->") for s in f.readlines()]
-    raw_rules = [(k.strip(), [x.strip() for x in v.strip().split(",")]) for k, v in raw_rules]
-    rules = {"output": (UNCATEGORIZED, [])}
-    for k, v in raw_rules:
-        if k[0] in FLIPFLOP + CONJ:
-            module_type = k[0]
-            k = k[1:]
-        else:
-            module_type = UNCATEGORIZED
-        rules[k] = (module_type, v)
-
-    # turns out there are modules that don't go anywhere
-    dependencies = defaultdict(list)
-    for src, (_, dsts) in rules.items():
-        for dst in dsts:
-            dependencies[dst].append(src)
-
-    cur_states = {k: LO for k in rules.keys()}
-    inputs_history = defaultdict(dict)
-    conj_input_memory = {
-        k: {dep: LO for dep in dependencies[k]}
-        for k, v in rules.items() if v[0] == CONJ
-    }
-
-    dq = deque()
-    (num_lo, num_hi) = (0, 0)
-    for i in range(1000):
-        dq.append(("button", LO, "broadcaster"))
-        while len(dq):
-            (src, pulse, dst) = dq.popleft()
-            if pulse == HI:
-                num_hi += 1
-            else:
-                num_lo += 1
-
-            if dst not in rules:
-                continue
-            elif dst in {"broadcaster", "output"}:
-                pass
-            elif rules[dst][0] == FLIPFLOP:
-                if pulse == LO:
-                    cur_states[dst] = (cur_states[dst] != True)
-                else:
-                    continue # "nothing happens"
-            elif rules[dst][0] == CONJ:
-                conj_input_memory[dst][src] = pulse
-                if all((v == HI) for v in conj_input_memory[dst].values()):
-                    cur_states[dst] = LO
-                else:
-                    cur_states[dst] = HI
-            else:
-                raise RuntimeError()
-            dq.extend((dst, cur_states[dst], x) for x in rules[dst][1])
-    print(num_lo * num_hi)
-
-run(stdin)
-```
 
 ### Part 2 TODO
 
@@ -2327,46 +762,9 @@ run(stdin)
 
 ### Part 1 Solution
 
-```py
-#!/usr/bin/env python3
+import Day21Part1 from "./_solutions/day21-part1.py?raw" //_
 
-from sys import stdin, setrecursionlimit
-from itertools import product
-
-setrecursionlimit(10000)
-
-NUM_STEPS = 64
-
-def run(f):
-    garden_map = ["#" + s.strip() + "#" for s in f.readlines()]
-    garden_map.insert(0, "#"*len(garden_map[0]))
-    garden_map.append("#"*len(garden_map[0]))
-    (len1, len2) = (len(garden_map), len(garden_map[0]))
-
-    start = None
-    for i, j in product(range(len1), range(len2)):
-        if garden_map[i][j] == "S":
-            start = (i, j)
-            break
-    if start == None:
-        raise RuntimeError()
-
-    seen = set()
-    solution = set()
-    def bfs(i, j, steps_remaining):
-        if ((i, j, steps_remaining) in seen) or (garden_map[i][j] == "#"):
-            return
-        seen.add((i, j, steps_remaining))
-        if steps_remaining == 0:
-            solution.add((i, j))
-            return
-        for ii, jj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            bfs(i + ii, j + jj, steps_remaining - 1)
-    bfs(*start, NUM_STEPS)
-    print(len(solution))
-
-run(stdin)
-```
+<Code code={Day21Part1} lang="py" />
 
 ### Part 2 TODO
 
@@ -2560,50 +958,9 @@ It is trivial to see that this equation is valid and results in <Eq code="t_1 = 
 
 With all the math sorted out in the previous section, the implementation is actually quite straightforward! We just look at every pair of hailstones and count the intersections.
 
-```py
-#!/usr/bin/env python3
+import Day24Part1 from "./_solutions/day24-part1.py?raw" //_
 
-from sys import stdin
-from itertools import combinations
-
-#LOWER = 7
-#UPPER = 27
-LOWER = 200000000000000
-UPPER = 400000000000000
-
-def paths_intersect_within_bounds(p0, v0, p1, v1):
-    denom = (v0[0] * v1[1]) - (v0[1] * v1[0])
-    if denom == 0:
-        # case 1: parallel lines
-        t0_x = (p1[0] - p0[0]) / v0[0]
-        t0_y = (p1[1] - p0[1]) / v0[1]
-        t1_x = (p0[0] - p1[0]) / v1[0]
-        #t1_y = (p0[1] - p1[1]) / v1[1] # don't need this one
-        return (t0_x == t0_y) and ((t0_x >= 0) or (t1_x >= 0))
-    else:
-        # case 2: non-parallel lines
-        num = (v0[1] * (p1[0] - p0[0])) - (v0[0] * (p1[1] - p0[1]))
-        t1 = num / denom
-        i = 0 if v0[0] else 1
-        t0 = (p1[i] - p0[i] + (v1[i] * t1)) / v0[i]
-        if (t0 < 0) or (t1 < 0):
-            return False # Intersection is in the past
-        x1 = (p1[0] + (v1[0] * t1), p1[1] + (v1[1] * t1))
-        return (LOWER <= x1[0] <= UPPER) and (LOWER <= x1[1] <= UPPER)
-
-def run(f):
-    stones = [
-        [[int(y.strip()) for y in x.strip().split(",")] for x in s.strip().split("@")]
-        for s in f.readlines()
-    ]
-    if any(all(x == 0 for x in v) for _, v in stones):
-        raise RuntimeError(f"We expect no zero velocities.")
-
-    print(sum(paths_intersect_within_bounds(*a, *b) for a, b in combinations(stones, 2)))
-    print("Note: You may need to change constants depending on test case.")
-
-run(stdin)
-```
+<Code code={Day24Part1} lang="py" />
 
 ### Part 2 Mathematics Discussion
 

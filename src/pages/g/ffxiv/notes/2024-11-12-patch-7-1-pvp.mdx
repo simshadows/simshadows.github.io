@@ -1,0 +1,413 @@
+---
+layout: "@layouts/MDFullWidthLayout.astro"
+title: "FFXIV: My notes on patch 7.1 PvP changes"
+description: My notes as I go through Patch 7.1 PvP changes.
+keywords: ["ffxiv", "final fantasy 14", "pvp", "7.1"]
+
+hidetoc: true
+---
+
+import "./_2024-11-12-patch-7-1-pvp/style.css"; //_
+
+
+## Reaper Updates
+
+### Skills
+
+<p>
+<table class="general skill-table">
+<thead>
+<tr>
+    <th colspan={2}><p>New</p></th>
+    <th colspan={2}><p>Old</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>
+        <p>**Slice / Waxing Slice / Infernal Slice**</p>
+        <p>Delivers an attack with a potency of <mark>5,000/6,000/7,000</mark>.</p>
+    </td>
+    <td>
+        <p>Weaponskill<br/>Instant<br/><mark>2.2s Recast</mark><br/>5y Range</p>
+    </td>
+    <td>
+        <p>*3,000/4,000/5,000*</p>
+    </td>
+    <td>
+        <p>*2.4s Recast*</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>*Removed.*</p>
+    </td>
+    <td></td>
+    <td>
+        <p><mark>**Soul Slice**</mark></p>
+        <p><mark>Delivers an attack with a potency of 8,000.</mark></p>
+        <p><mark>Additional Effect: Grants a stack of Immortal Sacrifice, up to a maximum of 8</mark></p>
+        <p><mark>Maximum Charges: 2</mark></p>
+        <p><mark>This weaponskill does not share a recast timer with any other actions.</mark></p>
+    </td>
+    <td>
+        <p><mark>Weaponskill<br/>Instant<br/>15s Recast<br/>5y Range</mark></p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>**Harvest Moon**</p>
+        <p>Deals unaspected damage with a potency of <mark>8,000</mark> to target and all enemies nearby it.</p>
+        <p>Potency increases up to <mark>12,000</mark> as the target's HP decreases, reaching its maximum value when the target has 50% HP or less.</p>
+        <p>Additional Effect: Absorbs <mark>50%</mark> of damage dealt as HP</p>
+        <p><mark>Maximum Charges: 2</mark></p>
+        <p>This action does not share a recast timer with any other actions.</p>
+    </td>
+    <td>
+        <p><mark>Spell</mark><br/>Instant<br/><mark>16s Recast</mark><br/>25y Range<br/>5y Radius</p>
+    </td>
+    <td>
+        <p>**Harvest Moon**</p>
+        <p>Deals unaspected damage with a potency of 4,000 to target and all enemies nearby it.</p>
+        <p>Potency increases up to 8,000 as the target's HP decreases, reaching its maximum value when the target has 50% HP or less.</p>
+        <p>Additional Effect: Absorbs 100% of damage dealt as HP</p>
+        <p><mark>Can only be executed while under the effect of Soulsow.</mark></p>
+        <p><mark>&#x203B; This action cannot be assigned to a hotbar.</mark></p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/>*(Effectively 20s Recast)*<br/>25y Range<br/>5y Radius</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>**Plentiful Harvest**</p>
+        <p>Delivers an attack with a potency of <mark>8,000</mark> to all enemies in a straight line before you.</p>
+        <p>Potency increases up to 24,000 based on your accumulated stacks of Immortal Sacrifice, gained by executing <mark>Executioner's Guillotine</mark>, KOing enemies, or earning assists.</p>
+        <p>Consumes all stacks of Immortal Sacrifice upon execution.</p>
+        <p>Can only be executed while not under the effect of Enshrouded.</p>
+        <p>This weaponskill does not share a recast timer with any other actions.</p>
+    </td>
+    <td>
+        <p>Weaponskill<br/>Instant<br/>60s Recast<br/>15y Range<br/>15y Line Width</p>
+    </td>
+    <td>
+        <p>**Plentiful Harvest**</p>
+        <p>Delivers an attack with a potency of 4,000 to all enemies in a straight line before you.</p>
+        <p>Potency increases up to 24,000 based on your accumulated stacks of Immortal Sacrifice, gained by executing <mark>Soul Slice</mark>, KOing enemies, or earning assists.</p>
+        <p><mark>Additional Effect: Gradually fills your limit gauge</mark></p>
+        <p><mark>Duration: 15s</mark></p>
+        <p><mark>Effect can only be activated while in combat.</mark></p>
+        <p>Consumes all stacks of Immortal Sacrifice upon execution.</p>
+        <p>Can only be executed while not under the effect of Enshrouded.</p>
+        <p>This weaponskill does not share a recast timer with any other actions.</p>
+    </td>
+    <td>
+        <p>Weaponskill<br/>Instant<br/>60s Recast<br/>15y Range<br/>15y Line Width</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>**Grim Swathe**</p>
+        <p>Summons your avatar to deliver an attack with a potency of 4,000 to all enemies in a cone before you.</p>
+        <p>Additional Effect: Grants Executioner's Guillotine Ready</p>
+        <p>Duration: 10s</p>
+        <p>Additional Effect: Heavy +75%</p>
+        <p>Duration: 3s</p>
+        <p>&#x203B; Infernal Slice Combo changes to Executioner's Guillotine upon execution.</p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/><mark>12s Recast</mark><br/>8y Range<br/>8y Cone Width</p>
+    </td>
+    <td>
+        <p>**Grim Swathe**</p>
+        <p>Summons your avatar to deliver an attack with a potency of 4,000 to all enemies in a cone before you.</p>
+        <p>Additional Effect: Grants Soul Reaver</p>
+        <p>Duration: 10s</p>
+        <p>Additional Effect: Heavy +75%</p>
+        <p>Duration: 3s</p>
+        <p>&#x203B; Infernal Slice Combo changes to Guillotine upon execution.</p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/>15s Recast<br/>8y Range<br/>8y Cone Width</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>**Death Warrant**</p>
+        <p>Afflicts target with Death Warrant, causing you to compile damage you deal to that target. <mark>Action is changed to Fate Sealed for the duration of the effect.</mark></p>
+        <p>Deals damage when time expires <mark>or upon executing Fate Sealed</mark>.</p>
+        <p>Duration: <mark>8s</mark></p>
+        <p>Damage Potency: <mark>2,000 plus 50%</mark> of compiled damage</p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/><mark>24s Recast</mark><br/>25y Range</p>
+    </td>
+    <td>
+        <p>**Death Warrant**</p>
+        <p>Afflicts target with Death Warrant, causing you to compile damage you deal to that target.</p>
+        <p>When effect duration expires, target takes 50% of compiled damage.</p>
+        <p>Duration: 7s</p>
+        <p><mark>Additional Effect: Grants Soulsow</mark></p>
+        <p><mark>Duration: 10s</mark></p>
+        <p><mark>&#x203B; Action changes to Harvest Moon upon execution.</mark></p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/>20s Recast<br/>25y Range</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>**Hell's Ingress**</p>
+        <p>Quickly dash 15 yalms forward.</p>
+        <p>Additional Effect: Leaves behind a Hellsgate at point of origin, and grants Threshold to self</p>
+        <p>Duration: 10s</p>
+        <p>Additional Effect: Increases movement speed by 25%</p>
+        <p>Duration: 5s</p>
+        <p>Cannot be executed while bound.</p>
+        <p>&#x203B; Action changes to Regress upon execution.</p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/>10s Recast</p>
+    </td>
+    <td>
+        <p>*Unchanged.*</p>
+    </td>
+    <td></td>
+</tr>
+<tr>
+    <td>
+        <p>**Arcane Crest**</p>
+        <p>Grants Crest of Time Borrowed to self, creating a barrier that nullifies damage equivalent to a heal of 12,000 potency.</p>
+        <p>Duration: 10s</p>
+        <p>Grants the Crest of Time Returned to self and nearby party members within a radius of 15 yalms when barrier is completely absorbed.</p>
+        <p>Crest of Time Returned Effect: Gradually restores HP</p>
+        <p>Cure Potency: 6,000</p>
+        <p>Duration: 6s</p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/>20s Recast</p>
+    </td>
+    <td>
+        <p>**Arcane Crest**</p>
+        <p>Grants Crest of Time Borrowed to self, creating a barrier that nullifies damage equivalent to a heal of 12,000 potency.</p>
+        <p>Duration: 10s</p>
+        <p><mark>Additional Effect: Increases damage dealt by 10%</mark></p>
+        <p><mark>Duration: 10s</mark></p>
+        <p>Grants the Crest of Time Returned to self and nearby party members within a radius of 15 yalms when barrier is completely absorbed.</p>
+        <p>Crest of Time Returned Effect: Gradually restores HP</p>
+        <p>Cure Potency: 6,000</p>
+        <p>Duration: 6s</p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/>20s Recast</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p><mark>**Executioner's Guillotine**</mark></p>
+        <p>Delivers an attack with a potency of 8,000 to all enemies in a cone before you.</p>
+        <p><mark>Additional Effect: Grants a stack of Immortal Sacrifice, up to a maximum of 8</mark></p>
+        <p>Can only be executed while under the effect of Executioner's Guillotine.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Weaponskill<br/>Instant<br/><mark>*(Effectively 12s Recast)*</mark><br/>8y Range<br/>8y Cone Width</p>
+    </td>
+    <td>
+        <p>**Guillotine**</p>
+        <p>Delivers an attack with a potency of 8,000 to all enemies in a cone before you.</p>
+        <p>Can only be executed while under the effect of Soul Reaver.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Weaponskill<br/>Instant<br/>*(Effectively 15s Recast)*<br/>8y Range<br/>8y Cone Width</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>**Void Reaping**</p>
+        <p>Delivers an attack with a potency of <mark>10,000</mark>.</p>
+        <p>Can only be executed while under the effect of Enshrouded.</p>
+        <p>This weaponskill does not share a recast timer with any other actions.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Weaponskill<br/>Instant<br/>1.5s Recast<br/>5y Range</p>
+    </td>
+    <td>
+        <p>**Void Reaping**</p>
+        <p>Delivers an attack with a potency of 8,000.</p>
+        <p><mark>Additional Effect: Grants Ripe for Reaping</mark></p>
+        <p><mark>Duration: 10s</mark></p>
+        <p>Can only be executed while under the effect of Enshrouded.</p>
+        <p>This weaponskill does not share a recast timer with any other actions.</p>
+        <p><mark>&#x203B; Infernal Slice Combo changes to Cross Reaping while under the effect of Ripe for Reaping.</mark></p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Weaponskill<br/>Instant<br/>1.5s Recast<br/>5y Range</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>**Cross Reaping**</p>
+        <p>Delivers an attack with a potency of <mark>10,000</mark>.</p>
+        <p><mark>Combo Action: Void Reaping</mark></p>
+        <p><mark>Can only be executed while under the effect of Enshrouded.</mark></p>
+        <p>This weaponskill does not share a recast timer with any other actions.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Weaponskill<br/>Instant<br/>1.5s Recast<br/>5y Range</p>
+    </td>
+    <td>
+        <p>**Cross Reaping**</p>
+        <p>Delivers an attack with a potency of 8,000.</p>
+        <p><mark>Can only be executed while under the effect of Enshrouded and Ripe for Reaping.</mark></p>
+        <p>This weaponskill does not share a recast timer with any other actions.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Weaponskill<br/>Instant<br/>1.5s Recast<br/>5y Range</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p>**Lemure's Slice**</p>
+        <p>Delivers an attack with a potency of <mark>6,000</mark> to all enemies in a cone before you.</p>
+        <p>Additional Effect: Bind</p>
+        <p>Duration: 3s</p>
+        <p>Can only be executed while under the effect of Enshrouded.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/><mark>20s Recast</mark><br/>8y Range<br/>8y Cone Width</p>
+    </td>
+    <td>
+        <p>**Lemure's Slice**</p>
+        <p>Delivers an attack with a potency of 4,000 to all enemies in a cone before you.</p>
+        <p>Additional Effect: Bind</p>
+        <p>Duration: 3s</p>
+        <p>Can only be executed while under the effect of Enshrouded.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/>15s Recast<br/>8y Range<br/>8y Cone Width</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p><mark>**Fate Sealed**</mark></p>
+        <p><mark>Ends the effect of Death Warrant, dealing damage to the target.</mark></p>
+        <p><mark>Damage Potency: 2,000 plus 50% of compiled damage</mark></p>
+        <p><mark>Can only be executed while under the effect of Death Warrant.</mark></p>
+        <p><mark>&#x203B; This action cannot be assigned to a hotbar.</mark></p>
+    </td>
+    <td>
+        <p><mark>Ability<br/>Instant<br/>*(Effectively 24s Recast)*</mark></p>
+    </td>
+    <td>
+        <p>*Didn't exist previously.*</p>
+    </td>
+    <td></td>
+</tr>
+<tr>
+    <td>
+        <p>**Regress**</p>
+        <p>Move instantly to the Hellsgate left behind by you.</p>
+        <p>Cannot be executed while bound.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Ability<br/>Instant<br/>*(Effectively 10s Recast)*<br/>30y Range</p>
+    </td>
+    <td>
+        <p>*Unchanged.*</p>
+    </td>
+    <td></td>
+</tr>
+<tr>
+    <td>
+        <p>**Communio**</p>
+        <p>Deals unaspected damage with a potency of <mark>15,000</mark> to target and all enemies nearby it.</p>
+        <p><mark>Additional Effect: Grants Perfectio Parata</mark></p>
+        <p>Requires at least one stack of Enshrouded.</p>
+        <p>Consumes all stacks of Enshrouded upon execution.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+        <p><mark>&#x203B; Action changes to Perfectio upon execution.</mark></p>
+    </td>
+    <td>
+        <p>Spell<br/><mark>1.32s Cast</mark><br/>2.2s Recast<br/>25y Range<br/>5y Radius</p>
+    </td>
+    <td>
+        <p>**Communio**</p>
+        <p>Deals unaspected damage with a potency of 16,000 to target and all enemies nearby it.</p>
+        <p>Requires at least one stack of Enshrouded.</p>
+        <p>Consumes all stacks of Enshrouded upon execution.</p>
+        <p>&#x203B; This action cannot be assigned to a hotbar.</p>
+    </td>
+    <td>
+        <p>Spell<br/>1.44s Cast<br/>2.4s Recast<br/>25y Range<br/>5y Radius</p>
+    </td>
+</tr>
+<tr>
+    <td>
+        <p><mark>**Perfectio**</mark></p>
+        <p><mark>Delivers an attack with a potency of 10,000 to target and all enemies nearby it, incapacitating foes whose HP is below 25%.</mark></p>
+        <p><mark>Effect cannot be applied to players riding machina or non-player combatants.</mark></p>
+        <p><mark>Can only be executed while under the effect of Perfectio Parata.</mark></p>
+        <p><mark>&#x203B; This action cannot be assigned to a hotbar.</mark></p>
+    </td>
+    <td>
+        <p><mark>Weaponskill<br/>Instant<br/>2.2s Recast<br/>25y Range<br/>5y Radius</mark></p>
+    </td>
+    <td>
+        <p>*Didn't exist previously.*</p>
+    </td>
+    <td></td>
+</tr>
+<tr>
+    <td>
+        <p>**Tenebrae Lemurum (Limit Break)**</p>
+        <p>Offers your flesh as a vessel to your avatar, gaining 5 stacks of Enshrouded.</p>
+        <p>Duration: 20s</p>
+        <p>Additional Effect: Afflicts nearby enemies with Hysteria</p>
+        <p>Hysteria Effect: Afflicted enemies are unable to act of their own free will</p>
+        <p>Duration: 2s</p>
+        <p>Can only be executed when the limit gauge is full.</p>
+        <p>Gauge Charge Time: <mark>60s</mark></p>
+        <p>Has no effect on players riding machina or non-player combatants.</p>
+        <p>&#x203B; Action changes to Communio while under the effect of Enshrouded.</p>
+        <p>&#x203B; Grim Swathe changes to Lemure's Slice while under the effect of Enshrouded.</p>
+        <p>&#x203B; Infernal Slice Combo changes to Void Reaping while under the effect of Enshrouded.</p>
+    </td>
+    <td>
+        <p>Instant<br/>10s Recast<br/>10y Radius</p>
+    </td>
+    <td>
+        <p>**Tenebrae Lemurum (Limit Break)**</p>
+        <p>Offers your flesh as a vessel to your avatar, gaining 5 stacks of Enshrouded.</p>
+        <p>Duration: 20s</p>
+        <p>Additional Effect: Afflicts nearby enemies with Hysteria</p>
+        <p>Hysteria Effect: Afflicted enemies are unable to act of their own free will</p>
+        <p>Duration: 2s</p>
+        <p>Can only be executed when the limit gauge is full.</p>
+        <p>Gauge Charge Time: 75s</p>
+        <p>Has no effect on players riding machina or non-player combatants.</p>
+        <p>&#x203B; Action changes to Communio while under the effect of Enshrouded.</p>
+        <p>&#x203B; Grim Swathe changes to Lemure's Slice while under the effect of Enshrouded.</p>
+        <p>&#x203B; Infernal Slice Combo changes to Void Reaping while under the effect of Enshrouded.</p>
+    </td>
+    <td>
+        <p>Instant<br/>10s Recast<br/>10y Radius</p>
+    </td>
+</tr>
+</tbody>
+</table>
+</p>
+
+
+### Game Modes
+
+- Frontline: LB recharge nerfed by 15s
+
