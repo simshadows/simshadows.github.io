@@ -64,7 +64,9 @@ My first solution:
 
 import Day02Part2v1 from "./_solutions/day02-part2-v1.py?raw" //_
 
-<Code code={Day02Part2v1} lang="py" />
+<SpoilerBlock buttonLabel="Initial solution (Python)">
+    <Code code={Day02Part2v1} lang="py" />
+</SpoilerBlock>
 
 In an attempt to make a more compact solution, I reimplemented with a lambda:
 
@@ -91,7 +93,9 @@ My first solution, retaining the use of `eval()`:
 
 import Day03Part2v1 from "./_solutions/day03-part2-v1.py?raw" //_
 
-<Code code={Day03Part2v1} lang="py" />
+<SpoilerBlock buttonLabel="Initial solution (Python)">
+    <Code code={Day03Part2v1} lang="py" />
+</SpoilerBlock>
 
 My attempt at making a more compact solution:
 
@@ -125,4 +129,51 @@ import Day04Part1v2c from "./_solutions/day04-part1-v2c.py?raw" //_
 import Day04Part2v2 from "./_solutions/day04-part2-v2.py?raw" //_
 
 <Code code={Day04Part2v2} lang="py" />
+
+
+<Divider />
+
+## Day 5 <Spec href="https://adventofcode.com/2024/day/5" />
+
+### Part 1 Solution
+
+Things are getting a bit tough to make meme solutions, so I went for whatever works this time around. This got me the right answer quickly:
+
+import Day05Part1v1a from "./_solutions/day05-part1-v1a.py?raw" //_
+
+<SpoilerBlock buttonLabel="Initial solution (Python)">
+    <Code code={Day05Part1v1a} lang="py" />
+</SpoilerBlock>
+
+But its runtime was pretty terrible. Doesn't matter though since solutions aren't timed. It only took a couple seconds anyway.
+
+In preparation for Part 2, I converted the rules to a dict:
+
+import Day05Part1v1b from "./_solutions/day05-part1-v1b.py?raw" //_
+
+<SpoilerBlock buttonLabel="Faster solution (Python)">
+    <Code code={Day05Part1v1b} lang="py" />
+</SpoilerBlock>
+
+More-compact solution:
+
+import Day05Part1v2c from "./_solutions/day05-part1-v2c.py?raw" //_
+
+<Code code={Day05Part1v2c} lang="py" />
+
+### Part 2 Solution
+
+Naive topological sort since it's easier and it ran fast enough for this problem anyway:
+
+import Day05Part2v1 from "./_solutions/day05-part2-v1.py?raw" //_
+
+<SpoilerBlock buttonLabel="Initial solution (Python)">
+    <Code code={Day05Part2v1} lang="py" />
+</SpoilerBlock>
+
+More-compact (and honestly more-readable) solution that takes advantage of built-in sort:
+
+import Day05Part2v2c from "./_solutions/day05-part2-v2c-alternative.py?raw" //_
+
+<Code code={Day05Part2v2c} lang="py" />
 
