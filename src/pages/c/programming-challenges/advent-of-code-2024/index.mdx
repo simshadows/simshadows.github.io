@@ -238,3 +238,78 @@ import Day08Part2v1 from "./_solutions/day08-part2-v1.py?raw" //_
 
 <Code code={Day08Part2v1} lang="py" />
 
+
+<Divider />
+
+## Day 9 <Spec href="https://adventofcode.com/2024/day/9" />
+
+### Part 1 Solution
+
+import Day09Part1v1 from "./_solutions/day09-part1-v1.py?raw" //_
+
+<Code code={Day09Part1v1} lang="py" />
+
+### Part 2 Solution
+
+I attempted a Heap-based solution initially, but kept running into issues. In the end, I realized that my heap-based idea always assumes that you will always take the left-most of the largest contiguous sequence. For example, suppose you need to reallocate ID=2 here:
+
+```
+00..111....22
+```
+
+The actual correct answer here is to move it between the 0 and 1:
+```
+0022111......
+```
+
+However, my heap-based solution will place it after the 1 because that's how the heap is sorted:
+
+```
+00..11122....
+```
+
+I reimplemented using a much more naive algorithm. It takes quite a fair while to run, but it got me my answer:
+
+import Day09Part2v1h from "./_solutions/day09-part2-v1h.py?raw" //_
+
+<Code code={Day09Part2v1h} lang="py" />
+
+
+<Divider />
+
+## Day 10 <Spec href="https://adventofcode.com/2024/day/10" />
+
+### Part 1 Solution
+
+I skimmed the problem specification and accidentally solved Part 2 first.
+
+When I reread the problem, I realized what Part 1 was actually asking me for, which brings me to my first correct solution for Part 1:
+
+import Day10Part1v1b from "./_solutions/day10-part1-v1b.py?raw" //_
+
+<Code code={Day10Part1v1b} lang="py" />
+
+I made an attempt at making a more-compact solution, but it ends up quite unnecessarily unreadable:
+
+import Day10Part1v3a from "./_solutions/day10-part1-v3a.py?raw" //_
+
+<SpoilerBlock buttonLabel="More-compact but unreadable solution (Python)">
+    <Code code={Day10Part1v3a} lang="py" />
+</SpoilerBlock>
+
+### Part 2 Solution
+
+By the time I got to Part 2, I didn't have to do anything because I already accidentally wrote it for Part 1!
+
+import Day10Part2v1 from "./_solutions/day10-part2-v1.py?raw" //_
+
+<Code code={Day10Part2v1} lang="py" />
+
+I made some attempts at writing a more-compact solution, but it really sacrifices readability and actually bloats the logic a bit:
+
+import Day10Part2v2c from "./_solutions/day10-part2-v2c.py?raw" //_
+
+<SpoilerBlock buttonLabel="More-compact but unreadable solution (Python)">
+    <Code code={Day10Part2v2c} lang="py" />
+</SpoilerBlock>
+
