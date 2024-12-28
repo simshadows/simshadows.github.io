@@ -6,13 +6,13 @@
   "packageManager": "yarn@3.6.3",
   "type": "module",
   "scripts": {
-    "dev": "astro dev --port 3000",
-    "start": "astro dev --port 3000",
+    "dev": "astro dev --port 8000",
+    "start": "astro dev --port 8000",
     "build": "astro check && tsc --noEmit && astro build",
     "typecheck": "astro check && tsc --noEmit",
     "buildserve": "astro check && tsc --noEmit && astro build && astro preview --port 3000",
-    "serve": "astro preview --port 3000",
-    "preview": "astro preview --port 3000",
+    "serve": "astro preview --port 8000",
+    "preview": "astro preview --port 8000",
     "astro": "astro"
   },
   "dependencies": {
