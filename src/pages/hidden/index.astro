@@ -1,12 +1,15 @@
 ---
 import Layout from "@layouts/GeneralLayout.astro";
+import {fm} from "@helpers/frontmatter";
+
+export const frontmatter = fm({
+    title: "The Hidden Pages",
+    description: "shhhhhhhhhhhhhhhhhhh",
+    keywords: ["homepage"],
+});
 ---
 
-<Layout
-    title="The Hidden Pages"
-    description="shhhhhhhhhhhhhhhhhhh"
-    keywords={["homepage"]}
->
+<Layout {...frontmatter}>
 
 <p>Congrats on finding the hidden pages. No, you won't find any secrets in here. These are just pages that don't need attention, but that I still want *some* way to make them findable by myself or if anyone happens to be interested in them.</p>
 <p>The stuff here is probably boring as hell to anybody who's seeking specific information from my website, but could be interesting if you're just poking around to see what I'm all about.</p>

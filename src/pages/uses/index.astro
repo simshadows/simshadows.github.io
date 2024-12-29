@@ -1,13 +1,15 @@
 ---
 import Layout from "@layouts/GeneralLayout.astro";
+import {fm} from "@helpers/frontmatter";
+
+export const frontmatter = fm({
+    title: "Stuff I Use",
+    description: "Stuff I Use",
+    keywords: ["favourite", "list", "awesome"],
+});
 ---
 
-<Layout
-    title="Stuff I Use"
-    description="Stuff I Use"
-    keywords={["favourite", "list", "awesome"]}
->
-
+<Layout {...frontmatter}>
 
 <p>Call me materialistic, but I'm very happy and proud of the things I own, and I put a lot of thought into what I purchase (or acquire otherwise).</p>
 

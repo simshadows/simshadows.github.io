@@ -1,12 +1,15 @@
 ---
 import Layout from "@layouts/GeneralLayout.astro";
+import {fm} from "@helpers/frontmatter";
+
+export const frontmatter = fm({
+    title: "Own Work",
+    description: "If you were linked to this page, it means the item you clicked on is an original work by simshadows.",
+    keywords: [],
+});
 ---
 
-<Layout
-    title="Own Work"
-    description="If you were linked to this page, it means the item you clicked on is an original work by simshadows."
-    keywords={[]}
->
+<Layout {...frontmatter}>
 
 <p>If you were linked to this page, it means the item you clicked on is an original work by simshadows.</p>
 

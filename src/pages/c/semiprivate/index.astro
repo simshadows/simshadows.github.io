@@ -1,12 +1,15 @@
 ---
 import Layout from "@layouts/GeneralLayout.astro";
+import {fm} from "@helpers/frontmatter";
+
+export const frontmatter = fm({
+    title: "Semi-Private Programming Notes",
+    description: "Notes that I wrote specifically for myself, not intended for public consumption. But since there's nothing really stopping these notes from being public, I figured I may as well put them up in some form. Maybe you'll find these useful or inspiring?",
+    keywords: ["homepage"],
+});
 ---
 
-<Layout
-    title="Semi-Private Programming Notes"
-    description="Notes that I wrote specifically for myself, not intended for public consumption. But since there's nothing really stopping these notes from being public, I figured I may as well put them up in some form. Maybe you'll find these useful or inspiring?"
-    keywords={["homepage"]}
->
+<Layout {...frontmatter}>
     <p>Everything in this page is specifically for myself, not intended for public consumption. But since there's nothing really stopping these notes from being public, I figured I may as well put them up in some form. Maybe you'll find these useful or inspiring?</p>
 
     <h2>Index</h2>

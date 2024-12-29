@@ -1,12 +1,15 @@
 ---
 import Layout from "@layouts/GeneralLayout.astro";
+import {fm} from "@helpers/frontmatter";
+
+export const frontmatter = fm({
+    title: "About Me",
+    description: "About me.",
+    keywords: ["about"],
+});
 ---
 
-<Layout
-    title="About Me"
-    description="About me."
-    keywords={["about"]}
->
+<Layout {...frontmatter}>
 
 Somehow, I've managed to build my whole personality around having too many projects but having too little time in the world to do it all. But is there really a better way to live life?
 

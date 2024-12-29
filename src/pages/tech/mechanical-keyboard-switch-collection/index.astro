@@ -1,5 +1,6 @@
 ---
 import GeneralLayout from "@layouts/legacy/GeneralLayout.astro";
+import {fm} from "@helpers/frontmatter";
 
 import {
     Currency,
@@ -20,14 +21,15 @@ const totalSFCost: Currency = allOrigins.reduce(
     (acc, v) => acc.add(v.sfCost || new Currency("0.00 AUD")),
     new Currency("0.00 AUD"),
 );
+
+export const frontmatter = fm({
+    title: "Sim's Mechanical Keyboard Switch Collection",
+    description: "A complete guide to Sim's mechanical keyboard switch collection, including visual identification, known documented specifications/characteristics, and origin.",
+    keywords: ["mechanical keyboard", "switch", "keyswitch"],
+});
 ---
 
-<GeneralLayout
-    title="Sim's Mechanical Keyboard Switch Collection"
-    description="A complete guide to Sim's mechanical keyboard switch collection, including visual identification, known documented specifications/characteristics, and origin."
-    keywords={["mechanical keyboard", "switch", "keyswitch"]}
->
-
+<GeneralLayout {...frontmatter}>
 
 
 <h1>Sim's Mechanical Keyboard Switch Collection</h1>

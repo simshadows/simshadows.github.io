@@ -1,14 +1,17 @@
 ---
 import Layout from "@layouts/BaseLayout.astro";
+import {fm} from "@helpers/frontmatter";
 import Links from "./_index-links.astro";
 import ExternLinks from "./_index-external-links.astro";
+
+export const frontmatter = fm({
+    title: "Sim's Pages",
+    description: "A collection of various webpages.",
+    keywords: ["homepage"],
+});
 ---
 
-<Layout
-    title="Sim's Pages"
-    description="A collection of various webpages."
-    keywords={["homepage"]}
->
+<Layout {...frontmatter}>
     <Links showWIP={true} />
     <a href="/"><h4>Exclude early work-in-progress pages</h4></a>
     <hr />

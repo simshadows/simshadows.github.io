@@ -74,15 +74,11 @@ function makeFullTree(): PageTree {
             throw new Error("Not a Vite glob object.");
         }
 
-        //const frontmatter = v.frontmatter;
-        //if (!frontmatter) {
-        //    throw new Error(`File requires frontmatter: ${k}`);
-        //}
-        const frontmatter = makeFrontmatter(v.frontmatter || {
-            title: "untitled",
-            description: "no description",
-            keywords: ["no keywords"],
-        });
+        const rawFrontmatter = v.frontmatter;
+        if (!rawFrontmatter) {
+            throw new Error(`File requires frontmatter: ${k}`);
+        }
+        const frontmatter = makeFrontmatter(rawFrontmatter);
         return {
             url: v.url + (v.url.endsWith("/") ? "" : "/"),
             viteGlobKey: k,

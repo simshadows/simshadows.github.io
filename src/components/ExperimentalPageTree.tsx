@@ -11,7 +11,7 @@ import {type PageTree} from "@helpers/experimental-glob";
 
 function LinkText({k, tree}: {k: string, tree: PageTree}) {
     if (tree.page?.frontmatter) {
-        return <span>{tree.page.frontmatter.title}</span>;
+        return <span><a href={tree.page.url}>{tree.page.frontmatter.title}</a></span>;
     } else {
         return <span>{k}</span>;
     }

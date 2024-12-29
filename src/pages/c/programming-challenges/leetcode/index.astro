@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/GeneralLayout.astro";
+import {fm} from "@helpers/frontmatter";
 
 //import Fig from "@components/figures/Fig";
 //import FiguresBlock from "@components/figures/FiguresBlock";
@@ -32,13 +33,16 @@ for (const post of allPosts) {
         default: throw new Error();
     }
 }
+
+export const frontmatter = fm({
+    title: "My Leetcode Solutions",
+    description: "My Leetcode solutions!",
+    keywords: ["data structures and algorithms", "dsa", "oa", "interview", "competitive programming", "programming challenges"],
+});
 ---
 
-<Layout
-    title="My Leetcode Solutions"
-    description="My Leetcode solutions!"
-    keywords={["data structures and algorithms", "dsa", "oa", "interview", "competitive programming", "programming challenges"]}
->
+<Layout {...frontmatter}>
+
 <> {/* TODO: what the fuck why is the page so broken without these fragments? */}
 <>
 
