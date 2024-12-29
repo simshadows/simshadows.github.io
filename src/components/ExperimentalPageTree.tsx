@@ -9,19 +9,26 @@
 
 import {type PageTree} from "@helpers/experimental-glob";
 
+function LinkText({k, tree}: {k: string, tree: PageTree}) {
+    if (tree.page?.frontmatter) {
+        return <span>{tree.page.frontmatter.title}</span>;
+    } else {
+        return <span>{k}</span>;
+    }
+}
+
 interface Props {
     readonly tree: PageTree;
 }
 
-export default function ExperimentalPageTree(props: Props) {
-    if (props.tree.childTrees.size == 0) return null;
+export default function ExperimentalPageTree({tree}: Props) {
+    if (tree.childTrees.size == 0) return null;
     return <ul>
-        {Array.from(props.tree.childTrees).map(([k, v]) =>
+        {Array.from(tree.childTrees).map(([k, v]) =>
             <li>
-                <span>{k}</span>
+                <LinkText k={k} tree={v}/>
                 <ExperimentalPageTree tree={v}/>
             </li>
         )}
     </ul>;
 }
-
