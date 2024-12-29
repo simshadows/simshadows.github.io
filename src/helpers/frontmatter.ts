@@ -7,13 +7,36 @@ import type {SomePartial} from "@helpers/types";
 import {isStrArray} from "@root/danger";
 
 export interface Frontmatter {
+    /*** Mandatory ***/
+
     title: string;
     description: string;
     keywords: string[];
 
+    /*** Optionals ***/
+
+    // The link text that shows in an index
+    indexTitle: string;
+
+    // Exclude the page and all child pages from main index
+    excludeFromMainIndex: boolean;
+
+    // Exclude just the child pages from main index
+    excludeChildrenFromMainIndex: boolean;
+
+    // Hide the TOC sidebar (only applicable for MDX layouts)
     hidetoc: boolean;
+
+    // Mark as a work-in-progress
+    wip: boolean;
 }
-type FrontmatterWithOptionals = SomePartial<Frontmatter, "hidetoc">;
+type FrontmatterWithOptionals = SomePartial<Frontmatter,
+    "indexTitle"
+    | "excludeFromMainIndex"
+    | "excludeChildrenFromMainIndex"
+    | "hidetoc"
+    | "wip"
+>;
 
 const ERR_FIRST = "Invalid frontmatter. ";
 function err1(expectedType: string, k: string) {
@@ -58,16 +81,46 @@ export function makeFrontmatter(obj: unknown): Frontmatter {
     }
 
     // OPTIONAL
+    const indexTitle = ("indexTitle" in obj) ? obj.indexTitle : obj.title;
+    if (typeof indexTitle !== "string") {
+        throw err2("a string", "indexTitle", indexTitle);
+    }
+
+    // OPTIONAL
+    const excludeFromMainIndex =
+            ("excludeFromMainIndex" in obj) ? obj.excludeFromMainIndex : false;
+    if (typeof excludeFromMainIndex !== "boolean") {
+        throw err2("a boolean", "excludeFromMainIndex", excludeFromMainIndex);
+    }
+
+    // OPTIONAL
+    const excludeChildrenFromMainIndex =
+            ("excludeChildrenFromMainIndex" in obj) ? obj.excludeChildrenFromMainIndex : false;
+    if (typeof excludeChildrenFromMainIndex !== "boolean") {
+        throw err2("a boolean", "excludeChildrenFromMainIndex", excludeChildrenFromMainIndex);
+    }
+
+    // OPTIONAL
     const hidetoc = ("hidetoc" in obj) ? obj.hidetoc : false;
     if (typeof hidetoc !== "boolean") {
         throw err2("a boolean", "hidetoc", hidetoc);
+    }
+
+    // OPTIONAL
+    const wip = ("wip" in obj) ? obj.wip : false;
+    if (typeof wip !== "boolean") {
+        throw err2("a boolean", "wip", wip);
     }
 
     return {
         title: obj.title,
         description: obj.description,
         keywords: obj.keywords,
+        indexTitle,
+        excludeFromMainIndex,
+        excludeChildrenFromMainIndex,
         hidetoc,
+        wip,
     };
 }
 export const fm = validateFrontmatter; // Alias

@@ -9,9 +9,17 @@
 
 import {type PageTree} from "@helpers/experimental-glob";
 
+import "./ExperimentalPageTree.css";
+
 function LinkText({k, tree}: {k: string, tree: PageTree}) {
-    if (tree.page?.frontmatter) {
-        return <span><a href={tree.page.url}>{tree.page.frontmatter.title}</a></span>;
+    const frontmatter = tree.page?.frontmatter;
+    if (frontmatter) {
+        return <>
+            <span className="index-link-text">
+                <a href={tree.page.url}>{frontmatter.indexTitle}</a>
+            </span>
+            {frontmatter.wip && <>&nbsp;&nbsp;&#128295; <em>(work-in-progress)</em></>}
+        </>;
     } else {
         return <span>{k}</span>;
     }
@@ -24,10 +32,14 @@ interface Props {
 export default function ExperimentalPageTree({tree}: Props) {
     if (tree.childTrees.size == 0) return null;
     return <ul>
-        {Array.from(tree.childTrees).map(([k, v]) =>
+        {Array.from(tree.childTrees).map(([k, subTree]) =>
+            (!subTree.page?.frontmatter.excludeFromMainIndex) &&
             <li>
-                <LinkText k={k} tree={v}/>
-                <ExperimentalPageTree tree={v}/>
+                <LinkText k={k} tree={subTree}/>
+                {
+                    (!subTree.page?.frontmatter.excludeChildrenFromMainIndex)
+                    && <ExperimentalPageTree tree={subTree}/>
+                }
             </li>
         )}
     </ul>;
