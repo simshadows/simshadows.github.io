@@ -1,0 +1,17 @@
+---
+import Layout from "@layouts/BaseLayout.astro";
+import {fm} from "@helpers/frontmatter";
+import {getPageTree} from "@helpers/experimental-glob";
+
+export const frontmatter = fm({
+    title: "Experimental Glob",
+    description: "An experimental page for globbing pages.",
+    keywords: ["experimental"],
+});
+---
+
+<Layout {...frontmatter}>
+    {
+        getPageTree().map(x => <p>{x}</p>)
+    }
+</Layout>

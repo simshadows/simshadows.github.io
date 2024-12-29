@@ -15,8 +15,8 @@ function difficultyIDToName(s: string) {
 
 export interface solLayoutFM {
     difficulty: "easy" | "medium" | "hard";
+    title:      string;
     num:        number;
-    name:       string;
     //webslug:  string; // Not provided directly.
     //accessed: string; // Not provided directly.
     keywords:   string[];
@@ -29,9 +29,9 @@ export interface solLayoutFM {
 }
 export function processSolLayoutFrontmatter(frontmatter: Record<string, unknown>): solLayoutFM {
     const {
+        title,
         difficulty,
         num,
-        name,
         webslug,
         accessed,
         keywords,
@@ -55,8 +55,8 @@ export function processSolLayoutFrontmatter(frontmatter: Record<string, unknown>
         throw new Error("'num' must be an integer >0.");
     }
 
-    if ((!name) || (typeof name !== "string")) {
-        throw new Error(errStr("a string", "name", name));
+    if ((!title) || (typeof title !== "string")) {
+        throw new Error(errStr("a string", "title", title));
     }
 
     if ((!webslug) || (typeof webslug !== "string")) {
@@ -72,9 +72,9 @@ export function processSolLayoutFrontmatter(frontmatter: Record<string, unknown>
     }
 
     return {
+        title,
         difficulty,
         num,
-        name,
         keywords,
         needsimprovement,
         wip,

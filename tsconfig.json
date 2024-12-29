@@ -25,7 +25,8 @@
       "@root/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@img_latex/*": ["src/generic-images/latex-compiled/generated-do-not-edit/*"]
+      "@img_latex/*": ["src/generic-images/latex-compiled/generated-do-not-edit/*"],
+      "@helpers/*": ["src/helpers/*"]
     }
   }
 }

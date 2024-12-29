@@ -28,3 +28,22 @@ export function isNumArray(obj: unknown): obj is number[] {
     return true;
 }
 
+/*
+ * Workaround for Vite's import.meta.glob returning unknown types.
+ */
+interface ViteGlobObject {
+    frontmatter?: unknown;
+    url: string;
+    file: string;
+}
+export function isViteGlobObject(obj: unknown): obj is ViteGlobObject {
+    if (!(obj && (typeof obj === "object"))) return false;
+
+    if (!("url" in obj)) return false;
+    if (typeof obj.url !== "string") return false;
+
+    if (!("file" in obj)) return false;
+    if (typeof obj.file !== "string") return false;
+    
+    return true;
+}
