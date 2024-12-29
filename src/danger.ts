@@ -31,7 +31,7 @@ export function isNumArray(obj: unknown): obj is number[] {
 /*
  * Workaround for Vite's import.meta.glob returning unknown types.
  */
-interface ViteGlobObject {
+export interface ViteGlobObject {
     frontmatter?: unknown;
     url: string;
     file: string;
