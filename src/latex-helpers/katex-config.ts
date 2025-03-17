@@ -8,7 +8,8 @@ const katexConfig = {
     displayMode: true, // To be overwritten
     fleqn: false, // To be overwritten
     throwOnError: true,
-    strict: "ignore",
+    strict: false,
+    // strict: "ignore", // Causes a type error for some reason.
     trust: true,
     macros: {
         "\\atantwo": "\\operatorname{atan2}",

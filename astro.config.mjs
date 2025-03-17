@@ -16,6 +16,6 @@ export default defineConfig({
         shikiConfig: {
             theme: SHIKI_THEME,
         }
-    }
+    },
 });
 

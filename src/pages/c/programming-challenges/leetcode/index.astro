@@ -22,10 +22,12 @@ const allPosts = (await Astro.glob("./sol/*.mdx")).map(
 );
 allPosts.sort((a, b) => a.fm.num - b.fm.num)
 
-const completedStats = [0, 0, 0];
-const wipStats = [0, 0, 0];
+type Tup3 = [number, number, number];
+
+const completedStats: Tup3 = [0, 0, 0];
+const wipStats: Tup3 = [0, 0, 0];
 for (const post of allPosts) {
-    const thisStats = (post.fm.wip) ? wipStats : completedStats;
+    const thisStats: Tup3 = (post.fm.wip) ? wipStats : completedStats;
     switch (post.fm.difficulty) {
         case "easy":   ++thisStats[0]; break;
         case "medium": ++thisStats[1]; break;

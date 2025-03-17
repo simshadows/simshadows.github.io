@@ -119,7 +119,7 @@ function SwitchesTableSubSubrow({className, rowspan, data, origin}: SwitchesTabl
     const classNameBase = (rowspan === -1) ? "hidden " : "";
     const rowspanBase = Math.max(1, rowspan);
 
-    return <tr className={className} rowSpan={rowspanBase}>
+    return <tr className={className}>
         <td className={classNameBase + data.type} rowSpan={rowspanBase}>{switchTypeStringMap(data.type)}</td>
         <td className={classNameBase} rowSpan={rowspanBase}><SwitchImageCell
             image={data.image}
