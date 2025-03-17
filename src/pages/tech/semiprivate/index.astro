@@ -3,12 +3,13 @@ import Layout from "@layouts/GeneralLayout.astro";
 import {fm} from "@helpers/frontmatter";
 
 export const frontmatter = fm({
-    title: "Semi-Private Programming Notes",
+    title: "Semi-Private Tech Notes",
     description: "Notes that I wrote specifically for myself, not intended for public consumption. But since there's nothing really stopping these notes from being public, I figured I may as well put them up in some form. Maybe you'll find these useful or inspiring?",
     keywords: ["homepage"],
 
     indexTitle: "Semi-Private Content",
     excludeChildrenFromMainIndex: true,
+    hidetoc: true,
 });
 ---
 
@@ -18,23 +19,7 @@ export const frontmatter = fm({
     <h2>Index</h2>
 
     <p><ul>
-        <li><a href="./angular/"><b>Angular</b></a></li>
-        <li><a href="./concurrency/"><b>Concurrency</b></a></li>
-        <li><a href="./dns/"><b>DNS</b></a></li>
-        <li><a href="./dsa-summary/"><b>Common Algorithm Programming Techniques Summary</b></a></li>
-        <li><a href="./haskell/"><b>Haskell</b></a></li>
-        <li><a href="./kubernetes/"><b>Kubernetes</b></a></li>
-        <li><a href="./kubernetes-old/"><b>Kubernetes (Old)</b></a></li>
-    </ul></p>
-
-    <h2>Topics I should try to cover</h2>
-
-    <p><ul>
-        <li>Topological sort</li>
-        <li>How does Python's <code>functools.cmp_to_key</code> work?</li>
-        <li>Common cryptography algorithms</li>
-        <li>SSL/TLS</li>
-        <li>How does cryptographic signing work?</li>
+        <li><a href="./2025-03-14-pc-planning/"><b>2025-03-14 - PC Planning</b></a></li>
     </ul></p>
 </Layout>
 

@@ -1,0 +1,294 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: PC Planning
+indexTitle: 2025-03-14 - PC Planning
+description: I wanna build a PC.
+keywords: []
+---
+
+## Build Objectives
+
+- "Practically unlimited" budget, though spending has to be within reason. I won't double the build's cost just to squeeze 1% more performance.
+- [This is my current build](https://au.pcpartpicker.com/user/simshadows/saved/fvZ4gs). I will be reusing many parts.
+
+## Components I've settled on
+
+I'm already settled on the following components unless there is an objectively better-performing component with no compromises:
+
+- CPU: AMD Ryzen 9950X3D
+- Main storage: Samsung 990 Pro 5TB (M.2 NVMe SSD)
+- Extra case fans: *Appropriately-sized premium Noctua fans.*
+
+I will also be reusing my existing components:
+
+- GPU: Nvidia RTX 4090 (air cooled, 337mm long) *(TODO: Verify the length?)*
+- *Various existing 3.5"/2.5"/M.2 drives.*
+
+## Components I'm having trouble picking
+
+### CPU Cooler
+
+#### > Noctua NH-D15 G2 (Air)
+
+- [pcpartpicker](https://au.pcpartpicker.com/product/8c88TW/noctua-nh-d15-g2-9158-cfm-cpu-cooler-nh-d15-g2)
+
+#### > Arctic Liquid Freezer III (AIO)
+
+- 360mm version:
+- 420mm version:
+- **Pros:**
+    - Effectively the best cooler on the market.
+- **Cons:**
+    - It's an AIO, so it will be less-reliable and have a shorter lifespan.
+
+### Motherboards
+
+#### General Expectations
+
+- I will expect at least 4 SATA ports.
+- I will expect at least 3 M.2 M-key slots.
+- I will expect built-in Wi-Fi, though I can survive without it.
+- Before purchase, I must check case compatibility.
+
+References:
+
+- These pcpartpicker filters:
+    - [ATX X870/X870E/X670E](https://au.pcpartpicker.com/products/motherboard/#f=2&c=159,166,167&sort=price&xcx=0&K=4,13&E=2,7&V=10000,9000,8000,6000), but the only boards with >4 SATA ports are expensive X670E boards.
+        - [Expanding to EATX](https://au.pcpartpicker.com/products/motherboard/#f=2,3&c=159,166,167&sort=price&xcx=0&K=5,13&E=2,7&V=10000,9000,8000,6000), we find motherboards with 6 built-in ports, but they're expensive.
+- [X870E vs. X870 vs. X670E](https://youtu.be/H0axuzyN_1s?si=znoDf3J2CnLmYsMt&t=757)
+
+#### > ASRock X870E Taichi Lite EATX AM5
+
+- [pcpartpicker](https://au.pcpartpicker.com/product/pcdG3C/asrock-x870e-taichi-lite-eatx-am5-motherboard-x870e-taichi-lite)
+- **Pros:** It's an X870E board with 6x SATA ports!
+
+
+#### > ASRock X870E Taichi EATX AM5
+
+- [pcpartpicker](https://au.pcpartpicker.com/product/6HkH99/asrock-x870e-taichi-eatx-am5-motherboard-x870e-taichi)
+- It is literally the exact same as its Lite variant. Same components, same performance, same everything.
+- You're literally paying $70 more for a black-and-gold aesthetic.
+- Can be worth it if you have a tempered glass build!
+
+### RAM
+
+#### General Expectations
+
+- Must be 6000MHz because of AMD hardware limitations.
+- Minimum 2x 32GB kit.
+
+Some references:
+
+- [This pcpartpicker filter](https://au.pcpartpicker.com/products/memory/#S=6000&F=6000000,10000000&sort=price&Z=65536002)
+
+### Cases
+
+#### General Expectations
+
+- Supports my existing RTX 4090, which is [337mm](https://au.pcpartpicker.com/product/Jj8bt6/pny-verto-geforce-rtx-4090-24-gb-video-card-vcg409024tfxpb1).
+- Supports at least 2x 3.5" drives. (I do a lot of video work, and sometimes I want to work with huge files!)
+- Supports at least 2x 2.5" drives.
+- Reasonable thermal performance.
+- Must have dust filters or equivalent meshes. Cases with only highly-permissive meshes on the intakes are not desired.
+- I'd like a GPU bracket, but realistically, most cases don't have one.
+
+Some references:
+
+- [This pcpartpicker filter](https://au.pcpartpicker.com/products/case/#J=2,20&K=2,17&None=359000000,635000000&t=4,3,2&xcx=0&f=2,3&page=1)
+
+#### > Fractal Design Define R5
+
+- [official site](https://www.fractal-design.com/products/cases/define/define-r5/) | [pcpartpicker](https://au.pcpartpicker.com/product/sjX2FT/fractal-design-case-fdcadefr5bk)
+- **External 5.25":** 2
+- **3.5" / 2.5":** 4 / 2 (using one 5.25" slot, and with the RTX 4090)
+    - Can fit lots more without the RTX 4090.
+- **Height:** 521mm
+- **Pros:**
+    - Appropriate for **home server conversion**.
+- **Cons:**
+    - **Unknown thermal performance.** It's an old-design case with a solid front door. I should find some benchmarks though. And maybe I can brute force it by just adding more fans? The case can support a lot of fans.
+    - **Outdated USB 2.0 front panel.**
+    - The second 5.25" external drive bay is wasted space.
+
+#### > Fractal Design North XL
+
+- [official site](https://www.fractal-design.com/products/cases/north/north-xl/chalk-white/) | [pcpartpicker](https://au.pcpartpicker.com/product/MydG3C/fractal-design-north-xl-atx-full-tower-case-fd-c-nor1x-03)
+- **3.5" / 2.5":** 2 / 2
+- **Height:** 509mm
+- **Pros:**
+    - Excellent thermal performance.
+- **Cons:**
+    - Very few drives, and they're difficult to access once the PC is built.
+
+#### > Fractal Design Pop XL Air
+
+- [official site](https://www.fractal-design.com/products/cases/pop/pop-xl-air/) | [pcpartpicker](https://au.pcpartpicker.com/product/8qFbt6/fractal-design-pop-xl-air-atx-full-tower-case-fd-c-por1x-06)
+- **3.5" / 2.5":** 4 / 2
+- **Height:** 520mm
+- You'll need to buy the USB-C port separately.
+- **Cons:**
+    - No front filter.
+
+#### > Fractal Design Torrent
+
+- [official site](https://www.fractal-design.com/products/cases/torrent/torrent/) | [manual](https://www.fractal-design.com/app/uploads/2024/10/Torrent-manual-v.1.1_2024-10-28.pdf) | [pcpartpicker](https://au.pcpartpicker.com/product/4svdnQ/fractal-design-torrent-atx-mid-tower-case-fd-c-tor1a-05)
+- [Gamers Nexus](https://www.youtube.com/watch?v=HBxo2_lwKps)
+- **3.5" / 2.5":** 2 / 4
+- **Height:** 530mm
+- **Pros:**
+    - Basically the best thermal performance in the industry.
+- **Cons:**
+    - Expensive ($320), though it comes with a full set of fans.
+
+#### > Lian Li O11 Air Mini
+
+- [official site](https://lian-li.com/product/o11-air-mini/) | [pcpartpicker](https://au.pcpartpicker.com/product/9rt9TW/lian-li-o11-air-mini-atx-mid-tower-case-o11amw)
+- **3.5" / 2.5":** 3 / 2
+- **Height:** 384mm
+- **Pros:**
+    - The smallest possible case that fits my needs. (It's a dual chamber case.)
+- **Cons:**
+    - No front filter.
+    - **GPU Thermals:** It's bad. ([source](https://www.youtube.com/watch?v=mawWXmR0j48))
+    - Very tight clearance for some 2.5" drives.
+    - Poor QC.
+
+#### > Lian Li Lancool III
+
+- [official site](https://lian-li.com/product/lancool-iii/) | [pcpartpicker](https://au.pcpartpicker.com/product/2vJgXL/lian-li-lancool-iii-atx-mid-tower-case-lancool-3-x)
+- [Gamers Nexus](https://www.youtube.com/watch?v=Rjb5wozsMdc) | [Hardware Canucks](https://www.youtube.com/watch?v=EBrtKpDaq1M)
+- **3.5" / 2.5":** 4 / ?
+- **Height:** 523mm
+- I'm not sure if it comes with enough drive caddies. Check before purchasing?
+- **Pros:**
+    - It has a simple GPU brace.
+- **Cons:**
+    - It doesn't seem to have a front air filter?
+
+#### > Asus ProArt PA602
+
+- [official site](https://www.asus.com/au/motherboards-components/cases/proart/proart-pa602/) | [pcpartpicker](https://au.pcpartpicker.com/product/N9pQzy/asus-proart-pa602-atx-mid-tower-case-proart-pa602)
+- [Robeytech](https://www.youtube.com/watch?v=vtM7qWaI0dM)
+- **3.5" / 2.5":** 4 / 4
+- **Height:** 560mm
+- **Pros:**
+    - It has a GPU support brace!
+- **Cons:**
+    - Expensive ($390).
+- **Incompatibilities:**
+    - Arctic Liquid Freezer III is 38mm thick, but the case only fits 34mm. ([source](https://au.pcpartpicker.com/b/yPBcCJ))
+
+### Cases (Rejected)
+
+#### ~~> Fractal Design North~~
+
+- [official site](https://www.fractal-design.com/products/cases/north/north/chalk-white/) | [pcpartpicker](https://au.pcpartpicker.com/product/d8WzK8/fractal-design-north-atx-mid-tower-case-fd-c-nor1c-03)
+- **3.5" / 2.5":** 2 / 2
+- **Height:** 469mm
+- **Pros:**
+    - Excellent thermal performance.
+- **Cons:**
+    - Very few drives, and they're extremely difficult to access once the PC is built (more than the XL).
+    - GPU clearance is really tight.
+- **REJECTED. I would prefer the XL.**
+
+#### ~~> Fractal Design Meshify 2~~
+
+- [official site](https://www.fractal-design.com/products/cases/meshify/meshify-2/black-solid/) | ([need to search pcpartpicker](https://au.pcpartpicker.com/products/case/))
+- [Gamers Nexus](https://www.youtube.com/watch?v=qTW2KHGzbM0)
+- **3.5" / 2.5":** 3 / 4
+    - Becomes 13 / 4 if you remove the RTX 4090!
+- **Height:** 474mm
+- **Pros:**
+    - Appropriate for **home server conversion**.
+- **Cons:**
+    - It's an older case that's no longer available for a reasonable price.
+- **REJECTED. Too unreasonably expensive.**
+
+#### ~~> Fractal Design Meshify 2 XL~~
+
+- [official site](https://www.fractal-design.com/products/cases/meshify/meshify-2-xl-dark-tempered-glass/Black%20Solid/) | [pcpartpicker](https://au.pcpartpicker.com/product/f2hmP6/fractal-design-meshify-2-xl-atx-full-tower-case-fd-c-mes2x-02)
+- **3.5" / 2.5":** 4 / 4 (Becomes 16 / 5 if you remove the RTX 4090!)
+- **Height:** 566mm
+- **Pros:**
+    - The best case for **home server conversion**.
+- **Cons:**
+    - Too tall. Can't fit it under my desk.
+- **REJECTED. Too tall.**
+
+### PSUs
+
+#### General Expectations
+
+- 1000W minimum.
+- Must be modular.
+
+References:
+
+- [1000W](https://au.pcpartpicker.com/products/power-supply/#A=1000000000000,1800000000000&th=1&p=1&e=6,5,4&page=1)
+
+## More References
+
+- [Build samples with the case and cooler](https://au.pcpartpicker.com/builds/by_part/N9pQzy#h=512968,512970,512964)
+
+## Purchase List
+
+[pcpartpicker](https://au.pcpartpicker.com/user/simshadows/saved/Lpmvbv)
+
+<p>
+<table class="general">
+<thead>
+    <tr>
+        <th></th>
+        <th>Product</th>
+        <th>Store</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <th>CPU</th>
+        <td>[AMD Ryzen 9 9950X3D](https://au.pcpartpicker.com/product/Pk62FT/amd-ryzen-9-9950x3d-43-ghz-16-core-processor-100-100000719wof)</td>
+        <td>[Umart $1229](https://www.umart.com.au/product/amd-ryzen-9-9950x3d-16-core-am5-5-7ghz-cpu-processor-100-100000719wof-81996)</td>
+    </tr>
+    <tr>
+        <th>CPU Cooler</th>
+        <td>[Deepcool Mystique 360](https://au.pcpartpicker.com/product/4KQKHx/deepcool-mystique-360-7245-cfm-liquid-cpu-cooler-r-lx750-bkdsnmp-g-1)</td>
+        <td>[JW $199](https://www.jw.com.au/product/deepcool-mystique-360-liquid-cpu-cooler)</td>
+    </tr>
+    <tr>
+        <th>Motherboard</th>
+        <td>[ASRock X870E Taichi](https://au.pcpartpicker.com/product/6HkH99/asrock-x870e-taichi-eatx-am5-motherboard-x870e-taichi)</td>
+        <td>[Scorptec $819](https://www.scorptec.com.au/product/motherboards/amd-socket-am5/114341-x870e-taichi)</td>
+    </tr>
+    <tr>
+        <th>RAM</th>
+        <td>[Corsair Dominator Titanium 2x32 GB DDR5-6000 CL30](https://au.pcpartpicker.com/product/mnNYcf/corsair-dominator-titanium-64-gb-2-x-32-gb-ddr5-6000-cl30-memory-cmp64gx5m2b6000c30)</td>
+        <td>[Amazon (Amazon Germany) $470.50](https://www.amazon.com.au/dp/B0CHSDS2XJ)</td>
+    </tr>
+    <tr>
+        <th>Storage</th>
+        <td>[Samsung 990 Pro 4TB](https://au.pcpartpicker.com/product/RKYmP6/samsung-990-pro-4-tb-m2-2280-pcie-40-x4-nvme-solid-state-drive-mz-v9p4t0bw)</td>
+        <td>[Scorptec $529](https://www.scorptec.com.au/product/hard-drives-&-ssds/solid-state-drives-(ssd)/106261-mz-v9p4t0bw)</td>
+    </tr>
+    <tr>
+        <th>Case</th>
+        <td>[Asus ProArt PA602](https://au.pcpartpicker.com/product/N9pQzy/asus-proart-pa602-atx-mid-tower-case-proart-pa602)</td>
+        <td>[Scorptec $389](https://www.scorptec.com.au/product/cases/atx/108434-proart-pa602)</td>
+    </tr>
+    <tr>
+        <th>PSU</th>
+        <td>[Corsair HX1000i (2023)](https://au.pcpartpicker.com/product/LTmNnQ/corsair-hx1000i-2023-1000-w-80-platinum-certified-fully-modular-atx-power-supply-cp-9020259-na)</td>
+        <td>[JW $360.77](https://www.jw.com.au/product/corsair-hx1000i-1000w-80-platinum-psu)</td>
+    </tr>
+</tbody>
+</table>
+</p>
+
+- JW free shipping, no surcharge via. PayID
+- Scorptec $57 courier shipping, paid by Afterpay because it has no surcharge for some reason
+- Umart $9 shipping, paid by bank transfer
+
+## Full Parts List
+
+[view on pcpartpicker](https://au.pcpartpicker.com/user/simshadows/saved/Lpmvbvhttps://au.pcpartpicker.com/user/simshadows/saved/Lpmvbv)
+
