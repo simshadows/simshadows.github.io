@@ -1665,7 +1665,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hast@npm:^3.0.0":
+"@types/hast@npm:3.0.3, @types/hast@npm:^3.0.0":
   version: 3.0.3
   resolution: "@types/hast@npm:3.0.3"
   dependencies:
@@ -3296,6 +3296,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hast-util-from-html@npm:2.0.3, hast-util-from-html@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "hast-util-from-html@npm:2.0.3"
+  dependencies:
+    "@types/hast": "npm:^3.0.0"
+    devlop: "npm:^1.1.0"
+    hast-util-from-parse5: "npm:^8.0.0"
+    parse5: "npm:^7.0.0"
+    vfile: "npm:^6.0.0"
+    vfile-message: "npm:^4.0.0"
+  checksum: 10/cdd8ceae114d7ff6d4a81d9d7314c53299acfaca3d959a5894e80eb013c0850af613e2688f1682945c2793e0d9e1acb105560295fd8f141ab7b75f4b2e49cb2c
+  languageName: node
+  linkType: hard
+
 "hast-util-from-html@npm:^2.0.0":
   version: 2.0.1
   resolution: "hast-util-from-html@npm:2.0.1"
@@ -3307,20 +3321,6 @@ __metadata:
     vfile: "npm:^6.0.0"
     vfile-message: "npm:^4.0.0"
   checksum: 10/5e8111c28fa4aa7cbb2d57b41bf4ff771641332c6e0704900367acbe0b3f5e5c432a82df80815d4fe91ac8137c264f72c8632fd7704992ebbddc6c0712b78582
-  languageName: node
-  linkType: hard
-
-"hast-util-from-html@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "hast-util-from-html@npm:2.0.3"
-  dependencies:
-    "@types/hast": "npm:^3.0.0"
-    devlop: "npm:^1.1.0"
-    hast-util-from-parse5: "npm:^8.0.0"
-    parse5: "npm:^7.0.0"
-    vfile: "npm:^6.0.0"
-    vfile-message: "npm:^4.0.0"
-  checksum: 10/cdd8ceae114d7ff6d4a81d9d7314c53299acfaca3d959a5894e80eb013c0850af613e2688f1682945c2793e0d9e1acb105560295fd8f141ab7b75f4b2e49cb2c
   languageName: node
   linkType: hard
 
@@ -5837,14 +5837,18 @@ __metadata:
     "@astrojs/ts-plugin": "npm:1.10.4"
     "@babel/core": "npm:^7.26.10"
     "@fontsource/roboto": "npm:^5.2.5"
+    "@types/hast": "npm:3.0.3"
     "@types/katex": "npm:^0.16.7"
     "@types/node": "npm:^22.13.10"
     astro: "npm:5.5.2"
+    hast-util-from-html: "npm:2.0.3"
+    hast-util-to-text: "npm:^4.0.2"
     katex: "npm:^0.16.21"
     normalize.css: "npm:^8.0.1"
     preact: "npm:^10.26.4"
     sharp: "npm:^0.33.5"
     typescript: "npm:^5.8.2"
+    unist-util-visit-parents: "npm:^6.0.0"
     vite: "npm:^6.2.2"
   languageName: unknown
   linkType: soft

@@ -3,6 +3,8 @@ import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 
+import {rehypeLatex, shikiExcludeLangs} from "./src/latex-helpers/rehype-plugin/rehype-plugin";
+
 import {
     SHIKI_THEME,
     SITE,
@@ -15,7 +17,12 @@ export default defineConfig({
     markdown: {
         shikiConfig: {
             theme: SHIKI_THEME,
-        }
+        },
+        syntaxHighlight: {
+            type: "shiki",
+            excludeLangs: [...shikiExcludeLangs],
+        },
+        rehypePlugins: [rehypeLatex],
     },
 });
 

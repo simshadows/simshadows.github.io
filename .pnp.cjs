@@ -34,14 +34,18 @@ const RAW_RUNTIME_STATE =
           ["@astrojs/ts-plugin", "npm:1.10.4"],\
           ["@babel/core", "npm:7.26.10"],\
           ["@fontsource/roboto", "npm:5.2.5"],\
+          ["@types/hast", "npm:3.0.3"],\
           ["@types/katex", "npm:0.16.7"],\
           ["@types/node", "npm:22.13.10"],\
           ["astro", "npm:5.5.2"],\
+          ["hast-util-from-html", "npm:2.0.3"],\
+          ["hast-util-to-text", "npm:4.0.2"],\
           ["katex", "npm:0.16.21"],\
           ["normalize.css", "npm:8.0.1"],\
           ["preact", "npm:10.26.4"],\
           ["sharp", "npm:0.33.5"],\
           ["typescript", "patch:typescript@npm%3A5.8.2#optional!builtin<compat/typescript>::version=5.8.2&hash=5786d5"],\
+          ["unist-util-visit-parents", "npm:6.0.1"],\
           ["vite", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:6.2.2"]\
         ],\
         "linkType": "SOFT"\
@@ -6640,14 +6644,18 @@ const RAW_RUNTIME_STATE =
           ["@astrojs/ts-plugin", "npm:1.10.4"],\
           ["@babel/core", "npm:7.26.10"],\
           ["@fontsource/roboto", "npm:5.2.5"],\
+          ["@types/hast", "npm:3.0.3"],\
           ["@types/katex", "npm:0.16.7"],\
           ["@types/node", "npm:22.13.10"],\
           ["astro", "npm:5.5.2"],\
+          ["hast-util-from-html", "npm:2.0.3"],\
+          ["hast-util-to-text", "npm:4.0.2"],\
           ["katex", "npm:0.16.21"],\
           ["normalize.css", "npm:8.0.1"],\
           ["preact", "npm:10.26.4"],\
           ["sharp", "npm:0.33.5"],\
           ["typescript", "patch:typescript@npm%3A5.8.2#optional!builtin<compat/typescript>::version=5.8.2&hash=5786d5"],\
+          ["unist-util-visit-parents", "npm:6.0.1"],\
           ["vite", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:6.2.2"]\
         ],\
         "linkType": "SOFT"\

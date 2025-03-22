@@ -3,6 +3,8 @@ import {makeFrontmatter} from "@helpers/frontmatter";
 import Layout from "@layouts/FullWidthLayout.astro";
 import RightSidebar from "@components/layout-helpers/RightSidebar.astro";
 
+import "@root/latex-helpers/rehype-plugin/md-imports";
+
 interface Props {
     frontmatter: {[key: string]: unknown;};
     headings: {depth: number; slug: string; text: string}[];
