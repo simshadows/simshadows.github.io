@@ -8,12 +8,7 @@ indexTitle: Advent of Code 2023
 ---
 
 import Divider from "@components/Divider";
-
-import AlignLatex from "@components/latex/AlignLatex";
-import DisplayLatex from "@components/latex/DisplayLatex";
-import GatherLatex from "@components/latex/GatherLatex";
 import Eq from "@components/latex/Eq";
-
 import Code from "@components/Code.astro";
 import Eqref from "@components/latex/Eqref";
 import SpoilerBlock from "@components/SpoilerBlock.astro";
@@ -541,11 +536,11 @@ Additionally, we also have:
 
 For a concrete example, let's assume:
 
-<GatherLatex code="
-    \texttt{TARGET\_ITERATIONS} = 10 \\
-    \texttt{dist} = 3 \\
-    \texttt{end\_iteration} = 4
-" />
+```latex-gather
+\texttt{TARGET\_ITERATIONS} = 10 \\
+\texttt{dist} = 3 \\
+\texttt{end\_iteration} = 4
+```
 
 Visually, this looks like this:
 
@@ -579,9 +574,9 @@ Remaining iterations:               0 1 2 3 4
 
 The number of remaining iterations is:
 
-<DisplayLatex code="
-    \text{num remaining iterations} = \texttt{TARGET\_ITERATIONS} - \texttt{end\_iteration} - 1
-" />
+```latex-eq
+\text{num remaining iterations} = \texttt{TARGET\_ITERATIONS} - \texttt{end\_iteration} - 1
+```
 
 For our concrete example, <Eq code="\text{num remaining iterations} = 10 - 4 - 1 = 5" />.
 
@@ -811,88 +806,88 @@ The simplest starting point to me seems to be to consider the parametric form of
 
 For the hailstone initial position vector <Eq code="\myvec{p}" /> and velocity vector <Eq code="\myvec{v}" />, we can get the position vector <Eq code="\myvec{x}\parens{t}" /> at time <Eq code="t" />:
 
-<DisplayLatex code="
-    \myvec{x}\parens{t} = \myvec{p} + \myvec{v} t
-" />
+```latex-eq
+\myvec{x}\parens{t} = \myvec{p} + \myvec{v} t
+```
 
 Positions of the hailstone in the *future* will happen at <Eq code="t > 0" />, while positions "in the past" happened at <Eq code="t < 0" />.
 
 Let's try to find where two hailstones intersect. We'll need two equations:
 
-<GatherLatex code="
-    \myvec{x}_0 \parens{t_0} = \myvec{p}_0 + \myvec{v}_0 t_0 \tag{d24e1} \\
-    \myvec{x}_1 \parens{t_1} = \myvec{p}_1 + \myvec{v}_1 t_1 \tag{d24e2}
-" />
+```latex-gather
+\myvec{x}_0 \parens{t_0} = \myvec{p}_0 + \myvec{v}_0 t_0 \tag{d24e1} \\
+\myvec{x}_1 \parens{t_1} = \myvec{p}_1 + \myvec{v}_1 t_1 \tag{d24e2}
+```
 
 We use two separate time variables rather than the same one since we're only looking if the paths will intersect, not necessarily that the hailstones will actually collide.
 
 The two paths intersect when <Eq code="\myvec{x}_0 \parens{t_0} = \myvec{x}_1 \parens{t_1}" />, so we can find the <Eq code="t_0" /> and <Eq code="t_1" /> values with:
 
-<DisplayLatex code="
-    \myvec{p}_0 + \myvec{v}_0 t_0 = \myvec{p}_1 + \myvec{v}_1 t_1
-" />
+```latex-eq
+\myvec{p}_0 + \myvec{v}_0 t_0 = \myvec{p}_1 + \myvec{v}_1 t_1
+```
 
 At this point, it can be helpful to just break it up into component equations, then solve for one of the <Eq code="t" /> variables:
 
-<GatherLatex code="
-    \begin{cases}
-        p_{0x} + v_{0x} t_0 = p_{1x} + v_{1x} t_1 \\
-        p_{0y} + v_{0y} t_0 = p_{1y} + v_{1y} t_1
-    \end{cases}
-    \tag{d24e3}
-    \\
-    \begin{cases}
-        t_0 = \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}} \\
-        t_0 = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
-    \end{cases}
-    \\
-    \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}}
-    = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
-    \\
-    \frac{p_{1x} - p_{0x}}{v_{0x}}
-    - \frac{p_{1y} - p_{0y}}{v_{0y}}
-    = \frac{v_{1y} t_1}{v_{0y}}
-    - \frac{v_{1x} t_1}{v_{0x}}
-    \\
-    \frac{p_{1x} - p_{0x}}{v_{0x}}
-    - \frac{p_{1y} - p_{0y}}{v_{0y}}
-    = t_1 \parens{
-        \frac{v_{1y}}{v_{0y}}
-        - \frac{v_{1x}}{v_{0x}}
-    }
-" />
+```latex-gather
+\begin{cases}
+    p_{0x} + v_{0x} t_0 = p_{1x} + v_{1x} t_1 \\
+    p_{0y} + v_{0y} t_0 = p_{1y} + v_{1y} t_1
+\end{cases}
+\tag{d24e3}
+\\
+\begin{cases}
+    t_0 = \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}} \\
+    t_0 = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
+\end{cases}
+\\
+\frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}}
+= \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
+\\
+\frac{p_{1x} - p_{0x}}{v_{0x}}
+- \frac{p_{1y} - p_{0y}}{v_{0y}}
+= \frac{v_{1y} t_1}{v_{0y}}
+- \frac{v_{1x} t_1}{v_{0x}}
+\\
+\frac{p_{1x} - p_{0x}}{v_{0x}}
+- \frac{p_{1y} - p_{0y}}{v_{0y}}
+= t_1 \parens{
+    \frac{v_{1y}}{v_{0y}}
+    - \frac{v_{1x}}{v_{0x}}
+}
+```
 
-<AlignLatex code="
-    t_1
-    &= \frac{
-        \frac{p_{1x} - p_{0x}}{v_{0x}}
-        - \frac{p_{1y} - p_{0y}}{v_{0y}}
-    }{
-        \frac{v_{1y}}{v_{0y}}
-        - \frac{v_{1x}}{v_{0x}}
-    }
-    = \frac{
-        v_{0y} \frac{p_{1x} - p_{0x}}{v_{0x}}
-        - \parens{p_{1y} - p_{0y}}
-    }{
-        v_{1y}
-        - v_{0y} \frac{v_{1x}}{v_{0x}}
-    }
-    \\
-    &= \frac{
-        v_{0y} \parens{p_{1x} - p_{0x}} - v_{0x} \parens{p_{1y} - p_{0y}}
-    }{
-        v_{0x} v_{1y} - v_{0y} v_{1x}
-    }
-    \tag{d24e4}
-" />
+```latex-align
+t_1
+&= \frac{
+    \frac{p_{1x} - p_{0x}}{v_{0x}}
+    - \frac{p_{1y} - p_{0y}}{v_{0y}}
+}{
+    \frac{v_{1y}}{v_{0y}}
+    - \frac{v_{1x}}{v_{0x}}
+}
+= \frac{
+    v_{0y} \frac{p_{1x} - p_{0x}}{v_{0x}}
+    - \parens{p_{1y} - p_{0y}}
+}{
+    v_{1y}
+    - v_{0y} \frac{v_{1x}}{v_{0x}}
+}
+\\
+&= \frac{
+    v_{0y} \parens{p_{1x} - p_{0x}} - v_{0x} \parens{p_{1y} - p_{0y}}
+}{
+    v_{0x} v_{1y} - v_{0y} v_{1x}
+}
+\tag{d24e4}
+```
 
 To solve for the other variable <Eq code="t_0" />, we can simply plug the result of <Eq code="t_1" /> it back into either of the component equations <Eqref>d24e3</Eqref>. For my Part 1 solution, I will use either of these equations depending on whether the denominators are zero:
 
-<AlignLatex code="
-    t_0 = \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}} \\
-    t_0 = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
-" />
+```latex-align
+t_0 = \frac{p_{1x} - p_{0x} + v_{1x} t_1}{v_{0x}} \\
+t_0 = \frac{p_{1y} - p_{0y} + v_{1y} t_1}{v_{0y}}
+```
 
 <Todo>Huh. So if either <Eq code="v_{0x}" /> or <Eq code="v_{0y}" /> is zero, that means one of the equations evaluates to an undefined value... intuitively, that makes sense since in one dimension, it will have to be undefined but not in the other dimension. But does that actually make sense mathematically? I should look more into this line of reasoning because I'm not happy with it. Please let me know if there's a better way of thinking about it!</Todo>
 
@@ -924,35 +919,35 @@ A simple method used by a human might be to first check if the denominator of <E
 
 Let's try some concrete examples. Suppose we have two lines with a slope of <Eq code="\frac{y}{x} = 1" />:
 
-<GatherLatex code="
-    \myvec{p}_0 = {\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
-    \qquad
-    \myvec{v}_0 = {\begin{pmatrix} 1 \\ 1 \end{pmatrix}}
-    \\
-    \myvec{p}_1 = {\begin{pmatrix} 2 \\ 2 \end{pmatrix}}
-    \qquad
-    \myvec{v}_1 = {\begin{pmatrix} -1 \\ -1 \end{pmatrix}}
-" />
+```latex-gather
+\myvec{p}_0 = {\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
+\qquad
+\myvec{v}_0 = {\begin{pmatrix} 1 \\ 1 \end{pmatrix}}
+\\
+\myvec{p}_1 = {\begin{pmatrix} 2 \\ 2 \end{pmatrix}}
+\qquad
+\myvec{v}_1 = {\begin{pmatrix} -1 \\ -1 \end{pmatrix}}
+```
 
 Using <Eqref>d24e4</Eqref>, we see we get an undefined result:
 
-<DisplayLatex code="
-    t_1
-    = \frac{
-        1 \parens{2 - 0} - 1 \parens{2 - 0}
-    }{
-        1 \parens{-1} - 1 \parens{-1}
-    }
-    = \frac{2 - 2}{\parens{-1} - \parens{-1}}
-" />
+```latex-eq
+t_1
+= \frac{
+    1 \parens{2 - 0} - 1 \parens{2 - 0}
+}{
+    1 \parens{-1} - 1 \parens{-1}
+}
+= \frac{2 - 2}{\parens{-1} - \parens{-1}}
+```
 
 Let's try solving for <Eq code="t_1" /> if <Eq code="\myvec{p}_0 = \myvec{x}_1 \parens{t_1}" />. From <Eqref>d12e2</Eqref>:
 
-<GatherLatex code="
-    {\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
-    = {\begin{pmatrix} 2 \\ 2 \end{pmatrix}}
-    + {\begin{pmatrix} -1 \\ -1 \end{pmatrix}} t_1
-" />
+```latex-gather
+{\begin{pmatrix} 0 \\ 0 \end{pmatrix}}
+= {\begin{pmatrix} 2 \\ 2 \end{pmatrix}}
++ {\begin{pmatrix} -1 \\ -1 \end{pmatrix}} t_1
+```
 
 It is trivial to see that this equation is valid and results in <Eq code="t_1 = 2" />. Since this is positive, we know that <Eq code="\myvec{p}_0" /> is a valid solution for the <Eq code="\myvec{x}_1" /> hailstone for positive <Eq code="t_1" />.
 
@@ -974,16 +969,16 @@ Let's try it out!
 
 Same as with Part 1, let's begin with two hailstone trajectories, though the vectors are now in <Eq code="\Reals^3" />. We use the same time variable now since we need the actual hailstone position at a point in time.
 
-<GatherLatex code="
-    \myvec{x}_0 \parens{t} = \myvec{p}_0 + \myvec{v}_0 t \tag{d24e5} \\
-    \myvec{x}_1 \parens{t} = \myvec{p}_1 + \myvec{v}_1 t \tag{d24e6}
-" />
+```latex-gather
+\myvec{x}_0 \parens{t} = \myvec{p}_0 + \myvec{v}_0 t \tag{d24e5} \\
+\myvec{x}_1 \parens{t} = \myvec{p}_1 + \myvec{v}_1 t \tag{d24e6}
+```
 
 The rock trajectory will be defined the same way, but with an <Eq code="x" /> subscript:
 
-<DisplayLatex code="
-    \myvec{x}_x \parens{t} = \myvec{p}_x + \myvec{v}_x t \tag{d24e7}
-" />
+```latex-eq
+\myvec{x}_x \parens{t} = \myvec{p}_x + \myvec{v}_x t \tag{d24e7}
+```
 
 
 <Todo>Haven't finished this yet!</Todo>

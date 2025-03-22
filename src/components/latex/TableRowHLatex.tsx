@@ -13,4 +13,3 @@ export default function TableRowHLatex(props: Props) {
         {props.rows.map((s) => <th><Eq code={s.toString()} /></th>)}
     </tr>;
 }
-

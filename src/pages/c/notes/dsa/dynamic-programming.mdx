@@ -5,11 +5,7 @@ description: Notes on dynamic programming.
 keywords: ["programming", "dynamic programming", "dp"]
 ---
 
-import AlignLatex from "@components/latex/AlignLatex";
-import DisplayLatex from "@components/latex/DisplayLatex";
-import GatherLatex from "@components/latex/GatherLatex";
 import Eq from "@components/latex/Eq";
-
 import Centered from "@components/Centered";
 import Eqref from "@components/latex/Eqref";
 import HorizontalScrollingBox from "@components/HorizontalScrollingBox";
@@ -30,20 +26,20 @@ import "./_dynamic-programming.css"; //_
 
 The *Fibonacci sequence* is a sequence in which each number is the sum of the two preceding ones. The sequence commonly begins with <Eq code="0" /> and <Eq code="1" />, so the sequence is written as:
 
-<DisplayLatex code="
-    0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \dots
-" />
+```latex-eq
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \dots
+```
 
 Mathematically, the Fibonacci sequence is commonly defined by the following recurrence relation:
 
-<DisplayLatex code="
-    F_0 = 0
-    \qquad
-    F_1 = 1
-    \qquad\qquad
-    F_n = F_{n - 1} + F_{n - 2}
-    \quad \text{for } n > 1
-" />
+```latex-eq
+F_0 = 0
+\qquad
+F_1 = 1
+\qquad\qquad
+F_n = F_{n - 1} + F_{n - 2}
+\quad \text{for } n > 1
+```
 
 For our purposes, we are interested in computing a single term of the sequence.
 
@@ -298,15 +294,15 @@ Each cell of <Eq code="m\brackets{i, w}" /> is the highest total dollar value po
 
 To fill the remaining cells, we must apply an optimal substructure. This can be expressed simply as:
 
-<GatherLatex code="
-    m \brackets{0, w} = 0
-        \tag{1} \\
-    m \brackets{i, w} = \max\parens{
-        m \brackets{i - 1, w - w_i} + v_i, \,
-        m \brackets{i - 1, w}
-    }
-        \tag{2}
-" />
+```latex-gather
+m \brackets{0, w} = 0
+    \tag{1} \\
+m \brackets{i, w} = \max\parens{
+    m \brackets{i - 1, w - w_i} + v_i, \,
+    m \brackets{i - 1, w}
+}
+    \tag{2}
+```
 
 <Eqref>1</Eqref> states the trivial case where choosing from zero items will always optimally total zero value. This lets us prefill zeroes in the first row as shown in the initial table above.
 
@@ -658,48 +654,48 @@ To understand how equation <Eqref>2</Eqref> works and how we've been calculating
 
 Let's take a closer look at how <Eq code="\colorbox{\mylightblue}{$m \brackets{3, 5}$}" /> is calculated. <Eq code="m \brackets{3, 5}" /> is the highest dollar value of a bag with a carrying capacity of <Eq code="\qty{5}{\kilo\gram}" />, selecting only from the set of items <Eq code="\braces{S_1, S_2, S_3}" />. If we apply equation <Eqref>2</Eqref>, we get:
 
-<DisplayLatex code="
-    w_3 = \qty{2}{\kilo\gram}
-    \qquad\qquad
-    v_3 = \dollars{2}
-" />
+```latex-eq
+w_3 = \qty{2}{\kilo\gram}
+\qquad\qquad
+v_3 = \dollars{2}
+```
 
-<AlignLatex code="
-    \colorbox{\mylightblue}{$m \brackets{3, 5}$} &= \max\parens{
-        m \brackets{i - 1, w - w_3} + v_3, \,
-        m \brackets{i - 1, w}
-    }
-        \\
-    &= \max\parens{
-        m \brackets{3 - 1, 5 - w_3} + v_3, \,
-        m \brackets{3 - 1, 5}
-    }
-        \\
-    &= \max\parens{
-        m \brackets{2, 5 - w_3} + v_3, \,
-        m \brackets{2, 5}
-    }
-        \\
-    &= \max\parens{
-        m \brackets{2, 5 - 2} + 2, \,
-        m \brackets{2, 5}
-    }
-        \\
-    &= \max{(
-        \phantom{.}
-        \underbrace{
-            \colorbox{\mylightred}{$m \brackets{2, 3}$} + 2
-        }_{\mathclap{\text{Option 1}}}
-        \,
-        ,
-        \phantom{.}
-        \underbrace{
-            \colorbox{\mylightred}{$m \brackets{2, 5}$}
-        }_{\mathclap{\text{Option 2}}}
-        \phantom{.}
-    )}
-        \tag{3}
-" />
+```latex-align
+\colorbox{\mylightblue}{$m \brackets{3, 5}$} &= \max\parens{
+    m \brackets{i - 1, w - w_3} + v_3, \,
+    m \brackets{i - 1, w}
+}
+    \\
+&= \max\parens{
+    m \brackets{3 - 1, 5 - w_3} + v_3, \,
+    m \brackets{3 - 1, 5}
+}
+    \\
+&= \max\parens{
+    m \brackets{2, 5 - w_3} + v_3, \,
+    m \brackets{2, 5}
+}
+    \\
+&= \max\parens{
+    m \brackets{2, 5 - 2} + 2, \,
+    m \brackets{2, 5}
+}
+    \\
+&= \max{(
+    \phantom{.}
+    \underbrace{
+        \colorbox{\mylightred}{$m \brackets{2, 3}$} + 2
+    }_{\mathclap{\text{Option 1}}}
+    \,
+    ,
+    \phantom{.}
+    \underbrace{
+        \colorbox{\mylightred}{$m \brackets{2, 5}$}
+    }_{\mathclap{\text{Option 2}}}
+    \phantom{.}
+)}
+    \tag{3}
+```
 
 The last line <Eqref>3</Eqref> reads that we choose the best dollar value of two options:
 
@@ -710,11 +706,11 @@ The last line <Eqref>3</Eqref> reads that we choose the best dollar value of two
 
 Continuing on from <Eqref>3</Eqref>:
 
-<AlignLatex code="
-    \colorbox{\mylightblue}{$m \brackets{3, 5}$} &= \max\parens{0 + 2, \, 10}
-    \\
-    &= \dollars{10}
-" />
+```latex-align
+\colorbox{\mylightblue}{$m \brackets{3, 5}$} &= \max\parens{0 + 2, \, 10}
+\\
+&= \dollars{10}
+```
 
 This matches what is written in the cell.
 

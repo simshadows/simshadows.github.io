@@ -7,4 +7,3 @@ export default function DisplayLatex(props: PropsTemplate) {
         displayStyle={true}
     />;
 }
-

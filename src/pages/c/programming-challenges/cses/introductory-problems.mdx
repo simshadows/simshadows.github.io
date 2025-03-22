@@ -7,10 +7,7 @@ keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data stru
 indexTitle: Introductory Problems
 ---
 
-import AlignLatex from "@components/latex/AlignLatex";
-import DisplayLatex from "@components/latex/DisplayLatex";
 import Eqref from "@components/latex/Eqref";
-import GatherLatex from "@components/latex/GatherLatex";
 import Eq from "@components/latex/Eq";
 import Trl from "@components/latex/TableRowLatex";
 import Trhl from "@components/latex/TableRowHLatex";
@@ -597,14 +594,14 @@ import SolBitStrings from "./_solutions.introductory-problems/bit-strings.py?raw
 
 The first thing that comes to mind is to consider the conditions where trailing zeroes appear. Let's start by considering the multiplication definition of factorial:
 
-<DisplayLatex code="
-    n!
-    = \prod_{k = 1}^n{k},
-    \qquad\qquad
-    \forall n \in \mathbb{Z} : n > 0.
-    \qquad\qquad
-    0! = 1.
-" />
+```latex-eq
+n!
+= \prod_{k = 1}^n{k},
+\qquad\qquad
+\forall n \in \mathbb{Z} : n > 0.
+\qquad\qquad
+0! = 1.
+```
 
 Trivially, <Eq code="k" /> being a multiple of <Eq code="10" /> will yield a trailing zero, but so will a trailing <Eq code="5" /> multiplied by a trailing <Eq code="2" />, among other combinations like <Eq code="4" /> and <Eq code="5" />.
 
@@ -682,35 +679,35 @@ Our next issue is to scale the algorithm for the <Eq code="n \le {10}^9" /> boun
 
 My first idea is to try batching cycles where the least-significant non-zero digit goes through digits <Eq code="1, \dots, 9" /> in a cycle. For example, for <Eq code="31!" />, we can batch the following terms of <Eq code="k" /> together (with factorial calculations truncated to relevant digits):
 
-<AlignLatex code="
-    \braces{1, 2, 3, 4, 5, 6, 7, 8, 9}
-        &\quad\Longrightarrow\quad
-        9! = 362880
-        \\
-    \braces{11, 12, 13, 14, 15, 16, 17, 18, 19}
-        &\quad\Longrightarrow\quad
-        19! / 10! = \dots 40
-        \\
-    \braces{21, 22, 23, 24, 25, 26, 27, 28, 29}
-        &\quad\Longrightarrow\quad
-        29! / 20! = \dots 400
-        \\
-    \braces{31}&
-        \\
-    \braces{10, 20, 30}&
-" />
+```latex-align
+\braces{1, 2, 3, 4, 5, 6, 7, 8, 9}
+    &\quad\Longrightarrow\quad
+    9! = 362880
+    \\
+\braces{11, 12, 13, 14, 15, 16, 17, 18, 19}
+    &\quad\Longrightarrow\quad
+    19! / 10! = \dots 40
+    \\
+\braces{21, 22, 23, 24, 25, 26, 27, 28, 29}
+    &\quad\Longrightarrow\quad
+    29! / 20! = \dots 400
+    \\
+\braces{31}&
+    \\
+\braces{10, 20, 30}&
+```
 
 A couple more calculations I made while exploring the pattern:
 
-<AlignLatex code="
-    \braces{31, 32, 33, 34, 35, 36, 37, 38, 39}
-        &\quad\Longrightarrow\quad
-        39! / 30! = \dots 60
-        \\
-    \braces{41, 42, 43, 44, 45, 46, 47, 48, 49}
-        &\quad\Longrightarrow\quad
-        49! / 40! = \dots 20
-" />
+```latex-align
+\braces{31, 32, 33, 34, 35, 36, 37, 38, 39}
+    &\quad\Longrightarrow\quad
+    39! / 30! = \dots 60
+    \\
+\braces{41, 42, 43, 44, 45, 46, 47, 48, 49}
+    &\quad\Longrightarrow\quad
+    49! / 40! = \dots 20
+```
 
 I used an online factorial table and a web-based large decimal calculator to explore this pattern. However, the pattern isn't clear. There could be a pattern, but I doubt that it's necessary to explore it for an introductory CSES problem.
 

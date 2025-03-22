@@ -5,7 +5,6 @@ description: WIP notes on various stuff on photography
 keywords: []
 ---
 
-import DisplayLatex from "@components/latex/DisplayLatex";
 import Eq from "@components/latex/Eq";
 
 import Ref from "@components/referencing/Ref";
@@ -115,21 +114,21 @@ Smaller f-stop number &#8594; larger aperture &#8594; more exposure, shallower d
 
 The f-stop (<Eq code="N"/>) is a dimensionless ratio:
 
-<DisplayLatex code="
-    N
-    = \frac{f}{D}
-    = \frac{\text{focal length}}{\text{diameter of entrance pupil (effective aperture)}}
-" />
+```latex-eq
+N
+= \frac{f}{D}
+= \frac{\text{focal length}}{\text{diameter of entrance pupil (effective aperture)}}
+```
 
 Often written in the format "f/N", which usefully forms an expression of <Eq code="D"/>.
 
 Recall the area of a circle (<Eq code="A"/>) as a function of radius (<Eq code="r"/>) or diameter (<Eq code="D"/>):
 
-<DisplayLatex code="
-    A = \pi r^2 = \frac{1}{4} \pi D^2
-    \qquad\qquad
-    A \propto D^2 \propto \sqrt{N}
-" />
+```latex-eq
+A = \pi r^2 = \frac{1}{4} \pi D^2
+\qquad\qquad
+A \propto D^2 \propto \sqrt{N}
+```
 
 <p><Todo>Link area to exposure and find out how focal length affects things...</Todo></p>
 
@@ -145,11 +144,11 @@ EV represents the overall exposure of the image as a function of <Eq code="t"/> 
 
 It's a base-2 logarithm, so a difference of <Eq code="\pm 1 \text{EV}"/> represents a doubling or halving of light hitting the camera sensor:
 
-<DisplayLatex code="
-    \text{EV}
-    = \log_2{\frac{N^2}{t}}
-    = 2 \log_2{N} - \log_2{t}
-"/>
+```latex-eq
+\text{EV}
+= \log_2{\frac{N^2}{t}}
+= 2 \log_2{N} - \log_2{t}
+```
 
 
 ### Lenses

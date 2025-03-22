@@ -12,4 +12,3 @@ interface Props {
 export default function Eqref({children}: Props) {
     return <b>({children})</b>;
 }
-

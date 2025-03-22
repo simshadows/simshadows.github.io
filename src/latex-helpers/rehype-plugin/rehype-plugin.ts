@@ -6,10 +6,13 @@ import {SKIP, visitParents} from "unist-util-visit-parents";
 import {renderToString} from "katex";
 
 import {getBaseConfig} from "../katex-config-base";
+import {toDisplayAlign, toDisplayGather} from "../rendering/latex-transforms";
 
 export const shikiExcludeLangs = [
     "latex-eq",
     "latex-eq-fleqn",
+    "latex-gather",
+    "latex-align",
 ];
 
 export function rehypeLatex() {
@@ -22,6 +25,10 @@ export function rehypeLatex() {
                     return [getBaseConfig(true, {}, false), (s: string) => s];
                 } else if (isLanguage("latex-eq-fleqn")) {
                     return [getBaseConfig(true, {}, true), (s: string) => s];
+                } else if (isLanguage("latex-gather")) {
+                    return [getBaseConfig(true, {}, false), toDisplayGather];
+                } else if (isLanguage("latex-align")) {
+                    return [getBaseConfig(true, {}, false), toDisplayAlign];
                 } else {
                     return [null, null];
                 }
@@ -53,8 +60,7 @@ export function rehypeLatex() {
             if (typeof htmlString !== "string") {
                 throw new Error("KaTeX did not return a string.");
             }
-            const newNode: any = fromHtml(htmlString, {fragment: true});
-            // TODO: remove this any
+            const newNode = fromHtml(htmlString, {fragment: true});
 
             const index = parent2.children.indexOf(parent1);
             parent2.children.splice(index, 1, ...newNode.children);

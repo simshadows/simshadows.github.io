@@ -7,4 +7,3 @@ export default function Eq(props: PropsTemplate) {
         displayStyle={false}
     />;
 }
-

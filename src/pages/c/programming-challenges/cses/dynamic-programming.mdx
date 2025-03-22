@@ -7,10 +7,7 @@ keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data stru
 indexTitle: Dynamic Programming
 ---
 
-import AlignLatex from "@components/latex/AlignLatex";
-import DisplayLatex from "@components/latex/DisplayLatex";
 import Eqref from "@components/latex/Eqref";
-import GatherLatex from "@components/latex/GatherLatex";
 import Eq from "@components/latex/Eq";
 import Trl from "@components/latex/TableRowLatex";
 import Trhl from "@components/latex/TableRowHLatex";
@@ -41,14 +38,14 @@ import URArr from "./_common.URArr.astro"; //_
 
 The subproblem is simply a Fibonacci-esque recursive function:
 
-<GatherLatex code="
-    F_{<0} = 0
-    \qquad
-    F_0 = 1
-    \\
-    F_n = F_{n-1} + F_{n-2} + F_{n-3} + F_{n-4} + F_{n-5} + F_{n-6}
-    \quad\text{for}\quad n > 0
-" />
+```latex-gather
+F_{<0} = 0
+\qquad
+F_0 = 1
+\\
+F_n = F_{n-1} + F_{n-2} + F_{n-3} + F_{n-4} + F_{n-5} + F_{n-6}
+\quad\text{for}\quad n > 0
+```
 
 With DP, this runs in <Eq code="O(n)" /> time. Considering how the input bounds set <Eq code="n \le {10}^6" />, a test case can in theory run a hotspot <Eq code="6 \times {10}^6" /> times.
 
@@ -93,19 +90,19 @@ import SolDiceCombinations05 from "./_solutions.dynamic-programming/dice-combina
 
 The first subproblem that comes to mind is, for every integer from <Eq code="0" /> to <Eq code="x" />, we find the fewest number of coins possible. Runtime is <Eq code="O(xn)" />:
 
-<DisplayLatex code="
-    C = \braces{c_0, \dots, c_{n-1}} = \text{set of all coin values}
-" />
-<GatherLatex code="
-    F_{<0} = \infty
-    \qquad
-    F_0 = 0
-    \\
-    F_x = \min_{c \in C}\parens{
-        F_{x - c}
-    } + 1
-    \quad\text{for}\quad x > 0
-" />
+```latex-eq
+C = \braces{c_0, \dots, c_{n-1}} = \text{set of all coin values}
+```
+```latex-gather
+F_{<0} = \infty
+\qquad
+F_0 = 0
+\\
+F_x = \min_{c \in C}\parens{
+    F_{x - c}
+} + 1
+\quad\text{for}\quad x > 0
+```
 
 Considering how the input bounds set <Eq code="n \le 100" /> and <Eq code="x \le {10}^6" />, a test case can in theory run a hotspot <Eq code="{10}^8" /> times. Assuming a similar style of implementation to my first Dice Combinations passed solution which had a worst runtime of 0.22s, it doesn't sound like Minimizing Coins in Python should pass since we get a hotspot running at least 10x as many times.
 
@@ -138,19 +135,19 @@ import SolMinimizingCoins05 from "./_solutions.dynamic-programming/minimizing-co
 
 Different orderings of the same set of coins count as different combinations, which makes subproblem selection easier. My chosen subproblem is to find the number of combinations for each possible target sum <Eq code="0" /> to <Eq code="x" />. For <Eq code="n" /> coins, the runtime is <Eq code="O(xn)" />:
 
-<DisplayLatex code="
-    C = \braces{c_0, \dots, c_{n-1}} = \text{set of all coin values}
-" />
-<GatherLatex code="
-    F_{<0} = 0
-    \qquad
-    F_0 = 1
-    \\
-    F_x = \sum_{c \in C}{
-        F_{x - c}
-    }
-    \quad\text{for}\quad x > 0
-" />
+```latex-eq
+C = \braces{c_0, \dots, c_{n-1}} = \text{set of all coin values}
+```
+```latex-gather
+F_{<0} = 0
+\qquad
+F_0 = 1
+\\
+F_x = \sum_{c \in C}{
+    F_{x - c}
+}
+\quad\text{for}\quad x > 0
+```
 
 Input bounds are similar to Minimizing Coins, so a hotspot possibly runs <Eq code="{10}^8" /> times, and is similarly unlikely to pass using Python.
 
@@ -173,22 +170,22 @@ import SolCoinCombinationsI02 from "./_solutions.dynamic-programming/coin-combin
 
 If we used the strategy from Coin Combinations I, we run into the problem of needing to avoid double-counting combinations. To deal with this, maybe we need a two-dimensional table: one dimension for coin value, and another dimension for coin sum. The following subproblem comes to mind, which may naively run in <Eq code="O(x^2 n)" /> time:
 
-<DisplayLatex code="
-    C = \braces{c_1, \dots, c_n} = \text{set of all coin values}
-" />
-<GatherLatex code="
-    F\brackets{0, x} =
-    \begin{cases}
-        1 \quad& x = 0 \\
-        0 \quad& \text{otherwise}
-    \end{cases}
-    \\
-    F\brackets{i, x} =
-    \sum_{j = 0}^{\infty}{
-        F\brackets{i - 1, x - j c_i}
-    }
-    \quad\text{for}\quad i > 0
-" />
+```latex-eq
+C = \braces{c_1, \dots, c_n} = \text{set of all coin values}
+```
+```latex-gather
+F\brackets{0, x} =
+\begin{cases}
+    1 \quad& x = 0 \\
+    0 \quad& \text{otherwise}
+\end{cases}
+\\
+F\brackets{i, x} =
+\sum_{j = 0}^{\infty}{
+    F\brackets{i - 1, x - j c_i}
+}
+\quad\text{for}\quad i > 0
+```
 
 I say "naively" because there may be a way to cut that runtime to <Eq code="O(xn)" /> with a clever optimization. I'll get to my idea for that later.
 
@@ -231,20 +228,20 @@ import SolCoinCombinationsII04 from "./_solutions.dynamic-programming/coin-combi
 
 The first subproblem that comes to mind finds the minimum number of steps for each number from <Eq code="0" /> to <Eq code="n" />. It runs in <Eq code="O(n \log_{10} n)" /> since there are <Eq code="O(n)" /> entries in the 1D table, and at each entry, you check every decimal digit (which is <Eq code="O(\log_{10} n)" />). The subproblem written out:
 
-<DisplayLatex code="
-    n = \text{input number}
-" />
-<GatherLatex code="
-    F_0 = 0
-    \\
-    F_n = \min_{d \in D\parens{n}}\parens{
-        F_{n - d}
-    } + 1
-    \quad\text{for}\quad x > 0
-" />
-<DisplayLatex code="
-    \text{where } D\parens{n} = \text{all decimal digits of } n \text{ except } 0
-" />
+```latex-eq
+n = \text{input number}
+```
+```latex-gather
+F_0 = 0
+\\
+F_n = \min_{d \in D\parens{n}}\parens{
+    F_{n - d}
+} + 1
+\quad\text{for}\quad x > 0
+```
+```latex-eq
+\text{where } D\parens{n} = \text{all decimal digits of } n \text{ except } 0
+```
 
 For fun, I started with a Python top-down implementation, which TLE's as expected, but also didn't give any wrong answers:
 
@@ -271,22 +268,22 @@ import SolRemovingDigits03 from "./_solutions.dynamic-programming/removing-digit
 
 The fact that paths can only move in one direction makes this problem so much easier since you don't have to worry about paths backtracking. The first subproblem that comes to mind is to, at each cell in the grid, you add up how many paths can come from above with how many paths can come from the left. It runs in <Eq code="O(n^2)" /> (or more usefully, <Eq code="O(N)" /> for <Eq code="N" /> total cells in the grid):
 
-<GatherLatex code="
-    G\brackets{i, j} \in \braces{\texttt{EMPTY}, \texttt{TRAP}}
-" />
-<GatherLatex code="
-    F\brackets{i, j} =
-    \begin{cases}
-        0
-        \quad&
-            \parens{i < 0}
-            \lor \parens{j < 0}
-            \lor \parens{G\brackets{i, j} = \texttt{TRAP}}
-        \\
-        F\brackets{i - 1, j} + F\brackets{i, j - 1}
-        \quad& \text{otherwise}
-    \end{cases}
-" />
+```latex-gather
+G\brackets{i, j} \in \braces{\texttt{EMPTY}, \texttt{TRAP}}
+```
+```latex-gather
+F\brackets{i, j} =
+\begin{cases}
+    0
+    \quad&
+        \parens{i < 0}
+        \lor \parens{j < 0}
+        \lor \parens{G\brackets{i, j} = \texttt{TRAP}}
+    \\
+    F\brackets{i - 1, j} + F\brackets{i, j - 1}
+    \quad& \text{otherwise}
+\end{cases}
+```
 
 Surprisingly, a Python top-down implementation using `@functools.cache` (and running on CPython3) almost passed, but TLE'd on only 2 out of the 15 test cases:
 
@@ -315,34 +312,34 @@ This is the classic *0-1 knapsack problem*, which I've already done a very detai
 
 The subproblem has two dimensions: "the current book", and current max cost of currently selected books (from <Eq code="0" /> to <Eq code="x" />). At each "current book" (and corresponding current max cost), we find out what the best possible number of pages is whether or not we purchase the current book. It runs in <Eq code="O(nx)" />:
 
-<DisplayLatex code="
-    \braces{\parens{c_1, p_1}, \dots, \parens{c_n, p_n}} = \text{costs and number of pages}
-" />
-<DisplayLatex code="
-    F\brackets{i, x} =
-    \begin{cases}
-        {\displaystyle
+```latex-eq
+\braces{\parens{c_1, p_1}, \dots, \parens{c_n, p_n}} = \text{costs and number of pages}
+```
+```latex-eq
+F\brackets{i, x} =
+\begin{cases}
+    {\displaystyle
+        \vphantom{\sum}
+        -\infty
+    }
+    \quad& x < 0
+    \\
+    {\displaystyle
+        \vphantom{\sum}
+        0
+    }
+    \quad& \parens{x \ge 0} \land \parens{i = 0}
+    \\
+    {\displaystyle
+        \max\parens{
             \vphantom{\sum}
-            -\infty
+            F\brackets{i - 1, x - c_i} + p_i,
+            F\brackets{i - 1, x}
         }
-        \quad& x < 0
-        \\
-        {\displaystyle
-            \vphantom{\sum}
-            0
-        }
-        \quad& \parens{x \ge 0} \land \parens{i = 0}
-        \\
-        {\displaystyle
-            \max\parens{
-                \vphantom{\sum}
-                F\brackets{i - 1, x - c_i} + p_i,
-                F\brackets{i - 1, x}
-            }
-        }
-        \quad& \text{otherwise}
-    \end{cases}
-" />
+    }
+    \quad& \text{otherwise}
+\end{cases}
+```
 
 My first top-down Python implementation TLE'd as I expected:
 
@@ -385,40 +382,40 @@ What I mean by "path" is, let's pretend that the beginning of the array (index 0
 
 The subproblem written out:
 
-<GatherLatex code="
-    m = \text{upper bound for array values}
+```latex-gather
+m = \text{upper bound for array values}
+\\
+\braces{a_0, \dots, a_{n - 1}} = \text{the array description}
+```
+```latex-eq
+F\brackets{i, v} =
+\begin{cases}
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
+        1
+    \end{array}
+    \quad& \parens{0 < v \le m} \land \parens{a_0 \in \braces{0, v}} \land \parens{i = 0}
     \\
-    \braces{a_0, \dots, a_{n - 1}} = \text{the array description}
-" />
-<DisplayLatex code="
-    F\brackets{i, v} =
-    \begin{cases}
-        \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            1
-        \end{array}
-        \quad& \parens{0 < v \le m} \land \parens{a_0 \in \braces{0, v}} \land \parens{i = 0}
-        \\
-        \displaystyle
-        \begin{array}{l}
-            F\brackets{i - 1, v} \\
-            \quad + F\brackets{i - 1, v - 1} \\
-            \quad + F\brackets{i - 1, v + 1}
-        \end{array}
-        \quad& \parens{0 < v \le m} \land \parens{a_0 \in \braces{0, v}} \land \parens{i > 0}
-        \\
-        \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            0
-        \end{array}
-        \quad& \text{otherwise}
-    \end{cases}
-" />
-<DisplayLatex code="
-    \text{solution} = \sum_{v = 1}^m F\brackets{n - 1, v}
-" />
+    \displaystyle
+    \begin{array}{l}
+        F\brackets{i - 1, v} \\
+        \quad + F\brackets{i - 1, v - 1} \\
+        \quad + F\brackets{i - 1, v + 1}
+    \end{array}
+    \quad& \parens{0 < v \le m} \land \parens{a_0 \in \braces{0, v}} \land \parens{i > 0}
+    \\
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
+        0
+    \end{array}
+    \quad& \text{otherwise}
+\end{cases}
+```
+```latex-eq
+\text{solution} = \sum_{v = 1}^m F\brackets{n - 1, v}
+```
 
 A top-down implementation in Python TLE'd, but otherwise gave no wrong answers:
 
@@ -577,21 +574,21 @@ F[0, 2]  |  F[1, 1]  |  F[0, 1]
 4 combs. | 8 combs.  | 2 combs.
 ```
 
-<AlignLatex code="
-    F\brackets{0, 2} + F\brackets{1, 1} - F\brackets{0, 1}
-    &= 4 + 8 - 2
-    \\
-    &= 10 \ne 12
-" />
+```latex-align
+F\brackets{0, 2} + F\brackets{1, 1} - F\brackets{0, 1}
+&= 4 + 8 - 2
+\\
+&= 10 \ne 12
+```
 
 I also tried out:
 
-<AlignLatex code="
-    F\brackets{0, 2} + F\brackets{1, 1}
-    &= 4 + 8
-    \\
-    &= 12
-" />
+```latex-align
+F\brackets{0, 2} + F\brackets{1, 1}
+&= 4 + 8
+\\
+&= 12
+```
 
 But this doesn't generalize well. For example:
 
@@ -650,40 +647,40 @@ Case 3: Right side is taller
 
 Writing out the subproblem:
 
-<DisplayLatex code="
-    F\brackets{a, b} =
-    \begin{cases}
+```latex-eq
+F\brackets{a, b} =
+\begin{cases}
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
+        1
+    \end{array}
+    \quad& \parens{a = b = 0}
+    \\
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
         \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            1
-        \end{array}
-        \quad& \parens{a = b = 0}
-        \\
+        \sum_{x = 0}^{b - 1}\parens{\vphantom{\sum} F\brackets{a, x} + F\brackets{x, x}}
+    \end{array}
+    \quad& \parens{a = b \ne 0}
+    \\
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
+        F\brackets{b, a}
+    \end{array}
+    \quad& \parens{a < b \ne 0}
+    \\
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
         \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            \displaystyle
-            \sum_{x = 0}^{b - 1}\parens{\vphantom{\sum} F\brackets{a, x} + F\brackets{x, x}}
-        \end{array}
-        \quad& \parens{a = b \ne 0}
-        \\
-        \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            F\brackets{b, a}
-        \end{array}
-        \quad& \parens{a < b \ne 0}
-        \\
-        \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            \displaystyle
-            \sum_{x = 0}^{a - 1}{F\brackets{x, b}}
-        \end{array}
-        \quad& \parens{b < a \ne 0}
-    \end{cases}
-" />
+        \sum_{x = 0}^{a - 1}{F\brackets{x, b}}
+    \end{array}
+    \quad& \parens{b < a \ne 0}
+\end{cases}
+```
 
 I made a naive top-down Python implementation and ran it against the example and it passed! However, it was really, really, terribly slow. Implementation:
 
@@ -696,395 +693,395 @@ import SolCountingTowers02 from "./_solutions.dynamic-programming/counting-tower
 In an attempt to optimize, I tried expanding some calculations to get a feel for what we might build accumulators for. However, I found nothing. Here's what I tried:
 
 <SpoilerBlock buttonLabel="Full Working">
-<AlignLatex code="
-    F\brackets{1, 1}
-    &= F\brackets{1, 0} + F\brackets{0, 0}
-" />
-<AlignLatex code="
-    F\brackets{2, 2}
-    &= F\brackets{2, 1} + F\brackets{1, 1}
-    \\
-    &\qquad + F\brackets{2, 0} + F\brackets{0, 0}
-    \\
-    &= \parens{F\brackets{1, 1} + F\brackets{0, 1}} + F\brackets{1, 1}
-    \\
-    &\qquad + \parens{F\brackets{1, 0} + F\brackets{0, 0}} + F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{1, 1} + 2 F\brackets{0, 0} + 2 F\brackets{1, 0}
-" />
-<AlignLatex code="
-    F\brackets{3, 3}
-    &= F\brackets{3, 2} + F\brackets{2, 2}
-    \\
-    &\qquad + F\brackets{3, 1} + F\brackets{1, 1}
-    \\
-    &\qquad + F\brackets{3, 0} + F\brackets{0, 0}
-    \\
-    &= \parens{F\brackets{2, 2} + F\brackets{1, 2} + F\brackets{0, 2}} + F\brackets{2, 2}
-    \\
-    &\qquad + \parens{F\brackets{2, 1} + F\brackets{1, 1} + F\brackets{0, 1}} + F\brackets{1, 1}
-    \\
-    &\qquad + \parens{F\brackets{2, 0} + F\brackets{1, 0} + F\brackets{0, 0}} + F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{2, 1} + 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
-    \\
-    &\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-    \\
-    &= 2 \parens{F\brackets{1, 1} + F\brackets{0, 1}} + 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
-    \\
-    &\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
-    \\
-    &\qquad + 4 F\brackets{1, 1} + 4 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-" />
-<AlignLatex code="
-    F\brackets{4, 4}
-    &= F\brackets{4, 3} + F\brackets{3, 3}
-    \\
-    &\qquad + F\brackets{4, 2} + F\brackets{2, 2}
-    \\
-    &\qquad + F\brackets{4, 1} + F\brackets{1, 1}
-    \\
-    &\qquad + F\brackets{4, 0} + F\brackets{0, 0}
-    \\
-    &= \parens{F\brackets{3, 3} + F\brackets{2, 3} + F\brackets{1, 3} + F\brackets{0, 3}}
-    + F\brackets{3, 3}
-    \\
-    &\qquad + \parens{F\brackets{3, 2} + F\brackets{2, 2} + F\brackets{1, 2} + F\brackets{0, 2}}
-    + F\brackets{2, 2}
-    \\
-    &\qquad + \parens{F\brackets{3, 1} + F\brackets{2, 1} + F\brackets{1, 1} + F\brackets{0, 1}}
-    + F\brackets{1, 1}
-    \\
-    &\qquad + \parens{F\brackets{3, 0} + F\brackets{2, 0} + F\brackets{1, 0} + F\brackets{0, 0}}
-    + F\brackets{0, 0}
-    \\
-    &= \parens{F\brackets{3, 2} + F\brackets{3, 1} + F\brackets{3, 0}}
-    + 2 F\brackets{3, 3}
-    \\
-    &\qquad + \parens{F\brackets{3, 2} + F\brackets{2, 1} + F\brackets{2, 0}}
-    + 2 F\brackets{2, 2}
-    \\
-    &\qquad + \parens{F\brackets{3, 1} + F\brackets{2, 1} + F\brackets{1, 0}}
-    + 2 F\brackets{1, 1}
-    \\
-    &\qquad + \parens{F\brackets{3, 0} + F\brackets{2, 0} + F\brackets{1, 0}}
-    + 2 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{3, 3} + 2 F\brackets{3, 2} + 2 F\brackets{3, 1} + 2 F\brackets{3, 0}
-    \\
-    &\qquad + 2 F\brackets{2, 2} + 2 F\brackets{2, 1} + 2 F\brackets{2, 0}
-    \\
-    &\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{3, 3}
-    + 2 \parens{F\brackets{2, 2} + F\brackets{2, 1} + F\brackets{2, 0}}
-    + 2 \parens{F\brackets{2, 1} + F\brackets{1, 1} + F\brackets{1, 0}}
-    + 2 F\brackets{3, 0}
-    \\
-    &\qquad + 2 F\brackets{2, 2}
-    + 2 \parens{F\brackets{1, 1} + F\brackets{1, 0}}
-    + 2 F\brackets{2, 0}
-    \\
-    &\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{3, 3}
-    + 4 \parens{F\brackets{2, 1}}
-    + 2 F\brackets{3, 0}
-    \\
-    &\qquad + 4 F\brackets{2, 2}
-    + 4 F\brackets{2, 0}
-    \\
-    &\qquad + 6 F\brackets{1, 1} + 6 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{3, 3}
-    + 4 \parens{F\brackets{1, 1} + F\brackets{1, 0}}
-    + 2 F\brackets{3, 0}
-    \\
-    &\qquad + 4 F\brackets{2, 2}
-    + 4 F\brackets{2, 0}
-    \\
-    &\qquad + 6 F\brackets{1, 1} + 6 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{3, 3} + 2 F\brackets{3, 0}
-    \\
-    &\qquad + 4 F\brackets{2, 2} + 4 F\brackets{2, 0}
-    \\
-    &\qquad + 10 F\brackets{1, 1} + 10 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-" />
+```latex-align
+F\brackets{1, 1}
+&= F\brackets{1, 0} + F\brackets{0, 0}
+```
+```latex-align
+F\brackets{2, 2}
+&= F\brackets{2, 1} + F\brackets{1, 1}
+\\
+&\qquad + F\brackets{2, 0} + F\brackets{0, 0}
+\\
+&= \parens{F\brackets{1, 1} + F\brackets{0, 1}} + F\brackets{1, 1}
+\\
+&\qquad + \parens{F\brackets{1, 0} + F\brackets{0, 0}} + F\brackets{0, 0}
+\\
+&= 2 F\brackets{1, 1} + 2 F\brackets{0, 0} + 2 F\brackets{1, 0}
+```
+```latex-align
+F\brackets{3, 3}
+&= F\brackets{3, 2} + F\brackets{2, 2}
+\\
+&\qquad + F\brackets{3, 1} + F\brackets{1, 1}
+\\
+&\qquad + F\brackets{3, 0} + F\brackets{0, 0}
+\\
+&= \parens{F\brackets{2, 2} + F\brackets{1, 2} + F\brackets{0, 2}} + F\brackets{2, 2}
+\\
+&\qquad + \parens{F\brackets{2, 1} + F\brackets{1, 1} + F\brackets{0, 1}} + F\brackets{1, 1}
+\\
+&\qquad + \parens{F\brackets{2, 0} + F\brackets{1, 0} + F\brackets{0, 0}} + F\brackets{0, 0}
+\\
+&= 2 F\brackets{2, 1} + 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
+\\
+&\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+\\
+&= 2 \parens{F\brackets{1, 1} + F\brackets{0, 1}} + 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
+\\
+&\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+\\
+&= 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
+\\
+&\qquad + 4 F\brackets{1, 1} + 4 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+```
+```latex-align
+F\brackets{4, 4}
+&= F\brackets{4, 3} + F\brackets{3, 3}
+\\
+&\qquad + F\brackets{4, 2} + F\brackets{2, 2}
+\\
+&\qquad + F\brackets{4, 1} + F\brackets{1, 1}
+\\
+&\qquad + F\brackets{4, 0} + F\brackets{0, 0}
+\\
+&= \parens{F\brackets{3, 3} + F\brackets{2, 3} + F\brackets{1, 3} + F\brackets{0, 3}}
++ F\brackets{3, 3}
+\\
+&\qquad + \parens{F\brackets{3, 2} + F\brackets{2, 2} + F\brackets{1, 2} + F\brackets{0, 2}}
++ F\brackets{2, 2}
+\\
+&\qquad + \parens{F\brackets{3, 1} + F\brackets{2, 1} + F\brackets{1, 1} + F\brackets{0, 1}}
++ F\brackets{1, 1}
+\\
+&\qquad + \parens{F\brackets{3, 0} + F\brackets{2, 0} + F\brackets{1, 0} + F\brackets{0, 0}}
++ F\brackets{0, 0}
+\\
+&= \parens{F\brackets{3, 2} + F\brackets{3, 1} + F\brackets{3, 0}}
++ 2 F\brackets{3, 3}
+\\
+&\qquad + \parens{F\brackets{3, 2} + F\brackets{2, 1} + F\brackets{2, 0}}
++ 2 F\brackets{2, 2}
+\\
+&\qquad + \parens{F\brackets{3, 1} + F\brackets{2, 1} + F\brackets{1, 0}}
++ 2 F\brackets{1, 1}
+\\
+&\qquad + \parens{F\brackets{3, 0} + F\brackets{2, 0} + F\brackets{1, 0}}
++ 2 F\brackets{0, 0}
+\\
+&= 2 F\brackets{3, 3} + 2 F\brackets{3, 2} + 2 F\brackets{3, 1} + 2 F\brackets{3, 0}
+\\
+&\qquad + 2 F\brackets{2, 2} + 2 F\brackets{2, 1} + 2 F\brackets{2, 0}
+\\
+&\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+\\
+&= 2 F\brackets{3, 3}
++ 2 \parens{F\brackets{2, 2} + F\brackets{2, 1} + F\brackets{2, 0}}
++ 2 \parens{F\brackets{2, 1} + F\brackets{1, 1} + F\brackets{1, 0}}
++ 2 F\brackets{3, 0}
+\\
+&\qquad + 2 F\brackets{2, 2}
++ 2 \parens{F\brackets{1, 1} + F\brackets{1, 0}}
++ 2 F\brackets{2, 0}
+\\
+&\qquad + 2 F\brackets{1, 1} + 2 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+\\
+&= 2 F\brackets{3, 3}
++ 4 \parens{F\brackets{2, 1}}
++ 2 F\brackets{3, 0}
+\\
+&\qquad + 4 F\brackets{2, 2}
++ 4 F\brackets{2, 0}
+\\
+&\qquad + 6 F\brackets{1, 1} + 6 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+\\
+&= 2 F\brackets{3, 3}
++ 4 \parens{F\brackets{1, 1} + F\brackets{1, 0}}
++ 2 F\brackets{3, 0}
+\\
+&\qquad + 4 F\brackets{2, 2}
++ 4 F\brackets{2, 0}
+\\
+&\qquad + 6 F\brackets{1, 1} + 6 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+\\
+&= 2 F\brackets{3, 3} + 2 F\brackets{3, 0}
+\\
+&\qquad + 4 F\brackets{2, 2} + 4 F\brackets{2, 0}
+\\
+&\qquad + 10 F\brackets{1, 1} + 10 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+```
 </SpoilerBlock>
 
-<AlignLatex code="
-    F\brackets{1, 1}
-    &= F\brackets{1, 0} + F\brackets{0, 0}
-" />
-<AlignLatex code="
-    F\brackets{2, 2}
-    &= 2 F\brackets{1, 1} + 2 F\brackets{0, 0} + 2 F\brackets{1, 0}
-" />
-<AlignLatex code="
-    F\brackets{3, 3}
-    &= 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
-    \\
-    &\qquad + 4 F\brackets{1, 1} + 4 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-" />
-<AlignLatex code="
-    F\brackets{4, 4}
-    &= 2 F\brackets{3, 3} + 2 F\brackets{3, 0}
-    \\
-    &\qquad + 4 F\brackets{2, 2} + 4 F\brackets{2, 0}
-    \\
-    &\qquad + 10 F\brackets{1, 1} + 10 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-" />
+```latex-align
+F\brackets{1, 1}
+&= F\brackets{1, 0} + F\brackets{0, 0}
+```
+```latex-align
+F\brackets{2, 2}
+&= 2 F\brackets{1, 1} + 2 F\brackets{0, 0} + 2 F\brackets{1, 0}
+```
+```latex-align
+F\brackets{3, 3}
+&= 2 F\brackets{2, 2} + 2 F\brackets{2, 0}
+\\
+&\qquad + 4 F\brackets{1, 1} + 4 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+```
+```latex-align
+F\brackets{4, 4}
+&= 2 F\brackets{3, 3} + 2 F\brackets{3, 0}
+\\
+&\qquad + 4 F\brackets{2, 2} + 4 F\brackets{2, 0}
+\\
+&\qquad + 10 F\brackets{1, 1} + 10 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+```
 
 I also tried expanding out the <Eq code="F\brackets{x, 0}" />'s:
 
 <SpoilerBlock buttonLabel="Full Working">
-<AlignLatex code="
-    F\brackets{2, 2}
-    &= 2 F\brackets{1, 1} + 2 F\brackets{0, 0} + 2 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{1, 1} + 4 F\brackets{0, 0}
-" />
-<AlignLatex code="
-    F\brackets{3, 3}
-    &= 2 F\brackets{2, 2} + 2 \parens{F\brackets{1, 0} + F\brackets{0, 0}}
-    \\
-    &\qquad + 4 F\brackets{1, 1} + 4 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{2, 2}
-    \\
-    &\qquad + 4 F\brackets{1, 1} + 6 F\brackets{1, 0}
-    \\
-    &\qquad + 4 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{2, 2} + 4 F\brackets{1, 1} + 10 F\brackets{0, 0}
-" />
-<AlignLatex code="
-    F\brackets{4, 4}
-    &= 2 F\brackets{3, 3} + 2 \parens{F\brackets{2, 0} + F\brackets{1, 0} + F\brackets{0, 0}}
-    \\
-    &\qquad + 4 F\brackets{2, 2} + 4 F\brackets{2, 0}
-    \\
-    &\qquad + 10 F\brackets{1, 1} + 10 F\brackets{1, 0}
-    \\
-    &\qquad + 2 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{3, 3}
-    \\
-    &\qquad + 4 F\brackets{2, 2} + 6 F\brackets{2, 0}
-    \\
-    &\qquad + 10 F\brackets{1, 1} + 12 F\brackets{1, 0}
-    \\
-    &\qquad + 4 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{3, 3}
-    \\
-    &\qquad + 4 F\brackets{2, 2} + 6 \parens{F\brackets{0, 0} + F\brackets{0, 0}}
-    \\
-    &\qquad + 10 F\brackets{1, 1} + 12 F\brackets{0, 0}
-    \\
-    &\qquad + 4 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{3, 3} + 4 F\brackets{2, 2} + 10 F\brackets{1, 1} + 28 F\brackets{0, 0}
-" />
+```latex-align
+F\brackets{2, 2}
+&= 2 F\brackets{1, 1} + 2 F\brackets{0, 0} + 2 F\brackets{0, 0}
+\\
+&= 2 F\brackets{1, 1} + 4 F\brackets{0, 0}
+```
+```latex-align
+F\brackets{3, 3}
+&= 2 F\brackets{2, 2} + 2 \parens{F\brackets{1, 0} + F\brackets{0, 0}}
+\\
+&\qquad + 4 F\brackets{1, 1} + 4 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+\\
+&= 2 F\brackets{2, 2}
+\\
+&\qquad + 4 F\brackets{1, 1} + 6 F\brackets{1, 0}
+\\
+&\qquad + 4 F\brackets{0, 0}
+\\
+&= 2 F\brackets{2, 2} + 4 F\brackets{1, 1} + 10 F\brackets{0, 0}
+```
+```latex-align
+F\brackets{4, 4}
+&= 2 F\brackets{3, 3} + 2 \parens{F\brackets{2, 0} + F\brackets{1, 0} + F\brackets{0, 0}}
+\\
+&\qquad + 4 F\brackets{2, 2} + 4 F\brackets{2, 0}
+\\
+&\qquad + 10 F\brackets{1, 1} + 10 F\brackets{1, 0}
+\\
+&\qquad + 2 F\brackets{0, 0}
+\\
+&= 2 F\brackets{3, 3}
+\\
+&\qquad + 4 F\brackets{2, 2} + 6 F\brackets{2, 0}
+\\
+&\qquad + 10 F\brackets{1, 1} + 12 F\brackets{1, 0}
+\\
+&\qquad + 4 F\brackets{0, 0}
+\\
+&= 2 F\brackets{3, 3}
+\\
+&\qquad + 4 F\brackets{2, 2} + 6 \parens{F\brackets{0, 0} + F\brackets{0, 0}}
+\\
+&\qquad + 10 F\brackets{1, 1} + 12 F\brackets{0, 0}
+\\
+&\qquad + 4 F\brackets{0, 0}
+\\
+&= 2 F\brackets{3, 3} + 4 F\brackets{2, 2} + 10 F\brackets{1, 1} + 28 F\brackets{0, 0}
+```
 </SpoilerBlock>
 
-<AlignLatex code="
-    F\brackets{2, 2}
-    &= 2 F\brackets{1, 1} + 4 F\brackets{0, 0}
-    \\
-    F\brackets{3, 3}
-    &= 2 F\brackets{2, 2} + 4 F\brackets{1, 1} + 10 F\brackets{0, 0}
-    \\
-    F\brackets{4, 4}
-    &= 2 F\brackets{3, 3} + 4 F\brackets{2, 2} + 10 F\brackets{1, 1} + 28 F\brackets{0, 0}
-" />
+```latex-align
+F\brackets{2, 2}
+&= 2 F\brackets{1, 1} + 4 F\brackets{0, 0}
+\\
+F\brackets{3, 3}
+&= 2 F\brackets{2, 2} + 4 F\brackets{1, 1} + 10 F\brackets{0, 0}
+\\
+F\brackets{4, 4}
+&= 2 F\brackets{3, 3} + 4 F\brackets{2, 2} + 10 F\brackets{1, 1} + 28 F\brackets{0, 0}
+```
 
 I also tried expanding the <Eq code="F\brackets{x, x}" />'s:
 
 <SpoilerBlock buttonLabel="Full Working">
-<AlignLatex code="
-    F\brackets{2, 2}
-    &= 4 F\brackets{0, 0} + 4 F\brackets{1, 0}
-" />
-<AlignLatex code="
-    F\brackets{3, 3}
-    &= 2 \parens{4 F\brackets{0, 0} + 4 F\brackets{1, 0}} + 2 F\brackets{2, 0}
-    \\
-    &\qquad + 8 F\brackets{1, 0}
-    \\
-    &\qquad + 6 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{2, 0} + 16 F\brackets{1, 0} + 14 F\brackets{0, 0}
-" />
-<AlignLatex code="
-    F\brackets{4, 4}
-    &= 2 \parens{2 F\brackets{2, 0} + 16 F\brackets{1, 0} + 14 F\brackets{0, 0}} + 2 F\brackets{3, 0}
-    \\
-    &\qquad + 4 \parens{4 F\brackets{0, 0} + 4 F\brackets{1, 0}} + 4 F\brackets{2, 0}
-    \\
-    &\qquad + 20 F\brackets{1, 0}
-    \\
-    &\qquad + 12 F\brackets{0, 0}
-    \\
-    &= 2 F\brackets{3, 0} + 36 F\brackets{2, 0} + 68 F\brackets{1, 0} + 28 F\brackets{0, 0}
-" />
+```latex-align
+F\brackets{2, 2}
+&= 4 F\brackets{0, 0} + 4 F\brackets{1, 0}
+```
+```latex-align
+F\brackets{3, 3}
+&= 2 \parens{4 F\brackets{0, 0} + 4 F\brackets{1, 0}} + 2 F\brackets{2, 0}
+\\
+&\qquad + 8 F\brackets{1, 0}
+\\
+&\qquad + 6 F\brackets{0, 0}
+\\
+&= 2 F\brackets{2, 0} + 16 F\brackets{1, 0} + 14 F\brackets{0, 0}
+```
+```latex-align
+F\brackets{4, 4}
+&= 2 \parens{2 F\brackets{2, 0} + 16 F\brackets{1, 0} + 14 F\brackets{0, 0}} + 2 F\brackets{3, 0}
+\\
+&\qquad + 4 \parens{4 F\brackets{0, 0} + 4 F\brackets{1, 0}} + 4 F\brackets{2, 0}
+\\
+&\qquad + 20 F\brackets{1, 0}
+\\
+&\qquad + 12 F\brackets{0, 0}
+\\
+&= 2 F\brackets{3, 0} + 36 F\brackets{2, 0} + 68 F\brackets{1, 0} + 28 F\brackets{0, 0}
+```
 </SpoilerBlock>
 
-<AlignLatex code="
-    F\brackets{2, 2}
-    &= 4 F\brackets{0, 0} + 4 F\brackets{1, 0}
-    \\
-    F\brackets{3, 3}
-    &= 2 F\brackets{2, 0} + 16 F\brackets{1, 0} + 14 F\brackets{0, 0}
-    \\
-    F\brackets{4, 4}
-    &= 2 F\brackets{3, 0} + 36 F\brackets{2, 0} + 68 F\brackets{1, 0} + 28 F\brackets{0, 0}
-" />
+```latex-align
+F\brackets{2, 2}
+&= 4 F\brackets{0, 0} + 4 F\brackets{1, 0}
+\\
+F\brackets{3, 3}
+&= 2 F\brackets{2, 0} + 16 F\brackets{1, 0} + 14 F\brackets{0, 0}
+\\
+F\brackets{4, 4}
+&= 2 F\brackets{3, 0} + 36 F\brackets{2, 0} + 68 F\brackets{1, 0} + 28 F\brackets{0, 0}
+```
 
 So let's try a different approach. I believe that the following sums should be easy to build accumulators for:
 
-<DisplayLatex code="
-    \sum_{x = 0}^n F\brackets{x, x}
-    \qquad\qquad
-    \sum_{x = 0}^n F\brackets{x, 0}
-" />
+```latex-eq
+\sum_{x = 0}^n F\brackets{x, x}
+\qquad\qquad
+\sum_{x = 0}^n F\brackets{x, 0}
+```
 
 But this sum is giving me headaches right now:
 
-<DisplayLatex code="
-    S\brackets{b} \coloneqq \sum_{x = 0}^{b - 1} F\brackets{x, b}
-    \quad\text{for } b > 0
-" />
+```latex-eq
+S\brackets{b} \coloneqq \sum_{x = 0}^{b - 1} F\brackets{x, b}
+\quad\text{for } b > 0
+```
 
 That sum is an important part of the second line of the subproblem. So is it possible to build an accumulator for it?
 
-<AlignLatex code="
-    S\brackets{b}
-    &= \sum_{x = 0}^{b - 1} F\brackets{b, x}
-    = \sum_{x = 0}^{b - 1} \sum_{y = 0}^{b - 1} F\brackets{y, x}
-" />
+```latex-align
+S\brackets{b}
+&= \sum_{x = 0}^{b - 1} F\brackets{b, x}
+= \sum_{x = 0}^{b - 1} \sum_{y = 0}^{b - 1} F\brackets{y, x}
+```
 
 Now, let's visualize what's happening. For example, <Eq code="S\brackets{4}" /> is the sum of all of these:
 
-<DisplayLatex code="
-    \begin{array}{cccc}
-        F\brackets{0, 3}
-            & F\brackets{1, 3}
-            & F\brackets{2, 3}
-            & \xmemphR{F\brackets{3, 3}}
-            \\
-        F\brackets{0, 2}
-            & F\brackets{1, 2}
-            & \xmemphR{F\brackets{2, 2}}
-            & F\brackets{3, 2}
-            \\
-        F\brackets{0, 1}
-            & \xmemphR{F\brackets{1, 1}}
-            & F\brackets{2, 1}
-            & F\brackets{3, 1}
-            \\
-        \xmemphR{F\brackets{0, 0}}
-            & F\brackets{1, 0}
-            & F\brackets{2, 0}
-            & F\brackets{3, 0}
-    \end{array}
-" />
+```latex-eq
+\begin{array}{cccc}
+    F\brackets{0, 3}
+        & F\brackets{1, 3}
+        & F\brackets{2, 3}
+        & \xmemphR{F\brackets{3, 3}}
+        \\
+    F\brackets{0, 2}
+        & F\brackets{1, 2}
+        & \xmemphR{F\brackets{2, 2}}
+        & F\brackets{3, 2}
+        \\
+    F\brackets{0, 1}
+        & \xmemphR{F\brackets{1, 1}}
+        & F\brackets{2, 1}
+        & F\brackets{3, 1}
+        \\
+    \xmemphR{F\brackets{0, 0}}
+        & F\brackets{1, 0}
+        & F\brackets{2, 0}
+        & F\brackets{3, 0}
+\end{array}
+```
 
 Using the third case of the subproblem, we can reduce this to:
 
-<DisplayLatex code="
-    \begin{array}{cccc}
-        {}
-            & {}
-            & {}
-            & \xmemphR{F\brackets{3, 3}}
-            \\
-        {}
-            & {}
-            & \xmemphR{F\brackets{2, 2}}
-            & 2 F\brackets{3, 2}
-            \\
-        {}
-            & \xmemphR{F\brackets{1, 1}}
-            & 2 F\brackets{2, 1}
-            & 2 F\brackets{3, 1}
-            \\
-        \xmemphR{F\brackets{0, 0}}
-            & 2 F\brackets{1, 0}
-            & 2 F\brackets{2, 0}
-            & 2 F\brackets{3, 0}
-    \end{array}
-" />
+```latex-eq
+\begin{array}{cccc}
+    {}
+        & {}
+        & {}
+        & \xmemphR{F\brackets{3, 3}}
+        \\
+    {}
+        & {}
+        & \xmemphR{F\brackets{2, 2}}
+        & 2 F\brackets{3, 2}
+        \\
+    {}
+        & \xmemphR{F\brackets{1, 1}}
+        & 2 F\brackets{2, 1}
+        & 2 F\brackets{3, 1}
+        \\
+    \xmemphR{F\brackets{0, 0}}
+        & 2 F\brackets{1, 0}
+        & 2 F\brackets{2, 0}
+        & 2 F\brackets{3, 0}
+\end{array}
+```
 
 Based on this pattern, <Eq code="S\brackets{b}" /> is reducible to:
 
-<DisplayLatex code="
-    S\brackets{b}
-    = \sum_{x = 0}^{b - 1} F\brackets{x, x}
-    + 2 \sum_{x = 1}^{b - 1} S\brackets{x}
-    \qquad\text{for } b > 0
-" />
+```latex-eq
+S\brackets{b}
+= \sum_{x = 0}^{b - 1} F\brackets{x, x}
++ 2 \sum_{x = 1}^{b - 1} S\brackets{x}
+\qquad\text{for } b > 0
+```
 
 Therefore, we can calculate <Eq code="S\brackets{b}" /> using accumulators!
 
 Let's now construct an alternative subproblem derived from this, where <Eq code="F'\brackets{n}" /> is the solution for the number of combinations to construct an <Eq code="n" />-sized tower:
 
-<AlignLatex code="
-    F'\brackets{n}
-    &\coloneqq F\brackets{n, n}
-    = \sum_{x=0}^{n - 1}\parens{F\brackets{n, x} + F\brackets{x, x}}
-    \\
-    &= \sum_{x=0}^{n - 1}F\brackets{n, x}
-    + \sum_{x=0}^{n - 1}F\brackets{x, x}
-    \\
-    &= S\brackets{n}
-    + \sum_{x=0}^{n - 1}F'\brackets{x}
-    \qquad\text{for } n > 0
-" />
-<DisplayLatex code="
-    F'\brackets{0} = 1
-" />
-<DisplayLatex code="
-    S\brackets{n}
-    = \sum_{x = 0}^{n - 1} F'\brackets{x}
-    + 2 \sum_{x = 1}^{n - 1} S\brackets{x}
-    \qquad\text{for } n > 0
-" />
+```latex-align
+F'\brackets{n}
+&\coloneqq F\brackets{n, n}
+= \sum_{x=0}^{n - 1}\parens{F\brackets{n, x} + F\brackets{x, x}}
+\\
+&= \sum_{x=0}^{n - 1}F\brackets{n, x}
++ \sum_{x=0}^{n - 1}F\brackets{x, x}
+\\
+&= S\brackets{n}
++ \sum_{x=0}^{n - 1}F'\brackets{x}
+\qquad\text{for } n > 0
+```
+```latex-eq
+F'\brackets{0} = 1
+```
+```latex-eq
+S\brackets{n}
+= \sum_{x = 0}^{n - 1} F'\brackets{x}
++ 2 \sum_{x = 1}^{n - 1} S\brackets{x}
+\qquad\text{for } n > 0
+```
 
 Attempting to simplify seems... too complicated for me to bother right now.
 
 <SpoilerBlock buttonLabel="starting attempt at simplifying">
-<AlignLatex code="
-    F'\brackets{n}
-    &= \sum_{x=0}^{n - 1}F'\brackets{x}
-    + \sum_{x = 0}^{n - 1} F'\brackets{x}
-    + 2 \sum_{x = 1}^{n - 1} S\brackets{x}
-" />
+```latex-align
+F'\brackets{n}
+&= \sum_{x=0}^{n - 1}F'\brackets{x}
++ \sum_{x = 0}^{n - 1} F'\brackets{x}
++ 2 \sum_{x = 1}^{n - 1} S\brackets{x}
+```
 </SpoilerBlock>
 
 My Python top-down implementation passed the first two test cases containing queries for <Eq code="n \le 100" />, but we get `RUNTIME ERROR` for the other much bigger test cases, so my code probably goes over the memory usage limit of the auto-judge. Implementation:
@@ -1142,55 +1139,55 @@ import SolEditDistance02 from "./_solutions.dynamic-programming/edit-distance--0
 
 Writing out the subproblem:
 
-<DisplayLatex code="
-    s_1 = \text{string 1}
-    \qquad\qquad
-    s_2 = \text{string 2}
-" />
-<DisplayLatex code="
-    F\brackets{i, j}
-    = \begin{cases}
+```latex-eq
+s_1 = \text{string 1}
+\qquad\qquad
+s_2 = \text{string 2}
+```
+```latex-eq
+F\brackets{i, j}
+= \begin{cases}
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
+        0
+    \end{array}
+    \quad& \parens{i < 0} \land \parens{j < 0}
+    \\
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
+        j + 1
+    \end{array}
+    \quad& \parens{i < 0} \land \parens{j \ge 0}
+    \\
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
+        i + 1
+    \end{array}
+    \quad& \parens{i \ge 0} \land \parens{j < 0}
+    \\
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
+        F\brackets{i - 1, j - 1}
+    \end{array}
+    \quad& \parens{i \ge 0}
+        \land \parens{j \ge 0}
+        \land \parens{s_1\brackets{i} = s_2\brackets{j}}
+    \\
+    \displaystyle
+    \vphantom{\sum_{A}^A}
+    \begin{array}{l}
         \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            0
-        \end{array}
-        \quad& \parens{i < 0} \land \parens{j < 0}
+        1 + \min(F\brackets{i - 1, j - 1},
         \\
-        \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            j + 1
-        \end{array}
-        \quad& \parens{i < 0} \land \parens{j \ge 0}
-        \\
-        \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            i + 1
-        \end{array}
-        \quad& \parens{i \ge 0} \land \parens{j < 0}
-        \\
-        \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            F\brackets{i - 1, j - 1}
-        \end{array}
-        \quad& \parens{i \ge 0}
-            \land \parens{j \ge 0}
-            \land \parens{s_1\brackets{i} = s_2\brackets{j}}
-        \\
-        \displaystyle
-        \vphantom{\sum_{A}^A}
-        \begin{array}{l}
-            \displaystyle
-            1 + \min(F\brackets{i - 1, j - 1},
-            \\
-            \qquad F\brackets{i - 1, j}, F\brackets{i, j - 1})
-        \end{array}
-        \quad& \text{otherwise}
-    \end{cases}
-" />
+        \qquad F\brackets{i - 1, j}, F\brackets{i, j - 1})
+    \end{array}
+    \quad& \text{otherwise}
+\end{cases}
+```
 
 The first case is simply the case of two empty substrings. Naturally, empty substrings are already equivalent.
 
@@ -1219,12 +1216,12 @@ The dots represent characters that we don't care about. Index `i` points to that
 
 To make it easier to understand, let's write this situation down in two different but conceptually identical ways:
 
-<DisplayLatex code='
-    \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
-' />
-<DisplayLatex code="
-    F\brackets{4, 3}
-" />
+```latex-eq
+\text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+```
+```latex-eq
+F\brackets{4, 3}
+```
 
 Recall that the problem specification allows these operations:
 
@@ -1234,71 +1231,71 @@ Recall that the problem specification allows these operations:
 
 Let's start with operation 3 because it's the simplest. Let's suppose we change the `B` in string 1 to `Y`:
 
-<AlignLatex code='
-    \text{EditDistance31}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
-    &= 1 + \text{EditDistance}\parens{\texttt{"...A\xmemphRC{Y}"}, \texttt{"..XY"}}
-    \\
-    &= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..X"}}
-' />
-<DisplayLatex code="
-    F_{31}\brackets{4, 3} = 1 + F\brackets{3, 2}
-" />
+```latex-align
+\text{EditDistance31}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+&= 1 + \text{EditDistance}\parens{\texttt{"...A\xmemphRC{Y}"}, \texttt{"..XY"}}
+\\
+&= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..X"}}
+```
+```latex-eq
+F_{31}\brackets{4, 3} = 1 + F\brackets{3, 2}
+```
 
 The math works out identically even if we instead changed the `Y` in string 2 to `B`:
 
-<AlignLatex code='
-    \text{EditDistance32}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
-    &= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..X\xmemphRC{B}"}}
-    \\
-    &= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..X"}}
-' />
-<DisplayLatex code="
-    F_{32}\brackets{4, 3} = 1 + F\brackets{3, 2}
-" />
+```latex-align
+\text{EditDistance32}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+&= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..X\xmemphRC{B}"}}
+\\
+&= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..X"}}
+```
+```latex-eq
+F_{32}\brackets{4, 3} = 1 + F\brackets{3, 2}
+```
 
 Now, let's try operation 2. If we remove `B` from string 1:
 
-<DisplayLatex code='
-    \text{EditDistance21}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
-    = 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..XY"}}
-' />
-<DisplayLatex code="
-    F_{21}\brackets{4, 3} = 1 + F\brackets{3, 3}
-" />
+```latex-eq
+\text{EditDistance21}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..XY"}}
+```
+```latex-eq
+F_{21}\brackets{4, 3} = 1 + F\brackets{3, 3}
+```
 
 Or if we remove `Y` from string 2 instead:
 
-<DisplayLatex code='
-    \text{EditDistance22}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
-    = 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..X"}}
-' />
-<DisplayLatex code="
-    F_{22}\brackets{4, 3} = 1 + F\brackets{4, 2}
-" />
+```latex-eq
+\text{EditDistance22}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..X"}}
+```
+```latex-eq
+F_{22}\brackets{4, 3} = 1 + F\brackets{4, 2}
+```
 
 And finally, let's try operation 1. If we insert `Y` to string 1:
 
-<AlignLatex code='
-    \text{EditDistance11}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
-    &= 1 + \text{EditDistance}\parens{\texttt{"...AB\xmemphRC{Y}"}, \texttt{"..XY"}}
-    \\
-    &= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..X"}}
-' />
-<DisplayLatex code="
-    F_{11}\brackets{4, 3} = 1 + F\brackets{4, 2}
-" />
+```latex-align
+\text{EditDistance11}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+&= 1 + \text{EditDistance}\parens{\texttt{"...AB\xmemphRC{Y}"}, \texttt{"..XY"}}
+\\
+&= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..X"}}
+```
+```latex-eq
+F_{11}\brackets{4, 3} = 1 + F\brackets{4, 2}
+```
 
 And if we instead insert `B` into string 2:
 
-<AlignLatex code='
-    \text{EditDistance12}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
-    &= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..XY\xmemphRC{B}"}}
-    \\
-    &= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..XY"}}
-' />
-<DisplayLatex code="
-    F_{12}\brackets{4, 3} = 1 + F\brackets{3, 3}
-" />
+```latex-align
+\text{EditDistance12}\parens{\texttt{"...AB"}, \texttt{"..XY"}}
+&= 1 + \text{EditDistance}\parens{\texttt{"...AB"}, \texttt{"..XY\xmemphRC{B}"}}
+\\
+&= 1 + \text{EditDistance}\parens{\texttt{"...A"}, \texttt{"..XY"}}
+```
+```latex-eq
+F_{12}\brackets{4, 3} = 1 + F\brackets{3, 3}
+```
 
 Having gone through all six possible operations, it should be fairly straightforward to see how we get <Eq code="1 + \min\parens{F\brackets{i - 1, j - 1}, F\brackets{i - 1, j}, F\brackets{i, j - 1}}" /> as the final case of the subproblem.
 

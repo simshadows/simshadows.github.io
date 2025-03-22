@@ -7,10 +7,7 @@ keywords: ["cp", "competitive programming", "leetcode", "algorithms", "data stru
 indexTitle: Sorting and Searching
 ---
 
-import AlignLatex from "@components/latex/AlignLatex";
-import DisplayLatex from "@components/latex/DisplayLatex";
 import Eqref from "@components/latex/Eqref";
-import GatherLatex from "@components/latex/GatherLatex";
 import Eq from "@components/latex/Eq";
 import Trl from "@components/latex/TableRowLatex";
 import Trhl from "@components/latex/TableRowHLatex";
@@ -328,18 +325,18 @@ The widths and heights of these rectangles simply depend on:
 
 To calculate the cost of visiting the current stick, we can simply add the size of "rectangle 1" to the cost, and then subtract the size of "rectangle 2" from the cost:
 
-<AlignLatex code="
-    \text{cost of visiting stick $2$}
-    &= \text{cost of visiting stick $1$}
-    + \text{rectangle 1}
-    - \text{rectangle 2}
-    \\
-    &= 28 + \parens{2 \times 2} - \parens{6 \times 2}
-    \\
-    &= 28 + 4 - 12
-    \\
-    &= 20
-" />
+```latex-align
+\text{cost of visiting stick $2$}
+&= \text{cost of visiting stick $1$}
++ \text{rectangle 1}
+- \text{rectangle 2}
+\\
+&= 28 + \parens{2 \times 2} - \parens{6 \times 2}
+\\
+&= 28 + 4 - 12
+\\
+&= 20
+```
 
 This cost matches the cost we calculated for visiting stick 2.
 
@@ -563,15 +560,15 @@ Let's consider a simple sorted list of four coins <Eq code="\brackets{1, 2, 6, 7
 
 Before starting the loop, the set is empty:
 
-<DisplayLatex code="
-    \text{seen} = \braces{}
-" />
+```latex-eq
+\text{seen} = \braces{}
+```
 
 We find that the only possible coin sum for <Eq code="\text{seen} = \braces{}" /> is <Eq code="0" /> because <Eq code="\text{seen}" /> is an empty set. Let's track this with an interval we'll call <Eq code="\text{sums}" />, and also sketch it out using an integer number line (with bold **X** representing set membership):
 
-<DisplayLatex code="
-    \text{sums} = [0, 1)
-" />
+```latex-eq
+\text{sums} = [0, 1)
+```
 
 <MissingCoinSumNumline>
     <td class="mcsi-marked">X</td>
@@ -600,15 +597,15 @@ Let's visit the first element of the sorted coins list:
 
 Therefore we add the element to the `seen` set:
 
-<DisplayLatex code="
-    \text{seen} = \braces{1}
-" />
+```latex-eq
+\text{seen} = \braces{1}
+```
 
 And therefore, the set of possible coin sums is:
 
-<DisplayLatex code="
-    \text{sums} = [0, 2)
-" />
+```latex-eq
+\text{sums} = [0, 2)
+```
 
 <MissingCoinSumNumline>
     <td class="mcsi-marked">X</td>
@@ -626,10 +623,10 @@ And therefore, the set of possible coin sums is:
 
 This new interval <Eq code="\text{sums} = [0, 2)" /> makes sense since there are now two possible subsets of <Eq code="\text{seen} = \braces{1}" />:
 
-<AlignLatex code="
-    \sum \braces{}  &= 0 \\
-    \sum \braces{1} &= 1
-" />
+```latex-align
+\sum \braces{}  &= 0 \\
+\sum \braces{1} &= 1
+```
 
 Let's visit the next element:
 
@@ -640,15 +637,15 @@ Let's visit the next element:
 
 Therefore we add the element to the `seen` set:
 
-<DisplayLatex code="
-    \text{seen} = \braces{1, 2}
-" />
+```latex-eq
+\text{seen} = \braces{1, 2}
+```
 
 And therefore, the set of possible coin sums is:
 
-<DisplayLatex code="
-    \text{sums} = [0, 4)
-" />
+```latex-eq
+\text{sums} = [0, 4)
+```
 
 <MissingCoinSumNumline>
     <td class="mcsi-marked">X</td>
@@ -666,17 +663,17 @@ And therefore, the set of possible coin sums is:
 
 This new interval <Eq code="\text{sums} = [0, 4)" /> makes sense since there are four possible subsets of <Eq code="\text{seen} = \braces{1, 2}" />, each with unique sum values:
 
-<GatherLatex code="
-    \begin{aligned}
-        \sum \braces{}  &= 0 \\
-        \sum \braces{1} &= 1
-    \end{aligned}
-    \quad\qquad
-    \begin{aligned}
-        \sum \braces{2} &= 2 \\
-        \sum \braces{1, 2} &= 3
-    \end{aligned}
-" />
+```latex-gather
+\begin{aligned}
+    \sum \braces{}  &= 0 \\
+    \sum \braces{1} &= 1
+\end{aligned}
+\quad\qquad
+\begin{aligned}
+    \sum \braces{2} &= 2 \\
+    \sum \braces{1, 2} &= 3
+\end{aligned}
+```
 
 Let's visit the next element:
 
@@ -687,10 +684,10 @@ Let's visit the next element:
 
 And now, we notice something interesting happens:
 
-<GatherLatex code="
-    \text{seen} = \braces{1, 2, 6} \\
-    \text{sums} = \text{???}
-" />
+```latex-gather
+\text{seen} = \braces{1, 2, 6} \\
+\text{sums} = \text{???}
+```
 
 <MissingCoinSumNumline>
     <td class="mcsi-marked">X</td>
@@ -706,24 +703,24 @@ And now, we notice something interesting happens:
     <td></td>
 </MissingCoinSumNumline>
 
-<GatherLatex code="
-    \begin{aligned}
-        \sum \braces{}  &= 0 \\
-        \sum \braces{1} &= 1
-    \end{aligned}
-    \quad\qquad
-    \begin{aligned}
-        \sum \braces{2} &= 2 \\
-        \sum \braces{1, 2} &= 3
-    \end{aligned}
-    \quad\qquad
-    \begin{aligned}
-        \sum \braces{6} &= 6 \\
-        \sum \braces{1, 6} &= 7 \\
-        \sum \braces{2, 6} &= 8 \\
-        \sum \braces{1, 2, 6} &= 9
-    \end{aligned}
-" />
+```latex-gather
+\begin{aligned}
+    \sum \braces{}  &= 0 \\
+    \sum \braces{1} &= 1
+\end{aligned}
+\quad\qquad
+\begin{aligned}
+    \sum \braces{2} &= 2 \\
+    \sum \braces{1, 2} &= 3
+\end{aligned}
+\quad\qquad
+\begin{aligned}
+    \sum \braces{6} &= 6 \\
+    \sum \braces{1, 6} &= 7 \\
+    \sum \braces{2, 6} &= 8 \\
+    \sum \braces{1, 2, 6} &= 9
+\end{aligned}
+```
 
 We now have a gap in what should've been a single unbroken interval! The algorithm terminates here, and the answer is <Eq code="4" />.
 

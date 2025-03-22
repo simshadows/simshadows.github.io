@@ -1,0 +1,18 @@
+div.display-latex {
+    /* A hack to prevent weird scrollbars */
+    overflow-y: hidden;
+    padding-top: 0.1em; /* things get cut-off otherwise */
+    padding-bottom: 0.1em; /* this is here just for balance lol */
+}
+
+div.display-latex .katex {
+    /* A hack to prevent weird scrollbars */
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+}
+
+div.display-latex.horizontally-scrolling-box > * {
+    margin-top: 0; /* override default margin */
+    margin-bottom: 0; /* override default margin */
+}
+

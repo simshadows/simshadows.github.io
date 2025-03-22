@@ -11,8 +11,6 @@ import FiguresBlock from "@components/figures/FiguresBlock";
 import FiguresGroupVertical from "@components/figures/FiguresGroupVertical";
 
 import AlignLatex from "@components/latex/AlignLatex";
-import DisplayLatex from "@components/latex/DisplayLatex";
-import GatherLatex from "@components/latex/GatherLatex";
 import Eq from "@components/latex/Eq";
 import Trl from "@components/latex/TableRowLatex";
 import Trhl from "@components/latex/TableRowHLatex";
@@ -38,17 +36,17 @@ Relation schemas are <u>finite sets</u> of *attributes*.
 
 Notation for some relation <Eq code="R" /> with attributes <Eq code="A, B, C, D" /> and primary key <Eq code="B, D" />:
 
-<DisplayLatex code="
-    R(A, \underline{B}, C, \underline{D})
-" />
+```latex-eq
+R(A, \underline{B}, C, \underline{D})
+```
 
 The *domain* of a schema is the set of all possible tuples that can be associated with the schema.
 
 For relation <Eq code="R" />, this is denoted:
 
-<DisplayLatex code="
-    \dom{(R)}
-" />
+```latex-eq
+\dom{(R)}
+```
 
 
 ### Keys
@@ -82,9 +80,9 @@ The *domain* of an attribute is the set of values that can be associated with th
 
 For attribute <Eq code="A" />, this is denoted:
 
-<DisplayLatex code="
-    \dom{(A)}
-" />
+```latex-eq
+\dom{(A)}
+```
 
 
 ### Relation Instances
@@ -93,9 +91,9 @@ Relation instances are <u>finite sets</u> of *tuples*.
 
 To show that <Eq code="r" /> is an instance of schema <Eq code="R" />, we write:
 
-<DisplayLatex code="
-    r(R)
-" />
+```latex-eq
+r(R)
+```
 
 <ExampleFrame>
     <FiguresBlock>
@@ -148,9 +146,9 @@ Produces the subset of tuples that satisfy a condition.
 
 For <Eq code="r(R)" /> and selection condition <Eq code="c" />:
 
-<DisplayLatex code="
-    \relselect_{c}{(r)} = \setdef{t \in r}{c(t)}
-" />
+```latex-eq
+\relselect_{c}{(r)} = \setdef{t \in r}{c(t)}
+```
 
 <ExampleFrame>
     <FiguresBlock>
@@ -194,9 +192,9 @@ Produces a relation with a subset of attributes.
 
 For <Eq code="r(R)" /> and attribute set <Eq code="X" />:
 
-<DisplayLatex code="
-    \relproject_{X}{(r)} = \setdef{t[X]}{t \in r}
-" />
+```latex-eq
+\relproject_{X}{(r)} = \setdef{t[X]}{t \in r}
+```
 
 <ExampleFrame>
     <FiguresBlock>
@@ -240,9 +238,9 @@ Casts a relation to a different schema.
 
 For <Eq code="r(R)" /> and a compatible schema <Eq code="S" />:
 
-<DisplayLatex code="
-    \relrename_{S}{(r)}
-" />
+```latex-eq
+\relrename_{S}{(r)}
+```
 
 <ExampleFrame>
     <FiguresBlock>
@@ -286,11 +284,11 @@ Set theoretic operations between *union-compatible* relations (i.e. same schema)
 
 For <Eq code="r_1(R)" /> and <Eq code="r_2(R)" />:
 
-<AlignLatex code="
-    r_1 \cup r_2 &= \setdef{t}{(t \in r_1) \vee   (t \in r_2)} \\
-    r_1 \cap r_2 &= \setdef{t}{(t \in r_1) \wedge (t \in r_2)} \\
-    r_1 - r_2    &= \setdef{t}{(t \in r_1) \wedge (t \notin r_2)}
-" />
+```latex-align
+r_1 \cup r_2 &= \setdef{t}{(t \in r_1) \vee   (t \in r_2)} \\
+r_1 \cap r_2 &= \setdef{t}{(t \in r_1) \wedge (t \in r_2)} \\
+r_1 - r_2    &= \setdef{t}{(t \in r_1) \wedge (t \notin r_2)}
+```
 
 <ExampleFrame>
     <FiguresBlock>
@@ -501,9 +499,9 @@ Produces every possible combination of tuples from two relations.
 
 For <Eq code="r(R)" /> and <Eq code="s(S)" />:
 
-<DisplayLatex code="
-    r \times s = \setdef{(t_r:t_s)}{(t_r \in r) \wedge (t_s \in s)}
-" />
+```latex-eq
+r \times s = \setdef{(t_r:t_s)}{(t_r \in r) \wedge (t_s \in s)}
+```
 
 <ExampleFrame>
     <FiguresBlock>
@@ -564,20 +562,20 @@ For <Eq code="r(R)" /> and <Eq code="s(S)" />:
 
 For <Eq code="r(R)" /> and <Eq code="s(S)" />, and some arbitrary matching criterion <Eq code="c" />:
 
-<DisplayLatex code="
-    r \bowtie_c s
-    = \setdef{
-        (t_r : t_s)
-    }{
-        (t_r \in r) \wedge (t_s \in s) \wedge c(t_r : t_s)
-    }
-" />
+```latex-eq
+r \bowtie_c s
+= \setdef{
+    (t_r : t_s)
+}{
+    (t_r \in r) \wedge (t_s \in s) \wedge c(t_r : t_s)
+}
+```
 
 Theta join can also be defined as:
 
-<DisplayLatex code="
-    r \bowtie_c s = \relselect_{c(r, s)}{\parens{r \times s}}
-" />
+```latex-eq
+r \bowtie_c s = \relselect_{c(r, s)}{\parens{r \times s}}
+```
 
 Duplicate attributes are not removed.
 
@@ -643,34 +641,34 @@ A special case of *equijoin* that matches tuples on all their common attributes.
 
 For <Eq code="r(R)" /> and <Eq code="s(S)" />:
 
-<DisplayLatex code="
-    r \bowtie s
-    = \setdef{
-        \parens{t_r : t_s[S - R]}
-    }{
-        (t_r \in r) \wedge (t_s \in s) \wedge m(t_r, t_s)
-    }
-" />
+```latex-eq
+r \bowtie s
+= \setdef{
+    \parens{t_r : t_s[S - R]}
+}{
+    (t_r \in r) \wedge (t_s \in s) \wedge m(t_r, t_s)
+}
+```
 
 where <Eq code="m" /> is "all common attributes must match":
 
-<DisplayLatex code="
-    m(t_r, t_s) = \parens{\vphantom{\frac{x}{x}} t_r[R \cap S] = t_s[R \cap S]}
-" />
+```latex-eq
+m(t_r, t_s) = \parens{\vphantom{\frac{x}{x}} t_r[R \cap S] = t_s[R \cap S]}
+```
 
 Natural join can also be defined as:
 
-<DisplayLatex code="
-    r \bowtie s
-    = \relproject_{R \cup S}{\parens{\relselect_{m(r, s)}{\parens{r \times s}}}}
-" />
+```latex-eq
+r \bowtie s
+= \relproject_{R \cup S}{\parens{\relselect_{m(r, s)}{\parens{r \times s}}}}
+```
 
 where <Eq code="m" /> is:
 
-<DisplayLatex code="
-    m(r, s)
-    = \parens{\vphantom{\frac{x}{x}} r[R \cap S] = s[R \cap S]}
-" />
+```latex-eq
+m(r, s)
+= \parens{\vphantom{\frac{x}{x}} r[R \cap S] = s[R \cap S]}
+```
 
 and <Eq code="\relproject_{R \cup S}" /> assumes removal of duplicate attributes.
 
@@ -782,40 +780,40 @@ and <Eq code="\relproject_{R \cup S}" /> assumes removal of duplicate attributes
 
 For <Eq code="r(R)" /> and <Eq code="s(S)" />, with <Eq code="S \subseteq R" />:
 
-<DisplayLatex code="
-    r \div s = \setdef{t \in \relproject_{R-S}{(r)}}{\Phi(t)}
-" />
+```latex-eq
+r \div s = \setdef{t \in \relproject_{R-S}{(r)}}{\Phi(t)}
+```
 
 where:
 
-<DisplayLatex code="
-    \newcommand{\X}{\rule[-2ex]{0mm}{2ex}}
-    \Phi(t) =
-        \underbrace{\X \forall t_s \in s}_{(1)}
-        \, \underbrace{\X \exists t_r \in r}_{(2)}
-        \, (
-            \underbrace{\X t_r[S] = t_s}_{(3)}
-            \underbrace{\X \wedge t = t_r[R-S]}_{(4)}
-        )
-" />
+```latex-eq
+\newcommand{\X}{\rule[-2ex]{0mm}{2ex}}
+\Phi(t) =
+    \underbrace{\X \forall t_s \in s}_{(1)}
+    \, \underbrace{\X \exists t_r \in r}_{(2)}
+    \, (
+        \underbrace{\X t_r[S] = t_s}_{(3)}
+        \underbrace{\X \wedge t = t_r[R-S]}_{(4)}
+    )
+```
 
 *In plain English:* (1) For all tuples in <Eq code="s" />, (2) there is at least one relation in <Eq code="r" /> (3) whose common attributes match, (4) and whose non-common attributes are the same.
 
 Division can also be defined as:
 
-<DisplayLatex code="
-    r \div s =
-        r' -
-        \underbrace{ \rule[-2ex]{0mm}{2ex}
-            \relproject_{(R-S)}{\parens{\vphantom{\frac{x}{x}} [r' \times s] - r}}
-        }_{\text{``disqualifier'' term}}
-" />
+```latex-eq
+r \div s =
+    r' -
+    \underbrace{ \rule[-2ex]{0mm}{2ex}
+        \relproject_{(R-S)}{\parens{\vphantom{\frac{x}{x}} [r' \times s] - r}}
+    }_{\text{``disqualifier'' term}}
+```
 
 where <Eq code="r'" /> is "all possible result tuples":
 
-<DisplayLatex code="
-    r' = \relproject_{(R-S)}{(r)}
-" />
+```latex-eq
+r' = \relproject_{(R-S)}{(r)}
+```
 
 <ExampleFrame>
     <FiguresBlock>
@@ -1194,9 +1192,9 @@ Performs calculations over groups of tuples within a relation. Produces a relati
 
 For <Eq code="r(R)" /> and operator subscript <Eq code="G" />:
 
-<DisplayLatex code="
-    \relgroup_G{(R)}
-" />
+```latex-eq
+\relgroup_G{(R)}
+```
 
 where <Eq code="G" /> is a list containing:
 
