@@ -1,0 +1,32 @@
+---
+import Layout from "@layouts/GeneralLayout.astro";
+import {fm} from "@helpers/frontmatter";
+
+export const frontmatter = fm({
+    title: "Semi-Private Math Notes",
+    description: "Notes that I wrote specifically for myself, not intended for public consumption. But since there's nothing really stopping these notes from being public, I figured I may as well put them up in some form. Maybe you'll find these useful or inspiring?",
+    keywords: ["homepage"],
+
+    indexTitle: "Semi-Private Content",
+    excludeChildrenFromMainIndex: true,
+});
+---
+
+<Layout {...frontmatter}>
+    <p>Everything in this page is specifically for myself, not intended for public consumption. But since there's nothing really stopping these notes from being public, I figured I may as well put them up in some form. Maybe you'll find these useful or inspiring?</p>
+
+    <h2>Index</h2>
+
+    <p><ul>
+        <li><b>Random Math Scraps:</b> Some random set of math scraps I found somewhere. Maybe this stuff will fit nicely into a future section of my website? Who knows.
+            <ul>
+                <li><a href="./random-math-scraps/2019-09-03-sech-integral/"><b>sech Integral</b></a></li>
+                <li><a href="./random-math-scraps/2019-09-28-avg-powers-derive/"><b>Deriving Average Powers</b></a></li>
+                <li><a href="./random-math-scraps/2019-09-28-simple-series-powers/"><b>Simple Series Powers</b></a></li>
+                <li><a href="./random-math-scraps/2019-10-07-ode/"><b>ODE</b></a></li>
+                <li><a href="./random-math-scraps/2023-04-15-knight-dialer/"><b>Knight Dialer</b></a></li>
+            </ul>
+        </li>
+    </ul></p>
+</Layout>
+

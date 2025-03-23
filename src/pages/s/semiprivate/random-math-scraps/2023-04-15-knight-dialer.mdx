@@ -1,0 +1,398 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Knight Dialer
+description: Knight Dialer
+keywords: ["math"]
+
+hidetoc: true
+---
+
+import Eq from "@components/latex/Eq";
+import Eqref from "@components/latex/Eqref";
+import Todo from "@components/Todo";
+import QuestionFrame from "@components/QuestionFrame";
+
+Possible positions:
+
+```
+1 2 3
+4   6
+7 8 9
+  0
+```
+
+Adjacency list:
+
+```latex-align
+0 &\to 4, 6 \\
+1 &\to 6, 8 \\
+2 &\to 7, 9 \\
+3 &\to 4, 8 \\
+4 &\to 0, 3, 9 \\
+6 &\to 0, 1, 7 \\
+7 &\to 2, 6 \\
+8 &\to 1, 3 \\
+9 &\to 2, 4
+```
+
+Let's change to letters to make things easier.
+
+```
+a b c
+d   e
+f g h
+  z
+```
+```latex-align
+z &\to d + e \\
+a &\to e + g \\
+b &\to f + h \\
+c &\to d + g \\
+d &\to z + c + h \\
+e &\to z + a + f \\
+f &\to b + e \\
+g &\to a + c \\
+h &\to b + d
+```
+
+As recursive equations:
+
+```latex-align
+z_i &= d_{i-1} + e_{i-1} \\
+a_i &= e_{i-1} + g_{i-1} \\
+b_i &= f_{i-1} + h_{i-1} \\
+c_i &= d_{i-1} + g_{i-1} \\
+d_i &= z_{i-1} + c_{i-1} + h_{i-1} \\
+e_i &= z_{i-1} + a_{i-1} + f_{i-1} \\
+f_i &= b_{i-1} + e_{i-1} \\
+g_i &= a_{i-1} + c_{i-1} \\
+h_i &= b_{i-1} + d_{i-1}
+```
+```latex-eq
+z_1 = a_1 = b_1 = c_1 = d_1 = e_1 = f_1 = g_1 = h_1 = 1
+```
+
+For reference, the Fibonnaci numbers are:
+```latex-eq
+F_0 = 0, \qquad F_1 = 1, \qquad F_i = F_{i-1} + F_{i-2}
+```
+
+The solution should be:
+
+```latex-eq
+K_i = z_i + a_i + b_i + c_i + d_i + e_i + f_i + g_i + h_i
+```
+
+What happens if we just substitute the previous term...
+
+```latex-align
+K_i &=
+    \parens{d_{i-1} + e_{i-1}}
+    + \parens{e_{i-1} + g_{i-1}}
+    + \parens{f_{i-1} + h_{i-1}}
+    + \parens{d_{i-1} + g_{i-1}}
+    \\
+&\qquad
+    + \parens{z_{i-1} + c_{i-1} + h_{i-1}}
+    + \parens{z_{i-1} + a_{i-1} + f_{i-1}}
+    + \parens{b_{i-1} + e_{i-1}}
+    + \parens{a_{i-1} + c_{i-1}}
+    + \parens{b_{i-1} + d_{i-1}}
+    \\
+&=
+    2 a_{i-1}
+    + 2 b_{i-1}
+    + 2 c_{i-1}
+    + {\color{red}\boldsymbol{3 d_{i-1}}}
+    + {\color{red}\boldsymbol{3 e_{i-1}}}
+    + 2 f_{i-1}
+    + 2 g_{i-1}
+    + 2 h_{i-1}
+    + 2 z_{i-1}
+    \\
+&= 2 K_{i-1} + d_{i-1} + e_{i-1}
+```
+
+<hr/>
+
+What happens if we compress the coding?
+
+*IMPORTANT: The previous symbols are being redefined here.*
+
+```
+1 2                [3]
+4                  [6]
+7 8                [9]
+  0
+```
+```latex-align
+z: 0 &\to 4, 4 \\
+a: 1 &\to 4, 8 \\
+b: 2 &\to 7, 7 \\
+c: 4 &\to 0, 1, 7 \\
+d: 7 &\to 2, 4 \\
+e: 8 &\to 1, 1
+```
+```latex-eq
+K_i = z_i + 2 a_i + b_i + 2 c_i + 2 d_i + e_i
+```
+```latex-eq
+z_1 = a_1 = b_1 = c_1 = d_1 = e_1 = 1
+```
+```latex-align
+z_i &= c_{i-1} + c_{i-1} = 2 c_{i-1} \\
+a_i &= c_{i-1} + e_{i-1} \\
+b_i &= d_{i-1} + d_{i-1} = 2 d_{i-1} \\
+c_i &= z_{i-1} + a_{i-1} + d_{i-1} \\
+d_i &= b_{i-1} + c_{i-1} \\
+e_i &= a_{i-1} + a_{i-1} = 2 a_{i-1}
+```
+If we try substituting our recursions into the solution formula again:
+
+```latex-align
+K_i
+    &= \parens{2 c_{i-1}}
+    + 2 \parens{c_{i-1} + e_{i-1}}
+    + \parens{2 d_{i-1}}
+    + 2 \parens{z_{i-1} + a_{i-1} + d_{i-1}}
+    + 2 \parens{b_{i-1} + c_{i-1}}
+    + \parens{2 a_{i-1}}
+    \notag\\
+{}
+    &= 2 c_{i-1}
+    + 2 c_{i-1} + 2 e_{i-1}
+    + 2 d_{i-1}
+    + 2 z_{i-1} + 2 a_{i-1} + 2 d_{i-1}
+    + 2 b_{i-1} + 2 c_{i-1}
+    + 2 a_{i-1}
+    \notag\\
+{}
+    &= 2 z_{i-1}
+    + 4 a_{i-1}
+    + 2 b_{i-1}
+    + 6 c_{i-1}
+    + 4 d_{i-1}
+    + 2 e_{i-1}
+    \notag\\
+{}
+    &= \parens{
+        2 z_{i-1}
+        + 4 a_{i-1}
+        + 2 b_{i-1}
+        + 4 c_{i-1}
+        + 4 d_{i-1}
+        + 2 e_{i-1}
+    }
+    + 2 c_{i-1}
+    \notag\\
+{}
+    &= 2 K_{i-1} + 2 c_{i-1}
+    \notag\\[4mm]
+2 c_{i-1}
+    &= K_i - 2 K_{i-1}
+    \notag\\
+c_i
+    &= \frac{1}{2} K_{i+1} - K_i
+    \tag{eq:2023-04-15--1b}
+```
+
+Can we turn <Eq code="c_{i-1}"/> into terms of <Eq code="K_i"/>?
+
+```latex-align
+c_i
+    &= z_{i-1} + a_{i-1} + d_{i-1}
+%    \\
+%{}
+%    &= 2 c_{i-2}
+%    + c_{i-2} + e_{i-2}
+%    + b_{i-2} + c_{i-2}
+%    \\
+%{}
+%    &= b_{i-2}
+%    + 4 c_{i-2}
+%    + e_{i-2}
+%    \\
+%{}
+%    &= \parens{
+%        z_{i-2}
+%        + 2 a_{i-2}
+%        + b_{i-2}
+%        + 2 c_{i-2}
+%        + 2 d_{i-2}
+%        + e_{i-2}
+%    }
+%    - z_{i-2}
+%    - 2 a_{i-2}
+%    + 2 c_{i-2}
+%    - 2 d_{i-2}
+    \notag\\
+{}
+    &= \parens{
+        z_{i-1}
+        + 2 a_{i-1}
+        + b_{i-1}
+        + 2 c_{i-1}
+        + 2 d_{i-1}
+        + e_{i-1}
+    }
+    - a_{i-1}
+    - b_{i-1}
+    - 2 c_{i-1}
+    - d_{i-1}
+    - e_{i-1}
+    \notag\\
+{}
+    &= K_{i-1}
+    - a_{i-1}
+    - b_{i-1}
+    - 2 c_{i-1}
+    - d_{i-1}
+    - e_{i-1}
+    \notag\\[3mm]
+{}
+    &= 2 c_{i-2} + c_{i-2} + e_{i-2} + b_{i-2} + c_{i-2}
+    \notag\\
+{}
+    &= 4 c_{i-2} + e_{i-2} + b_{i-2}
+    \tag{eq:2023-04-15--2b}\\[3mm]
+{}
+    &= 4 \parens{z_{i-3} + a_{i-3} + d_{i-3}} + 2 a_{i-3} + 2 d_{i-3}
+    \notag\\
+{}
+    &= 4 z_{i-3} + 4 a_{i-3} + 4 d_{i-3} + 2 a_{i-3} + 2 d_{i-3}
+    \notag\\
+{}
+    &= 4 z_{i-3} + 6 a_{i-3} + 6 d_{i-3}
+    \notag\\[3mm]
+%{}
+%    &= 4 \parens{2 c_{i-4}}
+%    + 6 \parens{c_{i-4} + e_{i-4}}
+%    + 6 \parens{b_{i-4} + c_{i-4}}
+%    \\
+%{}
+%    &= {\color{red} \boldsymbol{4 c_{i-2}}} + 2 a_{i-3} + 2 d_{i-3}
+{}
+    &= 4 \parens{2 c_{i-4}}
+    + 6 \parens{c_{i-4} + e_{i-4}}
+    + 6 \parens{b_{i-4} + c_{i-4}}
+    \notag\\
+{}
+    &= 8 c_{i-4}
+    + 6 c_{i-4} + 6 e_{i-4}
+    + 6 b_{i-4} + 6 c_{i-4}
+    \notag\\
+{}
+    &= 20 c_{i-4} + 6 e_{i-4} + 6 b_{i-4}
+    \notag\\
+{}
+    &= 2 \, \parens{10 c_{i-4} + 3 e_{i-4} + 3 b_{i-4}}
+    \tag{eq:2023-04-15--2d}
+```
+
+Here, we notice we can rearrange <Eqref>eq:2023-04-15--2d</Eqref> and use <Eqref>eq:2023-04-15--2b</Eqref>:
+
+```latex-align
+c_i
+    &= 2 \, \parens{12 c_{i-4} + 3 e_{i-4} + 3 b_{i-4} - 2 c_{i-4}}
+    \\
+{}
+    &= 2 \, \parens{3 \, \parens{4 c_{i-4} + e_{i-4} + b_{i-4}} - 2 c_{i-4}}
+    \\
+{}
+    &= 2 \, \parens{3 c_{i-2} - 2 c_{i-4}}
+```
+
+{/*
+%\begin{align*}
+%    K_i
+%        &= z_i + 2 a_i + b_i + 2 c_i + 2 d_i + e_i
+%        \\
+%        &= \omega z_{i+1}
+%        + 2 \alpha a_{i+1}
+%        + \beta b_{i+1}
+%        + 2 \gamma c_{i+1}
+%        + 2 \delta d_{i+1}
+%        + \varepsilon e_{i+1}
+%\end{align*}
+%\begin{align*}
+%    &\brackets*{
+%        \begin{array}{cccccc|cccccc}
+%            z_i & a_i & b_i & c_i & d_i & e_i
+%                & z_{i-1} & a_{i-1} & b_{i-1} & c_{i-1} & d_{i-1} & e_{i-1}
+%        \end{array}
+%    }
+%        \\[4mm]
+%    &\brackets*{\begin{array}{cccccc|cccccc}
+%        1 & 0 & 0 & 0 & 0 & 0 &
+%        0 & 0 & 0 & 2 & 0 & 0 %%% 0
+%            \\
+%        0 & 1 & 0 & 0 & 0 & 0 &
+%        0 & 0 & 0 & 1 & 0 & 1 %%% 1
+%            \\
+%        0 & 0 & 1 & 0 & 0 & 0 &
+%        0 & 0 & 0 & 0 & 2 & 0 %%% 2
+%            \\
+%        0 & 0 & 0 & 1 & 0 & 0 &
+%        1 & 1 & 0 & 0 & 1 & 0 %%% 3
+%            \\
+%        0 & 0 & 0 & 0 & 1 & 0 &
+%        0 & 0 & 1 & 1 & 0 & 0 %%% 4
+%            \\
+%        0 & 0 & 0 & 0 & 0 & 1 &
+%        0 & 2 & 0 & 0 & 0 & 0 %%% 5
+%    \end{array}}
+%        \\[4mm]
+%    \xRightarrow{R_0 \gets R_0 + R_2 + R_3 + R_4}
+%    &\brackets*{\begin{array}{cccccc|cccccc}
+%        1 & 1 & 0 & 1 & 1 & 0 &
+%        1 & 1 & 1 & 4 & 1 & 1 %%% 0
+%            \\
+%        0 & 1 & 0 & 0 & 0 & 0 &
+%        0 & 0 & 0 & 1 & 0 & 1 %%% 1
+%            \\
+%        0 & 0 & 1 & 0 & 0 & 0 &
+%        0 & 0 & 0 & 0 & 2 & 0 %%% 2
+%            \\
+%        0 & 0 & 0 & 1 & 0 & 0 &
+%        1 & 1 & 0 & 0 & 1 & 0 %%% 3
+%            \\
+%        0 & 0 & 0 & 0 & 1 & 0 &
+%        0 & 0 & 1 & 1 & 0 & 0 %%% 4
+%            \\
+%        0 & 0 & 0 & 0 & 0 & 1 &
+%        0 & 2 & 0 & 0 & 0 & 0 %%% 5
+%    \end{array}}
+%\end{align*}
+*/}
+
+Using <Eqref>eq:2023-04-15--1b</Eqref>:
+
+```latex-align
+\frac{1}{2} K_{i+1} - K_i
+    &= 2 \, \parens{
+        3 \parens{\frac{1}{2} K_{i-1} - K_{i-2}}
+        - 2 \parens{\frac{1}{2} K_{i-3} - K_{i-4}}
+    }
+    \\
+{}
+    &= 3 \parens{K_{i-1} - 2 K_{i-2}}
+    - 2 \parens{K_{i-3} - 2 K_{i-4}}
+    \\
+\frac{1}{2} K_i - K_{i-1}
+    &= 3 \parens{K_{i-2} - 2 K_{i-3}}
+    - 2 \parens{K_{i-4} - 2 K_{i-5}}
+    \\
+\frac{1}{2} K_i
+    &= K_{i-1}
+    + 3 \parens{K_{i-2} - 2 K_{i-3}}
+    - 2 \parens{K_{i-4} - 2 K_{i-5}}
+    \\
+K_i
+    &= 2 K_{i-1}
+    + 6 \parens{K_{i-2} - 2 K_{i-3}}
+    - 4 \parens{K_{i-4} - 2 K_{i-5}}
+```
+
+If we need the value as <Eq code="K_i \bmod m"/>:
+
+<Todo>do the math!</Todo>

@@ -1,7 +1,7 @@
 ---
 layout: "@layouts/MDLayout.astro"
 title: "Planned topics"
-description: Topics I plan on addingn to my website some day
+description: Topics I plan on adding to my website some day
 keywords: []
 
 hidetoc: true
