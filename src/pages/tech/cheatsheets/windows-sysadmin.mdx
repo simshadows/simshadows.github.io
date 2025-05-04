@@ -1,0 +1,35 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Windows SysAdmin Cheatsheet
+description: Basic Windows basic system administration.
+keywords: ["cheatsheet", "windows", "sysadmin"]
+
+indexTitle: Windows SysAdmin
+---
+
+## Package Management with Chocolatey
+
+Install Chocolatey from [here](https://chocolatey.org/install).
+
+```ps
+# Install `firefox`
+choco install firefox
+
+# Update all packages
+choco upgrade all
+```
+
+## Network Auditing
+
+```bash
+ipconfig
+route PRINT
+tracert 8.8.8.8
+```
+
+- How to read a route table:
+    - Netmask `0.0.0.0` is least-specificity. `255.255.255.255` is highest specificity.
+    - Lower metric is higher priority.
+
+(TODO: There's probably a better way to phrase this. "Specificity" isn't a very techically correct term, but it makes sense in my head.)
+

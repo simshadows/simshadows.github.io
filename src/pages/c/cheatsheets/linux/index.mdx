@@ -1,0 +1,284 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Linux Cheatsheet
+description: Common Linux commands.
+keywords: ["cheatsheet", "linux"]
+
+indexTitle: Linux
+---
+
+## Dummy Values
+
+Unless stated otherwise, we use the following strings for the examples below:
+
+- **User:** `simshadows`
+- **Group:** `mygroup`
+- **Arbitrary File:** `myfile.txt`
+- **Arbitrary Directory:** `mydir`
+- *Other values such as IP addresses will be implicitly assumed to be example values.*
+
+## General
+
+### bash and Common CLI Utilities
+
+*See [`bash` Cheatsheet.](/c/cheatsheets/bash/)*
+
+### SSH and Remote Access
+
+Client commands:
+
+```bash
+# Open remote terminal
+ssh 192.168.0.2
+
+# Generate `ed25519` key
+ssh-keygen -t ed25519 -C "simshadows@myuri 1970-01-01"
+# Check your public key
+cat ~/.ssh/id_ed25519.pub
+
+# Copy your default key to SSH server
+ssh-copy-id 192.168.0.2
+# Copy a key to SSH server with more specificity (`-p` is the server port)
+ssh-copy-id -i ~/.ssh/id_ed25519.pub -p 8765 simshadows@192.168.0.2
+```
+
+Server commands:
+
+```bash
+# Check accepted public keys
+cat ~/.ssh/authorized_keys
+```
+
+*Also see [Other Common Tasks](./more/).*
+
+## Admin
+
+### Package/Distro/Hypervisor
+
+#### Debian
+
+```bash
+# Full system update
+## Step 1
+apt update
+## Step 2
+apt upgrade
+## Step 3
+apt full-upgrade
+
+# Install package `nmap`
+apt install nmap
+
+# Search for packages with keyword `nmap`
+apt search nmap
+```
+
+#### Arch Linux
+
+```bash
+# Full system update
+## Step 1: Update keyring
+pacman -Sy --needed archlinux-keyring
+## Step 2: Update all packages
+pacman -Syu
+
+# Install package `gvim`
+pacman -Syu gvim
+```
+
+#### Windows WSL
+
+See [this article](https://learn.microsoft.com/en-us/windows/wsl/basic-commands) for more commands.
+
+```bash
+# Start WSL
+wsl
+# Start WSL as user `root`
+wsl -u root
+```
+
+### User Management
+
+```bash
+# List users (each line is a user)
+cat /etc/passwd
+# List groups (each line is a group, GID, and its members)
+cat /etc/group
+
+# Create new user
+useradd -m -s /bin/bash simshadows
+
+# Change password for a user
+passwd simshadows
+
+# Append group `sudo` to user
+usermod -a -G sudo simshadows
+
+# Update sudoers file
+visudo
+
+# Read user uid
+id -u simshadows
+```
+
+### Disk Management
+
+```bash
+# Listing things out
+fdisk -l
+lsblk -o +MODEL,SERIAL
+mount
+
+# Manage partition table for disk `/dev/sda`
+fdisk /dev/sda
+
+# Format partition `/dev/sda1` as ext4
+mkfs.ext4 /dev/sda1
+# Format partition `/dev/sda1` as FAT32
+mkfs.fat -F32 /dev/sda1
+
+# Mount partition `/dev/sda1` to `/mnt/foobar`
+mount /dev/sda1 /mnt/foobar
+# Umount `/mnt/foobar`
+umount /mnt/foobar
+
+# Print all SMART info for disk `/dev/sda`
+smartctl /dev/sda -a
+```
+
+Common `fdisk` commands:
+
+### Filesystem Permissions
+
+```bash
+# View permissions
+ls -la
+
+# Change file owner
+chown simshadows myfile.txt
+# Change file group
+chgrp mygroup myfile.txt
+
+# Set file permissions to `rx-r-xr--` (octal mode)
+chmod 654 myfile.txt
+#     rwx 7  |  -wx 3
+#     rw- 6  |  -w- 2
+#     r-x 5  |  --x 1
+#     r-- 4  |  --- 0
+
+# Set `x` for user, group, and other (symbolic mode)
+chmod a+x myfile.txt
+# Same effect as `a+x` except the bits set by the umask are not affected
+chmod +x myfile.txt
+# Set `x` for user, set `r` for group and other, and remove `w` for other
+chmod u+x,go+r,o-w myfile.txt
+#     u User   |  - Remove             |  r Read
+#     g Group  |  + Add                |  w Write
+#     o Other  |  = (see `man chmod`)  |  x Execute
+#     a All    |                       |
+
+# View ACL
+getfacl myfile.txt
+getfacl mydir
+
+# TODO: What about setting ACL values?
+# TODO: What about setuid, setguid, and sticky bit?
+```
+
+### Network Management
+
+```bash
+ip a
+
+# List all open ports (numeric addresses)
+ss -ln
+# List all open TCP/UDP ports (numeric addresses)
+ss -tuln
+
+# Check route table
+ip r
+# It's short for `ip route show`. Manpage `man ip route`.
+# Default gateway starts with `default via`.
+```
+
+### Network Auditing
+
+```bash
+ping -c 5 8.8.8.8
+traceroute 8.8.8.8
+```
+
+`nmap` (we use `192.168.0.2` and `192.168.0.0/24` for these examples):
+
+```bash
+# Host discovery
+nmap -sn 192.168.0.0/24
+
+# TCP scan (SYN --> SYN ACK --> ACK)
+nmap -sT 192.168.0.0/24
+# TCP scan (SYN --> SYN ACK) (Use this if you're having firewall issues.)
+nmap -sS 192.168.0.0/24
+# UDP scan
+nmap -sU 192.168.0.0/24
+
+# What OS is a host running? (Also does other things.)
+nmap -A 192.168.0.2
+
+# Full TCP scan and `-A` on a host. Assume the host exists.
+nmap -sT -p0- -A -Pn -T4 192.168.0.2
+
+# Run all vulnerability scan scripts on a host
+nmap --script vuln 192.168.0.2
+```
+
+Common subnet masks:
+
+<table class="general" style="font-family: monospace;">
+<thead>
+<tr>
+    <th>IPv4 Subnet Mask</th>
+    <th>Prefix</th>
+    <th>Bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>255.255.255.255</td>
+    <td>/32</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>255.255.255.240</td>
+    <td>/28</td>
+    <td>4</td>
+</tr>
+<tr>
+    <td>255.255.255.0</td>
+    <td>/24</td>
+    <td>8</td>
+</tr>
+</tbody>
+</table>
+
+### systemd
+
+The examples below use a placeholder unit name `foobar.service`.
+
+```bash
+# Start unit now, and always auto-start on boot
+systemctl enable --now foobar.service
+# Restart unit
+systemctl restart foobar.service
+# Check the status of a unit
+systemctl status foobar.service
+
+# User unit files are located at:
+#     ~/.config/systemd/user/
+# Add `--user` to operate on them like:
+systemctl --user enable --now foobar.service
+```
+
+## More References
+
+- My Arch Linux [setup guide](https://github.com/simshadows/sims-dotfiles/tree/master/system-setup-scripts-and-guides/arch-linux) and [setup script](https://github.com/simshadows/sims-dotfiles/blob/master/system-setup-scripts-and-guides/arch-linux/stage3.sh)
+

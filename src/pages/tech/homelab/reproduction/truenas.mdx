@@ -1,0 +1,220 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: "Homelab Reproduction: TrueNAS"
+description: How to reproduce my TrueNAS VMs.
+keywords: []
+---
+
+*The contents on this page aren't ready yet. I'm still working things out! Come back later.*
+
+## Setting up the Proxmox VM
+
+TODO
+
+## Credentials > Groups
+
+In addition to pre-existing groups:
+
+- `share-rw`
+    - This group will be granted the broadest **read-write** permissions on all shares expect for some special ones.
+- `share-ro`
+    - This group will be granted the broadest **read-only** permissions on all shares expect for some special ones.
+- `app-file-browser`
+    - Specifically intended for TrueNAS file browser apps.
+    - TODO: I don't actually know yet if this does anything since users log in with their own credentials?
+
+## Credentials > Users
+
+- `root` (it exists by default)
+- `truenas_admin` (it exists by default)
+    - It should already have the auxiliary group `builtin_administrators`.
+- `simshadows`
+    - (Don't create a new primary group for this user.)
+    - **Primary group:** `share-rw`
+- `simshadows-ro`
+    - (Don't create a new primary group for this user.)
+    - **Primary group:** `share-ro`
+- `otheruser`
+    - (This isn't the actual name of the group, but I will use it as a placeholder for user accounts I am creating for anybody else in the household.)
+    - (We create a primary group for these users.)
+
+## Storage
+
+*Self-explanatory.*
+
+## Datasets
+
+*Mostly self-explanatory.*
+
+Here's my template for how I set up the ACL for a "main dataset" (written out in a way that corresponds with the TrueNAS GUI):
+
+- **Owner:** `root`
+- **Owner Group:** `builtin_administrators`
+
+ACL:
+
+<table class="general">
+<thead>
+<tr>
+    <th>Who</th>
+    <th>Flag</th>
+    <th>`rwx`</th>
+    <th>Why?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>User Obj</td>
+    <td></td>
+    <td rowspan="4">`rwx`</td>
+    <td rowspan="4">Whoever owns the file/directory gets to do whatever with it.</td>
+</tr>
+<tr>
+    <td>User Obj</td>
+    <td>default</td>
+    {/* <td></td> */}
+    {/* <td></td> */}
+</tr>
+<tr>
+    <td>Group Obj</td>
+    <td></td>
+    {/* <td></td> */}
+    {/* <td></td> */}
+</tr>
+<tr>
+    <td>Group Obj</td>
+    <td>default</td>
+    {/* <td></td> */}
+    {/* <td></td> */}
+</tr>
+<tr>
+    <td>Other</td>
+    <td></td>
+    <td rowspan="2">`---`</td>
+    <td rowspan="2">No access by default.</td>
+</tr>
+<tr>
+    <td>Other</td>
+    <td>default</td>
+    {/* <td></td> */}
+    {/* <td></td> */}
+</tr>
+<tr>
+    <td>Mask</td>
+    <td></td>
+    <td rowspan="2">`rwx`</td>
+    <td rowspan="2">(I'm actually not entirely sure what this is for yet.)</td>
+</tr>
+<tr>
+    <td>Mask</td>
+    <td>default</td>
+    {/* <td></td> */}
+    {/* <td></td> */}
+</tr>
+<tr>
+    <td>Group - `builtin_administrators`</td>
+    <td>default</td>
+    <td>`rwx`</td>
+    <td>Allows `truenas_admin` to manage everything.</td>
+</tr>
+<tr>
+    <td>Group - `share-rw`</td>
+    <td></td>
+    <td rowspan="2">`rwx`</td>
+    <td rowspan="2"></td>
+</tr>
+<tr>
+    <td>Group - `share-rw`</td>
+    <td>default</td>
+    {/* <td></td> */}
+    {/* <td></td> */}
+</tr>
+<tr>
+    <td>Group - `share-ro`</td>
+    <td></td>
+    <td rowspan="2">`r-x`</td>
+    <td rowspan="2">TODO: I'm not entirely sure what permissions this should be yet. I'll figure it out later after I'm done experimenting.</td>
+</tr>
+<tr>
+    <td>Group - `share-ro`</td>
+    <td>default</td>
+    {/* <td></td> */}
+    {/* <td></td> */}
+</tr>
+<tr>
+    <td>Group - `app-file-browser`</td>
+    <td></td>
+    <td rowspan="2">`r-x`</td>
+    <td rowspan="2">By default everything can be read by the TrueNAS file browser app.<br/>(Add `w` if you're feeling brave.)</td>
+</tr>
+<tr>
+    <td>Group - `app-file-browser`</td>
+    <td>default</td>
+    {/* <td></td> */}
+    {/* <td></td> */}
+</tr>
+</tbody>
+</table>
+
+## Apps
+
+I install `filebrowser` only. Immediately after installing it, make sure to set **Group ID** to the ID for `app-file-browser`, and <span style="color:red;">**in the file browser web UI, you must change the username and password of the default user**</span>.
+
+## Data Protection > Scrub Tasks
+
+These tasks are for checking for and fixing bit rot.
+
+You should already have a weekly scrub task for each pool by default. If you don't, here's what I see for each of my scrub tasks:
+
+- **Pool:** *(Select the pool here.)*
+- **Threshold Days:** 35
+- **Description:** *(empty)*
+- **Schedule:** `Custom (00 00 * * 7) At 12:00 AM, only on Sunday``
+- *Make sure that the Enabled slider is set.*
+
+You may need to make this run less frequently if your pool sizes are really big.
+
+## Data Protection > Periodic S.M.A.R.T. Tests
+
+Create two entries:
+
+- Entry 1:
+    - **All Disks:** *true*
+    - **Type:** `SHORT`
+    - **Description:** `SHORT Weekly`
+    - **Schedule:** *Select the Weekly one. Doesn't matter exactly when it triggers.*
+- Entry 2:
+    - **All Disks:** *true*
+    - **Type:** `LONG`
+    - **Description:** `LONG Bi-monthly`
+    - **Schedule:** *Select the Custom one.*
+        - **Presets:** *Initially set this to `Monthly`, then change the rest of the settings.*
+        - **Hours:** 1
+        - **Days:** 1
+        - **Days of Week:** *Unset them all.*
+        - **Months:** `Feb`, `Apr`, `Jun`, `Aug`, `Oct`, `Dec`
+        - *In effect, this should run at 1am on day 1 of each of those six months per year.*
+
+## Data Protection > Periodic Snapshot Tasks
+
+Set one for each pool.
+
+Here's a good baseline:
+
+- **Dataset:** *(Select the pool here.)*
+- **Snapshot Lifetime:** `4 WEEK`
+- **Schedule:** `Daily (0 0 * * *) At 00:00 (12:00 AM)`
+- **Recursive:** *true*
+
+## Data Protection > (the other options)
+
+Under *Data Protection*, you have a bunch of options for backups:
+
+- (TODO)
+
+## Notification Emails
+
+Gmail OAuth works for me.
+
+(TODO: Outline what you need to get this working!)
+

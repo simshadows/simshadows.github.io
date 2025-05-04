@@ -1,0 +1,143 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: More Common Tasks On Linux
+description: More Common Linux Tasks
+keywords: ["cheatsheet", "linux"]
+
+indexTitle: More Common Tasks
+---
+
+On this page are my best-known-practice routines for anything that didn't make the main Linux cheatsheet.
+
+I chose to break these out into a separate page because I felt like these are still worth summarizing in some way, but that they are either:
+
+- uncommon tasks (e.g. usually only done one time when setting up a new Linux machine),
+- too complex for my cheatsheet format, or
+- some combination of the above.
+
+## Setting a static IP address
+
+*We assume that:*
+
+- *you are running a Debian system.*
+
+Run this first to check your interfaces:
+
+```bash
+ip a
+```
+
+Let's suppose you want interface `eth0` to be assigned a static IP address.
+
+Open the interfaces file in a text editor:
+
+```bash
+vi /etc/network/interfaces
+```
+
+You probably already see a line like:
+
+```
+iface eth0 inet dhcp
+```
+
+Let's suppose you want to assign `192.168.0.2/24` as your interface address, and `192.168.0.1 as the default gateway.
+
+Replace only that one line with:
+
+```bash
+auto eth0
+iface eth0 inet static
+    address 192.168.0.2/24
+    gateway 192.168.0.1
+```
+
+And restart the networking service:
+
+```bash
+sudo systemctl restart networking
+```
+
+(If you're connected via. SSH, the window probably just froze for you. Just reconnect back with the new IP address.)
+
+Useful reference:
+
+- [Debian Wiki: NetworkConfiguration](https://wiki.debian.org/NetworkConfiguration)
+
+## Setting up a basic SSH server
+
+*We assume that you want:*
+
+- *to only allow public key authentication (and disallow password login).*
+
+*We assume that:*
+
+- *you are running a Debian system, and*
+- *you have a client with a keypair ready to connect via. SSH.*
+
+*The examples below will use the following dummy values:*
+
+- *Server host: `192.168.0.2`*
+- *Server username: `simshadows`*
+
+I recommend an initial audit on the server from another computer on the network:
+
+```bash
+# Quickly scan common ports on your server
+sudo nmap -sT -Pn 192.168.0.2
+# The SSH port is `22/tcp`.
+
+# Attempt to connect with an SSH client
+ssh simshadows@192.168.0.2
+# You obviously won't be able to connect if the SSH server isn't running.
+```
+
+Run these commands
+
+```bash
+# Install the server
+apt install openssh-server
+
+# Double-check that the daemon is running
+systemctl | grep ssh
+# You should see `ssh.service` and `loaded active running`.
+
+# Double-check open TCP ports
+ss -tuln
+# You should see `0.0.0.0:22` currently in the `LISTEN` state.
+```
+
+I recommend running the audit again to check that the port is open, accessible, and ssh can connect.
+
+You should also notice that login is possible via. password input.
+
+Add your keys to the server now as needed (to prevent locking yourself out):
+
+```bash
+ssh-copy-id simshadows@192.168.0.2
+```
+
+Create this file to configure auth restriction to public key only:
+
+```
+/etc/ssh/sshd_config.d/20-force_publickey_auth.conf
+```
+```
+PasswordAuthentication no
+AuthenticationMethods publickey
+```
+
+Restart the daemon:
+
+```bash
+sudo systemctl restart ssh.service
+```
+
+I recommend attempting to authenticate via. a machine that does not have a public key to ensure that we now prevent password authentication.
+
+Useful references for further configuration:
+
+- [Arch Linux Wiki: OpenSSH](https://wiki.archlinux.org/title/OpenSSH)
+- [Arch Linux Wiki: SSH keys](https://wiki.archlinux.org/title/SSH_keys)
+- [Debian Wiki: SSH](https://wiki.debian.org/SSH)
+

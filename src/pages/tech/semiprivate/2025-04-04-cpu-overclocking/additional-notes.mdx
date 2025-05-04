@@ -1,0 +1,342 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Ryzen 9950X3D Overclocking - Additional Notes
+description: Additional Notes
+keywords: []
+
+hidetoc: true
+---
+
+## Build and Methodology
+
+- All fan settings are set to their default "silent" mode. If the system is stable even under these less-than-ideal settings, then it should be much better if I set the fan speed to max (which I do during gaming or heavy workloads).
+- [Motherboard manual](https://www.asrock.com/mb/AMD/X870E%20Taichi/index.asp#Manual)
+- To enter BIOS, press F2. (F11 is the boot menu.)
+- To clear CMOS, shut down and unplug the power, then press and hold the clear CMOS button for 3 seconds.
+
+Measurement:
+
+- [HWiNFO](https://www.hwinfo.com/)
+    - `choco install hwinfo`
+    - All benchmarks and stress tests will be carried out with HWiNFO open.
+- [Ryzen Master](https://www.amd.com/en/products/software/ryzen-master.html#download)
+    - Used to read frequencies.
+    - All benchmarks and stress tests will be carried out with Ryzen Master open.
+- To measure power draw from the wall, I use a Tapo smart plug. Note that this value includes everything inside the case of the PC, as well as one of my monitors and some other peripherals that happen to be plugged into the same smart plug. This may be useful for a relative measurement, but in my experience, my Tapo smart plugs seem to have trouble with reactive loads (my portable air condtioning unit reads as 0 Watts for some reason).
+- I also measure ambient temperature roughly near the PC using an inexpensive digital thermometer. It is not necessarily well-calibrated, but it should at least give a bit of an idea of temperature variance between phases.
+    - I measure at the end of the CineBench 30-minute multi-core test.
+
+Benchmarking and stability:
+
+- We actually start by letting Windows sit idle with HWiNFO and Ryzen Master open.
+    - We run the fans at max speed for about a minute.
+    - Then, we reset HWiNFO aggregate values and we measure averages for 5 minutes in the same way we did for OCCT stress tests.
+- [7-zip](https://www.userbenchmark.com/)
+    - `choco install 7zip`
+    - Parameters used:
+        - 32MB Dictionary size
+        - 32 Threads
+        - 10 Passes
+    - In the data table results:
+        - "C" means the compression resulting rating.
+        - "D" means the decompression resulting rating.
+        - "T" means the total rating shown (it's just the average of C and D).
+        - All units are in GIPS.
+- [Geekbench 6.4.0](https://www.geekbench.com/)
+    - `choco install geekbench`
+    - In the data table results:
+        - "S" is the CPU single-core score.
+        - "M" is the CPU multi-core score.
+- [CPU-Z 2.15.0.x64](https://www.cpuid.com/softwares/cpu-z.html)
+    - In the data table results:
+        - For all benchmarks, we use Benchmark Version 17.01.64.
+        - "S" is the single-core score.
+        - "M" is the multi-core score.
+- [AIDA64 Extreme](https://www.aida64.com/)
+    - As a free trial, you don't have access to all metrics.
+    - In the data table results:
+        - "R" is the memory read speed in MB/s.
+        - "L" is the memory latency in ns.
+- [UserBenchmark](https://www.userbenchmark.com/)
+    - In the data table results:
+        - The values I care about are just the CPU values.
+        - "N" is the CPU "Normal" rating.
+        - "H" is the CPU "Heavy" rating.
+        - "S" is the CPU "Server" rating.
+        - I will provide both percentage and the "points" value shown on the page.
+    - UserBenchmark appears to have a poor reputation comparing different products, but it's still interesting to see the numbers change between runs.
+- [FFXIV Dawntrail Official Benchmark](https://na.finalfantasyxiv.com/benchmark/)
+    - Settings used:
+        - Just make sure everything is set to maximum.
+        - Some specific settings to note:
+            - Graphics Settings 1:
+                - Resolution > Graphics Upscaling: **NVIDIA DLSS**
+            - Display Settings
+                - Screen Mode: Full Screen
+- [V-Ray 6 Benchmark](https://www.chaos.com/vray/benchmark)
+    - We set the test to loop for 5 minutes.
+    - The data table shows the "vsamples" value after benchmarking.
+- [Corona 10 Benchmark](https://www.chaos.com/corona/benchmark)
+- [CineBench 2024.1.0](https://www.maxon.net/en/downloads/cinebench-2024-downloads)
+    - This is where the real stress testing begins. (I start the stressful tests later since I think it's kinda fun to see the less-stressful tests first.
+    - In the data table results:
+        - "S" is the CPU single-core result, in CineBench's "points" scoring system. This test is run for 10 minutes.
+        - "M" is the CPU multi-core result, in CineBench's "points" scoring system. This test is run for 30 minutes. The final score is used to take into account the AIO heating up.
+- [OCCT](https://www.ocbase.com/download)
+    - For benchmarking:
+        - We first carry out the four benchmarks available and record the score:
+            - "Single thread - SSE"
+            - "Single thread - AVX"
+            - "Multiple threads - SSE"
+            - "Multiple threads - AVX"
+        - We also benchmark a stress test:
+            - Settings:
+                - CPU-only
+                - Mode: Extreme
+                - Load Type: Steady
+                - Start At Cycle: 1
+                - Instruction Set: AVX2
+                - Thread Settings: Auto (one thread per logical core)
+            - In the data table results:
+                - All of these values are measured by running the stress test for at least 15 minutes (to get a stable reading), then resetting HWiNFO aggregate values and then getting the average values after 5 minutes.
+                - The exception is core frequencies and wall power, which are not read in HWiNFO.
+                - "CCDx" MHz are a rough estimate of average core frequency for a given CCD, as measured by eyeballing Ryzen Master.
+                - "CCDx Core" is the average core temperature of the hottest core for a given CCD (`Core0`-`Core15`).
+                - "CCDx Tdie" is the average die temperature for a given CCD (`Tdie`).
+                - "CPU" W is the average CPU package power (`CPU Package Power`).
+                - "CPU" V is the average core voltage (`Vcore`).
+                - "Wall" is the wattage read from the wall socket about 25 minutes into the stress test.
+    - For further stress testing:
+        - Test 1:
+            - Memory Stress Test
+            - TODO
+        - Test 2:
+            - CPU-only
+            - Mode: Extreme
+            - Load Type: TODO
+            - Start At Cycle: 1
+            - Instruction Set: AVX2
+            - Thread Settings: Auto (one thread per logical core)
+- [y-cruncher](http://www.numberworld.org/y-cruncher/)
+    - For further stress testing:
+        - We run a quick benchmark and make sure it passes:
+            - `.\y-cruncher.exe bench 10b`
+        - We run the BKT stress test and measure in a similar way to OCCT:
+            - `.\y-cruncher.exe stress BKT`
+- [MemTest86](https://www.memtest86.com/)
+    - Used purely to help validate that the memory is stable.
+    - I will only bother with this once I've reached my final undervolt/overclock and want to validate system stability.
+
+## Phase -1: All Default
+
+I was resetting the CMOS when I realized I may as well try benchmarking a fully-default BIOS.
+
+NOTE: I rushed some of the benchmarks for this phase. It's largely unimportant anyway.
+
+- Both CineBench benchmarks were 10 minutes.
+- Both OCCT stress test benchmarks were done by running the stress test for 5 minutes to reach a steady state, then resetting HWiNFO's aggregate values and aggregating the remaining 5 minutes.
+- I didn't come around to running UserBenchmark. It's an unimportant benchmark anyway.
+
+## Phase 0: Enable XMP
+
+I only enable the XMP profile.
+
+I've had a full week of running my system like this, and it has been fully stable the whole time. I've run overnight 100% CPU workloads with this.
+
+Phase 0 forms our base case where just the absolute bare minimum settings have been applied.
+
+I did not bother with synthetic stress testing. This is probably fine.
+
+### All BIOS menu items changed from default
+
+- BIOS > OC Tweaker
+    - **DRAM Profile Configuration > DRAM Profile Setting:** XMP1-6000 30-36-36-76 1.40V
+
+### All resulting BIOS value changes
+
+```
+DRAM Frequency: [Auto]->[DDR5-6000]
+RAS# to CAS# Delay to Read (tRCDRD): [Auto]->[36]
+Row Precharge Time (tRP): [Auto]->[36]
+RAS# Active Time (tRAS): [Auto]->[76]
+RAS# Cycle Time (tRC): [Auto]->[112]
+Write Recovery Time (tWR): [Auto]->[90]
+Refresh Cycle Time (tRFC1): [Auto]->[884]
+Refresh Cycle Time (tRFC2): [Auto]->[480]
+Refresh Cycle Time (tRFCSb): [Auto]->[390]
+Processor ODT impedance: [Auto]->[53.3 ohm]
+DRAM ODT impedance RTT_PARK: [Auto]->[RZQ/7 (34)]
+DRAM ODT impedance DQS_RTT_PARK: [Auto]->[RZQ/7 (34)]
+SoC/Uncore OC Voltage (VDD_SOC): [Auto]->[1.200]
+VDDP Voltage: [Auto]->[1.150]
+VDD Misc Voltage: [Auto]->[1.100]
+ VDDIO Voltage (VDDIO_MEM_S3): [1.130]->[1.400]
+ DRAM VDD Voltage: [1.100]->[1.400]
+ DRAM VDDQ Voltage: [1.100]->[1.400]
+Infinity Fabric Frequency: [Auto]->[2000 MHz]
+UCLK DIV1 MODE: [Auto]->[UCLK=MEMCLK]
+```
+
+### Other notes
+
+I actually tried setting DRAM Performance Mode to "Aggressive", but I got a crash during a 50% CPU load. I haven't tested it since. Maybe I should give it another try after I finish CPU overclocking?
+
+### Results
+
+This is the only phase where I have UserBenchmark scores. I can't be bothered trying to get past the "Server Full" dialogue box to run the benchmark for the other phases. [Link](https://www.userbenchmark.com/UserRun/70042045)
+
+## Phase 1.1: Enable Precision Boost Overdrive 2
+
+Here, we just rely on the motherboard's pre-programmed PBO2 parameters.
+
+### All BIOS menu items changed from default
+
+- BIOS > OC Tweaker
+    - (1) **DRAM Profile Configuration > DRAM Profile Setting:** XMP1-6000 30-36-36-76 1.40V
+- BIOS > Advanced > AMD Overclocking > Precision Boost Overdrive
+    - (2) **Precision Boost Overdrive:** Enabled
+
+### All resulting BIOS value changes
+
+When changing from Phase 0:
+
+```
+Precision Boost Overdrive: [Auto]->[Enabled]
+```
+
+## Phase 1.2: PBO Advanced mode
+
+TODO. I suspect it's similar performance to Phase 0.
+
+## Phase 1.3: PBO Advanced mode, all default except PBO Limits = Motherboard
+
+### All BIOS menu items changed from default
+
+- BIOS > OC Tweaker
+    - (1) **DRAM Profile Configuration > DRAM Profile Setting:** XMP1-6000 30-36-36-76 1.40V
+- BIOS > Advanced > AMD Overclocking > Precision Boost Overdrive
+    - (2) **Precision Boost Overdrive:** Advanced
+    - (3) **PBO Limits:** Motherboard
+
+## Phase A2.1: Fmax +200 MHz
+
+### All BIOS menu items changed from default
+
+- BIOS > OC Tweaker
+    - (1) **DRAM Profile Configuration > DRAM Profile Setting:** XMP1-6000 30-36-36-76 1.40V
+- BIOS > Advanced > AMD Overclocking > Precision Boost Overdrive
+    - (2) **Precision Boost Overdrive:** Advanced
+    - (3) **CPU Boost Clock Override:** Enabled (Positive)
+    - (4) **Max CPU Boost Clock Override(+):** 200
+
+### All resulting BIOS value changes
+
+When changing from Phase 0:
+
+```
+Precision Boost Overdrive: [Auto]->[Advanced]
+CPU Boost Clock Override: [Disabled]->[Enabled (Positive)]
+Max CPU Boost Clock Override(+): [25]->[200]
+```
+
+### Result
+
+OCCT stress test "Extreme Steady SSE" looks identical to Phase 0 after 5 minutes. I ended testing ot Phase A2.1 early. I might revisit this later.
+
+## Phase A2.2: Fmax +200 MHz, Curve Optimizer -20 -20
+
+### All BIOS menu items changed from default
+
+- BIOS > OC Tweaker
+    - (1) **DRAM Profile Configuration > DRAM Profile Setting:** XMP1-6000 30-36-36-76 1.40V
+- BIOS > Advanced > AMD Overclocking > Precision Boost Overdrive
+    - (2) **Precision Boost Overdrive:** Advanced
+    - (3) **CPU Boost Clock Override:** Enabled (Positive)
+    - (4) **Max CPU Boost Clock Override(+):** 200
+    - Curve Optimizer
+        - (5) **Curve Optimizer:** Per CCD
+        - *Double-check that the optimizer signs are negative.*
+        - (6) **CCD 0 Curve Optimizer Magnitude:** 20
+        - (7) **CCD 1 Curve Optimizer Magnitude:** 20
+
+### All resulting BIOS value changes
+
+When changing from Phase A2.1:
+
+```
+Curve Optimizer: [Disable]->[Per CCD]
+CCD 0 Curve Optimizer Magnitude: [0]->[20]
+CCD 1 Curve Optimizer Magnitude: [0]->[20]
+```
+
+### Result
+
+Windows blue-screened in the 7-zip benchmark.
+
+Windows blue-screened again while simply idling.
+
+Idle results:
+
+```
+27.5 C
+27.2 C
+31.0 C
+31.2 C
+
+33.597 W
+ 1.051 V
+ 1.065 V
+   179 W
+```
+
+I'm disappointed. I've been led to believe that most people should be able to achieve this.
+
+## Phase A2.3: Fmax +200 MHz, Curve Optimizer -15 -15
+
+### All BIOS menu items changed from default
+
+- BIOS > OC Tweaker
+    - (1) **DRAM Profile Configuration > DRAM Profile Setting:** XMP1-6000 30-36-36-76 1.40V
+- BIOS > Advanced > AMD Overclocking > Precision Boost Overdrive
+    - (2) **Precision Boost Overdrive:** Advanced
+    - (3) **CPU Boost Clock Override:** Enabled (Positive)
+    - (4) **Max CPU Boost Clock Override(+):** 200
+    - Curve Optimizer
+        - (5) **Curve Optimizer:** Per CCD
+        - *Double-check that the optimizer signs are negative.*
+        - (6) **CCD 0 Curve Optimizer Magnitude:** 15
+        - (7) **CCD 1 Curve Optimizer Magnitude:** 15
+
+### All resulting BIOS value changes
+
+When changing from Phase 0:
+
+```
+Precision Boost Overdrive: [Auto]->[Advanced]
+CPU Boost Clock Override: [Disabled]->[Enabled (Positive)]
+Max CPU Boost Clock Override(+): [25]->[200]
+Curve Optimizer: [Disable]->[Per CCD]
+CCD 0 Curve Optimizer Magnitude: [0]->[15]
+CCD 1 Curve Optimizer Magnitude: [0]->[15]
+```
+
+### Result
+
+Geekbench threw an error the first time around. I rebooted and continued the test suite again. We got through the rest of the tests without a problem. Probably a minor hiccup unrelated to the overclocking?
+
+## Phase B2.1: PBO Limits = Motherboard, Fmax +200 MHz, Curve Optimizer -15
+
+### All BIOS menu items changed from default
+
+- BIOS > OC Tweaker
+    - (1) **DRAM Profile Configuration > DRAM Profile Setting:** XMP1-6000 30-36-36-76 1.40V
+- BIOS > Advanced > AMD Overclocking > Precision Boost Overdrive
+    - (2) **Precision Boost Overdrive:** Advanced
+    - (3) **PBO Limits:** Motherboard
+    - (4) **CPU Boost Clock Override:** Enabled (Positive)
+    - (5) **Max CPU Boost Clock Override(+):** 200
+    - Curve Optimizer
+        - (6) **Curve Optimizer:** All Cores
+        - (7) **All Core Curve Optimizer Sign:** Negative
+        - (8) **All Core Curve Optimizer Magnitude:** 15
+

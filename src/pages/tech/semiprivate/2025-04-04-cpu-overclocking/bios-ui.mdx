@@ -1,0 +1,74 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Ryzen 9950X3D Overclocking - BIOS UI Guide
+description: BIOS UI Guide
+keywords: []
+
+hidetoc: true
+---
+
+*(This is specific to my motherboard.)*
+
+## PBO Limits
+
+The PBO limits (PPT/TDC/EDC) are measured in mW or mA (as stated in the BIOS). They're absolute values, so to input 250W, you put in `250000`.
+
+## Curve Optimizer
+
+TODO
+
+## Curve Shaper
+
+There are 15 numbers you can set to shape the PBO curve:
+
+<p>
+<table class="general">
+<tbody>
+<tr>
+    <th></th>
+    <th>Min Frequency</th>
+    <th>Low Frequency</th>
+    <th>Medium Frequency</th>
+    <th>High Frequency</th>
+    <th>Max Frequency</th>
+</tr>
+<tr>
+    <th>Low Temp</th>
+    <td>Low Temp<br/>Min Freq</td>
+    <td>Low Temp<br/>Low Freq</td>
+    <td>Low Temp<br/>Medium Freq</td>
+    <td>Low Temp<br/>High Freq</td>
+    <td>Low Temp<br/>Max Freq</td>
+</tr>
+<tr>
+    <th>Medium Temp</th>
+    <td>Medium Temp<br/>Min Freq</td>
+    <td>Medium Temp<br/>Low Freq</td>
+    <td>Medium Temp<br/>Medium Freq</td>
+    <td>Medium Temp<br/>High Freq</td>
+    <td>Medium Temp<br/>Max Freq</td>
+</tr>
+<tr>
+    <th>High Temp</th>
+    <td>High Temp<br/>Min Freq</td>
+    <td>High Temp<br/>Low Freq</td>
+    <td>High Temp<br/>Medium Freq</td>
+    <td>High Temp<br/>High Freq</td>
+    <td>High Temp<br/>Max Freq</td>
+</tr>
+</tbody>
+</table>
+</p>
+
+For the purposes of my overclocking, I don't care about the temperature values. I only care about the frequencies.
+
+For shorthand, I express the curve shaper configuration with 5 numbers:
+
+- The first number is the number set to Min Freq Low Temp, Min Freq Medium Temp, and Min Freq High Temp.
+- The second number is the number set to Low Freq Low Temp, Low Freq Medium Temp, and Low Freq High Temp.
+- etc.
+
+To achieve this in the BIOS,
+
+(TODO)
+

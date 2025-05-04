@@ -1,0 +1,4 @@
+table.data-table-align-top :is(th, td) {
+    vertical-align: top;
+    white-space: preserve nowrap;
+}

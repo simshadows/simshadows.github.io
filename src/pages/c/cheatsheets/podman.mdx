@@ -1,0 +1,138 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Podman Cheatsheet
+description: My Podman cheatsheet because I forget commands a lot.
+keywords: ["programming", "podman", "containerization", "cheatsheet", "containerisation", "docker"]
+
+indexTitle: Podman
+hidetoc: true
+---
+
+Unless otherwise specified, we will use the following dummy data in the examples:
+
+- **Container name:** `mycontainer`
+- **Pod name:** `mypod`
+- **Image from a registry:** `docker.io/library/nginx`
+    - *In a lot of cases, you can use a shorter name:* `nginx`
+- **Custom image's tag:** `myimg`
+- **Kubernetes YAML:** `infile.yml`, `outfile.yml`
+
+## Terminal Commands Summary
+
+Local image management:
+
+```bash
+# List all images
+podman images
+# Example output:
+#    REPOSITORY               TAG     IMAGE ID      CREATED     SIZE
+#    docker.io/library/nginx  latest  4e1b6bae1e48  8 days ago  197 MB
+
+# Search the remote registries for images containing keyword `nginx`
+podman search nginx
+# Example output:
+#    NAME                      DESCRIPTION
+#    docker.io/library/nginx   Official build of Nginx.
+
+# Pull image from remote registry
+podman pull docker.io/library/nginx
+# Without specifying the tag, it pulls the latest version.
+
+# Delete image
+podman rmi nginx
+
+# Build an image using the Containerfile/Dockerfile in the current directory
+podman build -t myimg .
+```
+
+Creating and managing containers:
+
+```bash
+# List all containers, don't leave out any info, and show pod info
+podman ps -a --no-trunc --pod
+# List creating/running containers
+podman ps
+
+# Create and start a container
+podman run --name mycontainer -t -p 8080:80/tcp nginx
+# Create a container (without starting)
+podman container create --name mycontainer -t -p 8080:80/tcp nginx
+# Both commands will pull the image if not present.
+# There are a lot of options. Some common ones:
+#     Run in detached mode:
+#         -d
+#     Name the container:
+#         --name mycontainer
+#     Map host TCP port 8080 to container port 80:
+#         -p 8080:80/tcp
+#     Add container to a pod:
+#         --pod mypod
+#     Allocate a pseudo-TTY:
+#         -t
+#     Bind mount host path `/my/content` to container
+#     path `/usr/share/nginx/html`, read-only:
+#         -v /my/content:/usr/share/nginx/html:ro
+
+# Start/stop/delete container
+podman start mycontainer
+podman stop mycontainer
+podman rm mycontainer
+# (`podman start` will start in detached mode.)
+
+# Inspect container
+podman inspect mycontainer
+# Inspect a container's port mappings
+# (TODO: Is this needed since ps already does this)
+podman port mycontainer
+# Inspect a container's logs
+podman logs mycontainer
+# Inspect a container's PIDs
+podman top mycontainer
+
+# Open a shell in a container
+podman exec -it mycontainer bash
+podman exec -it mycontainer sh
+```
+
+Pod management:
+
+```bash
+# List all pods
+podman pod ls
+
+# Create pods/containers/volumes from Kubernetes YML
+podman kube play infile.yml
+
+# Generate a Kubernetes YML from an existing container/pod
+podman kube generate mycontainer > outfile.yml
+podman kube generate mypod > outfile.yml
+
+# Start/stop/restart/delete pods
+podman pod start mypod
+podman pod stop mypod
+podman pod restart mypod
+podman pod rm mypod
+```
+
+Get podman info/versions:
+
+```bash
+podman info
+```
+
+More commands (I haven't had to use these yet):
+
+```bash
+podman login REGISTRY_NAME
+podman build -t USERNAME/IMAGE_NAME .
+podman push USERNAME/IMAGE_NAME
+```
+
+## Containerfile/Dockerfile Syntax
+
+*TODO*
+
+## Kubernetes YAML Syntax
+
+*TODO*
+

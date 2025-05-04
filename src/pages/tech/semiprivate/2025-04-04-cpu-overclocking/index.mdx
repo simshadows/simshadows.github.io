@@ -1,0 +1,759 @@
+---
+layout: "@layouts/MDFullWidthLayout.astro"
+title: Ryzen 9950X3D Overclocking
+indexTitle: 2025-04-04 - Ryzen 9950X3D Overclocking
+description: My notes as I went about overclocking my Ryzen 9950X3D!
+keywords: []
+
+hidetoc: true
+---
+
+import CellTempsLegend from "_CellTempsLegend"; //_
+import Temps from "_CellTempsVals"; //_
+
+import "./_index.css"; //_
+
+Child pags:
+
+- [BIOS UI Guide](./bios-ui/)
+- [Additional Notes](./additional-notes/)
+
+## Resources
+
+- [Ryzen 9 9950X3D Undervolt & Overclock to 5900 MHz | SkatterBencher #85](https://www.youtube.com/watch?v=v9fL8XD2v2Q)
+    - *I'm using this as my main resource. Everything on this page is based on this video.*
+    - [Text version](https://skatterbencher.com/2025/03/11/skatterbencher-85-ryzen-9-9950x3d-overclocked-to-5900-mhz/)
+    - Stock Fmax is 5550 for CCD0 and 5750 for CCD1.
+    - The curve shaper values: 0 -30 -30 -25 -10
+- [Undervolt your Ryzen 9 9950X for more FPS and Lower Temperature!](https://www.youtube.com/watch?v=5PC9cTsoR3E), ImWateringPSUs
+
+## Build
+
+- [PCPartPicker](https://au.pcpartpicker.com/user/simshadows/saved/Lpmvbv)
+- **Motherboard: Asrock X870E Taichi** (BIOS version 3.20)
+
+## BIOS Settings Locations
+
+- BIOS > OC Tweaker
+    - (1) **DRAM Profile Configuration > DRAM Profile Setting**
+- BIOS > Advanced > AMD Overclocking > Precision Boost Overdrive
+    - (2) **Precision Boost Overdrive**
+    - (3) **PBO Limits**
+    - (4.1) **CPU Boost Clock Override**
+    - (4.2) **Max CPU Boost Clock Override(+)**
+    - Curve Optimizer
+        - (5.1) **Curve Optimizer**
+        - (5.2) **All Core Curve Optimizer Sign**
+        - (5.3) **All Core Curve Optimizer Magnitude**
+    - Curve Shaper
+        - TODO: (6)
+
+## Data
+
+For all the settings rows below, they are all presented in the order in which they are applied in the BIOS from top to bottom, which is helpful for reproducibility.
+
+Notable defaults:
+
+<p>
+<table class="general data-table-align-top" style="font-family: monospace;">
+<thead>
+<tr>
+    <th>(2) Precision Boost Overdrive</th>
+    <th style="width: 6em;"></th>
+    <th>Advanced</th>
+    <th>Advanced</th>
+    <th>Enable</th>
+</tr>
+<tr>
+    <th>(3) PBO Limits</th>
+    <th></th>
+    <th></th>
+    <th>Motherboard</th>
+    <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <th>Actual PBO Limits</th>
+    <td colspan="2">PPT Limit = 200 W<br/>TDC Limit = 160 A<br/>EDC Limit = 225 A</td>
+    <td colspan="2">PPT Limit = 1000 W<br/>TDC Limit = 235 A<br/>EDC Limit = 1000 A</td>
+</tr>
+</tbody>
+</table>
+</p>
+
+The data:
+
+<p>
+<table class="general data-table-align-top" style="font-family: monospace;">
+<thead>
+<tr>
+    <th colspan="2"></th>
+    <th>Phase -1</th>
+    <th>Phase 0</th>
+    <th>Phase 1.1</th>
+    <th>Phase 1.2</th>
+    <th>Phase 1.3</th>
+    <th>Phase A2.3</th>
+    <th>Phase A2.4</th>
+    <th>Phase B2.1</th>
+    <th>Phase B2.2</th>
+    <th>Phase B2.3</th>
+    <th>Phase A3.1</th>
+    <th>Phase A3.2</th>
+    <th>Phase A3.3</th>
+    <th>Phase A4.1</th>
+    <th>Phase A4.2</th>
+    <th>Phase A4.3</th>
+    <th>(Placeholder)</th>
+</tr>
+<tr>
+    <th colspan="2">(1) XMP</th>
+    <th></th>
+    <th colspan="16" style="text-align: left;"> XMP1-6000 30-36-36-76 1.40V</th>
+</tr>
+<tr>
+    <th colspan="2">(2) Precision Boost Overdrive</th>
+    <th></th>
+    <th></th>
+    <th>Enable</th>
+    <th colspan="14" style="text-align: left;"> Advanced</th>
+</tr>
+<tr>
+    <th colspan="2">(3) PBO Limits</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>Motherboard</th>
+    <th></th>
+    <th></th>
+    <th>Motherboard</th>
+    <th>Motherboard</th>
+    <th>Motherboard</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
+<tr>
+    <th colspan="2">(4) Fmax</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>+200 MHz</th>
+    <th></th>
+    <th>+200 MHz</th>
+    <th>+200 MHz</th>
+    <th></th>
+    <th>+200 MHz</th>
+    <th>+200 MHz</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
+<tr>
+    <th colspan="2">(5) Curve Optimizer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>-15</th>
+    <th>-20 -15</th>
+    <th>-15</th>
+    <th>-10</th>
+    <th>-15</th>
+    <th>-15</th>
+    <th>-15</th>
+    <th>-15</th>
+    <th>-15</th>
+    <th>-10</th>
+    <th>-5</th>
+    <th></th>
+</tr>
+<tr>
+    <th colspan="2">(6) Curve Shaper</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>-5 -5 -5 0 0</th>
+    <th>0 -15 -15 -5 0</th>
+    <th>0 -5 -5 -5 0</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
+<tr>
+    <th colspan="2">Unstable?</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>UNSTABLE</th>
+    <th>UNSTABLE</th>
+    <th></th>
+    <th>SUS</th>
+    <th></th>
+    <th>UNSTABLE</th>
+    <th></th>
+    <th>(TESTING)</th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
+<tr>
+    <th colspan="2">Seems stable through real usage?</th>
+    <th></th>
+    <th>Stable</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>7-zip</td>
+    <td>Compression (GIPS)<br/>Decompression (GIPS)<br/>Total (GIPS)</td>
+    <td>190.737<br/>253.283<br/>222.010</td>
+    <td>221.069<br/>262.073<br/>241.571</td>
+    <td>222.818<br/>269.980<br/>246.399</td>
+    <td></td>
+    <td>223.637<br/>267.841<br/>245.739</td>
+    <td>226.318<br/>274.931<br/>250.625</td>
+    <td>225.946<br/>271.741<br/>248.844</td>
+    <td>224.684<br/>269.782<br/>247.233</td>
+    <td>226.204<br/>275.603<br/>250.904</td>
+    <td></td>
+    <td>225.800<br/>272.741<br/>249.271</td>
+    <td>226.741<br/>278.000<br/>252.370</td>
+    <td>todo<br/>todo<br/>todo</td>
+    <td></td>
+    <td>todo<br/>todo<br/>todo</td>
+    <td>todo<br/>todo<br/>todo</td>
+    <td>todo<br/>todo<br/>todo</td>
+</tr>
+<tr>
+    <td>Geekbench</td>
+    <td><br/>Single-core<br/>Multi-core</td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11375006)<br/> 3255<br/>20512</td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11373500)<br/> 3399<br/>22699</td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11377933)<br/> 3407<br/>22872</td>
+    <td></td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11392971)<br/> 3429<br/>22924</td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11380400)<br/> 3479<br/>22948</td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11389066)<br/> 3487<br/>23041</td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11394512)<br/> 3485<br/>23338</td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11402194)<br/> 3469<br/>23330</td>
+    <td></td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11389791)<br/> 3431<br/>22951</td>
+    <td>[Link](https://browser.geekbench.com/v6/cpu/11408918)<br/> 3497<br/>23177</td>
+    <td>[Link](todo)<br/> todo<br/>todo</td>
+    <td></td>
+    <td>[Link](todo)<br/> todo<br/>todo</td>
+    <td>[Link](todo)<br/> todo<br/>todo</td>
+    <td>[Link](todo)<br/> todo<br/>todo</td>
+</tr>
+<tr>
+    <td>CPU-Z</td>
+    <td>Single-core<br/>Multi-core</td>
+    <td>  891.2<br/>16756.0</td>
+    <td>  893.0<br/>16762.0</td>
+    <td>  892.8<br/>17004.1</td>
+    <td></td>
+    <td>  893.0<br/>17027.1</td>
+    <td>  900.3<br/>17175.9</td>
+    <td>  905.4<br/>17220.1</td>
+    <td>  901.1<br/>17336.5</td>
+    <td>  903.7<br/>17310.5</td>
+    <td></td>
+    <td>  901.3<br/>17216.3</td>
+    <td>  899.6<br/>17348.7</td>
+    <td>  todo<br/>todo</td>
+    <td></td>
+    <td>  todo<br/>todo</td>
+    <td>  todo<br/>todo</td>
+    <td>  todo<br/>todo</td>
+</tr>
+<tr>
+    <td>AIDA64</td>
+    <td>Read (MB/s)<br/>Latency (ns)</td>
+    <td>63283<br/> 96.7</td>
+    <td>78804<br/> 79.0</td>
+    <td>78106<br/> 79.5</td>
+    <td></td>
+    <td>78510<br/> 80.2</td>
+    <td>78722<br/> 78.9</td>
+    <td>(DNC)</td>
+    <td>78851<br/> 78.0</td>
+    <td>78231<br/> 79.3</td>
+    <td></td>
+    <td>78610<br/> 79.4</td>
+    <td>78608<br/> 79.4</td>
+    <td>todo<br/> todo</td>
+    <td></td>
+    <td>todo<br/> todo</td>
+    <td>todo<br/> todo</td>
+    <td>todo<br/> todo</td>
+</tr>
+<tr>
+    <td>FFXIV</td>
+    <td></td>
+    <td>19475</td>
+    <td>19510</td>
+    <td>19773</td>
+    <td></td>
+    <td>19522</td>
+    <td>19521</td>
+    <td></td>
+    <td>19492</td>
+    <td>19528</td>
+    <td></td>
+    <td>19509</td>
+    <td>19509</td>
+    <td>todo</td>
+    <td></td>
+    <td>todo</td>
+    <td>todo</td>
+    <td>todo</td>
+</tr>
+<tr>
+    <td>V-Ray</td>
+    <td>5 minutes</td>
+    <td>48104</td>
+    <td>49284</td>
+    <td>51506</td>
+    <td></td>
+    <td>51309</td>
+    <td>51041</td>
+    <td></td>
+    <td>52252</td>
+    <td>52434</td>
+    <td></td>
+    <td>51539</td>
+    <td>51903</td>
+    <td>todo</td>
+    <td></td>
+    <td>todo</td>
+    <td>todo</td>
+    <td>todo</td>
+</tr>
+<tr>
+    <td>CineBench</td>
+    <td>Single-core (10m)<br/>Multi-core  (30m)</td>
+    <td> 135<br/>2255</td>
+    <td> 139<br/>2352</td>
+    <td> 139<br/>2412</td>
+    <td></td>
+    <td> 139<br/>2407</td>
+    <td> 140<br/>2410</td>
+    <td></td>
+    <td> 140<br/>2435</td>
+    <td> 140<br/>2444</td>
+    <td> 139<br/>todo</td>
+    <td> 140<br/>2402</td>
+    <td> 140<br/>2437</td>
+    <td> todo<br/>todo</td>
+    <td></td>
+    <td> todo<br/>todo</td>
+    <td> todo<br/>todo</td>
+    <td> todo<br/>todo</td>
+</tr>
+<tr>
+    <td>OCCT<br/>Single-Thread</td>
+    <td>SSE<br/>AVX</td>
+    <td>112.64<br/>234.10</td>
+    <td>112.88<br/>234.50</td>
+    <td>113.42<br/>235.18</td>
+    <td></td>
+    <td>112.81<br/>234.48</td>
+    <td>114.06<br/>238.08</td>
+    <td></td>
+    <td>115.02<br/>239.23</td>
+    <td>114.26<br/>237.95</td>
+    <td></td>
+    <td>114.06<br/>237.69</td>
+    <td>114.07<br/>238.79</td>
+    <td>todo<br/>todo</td>
+    <td></td>
+    <td>todo<br/>todo</td>
+    <td>todo<br/>todo</td>
+    <td>todo<br/>todo</td>
+</tr>
+<tr>
+    <td>OCCT<br/>Multi-Thread</td>
+    <td>SSE<br/>AVX</td>
+    <td>1519.09<br/>2929.93</td>
+    <td>1507.93<br/>2975.09</td>
+    <td>1647.82<br/>2972.05</td>
+    <td></td>
+    <td>1636.20<br/>3110.55</td>
+    <td>1549.33<br/>3109.11</td>
+    <td></td>
+    <td>1635.07<br/>3247.79</td>
+    <td>1638.87<br/>3279.17</td>
+    <td></td>
+    <td>1591.13<br/>3087.97</td>
+    <td>1643.98<br/>3126.06</td>
+    <td>todo<br/>todo</td>
+    <td></td>
+    <td>todo<br/>todo</td>
+    <td>todo<br/>todo</td>
+    <td>todo<br/>todo</td>
+</tr>
+<tr>
+    <td>OCCT<br/>CPU Stress Test<br/>Extreme Steady SSE<br/>32 Thread<br/><br/>Run 15m.<br/>Measure avg. over 5m.</td>
+    <CellTempsLegend/>
+    <td></td>
+    <Temps name="0" ambient="" f0="4755 MHz" f1="4510 MHz"
+        t0c="75.7 C" t1c="74.7 C" t0d="75.8 C" t1d="74.7 C"
+        pkg="200.005 W" vc="1.126 V" wall="393 W"
+    />
+    <Temps name="1.1" ambient="" f0="5025 MHz" f1="4910 MHz"
+        t0c="95.0 C" t1c="91.5 C" t0d="95.0 C" t1d="92.0 C"
+        pkg="264.922 W" vc="1.240 V" wall="472 W"
+    />
+    <td></td>
+    <Temps name="1.3" ambient="" f0="5035 MHz" f1="4920 MHz"
+        t0c="94.6 C" t1c="92.1 C" t0d="94.7 C" t1d="91.8 C"
+        pkg="268.205 W" vc="1.245 V" wall="473 W"
+    />
+    <Temps name="A2.3" ambient="" f0="4930 MHz" f1="4725 MHz"
+        t0c="74.4 C" t1c="71.5 C" t0d="74.4 C" t1d="71.9 C"
+        pkg="199.992 W" vc="1.117 V" wall="392 W"
+    />
+    <td></td>
+    <Temps name="B2.1" ambient="" f0="5097 MHz" f1="5055 MHz"
+        t0c="87.3 C" t1c="89.7 C" t0d="87.5 C" t1d="89.7 C"
+        pkg="255.886 W" vc="1.208 V" wall="460 W"
+        ppt="26% / 1000 W" tdc="84% /  235 A" edc="20% / 1000 A"
+    />
+    <Temps name="B2.2" ambient="" f0="5090 MHz" f1="5044 MHz"
+        t0c="93.7 C" t1c="94.9 C" t0d="93.8 C" t1d="93.8 C"
+        pkg="272.167 W" vc="1.243 V" wall="480 W"
+        ppt="27% / 1000 W" tdc="87% /  235 A" edc="21% / 1000 A"
+    />
+    <Temps name="B2.3" ambient="27.4 C" f0="5090 MHz" f1="5055 MHz"
+        t0c="90.8 C" t1c="89.2 C" t0d="90.8 C" t1d="89.2 C"
+        pkg="253.018 W" vc="1.206 V" wall="456 W"
+        ppt="25% / 1000 W" tdc="83% /  235 A" edc="20% / 1000 A"
+    />
+    <Temps name="A3.1" ambient="" f0="4940 MHz" f1="4775 MHz"
+        t0c="75.9 C" t1c="74.1 C" t0d="75.8 C" t1d="74.3 C"
+        pkg="199.991 W" vc="1.110 V" wall="392 W"
+    />
+    <Temps name="A3.2" ambient="25.7 C" f0="5036 MHz" f1="4885 MHz"
+        t0c="71.3 C" t1c="72.6 C" t0d="71.4 C" t1d="72.6 C"
+        pkg="199.086 W" vc="1.098 V" wall="390 W"
+        ppt="100% / 200 W" tdc="100% / 160 A" edc=" 74% / 225 A"
+    />
+    <Temps name="A3.3" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <td></td>
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+</tr>
+<tr>
+    <td>OCCT<br/>CPU Stress Test<br/>Extreme Steady AVX2<br/>32 Thread<br/><br/>Run 15m.<br/>Measure avg. over 5m.</td>
+    <CellTempsLegend/>
+    <td></td>
+    <Temps name="0" ambient="" f0="4350 MHz" f1="4030 MHz"
+        t0c="75.2 C" t1c="71.5 C" t0d="75.3 C" t1d="71.7 C"
+        pkg="190 W" vc="1.044 V" wall="385 W"
+    />
+    <Temps name="1.1" ambient="" f0="4725 MHz" f1="4530 MHz"
+        t0c="87.2 C" t1c="88.1 C" t0d="87.3 C" t1d="88.3 C"
+        pkg="244.359 W" vc="1.151 V" wall="452 W"
+    />
+    <td></td>
+    <td></td>
+    <Temps name="A2.3" ambient="" f0="4585 MHz" f1="4285 MHz"
+        t0c="69.6 C" t1c="69.0 C" t0d="70.8 C" t1d="69.1 C"
+        pkg="190.292 W" vc="1.042 V" wall="383 W"
+    />
+    <td></td>
+    <Temps name="B2.1" ambient="" f0="4870 MHz" f1="4707 MHz"
+        t0c="87.7 C" t1c="85.8 C" t0d="87.8 C" t1d="85.8 C"
+        pkg="246.972 W" vc="1.136 V" wall="455 W"
+        ppt="25% / 1000 W" tdc="85% /  235 A" edc="21% / 1000 A"
+    />
+    <Temps name="B2.2" ambient="" f0="4810 MHz" f1="4630 MHz"
+        t0c="90.1 C" t1c="88.7 C" t0d="90.1 C" t1d="88.8 C"
+        pkg="244.921 W" vc="1.142 V" wall="451 W"
+        ppt="25% / 1000 W" tdc="84% /  235 A" edc="20% / 1000 A"
+    />
+    <Temps name="B2.3" ambient="" f0="4862 MHz" f1="4685 MHz"
+        t0c="90.4 C" t1c="89.2 C" t0d="90.5 C" t1d="89.4 C"
+        pkg="249.107 W" vc="1.136 V" wall="460 W"
+        ppt="25% / 1000 W" tdc="87% /  235 A" edc="21% / 1000 A"
+    />
+    <Temps name="A3.1" ambient="" f0="4580 MHz" f1="4290 MHz"
+        t0c="74.4 C" t1c="70.8 C" t0d="74.4 C" t1d="71.2 C"
+        pkg="188.229 W" vc="1.030 V" wall="381 W"
+    />
+    <Temps name="A3.2" ambient="25.6 C" f0="4665 MHz" f1="4370 MHz"
+        t0c="70.8 C" t1c="69.6 C" t0d="70.9 C" t1d="69.5 C"
+        pkg="185.413 W" vc="1.015 V" wall="378 W"
+        ppt=" 93% / 200 W" tdc="100% / 160 A" edc=" 74% / 225 A"
+    />
+    <Temps name="A3.3" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <td></td>
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+</tr>
+<tr>
+    <td>OCCT<br/>Memory Stress Test<br/>80% Memory, AVX2<br/>32 Thread<br/><br/>Run 15m.<br/>Measure avg. over 5m.</td>
+    <CellTempsLegend/>
+    <td></td>
+    <Temps name="0" ambient="" f0="5493 MHz" f1="5577 MHz"
+        t0c="50.4 C" t1c="49.3 C" t0d="50.7 C" t1d="50.7 C"
+        pkg="137.861 W" vc="1.362 V" wall="311 W"
+    />
+    <Temps name="1.1" ambient="" f0="5490 MHz" f1="5590 MHz"
+        t0c="50.9 C" t1c="49.4 C" t0d="52.0 C" t1d="49.8 C"
+        pkg="137.715 W" vc="1.360 V" wall="312 W"
+    />
+    <td></td>
+    <td></td>
+    <Temps name="A2.3" ambient="" f0="5563 MHz" f1="5704 MHz"
+        t0c="51.8 C" t1c="50.8 C" t0d="52.1 C" t1d="51.3 C"
+        pkg="138.327 W" vc="1.358 V" wall="312 W"
+    />
+    <td></td>
+    <td></td>
+    <Temps name="B2.2" ambient="" f0="5541 MHz" f1="5678 MHz"
+        t0c="51.1 C" t1c="49.8 C" t0d="51.6 C" t1d="51.3 C"
+        pkg="138.050 W" vc="1.360 V" wall="313 W"
+        ppt="14% / 1000 W" tdc="32% /  235 A" edc="10% / 1000 A"
+    />
+    <Temps name="B2.3" ambient="" f0="5550 MHz" f1="5687 MHz"
+        t0c="51.4 C" t1c="50.5 C" t0d="52.5 C" t1d="50.9 C"
+        pkg="133.411 W" vc="1.342 V" wall="309 W"
+        ppt="13% / 1000 W" tdc="31% /  235 A" edc=" 9% / 1000 A"
+    />
+    <Temps name="A3.1" ambient="" f0="5560 MHz" f1="5690 MHz"
+        t0c="52.7 C" t1c="51.5 C" t0d="53.1 C" t1d="54.1 C"
+        pkg="138.187 W" vc="1.358 V" wall="313 W"
+    />
+    <Temps name="A3.2" ambient="25.4 C" f0="5576 MHz" f1="5711 MHz"
+        t0c="51.6 C" t1c="50.3 C" t0d="53.2 C" t1d="50.5 C"
+        pkg="138.282 W" vc="1.360 V" wall="313 W"
+        ppt="69% / 200 W" tdc="48% / 160 A" edc="46% / 225 A"
+    />
+    <Temps name="A3.3" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <td></td>
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+</tr>
+<tr>
+    <td>.\y-cruncher.exe \`<br/>    stress BKT<br/><br/>Run 15m.<br/>Measure avg. over 5m.</td>
+    <CellTempsLegend/>
+    <td></td>
+    <Temps name="0" ambient="" f0="5095 MHz" f1="4990 MHz"
+        t0c="71.9 C" t1c="72.4 C" t0d="71.9 C" t1d="72.4 C"
+        pkg="199.993 W" vc="1.213 V" wall="380 W"
+    />
+    <Temps name="1.1" ambient="" f0="5155 MHz" f1="5125 MHz"
+        t0c="79.2 C" t1c="80.0 C" t0d="79.2 C" t1d="80.0 C"
+        pkg="228.492 W" vc="1.268 V" wall="417 W"
+    />
+    <td></td>
+    <td></td>
+    <Temps name="A2.3" ambient="" f0="5195 MHz" f1="5160 MHz"
+        t0c="71.7 C" t1c="72.4 C" t0d="71.8 C" t1d="72.5 C"
+        pkg="199.978 W" vc="1.203 V" wall="380 W"
+    />
+    <td></td>
+    <Temps name="B2.1" ambient="" f0="5231 MHz" f1="5221 MHz"
+        t0c="74.5 C" t1c="75.7 C" t0d="74.5 C" t1d="75.8 C"
+        pkg="208.955 W" vc="1.221 V" wall="393 W"
+    />
+    <Temps name="B2.2" ambient="" f0="5200 MHz" f1="5181 MHz"
+        t0c="76.1 C" t1c="77.2 C" t0d="76.2 C" t1d="78.0 C"
+        pkg="217.627 W" vc="1.241 V" wall="403 W"
+        ppt="22% / 1000W" tdc="67% /  235 A" edc="16% / 1000 A"
+    />
+    <Temps name="B2.3" ambient="27.1 C" f0="5208 MHz" f1="5201 MHz"
+        t0c="75.3 C" t1c="76.5 C" t0d="75.4 C" t1d="77.0 C"
+        pkg="206.819 W" vc="1.215 V" wall="392 W"
+        ppt="21% / 1000 W" tdc="65% /  235 A" edc="16% / 1000 A"
+    />
+    <Temps name="A3.1" ambient="" f0="5200 MHz" f1="5150 MHz"
+        t0c="73.1 C" t1c="73.8 C" t0d="73.2 C" t1d="73.9 C"
+        pkg="199.983 W" vc="1.200 V" wall="381 W"
+    />
+    <Temps name="A3.2" ambient="25.2 C" f0="5270 MHz" f1="5225 MHz"
+        t0c="71.9 C" t1c="72.5 C" t0d="72.0 C" t1d="72.6 C"
+        pkg="199.999 W" vc="1.199 V" wall="381 W"
+        ppt="100% / 200 W" tdc=" 93% / 160 A" edc=" 68% / 225 A"
+    />
+    <Temps name="A3.3" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <td></td>
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+    <Temps name="todo" ambient="todo C" f0="todo MHz" f1="todo MHz"
+        t0c="todo C" t1c="todo C" t0d="todo C" t1d="todo C"
+        pkg="todo W" vc="todo V" wall="todo W"
+        ppt="x" tdc="x" edc="x"
+    />
+</tr>
+<tr>
+    <td>(At Idle)<br/><br/>Reboot.<br/>Open HWiNFO and<br/>Ryzen Master only.<br/>1m w/ max fan speed.<br/>5m w/ silent profile.<br/>Measure avg. over 5m.</td>
+    <td>Ambient Temp<br/><br/>CCD0 Core<br/>CCD1 Core<br/>CCD0 Tdie<br/>CCD1 Tdie<br/><br/>CPU Package Power<br/>Vcore<br/>Wall Power</td>
+    <td><br/><br/>30.1 C<br/>30.3 C<br/>33.2 C<br/>34.4 C<br/><br/>32.724 W<br/> 1.119 V<br/>   176 W</td>
+    <td><br/><br/>27.9 C<br/>27.4 C<br/>31.3 C<br/>31.6 C<br/><br/>33.335 W<br/>  1.090 V<br/>    181 W</td>
+    <td><br/><br/>27.9 C<br/>28.2 C<br/>31.8 C<br/>32.0 C<br/><br/>33.564 W<br/> 1.057 V<br/>   181 W</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>25.8 C<br/><br/>29.4 C<br/>29.2 C<br/>32.9 C<br/>33.4 C<br/><br/>32.536 W<br/> 1.060 V<br/>   182 W</td>
+    <td></td>
+    <td></td>
+    <td>25.6 C<br/><br/>28.6 C<br/>28.1 C<br/>31.9 C<br/>31.8 C<br/><br/>32.163 W<br/> 1.055 V<br/>   180 W</td>
+    <td>todo C<br/><br/>todo C<br/>todo C<br/>todo C<br/>todo C<br/><br/>todo W<br/> todo V<br/>   todo W</td>
+    <td></td>
+    <td>todo C<br/><br/>todo C<br/>todo C<br/>todo C<br/>todo C<br/><br/>todo W<br/> todo V<br/>   todo W</td>
+    <td>todo C<br/><br/>todo C<br/>todo C<br/>todo C<br/>todo C<br/><br/>todo W<br/> todo V<br/>   todo W</td>
+    <td>todo C<br/><br/>todo C<br/>todo C<br/>todo C<br/>todo C<br/><br/>todo W<br/> todo V<br/>   todo W</td>
+</tr>
+</tbody>
+</table>
+</p>
+
+Instabilities:
+
+- Phase A2.3
+    - Geekbench threw an error the first time around. I rebooted and continued the test suite again. We got through the rest of the tests without a problem. Probably a minor hiccup unrelated to the overclocking?
+- Phase A2.4
+    - Hopelessly unstable.
+- Phase B2.1
+    - Crashed during OCCT single-thread AVX2 benchmark.
+- Phase B2.3
+    - Passed all the stress tests with flying colours, but CineBench froze during single-core benchmark. Does this indicate instability?
+- Phase A3.2
+    - Ran all benchmarks prior to OCCT flawlessly, then the screen froze in the permission escalation screen of launching OCCT.
+    - Screens all turned off when idling after the OCCT CPU stress test (SSE).
+
+## Anything not in the data table
+
+Phase A2:
+
+- Fmax +200 MHz
+    - Seemed to not do better than Phase 0.
+- Fmax +200 MHz, Curve Optimizer -20 -20 **(FAIL)**
+    - Idle benchmark is in-line with Phase 0.
+- Fmax Curve Optimizer -20 -20 **(FAIL)**
+    - Passed 7-zip, then crashed on Geekbench.
+    - 7-zip: `190.737 GIPS, 253.283 GIPS, 222.010 GIPS`
+- Fmax +200 MHz, Curve Optimizer -15 -20 **(FAIL)**
+    - Immediate crash upon login.
+- Curve Optimizer -15, Curve Shaper 0 -15 -15 -10 0 **(FAIL)**
+    - Froze during: OCCT CPU stress test Extreme Variable AVX2, cycle through all cores, cycle interval 1 minute
+    - **ALSO FAILED SIMILARLY: 0 -10 -10 -5 0**
+- Curve Optimizer -15
+    - Froze while playing FFXIV.
+    - It otherwise survived a whole afternoon of running various OCCT stress tests where I started and stopping the tests, and alternated between all-code steady stress tests and core-cycling stress tests.
+    - I guess this setting is barely unstable.
+
+Phase B2:
+
+- PBO Limits = Motherboard, Fmax +200 MHz, Curve Optimizer -20 **(FAIL)**
+    - Crashed while opening HWiNFO
+
+## Chosen Settings
+
+(I am likely to choose Phase A4.1 as my daily settings. If I encounter instability, I will reduce the undervolt.)
+
