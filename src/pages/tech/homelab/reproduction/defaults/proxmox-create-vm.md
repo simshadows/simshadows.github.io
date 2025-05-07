@@ -39,7 +39,7 @@ Select **`Use CD/DVD disc image file (iso)`**.
 By default, there's already one virtual disk in the window. We will use that.
 
 - **Disk**
-    - **Bus/Device:** `SCSI 1`
+    - **Bus/Device:** `SCSI 0`
     - **Storage:** *(Similar to earlier, this is where the volume data will be stored.)*
     - **Disk size (GiB):** *(Depends on your needs for a root filesystem.)*
     - **SSD emulation:** *(Set to `true` if the volume data is in an SSD.)*

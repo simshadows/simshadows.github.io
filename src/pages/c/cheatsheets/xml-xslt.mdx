@@ -5,7 +5,6 @@ description: My XML and XSLT cheatsheet because I forget names and syntax a lot.
 keywords: ["programming", "xml", "xslt", "extensible stylesheet language transformations", "cheatsheet"]
 
 indexTitle: XML and XSLT
-wip: true
 ---
 
 
@@ -14,19 +13,102 @@ wip: true
 References:
 
 - [**MDN Web Docs - XSLT**](https://developer.mozilla.org/en-US/docs/Web/XSLT) `(developer.mozilla.org)`
+- [**Microsoft Learn - XSLT Reference**](https://learn.microsoft.com/en-us/previous-versions/dotnet/netframework-4.0/ms256069(v=vs.100)) `(learn.microsoft.com)`
 - [**w3schools - XML**](https://www.w3schools.com/xml/) `(w3schools.com)`
     - [XSLT](https://www.w3schools.com/xml/xsl_intro.asp)
 
+## XPaths
 
-## XSLT: Basic Features
+(TODO)
 
-A possible starting template:
+## XPath Axes
+
+(TODO)
+
+## XSLT Elements
+
+```xml
+<xsl:variable name="TODO" select="TODO"/>
+<xsl:variable name="TODO">
+    <!-- TEMPLATE -->
+</xsl:variable>
+
+<xsl:text>TODO</xsl:text>
+<xsl:value-of select="TODO"/>
+```
+
+```xml
+<xsl:if test="TODO">
+    <!-- TEMPLATE -->
+</xsl:for-each>
+
+<xsl:choose>
+    <xsl:when test="TODO">
+        <!-- TEMPLATE -->
+    </xsl:when>
+    <xsl:otherwise>
+        <!-- TEMPLATE -->
+    </xsl:otherwise>
+</xsl:choose>
+
+<xsl:for-each select="TODO">
+    <!-- TEMPLATE -->
+</xsl:for-each>
+```
+
+```xml
+<xsl:copy-of select="TODO"/>
+<xsl:copy>
+    <!-- TEMPLATE -->
+</xsl:copy>
+
+<xsl:element name="TODO" namespace="TODO">
+    <!-- TEMPLATE -->
+</xsl:element>
+
+<xsl:attribute name="TODO" namespace="TODO">
+    <!-- TEMPLATE -->
+</xsl:attribute>
+```
+
+## XSLT Templates
+
+```xml
+<xsl:call-template name="TODO">
+    <xsl:with-param name="TODO" select="TODO"/>
+    <xsl:with-param name="TODO">
+        <!-- TEMPLATE -->
+    </xsl:with-param>
+</xsl:call-template>
+
+<xsl:apply-templates select="TODO" mode="TODO"/>
+```
+
+```xml
+<xsl:template match="TODO" mode="TODO">
+    <!-- TEMPLATE -->
+</xsl:template>
+
+<xsl:template name="TODO" mode="TODO">
+    <xsl:param name="TODO" select="TODO"/>
+    <!-- TEMPLATE -->
+</xsl:template>
+<!-- The `xsl:param` takes on `xsl:param/@select` as the default value. -->
+```
+
+(TODO: Can `xsl:param` also have child content?)
+
+## XSLT Basic Boilerplate
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
- 
+
 <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes" />
+
+<!-- Add your imports here -->
+<xsl:import href="TODO.xsl"/>
+<xsl:include href="TODO.xsl"/>
  
 <xsl:template match="node()|@*">
     <xsl:copy>
@@ -34,20 +116,10 @@ A possible starting template:
     </xsl:copy>
 </xsl:template>
  
-<xsl:template match="FooBar">
-    Do things here!
+<xsl:template match="/">
+    <!-- TEMPLATE -->
 </xsl:template>
  
 </xsl:stylesheet>
 ```
-
-
-## XSLT: XPaths
-
-(TODO)
-
-
-## XSLT: XQuerys
-
-(TODO)
 

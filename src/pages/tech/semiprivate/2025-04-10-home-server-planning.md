@@ -8,13 +8,6 @@ keywords: []
 hidetoc: true
 ---
 
-## Options
-
-- Run Linux directly.
-- <https://www.proxmox.com/en/>
-    - possible alternative: <https://linuxcontainers.org/incus/>
-- <https://www.truenas.com/>
-
 ## Uses
 
 - Torrents
@@ -27,13 +20,12 @@ hidetoc: true
 - Smart home stuff?
 - Home security stuff?
 
-## Ideas
+## Alternatives
 
-- Take advantage of containerization
-- Automate everything such that everything gracefully closes automatically on shut-down, and everything relaunches on startup.
-- Need to automate softare updates.
-- Maximum security.
-    - Is it possible to put everything behind SSH?
-    - What about VPN?
-    - Configure strictest firewall settings possible.
+- Web UI Torrent clients
+    - rtorrent / rutorrent
+        - I used this for years a long while back.
+        - But this seems poorly maintained these days.
+    - qBittorrent / VueTorrent
+    - Deluge
 

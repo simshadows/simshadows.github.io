@@ -55,7 +55,7 @@ TODO
 
 [VM Reproduction Guide](./reproduction/opnsense/)
 
-## VMs 300-399: Main Prod Environment
+## VMs 300-399: Trusted Prod
 
 ### VM: 300 (truenas-prod)
 
@@ -81,13 +81,9 @@ TODO
 
 TODO
 
-## VMs 400-499: Other Production VMs
+## VMs 400-499: Untrusted Prod
 
-### VM: 400 (truenas-bittorrent)
-
-TODO
-
-### VM: 401 (debian-containers-bittorrent)
+### VM: 400 (debian-containers-bittorrent)
 
 TODO
 
