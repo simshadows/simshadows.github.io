@@ -1,6 +1,6 @@
 ---
 layout: "@layouts/MDLayout.astro"
-title: SQL and Common Relational DBMS Features Cheatsheet
+title: SQL
 description: My SQL cheatsheet because I forget names and syntax a lot.
 keywords: ["programming", "postgres", "mysql", "rdbms", "optimization", "cheatsheet"]
 
@@ -8,29 +8,25 @@ indexTitle: SQL and Common Relational DBMS Features
 wip: true
 ---
 
-*I am using **Microsoft SQL Server** these days, so this cheatsheet will currently assume you're using it.*
+*I am using **Microsoft SQL Server** these days, so this cheatsheet may accidentally assume that you use that. I'll try to specify DBMSes where possible, and otherwise go through and verify DBMS compatibility.*
 
-*I will rework this cheatsheet to be more DBMS-agnostic later.*
+*I want to rework this cheatsheet to verify DBMS compatibility later.*
 
 
 ## Resources
 
 References:
 
-- [**Transact-SQL Reference**](https://learn.microsoft.com/en-us/sql/t-sql/language-reference) `(learn.microsoft.com)`
 - My theory notes on: [**The Relational Model and Relational Algebra**](/c/notes/databases-relational-model/)
     - *I will assume that you are familiar with the basic relational model language from these notes.*
 
+## Basic Statements
 
-## `SELECT` Statements
-
-### Whole Table
+### `SELECT` (read)
 
 ```sql
-SELECT * FROM mytable;
+SELECT * FROM MyTable;
 ```
-
-### Common Clauses
 
 ```sql
 SELECT
@@ -44,7 +40,7 @@ GROUP BY
     MyCol3
 WHERE 
     MyCol1 = '1969-04-01'
-    AND MyCol2 in ('mystr1', 'mystr2')
+    AND MyCol2 IN ('mystr1', 'mystr2')
     AND (
         MyCol3 <= 4
         OR MyCol3 BETWEEN 10 AND 20
@@ -59,13 +55,87 @@ ORDER BY
 
 - `BETWEEN` is all inclusive.
 - `ORDER BY` is `ASC` by default if you omit the `ASC`/`DESC`.
-- **DISCLAIMER: I'm actually not 100% sure a query like this is entirely correct since I'm just building up a contrived example. I should test it somehow, and then remove this disclaimer when I'm confident it works.**
+- **(NOTE: List out aggregate functions?)**
+- **(NOTE: I haven't tested the whole query yet.)**
 
-### Joins
+```sql
+SELECT *
+FROM
+    MyTable1 AS MyAlias1
+    LEFT OUTER JOIN MyTable2 AS MyAlias2 ON
+        MyAlias1.MyCol1 = MyAlias2.MyCol2 AND
+        MyAlias1.MyCol3 = MyAlias2.MyCol4
+WHERE
+    MyAlias2.MyCol5 IS NULL
+;
+```
 
-(TODO)
+- Alternative joins in place of `LEFT OUTER JOIN`:
+    - `JOIN` (it's the same as `INNER JOIN`)
+    - `LEFT JOIN` (it's the same as `LEFT OUTER JOIN`)
+    - `RIGHT JOIN` (it's the same as `RIGHT OUTER JOIN`)
+    - `FULL JOIN` (it's the same as `FULL OUTER JOIN`)
+    - `CROSS JOIN` (this produces the cartesian product of two tables)
+- The `ON` keyword is usually invalid syntax for `CROSS JOIN`.
+- **(NOTE: I haven't tested all join keywords yet.)**
 
-### Unions
+```sql
+SELECT * FROM MyTable1
+UNION
+SELECT * FROM MyTable2
+;
+```
 
-(TODO)
+- **(NOTE: I haven't tested the union keyword yet.)**
+
+### `INSERT INTO` (insert new rows)
+
+TODO
+
+### `UPDATE` (modify specified rows)
+
+TODO
+
+### `DELETE` (delete specified rows)
+
+TODO
+
+## CTEs
+
+TODO
+
+## Correlated Subqueries
+
+TODO (it's probably not good to use correlated subqueries,  but we should outline it anyway.)
+
+## PostgreSQL
+
+TODO
+
+## Microsoft SQL Server
+
+### Indexes
+
+*(TODO: What's the difference between clustered and nonclustered index? I'm assuming at the moment that both are B-tree family data structures but clustered means the records are basically at the leaves while nonclustered stores references that let you find the record somehow. It could be useful to dig deeper into these details, but for my purposes at the moment, I probably don't need to know.)*
+
+TODO
+
+### Query Optimization
+
+*(TODO: Maybe outline how to use the SSMS UI for this.)*
+
+TODO
+
+References:
+
+- [Logical and physical showplan operator reference](https://learn.microsoft.com/en-us/sql/relational-databases/showplan-logical-and-physical-operators-reference) `(learn.microsoft.com)`
+- I found [this playlist](https://www.youtube.com/playlist?list=PL2WDxXzl0Y2BK7JUQ5q5yWdQtrdTuwX5O) useful for learning for the first time.
+
+### Transact-SQL
+
+TODO
+
+References:
+
+- [**Transact-SQL Reference**](https://learn.microsoft.com/en-us/sql/t-sql/language-reference) `(learn.microsoft.com)`
 
