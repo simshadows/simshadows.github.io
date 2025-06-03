@@ -8,16 +8,25 @@ indexTitle: git
 wip: true
 ---
 
-
 ## Rebase
 
-```
-git rebase master
+```bash
+git rebase origin/master
 ```
 
 More complex example:
+```bash
+git rebase --onto origin/master foo bar
 ```
-git rebase --onto master foo bar
+*"Take the **bar** branch, figure out the patches since it diverged from the **foo** branch, and replay those patches in the **bar** branch as if it was based directly off the **origin/master** branch instead."*
+
+## Squash the last *N* commits
+
+To squash the last 3 commits:
+
+```bash
+git rebase -i HEAD~3
 ```
-*"Take the **bar** branch, figure out the patches since it diverged from the **foo** branch, and replay those patches in the **bar** branch as if it was based directly off the **master** branch instead."*
+
+In the following screen, leave the top commit as `pick`, and set all of the remaining as `squash`.
 
