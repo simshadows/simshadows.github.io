@@ -144,6 +144,12 @@ const {
     <li><a href="/food/wishlist/"><b>Food Wishlist</b></a></li>
     <li><a href="/food/recommendations/"><b>Food Recommendations</b></a></li>
     <li><a href="/h/ice-skating/"><b>Ice Skating Notes</b></a></li>
-    <li><a href="/h/photography/"><b>Photography Notes</b></a></li>
+    <li><b>Photography</b>
+        <ul>
+            {showWIP && <li><a href="/photography/gear/"><b>Gear</b></a> <Wip /></li>}
+            <li><a href="/photography/notes/"><b>Notes</b></a></li>
+            {showWIP && <li><a href="/photography/beginner-recommendations/"><b>Recommendations</b></a> <Wip /></li>}
+        </ul>
+    </li>
 </ul>
 
