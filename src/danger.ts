@@ -6,6 +6,12 @@
  * overrides whenever possible.
  */
 
+// Return a boolean 'obj is number' since we're usually also checking
+// if something is a number.
+export function isInteger(obj: unknown): obj is number {
+    return (typeof obj === "number") && (obj % 1 === 0);
+}
+
 /*
  * Workaround for TypeScript's current limitations around narrowing an
  * unknown into an array of a specific type.

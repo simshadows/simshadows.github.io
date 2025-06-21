@@ -146,6 +146,33 @@ set.has(value) // true if value is in set
 ```
 
 
+## Classes
+
+```ts
+class MyClass1 {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    get myGetter() {
+        return this.x;
+    }
+    set mySetter(v) {
+        this.x = v;
+    }
+
+    myMethod() {
+        return this.x + this.y;
+    }
+}
+
+// You can also use anonymous and named class expressions:
+const MyClass2 = class { /* TODO */ };
+const MyClass3 = class Foobar { /* TODO */ };
+```
+
+
 ## The Module System
 
 ```ts
