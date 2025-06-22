@@ -1,20 +1,22 @@
 ---
 layout: "@layouts/MDLayout.astro"
-title: Food List
-description: List of food I've experienced.
+title: Food Diary
+description: List of food that I've experienced.
 keywords: []
 ---
 
 import SpoilerBlock from "@components/SpoilerBlock.astro";
 import Todo from "@components/Todo";
 
-import It from "./_list.Item"; //_
+import It from "./_diary.Item"; //_
 
-*These aren't necessarily recommendations. I'm just listing out stuff I've had to keep track of it all.*
+*This list is not intended to be a list of recommendations. I like trying new foods, and this list is my way of tracking what I've had. I usually just text-search this page on my phone to check if I've had something.*
 
 *I sometimes try to put in diacritics/accents or native language characters, but I don't speak these languages so I may get it wrong when I do.*
 
-## Sydney, Australia - Restaurants
+## Establishments
+
+### Sydney, Australia
 
 - **Art Gallery of New South Wales** (Cafe) - CBD
     - <It d="2019-01-16" n="Cappuccino"/>
@@ -22,11 +24,11 @@ import It from "./_list.Item"; //_
     - <It d="2025-01-25" n="Bakmie Goreng" help="Stir-Fried Egg Noodles"/>
     - <It d="2025-01-25" n="Nasi Goreng Spesial"/>
         - *"Stir-fried rice with egg, chicken, meats, shallots and fried egg on top"*
-    - 2025-01-25 - Paha Bakar (Chicken, Grilled Thigh)
+    - <It d="2025-01-25" n="Paha Bakar" help="Chicken, Grilled Thigh"/>
         - *"Charcoal Grilled Marinated 1/4 Chicken"*
-    - 2025-01-25 - Paha Goreng Kalasan (Chicken, Fried Kalasan Thigh)
+    - <It d="2025-01-25" n="Paha Goreng Kalasan" help="Chicken, Fried Kalasan Thigh"/>
         - *"Deep-Fried Marinated Javanese Style 1/4 Chicken"*
-    - 2025-01-25 - Pepes Teri
+    - <It d="2025-01-25" n="Pepes Teri"/>
         - *"Roasted anchovies with onions, chilli & tumeric in banana leaves."*
 - **Bankok on Walker** (Thai) - North Sydney
     - 2024-07-26 - Chicken Pad Thai
@@ -41,9 +43,9 @@ import It from "./_list.Item"; //_
 - **Blue 36** (Burgers) - North Sydney
     - 2024-07-01 - Chunky Wagyu Beef Burger
 - **Boon Cafe** (Thai) - CBD, Haymarket
-    - **[mains]** 2024-10-18 - Emerald Duck
-    - **[entrée]** 2024-10-18 - Neua Yaang (Grilled Beef)
-    - **[entrée]** 2024-10-18 - Tub Gai Yaang (Chicken Liver Skewers)
+    - <It c="mains" d="2024-10-18" n="Emerald Duck"/>
+    - <It c="entree" d="2024-10-18" n="Neua Yaang" help="Grilled Beef"/>
+    - <It c="entree" d="2024-10-18" n="Tub Gai Yaang" help="Chicken Liver Skewers"/>
 - **Burgers Anonymous** (Burgers) - Sydenham
     - **[mains]** 2025-02-08 - Heisenburger, Double-patty
         - *prime beef, American cheese, maple bacon, lettuce, tomato, onions, pickles + B.A. sauce*
@@ -139,13 +141,13 @@ import It from "./_list.Item"; //_
     - 2018-12-12 - Pork Sparerib Ramen
     - 2023-07-21 - Tonkotsu Ramen
 - **Hakatamon Ramen** (Japanese, Ramen) - CBD, Haymarket
-    - **[mains]** 2025-01-10 - Hakatamon Tonkotsu Ramen
+    - <It c="mains" d="2025-01-10" n="Hakatamon Tonkotsu Ramen"/>
         - *"Our signature supreme ramen; black garlic oil, spicy chicken miso infused tonkotsu with extra chashu pork and half a seasoned egg"*
-    - **[mains]** 2025-06-12 - Spicy Miso Tonkotsu Ramen
+    - <It c="mains" d="2025-06-12" n="Spicy Miso Tonkotsu Ramen"/>
         - *"Miso tonkotsu ramen with spicy chicken miso"*
-    - **[entrée]** 2025-01-10 - Nanban Karaage
+    - <It c="entree" d="2025-01-10" n="Nanban Karaage"/>
         - *"Karaage chicken with soy vinegar and tartare sauce"*
-    - **[entrée]** 2025-01-10 - Takoyaki
+    - <It c="entree" d="2025-01-10" n="Takoyaki"/>
 - **Hakiki** (Turkish, Ice Cream) - Burwood; Newtown
     - 2025-01-17 - Baklava (Turkish Ice Cream / Dondurma)
     - 2025-05-22 - Turkish Delight (Turkish Ice Cream / Dondurma)
@@ -314,17 +316,17 @@ import It from "./_list.Item"; //_
     - 2024-08-08 - OS Shawarma Plate
 - **Ozeki Bowl** (Japanese) - *(chain)*
 - **Pasha's Restaurant** (Turkish) - Newtown
-    - **[mains]** 2025-05-22 - Chicken Sac Kavurma
+    - <It c="mains" d="2025-05-22" n="Chicken Sac Kavurma"/>
         - *"Medium diced thigh fillet pan-fried with traditional Turkish vegetables sautéed and glazed with herb butter topped with fresh lemon juice and herbs. Served with traditional almond rice and char-grilled Turkish chillies."*
-    - **[mains]** 2025-05-22 - Pasha's Kofte
+    - <It c="mains" d="2025-05-22" n="Pasha's Kofte"/>
         - *"served since 1975'"*
         - *"Oval shaped grass-fed beef mince infused with Bazaar style herbs, delicately glazed with butter and served with traditional almond rice and salad."*
-    - **[mains]** 2025-05-22 - Lamb Sis
+    - <It c="mains" d="2025-05-22" n="Lamb Sis"/>
         - *"served since 1975'"*
         - *"Char grilled thick carved lamb back strap skewers enhanced with aromatic Turkish spices cooked over natural charcoal, served with traditional almond rice and side sumac and salad"*
-    - **[entrée]** 2025-05-22 - Sigara Borek
+    - <It c="entree" d="2025-05-22" n="Sigara Borek"/>
         - *"Classic lady fingers rolled with traditional Turkish pastry with feta, parsley topped with fresh herbs and served with thickened garlic yoghurt."*
-    - **[drinks]** 2025-05-22 - Orange Tea
+    - <It c="drinks" d="2025-05-22" n="Orange Tea"/>
 - **Parami** (Japanese, Onigiri/Cafe) - CBD
     - 2024-12-01 - Spicy Mentaico (Raw) Onigiri
     - 2024-12-01 - Wagyu Beef Onigiri
@@ -333,9 +335,9 @@ import It from "./_list.Item"; //_
         - There were a bunch of topping options. I chose Wanza Mince.
         - There was the option to get this dry (rather than with soup) and mild (rather than spicy).
 - **Pho Gia Hoi** (Vietnamese) - CBD, Haymarket
-    - **[mains]** 2025-05-09 - Phở Dặc Biệt
+    - <It c="mains" d="2025-05-09" n="Phở Dặc Biệt"/>
         - *"Combination Beef Flat Rice Noodle Soup (Medium or Well Done beef, Brisket, Tendon, Beef meatball)"*
-    - **[entrée]** 2025-05-09 - Cút Rang Muối
+    - <It c="entree" d="2025-05-09" n="Cút Rang Muối"/>
         - *"Salt & Pepper Quails"*
 - **Pho Pasteur** (Vietnamese) - Blacktown
 - **RaRa** (Japanese, Ramen) - Redfern
@@ -377,7 +379,7 @@ import It from "./_list.Item"; //_
     - **[mains]** 2025-02-15 - Striploin Steak w' Sizzling Hot Plate Noodles (with Combo Black Pepper + Mushroom Sauce)
     - **[sides]** 2025-05-01 - Fried Combo Platter
     - **[sides]** 2025-05-01 - Oyster Omelet
-    - **[sides]** 2025-05-01 - Tofy w' Preserved Egg
+    - **[sides]** 2025-05-01 - Tofu w' Preserved Egg
     - **[drinks]** 2025-02-15 - Grass Jelly Milk Tea
     - **[drinks]** 2025-05-01 - Grass Jelly wintermelon
 - **Surly's American Tavern** (American) - Surry Hills
@@ -403,9 +405,9 @@ import It from "./_list.Item"; //_
 - **The Glebe Hotel** (Pub) - Glebe
     - 2021-11-10 - House Made Gnocci
 - **Umami Dojo** (Japanese, Ramen) - Pyrmont
-    - **[mains]** 2024-08-03 - Miso Ramen
-    - **[entrée]** 2024-08-03 - Karaage Chicken
-    - **[entrée]** 2024-08-03 - Spicy Gyoza
+    - <It c="mains" d="2024-08-03" n="Miso Ramen"/>
+    - <It c="entree" d="2024-08-03" n="Karaage Chicken"/>
+    - <It c="entree" d="2024-08-03" n="Spicy Gyoza"/>
 - **Via Napoli Pizzeria** (Italian, Pizza) - Surry Hills
     - 2024-11-22 - Margherita Pizza
         - Red Base; *"Buffalo Mozzarella, San Marzano Tomato & Basil"*
@@ -443,51 +445,12 @@ import It from "./_list.Item"; //_
 - **Yummy Noodle & BBQ** (Chinese, Guilin Rice Noodles) - CBD, Haymarket
     - 2025-06-09 - Guilin Beef Rice Noodle
 
-## Sydney, Australia - Food Stalls/Trucks
-
-- **Dope Fusion** (Various) - *Food Truck*
-- **Hits The Spot** (Various) - *Food Stall*
-    - 2024-10-06 - Bomb Burger
-        - *"Our signature low & slow hickory smoked beef on a fresh flybread bun topped with Sydney's best seafood chowder!"*
-    - 2024-10-06 - Brisket Loaded Kai Fries
-- **Izzy's Grill** (Various) - *Food Stall*
-- **Kofte Express** (Turkish) - *Food Stall*
-    - 2024-12-15 - Beef Kofte Roll
-    - 2024-12-15 - Chicken Kofte Roll
-- **La Mila Sandwiches** (Argentinian, Sandwiches) - *Food Stall*
-    - 2024-11-17 - Completo (Sandwich)
-- **Pho Kim Dung** (Vietnamese) - *Food Stall*
-    - 2024-11-10 -  Combination Vermicelli Salad
-    - 2024-11-10 -  Crackling Pork Belly Banh Mi
-- **Reevive Soul Food** (Various) - *Food Stall*
-    - 2024-09-22 - "The Lot" (Burger)
-- **Señor Toro** (Mexican, Tacos) - *Food Stall*
-    - 2024-09-29 - Birria Taco
-    - 2024-10-06 - Queso Taco
-- **Silk Road Uyghur Food** (Uyghur) - *Food Stall*
-    - 2024-08-09 - BBQ Lamb Skewers
-- **The Pharaoh BBQ** (African, Sandwiches) - *Food Truck*
-    - 2024-08-09 - The Ultimate (Sandwich)
-- **Tricycle Burgers** (Filipino, Burgers) - *Food Stall*
-    - 2025-02-09 - Adobo Burger
-        - *"Grilled beef pork smash patty w/ adobo mayo and slaw"*
-    - 2024-11-03 - Beefstik Burger
-        - *"Beef smash patty w/ fresh onions and beefStik mayo"*
-    - 2025-02-09 - Cheese Burger
-        - *"Beef smash patty w/ american cheese"*
-    - 2024-11-17 - Classic Burger
-        - *"Beef smash patty lettuce, tomato & onion"*
-    - 2025-02-09 - Onion Burger
-        - *"Thinly sliced onions smashed beef patty"*
-    - 2024-11-17 - Sisig Burger
-        - *"Pork smash patty w/ fresh salsa and chicharon"*
-
-## Melbourne, Australia - Restaurants
+### Melbourne, Australia
 
 - **La Petite Crêperie** (French, Crêpes) - CBD, Town Hall
     - Crêpe with Orange Marmalade
 
-## Australia - Chain Restaurants
+### Australia (Chains)
 
 - **C9 Chocolate & Gelato** (Desserts)
     - 2024-08-23 - Blood Orange Gelato
@@ -614,21 +577,100 @@ import It from "./_list.Item"; //_
     - 2024-07-27 - Salted Butterscotch Frozen Yoghurt
     - 2024-05-18 - Signature Tart Frozen Yoghurt
 
-## Drinks, Alcoholic (Not Venue-Specific)
+### Others
 
-- Ale:
-    - 2025-04-16 - Young Henrys - Newtowner Australian Pale Ale
-- Cider:
-    - 2019-03-28 - Rekorderlig - Premium Strawberry & Lime Cider
-- IPA:
-    - 2024-03-01 - Batch Brewing Co. - Trippy Hippy West Coast IPA
-- Lager:
-    - 2024-12-08 - Green Beacon - Midnight Rising Black Lager
-    - 2025-01-24 - Stone & Wood - Green Coast Crisp
+*This section just lists out various dishes from establishments that I can't reveal the time and date for.*
 
-## Drinks, Non-Alcoholic (Not Venue-Specific)
+- Chicken Burrito Bowl with Pico de Gallo
+- Cucumber, tomato, provolone, sweet mustard, rocket sandwich
+- Harissa chicken, cumin, lemon yoghurt, parsley
+- Jerk Spiced Chicken Breast
+- Pulled Pork Burger
 
-*This is a new section. I should add stuff in.*
+## Food Trucks/Stalls
+
+### Sydney, Australia
+
+- **Dope Fusion** (Various) - *Food Truck*
+- **Hits The Spot** (Various) - *Food Stall*
+    - 2024-10-06 - Bomb Burger
+        - *"Our signature low & slow hickory smoked beef on a fresh flybread bun topped with Sydney's best seafood chowder!"*
+    - 2024-10-06 - Brisket Loaded Kai Fries
+- **Izzy's Grill** (Various) - *Food Stall*
+- **Kofte Express** (Turkish) - *Food Stall*
+    - 2024-12-15 - Beef Kofte Roll
+    - 2024-12-15 - Chicken Kofte Roll
+- **La Mila Sandwiches** (Argentinian, Sandwiches) - *Food Stall*
+    - 2024-11-17 - Completo (Sandwich)
+- **Pho Kim Dung** (Vietnamese) - *Food Stall*
+    - 2024-11-10 -  Combination Vermicelli Salad
+    - 2024-11-10 -  Crackling Pork Belly Banh Mi
+- **Reevive Soul Food** (Various) - *Food Stall*
+    - 2024-09-22 - "The Lot" (Burger)
+- **Señor Toro** (Mexican, Tacos) - *Food Stall*
+    - 2024-09-29 - Birria Taco
+    - 2024-10-06 - Queso Taco
+- **Silk Road Uyghur Food** (Uyghur) - *Food Stall*
+    - 2024-08-09 - BBQ Lamb Skewers
+- **The Pharaoh BBQ** (African, Sandwiches) - *Food Truck*
+    - 2024-08-09 - The Ultimate (Sandwich)
+- **Tricycle Burgers** (Filipino, Burgers) - *Food Stall*
+    - 2025-02-09 - Adobo Burger
+        - *"Grilled beef pork smash patty w/ adobo mayo and slaw"*
+    - 2024-11-03 - Beefstik Burger
+        - *"Beef smash patty w/ fresh onions and beefStik mayo"*
+    - 2025-02-09 - Cheese Burger
+        - *"Beef smash patty w/ american cheese"*
+    - 2024-11-17 - Classic Burger
+        - *"Beef smash patty lettuce, tomato & onion"*
+    - 2025-02-09 - Onion Burger
+        - *"Thinly sliced onions smashed beef patty"*
+    - 2024-11-17 - Sisig Burger
+        - *"Pork smash patty w/ fresh salsa and chicharon"*
+
+## Products
+
+*These items are not establishment-specific, and they may have been purchased at a supermarket or some other store.*
+
+### Instant Noodles
+
+Cup noodles:
+
+- S-tier
+    - TODO
+- A-tier
+    - TODO
+- B-tier
+    - TODO
+- C-tier
+    - TODO
+- D-tier
+    - TODO
+
+Stovetop noodles:
+
+- TODO
+
+### Drinks, Alcoholic
+
+Ale:
+
+- 2025-04-16 - Young Henrys - Newtowner Australian Pale Ale
+
+Cider:
+
+- 2019-03-28 - Rekorderlig - Premium Strawberry & Lime Cider
+
+IPA:
+
+- 2024-03-01 - Batch Brewing Co. - Trippy Hippy West Coast IPA
+
+Lager:
+
+- 2024-12-08 - Green Beacon - Midnight Rising Black Lager
+- 2025-01-24 - Stone & Wood - Green Coast Crisp
+
+### Drinks, Non-Alcoholic
 
 - Soft Drinks:
     - 2025-01-24 - Bundaberg - Lemon, Lime & Bitters
@@ -636,13 +678,7 @@ import It from "./_list.Item"; //_
     - 2024-12-12 - Fanta
     - 2022-12-11 - Lotte Milkis
 
-## Others
+### Others
 
-*This section just lists out various dishes where I can't reveal the date and venue for.*
-
-- Chicken Burrito Bowl with Pico de Gallo
-- Cucumber, tomato, provolone, sweet mustard, rocket sandwich
-- Harissa chicken, cumin, lemon yoghurt, parsley
-- Jerk Spiced Chicken Breast
-- Pulled Pork Burger
+*I'm not really sure what else is worth listing.*
 

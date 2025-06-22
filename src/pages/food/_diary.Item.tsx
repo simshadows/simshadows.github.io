@@ -1,5 +1,5 @@
 /*
- * Filename: _list.Item.tsx
+ * Filename: _diary.Item.tsx
  * Author:   simshadows <contact@simshadows.com>
  *
  * Formats a single food item.
@@ -11,6 +11,9 @@ import {readDateStr} from "@helpers/props";
 
 const categoryRemaps: ReadonlyMap<string | undefined, string> = new Map([
     ["entree", "entrée"],
+]);
+const disallowedCategories: ReadonlySet<string> = new Set([
+    "entrée", // We enforce the use all-ASCII.
 ]);
 
 interface Props {
@@ -43,7 +46,11 @@ export default function Item(
     }: Props
 ) {
     const categoryElem = (()=>{
-        const s: string | undefined = categoryRemaps.get(c) || c;
+        const _c = c?.trim();
+        if (disallowedCategories.has(_c)) {
+            throw new Error(`Food item category ${_c} is disallowed.`);
+        }
+        const s: string | undefined = categoryRemaps.get(_c) || _c;
         return (s) ? <><b>[{s}]</b> </> : <></>;
     })();
 
@@ -57,9 +64,25 @@ export default function Item(
         return (help) ? ` (${help})` : "";
     })();
 
-    isTakeout; // TODO: We should use this
-    isDelivery; // TODO: We should use this
-    cost; // Currently unused
+    // isTakeout and isDelivery are unused for rendering. We just validate it.
+    if (typeof isTakeout !== "boolean") {
+        throw new Error("isTakeout must be a boolean.");
+    }
+    if (typeof isDelivery !== "boolean") {
+        throw new Error("isTakeout must be a boolean.");
+    }
+    if (isTakeout && isDelivery) {
+        throw new Error("isTakeout and isDelivery are mutually exclusive.");
+    }
+
+    // cost is unused for rendering. We just validate it.
+    if (
+        cost !== undefined
+        && (typeof cost !== "string" || cost.trim().length === 0)
+    ) {
+        throw new Error("Cost must be a non-empty string.");
+    }
+
     return <span>{categoryElem}{date}{n}{_help}</span>;
 }
 
