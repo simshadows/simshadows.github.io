@@ -27,6 +27,9 @@ export interface Frontmatter {
     // Hide the TOC sidebar (only applicable for MDX layouts)
     hidetoc: boolean;
 
+    // Hide the title (does not remove the title from metadata)
+    hidetitle: boolean;
+
     // Mark as a work-in-progress
     wip: boolean;
 }
@@ -35,6 +38,7 @@ type FrontmatterWithOptionals = SomePartial<Frontmatter,
     | "excludeFromMainIndex"
     | "excludeChildrenFromMainIndex"
     | "hidetoc"
+    | "hidetitle"
     | "wip"
 >;
 
@@ -107,6 +111,12 @@ export function makeFrontmatter(obj: unknown): Frontmatter {
     }
 
     // OPTIONAL
+    const hidetitle = ("hidetitle" in obj) ? obj.hidetitle : false;
+    if (typeof hidetitle !== "boolean") {
+        throw err2("a boolean", "hidetitle", hidetitle);
+    }
+
+    // OPTIONAL
     const wip = ("wip" in obj) ? obj.wip : false;
     if (typeof wip !== "boolean") {
         throw err2("a boolean", "wip", wip);
@@ -120,6 +130,7 @@ export function makeFrontmatter(obj: unknown): Frontmatter {
         excludeFromMainIndex,
         excludeChildrenFromMainIndex,
         hidetoc,
+        hidetitle,
         wip,
     };
 }

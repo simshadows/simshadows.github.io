@@ -22,6 +22,7 @@ const f = makeFrontmatter(frontmatter);
     description={f.description}
     keywords={f.keywords}
     hidetoc={f.hidetoc}
+    hidetitle={f.hidetitle}
 >
     <slot />
     <RightSidebar slot="right-sidebar" headings={headings} />

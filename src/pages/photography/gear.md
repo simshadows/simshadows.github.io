@@ -160,3 +160,11 @@ Lenses:
     - The [Sigma Art 20mm F1.4 DG HSM](https://www.sigma-global.com/en/lenses/a015_20_14/) seems like the best full-frame prime. At roughly a 31mm ff equivalent, it seems like a great focal length for me, but is it worth the price and the size?
     - I'm going to need to think through whether I really want to use my old D5200, otherwise this wouldn't be worth the money. I'm not sure I want to buy just to collect.
 
+## Wishlist for future product development
+
+TODO
+
+- computational photography
+- better file transfer experience
+- 28mm and 35mm compact primes
+

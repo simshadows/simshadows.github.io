@@ -9,7 +9,7 @@
 
 import {DateHelper, parseIsoDateStr} from "@helpers/utils";
 
-export function readDateStr(_prop: string): DateHelper | null {
+export function readDateStr(_prop: string): DateHelper {
     const prop: unknown = _prop; // Cast and narrow for stronger validation
     if (!prop || typeof prop !== "string") {
         throw new Error("Expected a truthy string.");

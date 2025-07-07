@@ -1,0 +1,40 @@
+---
+layout: "@layouts/MDLayout.astro"
+title: Cheatsheet for making changes to this website
+description: Cheatsheet for making changes to this website.
+keywords: ["programming"]
+
+indexTitle: Making changes to this website
+hidetoc: true
+wip: true
+---
+
+*You can usually just look at the components/layouts folders to find what you need. This page will list out things that aren't custom components.*
+
+Tables:
+
+```html
+<table class="general">
+    <thead>
+        <tr>
+            <th>head1</th>
+            <th>head2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="2">cell1</td>
+            <td>cell2</td>
+        </tr>
+        <tr>
+            <td>cell3</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">foot</td>
+        </tr>
+    </tfoot>
+</table>
+```
+

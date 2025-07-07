@@ -9,6 +9,8 @@ import SpoilerBlock from "@components/SpoilerBlock.astro";
 import Todo from "@components/Todo";
 
 import It from "./_diary.Item"; //_
+import Pr from "./_diary.Product"; //_
+import Ve from "./_diary.Venue"; //_
 
 This list is not intended to be a list of recommendations. I like trying new foods, and this list is my way of tracking what I've had. I usually just text-search this page on my phone to check if I've had something.
 
@@ -21,11 +23,11 @@ I sometimes try to put in diacritics/accents or native language characters, but 
 
 ## Establishments
 
-### Sydney, Australia
+### Australia - Sydney
 
-- **ACRO+** (Café) - CBD
-- **Akira Sushi** (Japanese, Sushi) - Seven Hills
-- **Art Gallery of New South Wales** (Cafe) - CBD
+- <Ve n="ACRO+" c="Cafe" l="Chippendale"/>
+- <Ve n="Akira Sushi" c="Japanese; Sushi" l="Seven Hills"/>
+- <Ve n="Art Gallery of New South Wales" c="Cafe" l="CBD"/>
     - <It d="2019-01-16" n="Cappuccino"/>
 - **Asian Even 2** (Asian) - Seven Hills
     - <It d="2021-11-04" n="Beef Oyster Sauce (Stir Fry)"/>
@@ -422,14 +424,25 @@ I sometimes try to put in diacritics/accents or native language characters, but 
     - **[drinks]** 2025-02-15 - Grass Jelly Milk Tea
     - **[drinks]** 2025-05-01 - Grass Jelly wintermelon
 - **Super Nash Brothers** (Nashville Fried Chicken) - Waterloo
+    - <It c="chicken" d="2025-07-06" n="Tender"/>
+        - On 2025-07-06, I had mine with the "Nash" spice level.
+    - <It c="chicken" d="2025-07-06" n="Thigh"/>
+        - On 2025-07-06, I had mine with the "Reaper" spice level.
     - <It c="chicken" d="2025-06-29" n="Wings" cost="AUD 18.00 for 10 wings"/>
         - *"Crispy fried flats and drumettes"*
         - On 2025-06-29, I had mine with the "Hot" spice level.
     - <It c="burger" d="2025-06-29" n="Double Nash Sando" cost="AUD 22.00"/>
         - *"2x Nash thigh fillets, shredded iceberg, pickles, ranch, garlic milk bun"*
         - On 2025-06-29, I had mine with the "Hot" spice level.
+    - <It c="burger" d="2025-07-06" n="Super 'Murica Sando" cost="AUD 23.00"/>
+        - *"Super Nash Thigh, Waffle Buns, Fried Cheese Curds, Smoked Maple Aioli"*
     - <It c="snack pack" d="2025-06-29" n="Super Frango Snack Pack" cost="AUD 20.00"/>
         - On 2025-06-29, I had mine with the "Nash" spice level.
+    - <It c="snack pack" d="2025-07-06" n="Super Poutine" cost="AUD 22.00"/>
+        - *"Chopped Thigh, Fried Cheese Curds, Smoked Maple Aioli, Chicken Gravy, Crinkle Cut Chips"*
+        - On 2025-07-06, I had mine with the "Hot" spice level.
+    - <It c="sides" d="2025-07-06" n="Chips"/>
+    - <It c="sides" d="2025-07-06" n="Fried Cheese Curds" cost="AUD 10.00"/>
     - <It c="sides" d="2025-06-29" n="Mash & Gravy"/>
     - *When I went on 2025-06-29, there were four spice levels. In order from mildest to spiciest: "Southern Fried", "Nash", "Hot", and "Reaper".*
 - **Surly's American Tavern** (American) - Surry Hills
@@ -527,7 +540,7 @@ I sometimes try to put in diacritics/accents or native language characters, but 
 - **Yummy Noodle & BBQ** (Chinese, Guilin Rice Noodles) - CBD, Haymarket
     - <It d="2025-06-09" n="Guilin Beef Rice Noodle"/>
 
-### Melbourne, Australia
+### Australia - Melbourne
 
 - **La Petite Crêperie** (French, Crêpes) - CBD, Town Hall
     - Crêpe with Orange Marmalade
@@ -549,6 +562,7 @@ I sometimes try to put in diacritics/accents or native language characters, but 
     - <It c="baked" d="2024-06-01" n="Apple Crumble Log"/>
     - <It c="baked" d="2024-09-02" n="BBQ Cheese & Bacon Pizza Rolls"/>
     - <It c="baked" d="2025-05-20" n="Cinnamon Donuts"/>
+    - <It c="baked" d="2025-06-30" n="Custard Pull Apart"/>
     - <It c="baked" d="2024-05-22" n="Hawaiian Pizza Rolls"/>
 - **Dominos** (Pizza)
     - 2024-09-14 - Margherita Pizza
@@ -708,7 +722,7 @@ I sometimes try to put in diacritics/accents or native language characters, but 
     - <It c="baked" d="2022-11-04" n="Apple Crumble Scroll"/>
     - <It c="baked" d="2025-02-13" n="Blueberry Muffins"/>
     - <It c="baked" d="2023-10-05" n="Carrot Cake Loaded Muffins"/>
-    - <It c="baked" d="2024-10-29" n="Choc Chip Muffin"/>
+    - <It c="baked" d="2025-07-03" n="Chocolate Chip Muffin"/>
     - <It c="baked" d="2024-11-23" n="Cinnamon Iced Scroll"/>
     - <It c="baked" d="2023-08-31" n="Cinnamon Scroll"/>
     - <It c="baked" d="2024-04-08" n="Cheese And Bacon Rolls"/>
@@ -742,6 +756,13 @@ I sometimes try to put in diacritics/accents or native language characters, but 
     - 2024-07-27 - Salted Butterscotch Frozen Yoghurt
     - 2024-05-18 - Signature Tart Frozen Yoghurt
 
+### Philippines
+
+- <Ve n="Chowking" c="Chinese"/>
+- <Ve n="Greenwich" c="Pizza"/>
+- <Ve n="Jollibee" c="Variety"/>
+- <Ve n="KFC" c="Fried Chicken"/>
+
 ### Others
 
 *This section just lists out various dishes from establishments that I can't reveal the time and date for.*
@@ -752,13 +773,9 @@ I sometimes try to put in diacritics/accents or native language characters, but 
 - Jerk Spiced Chicken Breast
 - Pulled Pork Burger
 
-## Establishments (Cafés)
-
-*Cafés are interesting because I usually just get a fairly standard drink*
-
 ## Food Trucks/Stalls
 
-### Sydney, Australia
+### Australia - Sydney
 
 - **Dope Fusion** (Various) - *Food Truck*
 - **Hits The Spot** (Various) - *Food Stall*
@@ -803,7 +820,7 @@ I sometimes try to put in diacritics/accents or native language characters, but 
 
 *I'll just list whatever I come across.*
 
-### Sydney, Australia
+### Australia - Sydney
 
 - **Buffet By Bonnie** (Variety)
 - **Caterez** (Variety)
@@ -836,12 +853,13 @@ I sometimes try to put in diacritics/accents or native language characters, but 
 
 Cup noodles:
 
-- 2023-12-13 - Fantastic - Beef Flavour
+- <Pr d="2023-12-13" b="Fantastic" n="Beef Flavour"/>
 - 2025-06-28 - Fantastic - Chicken Flavour
 - 2023-12-16 - Fantastic - Oriental Flavour
 - unknowndate - Ichiban Delicious - Instant Noodles with Spicy Sichuan Beef
 - 2024-04-12 - Jinmailang - Emperor - Artificial Spicy Chicken Flavour
 - 2025-06-20 - Kang Shi Fu - Braised Beef Flavour
+- 2025-07-02 - Kang Shi Fu - Pickled Vegetables Beef Flavour
 - 2025-06-23 - Kang Shi Fu - Seafood Flavour
 - 2025-06-16 - Kang Shi Fu - Soyed Beef Flavour
 - 2023-09-06 - Knorr - Korean Kimchi Ramen
@@ -912,6 +930,7 @@ Wine - Sparkling:
 ### Drinks, Non-Alcoholic
 
 - Carbonated Drinks:
+    - 2025-07-06 - 7 Up
     - 2022-11-24 - Bundaberg - Ginger Beer
     - 2025-01-24 - Bundaberg - Lemon, Lime & Bitters
     - 2024-12-12 - Coca-Cola

@@ -46,22 +46,22 @@ export default function Item(
     }: Props
 ) {
     const categoryElem = (()=>{
-        const _c = c?.trim();
+        const _c = c?.trim() || "";
         if (disallowedCategories.has(_c)) {
             throw new Error(`Food item category ${_c} is disallowed.`);
         }
         const s: string | undefined = categoryRemaps.get(_c) || _c;
-        return (s) ? <><b>[{s}]</b> </> : <></>;
+        return s ? <><b>[{s}]</b> </> : <></>;
     })();
 
     const date = (()=>{
         if (d === "unknown") return "????-??-?? - ";
         const x = readDateStr(d);
-        return (x) ? `${x} - ` : "????-??-?? - ";
+        return x ? `${x} - ` : "????-??-?? - ";
     })();
 
     const _help = (()=>{
-        return (help) ? ` (${help})` : "";
+        return help ? ` (${help})` : "";
     })();
 
     // isTakeout and isDelivery are unused for rendering. We just validate it.
