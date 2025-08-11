@@ -1,5 +1,5 @@
 /*
- * Filename: _diary.Venue.tsx
+ * Filename: Venue.tsx
  * Author:   simshadows <contact@simshadows.com>
  *
  * Formats a single venue.

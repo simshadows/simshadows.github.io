@@ -158,20 +158,34 @@ s.split(",");
 
 ```ts
 class MyClass1 {
+    #myPrivateField = 123;
+
+    static #myPrivateStaticField = 456;
+
     constructor(x, y) {
         this.x = x;
         this.y = y;
     }
 
-    get myGetter() {
+    get myProp() {
         return this.x;
     }
-    set mySetter(v) {
+    set myProp(v) {
         this.x = v;
     }
 
     myMethod() {
+        return this.#myPrivateField + this.#myPrivateMethod();
+    }
+    #myPrivateMethod() {
         return this.x + this.y;
+    }
+
+    static myStaticMethod() {
+        return "foobar";
+    }
+    static #myPrivateStaticMethod() {
+        return "barbaz";
     }
 }
 

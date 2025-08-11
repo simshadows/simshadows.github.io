@@ -10,7 +10,7 @@ import Todo from "@components/Todo";
 
 import It from "./_diary.Item"; //_
 import Pr from "./_diary.Product"; //_
-import Ve from "./_diary.Venue"; //_
+import Ve from "./_common/Venue"; //_
 
 This list is not intended to be a list of recommendations. I like trying new foods, and this list is my way of tracking what I've had. I usually just text-search this page on my phone to check if I've had something.
 
@@ -119,6 +119,8 @@ I sometimes try to put in diacritics/accents or native language characters, but 
     - 2024-12-21 - Plain Dosa
 - **Durga Paan & Falooda House** (Indian, Desserts) - Harris Park
     - 2024-10-26 - Royal Kesar-Pista Falooda
+- <Ve n="East West Gourmet" c="Chinese" l="Chatswood"/>
+    - <It d="2025-08-02" n="Seafood Wonton Noodle Soup" cost="AUD 18.50"/>
 - <Ve n="Eat Fuh" c="Vietnamese" l="North Sydney"/>
     - <It d="2025-07-23" n="Noodle Salad (Crackling Pork Belly)" cost="AUD 18.00 for Large"/>
 - **El Beik** (Lebanese) - Lidcombe
@@ -266,7 +268,7 @@ I sometimes try to put in diacritics/accents or native language characters, but 
         - *"strawberry / condensed milk foam; meringue cookie"*
     - <It c="desserts" d="2025-01-10" n="Double Chocolate & Raspberry Kakigōri" cost="AUD 25.00"/>
         - *"chocolate / raspberry; biscoff cookie"*
-- **Kao Kao** (Korean Fusion, Japanese, Chinese) - Haymarket
+- <Ve n="Kao Kao" c="Korean Fusion; Japanese; Chinese" l="Haymarket"/>
     - <It c="mains" d="2025-06-26" n="Grilled Bulgogi" cost="AUD 28.00"/>
     - <It c="mains" d="2025-06-26" n="Prawn Croquette" cost="AUD 12.50 for 3 pieces"/>
     - <It c="sides" d="2025-06-26" n="Steamed Rice" cost="AUD 3.50"/>
@@ -408,6 +410,10 @@ I sometimes try to put in diacritics/accents or native language characters, but 
     - <It c="entree" d="2025-05-09" n="Cút Rang Muối"/>
         - *"Salt & Pepper Quails"*
 - **Pho Pasteur** (Vietnamese) - Blacktown
+- <Ve n="Popo Gourmet" c="Malaysian Fusion" l="North Sydney"/>
+    - <It d="2025-08-07" n="Char Kway Teow (Combination)" isTakeout/>
+        - *"Stir Fry Rice Noodle, Egg, Bean Sprout, Garlic Chive and POPO's Special Sauce"*
+        - *"Combination-Prawn, squid, fish fillet, chicken (B)"*
 - **Public Coffee** (Café) - North Sydney
 - **Pulse Milk Bar** (Café) - Pyrmont
     - <It c="coffee" d="2024-08-03" n="Latte"/>
@@ -673,6 +679,8 @@ I sometimes try to put in diacritics/accents or native language characters, but 
     - <It c="coffee" d="2023-07-21" n="Birthday Cake Flavoured Latte"/>
     - <It c="coffee" d="2024-06-13" n="Cappuccino"/>
     - <It c="coffee" d="2024-05-24" n="Flat White"/>
+    - <It c="coffee" d="2025-08-03" n="Piccolo Latté"/>
+        - I have no idea what the right accent of that 'e' is, but this was what was written on the PoS machine.
 - **Mixue** (Tea)
     - <It c="drink" d="2024-06-22" n="Brown Sugar Pearl Milk Tea"/>
 - **Okami** (Japanese, AYCE)
@@ -721,12 +729,17 @@ I sometimes try to put in diacritics/accents or native language characters, but 
     - **[sides]** 2023-12-07 - Cheesy Garlic Bread
     - **[sides]** 2023-12-07 - Cheesy Spud Bites
     - **[sides]** 2023-12-07 - Hot Chips
-- **Sal's Authentic New York Pizza** (Pizza)
-    - **[pizza]** 2025-02-14 - Brooklyn
+- <Ve n="Sal's Authentic New York Pizza" c="Pizza"/>
+    - <It c="pizza" d="2025-02-14" n="Brooklyn"/>
         - *"Trio of our specialty pepperoni, sausage & meatball"*
-    - **[pizza]** 2025-02-14 - The Big Pineapple
+    - <It c="pizza" d="2025-08-07" n="Pepperoni"/>
+        - *"Sal's famous New York pepperoni"*
+    - <It c="pizza" d="2025-08-07" n="Staten Island"/>
+        - *It's a vegan pizza.*
+        - *"Marinara sauce, Sal's Nutzarella, mushrooms, basil, garlic, EVOO"*
+    - <It c="pizza" d="2025-02-14" n="The Big Pineapple"/>
         - *"Free range champagne ham, organic pineapple and premium NYC blend mozzarella"*
-    - **[sides]** 2025-02-14 - Buffalo Wings
+    - <It c="sides" d="2025-02-14" n="Buffalo Wings"/>
         - *"In our Authentic "Original 1964 Buffalo" recipe or HOT Buffalo Sauce with extra heat! Served with your choice of Chunky Blue Cheese or Creamy Ranch Sauce & fresh cut Celery."*
 - **Soul Origin** (Salads)
     - *You select one or more salad options and a dressing.*
@@ -896,8 +909,10 @@ Cup noodles:
 - 2025-06-28 - Fantastic - Chicken Flavour
 - 2023-12-16 - Fantastic - Oriental Flavour
 - unknowndate - Ichiban Delicious - Instant Noodles with Spicy Sichuan Beef
+- 2025-08-06 - Ichiban Delicious - Instant Noodles with Roast Pork
 - 2024-04-12 - Jinmailang - Emperor - Artificial Spicy Chicken Flavour
 - 2025-06-20 - Kang Shi Fu - Braised Beef Flavour
+- 2025-08-02 - Kang Shi Fu - Hot & Spicy Beef Flavour
 - 2025-07-26 - Kang Shi Fu - Mushroom Chicken Flavour
 - 2025-07-02 - Kang Shi Fu - Pickled Vegetables Beef Flavour
 - 2025-06-23 - Kang Shi Fu - Seafood Flavour
@@ -920,6 +935,7 @@ Cup noodles:
 - 2023-09-23 - Paldo - Gomtang
 - 2023-09-08 - Paldo - Hot & Spicy
 - 2025-04-23 - Paldo - Instant noodles with seafood soup
+- 2025-08-07 - Paldo - Lobster King Noodle
 - 2023-09-21 - Paldo - Namja Ramyun
 - 2023-09-14 - Paldo - Volcano Chicken Noodle
 - 2019-11-09 - Red Panda - Tom Yum Flavoured Noodles
