@@ -67,6 +67,7 @@ function makeFullTree(): PageTree {
         "/src/pages/**/*.mdx",
         "!/src/pages/**/_*",
         "!/src/pages/**/_*/**/*",
+        "!/src/pages/**/\\[*.astro",
     ], {eager: true});
 
     const reprocessedResult = Object.entries(globResult).map(([k, v]) => {

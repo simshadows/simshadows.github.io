@@ -1,0 +1,23 @@
+---
+import {getCollection, render} from "astro:content";
+import Layout from "@layouts/GeneralLayout.astro";
+
+import {makeFrontmatter} from "@helpers/frontmatter";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blogPosts");
+    return posts.map(post => ({
+        params: {slug: post.id},
+        props: {post},
+    }));
+}
+
+const {post} = Astro.props;
+const {Content} = await render(post);
+
+const frontmatter = makeFrontmatter({...post.data});
+---
+
+<Layout {...frontmatter}>
+    <Content/>
+</Layout>

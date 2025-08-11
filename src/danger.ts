@@ -53,3 +53,14 @@ export function isViteGlobObject(obj: unknown): obj is ViteGlobObject {
     
     return true;
 }
+
+/*
+ * Workaround for casting arbitrary objects to { [key: string]: unknown; }
+ */
+//export function toObjMappingUnknowns(obj: unknown): {[key: string]: unknown;} {
+//    if (!obj || typeof obj !== "object") {
+//        throw new Error("Failed to cast object to { [key: string]: unknown; }");
+//    }
+//    return obj as {[key: string]: unknown;};
+//}
+
