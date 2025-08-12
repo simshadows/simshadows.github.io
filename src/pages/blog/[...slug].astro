@@ -16,7 +16,7 @@ const {post} = Astro.props;
 const {Content} = await render(post);
 
 const frontmatter = makeFrontmatter({
-    description: post.title || "(no description)",
+    description: post.data.title || "(no description)",
     ...post.data,
 });
 ---

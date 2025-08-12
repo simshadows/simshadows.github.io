@@ -7,11 +7,6 @@ hidetoc: true
 categories: ['Gaming']
 ---
 
-{% comment %}
-    # Ideas for future edits
-    https://en.wikipedia.org/wiki/Abandonware#Community_support
-{% endcomment %}
-
 In my [last post](/2018/05/13/01-why-record-gameplay/), I briefly discussed the impending closure of Funorb on the 7th of August this year, and that I started recording all my Arcanists gameplay in order to keep [an archive](https://www.youtube.com/playlist?list=PLn8SsDCCDln2j5MBMmNICvLN3U3JisdYc) of my final moments of fun with the game.
 
 This highlights a problem in gaming where online games die without official support for playing them past server shutdown. **We want to play the game, we bought copies of the game, and the code for the servers to make the game run exists, yet because someone decided it to no longer be a benefit to run them, that's it. The game's gone.**
@@ -19,11 +14,6 @@ This highlights a problem in gaming where online games die without official supp
 This can be particularly frustrating for the fans, and it certainly sucked when I heard that about Jagex's *Funorb*, which hosts my childhood favourites *Arcanists* and *Steel Sentinels*, along with other great games like *Armies of Gielinor* and *Void Hunters*.
 
 Even with the limitations my parents put on my gaming habits back during highschool and the fact that I only had a Funorb subscription for a few short months (since we didn't have a credit card and I was paying through a friend), I racked up 1080 ranked games with Arcanists and 309 ranked games with Steel Sentinels, equating to 347 hours of ranked gameplay (assuming 15 minutes per game), and many more unranked games (particularly with Steel Sentinels). I absolutely loved Arcanists and Steel Sentinels back then, and I still believe they're amazing and fun games that I'd love to return back to on occasion, even if it's just to play with friends and have some casual fun.
-
-{% comment %}
-    Add an Arcanists screenshot here, and maybe a Steel Sentinels screenshot as well.
-    However, I want the Battleforge screenshot to be the thumbnail...
-{% endcomment %}
 
 Similarly, I was a huge fan of EA's *Battleforge* back in the day for its unique and riotous-fun take on the real-time strategy formula, awesome theme, and its lovely and colourful art direction.
 
@@ -55,10 +45,6 @@ Even for currently-supported MMORPGs such as World of Warcraft, private servers 
 Moving away from MMORPGs, many other online games have also been successfully revived by players.
 
 Official servers were axed in 2011 for *Supreme Commander: Forged Alliance*, though LAN play and a campaign were still available. The [*Forged Alliance Forever*](https://www.faforever.com/) project was the community's response to this, giving the game a multiplayer lobby and match-making (thus avoiding the need for VPNs) that continues to run to this day, and a community client with frequent patching for bug fixes and balance changes.
-
-{% comment %}
-    Fact check: Did FAF exist before the server shutdown?
-{% endcomment %}
 
 The Forged Alliance Forever client even goes well-beyond the game's original functionality, adding additional features such as improved map and mod management, online map/mod/replay repositories, social features, a rating system, and co-op campaigns.
 

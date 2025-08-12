@@ -67,7 +67,7 @@ When you add an OPML subscription to Inoreader, it periodically pings a URL cont
 
 Here are my OPML subscriptions at the time of writing:
 
-![My OPML subscriptions in Inoreader.](/images/posts/2018-04-25-01-img1-inoreader-opml-subs.png){:height="100%" width="100%"}
+![My OPML subscriptions in Inoreader.](./_images/2018-04-25-01-img1-inoreader-opml-subs.png)
 
 Each OPML subscription in Inoreader is associated with a particular tag.
 
