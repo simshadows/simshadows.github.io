@@ -4,7 +4,9 @@ import {getCollection} from "astro:content";
 
 import {fm} from "@helpers/frontmatter";
 
-const allPosts = await getCollection("blogPosts");
+import {postToFrontmatter} from "./_common/post-to-frontmatter";
+
+const allPosts = (await getCollection("blogPosts")).map(postToFrontmatter);
 
 export const frontmatter = fm({
     title: "Sim's Blog",
@@ -24,7 +26,7 @@ export const frontmatter = fm({
 <ul>
     {
         allPosts.map((post) => (
-            <li><a href={`/blog/${post.id}/`}>{post.data.title}</a></li>
+            <li><a href={`/blog/${post.post.id}/`}>{post.frontmatter.title}</a></li>
         ))
     }
 </ul>

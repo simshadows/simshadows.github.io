@@ -38,6 +38,7 @@ const RAW_RUNTIME_STATE =
           ["@types/katex", "npm:0.16.7"],\
           ["@types/node", "npm:22.13.10"],\
           ["astro", "npm:5.5.2"],\
+          ["dayjs", "npm:1.11.13"],\
           ["hast-util-from-html", "npm:2.0.3"],\
           ["hast-util-to-text", "npm:4.0.2"],\
           ["katex", "npm:0.16.21"],\
@@ -3137,6 +3138,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/cssesc-npm-3.0.0-15ec56f86f-0e161912c1.zip/node_modules/cssesc/",\
         "packageDependencies": [\
           ["cssesc", "npm:3.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["dayjs", [\
+      ["npm:1.11.13", {\
+        "packageLocation": "./.yarn/cache/dayjs-npm-1.11.13-d478bb9479-7374d63ab1.zip/node_modules/dayjs/",\
+        "packageDependencies": [\
+          ["dayjs", "npm:1.11.13"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6648,6 +6658,7 @@ const RAW_RUNTIME_STATE =
           ["@types/katex", "npm:0.16.7"],\
           ["@types/node", "npm:22.13.10"],\
           ["astro", "npm:5.5.2"],\
+          ["dayjs", "npm:1.11.13"],\
           ["hast-util-from-html", "npm:2.0.3"],\
           ["hast-util-to-text", "npm:4.0.2"],\
           ["katex", "npm:0.16.21"],\
