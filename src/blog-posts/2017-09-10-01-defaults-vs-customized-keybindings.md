@@ -1,6 +1,9 @@
 ---
-layout: post
-title:  "Defaults vs Customized Keybindings"
+title: "Defaults vs Customized Keybindings"
+keywords: []
+
+hidetoc: true
+
 categories: ['Tech', 'Learning Diary']
 original_url: "https://simsrambles.wordpress.com/2017/09/10/defaults-vs-customized-keybindings/"
 ---

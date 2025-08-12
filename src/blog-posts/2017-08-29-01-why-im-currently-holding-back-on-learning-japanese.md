@@ -1,6 +1,9 @@
 ---
-layout: post
-title:  "Why I'm Currently Holding Back On Learning Japanese"
+title: "Why I'm Currently Holding Back On Learning Japanese"
+keywords: []
+
+hidetoc: true
+
 categories: ['Japanese Learning Diary', 'Learning Diary']
 original_url: "https://simsrambles.wordpress.com/2017/08/29/why-im-currently-holding-back-on-learning-japanese/"
 ---

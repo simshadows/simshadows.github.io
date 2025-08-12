@@ -1,6 +1,9 @@
 ---
-layout: post
-title:  "Death And Rebirth Of Discontinued Online Games"
+title: "Death And Rebirth Of Discontinued Online Games"
+keywords: []
+
+hidetoc: true
+
 categories: ['Gaming']
 ---
 
@@ -26,7 +29,10 @@ Similarly, I was a huge fan of EA's *Battleforge* back in the day for its unique
 
 Battleforge shut down on the 31st of October, 2013, which was also the day of my highschool HSC Physics exam. Despite the importance of that exam, I still decided to make the most of Battleforge's final hours, even sleeping at my computer desk with Battleforge open the night before the exam.
 
+```
+(REMOVED IMAGE DUE TO COPYRIGHT)
 ![Some Battleforge campaign gameplay.](/images/posts/2018-05-19-01-img1-battleforge.jpg){:height="90%" width="90%"}
+```
 
 ## Community Revivals
 
@@ -34,11 +40,17 @@ Thankfully, it's not always doom and gloom. If a game is popular enough, people 
 
 Player-made private servers are a staple for MMORPGs such as *World of Warcraft*, *Runescape*, older titles such as *Ultima Online*, and dead titles such as *Star Wars Galaxies*.
 
+```
+(REMOVED IMAGE DUE TO COPYRIGHT)
 ![Star Wars Galaxies.](/images/posts/2018-05-19-01-img2-starwarsgalaxies.jpg){:height="90%" width="90%"}
+```
 
 Even for currently-supported MMORPGs such as World of Warcraft, private servers are still popular for allowing players to [play older versions](https://www.kotaku.com.au/2015/05/the-people-who-still-play-world-of-warcraft-like-its-2006/) of these titles, particularly if these older versions are preferred over newer versions, or simply for the nostalgia. Private servers also naturally gave full control to the community, and even allowed adding of custom content to the games.
 
+```
+(REMOVED IMAGE DUE TO COPYRIGHT)
 ![Vanilla World of Warcraft gameplay screenshot.](/images/posts/2018-05-19-01-img3-worldofwarcraft.jpg){:height="90%" width="90%"}
+```
 
 Moving away from MMORPGs, many other online games have also been successfully revived by players.
 
@@ -50,7 +62,10 @@ Official servers were axed in 2011 for *Supreme Commander: Forged Alliance*, tho
 
 The Forged Alliance Forever client even goes well-beyond the game's original functionality, adding additional features such as improved map and mod management, online map/mod/replay repositories, social features, a rating system, and co-op campaigns.
 
+```
+(REMOVED IMAGE DUE TO COPYRIGHT)
 ![Supreme Commander gameplay screenshot.](/images/posts/2018-05-19-01-img4-supcomfa.jpg){:height="90%" width="90%"}
+```
 
 *Allegiance* is a shining example of what happens when a company supports its community's efforts for revival. Allegiance's online servers got the axe back in 2002, but succeeded well beyond its expiration date thanks to its small but loyal following.
 
@@ -60,7 +75,10 @@ I discovered the game around 2005 through a free games magazine and despite bein
 
 Despite the dated graphics and technology, Allegiance in my opinion stands the test of time for its uniqueness, community, and gameplay breadth and depth that few games are able to compare with.
 
+```
+(REMOVED IMAGE DUE TO COPYRIGHT)
 ![Allegiance combat gameplay screenshot.](/images/posts/2018-05-19-01-img5-allegiance.jpg){:height="90%" width="90%"}
+```
 
 On the other side of the spectrum, companies are also known to flex their legal rights against server emulators, with *Asheron’s Call* and it sequel *Asheron's Call 2* being merely two examples of emulator efforts [falling to legal cease and desist orders](http://massivelyop.com/2017/09/18/asherons-call-emulator-lead-explains-what-went-down-with-the-cease-and-desist/).
 
@@ -94,13 +112,19 @@ Letting go of a well-loved videogame can be particularly painful. Oftentimes, we
 
 For games with no dependence on online services (such as retro console games and most single-player PC games), it's not too bad to simply lose the disk, cartridge, and/or console. Someone probably ripped it and the game is probably playable on a console emulator. Or in the worst case, you'd likely still be able to find a second-hand copy of the game for sale somewhere, and an old console or a copy of Windows 95 to play it with. Everything is self-sufficient enough that it's quite easy to go back to.
 
+```
+(REMOVED IMAGE DUE TO COPYRIGHT)
 ![Nintendo Entertainment System](/images/posts/2018-05-19-01-img6-nes.jpg){:height="70%" width="70%"}
+```
 
 But for online games with complete dependence on online services, the loss of these services renders them completely unplayable on their own. The online server components are often highly complex yet kept secret by the company that hosted them, meaning a major technical effort is required by a group of skilled reverse-engineers in order to bring it back. Depending on the game, this can take years before an acceptable server emulator is developed (if at all). It's been almost 5 years yet the Skylords Reborn project is only just moving towards an open-beta for its Battleforge server emulator. And even if the game gets a server emulator, its accuracy depends on how well people understand the game from the outside. (Exact precise accuracy may not matter, but it's still worth noting.)
 
 If the game is niche, unique, and actually good, its loss can be even more painful. If similar-enough games exist, then the loss of an original isn't so bad. They won't be the same, but they can be similar enough to still enjoy the same gameplay. However, this is certainly not the case for Arcanists, Steel Sentinels, Battleforge, and Allegiance. All of these are great games that offer unique gameplay elements and combinations unseen elsewhere.
 
+```
+(REMOVED IMAGE DUE TO COPYRIGHT)
 ![Steel Sentinels gameplay screenshot.](/images/posts/2018-05-19-01-img7-steelsentinels.png){:height="90%" width="90%"}
+```
 
 The uniqueness factor perhaps applies a bit less to Supreme Commander's fairly bread-and-butter RTS gameplay (not to mention the fact that the campaign and LAN are still playable without servers anyway). However, I contend that Supreme Commander offers a well-crafted, timeless take on the genre that is difficult to replace, so it offers itself as an example, showing that you don't need to be particularly niche to be sorely missed.
 

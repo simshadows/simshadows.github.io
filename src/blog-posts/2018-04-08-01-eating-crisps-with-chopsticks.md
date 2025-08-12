@@ -1,6 +1,9 @@
 ---
-layout: post
-title:  "Eating Crisps with Chopsticks"
+title: "Eating Crisps with Chopsticks"
+keywords: []
+
+hidetoc: true
+
 categories: ['Lifestyle']
 ---
 

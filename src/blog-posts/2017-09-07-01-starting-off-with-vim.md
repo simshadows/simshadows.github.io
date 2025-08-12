@@ -1,6 +1,9 @@
 ---
-layout: post
-title:  "Starting Off With Vim"
+title: "Starting Off With Vim"
+keywords: []
+
+hidetoc: true
+
 categories: ['Tech', 'Learning Diary']
 original_url: "https://simsrambles.wordpress.com/2017/09/07/starting-off-with-vim/"
 ---

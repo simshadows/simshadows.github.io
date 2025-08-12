@@ -1,6 +1,9 @@
 ---
-layout: post
-title:  "RSS: Syncing Inoreader and Newsboat via. GitHub"
+title: "RSS: Syncing Inoreader and Newsboat via. GitHub"
+keywords: []
+
+hidetoc: true
+
 categories: ['Tech']
 tags: ['RSS']
 ---

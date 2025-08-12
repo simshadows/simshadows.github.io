@@ -1,6 +1,9 @@
 ---
-layout: post
-title:  "VirtualBox Linux VM Development Environments"
+title: "VirtualBox Linux VM Development Environments"
+keywords: []
+
+hidetoc: true
+
 categories: ['Tech', 'Learning Diary']
 ---
 

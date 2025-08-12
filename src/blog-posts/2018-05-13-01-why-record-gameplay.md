@@ -1,6 +1,9 @@
 ---
-layout: post
-title:  "Why Record Your Gameplay?"
+title: "Why Record Your Gameplay?"
+keywords: []
+
+hidetoc: true
+
 categories: ['Gaming']
 ---
 
