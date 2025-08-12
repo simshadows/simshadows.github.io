@@ -7,7 +7,7 @@ import {fm} from "@helpers/frontmatter";
 const allPosts = await getCollection("blogPosts");
 
 export const frontmatter = fm({
-    title: "Sim's Blog",
+    title: "Sim's Blog Archive",
     description: "Sim's blog.",
     keywords: ["blog"],
 });
@@ -15,9 +15,7 @@ export const frontmatter = fm({
 
 <Layout {...frontmatter}>
 
-<h1>Blog</h1>
-
-<p><a href="./archive">Archive</a></p>
+<h1>Blog Archive</h1>
 
 <p><em>This is an early WIP focused on experimenting with ways to manage my blog posts before migrating <a href="https://blog.simshadows.com/">my old blog</a> to this website.</em></p>
 
