@@ -2,6 +2,11 @@ import {type APIContext} from "astro";
 import rss from "@astrojs/rss";
 import {getCollection} from "astro:content";
 
+import {
+    BLOG_RSS_TITLE,
+    BLOG_RSS_DESCRIPTION,
+} from "@root/constants";
+
 import {postToFrontmatter} from "./_common/post-to-frontmatter";
 
 export async function GET(context: APIContext) {
@@ -12,8 +17,8 @@ export async function GET(context: APIContext) {
     }
 
     return rss({
-        title: "Sim's Blog",
-        description: "Sim's Blog",
+        title: BLOG_RSS_TITLE,
+        description: BLOG_RSS_DESCRIPTION,
         site: url,
         items: posts.map((post) => {
             const bf = postToFrontmatter(post);
