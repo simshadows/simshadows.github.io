@@ -23,7 +23,7 @@ export const frontmatter = fm({
 
 {
     allPosts.map((post) => (
-    <p>{post.date.toISOString()} &raquo; <a href={`/blog/${post.post.id}/`}>{post.frontmatter.title}</a></p>
+    <p>{post.date.toISOString()} &raquo; <a href={post.urlAbsolutePath}>{post.frontmatter.title}</a></p>
     ))
 }
 

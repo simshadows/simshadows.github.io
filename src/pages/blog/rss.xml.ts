@@ -22,7 +22,7 @@ export async function GET(context: APIContext) {
                 title: bf.frontmatter.title,
                 pubDate: bf.date.toDate(),
                 description: bf.frontmatter.description,
-                link: `/blog/${bf.post.id}/`,
+                link: bf.urlAbsolutePath,
             }
         }),
     });

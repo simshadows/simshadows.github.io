@@ -15,6 +15,7 @@ import {
 type ThisCollectionEntry = CollectionEntry<"blogPosts">;
 
 export interface BlogFrontmatter {
+    urlAbsolutePath: string;
     date: TimezonelessDate;
     post: ThisCollectionEntry;
     frontmatter: Frontmatter;
@@ -37,14 +38,12 @@ export function postToFrontmatter(post: ThisCollectionEntry): BlogFrontmatter {
         throw filenameErr(post.id);
     }
 
-    const date = TimezonelessDate.parseISODate(idMandatoryPrefix.slice(0, 10));
-    const description = post.data.title || "(no description)";
-
     return {
-        date,
+        urlAbsolutePath: `/blog/${post.id}/`,
+        date: TimezonelessDate.parseISODate(idMandatoryPrefix.slice(0, 10)),
         post,
         frontmatter: makeFrontmatter({
-            description,
+            description: post.data.title || "(no description)",
             ...post.data,
         }),
     };
