@@ -30,6 +30,7 @@ const RAW_RUNTIME_STATE =
           ["@astrojs/check", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:0.9.4"],\
           ["@astrojs/mdx", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.2.0"],\
           ["@astrojs/preact", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.0.5"],\
+          ["@astrojs/rss", "npm:4.0.12"],\
           ["@astrojs/sitemap", "npm:3.2.1"],\
           ["@astrojs/ts-plugin", "npm:1.10.4"],\
           ["@babel/core", "npm:7.26.10"],\
@@ -256,6 +257,17 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@astrojs/prism", "npm:3.2.0"],\
           ["prismjs", "npm:1.29.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@astrojs/rss", [\
+      ["npm:4.0.12", {\
+        "packageLocation": "./.yarn/cache/@astrojs-rss-npm-4.0.12-e664111856-7a065ff4bc.zip/node_modules/@astrojs/rss/",\
+        "packageDependencies": [\
+          ["@astrojs/rss", "npm:4.0.12"],\
+          ["fast-xml-parser", "npm:5.2.5"],\
+          ["kleur", "npm:4.1.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5645,6 +5657,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["fast-xml-parser", [\
+      ["npm:5.2.5", {\
+        "packageLocation": "./.yarn/cache/fast-xml-parser-npm-5.2.5-4fd49da1b5-305017cff6.zip/node_modules/fast-xml-parser/",\
+        "packageDependencies": [\
+          ["fast-xml-parser", "npm:5.2.5"],\
+          ["strnum", "npm:2.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["fastq", [\
       ["npm:1.15.0", {\
         "packageLocation": "./.yarn/cache/fastq-npm-1.15.0-1013f6514e-67c01b1c97.zip/node_modules/fastq/",\
@@ -9672,6 +9694,7 @@ const RAW_RUNTIME_STATE =
           ["@astrojs/check", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:0.9.4"],\
           ["@astrojs/mdx", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.2.0"],\
           ["@astrojs/preact", "virtual:94ffa3355b9bc188ccd86b9b23c1f9ff55bca56ca7ab66b0cf2ce1a1598976a5d38b896b804000dbe83051c69fcdf11b0b3d701425a2284a80e7700e8c2095df#npm:4.0.5"],\
+          ["@astrojs/rss", "npm:4.0.12"],\
           ["@astrojs/sitemap", "npm:3.2.1"],\
           ["@astrojs/ts-plugin", "npm:1.10.4"],\
           ["@babel/core", "npm:7.26.10"],\
@@ -9978,6 +10001,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/strip-json-comments-npm-3.1.1-dcb2324823-492f73e272.zip/node_modules/strip-json-comments/",\
         "packageDependencies": [\
           ["strip-json-comments", "npm:3.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["strnum", [\
+      ["npm:2.1.1", {\
+        "packageLocation": "./.yarn/cache/strnum-npm-2.1.1-2f45f2aae3-d5fe6e4333.zip/node_modules/strnum/",\
+        "packageDependencies": [\
+          ["strnum", "npm:2.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\

@@ -36,6 +36,10 @@ export class TimezonelessDate {
         return this.__d.toISOString();
     }
 
+    toDate(): Date {
+        return this.__d.toDate();
+    }
+
     isAfter(other: TimezonelessDate): boolean {
         return this.__d.isAfter(other.__d, "date");
     }

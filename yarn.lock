@@ -159,6 +159,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@astrojs/rss@npm:^4.0.12":
+  version: 4.0.12
+  resolution: "@astrojs/rss@npm:4.0.12"
+  dependencies:
+    fast-xml-parser: "npm:^5.2.0"
+    kleur: "npm:^4.1.5"
+  checksum: 10/7a065ff4bc9e5fa95963593b7be9dcd5ff2b549c5aa682dd06589134b7153779324a7b7d5fd041f8cd6eca34187963f6864444feb46da32b013469a7129826c6
+  languageName: node
+  linkType: hard
+
 "@astrojs/sitemap@npm:3.2.1":
   version: 3.2.1
   resolution: "@astrojs/sitemap@npm:3.2.1"
@@ -4411,6 +4421,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-xml-parser@npm:^5.2.0":
+  version: 5.2.5
+  resolution: "fast-xml-parser@npm:5.2.5"
+  dependencies:
+    strnum: "npm:^2.1.0"
+  bin:
+    fxparser: src/cli/cli.js
+  checksum: 10/305017cff6968a34cbac597317be1516e85c44f650f30d982c84f8c30043e81fd38d39a8810d570136c921399dd43b9ac4775bdfbbbcfee96456f3c086b48bdd
+  languageName: node
+  linkType: hard
+
 "fastq@npm:^1.6.0":
   version: 1.15.0
   resolution: "fastq@npm:1.15.0"
@@ -8104,6 +8125,7 @@ __metadata:
     "@astrojs/check": "npm:0.9.4"
     "@astrojs/mdx": "npm:4.2.0"
     "@astrojs/preact": "npm:4.0.5"
+    "@astrojs/rss": "npm:^4.0.12"
     "@astrojs/sitemap": "npm:3.2.1"
     "@astrojs/ts-plugin": "npm:1.10.4"
     "@babel/core": "npm:^7.26.10"
@@ -8379,6 +8401,13 @@ __metadata:
   version: 3.1.1
   resolution: "strip-json-comments@npm:3.1.1"
   checksum: 10/492f73e27268f9b1c122733f28ecb0e7e8d8a531a6662efbd08e22cccb3f9475e90a1b82cab06a392f6afae6d2de636f977e231296400d0ec5304ba70f166443
+  languageName: node
+  linkType: hard
+
+"strnum@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "strnum@npm:2.1.1"
+  checksum: 10/d5fe6e4333cddc17569331048e403e876ffcf629989815f0359b0caf05dae9441b7eef3d7dd07427313ac8b3f05a8f60abc1f61efc15f97245dbc24028362bc9
   languageName: node
   linkType: hard
 

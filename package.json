@@ -20,6 +20,7 @@
     "@astrojs/check": "0.9.4",
     "@astrojs/mdx": "4.2.0",
     "@astrojs/preact": "4.0.5",
+    "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "3.2.1",
     "@astrojs/ts-plugin": "1.10.4",
     "@babel/core": "^7.26.10",
