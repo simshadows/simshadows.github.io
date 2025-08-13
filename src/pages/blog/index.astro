@@ -6,7 +6,7 @@ import {fm} from "@helpers/frontmatter";
 
 import {postToFrontmatter} from "./_common/post-to-frontmatter";
 
-const allPosts = (await getCollection("blogPosts")).map(postToFrontmatter);
+const allPosts = (await getCollection("blog")).map(postToFrontmatter);
 
 export const frontmatter = fm({
     title: "Sim's Blog",

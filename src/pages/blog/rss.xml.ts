@@ -5,7 +5,7 @@ import {getCollection} from "astro:content";
 import {postToFrontmatter} from "./_common/post-to-frontmatter";
 
 export async function GET(context: APIContext) {
-    const posts = await getCollection("blogPosts");
+    const posts = await getCollection("blog");
     const url = context.site;
     if (!url) {
         throw new Error("Unexpected Falsy url. If this is intentional, please add a way to handle this edge case.");

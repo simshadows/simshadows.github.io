@@ -12,7 +12,7 @@ import {
     makeFrontmatter,
 } from "@helpers/frontmatter";
 
-type ThisCollectionEntry = CollectionEntry<"blogPosts">;
+type ThisCollectionEntry = CollectionEntry<"blog">;
 
 export interface BlogFrontmatter {
     urlAbsolutePath: string;

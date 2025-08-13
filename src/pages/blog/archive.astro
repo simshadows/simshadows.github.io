@@ -6,7 +6,7 @@ import {fm} from "@helpers/frontmatter";
 
 import {postToFrontmatter} from "./_common/post-to-frontmatter";
 
-const allPosts = (await getCollection("blogPosts")).map(postToFrontmatter);
+const allPosts = (await getCollection("blog")).map(postToFrontmatter);
 
 // TODO: Sort posts by date
 
@@ -19,7 +19,7 @@ export const frontmatter = fm({
 
 <Layout {...frontmatter}>
 
-<h1>Blog Archive</h1>
+<h1>Archive</h1>
 
 {
     allPosts.map((post) => (
