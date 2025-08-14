@@ -1,0 +1,8 @@
+article.post {
+    margin-top: 3em;
+    margin-bottom: 5em;
+}
+
+.post-date {
+    font-weight: bold;
+}

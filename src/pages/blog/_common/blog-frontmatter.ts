@@ -23,8 +23,6 @@ export interface BlogFrontmatter {
 };
 
 function filenameErr(filename: string): Error {
-    filename; // TODO: I should actually make the error message specific about
-              //       what the format expectations are.
     return new Error(`Invalid blog post filename '${filename}'. Filenames must start with an ISO8601 date like '2025-03-26-foobar.md'`);
 }
 
