@@ -2,7 +2,7 @@
 import {getCollection, render} from "astro:content";
 import Layout from "@layouts/GeneralLayout.astro";
 
-import {postToFrontmatter} from "./_common/post-to-frontmatter";
+import {postToFrontmatter} from "./_common/blog-frontmatter";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blog");

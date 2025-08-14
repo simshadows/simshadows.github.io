@@ -40,6 +40,17 @@ export class TimezonelessDate {
         return this.__d.toDate();
     }
 
+    /*
+     * Returns a number that guarantees that later dates have larger numbers
+     * than earlier dates, and same dates return the same number.
+     *
+     * (In practice, this is a Unix timestamp, but toOrderedNumber() doesn't
+     * promise any particular timezone.)
+     */
+    toOrderedNumber(): number {
+        return this.__d.unix();
+    }
+
     isAfter(other: TimezonelessDate): boolean {
         return this.__d.isAfter(other.__d, "date");
     }

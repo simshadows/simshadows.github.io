@@ -7,10 +7,15 @@ import {
     BLOG_RSS_DESCRIPTION,
 } from "@root/constants";
 
-import {postToFrontmatter} from "./_common/post-to-frontmatter";
+import {
+    postToFrontmatter,
+    blogFrontmatterCmp,
+} from "./_common/blog-frontmatter";
 
 export async function GET(context: APIContext) {
-    const posts = await getCollection("blog");
+    const posts = (await getCollection("blog")).map(postToFrontmatter);
+    posts.sort(blogFrontmatterCmp);
+
     const url = context.site;
     if (!url) {
         throw new Error("Unexpected Falsy url. If this is intentional, please add a way to handle this edge case.");
@@ -20,9 +25,7 @@ export async function GET(context: APIContext) {
         title: BLOG_RSS_TITLE,
         description: BLOG_RSS_DESCRIPTION,
         site: url,
-        items: posts.map((post) => {
-            const bf = postToFrontmatter(post);
-
+        items: posts.map((bf) => {
             return {
                 title: bf.frontmatter.title,
                 pubDate: bf.date.toDate(),

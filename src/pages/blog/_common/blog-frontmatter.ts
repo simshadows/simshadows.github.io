@@ -1,10 +1,11 @@
 /*
- * Filename: post-to-frontmatter.ts
+ * Filename: blog-frontmatter.ts
  * Author:   simshadows <contact@simshadows.com>
  */
 
 import {type CollectionEntry} from "astro:content";
 
+import {strCmp} from "@helpers/utils";
 import {TimezonelessDate} from "@helpers/timezoneless-date";
 
 import {
@@ -47,4 +48,16 @@ export function postToFrontmatter(post: ThisCollectionEntry): BlogFrontmatter {
             ...post.data,
         }),
     };
+}
+
+/*
+ * A comparison function for sorting chronologically in a consistent way.
+ * Can be used like array.sort(blogFrontmatterCmp).
+ */
+export function blogFrontmatterCmp(
+    a: BlogFrontmatter,
+    b: BlogFrontmatter,
+): number {
+    const dateCmp = a.date.toOrderedNumber() - b.date.toOrderedNumber();
+    return dateCmp || strCmp(a.post.id, b.post.id);
 }
