@@ -20,10 +20,9 @@ export default function Item(
         n,
     }: Props
 ) {
-    const date = (()=>{
-        if (d === "unknown") return "????-??-??";
-        return String(readDateStr(d));
-    })();
+    const date = (d === "unknown")
+        ? "????-??-??"
+        : readDateStr(d).toISOString();
 
     return <span>{date} - {b} - {n}</span>;
 }

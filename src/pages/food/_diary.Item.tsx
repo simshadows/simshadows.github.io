@@ -57,7 +57,7 @@ export default function Item(
     const date = (()=>{
         if (d === "unknown") return "????-??-?? - ";
         const x = readDateStr(d);
-        return x ? `${x} - ` : "????-??-?? - ";
+        return x ? `${x.toISOString()} - ` : "????-??-?? - ";
     })();
 
     const _help = (()=>{
