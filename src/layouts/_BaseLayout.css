@@ -82,11 +82,13 @@ table {
 #masthead__content {
     display: flex;
 }
-#website-title {
+#masthead__title-container {
     font-size: 20px;
     font-weight: bold;
     text-decoration: inherit;
     color: inherit;
+}
+#website-title {
 }
 #masthead__menu {
     display: flex;
@@ -108,9 +110,11 @@ table {
         flex-direction: column;
         row-gap: 1em;
     }
-    #website-title {
+    #masthead__title-container {
         width: 100%;
         text-align: center;
+    }
+    #website-title {
     }
     #masthead__menu {
         margin-right: auto;

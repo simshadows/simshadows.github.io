@@ -7,6 +7,8 @@ export const COPYRIGHT_YEAR = 2025;
 export const GLOBAL_KEYWORDS = ["simshadows"];
 export const SOURCE_CODE_URL = "https://github.com/simshadows/simshadows.github.io";
 
+export const SITE_TITLE2_BLOG = "blog";
+export const BLOG_ROOT = "/blog/";
 export const BLOG_RSS_TITLE = "simshadows";
 export const BLOG_RSS_DESCRIPTION = "it's a blog!";
 

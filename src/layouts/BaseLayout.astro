@@ -15,6 +15,8 @@ import "./_BaseLayout.css";
 
 interface Props {
     title: string;
+    title2?: string | undefined;
+    title2url?: string | undefined;
     description: string;
     keywords: string[];
     noRightSidebar?: boolean;
@@ -23,6 +25,8 @@ interface Props {
 
 const {
     title,
+    title2,
+    title2url,
     description,
     keywords,
     noRightSidebar,
@@ -48,7 +52,13 @@ Full source code is available here:
     />
     <body>
         <div id="masthead" class="no-print"><div id="masthead__content" class="content-column">
-            <a id="website-title" href="/">{SITE_TITLE}</a>
+            <div id="masthead__title-container">
+                <a id="website-title" href="/">{SITE_TITLE}</a>
+                {title2 && <>
+                    <span id="website-title2-separator">/</span>
+                    <a id="website-title2" href={title2url}>{title2.trim()}</span>
+                </>}
+            </div>
             <div id="masthead__menu">
                 <a href="/about/">About</a>
                 <a href={WEB_APPS_URL}>Web Apps</a>

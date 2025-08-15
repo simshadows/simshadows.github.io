@@ -1,0 +1,32 @@
+---
+import {
+    SITE_TITLE2_BLOG,
+    BLOG_ROOT,
+} from "@root/constants";
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    keywords: string[];
+}
+
+const {
+    title,
+    description,
+    keywords,
+} = Astro.props;
+---
+
+<BaseLayout
+    title={title}
+    title2={SITE_TITLE2_BLOG}
+    title2url={BLOG_ROOT}
+    description={description}
+    keywords={keywords}
+    noRightSidebar={true}
+>
+    <slot />
+</BaseLayout>
+
