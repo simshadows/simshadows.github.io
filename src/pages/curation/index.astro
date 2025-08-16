@@ -24,11 +24,12 @@ export const frontmatter = fm({
 <p><em>With each post, I usually attempt to summarize what I found interesting about them. However, keep in mind that my comments may often come with inaccuracies since I'm often writing them from memory, and often taking the video for its word without fact checking. I am working on refining my commentary process to take this into account. (Depending on how I feel about it, I might actually just get rid of commentary to help avoid spreading misinformation.)</em></p>
 
 {posts.map(async (p) => {
-    const {Content} = await render(p);
+    const e = p.collectionEntry;
+    const {Content} = await render(e);
     return <article class="post">
-        <h3>{p.data.title}</h3>
-        {(!!p.data.tldr) && <p>TL;DR: {p.data.tldr}</p>}
-        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${p.data.youtube}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h3>{e.data.title}</h3>
+        {(!!e.data.tldr) && <p>TL;DR: {e.data.tldr}</p>}
+        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${e.data.youtube}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <Content/>
     </article>
 })}
