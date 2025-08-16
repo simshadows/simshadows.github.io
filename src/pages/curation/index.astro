@@ -1,16 +1,32 @@
 ---
 import {render} from "astro:content";
 
-import Layout from "./_layouts/CurationBaseLayout.astro";
 import {fm} from "@helpers/frontmatter";
-
+import PaginationNavigatorBar from "@components/PaginationNavigatorBar";
 import {getCurationCollectionPaginated} from "@helpers/collections/curation";
+
+import Layout from "./_layouts/CurationBaseLayout.astro";
 
 import "./_index.css";
 
 const groups = (await getCurationCollectionPaginated()).groups;
 const posts = groups[0];
 if (!posts) throw new Error();
+
+const mockedPage = {
+    currentPage: 1,
+    lastPage: groups.length,
+    url: {
+        current: "/curation/",
+        prev: undefined,
+        next: "/curation/2/",
+        first: undefined,
+        last: `/curation/${groups.length}/`,
+    },
+};
+function numToURL(i: number): string {
+    return `/curation/${i}/`;
+}
 
 export const frontmatter = fm({
     title: "Sim's Internet Curation",
@@ -24,8 +40,9 @@ export const frontmatter = fm({
 <div id="welcome">
     <p><a href="./about/">About This Page</a></p>
     <p><em>Disclaimer: Posts shown here or any commentary I write may contain factual errors or imbalanced representation.</em></p>
-    <p><a href="./2/">Next Page</a></p>
 </div>
+
+<PaginationNavigatorBar page={mockedPage} numberToURL={numToURL}/>
 
 {posts.map(async (p) => {
     const renderedContent = await (async ()=>{
@@ -46,6 +63,8 @@ export const frontmatter = fm({
         {renderedContent}
     </article>
 })}
+
+<PaginationNavigatorBar page={mockedPage} numberToURL={numToURL}/>
 
 
 </Layout>
