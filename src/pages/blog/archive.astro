@@ -1,16 +1,11 @@
 ---
 import Layout from "./_layouts/BlogBaseLayout.astro";
-import {getCollection} from "astro:content";
 
 import {fm} from "@helpers/frontmatter";
 
-import {
-    postToFrontmatter,
-    blogFrontmatterCmp,
-} from "./_common/blog-frontmatter";
+import {getBlogCollection} from "@helpers/collections/blog";
 
-const allPosts = (await getCollection("blog")).map(postToFrontmatter);
-allPosts.sort(blogFrontmatterCmp);
+const posts = await getBlogCollection();
 
 export const frontmatter = fm({
     title: "Sim's Blog Archive",
@@ -24,8 +19,8 @@ export const frontmatter = fm({
 <h1>Archive</h1>
 
 {
-    allPosts.map((post) => (
-    <p>{post.date.toISOString()} &raquo; <a href={post.urlAbsolutePath}>{post.frontmatter.title}</a></p>
+    posts.map((p) => (
+        <p>{p.date.toISOString()} &raquo; <a href={p.urlAbsolutePath}>{p.frontmatter.title}</a></p>
     ))
 }
 

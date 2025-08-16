@@ -1,9 +1,14 @@
 /*
- * Filename: blog-frontmatter.ts
+ * Filename: blog.ts
  * Author:   simshadows <contact@simshadows.com>
+ *
+ * Helpers for the blog collection.
  */
 
-import {type CollectionEntry} from "astro:content";
+import {
+    type CollectionEntry,
+    getCollection,
+} from "astro:content";
 
 import {strCmp} from "@helpers/utils";
 import {TimezonelessDate} from "@helpers/timezoneless-date";
@@ -15,7 +20,7 @@ import {
 
 type ThisCollectionEntry = CollectionEntry<"blog">;
 
-export interface BlogFrontmatter {
+export interface BlogPost {
     urlAbsolutePath: string;
     date: TimezonelessDate;
     post: ThisCollectionEntry;
@@ -26,7 +31,7 @@ function filenameErr(filename: string): Error {
     return new Error(`Invalid blog post filename '${filename}'. Filenames must start with an ISO8601 date like '2025-03-26-foobar.md'`);
 }
 
-export function postToFrontmatter(post: ThisCollectionEntry): BlogFrontmatter {
+function collectionEntryToBlogPost(post: ThisCollectionEntry): BlogPost {
     const idMandatoryPrefix = post.id.slice(0, 11);
 
     if (
@@ -48,14 +53,24 @@ export function postToFrontmatter(post: ThisCollectionEntry): BlogFrontmatter {
     };
 }
 
-/*
- * A comparison function for sorting chronologically in a consistent way.
- * Can be used like array.sort(blogFrontmatterCmp).
- */
-export function blogFrontmatterCmp(
-    a: BlogFrontmatter,
-    b: BlogFrontmatter,
-): number {
+
+function blogPostCmp(a: BlogPost, b: BlogPost): number {
     const dateCmp = a.date.toOrderedNumber() - b.date.toOrderedNumber();
     return dateCmp || strCmp(a.post.id, b.post.id);
 }
+
+
+/*
+ * Returns a processed blog collection.
+ *
+ * The returned array is sorted in a stable chronological order by default.
+ * Set `sorted` <-- `false` if order is not important.
+ */
+export async function getBlogCollection(
+    sorted: boolean = true,
+): Promise<BlogPost[]> {
+    const posts = (await getCollection("blog")).map(collectionEntryToBlogPost);
+    if (sorted) posts.sort(blogPostCmp);
+    return posts;
+}
+

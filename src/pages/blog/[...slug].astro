@@ -1,24 +1,22 @@
 ---
-import {getCollection, render} from "astro:content";
+import {render} from "astro:content";
 import Layout from "./_layouts/BlogBaseLayout.astro";
 
-import {postToFrontmatter} from "./_common/blog-frontmatter";
+import {getBlogCollection} from "@helpers/collections/blog";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
+    const posts = await getBlogCollection(false);
     return posts.map(post => ({
-        params: {slug: post.id},
+        params: {slug: post.post.id},
         props: {post},
     }));
 }
 
 const {post} = Astro.props;
-const {Content} = await render(post);
-
-const bf = postToFrontmatter(post);
+const {Content} = await render(post.post);
 ---
 
-<Layout {...bf.frontmatter}>
-    <h1>{bf.frontmatter.title}</h1>
+<Layout {...post.frontmatter}>
+    <h1>{post.frontmatter.title}</h1>
     <Content/>
 </Layout>

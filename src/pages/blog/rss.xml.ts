@@ -1,20 +1,15 @@
 import {type APIContext} from "astro";
 import rss from "@astrojs/rss";
-import {getCollection} from "astro:content";
 
 import {
     BLOG_RSS_TITLE,
     BLOG_RSS_DESCRIPTION,
 } from "@root/constants";
 
-import {
-    postToFrontmatter,
-    blogFrontmatterCmp,
-} from "./_common/blog-frontmatter";
+import {getBlogCollection} from "@helpers/collections/blog";
 
 export async function GET(context: APIContext) {
-    const posts = (await getCollection("blog")).map(postToFrontmatter);
-    posts.sort(blogFrontmatterCmp);
+    const posts = await getBlogCollection();
 
     const url = context.site;
     if (!url) {
@@ -25,12 +20,12 @@ export async function GET(context: APIContext) {
         title: BLOG_RSS_TITLE,
         description: BLOG_RSS_DESCRIPTION,
         site: url,
-        items: posts.map((bf) => {
+        items: posts.map((p) => {
             return {
-                title: bf.frontmatter.title,
-                pubDate: bf.date.toDate(),
-                description: bf.frontmatter.description,
-                link: bf.urlAbsolutePath,
+                title: p.frontmatter.title,
+                pubDate: p.date.toDate(),
+                description: p.frontmatter.description,
+                link: p.urlAbsolutePath,
             }
         }),
     });

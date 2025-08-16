@@ -1,18 +1,14 @@
 ---
-import {getCollection, render} from "astro:content";
+import {render} from "astro:content";
 
 import Layout from "./_layouts/BlogBaseLayout.astro";
 import {fm} from "@helpers/frontmatter";
 
-import {
-    postToFrontmatter,
-    blogFrontmatterCmp,
-} from "./_common/blog-frontmatter";
+import {getBlogCollection} from "@helpers/collections/blog";
 
 import "./_index.css";
 
-const allPosts = (await getCollection("blog")).map(postToFrontmatter);
-allPosts.sort(blogFrontmatterCmp);
+const posts = await getBlogCollection();
 
 export const frontmatter = fm({
     title: "Sim's Blog",
@@ -27,11 +23,11 @@ export const frontmatter = fm({
 
 <p><em>This is an early WIP focused on experimenting with ways to manage my blog posts before migrating <a href="https://blog.simshadows.com/">my old blog</a> to this website.</em></p>
 
-{allPosts.map(async (bf) => {
-    const {Content} = await render(bf.post);
+{posts.map(async (p) => {
+    const {Content} = await render(p.post);
     return <article class="post">
-        <p><span class="post-date">{bf.date.toISOString()}<span></p>
-        <h1><a href={bf.urlAbsolutePath}>{bf.frontmatter.title}</a></h1>
+        <p><span class="post-date">{p.date.toISOString()}<span></p>
+        <h1><a href={p.urlAbsolutePath}>{p.frontmatter.title}</a></h1>
         <Content/>
     </article>
 })}
