@@ -10,24 +10,48 @@ import {
     getCollection,
 } from "astro:content";
 
+import {strCmp} from "@helpers/utils";
+
+import {
+    type DatedProcessed,
+    processDated,
+    cmpDated
+} from "./_common/_dated-entries";
+
+
 type ThisCollectionEntry = CollectionEntry<"curation">;
 
-export interface CurationPost {
-    //date: TimezonelessDate;
+
+interface CurationPost extends DatedProcessed {
     collectionEntry: ThisCollectionEntry;
 };
 
-function collectionEntryToPost(post: ThisCollectionEntry): CurationPost {
+
+function collectionEntryToPost(entry: ThisCollectionEntry): CurationPost {
     return {
-        collectionEntry: post,
+        ...processDated(entry.id),
+        collectionEntry: entry,
     };
 }
 
+
+function cmp(a: CurationPost, b: CurationPost): number {
+    return cmpDated(a, b) || strCmp(a.collectionEntry.id, b.collectionEntry.id);
+}
+
+
 /*
  * Returns a curation collection.
+ *
+ * The returned array is sorted in a stable reverse chronological order by
+ * default.
+ * Set `sorted` <-- `false` if order is not important.
  */
-export async function getCurationCollection(): Promise<CurationPost[]> {
+export async function getCurationCollection(
+    sorted: boolean = true,
+): Promise<CurationPost[]> {
     const posts = (await getCollection("curation")).map(collectionEntryToPost);
+    if (sorted) posts.sort(cmp);
     return posts;
 }
 
