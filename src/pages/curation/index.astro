@@ -1,0 +1,35 @@
+---
+import {render} from "astro:content";
+
+import Layout from "./_layouts/CurationBaseLayout.astro";
+import {fm} from "@helpers/frontmatter";
+
+import {getCurationCollection} from "@helpers/collections/curation";
+
+const posts = await getCurationCollection();
+
+export const frontmatter = fm({
+    title: "Sim's Internet Curation",
+    description: "A hand-curated feed of internet content.",
+    keywords: ["content curation"],
+});
+---
+
+<Layout {...frontmatter}>
+
+<p><em>Welcome to my hand-curated feed of stuff I reckon is worth sharing on the internet.</em></p>
+
+<p><em>With each post, I usually attempt to summarize what I found interesting about them. However, keep in mind that my comments may often come with inaccuracies since I'm often writing them from memory, and often taking the video for its word without fact checking. I am working on refining my commentary process to take this into account. (Depending on how I feel about it, I might actually just get rid of commentary to help avoid spreading misinformation.)</em></p>
+
+{posts.map(async (p) => {
+    const {Content} = await render(p);
+    return <article class="post">
+        <h3>{p.data.title}</h3>
+        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${p.data.youtube}?si=Oj4SBCptSQiL5CXz`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <Content/>
+    </article>
+})}
+
+
+</Layout>
+

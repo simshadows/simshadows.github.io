@@ -19,6 +19,15 @@ const blog = defineCollection({
     }),
 });
 
+const curation = defineCollection({
+    loader: glob({pattern: "**/[^_]*.md", base: "./content/curation"}),
+    schema: z.object({
+        title: z.string(),
+        youtube: z.string(),
+    }),
+});
+
 export const collections = {
     blog,
+    curation,
 };
