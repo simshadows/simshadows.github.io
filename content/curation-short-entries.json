@@ -1,6 +1,116 @@
 [
 
 {
+  "date": "2014-08-05",
+  "title": "Elevator Hacking: From the Pit to the Penthouse",
+  "youtube": "ZUvGfuLlZus"
+},
+{
+  "date": "2015-04-28",
+  "title": "What I Wish I Knew When I Was Younger",
+  "youtube": "YMPzDiraNnA"
+},
+{
+  "date": "2016-02-03",
+  "title": "history of japan",
+  "youtube": "Mh5LY4Mz15o"
+},
+{
+  "date": "2017-06-23",
+  "title": "FINAL FANTASY XIV Documentary Part #1 - \"One Point O\"",
+  "youtube": "Xs0yQKI7Yw4"
+},
+{
+  "date": "2017-06-26",
+  "title": "FINAL FANTASY XIV Documentary Part #2 - \"Rewriting History\"",
+  "youtube": "aoOI5R-6u8k"
+},
+{
+  "date": "2018-06-14",
+  "title": "The Man Who COULD Have Been Bill Gates [Gary Kildall]",
+  "youtube": "sDIK-C6dGks"
+},
+{
+  "date": "2019-04-29",
+  "title": "You Will Never Do Anything Remarkable",
+  "youtube": "vmIUvp0e1bw"
+},
+{
+  "date": "2019-06-19",
+  "title": "The Weird History of JavaScript",
+  "youtube": "Sh6lK57Cuk4"
+},
+{
+  "date": "2019-07-10",
+  "title": "Preventing the Collapse of Civilization / Jonathan Blow (Thekla, Inc)",
+  "youtube": "ZSRHeXYDLko"
+},
+{
+  "date": "2020-01-09",
+  "title": "The Engoodening of No Man's Sky",
+  "youtube": "O5BJVO3PDeQ"
+},
+{
+  "date": "2021-04-01",
+  "title": "The Surprising Secret of Synchronization",
+  "youtube": "t-_VPRCtiUg"
+},
+{
+  "date": "2021-05-23",
+  "title": "Math's Fundamental Flaw",
+  "youtube": "HeQX2HjkcNo"
+},
+{
+  "date": "2021-05-23",
+  "title": "Grading is a Scam (and Motivation is a Myth) | A Professor Explains",
+  "youtube": "fe-SZ_FPZew"
+},
+{
+  "date": "2021-08-10",
+  "title": "How The Immune System ACTUALLY Works - IMMUNE",
+  "youtube": "lXfEK8G8CUI"
+},
+{
+  "date": "2022-01-22",
+  "title": "Line Goes Up - The Problem With NFTs",
+  "youtube": "YQ_xWvX1n9g"
+},
+{
+  "date": "2022-04-04",
+  "title": "Why Going Faster-Than-Light Leads to Time Paradoxes",
+  "youtube": "an0M-wcHw5A"
+},
+{
+  "date": "2022-06-09",
+  "title": "RR #204 - John A. List: Improving the World with Economics | Rational Reminder 204",
+  "youtube": "aATTir2euM0"
+},
+{
+  "date": "2022-06-30",
+  "title": "The Riddle That Seems Impossible Even If You Know The Answer",
+  "youtube": "iSNsgj1OCLA"
+},
+{
+  "date": "2022-07-23",
+  "title": "The Man Who Killed Millions and Saved Billions",
+  "youtube": "EvknN89JoWo"
+},
+{
+  "date": "2022-07-25",
+  "title": "Everything might change forever this century (or we'll go extinct)",
+  "youtube": "3K25VPdbAjU"
+},
+{
+  "date": "2022-08-03",
+  "title": "The Expert Myth",
+  "youtube": "5eW6Eagr9XA"
+},
+{
+  "date": "2022-08-05",
+  "title": "John Carmack: Doom, Quake, VR, AGI, Programming, Video Games, and Rockets | Lex Fridman Podcast #309",
+  "youtube": "I845O57ZSy4"
+},
+{
   "date": "2022-10-21",
   "title": "DEF CON 30 - Roger Dingledine - How Russia is trying to block Tor",
   "youtube": "YlZZQYLIXe8"
@@ -10,6 +120,31 @@
   "title": "Vampire Survivors Only Works Because We're Stupid",
   "youtube": "bkVKLPvXBUc",
   "synopsis": "TL;DR: A discussion about how different games manipulate numbers and probabilities, sometimes even lying to the user to make the game as engaging as possible, or feel better."
+},
+{
+  "date": "2023-02-25",
+  "title": "Knowledge Based Games, and Why You Should Play Them",
+  "youtube": "tkv05ZO7d8I"
+},
+{
+  "date": "2023-03-18",
+  "title": "Why Doesn't the Industry Make Good Girls' Games?",
+  "youtube": "-BtmNI-xTbQ"
+},
+{
+  "date": "2023-07-12",
+  "title": "The world's biggest problem? Powerful psychopaths. | Brian Klaas",
+  "youtube": "3eBN_9rMoVI"
+},
+{
+  "date": "2023-12-27",
+  "title": "How The Wealthy Gaslight America",
+  "youtube": "iifU7rF0hVc"
+},
+{
+  "date": "2024-03-31",
+  "title": "The Insane Engineering of the Gameboy",
+  "youtube": "BKm45Az02YE"
 },
 {
   "date": "2025-04-09",
