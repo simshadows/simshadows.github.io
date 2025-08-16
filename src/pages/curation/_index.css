@@ -1,4 +1,16 @@
+#welcome {
+    margin-top: 1.5em;
+}
+
 article.post {
     margin-top: 3em;
     margin-bottom: 4em;
+}
+
+.post-date {
+    /* font-size: initial; */
+    font-weight: bold;
+}
+.post-title {
+    margin-top: 0.3em;
 }

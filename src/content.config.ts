@@ -24,7 +24,7 @@ const curation = defineCollection({
     schema: z.object({
         title: z.string(),
         youtube: z.string(),
-        tldr: z.string().optional(),
+        synopsis: z.string().optional(),
     }),
 });
 

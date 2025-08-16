@@ -1,7 +1,7 @@
 ---
 title: "The Banned Peripheral That Broke An Entire Esport"
 youtube: X3186wAsQSQ
-tldr: "It's a sound mixer to combine game audio with VoIP communication."
+synopsis: "TL;DR: It's a sound mixer to combine game audio with VoIP communication."
 ---
 
 Halo tournaments back in the day consisted of players on individual monitor+speaker setups in a loud room with shouting fans while they attempted to physically communicate with their teammates next to them.

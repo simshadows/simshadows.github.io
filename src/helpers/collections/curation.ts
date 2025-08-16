@@ -14,6 +14,7 @@ import {isUnknownArray} from "@root/danger";
 import {
     objGetDate,
     objGetStr,
+    objGetStrOptional,
 } from "@helpers/failfast-validation";
 import {strCmp} from "@helpers/utils";
 
@@ -31,11 +32,11 @@ type ThisCollectionEntry = CollectionEntry<"curation">;
 
 interface CurationPost extends DatedProcessed {
     sortString: string;
-    collectionEntry: ThisCollectionEntry | null;
+    collectionEntry: ThisCollectionEntry | undefined;
 
     title: string;
-    tldr: string | null;
-    youtubeVideoID: string | null;
+    synopsis: string | undefined;
+    youtubeVideoID: string | undefined;
 };
 
 
@@ -51,19 +52,15 @@ function getShortEntries(): CurationPost[] {
             throw new Error("Object is probably not actually an object.");
         }
 
-        const date = objGetDate(obj, "date");
-        const title = objGetStr(obj, "title");
-        const youtubeVideoID = objGetStr(obj, "youtube");
-
         return {
-            date,
+            date: objGetDate(obj, "date"),
 
             sortString: "todo",
-            collectionEntry: null,
+            collectionEntry: undefined,
 
-            title,
-            tldr: null,
-            youtubeVideoID,
+            title: objGetStr(obj, "title"),
+            synopsis: objGetStrOptional(obj, "synopsis"),
+            youtubeVideoID: objGetStr(obj, "youtube"),
         };
     });
 }
@@ -77,7 +74,7 @@ function collectionEntryToPost(entry: ThisCollectionEntry): CurationPost {
         collectionEntry: entry,
 
         title: entry.data.title,
-        tldr: entry.data.tldr || null,
+        synopsis: entry.data.synopsis,
         youtubeVideoID: entry.data.youtube,
     };
 }

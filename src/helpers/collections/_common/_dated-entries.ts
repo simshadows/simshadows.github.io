@@ -34,6 +34,6 @@ export function cmpDated(
     a: DatedProcessed,
     b: DatedProcessed,
 ): number {
-    return a.date.toOrderedNumber() - b.date.toOrderedNumber();
+    return b.date.toOrderedNumber() - a.date.toOrderedNumber();
 }
 

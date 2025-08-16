@@ -19,9 +19,10 @@ export const frontmatter = fm({
 
 <Layout {...frontmatter}>
 
-<p><em>Welcome to my hand-curated feed of internet stuff I reckon is worth sharing.</em></p>
-
-<p><em>With each post, I usually attempt to summarize what I found interesting about them. However, keep in mind that my comments may often come with inaccuracies since I'm often writing them from memory, and often taking the video for its word without fact checking. I am working on refining my commentary process to take this into account. (Depending on how I feel about it, I might actually just get rid of commentary to help avoid spreading misinformation.)</em></p>
+<div id="welcome">
+    <p><a href="./about/">About This Page</a></p>
+    <p><em>Disclaimer: Posts shown here or any commentary I write may contain factual errors or imbalanced representation.</em></p>
+</div>
 
 {posts.map(async (p) => {
     const renderedContent = await (async ()=>{
@@ -31,10 +32,10 @@ export const frontmatter = fm({
     })();
 
     return <article class="post">
-        <h3>{p.title}</h3>
-        <p>{p.date.toISOString()}</p>
-        {(!!p.tldr) &&
-            <p>TL;DR: {p.tldr}</p>
+        <div class="post-date">{p.date.toISOString()}</div>
+        <h3 class="post-title">{p.title}</h3>
+        {(!!p.synopsis) &&
+            <p>{p.synopsis}</p>
         }
         {(!!p.youtubeVideoID) &&
             <iframe width="560" height="315" src={`https://www.youtube.com/embed/${p.youtubeVideoID}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

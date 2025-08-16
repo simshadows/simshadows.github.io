@@ -12,7 +12,11 @@
 import {getAttribute} from "@root/danger-tech-debt";
 import {TimezonelessDate} from "@helpers/timezoneless-date";
 
-export function objGetStr(obj: unknown, k: string, errMsg: string = ""): string {
+export function objGetStr(
+    obj: unknown,
+    k: string,
+    errMsg: string = "",
+): string {
     errMsg = errMsg ? ` ${errMsg}` : "";
 
     const v = (()=>{
@@ -28,6 +32,26 @@ export function objGetStr(obj: unknown, k: string, errMsg: string = ""): string 
     })();
 
     if (typeof v !== "string") {
+        throw new Error(`Failed to read object. Key '${k}' must have a string value.${errMsg}`);
+    }
+    return v;
+}
+export function objGetStrOptional(
+    obj: unknown,
+    k: string,
+    errMsg: string = "",
+): string | undefined {
+    errMsg = errMsg ? ` ${errMsg}` : "";
+
+    const v = (()=>{
+        try {
+            return getAttribute(obj, k);
+        } catch (e) {
+            return undefined;
+        }
+    })();
+
+    if ((v !== undefined) && (typeof v !== "string")) {
         throw new Error(`Failed to read object. Key '${k}' must have a string value.${errMsg}`);
     }
     return v;
