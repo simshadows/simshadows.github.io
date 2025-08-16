@@ -6,6 +6,8 @@ import {fm} from "@helpers/frontmatter";
 
 import {getCurationCollection} from "@helpers/collections/curation";
 
+import "./_index.css";
+
 const posts = await getCurationCollection();
 
 export const frontmatter = fm({
@@ -25,7 +27,8 @@ export const frontmatter = fm({
     const {Content} = await render(p);
     return <article class="post">
         <h3>{p.data.title}</h3>
-        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${p.data.youtube}?si=Oj4SBCptSQiL5CXz`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        {(!!p.data.tldr) && <p>TL;DR: {p.data.tldr}</p>}
+        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${p.data.youtube}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <Content/>
     </article>
 })}
