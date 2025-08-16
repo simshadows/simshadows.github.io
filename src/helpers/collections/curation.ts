@@ -40,6 +40,8 @@ export interface CurationPost extends DatedProcessed {
 
     title: string;
     synopsis: string | undefined;
+
+    url: string | undefined;
     youtubeVideoID: string | undefined;
 };
 
@@ -72,7 +74,9 @@ function getShortEntries(): CurationPost[] {
 
             title: objGetStr(obj, "title"),
             synopsis: objGetStrOptional(obj, "synopsis"),
-            youtubeVideoID: objGetStr(obj, "youtube"),
+
+            url: objGetStrOptional(obj, "url"),
+            youtubeVideoID: objGetStrOptional(obj, "youtube"),
         };
     });
 }
@@ -87,6 +91,8 @@ function collectionEntryToPost(entry: ThisCollectionEntry): CurationPost {
 
         title: entry.data.title,
         synopsis: entry.data.synopsis,
+
+        url: undefined, // TODO: NOT YET IMPLEMENTED
         youtubeVideoID: entry.data.youtube,
     };
 }
