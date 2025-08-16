@@ -16,3 +16,10 @@ export function getAttribute(obj: unknown, k: string): unknown {
     return (obj as {[_k: string]: unknown})[k];
 }
 
+/*
+ * This doesn't really do anything other than mark a dangerous cast.
+ */
+//export function dangerousCast<T>(x: any): T {
+//    return x as T;
+//}
+

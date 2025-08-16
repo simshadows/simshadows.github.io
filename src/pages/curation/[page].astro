@@ -1,30 +1,47 @@
 ---
+import {type GetStaticPathsOptions} from "astro";
 import {render} from "astro:content";
 
-import Layout from "./_layouts/CurationBaseLayout.astro";
 import {fm} from "@helpers/frontmatter";
 
-import {getCurationCollectionPaginated} from "@helpers/collections/curation";
+import {
+    type CurationPost,
+    getCurationCollectionPaginated,
+} from "@helpers/collections/curation";
+import Layout from "./_layouts/CurationBaseLayout.astro";
 
 import "./_index.css";
 
-const groups = (await getCurationCollectionPaginated()).groups;
-const posts = groups[0];
-if (!posts) throw new Error();
+export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
+    const groups = (await getCurationCollectionPaginated()).groups;
+    return paginate([...groups], {pageSize: 1});
+}
 
 export const frontmatter = fm({
     title: "Sim's Internet Curation",
     description: "A hand-curated feed of internet content.",
     keywords: ["content curation"],
 });
+
+const props = Astro.props;
+const page = props.page;
+const groups = page.data;
+
+const _posts = groups[0];
+if (!_posts) throw new Error();
+const posts: CurationPost[] = _posts;
 ---
+
 
 <Layout {...frontmatter}>
 
 <div id="welcome">
     <p><a href="./about/">About This Page</a></p>
     <p><em>Disclaimer: Posts shown here or any commentary I write may contain factual errors or imbalanced representation.</em></p>
-    <p><a href="./2/">Next Page</a></p>
+</div>
+<div class="pages-bar">
+    <p>Current page: {page.currentPage}</p>
+    <p>Go to: <a href={page.url.first}>First</a> <a href={page.url.prev}>Prev</a> <a href={page.url.next}>Next</a> <a href={page.url.last}>Last</a></p>
 </div>
 
 {posts.map(async (p) => {

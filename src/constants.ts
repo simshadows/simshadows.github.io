@@ -14,6 +14,7 @@ export const BLOG_RSS_DESCRIPTION = "it's a blog!";
 
 export const SITE_TITLE2_CURATION = "internet curation";
 export const CURATION_ROOT = "/curation/";
+export const CURATION_ITEMS_PER_PAGE = 10;
 
 export const PUBLIC_EMAIL = "contact@simshadows.com";
 

@@ -11,12 +11,16 @@ import {
 } from "astro:content";
 
 import {isUnknownArray} from "@root/danger";
+import {CURATION_ITEMS_PER_PAGE} from "@root/constants";
 import {
     objGetDate,
     objGetStr,
     objGetStrOptional,
 } from "@helpers/failfast-validation";
-import {strCmp} from "@helpers/utils";
+import {
+    strCmp,
+    groupBySize,
+} from "@helpers/utils";
 
 import {
     type DatedProcessed,
@@ -30,13 +34,17 @@ import shortEntriesRaw from "@root/../content/curation-short-entries.json";
 type ThisCollectionEntry = CollectionEntry<"curation">;
 
 
-interface CurationPost extends DatedProcessed {
+export interface CurationPost extends DatedProcessed {
     sortString: string;
     collectionEntry: ThisCollectionEntry | undefined;
 
     title: string;
     synopsis: string | undefined;
     youtubeVideoID: string | undefined;
+};
+
+interface CurationPostsPaginated {
+    groups: CurationPost[][];
 };
 
 interface CurationCollectionStats {
@@ -108,8 +116,18 @@ export async function getCurationCollection(
 }
 
 
-export async function getCurationCollectionStats(): Promise<CurationCollectionStats> {
+/*
+ * Always sorted.
+ */
+export async function getCurationCollectionPaginated(): Promise<CurationPostsPaginated> {
     const posts = await getCurationCollection();
+    const groups = groupBySize(posts, CURATION_ITEMS_PER_PAGE);
+    return {groups};
+}
+
+
+export async function getCurationCollectionStats(): Promise<CurationCollectionStats> {
+    const posts = await getCurationCollection(false);
     return {
         count: posts.length,
     };
