@@ -39,6 +39,10 @@ interface CurationPost extends DatedProcessed {
     youtubeVideoID: string | undefined;
 };
 
+interface CurationCollectionStats {
+    count: number;
+};
+
 
 function getShortEntries(): CurationPost[] {
     const raw: unknown = shortEntriesRaw;
@@ -101,5 +105,13 @@ export async function getCurationCollection(
     ];
     if (sorted) posts.sort(cmp);
     return posts;
+}
+
+
+export async function getCurationCollectionStats(): Promise<CurationCollectionStats> {
+    const posts = await getCurationCollection();
+    return {
+        count: posts.length,
+    };
 }
 

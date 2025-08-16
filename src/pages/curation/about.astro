@@ -1,6 +1,9 @@
 ---
 import Layout from "./_layouts/CurationBaseLayout.astro";
 import {fm} from "@helpers/frontmatter";
+import {getCurationCollectionStats} from "@helpers/collections/curation";
+
+const stats = await getCurationCollectionStats();
 
 export const frontmatter = fm({
     title: "About Sim's Internet Curation",
@@ -18,6 +21,9 @@ export const frontmatter = fm({
 </p>
 <p>
     With each post, I usually attempt to summarize what I found interesting about them. However, keep in mind that my comments may often come with inaccuracies since I'm often writing them from memory, and often taking the video for its word without fact checking. I am working on refining my commentary process to take this into account. (Depending on how I feel about it, I might actually just get rid of commentary to help avoid spreading misinformation.)
+</p>
+<p>
+    There are currently {stats.count} entries in the feed.
 </p>
 
 
