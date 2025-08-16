@@ -19,6 +19,9 @@ export function isInteger(obj: unknown): obj is number {
  * Still an open issue as of writing:
  * <https://github.com/microsoft/TypeScript/issues/17002>
  */
+export function isUnknownArray(obj: unknown): obj is unknown[] {
+    return Array.isArray(obj);
+}
 export function isStrArray(obj: unknown): obj is string[] {
     if (!Array.isArray(obj)) return false;
     for (const v of obj) {

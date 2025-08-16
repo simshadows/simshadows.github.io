@@ -19,18 +19,27 @@ export const frontmatter = fm({
 
 <Layout {...frontmatter}>
 
-<p><em>Welcome to my hand-curated feed of stuff I reckon is worth sharing on the internet.</em></p>
+<p><em>Welcome to my hand-curated feed of internet stuff I reckon is worth sharing.</em></p>
 
 <p><em>With each post, I usually attempt to summarize what I found interesting about them. However, keep in mind that my comments may often come with inaccuracies since I'm often writing them from memory, and often taking the video for its word without fact checking. I am working on refining my commentary process to take this into account. (Depending on how I feel about it, I might actually just get rid of commentary to help avoid spreading misinformation.)</em></p>
 
 {posts.map(async (p) => {
-    const e = p.collectionEntry;
-    const {Content} = await render(e);
+    const renderedContent = await (async ()=>{
+        if (!p.collectionEntry) return null;
+        const {Content} = await render(p.collectionEntry);
+        return <Content/>;
+    })();
+
     return <article class="post">
-        <h3>{e.data.title}</h3>
-        {(!!e.data.tldr) && <p>TL;DR: {e.data.tldr}</p>}
-        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${e.data.youtube}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <Content/>
+        <h3>{p.title}</h3>
+        <p>{p.date.toISOString()}</p>
+        {(!!p.tldr) &&
+            <p>TL;DR: {p.tldr}</p>
+        }
+        {(!!p.youtubeVideoID) &&
+            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${p.youtubeVideoID}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        }
+        {renderedContent}
     </article>
 })}
 
