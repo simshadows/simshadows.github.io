@@ -3,6 +3,7 @@ import {type GetStaticPathsOptions} from "astro";
 import {render} from "astro:content";
 
 import {fm} from "@helpers/frontmatter";
+import PaginationNavigatorBar from "@components/PaginationNavigatorBar";
 
 import {
     type CurationPost,
@@ -11,6 +12,10 @@ import {
 import Layout from "./_layouts/CurationBaseLayout.astro";
 
 import "./_index.css";
+
+function numToURL(i: number): string {
+    return `/curation/${i}/`;
+}
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
     const groups = (await getCurationCollectionPaginated()).groups;
@@ -39,10 +44,7 @@ const posts: CurationPost[] = _posts;
     <p><a href="./about/">About This Page</a></p>
     <p><em>Disclaimer: Posts shown here or any commentary I write may contain factual errors or imbalanced representation.</em></p>
 </div>
-<div class="pages-bar">
-    <p>Current page: {page.currentPage}</p>
-    <p>Go to: <a href={page.url.first}>First</a> <a href={page.url.prev}>Prev</a> <a href={page.url.next}>Next</a> <a href={page.url.last}>Last</a></p>
-</div>
+<PaginationNavigatorBar page={page} numberToURL={numToURL}/>
 
 {posts.map(async (p) => {
     const renderedContent = await (async ()=>{
@@ -63,6 +65,8 @@ const posts: CurationPost[] = _posts;
         {renderedContent}
     </article>
 })}
+
+<PaginationNavigatorBar page={page} numberToURL={numToURL}/>
 
 
 </Layout>
