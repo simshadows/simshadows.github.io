@@ -24,6 +24,17 @@ export class TimezonelessDate {
      */
     constructor(y: number, m: number, d: number) {
         this.__d = dayjs(0).year(y).month(m).date(d);
+
+        // All of this for a crude slow way of validating the date.
+        // We accept it here because we're not particularly concerned
+        // about speed, but maybe we should improve it some day.
+        const yStr = String(y).padStart(4, "0");
+        const mStr = String(m + 1).padStart(2, "0");
+        const dStr = String(d).padStart(2, "0");
+        const s = `${yStr}-${mStr}-${dStr}`;
+        if (this.toISOString() !== s) {
+            throw new Error(`Invalid date: ${s}`);
+        }
     }
 
     toString(): string {
