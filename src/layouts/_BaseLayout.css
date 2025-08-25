@@ -85,10 +85,14 @@ table {
 #masthead__title-container {
     font-size: 20px;
     font-weight: bold;
+}
+#website-title {
     text-decoration: inherit;
     color: inherit;
 }
-#website-title {
+#website-title2 {
+    text-decoration: inherit;
+    color: inherit;
 }
 #masthead__menu {
     display: flex;
