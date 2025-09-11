@@ -13,10 +13,11 @@ const disallowedCategories: ReadonlySet<string> = new Set([
 ]);
 
 interface Props {
-    // Name
     readonly n:  string; // Name
     readonly c:  string; // Categories (a "list" delimited by semicolons)
     readonly l?: string; // Locations (a "list" delimited by semicolons)
+
+    readonly isPermanentlyClosed?: boolean;
 }
 
 export default function Venue(
@@ -24,8 +25,11 @@ export default function Venue(
         n,
         c,
         l="",
+        isPermanentlyClosed=false,
     }: Props
 ) {
+    isPermanentlyClosed; // TODO: Use this attribute?
+
     const categories = (()=>{
         const c2 = c.trim();
         if (c2.length === 0) {

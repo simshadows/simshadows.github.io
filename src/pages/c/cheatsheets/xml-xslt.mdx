@@ -73,14 +73,14 @@ References:
 ## XSLT Templates
 
 ```xml
+<xsl:apply-templates select="TODO" mode="TODO"/>
+
 <xsl:call-template name="TODO">
     <xsl:with-param name="TODO" select="TODO"/>
     <xsl:with-param name="TODO">
         <!-- TEMPLATE -->
     </xsl:with-param>
 </xsl:call-template>
-
-<xsl:apply-templates select="TODO" mode="TODO"/>
 ```
 
 ```xml
@@ -88,7 +88,7 @@ References:
     <!-- TEMPLATE -->
 </xsl:template>
 
-<xsl:template name="TODO" mode="TODO">
+<xsl:template name="TODO">
     <xsl:param name="TODO" select="TODO"/>
     <!-- TEMPLATE -->
 </xsl:template>
