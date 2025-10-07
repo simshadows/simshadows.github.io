@@ -1,0 +1,34 @@
+---
+import Layout from "@layouts/GeneralLayout.astro";
+import {fm} from "@helpers/frontmatter";
+
+import "./_index.css";
+
+import ANebula from "./_index.ANebula.astro";
+import ATwitch from "./_index.ATwitch.astro";
+import AYt from "./_index.AYt.astro"; // YouTube
+import AWeb from "./_index.AWeb.astro";
+
+export const frontmatter = fm({
+    title: "More Stuff To Check Out",
+    description: "More Stuff To Check Out",
+    keywords: ["favourite", "list", "awesome"],
+
+    hidetoc: true,
+});
+---
+
+<Layout {...frontmatter}>
+
+<p>This page is for stuff that I think could be worth checking out, but I'm not really the target audience for.</p>
+
+<ul>
+    <li>[<AYt p="/@ZipTieTuning" />] <span class="e">Zip Tie Tuning</span>
+        <ul>
+            <li>Seems like a great car channel, but I'm not into cars.</li>
+        </ul>
+    </li>
+</ul>
+
+</Layout>
+

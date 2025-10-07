@@ -20,6 +20,7 @@ git rebase --onto origin/master foo bar
 ```
 *"Take the **bar** branch, figure out the patches since it diverged from the **foo** branch, and replay those patches in the **bar** branch as if it was based directly off the **origin/master** branch instead."*
 
+
 ## Squash the last *N* commits
 
 To squash the last 3 commits:
@@ -29,4 +30,10 @@ git rebase -i HEAD~3
 ```
 
 In the following screen, leave the top commit as `pick`, and set all of the remaining as `squash`.
+
+## Revert a single commit
+
+```bash
+git revert PUT_YOUR_COMMIT_HASH_HERE
+```
 
