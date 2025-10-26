@@ -27,6 +27,12 @@ $ yarn build
 
 ## Other development tools
 
+### Claude Code
+
+A `CLAUDE.md` file is included.
+
+### LaTeX
+
 To compile the LaTeX documents, you will need:
 
 - a `make` utility (such as *GNU make*),
