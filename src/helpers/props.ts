@@ -9,6 +9,8 @@
 
 import {TimezonelessDate} from "@helpers/timezoneless-date";
 
+export type PageMode = "default" | "fullwidth";
+
 export function readDateStr(_prop: string): TimezonelessDate {
     const prop: unknown = _prop; // Cast and narrow for stronger validation
     if (!prop || typeof prop !== "string") {

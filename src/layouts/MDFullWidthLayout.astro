@@ -1,6 +1,6 @@
 ---
 import {makeFrontmatter} from "@helpers/frontmatter";
-import Layout from "@layouts/FullWidthLayout.astro";
+import Layout from "@layouts/GeneralLayout.astro";
 import RightSidebar from "@components/layout-helpers/RightSidebar.astro";
 
 import "@root/latex-helpers/rehype-plugin/md-imports";
@@ -18,6 +18,7 @@ const f = makeFrontmatter(frontmatter);
 ---
 
 <Layout
+    mode="fullwidth"
     title={f.title}
     description={f.description}
     keywords={f.keywords}

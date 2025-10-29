@@ -1,7 +1,10 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 
+import {type PageMode} from "@helpers/props";
+
 interface Props {
+    mode?: PageMode;
     title: string;
     description: string;
     keywords: string[];
@@ -10,6 +13,7 @@ interface Props {
 }
 
 const {
+    mode = "default",
     title,
     description,
     keywords,
@@ -23,6 +27,7 @@ const {
     description={description}
     keywords={keywords}
     noRightSidebar={hidetoc}
+    fullWidthLayout={mode === "fullwidth"}
 >
     {(!hidetitle) && <h1>{title}</h1>}
     <slot />
