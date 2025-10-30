@@ -4,9 +4,14 @@
  */
 
 import type {SomePartial} from "@helpers/types";
+import {type PageMode, pageModeValues} from "@helpers/props";
 import {isStrArray} from "@root/danger";
 
 export interface Frontmatter {
+    /*** Optional Layout Mode ***/
+
+    mode: PageMode;
+
     /*** Mandatory ***/
 
     title: string;
@@ -34,7 +39,8 @@ export interface Frontmatter {
     wip: boolean;
 }
 type FrontmatterWithOptionals = SomePartial<Frontmatter,
-    "indexTitle"
+    "mode"
+    | "indexTitle"
     | "excludeFromMainIndex"
     | "excludeChildrenFromMainIndex"
     | "hidetoc"
@@ -58,6 +64,20 @@ export function validateFrontmatter(obj: FrontmatterWithOptionals): Frontmatter 
 export function makeFrontmatter(obj: unknown): Frontmatter {
     if (!(obj && (typeof obj === "object"))) {
         throw new Error(`${ERR_FIRST}Not an object.`);
+    }
+
+    // OPTIONAL
+    const mode = ("mode" in obj) ? obj.mode : "default";
+    // TODO: Deduplicate these redundant checks
+    //       (I left both in to be extra-safe)
+    switch (mode) {
+        default:
+            throw err2("a mode string", "mode", mode);
+        case "default":
+        case "fullwidth":
+    }
+    if (!pageModeValues.has(mode)) {
+        throw err2("a string", "mode", mode);
     }
 
     // MANDATORY
@@ -123,6 +143,7 @@ export function makeFrontmatter(obj: unknown): Frontmatter {
     }
 
     return {
+        mode,
         title: obj.title,
         description: obj.description,
         keywords: obj.keywords,
