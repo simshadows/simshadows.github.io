@@ -7,6 +7,8 @@ import {getCurationCollectionPaginated} from "@helpers/collections/curation";
 
 import Layout from "./_layouts/CurationBaseLayout.astro";
 
+import YouTubeEmbed from "@components/YouTubeEmbed";
+
 import "./_index.css";
 
 const groups = (await getCurationCollectionPaginated()).groups;
@@ -61,7 +63,7 @@ export const frontmatter = fm({
             <p>Web link: <a href={p.url} target="_blank">{p.url}</a></p>
         }
         {(!!p.youtubeVideoID) &&
-            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${p.youtubeVideoID}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <YouTubeEmbed videoID={p.youtubeVideoID}/>
         }
         {renderedContent}
     </article>
