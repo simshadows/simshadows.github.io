@@ -1,4 +1,4 @@
-echo "first"; echo "second"
+echo "always executes"; echo "also always executes"
 echo "always executes" || echo "only executes if first command fails"
 echo "always executes" && echo "only executes if first command does not fail"
 

@@ -2,11 +2,70 @@
 layout: "@layouts/MDLayout.astro"
 title: git Cheatsheet
 description: My git cheatsheet because I forget commands a lot.
-keywords: ["programming", "git", "version control", "cheatsheet"]
+keywords: ["programming", "git", "version control", "vcs", "cheatsheet"]
 
 indexTitle: git
-wip: true
 ---
+
+## Common Commands
+
+```
+              [W]------------------+     [S]-------------+
+[H]-----+      | Working Copy      |      | Staging Area |
+ | HEAD |      | Working Tree      | <--> | Index        |
+ +------+      | Working Directory |      |              |
+               +-------------------+      +--------------+
+```
+
+```bash
+git status
+git log --all --oneline --graph --decorate
+git log --all --pretty=fuller --stat --graph --decorate
+
+# diff [H] and [W]
+git diff
+# diff [W] and [S]
+git diff --staged
+```
+
+```bash
+# Stage entire files [W --> S]
+git add -A
+git add foobar.txt
+
+# Unstage entire files [S --> W]
+git restore --staged foobar.txt
+
+# Revert all unstaged changes + delete all untracked/ignored files
+git clean -fdx
+```
+
+```bash
+# Make a commit
+git commit
+# Make a commit that replaces the tip of the current branch
+git commit --amend
+```
+
+```bash
+# List all branches (verbose)
+git branch -avv
+
+# Checkout an existing local branch `myawesomebranch`.
+# It will also guess and create a tracking branch if no local branch exists.
+git checkout myawesomebranch
+
+# Create new branch `myawesomebranch`
+git branch myawesomebranch
+```
+
+```bash
+# Download from remote `origin`
+git fetch
+
+# `git fetch`, then attempt to fast forward to match remote
+git pull
+```
 
 ## Rebase
 

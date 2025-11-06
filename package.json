@@ -14,7 +14,13 @@
     "buildserve": "astro check && tsc --noEmit && astro build && astro preview --port 3000",
     "serve": "astro preview --port 8000",
     "preview": "astro preview --port 8000",
-    "astro": "astro"
+    "astro": "astro",
+    "pbuild": "podman build -t simshadows/website-claude-code-sandbox .claude/container-sandbox",
+    "prun": "yarn pstart",
+    "pstart": "yarn pclean; podman run --name website-claude-code-sandbox --hostname website-claude-sandbox --mount type=volume,src=website-claude-code-sandbox-usersetting,dst=/home/node/.claude --mount type=bind,src=.,dst=/mnt/website -dit simshadows/website-claude-code-sandbox",
+    "pterm": "podman exec -it website-claude-code-sandbox bash",
+    "pstop": "podman stop website-claude-code-sandbox",
+    "pclean": "yarn pstop; podman rm website-claude-code-sandbox"
   },
   "dependencies": {
     "@astrojs/check": "0.9.4",
