@@ -1,18 +1,21 @@
 ---
 import {
     AUTHOR,
-    COPYRIGHT_YEAR,
     SOURCE_CODE_URL,
 } from "@root/constants";
+
+import {TimezonelessDate} from "@helpers/timezoneless-date";
 
 import ccImg from "./_BaseFooter_images/cc.svg";
 import byImg from "./_BaseFooter_images/by.svg";
 import saImg from "./_BaseFooter_images/sa.svg";
+
+const copyright_year = TimezonelessDate.nowUTC().getYear();
 ---
 
 <footer id="footer" class="content-column">
     <p id="footer-text">
-        &copy; {COPYRIGHT_YEAR} {AUTHOR}. All content on this site is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-ShareAlike 4.0 International</a>.
+        &copy; {copyright_year} {AUTHOR}. All content on this site is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-ShareAlike 4.0 International</a>.
         <br />
         This site's source code is available on <a href={SOURCE_CODE_URL}>GitHub</a>.
         <br />

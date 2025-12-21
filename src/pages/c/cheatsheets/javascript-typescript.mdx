@@ -202,6 +202,27 @@ import foobar from "mymodule";
 ```
 
 
+## Web APIs
+
+### Document Object Model (DOM)
+
+```ts
+// Return the first match (falsy if no match)
+match = document.querySelector("#logo");
+// Return all matches (empty if no match)
+matches = document.querySelectorAll("div.foobar");
+
+// Creating an element
+e = document.createElement("div");
+e.classlist.add("my-awesome-class");
+e.textContent = "my awesome text";
+
+// Adding an element to the page
+match.prepend(e);
+match.append(e);
+```
+
+
 ## Basic Recipes (JS Only)
 
 ### Max Heap

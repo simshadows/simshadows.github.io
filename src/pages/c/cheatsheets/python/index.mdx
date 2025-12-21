@@ -26,11 +26,28 @@ References:
     - [**`math`**](https://docs.python.org/3/library/math.html), [**`datetime`**](https://docs.python.org/3/library/datetime.html)
     - [**`bisect`**](https://docs.python.org/3/library/bisect.html), [**`heapq`**](https://docs.python.org/3/library/heapq.html)
     - [**`logging`**](https://docs.python.org/3/library/logging.html), [**`sqlite3`**](https://docs.python.org/3/library/sqlite3.html)
+    - [**`venv`**](https://docs.python.org/3/library/venv.html)
 - [**Learn X in Y minutes - Python**](https://learnxinyminutes.com/docs/python/) `(learnxinyminutes.com)`
 
 Common third-party library references:
 
 - [**`pandas`**](https://pandas.pydata.org/docs/reference/index.html)
+
+
+## Shell Commands
+
+```sh
+# Set up venv
+python -m venv ./_venv
+source ./_venv/bin/activate
+python -m pip install -r ./requirements.txt
+
+# Create requirements.txt
+python -m pip freeze > ./requirements.txt
+
+# Exit venv
+deactivate
+```
 
 
 ## Misc.
@@ -206,12 +223,34 @@ x = p[0] # same as p.x
 ```
 
 
+## Classes
+
+Python Documentation - [**Data Model - Special method names**](https://docs.python.org/3/reference/datamodel.html)
+
+```py
+class MyClass:
+    __slots__ = ("__foobar")
+
+    def __init__(self, n):
+        self.__foobar = n
+```
+
+
+## Functions
+
+TODO show how args and kwargs work
+
+
 ## System API
 
 Python Documentation - [**`os`**](https://docs.python.org/3/library/os.html), [**`sys`**](https://docs.python.org/3/library/sys.html)
 
+### File IO
+
 ```py
-# TODO: examples?
+with open("foobar.txt", "r") as f:
+    content = f.read()
+    print(content)
 ```
 
 
@@ -293,10 +332,6 @@ words = [s.strip() for s in stdin.readline().strip().split()]
 nums2 = [[int(x) for x in s.strip().split()] for s in stdin.readlines()]
 ```
 
-### Leetcode
-
-Python lacks sorted associative containers like C++'s `std::set` and `std::map`. As a workaround, Leetcode supplies the [`sortedcontainers`](https://grantjenks.com/docs/sortedcontainers/) library to use on the platform (as mentioned [here](https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages-)).
-
 ### Trie
 
 ```py
@@ -328,6 +363,10 @@ class Trie:
             cur = cur[c]
         return True
 ```
+
+### Leetcode
+
+Python lacks sorted associative containers like C++'s `std::set` and `std::map`. As a workaround, Leetcode supplies the [`sortedcontainers`](https://grantjenks.com/docs/sortedcontainers/) library to use on the platform (as mentioned [here](https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages-)).
 
 
 ## TODO

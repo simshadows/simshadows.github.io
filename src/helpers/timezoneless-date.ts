@@ -5,6 +5,10 @@
  *
  * A wrapper class to enforce the use of a pre-existing date implementation
  * as a simple timezoneless calendar date.
+ *
+ * There are a lot of weird stuff going on in this class, mostly because it's just
+ * easy to understand and verify. I should work on understanding exactly what's going
+ * on with them and cleaning up any weirdness.
  */
 
 import dayjs from "dayjs";
@@ -47,6 +51,10 @@ export class TimezonelessDate {
         return this.__d.toISOString();
     }
 
+    getYear(): Number {
+        return this.__d.year();
+    }
+
     toDate(): Date {
         return this.__d.toDate();
     }
@@ -55,8 +63,7 @@ export class TimezonelessDate {
      * Returns a number that guarantees that later dates have larger numbers
      * than earlier dates, and same dates return the same number.
      *
-     * (In practice, this is a Unix timestamp, but toOrderedNumber() doesn't
-     * promise any particular timezone.)
+     * (In practice, this is a Unix timestamp. Don't rely on what the number means.)
      */
     toOrderedNumber(): number {
         return this.__d.unix();
@@ -81,6 +88,18 @@ export class TimezonelessDate {
             throw new Error("Expected three integers.");
         }
         return new TimezonelessDate(Number(y), Number(m) - 1, Number(d));
+    }
+
+    /*
+     * Get the current UTC date as a TimezonelessDate.
+     */
+    static nowUTC(): TimezonelessDate {
+        const now = new Date();
+        return new TimezonelessDate(
+            now.getUTCFullYear(),
+            now.getUTCMonth(),
+            now.getUTCDate(),
+        );
     }
 }
 
