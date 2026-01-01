@@ -16,12 +16,13 @@ const {
 
 <ul>
     <li><a href="/about/"><b>About</b></a></li>
-    {showWIP && <li><a href="/blog/"><b>Blog</b></a> <Wip /></li>}
+    {showWIP && <li><a href="/blog/"><b>Blog</b></a> <Wip/></li>}
+    <li><a href="/boycotts/"><b>Boycotts</b></a></li>
     {showWIP && <li><a href="/hidden/"><b>Hidden</b></a></li>}
-    {showWIP && <li><a href="/curation/"><b>Internet Curation</b></a> <Wip /></li>}
+    {showWIP && <li><a href="/curation/"><b>Internet Curation</b></a> <Wip/></li>}
     <li><a href="/list-of-awesome/"><b>List of Awesome</b></a></li>
-    {showWIP && <li><a href="/personal-finance/"><b>Personal Finance</b></a> <Wip /></li>}
-    {showWIP && <li><a href="/uses/"><b>Uses</b></a> <Wip /></li>}
+    {showWIP && <li><a href="/personal-finance/"><b>Personal Finance</b></a> <Wip/></li>}
+    {showWIP && <li><a href="/uses/"><b>Uses</b></a> <Wip/></li>}
 </ul>
 
 <h4>Programming</h4>
@@ -30,13 +31,13 @@ const {
     <li><a href="/c/cheatsheets/"><b>Cheatsheets</b></a>
         <ul>
             <li><a href="/c/cheatsheets/bash/"><b>bash</b></a></li>
-            {showWIP && <li><a href="/c/cheatsheets/cpp/"><b>C++</b></a> <Wip /></li>}
-            {showWIP && <li><a href="/c/cheatsheets/general/"><b>General</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/c/cheatsheets/cpp/"><b>C++</b></a> <Wip/></li>}
+            {showWIP && <li><a href="/c/cheatsheets/general/"><b>General</b></a> <Wip/></li>}
             <li><a href="/c/cheatsheets/git/"><b>git</b></a></li>
-            {showWIP && <li><a href="/c/cheatsheets/html-css/"><b>HTML/CSS</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/c/cheatsheets/html-css/"><b>HTML/CSS</b></a> <Wip/></li>}
             <li><a href="/c/cheatsheets/java/"><b>Java</b></a></li>
             <li><a href="/c/cheatsheets/javascript-typescript/"><b>Javascript/Typescript</b></a></li>
-            {showWIP && <li><a href="/c/cheatsheets/kubernetes/"><b>Kubernetes</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/c/cheatsheets/kubernetes/"><b>Kubernetes</b></a> <Wip/></li>}
             <li><a href="/c/cheatsheets/linux/"><b>Linux</b></a>
                 <ul>
                     <li><a href="/c/cheatsheets/linux/more/"><b>More Common Tasks</b></a></li>
@@ -44,24 +45,29 @@ const {
             </li>
             {showWIP && <li><a href="/c/cheatsheets/making-changes-to-this-website/"><b>Making changes to this website</b></a></li>}
             <li><a href="/c/cheatsheets/podman/"><b>Podman</b></a></li>
-            {showWIP && <li><a href="/c/cheatsheets/powershell/"><b>PowerShell</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/c/cheatsheets/powershell/"><b>PowerShell</b></a> <Wip/></li>}
             <li><a href="/c/cheatsheets/python/"><b>Python</b></a></li>
-            {showWIP && <li><a href="/c/cheatsheets/sql/"><b>SQL and Common Relational DBMS Features</b></a> <Wip /></li>}
-            {showWIP && <li><a href="/c/cheatsheets/svn/"><b>SVN</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/c/cheatsheets/sql/"><b>SQL and Common Relational DBMS Features</b></a> <Wip/></li>}
+            {showWIP && <li><a href="/c/cheatsheets/svn/"><b>SVN</b></a> <Wip/></li>}
             <li><a href="/c/cheatsheets/xml-xslt/"><b>XML and XSLT</b></a></li>
         </ul>
     </li>
     <li><b>Notes</b>
         <ul>
+            {showWIP && <li><b>Career</b>
+                <ul>
+                    <li><a href="/c/career/individual-contributor/"><b>Optimizing Productivity As A Software Engineer</b></a> <Wip/></li>
+                </ul>
+            </li>}
             <li><b>Data Structures and Algorithms</b>
                 <ul>
                     <li><a href="/c/notes/dsa/heaps/"><b>Heaps</b></a></li>
-                    {showWIP && <li><a href="/c/notes/dsa/graphs/"><b>Graphs</b></a> <Wip /></li>}
+                    {showWIP && <li><a href="/c/notes/dsa/graphs/"><b>Graphs</b></a> <Wip/></li>}
                     <li><a href="/c/notes/dsa/dynamic-programming/"><b>Dynamic Programming</b></a></li>
                 </ul>
             </li>
             <li><a href="/c/notes/databases-relational-model/"><b>Databases: The Relational Model and Relational Algebra</b></a></li>
-            {showWIP && <li><a href="/c/programming-learners-checklist/"><b>Programming Learner's Checklist</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/c/programming-learners-checklist/"><b>Programming Learner's Checklist</b></a> <Wip/></li>}
         </ul>
     </li>
     <li><b>Programming Challenge Solutions</b>
@@ -83,9 +89,9 @@ const {
     </li>
     {showWIP && <li><b>Job Hunting</b>
         <ul>
-            <li><a href="/c/job-hunt/behavioural/"><b>Behavioural Interviews</b></a> <Wip /></li>
-            <li><a href="/c/job-hunt/system-design/"><b>System Design Interviews</b></a> <Wip /></li>
-            <li><a href="/c/job-hunt/technical-interviewing/"><b>Technical Interviews</b></a> <Wip /></li>
+            <li><a href="/c/job-hunt/behavioural/"><b>Behavioural Interviews</b></a> <Wip/></li>
+            <li><a href="/c/job-hunt/system-design/"><b>System Design Interviews</b></a> <Wip/></li>
+            <li><a href="/c/job-hunt/technical-interviewing/"><b>Technical Interviews</b></a> <Wip/></li>
         </ul>
     </li>}
     <li><a href="/c/semiprivate/"><b>Semi-Private Content</b></a></li>
@@ -99,8 +105,8 @@ const {
             <li><a href="/s/cheatsheets/math/precalc/"><b>Precalculus</b></a></li>
             <li><a href="/s/cheatsheets/math/discrete/"><b>Discrete Mathematics</b></a></li>
             <li><a href="/s/cheatsheets/math/calculus/"><b>Calculus</b></a></li>
-            {showWIP && <li><a href="/s/cheatsheets/math/stats/"><b>Probability and Statistics</b></a> <Wip /></li>}
-            {showWIP && <li><a href="/s/cheatsheets/physics/"><b>Physics</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/s/cheatsheets/math/stats/"><b>Probability and Statistics</b></a> <Wip/></li>}
+            {showWIP && <li><a href="/s/cheatsheets/physics/"><b>Physics</b></a> <Wip/></li>}
         </ul>
     </li>
     <li><a href="/s/semiprivate/"><b>Semi-Private Content</b></a></li>
@@ -116,15 +122,15 @@ const {
     </li>
     <li><b>Cheatsheets and Checklists</b>
         <ul>
-            {showWIP && <li><a href="/tech/cheatsheets/computer-maintenance-checklists/"><b>Computer Maintenance Checklists</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/tech/cheatsheets/computer-maintenance-checklists/"><b>Computer Maintenance Checklists</b></a> <Wip/></li>}
             <li><a href="/tech/cheatsheets/emoji/"><b>Emoji</b></a></li>
-            {showWIP && <li><a href="/tech/cheatsheets/ffmpeg/"><b>FFmpeg</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/tech/cheatsheets/ffmpeg/"><b>FFmpeg</b></a> <Wip/></li>}
             <li><a href="/tech/cheatsheets/new-computer-checklist/"><b>New Computer Checklist</b></a></li>
-            {showWIP && <li><a href="/tech/cheatsheets/windows-sysadmin/"><b>Windows SysAdmin</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/tech/cheatsheets/windows-sysadmin/"><b>Windows SysAdmin</b></a> <Wip/></li>}
         </ul>
     </li>
-    {showWIP && <li><a href="/tech/hardware-troubleshooting/"><b>Computer Hardware Troubleshooting</b></a> <Wip /></li>}
-    {showWIP && <li><a href="/tech/homelab/"><b>Homelab</b></a> <Wip /></li>}
+    {showWIP && <li><a href="/tech/hardware-troubleshooting/"><b>Computer Hardware Troubleshooting</b></a> <Wip/></li>}
+    {showWIP && <li><a href="/tech/homelab/"><b>Homelab</b></a> <Wip/></li>}
     <li><b>Mechanical Keyboards</b>
         <ul>
             <li><a href="/tech/mechanical-keyboard-switch-collection/"><b>Mechanical Keyboard Switch Collection</b></a>
@@ -145,9 +151,14 @@ const {
     <li><a href="/g/ffxiv/notes/2024-11-12-patch-7-1-pvp/"><b>FFXIV: My notes on patch 7.1 PvP changes</b></a></li>
     <li><a href="/g/monster-hunter-now/"><b>Monster Hunter Now</b></a></li>
     <li><a href="/g/monster-hunter-world/status-damage-model/"><b>MHWI Status Damage Model</b></a></li>
-    {showWIP && <li><a href="/g/rocket-rats/"><b>Rocket Rats</b></a> <Wip /></li>}
-    {showWIP && <li><a href="/g/taiko-no-tatsujin/rhythm-festival/"><b>Taiko no Tatsujin: Rhythm Festival</b></a> <Wip /></li>}
-    {showWIP && <li><a href="/g/vampire-survivors/"><b>Vampire Survivors</b></a> <Wip /></li>}
+    <li><a href="/g/osrs/"><b>Old School RuneScape</b></a>
+        <ul>
+            <li><a href="/g/osrs/main-character-diary/"><b>Main Character Progress Diary</b></a></li>
+        </ul>
+    </li>
+    {showWIP && <li><a href="/g/rocket-rats/"><b>Rocket Rats</b></a> <Wip/></li>}
+    {showWIP && <li><a href="/g/taiko-no-tatsujin/rhythm-festival/"><b>Taiko no Tatsujin: Rhythm Festival</b></a> <Wip/></li>}
+    {showWIP && <li><a href="/g/vampire-survivors/"><b>Vampire Survivors</b></a> <Wip/></li>}
     <li><a href="/g/semiprivate/"><b>Semi-Private Content</b></a></li>
 </ul>
 
@@ -155,7 +166,7 @@ const {
 <h4>Uncategorized</h4>
 
 <ul>
-    {showWIP && <li><a href="/experimental-glob/"><b>Experimental Glob</b></a> <Wip /></li>}
+    {showWIP && <li><a href="/experimental-glob/"><b>Experimental Glob</b></a> <Wip/></li>}
     <li><b>Food</b>
         <ul>
             <li><a href="/food/diary/"><b>Food Diary</b></a></li>
@@ -168,8 +179,8 @@ const {
         <ul>
             <li><a href="/photography/gear/"><b>Gear</b></a></li>
             <li><a href="/photography/notes/"><b>Notes</b></a></li>
-            {showWIP && <li><a href="/photography/beginner-recommendations/"><b>Recommendations</b></a> <Wip /></li>}
-            {showWIP && <li><a href="/photography/why-photography/"><b>Why Photography?</b></a> <Wip /></li>}
+            {showWIP && <li><a href="/photography/beginner-recommendations/"><b>Recommendations</b></a> <Wip/></li>}
+            {showWIP && <li><a href="/photography/why-photography/"><b>Why Photography?</b></a> <Wip/></li>}
         </ul>
     </li>
 </ul>
