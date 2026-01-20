@@ -24,6 +24,8 @@ References:
 
 ### `SELECT` (read)
 
+#### General
+
 ```sql
 SELECT * FROM MyTable;
 ```
@@ -58,6 +60,8 @@ ORDER BY
 - **(NOTE: List out aggregate functions?)**
 - **(NOTE: I haven't tested the whole query yet.)**
 
+#### Joins
+
 ```sql
 SELECT *
 FROM
@@ -70,14 +74,15 @@ WHERE
 ;
 ```
 
-- Alternative joins in place of `LEFT OUTER JOIN`:
-    - `JOIN` (it's the same as `INNER JOIN`)
-    - `LEFT JOIN` (it's the same as `LEFT OUTER JOIN`)
-    - `RIGHT JOIN` (it's the same as `RIGHT OUTER JOIN`)
-    - `FULL JOIN` (it's the same as `FULL OUTER JOIN`)
+- All join options:
+    - `JOIN` or `INNER JOIN`
+    - `LEFT JOIN` or `LEFT OUTER JOIN`
+    - `RIGHT JOIN` or `RIGHT OUTER JOIN`
+    - `FULL JOIN` or `FULL OUTER JOIN`
     - `CROSS JOIN` (this produces the cartesian product of two tables)
-- The `ON` keyword is usually invalid syntax for `CROSS JOIN`.
-- **(NOTE: I haven't tested all join keywords yet.)**
+        - The `ON` keyword is usually invalid syntax for `CROSS JOIN`.
+
+#### Union
 
 ```sql
 SELECT * FROM MyTable1
@@ -90,15 +95,34 @@ SELECT * FROM MyTable2
 
 ### `INSERT INTO` (insert new rows)
 
-TODO
+```sql
+INSERT INTO MyTable (
+    MyCol1,
+    MyCol2
+)
+VALUES (
+    12345,
+    'foobar'
+)
+;
+```
 
-### `UPDATE` (modify specified rows)
+### `UPDATE` (modify rows)
 
-TODO
+```sql
+UPDATE MyTable
+SET MyCol1 = 12345, MyCol2 = 67890
+WHERE MyCol3 = 'foobar'
+;
+```
 
-### `DELETE` (delete specified rows)
+### `DELETE` (delete rows)
 
-TODO
+```sql
+DELETE FROM MyTable
+WHERE MyCol1 = 'foobar'
+;
+```
 
 ## CTEs
 
