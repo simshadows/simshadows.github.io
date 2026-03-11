@@ -8,6 +8,23 @@ indexTitle: SVN
 wip: true
 ---
 
+*I'm not particularly experienced with the advanced features of SVN, so this cheatsheet will focus only on what I've had to use so far.*
+
+## General Commands
+
 ```bash
 svn info
 ```
+
+## Cherrypicking
+
+Let's suppose you want to cherrypick revision `1234` from trunk to a tag.
+
+One way of doing it is to check out the tag locally, open a terminal in that folder, and run a command like:
+
+```sh
+svn merge -c 1234 https://example.com/path/to/repo/trunk
+```
+
+You should ensure that the mergeinfo is also committed.
+

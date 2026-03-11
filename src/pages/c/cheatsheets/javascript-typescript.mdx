@@ -150,7 +150,19 @@ set.has(value) // true if value is in set
 [**MDN Web Docs - String**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 ```ts
-s.split(",");
+const s1 = "foobar";
+const s2 = "   barbaz\n";
+const s3 = "apple, banana, orange";
+const arr = ["foo", "bar", "baz"];
+
+s1.length // --> 6
+
+s1.slice(2)    // --> "obar"
+s1.slice(2, 4) // --> "ob"
+s2.trim()      // --> "barbaz"
+
+s3.split(",")  // --> ["apple", " banana", " orange"]
+arr.join(", ") // --> "foo, bar, baz"
 ```
 
 
@@ -192,6 +204,10 @@ class MyClass1 {
 // You can also use anonymous and named class expressions:
 const MyClass2 = class { /* TODO */ };
 const MyClass3 = class Foobar { /* TODO */ };
+
+const obj = new MyClass1(3, 5);
+obj.constructor.name // Returns the object's class name
+MyClass1.name        // Returns the class's name
 ```
 
 

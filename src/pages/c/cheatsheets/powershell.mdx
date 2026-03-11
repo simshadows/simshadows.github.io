@@ -14,4 +14,7 @@ Write-Host "foobar" -ForegroundColor Cyan
 
 # Run another Powershell script
 & $PSScriptRoot\relative\path\to\other\script.ps1
+
+# Get file hashes of all files in the directory
+Get-ChildItem -Recurse -File | Get-FileHash
 ```

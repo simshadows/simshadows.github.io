@@ -51,6 +51,13 @@ cat ~/.ssh/authorized_keys
 
 *Also see [Other Common Tasks](./more/).*
 
+### Debugging
+
+Some tools to try:
+
+- **`strace`** traces system calls and signals
+- **`valgrind`** for memory instrumentation
+
 ## Admin
 
 ### Package/Distro/Hypervisor
@@ -59,12 +66,7 @@ cat ~/.ssh/authorized_keys
 
 ```bash
 # Full system update
-## Step 1
-apt update
-## Step 2
-apt upgrade
-## Step 3
-apt full-upgrade
+apt update && apt upgrade && apt full-upgrade
 
 # Install package `nmap`
 apt install nmap

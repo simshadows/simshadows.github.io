@@ -1,0 +1,22 @@
+.moneymaking-teleport,
+.moneymaking-plant {
+    font-weight: bold;
+}
+
+.moneymaking-teleport {
+    color: #aa0000;
+}
+.moneymaking-plant {
+    color: #ff0000;
+}
+
+.moneymaking-ignore .moneymaking-teleport {
+    color: purple;
+}
+.moneymaking-ignore .moneymaking-plant {
+    color: #0000ff;
+}
+
+.moneymaking-ignore {
+    color: green;
+}

@@ -29,8 +29,10 @@ const {
     noRightSidebar={hidetoc}
     fullWidthLayout={mode === "fullwidth"}
 >
-    {(!hidetitle) && <h1>{title}</h1>}
-    <slot />
+    <article>
+        {(!hidetitle) && <h1>{title}</h1>}
+        <slot />
+    </article>
     <slot name="right-sidebar" slot="right-sidebar" />
 </BaseLayout>
 

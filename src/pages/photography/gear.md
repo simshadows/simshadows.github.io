@@ -116,31 +116,22 @@ Although I don't use it anymore, my *Sony FE 50mm F1.8* will remain in my collec
 
 Bodies:
 
-- A second Sony full-frame body.
-    - I want it to serve as a backup.
-        - I don't want to be in a situation where I don't have a working camera. I'm a bit addicted lol
-    - I want it for when I want to carry two cameras so I don't have to swap lenses.
-        - I love shooting wide with my 16-35mm as my walkaround lens.
-        - But sometimes, I stop for food and I often prefer 50mm for that. A second body in my bag with a compact 50mm lens would do great for this.
-        - Lots of different ways to do this!
-        - This setup also helps prevent dust accumulation.
-    - Having a bit of variety in bodies can also be useful, e.g. maybe I use the a7cii normally, but if I expect good lighting conditions, I use the a7cr for the higher resolution.
-        - I'd pick the a7cii for restaurants because the natural lighting is usually quite dim.
-    - I'll probably wait for new body releases. But if I were to get one right now, it would probably be the a7cr.
+- A second Sony full-frame body, most likely α7CR.
+    - I want a super-high resolution body to complement my current α7C II. My α7C II will likely continue to be my normal every-day carry that I bring out of the house though.
+    - I want to use my macro lens at home more, but without constantly swapping lenses.
+    - Whenever I do some interesting photography at home like for product photography, having crazy overkill resolution seems really fun!
+    - Lots more good reasons to own a second body.
 
 Lenses:
 
 - Sony FE 70-200mm F2.8 GM OSS II (SEL70200GM2)
     - I don't have a need for a telephoto lens yet, so I haven't bought it. Maybe I'll get it if I have specific sports photography, wildlife, or portrait photography needs? Or something like that.
+- Compact 35mm and/or 28mm lenses like my current compact 24mm, 40mm, and 50mm lenses.
+    - I want to try dailying these focal lengths, but I'm not interested enough in the currently available products for them. My current compacts are enough for me right now. I'll wait for new releases.
 
-Lighting:
+Lights:
 
-- I still don't know what I want for artificial lighting.
-    - Portable flash for casual food photos within restaurants? But I'm not sure what's an appropriate way of approaching this that I can casually carry and also not annoy the other patrons.
-    - Studio lighting for within my house. But I don't have enough space right now.
-    - Portable flash for portraits, events, etc. but I'm not too sure what artistic effect I want with these yet.
-    - Simple reflectors so I can do a little better for not that much more money.
-    - But for now, natural lighting works well enough for me.
+- Compact on-camera flash.
 
 ## Aspirational Wishlist
 
@@ -150,8 +141,12 @@ On the other hand, the items below are unlikely to be items I will buy in the ne
 
 Lenses:
 
+- More GM prime lenses, likely something like 24mm, 35mm, or 85mm because I already love my existing lenses at these focal lengths.
+    - I'll consider them as I gain more experience.
+    - I'll also at least wait until updated versions of these lenses come out.
 - Sony FE 14mm F1.8 GM (SEL14F18GM)
-- Sony FE 24mm F1.4 GM (SEL24F14GM)
+    - The best use-case for me is for whenever I decide to take astrophotography seriously.
+    - In theory, this might solve the softness that I observe in my current 16-35mm zoom at the wide-end, and this should have a low-light advantage, but I'm not sure it's worth the money, bulk, and inconvenience of a highly specialized prime. I don't shoot wide for commercial work or for incredible astrophotography. I shoot wide for the vibes.
 - I want one good lens to use with my old Nikon D5200.
     - Ideally, I want a 23mm prime (35mm ff equivalent), but I don't see anything available for this.
     - The [AF-S DX NIKKOR 35mm f/1.8G](https://www.nikon.com.au/af-s-dx-nikkor-35mm-f-1-8g) is the best first-party option. It's slightly tighter than 50mm ff equivalent. I'd still much prefer 35mm ff equivalent if I were to get only one lens, but oh well.
@@ -159,6 +154,14 @@ Lenses:
     - The [Sigma Art 18-35mm F1.8 DC HSM](https://www.sigma-global.com/en/lenses/a013_18_35_18/) seems like the best APS-C zoom, covering about 28-54mm ff equivalent. At f/1.8, it's fast enough for me, but it's also a physically huge lens.
     - The [Sigma Art 20mm F1.4 DG HSM](https://www.sigma-global.com/en/lenses/a015_20_14/) seems like the best full-frame prime. At roughly a 31mm ff equivalent, it seems like a great focal length for me, but is it worth the price and the size?
     - I'm going to need to think through whether I really want to use my old D5200, otherwise this wouldn't be worth the money. I'm not sure I want to buy just to collect.
+- Laowa 24mm f/14 2X Macro Probe
+    - Such a unique perspective, but I'm not sure I'm ready to buy one yet, especially because it's very expensive.
+    - It also happens to be an ultra-macro (2:1).
+- Ultra-macro lenses (e.g. Laowa 25mm f/2.8 2.5-5X Ultra Macro)
+    - I don't even know what I'd use one of these for. 1:1 macro is enough for me right now.
+    - But it could be really fun to try to use an ultra-macro.
+- Super ultra-wide (e.g. Laowa 9mm f/5.6 full-frame rectlinear)
+    - I already love shooting ultra-wide, so this seems like it would be fun to own, but I'm not sure it's gonna get enough use to be worth it right now.
 
 ## Wishlist for future product development
 
