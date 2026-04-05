@@ -40,6 +40,8 @@ podman pull docker.io/library/nginx
 
 # Delete image
 podman rmi nginx
+# Delete all images
+podman image rm --all
 
 # Build an image using the Containerfile/Dockerfile in the current directory
 podman build -t myimg .
@@ -76,8 +78,12 @@ podman container create --name mycontainer -t -p 8080:80/tcp nginx
 # Start/stop/delete container
 podman start mycontainer
 podman stop mycontainer
-podman rm mycontainer
 # (`podman start` will start in detached mode.)
+
+# Delete a container
+podman rm mycontainer
+# Delete all containers
+podman rm --all
 
 # Inspect container
 podman inspect mycontainer

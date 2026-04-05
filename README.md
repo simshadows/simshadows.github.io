@@ -1,27 +1,38 @@
 # Sim's Pages
 
-
-## How do I host this locally myself?
+## How do I host this locally myself? (Linux/Mac)
 
 This codebase uses the [Astro web framework](https://astro.build/) and is entirely static.
 
-To host, you will need to install [Node.JS](https://nodejs.org/) and [Yarn](https://yarnpkg.com/). On an Ubuntu system in 2023, I used the following terminal commands to install both tools:
-```
-$ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
-$ sudo apt-get install -y nodejs
-$ npm install --global yarn
+### How to run the dev server?
+
+I recommend installing [Podman](https://podman.io/), then running my script [`./tooling/podman-all.sh`](./tooling/podman-all.sh). Once the dev server is running, visit <http://localhost:8000/> in your web browser.
+
+(The script is made up of individual script invocations, which you can read if you want to learn some more about how this containerized development workflow works.)
+
+### How do I build the site so I can deploy to Prod?
+
+Run these two commands:
+
+```bash
+./tooling/podman-build.sh
+./tooling/podman-start.sh
+./tooling/podman-attach.sh yarn install
+./tooling/podman-attach.sh yarn build
 ```
 
-Install dependencies and run the dev server:
-```
-$ cd simshadows-pages
-$ yarn install
-$ yarn dev
-```
+The resulting artifacts will be written to `./dist/`.
 
-You can also compile the website to `./dist/` using:
-```
-$ yarn build
+### Can I do everything without containers?
+
+Yep!
+
+You'll just need to install [Node.js](https://nodejs.org/) and [Yarn Berry](https://yarnpkg.com/), then run whatever combination of commands you need to get something done, like:
+
+```bash
+yarn install
+yarn start
+yarn build
 ```
 
 
