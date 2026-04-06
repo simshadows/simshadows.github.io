@@ -6,7 +6,9 @@ This codebase uses the [Astro web framework](https://astro.build/) and is entire
 
 ### How to run the dev server?
 
-I recommend installing [Podman](https://podman.io/), then running my script [`./tooling/podman-all.sh`](./tooling/podman-all.sh). Once the dev server is running, visit <http://localhost:8000/> in your web browser.
+I recommend installing [Podman](https://podman.io/), and ensuring you have [GNU Make](https://www.gnu.org/software/make/) (or similar).
+
+, then running my script [`./tooling/podman-all.sh`](./tooling/podman-all.sh). Once the dev server is running, visit <http://localhost:8000/> in your web browser.
 
 (The script is made up of individual script invocations, which you can read if you want to learn some more about how this containerized development workflow works.)
 

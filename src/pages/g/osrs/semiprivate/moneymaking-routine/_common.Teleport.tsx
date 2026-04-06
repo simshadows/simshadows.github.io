@@ -1,5 +1,5 @@
 interface Props {
-    readonly name: string;
+    readonly to: string;
 }
 
 export default function Teleport({to}: Props) {
