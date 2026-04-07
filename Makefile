@@ -2,10 +2,13 @@
 # author: simshadows <contact@simshadows.com>
 
 ROOT_PATH := $(abspath .)
-TOOLING_PATH := $(ROOT_PATH)/tooling
 
 IMAGE_NAME := simshadows/website-dev
+
 CONTAINER_NAME := website-dev
+CONTAINER_HOSTNAME := website-dev
+CLAUDE_VOLUME_NAME := website-dev--claude
+DEV_SERVER_PORT := 8000
 
 ################################################################################
 # 0. Meta ######################################################################
@@ -17,7 +20,7 @@ all: clean build up yarn-install start
 
 # Build release artifacts from scratch, to be deployed in Prod
 .PHONY: all-release
-all-release: clean build up yarn-install release
+all-release: clean build up yarn-install test release
 
 
 ################################################################################
@@ -36,8 +39,11 @@ build:
 up:
 	podman run \
 		--name $(CONTAINER_NAME) \
-		-p 127.0.0.1:8000:8000 \
+		-p 127.0.0.1:$(DEV_SERVER_PORT):8000 \
 		--mount type=bind,src=$(ROOT_PATH),dst=/repo \
+		--mount type=volume,src=$(CLAUDE_VOLUME_NAME),dst=/home/node/.claude \
+		--userns keep-id \
+		--hostname $(CONTAINER_HOSTNAME) \
 		--rm \
 		-itd \
 		$(IMAGE_NAME)
@@ -49,9 +55,9 @@ up:
 
 
 # Open shell
-.PHONY: shell bash
-shell bash:
-	podman exec -it $(CONTAINER_NAME) bash
+.PHONY: shell bash attach enter
+shell bash attach enter:
+	podman exec -it $(CONTAINER_NAME) bash || true
 
 
 # Run `yarn install`
@@ -63,13 +69,31 @@ yarn-install:
 # Start dev server
 .PHONY: start dev
 start dev:
-	podman exec -it $(CONTAINER_NAME) yarn start --host
+	podman exec -it $(CONTAINER_NAME) yarn start --host || true
 
 
 # Build release artifacts, to be deployed in Prod
 .PHONY: release
 release:
 	podman exec -it $(CONTAINER_NAME) yarn build
+
+
+# Run auto-tests
+.PHONY: test
+test:
+	podman exec -it $(CONTAINER_NAME) yarn test
+
+
+# Run static type checking
+.PHONY: typecheck
+typecheck:
+	podman exec -it $(CONTAINER_NAME) yarn typecheck
+
+
+# Run Claude Code CLI
+.PHONY: ai claude
+ai claude:
+	podman exec -it $(CONTAINER_NAME) /home/node/.local/bin/claude
 
 
 ################################################################################
@@ -89,4 +113,10 @@ down:
 clean teardown destroy: down
 	podman rm $(CONTAINER_NAME) || true
 	podman image rm localhost/$(IMAGE_NAME) || true
+
+
+# Cleans more up
+.PHONY: clean-more teardown-more destroy-more
+clean-more teardown-more destroy-more: clean
+	podman volume rm $(CLAUDE_VOLUME_NAME) || true
 
