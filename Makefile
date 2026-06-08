@@ -2,6 +2,7 @@
 # author: simshadows <contact@simshadows.com>
 
 ROOT_PATH := $(abspath .)
+IS_WINDOWS := $(if $(filter Windows_NT,$(OS)),yes,)
 
 IMAGE_NAME := simshadows/website-dev
 
@@ -57,7 +58,7 @@ up:
 # Open shell
 .PHONY: shell bash attach enter
 shell bash attach enter:
-	podman exec -it $(CONTAINER_NAME) bash || true
+	-podman exec -it $(CONTAINER_NAME) bash
 
 
 # Run `yarn install`
@@ -67,9 +68,18 @@ yarn-install:
 
 
 # Start dev server
+# If we're running on a Windows host, we use polling, otherwise the filesystem
+# watch doesn't work.
 .PHONY: start dev
 start dev:
-	podman exec -it $(CONTAINER_NAME) yarn start --host || true
+ifdef IS_WINDOWS
+	-podman exec -it $(CONTAINER_NAME) env \
+		CHOKIDAR_USEPOLLING=true \
+		CHOKIDAR_INTERVAL=2000 \
+		yarn start --host
+else
+	-podman exec -it $(CONTAINER_NAME) yarn start --host
+endif
 
 
 # Build release artifacts, to be deployed in Prod
@@ -104,19 +114,19 @@ ai claude:
 # Stop container
 .PHONY: down
 down:
-	podman stop $(CONTAINER_NAME) || true
+	-podman stop $(CONTAINER_NAME)
 
 
 # Clean up images/containers
 # (Does not clean up anything else.)
 .PHONY: clean teardown destroy
 clean teardown destroy: down
-	podman rm $(CONTAINER_NAME) || true
-	podman image rm localhost/$(IMAGE_NAME) || true
+	-podman rm $(CONTAINER_NAME)
+	-podman image rm localhost/$(IMAGE_NAME)
 
 
 # Cleans more up
 .PHONY: clean-more teardown-more destroy-more
 clean-more teardown-more destroy-more: clean
-	podman volume rm $(CLAUDE_VOLUME_NAME) || true
+	-podman volume rm $(CLAUDE_VOLUME_NAME)
 

@@ -9,7 +9,9 @@ indexTitle: git
 
 I recommend aliasing common commands in your `.gitconfig`. [Here's mine as an example.](https://github.com/simshadows/sims-dotfiles/blob/master/dotfiles/git/.gitconfig)
 
-## Common Commands
+I use `foobarA`, `foobarB`, `foobarC` as placeholder branch names.
+
+## Basics
 
 ```
               [W]------------------+     [S]-------------+
@@ -71,20 +73,47 @@ git pull
 
 ## Revision Selection
 
-TODO
+```bash
+git show HEAD    # Current commit
+git show HEAD^   # First parent of HEAD
+git show HEAD^2  # Second parent of HEAD (useful for merges)
+git show HEAD~   # First parent of HEAD
+git show HEAD~2  # First parent of first parent of HEAD
+git show HEAD~3  # First parent of first parent of first parent of HEAD
+```
+
+```bash
+# NOT reachable by foobarA, but IS reachable by foobarB
+git log foobarA..foobarB
+
+# Reachable by one of foobarA or foobarB, but not both
+git log foobarA...foobarB
+```
+
+```bash
+# Reachable by foobarA or foobarB, but not foobarC
+git log foobarA foobarB ^foobarC
+```
 
 ## Rebase
+
+Take the current branch, find the commits that aren't reachable by **`origin/master`**, and replay them at **`origin/master`**:
 
 ```bash
 git rebase origin/master
 ```
 
-More complex example:
+Take the **`bar`** branch, find the commits that aren't reachable by **`origin/master`**, and replay them at **`origin/master`**:
+
+```bash
+git rebase origin/master bar
+```
+
+Take the **`bar`** branch, find the commits that aren't reachable by **`foo`** branch, and replay them at **`origin/master`**:
+
 ```bash
 git rebase --onto origin/master foo bar
 ```
-*"Take the **bar** branch, figure out the patches since it diverged from the **foo** branch, and replay those patches in the **bar** branch as if it was based directly off the **origin/master** branch instead."*
-
 
 ## Squash the last *N* commits
 
@@ -101,4 +130,10 @@ In the following screen, leave the top commit as `pick`, and set all of the rema
 ```bash
 git revert PUT_YOUR_COMMIT_HASH_HERE
 ```
+
+## References
+
+- [https://git-scm.com/](https://git-scm.com/)
+    - [Git Cheat Sheet](https://git-scm.com/cheat-sheet)
+    - [Pro Git Book](https://git-scm.com/book)
 

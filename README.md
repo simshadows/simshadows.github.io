@@ -1,12 +1,15 @@
 # Sim's Pages
 
-## How do I use this? (Linux/Mac)
-
-This codebase uses the [Astro web framework](https://astro.build/) and is entirely static.
+## How do I use this?
 
 ### Prerequisites
 
-Install [Podman](https://podman.io/), and ensure you have [GNU Make](https://www.gnu.org/software/make/) (or similar).
+You should be able to run everything on Linux, MacOS, and Windows.
+
+You'll need to ensure these are installed and set up:
+
+- [Podman](https://podman.io/)
+- [GNU Make](https://www.gnu.org/software/make/)
 
 ### How to run the dev server?
 
@@ -22,10 +25,6 @@ Yep! You'll just need to install [Node.js](https://nodejs.org/) and [Yarn Berry]
 
 
 ## Other development tools
-
-### Claude Code
-
-A `CLAUDE.md` file is included.
 
 ### LaTeX
 
