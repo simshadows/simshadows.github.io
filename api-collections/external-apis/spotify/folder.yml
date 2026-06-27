@@ -1,0 +1,30 @@
+info:
+  name: spotify
+  type: folder
+  seq: 1
+
+request:
+  auth:
+    type: oauth2
+    flow: authorization_code
+    authorizationUrl: https://accounts.spotify.com/authorize
+    accessTokenUrl: https://accounts.spotify.com/api/token
+    callbackUrl: http://127.0.0.1:8080/callback
+    credentials:
+      clientId: "{{spotifyClientId}}"
+      clientSecret: "{{spotifyClientSecret}}"
+      placement: body
+    scope: user-read-private
+    state: simshadows-website--external-apis
+    tokenConfig:
+      id: credentials
+      placement:
+        header: Bearer
+      source: access_token
+  scripts:
+    - type: before-request
+      code: |-
+        const spotifyBearerToken = bru.getVar("spotifyBearerToken");
+        if (!spotifyBearerToken && (req.getName() !== "auth")) {
+          throw Error("Runtime variable 'spotifyBearerToken' is empty. Please run the auth request.");
+        }

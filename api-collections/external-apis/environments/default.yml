@@ -1,0 +1,6 @@
+name: default
+variables:
+  - secret: true
+    name: spotifyClientId
+  - secret: true
+    name: spotifyClientSecret
