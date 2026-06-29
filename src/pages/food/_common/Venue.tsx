@@ -7,9 +7,12 @@
 
 const categoryRemaps: ReadonlyMap<string | undefined, string> = new Map([
     ["Cafe", "Café"],
+    ["Creme Brulee", "Crème Brûlée"],
 ]);
 const disallowedCategories: ReadonlySet<string> = new Set([
-    "Café", // We enforce the use all-ASCII.
+    // We disallow these to enforce the use all-ASCII.
+    "Café",
+    "Crème Brûlée",
 ]);
 
 interface Props {
