@@ -71,7 +71,9 @@ git fetch
 git pull
 ```
 
-## Revision Selection
+## Revision Archaeology
+
+### Revision Selection
 
 ```bash
 git show HEAD    # Current commit
@@ -95,7 +97,16 @@ git log foobarA...foobarB
 git log foobarA foobarB ^foobarC
 ```
 
-## Rebase
+### More Useful Commands
+
+```bash
+# filter git logs
+git log --grep=foobar
+```
+
+## Merging/Rebasing
+
+### Rebase
 
 Take the current branch, find the commits that aren't reachable by **`origin/master`**, and replay them at **`origin/master`**:
 
@@ -115,7 +126,7 @@ Take the **`bar`** branch, find the commits that aren't reachable by **`foo`** b
 git rebase --onto origin/master foo bar
 ```
 
-## Squash the last *N* commits
+### Squash the last *N* commits
 
 To squash the last 3 commits:
 
@@ -125,7 +136,9 @@ git rebase -i HEAD~3
 
 In the following screen, leave the top commit as `pick`, and set all of the remaining as `squash`.
 
-## Revert a single commit
+## Cherrypicking/Reverting
+
+### Revert a single commit
 
 ```bash
 git revert PUT_YOUR_COMMIT_HASH_HERE
